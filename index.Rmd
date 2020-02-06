@@ -8,13 +8,13 @@ title: |
    
 author: Luke A McGuinness
 college: 
-degree: Doctor of Philosophy
+degree: Doctor of Philosophy in Population Health Sciences
 degreedate: TBC
 abstract: |
   `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
-dedication: For Yihui Xie
+dedication: For Brendan McHugh
 abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with abbreviations
 
 #######################
@@ -22,7 +22,7 @@ abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with ab
 #######################
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
-bibliography-heading-in-pdf: References
+bibliography-heading-in-pdf: Bibliography
 
 #####################
 ## PDF formatting  ##
@@ -56,6 +56,11 @@ output:
     css: templates/style.css
     download: ["pdf"]
     config:
+      toc:
+        before: |
+          <li><a href="./">Thesis - Draft</a></li>
+        after: |
+          <li><a href="https://github.com/mcguinlu/thesis" target="blank">Associated repository</a></li>
       sharing:
         facebook: false
         twitter: yes

@@ -77,7 +77,7 @@
 
 %UL 3 Dec 2018: set this from YAML in index.Rmd
 \usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false]{biblatex}
-\newcommand*{\bibtitle}{References}
+\newcommand*{\bibtitle}{Bibliography}
 
 % This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
 \renewcommand*{\bibfont}{\raggedright\small}
@@ -106,7 +106,7 @@ An investigation of their relationship}
 % Uncomment the following line if your degree also includes exams (eg most masters):
 %\renewcommand{\submittedtext}{Submitted in partial completion of the}
 % Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
-\degree{Doctor of Philosophy}
+\degree{Doctor of Philosophy in Population Health Sciences}
 % Term and year of submission, or date if your board requires (eg most masters)
 \degreedate{TBC}
 
@@ -161,11 +161,15 @@ An investigation of their relationship}
 % This is used to create the separate, one-page abstract that you are required to hand into the Exam
 % Schools.  You can comment it out to generate a PDF for printing or whatnot.
 \begin{abstractseparate}
-  This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
-  
-  This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
-  
-  Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
+  \textbf{Background}\\
+  In the UK, an estimated 800000 people are currently living with dementia and this number is expected to double
+  by 2040. Despite the number of dementia cases and decades of research, there remains much unknown about
+  the pathogenesis and progression of the disease, and, at present, no effective treatment exists to arrest or
+  reverse the cognitive decline associated with the condition. In this context, identification of causal relationships
+  between modifiable targets and dementia risk is central to the development of evidence-based prevention
+  strategies and will be critically important in maintaining the long-term health of the ageing public. Blood lipid
+  levels have been implicated in the aetiology of dementia by genetic linkage and functional cell biology studies,
+  but current epidemiological evidence has yet to reach a consensus on their role in dementia risk.
 \end{abstractseparate}
 
 % JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
@@ -177,34 +181,32 @@ An investigation of their relationship}
 
 %%%%% DEDICATION -- If you'd like one, un-comment the following.
 \begin{dedication}
-  For Yihui Xie
+  For Brendan McHugh
 \end{dedication}
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
 \begin{acknowledgements}
  	This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.
 
-We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
-
-Special thanks to \href{http://chester.rbind.io}{Chester Ismay}, who created the \texttt{thesisdown} package that helped many a PhD student write their theses in R Markdown. And a very special tahnks to John McManigle, whose adaption of Sam Evans' adaptation of Keith Gillow's original maths template for writing an Oxford University DPhil thesis in \LaTeX~provided the template that I adapted for R Markdown.
-
-Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
-
 \begin{flushright}
-Ulrik Lyngs \\
-Linacre College, Oxford \\
-2 December 2018
+Luke McGuinness \\
+Canynge Hall, Bristol \\
+1 December 2021
 \end{flushright}
 \end{acknowledgements}
 
 
 %%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
 \begin{abstract}
-	This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
-
-This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
-
-Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
+	\textbf{Background}\\
+In the UK, an estimated 800000 people are currently living with dementia and this number is expected to double
+by 2040. Despite the number of dementia cases and decades of research, there remains much unknown about
+the pathogenesis and progression of the disease, and, at present, no effective treatment exists to arrest or
+reverse the cognitive decline associated with the condition. In this context, identification of causal relationships
+between modifiable targets and dementia risk is central to the development of evidence-based prevention
+strategies and will be critically important in maintaining the long-term health of the ageing public. Blood lipid
+levels have been implicated in the aetiology of dementia by genetic linkage and functional cell biology studies,
+but current epidemiological evidence has yet to reach a consensus on their role in dementia risk.
 \end{abstract}
 
 %%%%% MINI TABLES
@@ -273,15 +275,10 @@ wonderful have been, and are being, evolved.
 \hypertarget{test}{%
 \section{Test}\label{test}}
 
-\hypertarget{references}{%
-\chapter{References}\label{references}}
-
 \startappendices
 
 \hypertarget{list-of-one-thing}{%
 \chapter{List of one thing}\label{list-of-one-thing}}
-
-This first appendix includes an R chunk that was hidden in the document (using \texttt{echo\ =\ FALSE}) to help with readibility:
 
 \hypertarget{list-of-something-else}{%
 \chapter{List of something else}\label{list-of-something-else}}

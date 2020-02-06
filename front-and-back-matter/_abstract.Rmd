@@ -1,5 +1,9 @@
-This *R Markdown* template is for writing an Oxford University thesis. The template is built using Yihui Xie's `bookdown` package, with heavy inspiration from Chester Ismay's `thesisdown` and the `OxThesis` \LaTeX\ template (most recently adapted by John McManigle).
-
-This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from [this R Markdown workshop](https://ulyngs.github.io/rmarkdown-workshop-2019/).
-
-Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
+__Background__  
+In the UK, an estimated 800000 people are currently living with dementia and this number is expected to double
+by 2040. Despite the number of dementia cases and decades of research, there remains much unknown about
+the pathogenesis and progression of the disease, and, at present, no effective treatment exists to arrest or
+reverse the cognitive decline associated with the condition. In this context, identification of causal relationships
+between modifiable targets and dementia risk is central to the development of evidence-based prevention
+strategies and will be critically important in maintaining the long-term health of the ageing public. Blood lipid
+levels have been implicated in the aetiology of dementia by genetic linkage and functional cell biology studies,
+but current epidemiological evidence has yet to reach a consensus on their role in dementia risk.

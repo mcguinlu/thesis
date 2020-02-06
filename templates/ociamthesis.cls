@@ -231,7 +231,7 @@
 {\large \vspace*{1ex}
     {{\@college} \par}
 \vspace*{1ex}
-    {University of Oxford \par}
+    {University of Bristol \par}
 \vspace*{20mm}
     {{\submittedtext} \par}
 \vspace*{1ex}
@@ -302,7 +302,7 @@
     {Thesis word count: {\@wordcount} \par}
 \else
     {{\@college} \par}
-    {University of Oxford \par}
+    {University of Bristol \par}
 \fi
 \vspace*{1ex}
     {{\it \submittedtext} \par}
