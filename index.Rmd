@@ -55,12 +55,14 @@ output:
   bookdown::gitbook:
     css: templates/style.css
     download: ["pdf"]
+    split_bib: false
     config:
       toc:
         before: |
           <li><a href="./">Thesis - Draft</a></li>
         after: |
           <li><a href="https://github.com/mcguinlu/thesis" target="blank">Associated repository</a></li>
+      
       sharing:
         facebook: false
         twitter: yes

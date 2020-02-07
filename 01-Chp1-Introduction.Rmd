@@ -18,4 +18,6 @@ documentclass: book
 The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of this chapter. Reference labels will automatically be generated if you don't specify them, as the lowercase title with spaces replaced by hypens (e.g. r-markdown-basics). Look for the reference to this label at the beginning of the next chapter.
 -->
 
-This is a test of the bibliography (@Darwin1859)
+This is a test of the bibliography [@chang2012a]
+
+The following tools were used to perform risk of bias assessments: ROB-2, ROBINS-I and QUADAS-2 
