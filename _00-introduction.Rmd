@@ -10,9 +10,25 @@ output:
 documentclass: book
 ---
 
-# Introduction {-}
+# Covering material {-}
 
 \adjustmtc 
 <!-- For PDF output, we must include this LaTeX command after unnumbered headings, otherwise the numbers in the mini table of contents will be incorrect -->
 
-Welcome to my thesis!
+```{r word-count, echo=FALSE, warning=FALSE}
+words <-
+  wordcountaddin::word_count("01-Chp1-Introduction.Rmd") +
+  wordcountaddin::word_count("02-Chp2-Systematic-Review.Rmd")
+
+date <- as.character(format(Sys.time(),"%d%m%Y"))
+
+tmpWords <- data.frame(words = words, date = date)
+
+masterWords <- read.csv("words/words.csv", header = TRUE)
+
+masterWords <- rbind(masterWords,tmpWords)
+
+write.csv(file = "words/words.csv", x = masterWords, col.names = FALSE, row.names = FALSE)
+```
+
+Word count: `r words`
