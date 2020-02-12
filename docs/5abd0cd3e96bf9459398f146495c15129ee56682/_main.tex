@@ -248,24 +248,69 @@ but current epidemiological evidence has yet to reach a consensus on their role 
 
 \adjustmtc
 
-\begin{verbatim}
-## For information on available language packages for 'koRpus', run
-## 
-##   available.koRpus.lang()
-## 
-## and see ?install.koRpus.lang()
-\end{verbatim}
+\begin{itemize}
+\item
+  Word count: 1751 words
+\item
+  Change since last day: 0 words
+\item
+  Days: 5 days
+\item
+  Words per day: 350.2
+\end{itemize}
 
-Word count: 1163
+\includegraphics{_main_files/figure-latex/unnamed-chunk-4-1.pdf}
 
 \hypertarget{intro-intro}{%
 \chapter{Introduction}\label{intro-intro}}
 
 \minitoc 
 
-This is a test of the bibliography\textsuperscript{\protect\hyperlink{ref-chang2012}{1}}
+\hypertarget{aims-and-objectives-of-the-thesis}{%
+\section{Aims and Objectives of the thesis}\label{aims-and-objectives-of-the-thesis}}
 
-The following tools were used to perform the risk of bias assessments: ROB-2, ROBINS-I and QUADAS-2
+\hypertarget{aim}{%
+\subsection{Aim}\label{aim}}
+
+\hypertarget{objective}{%
+\subsection{Objective}\label{objective}}
+
+\hypertarget{chapter-overview}{%
+\section{Chapter Overview}\label{chapter-overview}}
+
+\begin{itemize}
+\tightlist
+\item
+  Chapter \ref{chapter-2-heading}
+\item
+  Chapter \ref{chapter-3-heading}
+\item
+  Chapter \ref{chapter-3-heading}
+\end{itemize}
+
+\hypertarget{thesis-output}{%
+\section{Thesis Output}\label{thesis-output}}
+
+\hypertarget{peer-reviewed-papers}{%
+\subsection{Peer reviewed papers}\label{peer-reviewed-papers}}
+
+\hypertarget{papers-under-review}{%
+\subsection{Papers under review}\label{papers-under-review}}
+
+\hypertarget{software}{%
+\subsection{Software}\label{software}}
+
+\hypertarget{talks}{%
+\subsection{Talks}\label{talks}}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\begin{itemize}
+\item
+\item
+\item
+\end{itemize}
 
 \begin{savequote}
 Hold
@@ -273,10 +318,21 @@ Hold
 
 
 
-\hypertarget{chapter-2-headings}{%
-\chapter{Chapter 2: Systematic Review}\label{chapter-2-headings}}
+\hypertarget{chapter-2-heading}{%
+\chapter{Chapter 2: Systematic Review}\label{chapter-2-heading}}
 
 \minitoc 
+
+\hypertarget{additional-ideas}{%
+\section{Additional ideas}\label{additional-ideas}}
+
+\begin{itemize}
+\tightlist
+\item
+  Evidence map - show the distribution of the different studies population across the world.
+\item
+  Living systematic review approach - update weekly based on medRxiv
+\end{itemize}
 
 \hypertarget{aims}{%
 \section{Aims}\label{aims}}
@@ -341,6 +397,66 @@ At present, no risk of bias assessment tool for Mendelian randomisation studies 
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
+
+\begin{savequote}
+A straight line may be the shortest distance between two points, but it
+is by no means the most interesting
+\qauthor{--- Charles Darwin\textsuperscript{\protect\hyperlink{ref-chang2012}{1}}}\end{savequote}
+
+
+
+\hypertarget{chapter-3-analysis-of-the-relationship-between-lipid-regulating-agent-use-and-dementia-outcomes-in-the-clinical-practice-research-datalink}{%
+\chapter{Chapter 3: Analysis of the relationship between lipid regulating agent use and dementia outcomes in the Clinical Practice Research Datalink}\label{chapter-3-analysis-of-the-relationship-between-lipid-regulating-agent-use-and-dementia-outcomes-in-the-clinical-practice-research-datalink}}
+
+\minitoc 
+
+\hypertarget{additional-ideas-1}{%
+\section{Additional ideas}\label{additional-ideas-1}}
+
+One of the problems I'll point out with the trials in the systematic review chapter (Chapter \ref{chapter-2-heading}) is that they only included people with a high cardiovascular risk - we are kind of doing the same by using elevated test cholesterol results as the index event.
+
+\hypertarget{aims-1}{%
+\section{Aims}\label{aims-1}}
+
+\hypertarget{methods-1}{%
+\section{Methods}\label{methods-1}}
+
+\hypertarget{estimation-methods}{%
+\subsection{Estimation methods}\label{estimation-methods}}
+
+Potential biases included time varying confounding, selection bias due to censoring on death and
+We performed a Cox
+
+\hypertarget{estimating-the-value-of-the-time-varying-confounders}{%
+\subsection{Estimating the value of the time-varying confounders}\label{estimating-the-value-of-the-time-varying-confounders}}
+
+Mean time from index event to first prescription of statins was 2.4 years. This negates the promised benefit of ruling out confounding by indication (where the test result leads to the prescription of the treatment and also increases the risk of the outcome, distorting the relationship between the two), as there is no relationship between index TC/LDL-c and eventual LRA prescription.
+
+Additionally, the time between index event and prescription does lead to a problem in terms of time varying confounding, as an average time of 2.4 years between current measurement of the covariates and treatment switching means there is plenty of time for the value of the covariate to change. This is problematic when the descision to change treatments (in this case to move from no LRA use to LRA use) is influenced by a set of prognostic factors that in turn may have been influenced by the inital treatment decision, as is likely to be the case for a range of covariates included in the model. For example:
+
+\emph{No CVD (t=0) -\textgreater{} No LRA (t=0) -\textgreater{} CVD (t=1) -\textgreater{} LRA (t=1) -\textgreater{} Dementia (t=2)}
+
+In this case, the decision to move to LRA use is influenced by CVD status at \emph{Time 1}, which will not be captured by adjusting only for CVD status at \emph{Time 0}.
+
+In practice, this means that the value of the prognostic factor should be regularly captured
+
+However, in electronic health records, a change in the value of the prongostic factors is only important if it is recorded in a patients record, as for it to have an impact on treatment decisions, it must be recorded.
+
+This means we can find the most recent value of the covariate before the switch and apply a marginal structural model approach, filling all values for that variable before the most recent measure with the baseline measurement, and all after the most recent meausure with the value of the most recent measure (on the basis that you won't go from having CVD back to not having CVD).
+
+i.e.
+Timepoint 12345678
+CVD 00001111
+Treatment 00000111
+
+Split into 3 month blocks since index event and use the same approach as above to work out the values of each covariate at each time point.
+
+Note: this will be harder for things that are not dichotmous and can go up as well as down. Examples include total cholesterol and BMI, which can go up as well as down.
+
+\hypertarget{the-effect-of-total-cholesterol-or-ldl-cholesterol-on-lra-prescription}{%
+\subsection{The effect of total cholesterol or LDL-cholesterol on LRA prescription}\label{the-effect-of-total-cholesterol-or-ldl-cholesterol-on-lra-prescription}}
+
+It would be fair to assume that the baseline total cholesterol/LDL-cholesterol would at least in part predict the liklihood of someone being prescribed a statin.
 
 \hypertarget{annotated-bibliography}{%
 \chapter{Annotated Bibliography}\label{annotated-bibliography}}

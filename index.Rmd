@@ -55,6 +55,7 @@ output:
   bookdown::gitbook:
     css: templates/style.css
     download: ["pdf"]
+    output_dir: "docs/5abd0cd3e96bf9459398f146495c15129ee56682"
     split_bib: false
     config:
       toc:

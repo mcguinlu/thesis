@@ -15,12 +15,18 @@ Hold
 ```
 (ref:darwin-quote) --- Charles Darwin [@chang2012]
 
-# Chapter 2: Systematic Review {#chapter-2-headings}
+# Chapter 2: Systematic Review {#chapter-2-heading}
 \minitoc <!-- this will include a mini table of contents-->
 
 ```{r, echo = FALSE}
 knitr::read_chunk("scripts/Chp2-Systematic-Review.R")
 ```
+
+## Additional ideas
+
+* Evidence map - show the distribution of the different studies population across the world.
+* Living systematic review approach - update weekly based on medRxiv
+
 
 ## Aims
 
