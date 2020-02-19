@@ -1,0 +1,36 @@
+---
+#########################################
+# options for knitting a single chapter #
+#########################################
+output:
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+documentclass: book
+---
+
+
+
+# Discussion
+
+## Summary of findings
+
+## Strengths and Limitations
+
+## Reproducible research
+
+Reproducible science has been a key theme running through this thesis. An open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
+
+## Public involvement and engagement
+
+Involving and engaging the public and patients has been a central theme to this thesis. 
+
+Public engagement activities included 
+
+Public involvement also steered the creation of the topic
+
+## Future work
+
+## Conclusions
+

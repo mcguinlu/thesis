@@ -50,7 +50,7 @@ output:
   bookdown::pdf_book:
     template: templates/template.tex
     keep_tex: true
-    citation_package: none  
+    citation_package: none 
     pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua", "--csl","bibliography/nature.csl"] #remove filter to stop applying blue background to inline corrections
   bookdown::gitbook:
     css: templates/style.css

@@ -26,7 +26,7 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 ## Chapter Overview
 
-* Chapter \@ref(chapter-2-heading)
+* Chapter \@ref(sys-rev-heading)
 * Chapter \@ref(chapter-3-heading)
 * Chapter \@ref(chapter-3-heading)
 
@@ -34,11 +34,21 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 ### Peer reviewed papers
 
+
+
 ### Papers under review
+
+
 
 ### Software
 
+* `robvis`: An R package and associted `shiny` web application that allows users to easily visualise the results of risk of bias graphs. 
+
+* `medrxvir`: An R package
+
 ### Talks
+
+
 
 ## Summary
 

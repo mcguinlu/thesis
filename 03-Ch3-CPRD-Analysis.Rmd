@@ -11,16 +11,16 @@ documentclass: book
 ---
 
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:chapter2-quote)'}
-A straight line may be the shortest distance between two points, but it is by no means the most interesting
+"When dealing with human beings controlled experiments frequently prove to be impracticable, so for a scientific basis for our assumptions we turn to past history to reconstruct the suspected causal chain of events - and then our statistical troubles may begin"
 ```
-(ref:chapter2-quote) --- Third Doctor
+(ref:chapter2-quote) --- Harold F. Dorn, 1953 [@dorn1953]
 
 # Chapter 3: Primary analysis of lipid regulating agents and dementia
 \minitoc <!-- this will include a mini table of contents-->
 
 ## Additional ideas
 
-One of the problems I'll point out with the trials in the systematic review chapter (Chapter \@ref(chapter-2-heading)) is that they only included people with a high cardiovascular risk - we are kind of doing the same by using elevated test cholesterol results as the index event.
+One of the problems I'll point out with the trials in the systematic review chapter (Chapter \@ref(sys-rev-heading)) is that they only included people with a high cardiovascular risk - we are kind of doing the same by using elevated test cholesterol results as the index event.
 
 ## Aims
 
@@ -39,7 +39,7 @@ Mean time from index event to first prescription of statins was 2.4 years. This 
 
 Additionally, the time between index event and prescription does lead to a problem in terms of time varying confounding, as an average time of 2.4 years between current measurement of the covariates and treatment switching means there is plenty of time for the value of the covariate to change. This is problematic when the descision to change treatments (in this case to move from no LRA use to LRA use) is influenced by a set of prognostic factors that in turn may have been influenced by the inital treatment decision, as is likely to be the case for a range of covariates included in the model. For example:
 
-_No CVD (t=0) -> No LRA (t=0) -> CVD (t=1) -> LRA (t=1) -> Dementia (t=2)_
+    _No CVD (t=0) -> No LRA (t=0) -> CVD (t=1) -> LRA (t=1) -> Dementia (t=2)_
 
 In this case, the decision to move to LRA use is influenced by CVD status at _Time 1_, which will not be captured by adjusting only for CVD status at _Time 0_.
 
@@ -49,10 +49,10 @@ However, in electronic health records, a change in the value of the prongostic f
 
 This means we can find the most recent value of the covariate before the switch and apply a marginal structural model approach, filling all values for that variable before the most recent measure with the baseline measurement, and all after the most recent meausure with the value of the most recent measure (on the basis that you won't go from having CVD back to not having CVD).
 
-i.e.
-Timepoint 12345678
-CVD       00001111
-Treatment 00000111 
+i.e.  
+Timepoint 12345678  
+CVD       00001111  
+Treatment 00000111  
 
 Split into 3 month blocks since index event and use the same approach as above to work out the values of each covariate at each time point.
 
@@ -62,5 +62,9 @@ Note: this will be harder for things that are not dichotmous and can go up as we
 ### The effect of total cholesterol or LDL-cholesterol on LRA prescription
 
 It would be fair to assume that the baseline total cholesterol/LDL-cholesterol would at least in part predict the liklihood of someone being prescribed a statin. 
+
+However, this is not the case. Baseline cholesterol level are predicted to be a poorer instrument for than QRISK2 score,[@hippisley-cox2008] which estimates a patients' 10-year risk of a cardiovascular event. Current NICE guidelines state that those with a QRISK score of 10% or higher, and in whom lifestyle modifcation is ineffective/inappropriate, should recieved a lipid regulation agent. However, this analysis could not find any effect of QRISK2 scores on statins precription levels at 6 months. [Need to cite Lauren's eventual paper here focusing on QRISK2, but also display a RD analysis of TC/LDL-c levels here on statins at 6 months. Need also to check, as Lauren mentioned she found some evidence that there is a relationship in practices that acutally did what they should.]
+
+As expected, in a confirmatory analysis using lipid levels, there was no association between <span color="red">the most recent total cholesterol or LDL-cholesterol reading in the CPRD and the treatment, incdicating that adjusting for this variable was not required. *</span>
 
 

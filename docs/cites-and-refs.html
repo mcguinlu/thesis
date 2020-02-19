@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Citations and cross-references | oxforddown: An Oxford University Thesis Template for R Markdown</title>
+  <meta name="description" content="oxforddown:<br />
+An Oxford University Thesis<br />
+Template for R Markdown" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Citations and cross-references | oxforddown: An Oxford University Thesis Template for R Markdown" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Citations and cross-references | oxforddown: An Oxford University Thesis Template for R Markdown" />
+  
+  
+  
+
+<meta name="author" content="Author Name" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="code.html">
+<link rel="next" href="final-notes-on-the-oxthesis-template-and-on-collaboration.html">
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="templates/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-it"><i class="fa fa-check"></i>Why use it?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-should-use-it"><i class="fa fa-check"></i>Who should use it?</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rmd-basics.html"><a href="rmd-basics.html"><i class="fa fa-check"></i><b>1</b> R Markdown Basics: The Markdown syntax</a><ul>
+<li class="chapter" data-level="1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#markdown-basic-syntax"><i class="fa fa-check"></i><b>1.1</b> Markdown basic syntax</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#italics-and-bold"><i class="fa fa-check"></i><b>1.1.1</b> Italics and bold</a></li>
+<li class="chapter" data-level="1.1.2" data-path="rmd-basics.html"><a href="rmd-basics.html#inline-code"><i class="fa fa-check"></i><b>1.1.2</b> Inline code</a></li>
+<li class="chapter" data-level="1.1.3" data-path="rmd-basics.html"><a href="rmd-basics.html#sub-and-superscript"><i class="fa fa-check"></i><b>1.1.3</b> Sub and superscript</a></li>
+<li class="chapter" data-level="1.1.4" data-path="rmd-basics.html"><a href="rmd-basics.html#strikethrough"><i class="fa fa-check"></i><b>1.1.4</b> Strikethrough</a></li>
+<li class="chapter" data-level="1.1.5" data-path="rmd-basics.html"><a href="rmd-basics.html#escaping-aka-what-if-i-need-an-actual-asterisk"><i class="fa fa-check"></i><b>1.1.5</b> ‘Escaping’ (aka “What if I need an actual asterisk?”)</a></li>
+<li class="chapter" data-level="1.1.6" data-path="rmd-basics.html"><a href="rmd-basics.html#endash-emdash"><i class="fa fa-check"></i><b>1.1.6</b> Endash (–), emdash (—)</a></li>
+<li class="chapter" data-level="1.1.7" data-path="rmd-basics.html"><a href="rmd-basics.html#blockquotes"><i class="fa fa-check"></i><b>1.1.7</b> Blockquotes</a></li>
+<li class="chapter" data-level="1.1.8" data-path="rmd-basics.html"><a href="rmd-basics.html#headings"><i class="fa fa-check"></i><b>1.1.8</b> Headings</a></li>
+<li class="chapter" data-level="1.1.9" data-path="rmd-basics.html"><a href="rmd-basics.html#lists"><i class="fa fa-check"></i><b>1.1.9</b> Lists</a></li>
+<li class="chapter" data-level="1.1.10" data-path="rmd-basics.html"><a href="rmd-basics.html#line-breaks"><i class="fa fa-check"></i><b>1.1.10</b> Line breaks</a></li>
+<li class="chapter" data-level="1.1.11" data-path="rmd-basics.html"><a href="rmd-basics.html#hyperlinks"><i class="fa fa-check"></i><b>1.1.11</b> Hyperlinks</a></li>
+<li class="chapter" data-level="1.1.12" data-path="rmd-basics.html"><a href="rmd-basics.html#footnotes"><i class="fa fa-check"></i><b>1.1.12</b> Footnotes</a></li>
+<li class="chapter" data-level="1.1.13" data-path="rmd-basics.html"><a href="rmd-basics.html#comments"><i class="fa fa-check"></i><b>1.1.13</b> Comments</a></li>
+<li class="chapter" data-level="1.1.14" data-path="rmd-basics.html"><a href="rmd-basics.html#math"><i class="fa fa-check"></i><b>1.1.14</b> Math</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="rmd-basics.html"><a href="rmd-basics.html#additional-resources"><i class="fa fa-check"></i><b>1.2</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>2</b> Adding code</a><ul>
+<li class="chapter" data-level="2.1" data-path="code.html"><a href="code.html#code-chunks"><i class="fa fa-check"></i><b>2.1</b> Code chunks</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="code.html"><a href="code.html#setup-chunks"><i class="fa fa-check"></i><b>2.1.1</b> Setup chunks</a></li>
+<li class="chapter" data-level="2.1.2" data-path="code.html"><a href="code.html#including-images"><i class="fa fa-check"></i><b>2.1.2</b> Including images</a></li>
+<li class="chapter" data-level="2.1.3" data-path="code.html"><a href="code.html#including-plots"><i class="fa fa-check"></i><b>2.1.3</b> Including plots</a></li>
+<li class="chapter" data-level="2.1.4" data-path="code.html"><a href="code.html#including-tables"><i class="fa fa-check"></i><b>2.1.4</b> Including tables</a></li>
+<li class="chapter" data-level="2.1.5" data-path="code.html"><a href="code.html#a-note-on-content-positioning"><i class="fa fa-check"></i><b>2.1.5</b> A note on content positioning</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="code.html"><a href="code.html#inline-code-1"><i class="fa fa-check"></i><b>2.2</b> Inline code</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="code.html"><a href="code.html#referring-to-results-computed-in-other-languages-than-r"><i class="fa fa-check"></i><b>2.2.1</b> Referring to results computed in other languages than R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cites-and-refs.html"><a href="cites-and-refs.html"><i class="fa fa-check"></i><b>3</b> Citations and cross-references</a><ul>
+<li class="chapter" data-level="3.1" data-path="cites-and-refs.html"><a href="cites-and-refs.html#citations"><i class="fa fa-check"></i><b>3.1</b> Citations</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="cites-and-refs.html"><a href="cites-and-refs.html#pdf-output"><i class="fa fa-check"></i><b>3.1.1</b> PDF output</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cites-and-refs.html"><a href="cites-and-refs.html#gitbook-output"><i class="fa fa-check"></i><b>3.1.2</b> Gitbook output</a></li>
+<li class="chapter" data-level="3.1.3" data-path="cites-and-refs.html"><a href="cites-and-refs.html#insert-references-easily-with-the-citr-add-in"><i class="fa fa-check"></i><b>3.1.3</b> Insert references easily with the <code>citr</code> add-in</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cites-and-refs.html"><a href="cites-and-refs.html#cross-referencing"><i class="fa fa-check"></i><b>3.2</b> Cross-referencing</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="cites-and-refs.html"><a href="cites-and-refs.html#section-references"><i class="fa fa-check"></i><b>3.2.1</b> Section references</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cites-and-refs.html"><a href="cites-and-refs.html#figure-image-and-plot-references"><i class="fa fa-check"></i><b>3.2.2</b> Figure (image and plot) references</a></li>
+<li class="chapter" data-level="3.2.3" data-path="cites-and-refs.html"><a href="cites-and-refs.html#table-references"><i class="fa fa-check"></i><b>3.2.3</b> Table references</a></li>
+<li class="chapter" data-level="3.2.4" data-path="cites-and-refs.html"><a href="cites-and-refs.html#including-page-numbers"><i class="fa fa-check"></i><b>3.2.4</b> Including page numbers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><i class="fa fa-check"></i><b>4</b> Final Notes on The OxThesis template and on collaboration</a><ul>
+<li class="chapter" data-level="4.1" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#beginning-chapters-with-quotes"><i class="fa fa-check"></i><b>4.1</b> Beginning chapters with quotes</a></li>
+<li class="chapter" data-level="4.2" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#highlighting-corrections"><i class="fa fa-check"></i><b>4.2</b> Highlighting corrections</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#short-inline-corrections"><i class="fa fa-check"></i><b>4.2.1</b> Short, inline corrections</a></li>
+<li class="chapter" data-level="4.2.2" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#blocks-of-added-or-changed-material"><i class="fa fa-check"></i><b>4.2.2</b> Blocks of added or changed material</a></li>
+<li class="chapter" data-level="4.2.3" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#stopping-corrections-from-being-highlighted-in-the-output"><i class="fa fa-check"></i><b>4.2.3</b> Stopping corrections from being highlighted in the output</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.3</b> Diving in to the OxThesis LaTeX template</a></li>
+<li class="chapter" data-level="4.4" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#collaborative-writing"><i class="fa fa-check"></i><b>4.4</b> Collaborative writing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="the-first-appendix.html"><a href="the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a></li>
+<li class="chapter" data-level="B" data-path="the-second-appendix-for-fun.html"><a href="the-second-appendix-for-fun.html"><i class="fa fa-check"></i><b>B</b> The Second Appendix, for Fun</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><code>oxforddown</code>:<br />
+An Oxford University Thesis<br />
+Template for R Markdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cites-and-refs" class="section level1">
+<h1><span class="header-section-number">3</span> Citations and cross-references</h1>
+<p><!-- this will include a mini table of contents--></p>
+<div id="citations" class="section level2">
+<h2><span class="header-section-number">3.1</span> Citations</h2>
+<p>The usual way to include citations in an <em>R Markdown</em> document is to put references in a plain text file with the extension <strong>.bib</strong>, in <strong>BibTex</strong> format.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
+Then reference the path to this file in <strong>index.Rmd</strong>’s YAML header with <code>bibliography: example.bib</code>.</p>
+<p>Most reference managers can create a .bib file with you references automatically.
+However, the <strong>by far</strong> best reference manager to use with <em>R Markdown</em> is <a href="https://www.zotero.org">Zotero</a> with the <a href="https://retorque.re/zotero-better-bibtex/">Better BibTex plug-in</a>, because the <code>citr</code> plugin for RStudio (see below) can read references directly from your Zotero library!</p>
+<p>Here is an example of an entry in a <strong>.bib</strong> file:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="va">@article</span>{<span class="ot">Shea2014</span>,</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">  <span class="dt">author</span> =        {Shea, Nicholas and Boldt, Annika},</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">  <span class="dt">journal</span> =       {Trends in Cognitive Sciences},</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">  <span class="dt">pages</span> =         {186--193},</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">  <span class="dt">title</span> =         {{Supra-personal cognitive control}},</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">  <span class="dt">volume</span> =        {18},</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">  <span class="dt">year</span> =          {2014},</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">  <span class="dt">doi</span> =           {10.1016/j.tics.2014.01.006},</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">}</a></code></pre></div>
+<p>In this entry highlighed section, ‘Shea2014’ is the <strong>citation identifier</strong>.
+To default way to cite an entry in your text is with this syntax: <code>[@citation-identifier]</code>.</p>
+<p>So I might cite some things <span class="citation">(Shea et al. <a href="#ref-Shea2014">2014</a>; Lottridge et al. <a href="#ref-Lottridge2012">2012</a>)</span>.</p>
+<div id="pdf-output" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> PDF output</h3>
+<p>In PDF output, the bibliography is handled by the OxThesis LaTeX template.
+If you set <code>bib-humanities: true</code> in <strong>index.Rmd</strong>, then in-text references will be formatted as author-year; otherwise references will be shown as numbers.</p>
+<p>If you choose author-year formatting, a number of variations on the citation syntax are useful to know:</p>
+<ul>
+<li>Put author names outside the parenthesis
+<ul>
+<li>This: <code>@Shea2014 says blah.</code></li>
+<li>Becomes: <span class="citation">Shea et al. (<a href="#ref-Shea2014">2014</a>)</span> says blah.</li>
+</ul></li>
+<li>Include only the citation-year (in parenthesis)
+<ul>
+<li>This: <code>Shea et al. says blah [-@Shea2014]</code></li>
+<li>Becomes: Shea et al. says blah <span class="citation">(<a href="#ref-Shea2014">2014</a>)</span></li>
+</ul></li>
+<li>Add text and page or chapter references to the citation
+<ul>
+<li>This: <code>[see @Shea2014, pp. 33-35; also @Wu2016, ch. 1]</code></li>
+<li>Becomes: Blah blah <span class="citation">(see Shea et al. <a href="#ref-Shea2014">2014</a>, 33–35; also Wu <a href="#ref-Wu2016">2016</a>, ch. 1)</span>.</li>
+</ul></li>
+</ul>
+</div>
+<div id="gitbook-output" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Gitbook output</h3>
+<p>In gitbook output, citations are by default inserted in the Chicago author-date format.</p>
+<p>To change the format, add <code>csl: some-other-style.csl</code> in <strong>index.Rmd</strong>’s YAML header.
+You can browse through and download styles at <a href="https://www.zotero.org/styles">zotero.org/styles</a>.</p>
+
+<!-- clearpage ends the page, and also dumps out all floats.
+  Floats are things like tables and figures. -->
+</div>
+<div id="insert-references-easily-with-the-citr-add-in" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Insert references easily with the <code>citr</code> add-in</h3>
+<p>For an easy way to insert citations, try the <a href="https://github.com/crsh/citr"><code>citr</code></a> RStudio add-in (Figure <a href="cites-and-refs.html#fig:citr">3.1</a>).
+You can install this add-in by typing <code>install.packages(&quot;citr&quot;)</code> in the R Console.</p>
+<div class="figure" style="text-align: center"><span id="fig:citr"></span>
+<img src="https://raw.githubusercontent.com/crsh/citr/master/tools/images/addin_demo.gif" alt="The `citr` add-in" width="80%" />
+<p class="caption">
+Figure 3.1: The <code>citr</code> add-in
+</p>
+</div>
+</div>
+</div>
+<div id="cross-referencing" class="section level2">
+<h2><span class="header-section-number">3.2</span> Cross-referencing</h2>
+<p>We can make cross-references to <strong>sections</strong> within our document, as well as to <strong>figures</strong> (images and plots) and <strong>tables</strong>.</p>
+<p>The general cross-referencing syntax is <strong><code>\@ref(label)</code></strong></p>
+<div id="section-references" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Section references</h3>
+<p>Headers are automatically assigned a reference label, which is the text in lower caps separated by dashes. For example, <code># My header</code> is automatically given the label <code>my-header</code>. So <code># My header</code> can be referenced with <code>\@ref(my-section)</code></p>
+<p>Remember what we wrote in section <a href="cites-and-refs.html#citations">3.1</a>?</p>
+<p>We can also use <strong>hyperlink syntax</strong> and add # before the label, though this is only guaranteed to work properly in HTML output:</p>
+<ul>
+<li>So if we write <code>Remember what we wrote up in [the previous section](#citations)?</code></li>
+<li>It becomes Remember what we wrote up in <a href="cites-and-refs.html#citations">the previous section</a>?</li>
+</ul>
+<div id="creating-custom-labels" class="section level4">
+<h4><span class="header-section-number">3.2.1.1</span> Creating custom labels</h4>
+<p>It is a very good idea to create <strong>custom labels</strong> for our sections. This is because the automatically assigned labels will change when we change the titles of the sections - to avoid this, we can create the labels ourselves and leave them untouched if we change the section titles.</p>
+<p>We create custom labels by adding <code>{#label}</code> after a header, e.g. <code># My section {#my-label}</code>.
+See <a href="cites-and-refs.html#cites-and-refs">our chapter title</a> for an example. That was section <a href="cites-and-refs.html#cites-and-refs">3</a>.</p>
+</div>
+</div>
+<div id="figure-image-and-plot-references" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Figure (image and plot) references</h3>
+<ul>
+<li>To refer to figures (i.e. images and plots) use the syntax <code>\@ref(fig:label)</code></li>
+<li><strong>GOTCHA</strong>: Figures and tables must have captions if you wish to cross-reference them.</li>
+</ul>
+<p>Let’s add an image:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/captain.jpeg&quot;</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:captain"></span>
+<img src="figures/captain.jpeg" alt="A marvel-lous meme" width="65%" />
+<p class="caption">
+Figure 3.2: A marvel-lous meme
+</p>
+</div>
+<p>We refer to this image with <code>\@ref(fig:captain)</code>.
+So Figure <a href="cites-and-refs.html#fig:captain">3.2</a> is <a href="cites-and-refs.html#fig:captain">this image</a>.</p>
+<p>And in Figure <a href="code.html#fig:cars-plot">2.4</a> we saw a <a href="code.html#fig:cars-plot">cars plot</a>.</p>
+</div>
+<div id="table-references" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Table references</h3>
+<ul>
+<li>To refer to tables use the syntax <code>\@ref(tab:label)</code></li>
+</ul>
+<p>Let’s include a table:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(cars[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">            <span class="dt">caption=</span><span class="st">&quot;Stopping cars&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:cars-table2">Table 3.1: </span>Stopping cars</caption>
+<thead>
+<tr class="header">
+<th align="right">speed</th>
+<th align="right">dist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">16</td>
+</tr>
+</tbody>
+</table>
+<p>We refer to this table with <code>\@ref(tab:cars-table2)</code>.
+So Table <a href="cites-and-refs.html#tab:cars-table2">3.1</a> is <a href="cites-and-refs.html#tab:cars-table2">this table</a>.</p>
+<p>And in Table <a href="code.html#tab:cars-table">2.1</a> we saw more or less <a href="code.html#tab:cars-table">the same cars table</a>.</p>
+</div>
+<div id="including-page-numbers" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Including page numbers</h3>
+<p>Finally, in the PDF output we might also want to include the page number of a reference, so that it’s easy to find in physical printed output.
+LaTeX has a command for this, which looks like this: <code>\pageref{fig/tab:label}</code> (note: curly braces, not parentheses)</p>
+<p>When we output to PDF, we can use raw LaTeX directly in our .Rmd files. So if we wanted to include the page of the cars plot we could write:</p>
+<ul>
+<li>This: <code>Figure \@ref(fig:cars-plot) on page \pageref(fig:cars-plot)</code></li>
+<li>Becomes: Figure <a href="code.html#fig:cars-plot">2.4</a> on page </li>
+</ul>
+<div id="include-page-numbers-only-in-pdf-output" class="section level4">
+<h4><span class="header-section-number">3.2.4.1</span> Include page numbers only in PDF output</h4>
+<p>A problem here is that LaTeX commands don’t display in HTML output, so in the gitbook output we’d see simply “Figure <a href="code.html#fig:cars-plot">2.4</a> on page”.</p>
+<p>One way to get around this is to use inline R code to insert the text, and use an <code>ifelse</code> statement to check the output format and then insert the appropriate text.</p>
+<ul>
+<li>So this: <code>`r ifelse(knitr::is_latex_output(), &quot;Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}&quot;, &quot;&quot;)`</code></li>
+<li>Inserts this (check this on both PDF and gitbook):</li>
+</ul>
+<p>Note that we need to escape the backslash with another backslash here to get the correct output.</p>
+
+
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Lottridge2012">
+<p>Lottridge, Danielle, Eli Marschner, Ellen Wang, Maria Romanovsky, and Clifford Nass. 2012. “Browser design impacts multitasking.” In <em>Proceedings of the Human Factors and Ergonomics Society 56th Annual Meeting</em>. <a href="https://doi.org/10.1177/1071181312561289">https://doi.org/10.1177/1071181312561289</a>.</p>
+</div>
+<div id="ref-Shea2014">
+<p>Shea, Nicholas, Annika Boldt, Dan Bang, Nick Yeung, Cecilia Heyes, and Chris D Frith. 2014. “Supra-personal cognitive control and metacognition.” <em>Trends in Cognitive Sciences</em> 18 (4): 186–93. <a href="https://doi.org/10.1016/j.tics.2014.01.006">https://doi.org/10.1016/j.tics.2014.01.006</a>.</p>
+</div>
+<div id="ref-Wu2016">
+<p>Wu, Tim. 2016. <em>The Attention Merchants: The Epic Scramble to Get Inside Our Heads</em>. Knopf Publishing Group.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>The bibliography can be in other formats as well, including EndNote (<strong>.enl</strong>) and RIS (<strong>.ris</strong>), see <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">rmarkdown.rstudio.com/authoring_bibliographies_and_citations</a>.<a href="cites-and-refs.html#fnref3" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="code.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ulyngs/oxforddown/tree/master/03-rmd-basics-cites-and-refs.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

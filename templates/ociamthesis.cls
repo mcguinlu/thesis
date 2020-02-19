@@ -25,7 +25,9 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 
-\setlength{\parskip}{0pt plus 1pt}
+% Defines space between paragraphs and paragraph indents
+\setlength{\parskip}{2pt plus 1pt}
+\setlength{\parindent}{0pt}
 \setlength{\parfillskip}{0pt plus .7\textwidth}
 
 % JEM: Lengths for single spacing (ie separate abstract, captions), front matter (abstract,

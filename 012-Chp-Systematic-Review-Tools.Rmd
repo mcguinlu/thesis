@@ -1,0 +1,167 @@
+---
+#########################################
+# options for knitting a single chapter #
+#########################################
+output:
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+documentclass: book
+---
+
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:sys-rev-tools-quote)'}
+Why are open source statistical programming  
+languages the best?
+
+Because they R.
+```
+(ref:sys-rev-tools-quote) --- Bealy, 2013 [@bealy2013]
+
+# Creating new systematic review tools in R
+\minitoc <!-- this will include a mini table of contents-->
+
+```{r setup, include=FALSE}
+library(medrxivr)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Background
+
+R is a pro
+Below I introduce two R packages that I created to faciliate some aspects of the systematic review process. 
+
+## `robvis`
+
+### Introduction
+
+
+
+### Installation
+
+A stable version of `robvis` is hosted on the Comprehensive R Archive Network (CRAN) and can be installed using:
+
+```{r, eval = FALSE}
+install.packages("robvis")
+```
+
+As development of `robvis` is ongoing, new features are often available in the development version some time before they appear in the stable CRAN version. The most recent development version can be install from GitHub using:
+
+```{r, eval = FALSE}
+devtools::install_github("mcguinlu/robvis")
+```
+
+### Reception and Future Plans
+
+```{r, echo = FALSE}
+robvisstats <- cranlogs::cran_downloads("robvis", from = "2019-11-22", to = format(Sys.Date(),"%Y-%m-%d") )
+
+robvis_downloads <- plyr::round_any(sum(robvisstats$count),100, f = floor)
+
+date <- format(Sys.Date(),"%d %B, %Y")
+
+```
+
+As of `r date`, `robvis` has been downloaded more than `r robvis_downloads` times. It ha
+
+
+It has also been intergrated with a suite of new online platforms for performing risk of bias assessments online. 
+
+In this thesis, `robvis` is used to present the results of the risk of bias assessments conducted as part of the systematic review and 
+
+
+While `robvis` currently provides a stable, future development work is planned. 
+
+
+## `medrxivr`
+
+### Introduction
+
+Searching pre-print repositories is becoming an increasingly important part of a systematic review. However, while several of the main repositories (e.g. arXiv, bioRxiv) have existing methods by which records can be searched and downloaded en masse, this is not true for medRxiv, an offspring of bioRxiv which hosts preprints in the medical, clinical, and related health sciences.
+
+At present, medRxiv allows only simple search queries, as opposed to the often complex boolean logic that information specialists use to query other major databases. Additionally, record details must be downloaded individually, rather than in batches, making the export of relevant records for title and abstract screening a time consuming task. 
+
+
+
+Im order to facilitate the searching
+
+### Installation
+
+To install `medrxivr` from CRAN:
+
+```{r, eval = FALSE}
+# Currently doesn't work as not on CRAN
+
+install.packages("medrxivr")
+```
+
+To install the development version from GitHub:
+
+```{r, eval = FALSE}
+devtools::install_github("mcguinlu/medrxivr")
+```
+
+
+### Methods
+
+The `medrxivr` project is split into two parts:
+
+* A webscraper that runs once a day which collects and cleans new records uploaded to medRxiv, and adds them to a machine readable database.
+* A lightweight R package that provides an interface for this database, allowing users to search for relevant records, and easily retieve the associated full tex PDFs.
+
+
+The webscraper is a straightforward R script built in R using `rvest`[cite] and a range of text processing packages[cite]. To quickly illustrate the process, the code to retrieve the total number of records on medRxiv is included below:
+
+```{r,eval=FALSE}
+# Include and highly comment code. 
+
+```
+
+Using Windows Task Scheduler, the script is scheduled to automatically run every morning, adding new records uploaded to medRxiv since the last run of the webscraper to a local comma-seperated-values (CSV) file. Following quality control checks, the updated dataset is automatically uploaded to a cloud server, and immediately becomes available to the main `medrxivr` package functions.
+
+The functions in the `medrxivr` package then facilitate users in working with this dataset. There are two main functions and a helper function:
+
+* `mx_search()` [main]: Enables users to search the medrxivr data dump, using regular expressions and boolean logic.
+
+```{r, eval = FALSE}
+topic1  <- c("dementia","vascular","alzheimer's")  # Combined with OR
+topic2  <- c("lipids","statins","cholesterol")     # Combined with OR
+
+myquery <- list(topic1, topic2)                    # Combined with AND
+
+results <- mx_search(myquery)
+```
+
+* `mx_download()` [main]: Takes the output from `mx_search()` and retrieves the full text PDF for each record, saving it to a folder specified by the user. 
+
+```{r, eval = FALSE}
+mx_download(results,        # Object returned by mx_search
+            "pdf/")         # Directory to save PDFs to 
+```
+
+* `mx_crosscheck()` [helper]: Provides information on the version of the data dump that the user is searching, and checks whether any new records have been uploaded to medRxiv since the last run of the webscraper. 
+
+```{r}
+mx_crosscheck()
+```
+
+### Reception and Future Plans
+
+`medrxivr` 
+
+Published paper, 
+
+
+## Dicussion
+
+## Summary
+
+*In this Chapter, I have introduced two new tools for facilitating evidence syntheses in R: `robvis` and `medrxivr`
+
+* I have 
+
+* The impact of these packages to date, and a roadmap for their future development, has been discussed.
+
+
+
+

@@ -22,3 +22,6 @@ clean-knits:
 	rm -R *_files
 	rm -R *_cache
 
+clean-docs:
+	rm -f docs/5abd0cd3e96bf9459398f146495c15129ee56682/*
+	rm -R docs/5abd0cd3e96bf9459398f146495c15129ee56682/*
