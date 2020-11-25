@@ -14,6 +14,8 @@ abstract: |
   `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
+declaration: |
+  `r paste(readLines("front-and-back-matter/_declaration.Rmd"), collapse = '\n  ')`
 dedication: For Brendan McHugh
 abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with abbreviations
 
@@ -28,9 +30,9 @@ bibliography-heading-in-pdf: Bibliography
 ## PDF formatting  ##
 #####################
 abstractseparate: true  # include front page w/ abstract for examination schools?
-bib-humanities: true   #set to true if you want in-text references formatted as author-year
+bib-humanities: false   #set to true if you want in-text references formatted as author-year
 doi-in-bibliography: true #set to true if you want DOI's to be shown in the bibliography
-draft: true # add as DRAFT mark in the footer?
+draft: false # add as DRAFT mark in the footer?
 page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 hidelinks: true #if false, the PDF output highlights clickable links with a colored border - you will probably want to set this to true for PDF version you wish to physically print
 toc-depth: 2 # depth of heading to include in table of contents
@@ -55,7 +57,7 @@ output:
   bookdown::gitbook:
     css: templates/style.css
     download: ["pdf"]
-    output_dir: "docs/5abd0cd3e96bf9459398f146495c15129ee56682"
+    output_dir: "docs"
     split_bib: false
     config:
       toc:
@@ -68,12 +70,14 @@ output:
         twitter: yes
         all: false
   bookdown::word_document2:
-    toc: true   
+    output_dir: "docs"
+    toc: true
+    toc_depth: 2
+    reference_docx: templates/word-styles-reference-01.docx   
 link-citations: true
 documentclass: book
 
 ---
-
 
 ```{r create_chunk_options, include=FALSE, eval=knitr::is_latex_output()}
 source('scripts_and_filters/create_chunk_options.R')
@@ -81,9 +85,9 @@ source('scripts_and_filters/create_chunk_options.R')
 <!--
 Include the create_chunk_options chunk above at the top of your index.Rmd file
 This will include code to create additional chunk options (e.g. for adding author references to savequotes)
-If you need to create your own additional chunk options, edit the file scripts/create_chunk_options.R
+If you need to create your own additional chunk options, edit the file R/create_chunk_options.R
 -->
 
 
-```{r introduction, child = '_00-introduction.Rmd'}
+```{r introduction, child = 'front-and-back-matter/_00-introduction.Rmd'}
 ```

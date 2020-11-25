@@ -35,6 +35,65 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
  
 % UL 1 Dec 2018, fix to include code in shaded environments
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+%UL 2 Dec 2018 add a bit of white space before and after code blocks
+\renewenvironment{Shaded}
+{
+  \vspace{4pt}%
+  \begin{snugshade}%
+}{%
+  \end{snugshade}%
+  \vspace{4pt}%
+}
+
+% define blank page argument
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
 
 %UL 2 Dec 2018 reduce whitespace around verbatim environments
 \usepackage{etoolbox}
@@ -53,7 +112,6 @@
 % generating a PDF to send to the printer!
 
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
-\fancyfoot[C]{\emph{DRAFT Printed on \today}}
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
@@ -76,8 +134,8 @@
 % \newcommand*{\bibtitle}{Works Cited}
 
 %UL 3 Dec 2018: set this from YAML in index.Rmd
-\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false]{biblatex}
-\newcommand*{\bibtitle}{References}
+\usepackage[style=numeric-comp, sorting=none, backend=biber, doi=true, isbn=false]{biblatex}
+\newcommand*{\bibtitle}{Bibliography}
 
 % This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
 \renewcommand*{\bibfont}{\raggedright\small}
@@ -106,7 +164,7 @@ An investigation of their relationship}
 % Uncomment the following line if your degree also includes exams (eg most masters):
 %\renewcommand{\submittedtext}{Submitted in partial completion of the}
 % Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
-\degree{Doctor of Philosophy}
+\degree{Doctor of Philosophy in Population Health Sciences}
 % Term and year of submission, or date if your board requires (eg most masters)
 \degreedate{TBC}
 
@@ -119,6 +177,8 @@ An investigation of their relationship}
 	\newcommand{\nd}{\textsuperscript{nd}}
 	\renewcommand{\st}{\textsuperscript{st}}
 	\newcommand{\rd}{\textsuperscript{rd}}
+	
+	\definecolor{ashgray}{rgb}{0.7,0.75,0.71}
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
@@ -161,11 +221,15 @@ An investigation of their relationship}
 % This is used to create the separate, one-page abstract that you are required to hand into the Exam
 % Schools.  You can comment it out to generate a PDF for printing or whatnot.
 \begin{abstractseparate}
-  This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
-  
-  This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
-  
-  Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
+  \textbf{Background}\\
+  In the UK, an estimated 800000 people are currently living with dementia and this number is expected to double
+  by 2040. Despite the number of dementia cases and decades of research, there remains much unknown about
+  the pathogenesis and progression of the disease, and, at present, no effective treatment exists to arrest or
+  reverse the cognitive decline associated with the condition. In this context, identification of causal relationships
+  between modifiable targets and dementia risk is central to the development of evidence-based prevention
+  strategies and will be critically important in maintaining the long-term health of the ageing public. Blood lipid
+  levels have been implicated in the aetiology of dementia by genetic linkage and functional cell biology studies,
+  but current epidemiological evidence has yet to reach a consensus on their role in dementia risk.
 \end{abstractseparate}
 
 % JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
@@ -175,37 +239,56 @@ An investigation of their relationship}
 % Title page is created here
 \maketitle
 
+\afterpage{\blankpage}
+
 %%%%% DEDICATION -- If you'd like one, un-comment the following.
 \begin{dedication}
-  For Yihui Xie
+  For Brendan McHugh
 \end{dedication}
+
+\afterpage{\blankpage}
+
+%%%%% DECALRATION -- Nothing to do here except comment out if you don't want it.
+\begin{declaration}
+ 	I declare that the work in this dissertation was carried out in accordance with the requirements of the University's Regulations and Code of Practice for Research Degree Programmes and that it has not been submitted for any other academic award. Except where indicated by specific reference in the text, the work is the candidate's own work. Work done in collaboration with, or with the assistance of, others, is indicated as such. Any views expressed in the dissertation are those of the author.
+
+\begin{flushright}
+SIGNED: ...................... \\
+Luke McGuinness \\
+Canynge Hall, Bristol \\
+1 December 2021
+\end{flushright}
+\end{declaration}
+
+\afterpage{\blankpage}
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
 \begin{acknowledgements}
  	This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.
 
-We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
-
-Special thanks to \href{http://chester.rbind.io}{Chester Ismay}, who created the \texttt{thesisdown} package that helped many a PhD student write their theses in R Markdown. And a very special tahnks to John McManigle, whose adaption of Sam Evans' adaptation of Keith Gillow's original maths template for writing an Oxford University DPhil thesis in \LaTeX~provided the template that I adapted for R Markdown.
-
-Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
-
 \begin{flushright}
-Ulrik Lyngs \\
-Linacre College, Oxford \\
-2 December 2018
+Luke McGuinness \\
+Canynge Hall, Bristol \\
+1 December 2021
 \end{flushright}
 \end{acknowledgements}
 
+\afterpage{\blankpage}
 
 %%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
 \begin{abstract}
-	This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
-
-This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
-
-Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
+	\textbf{Background}\\
+In the UK, an estimated 800000 people are currently living with dementia and this number is expected to double
+by 2040. Despite the number of dementia cases and decades of research, there remains much unknown about
+the pathogenesis and progression of the disease, and, at present, no effective treatment exists to arrest or
+reverse the cognitive decline associated with the condition. In this context, identification of causal relationships
+between modifiable targets and dementia risk is central to the development of evidence-based prevention
+strategies and will be critically important in maintaining the long-term health of the ageing public. Blood lipid
+levels have been implicated in the aetiology of dementia by genetic linkage and functional cell biology studies,
+but current epidemiological evidence has yet to reach a consensus on their role in dementia risk.
 \end{abstract}
+
+\afterpage{\blankpage}
 
 %%%%% MINI TABLES
 % This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
@@ -240,55 +323,953 @@ Congratulations for taking a step further into the lands of open, reproducible s
 \flushbottom
 
 % all your chapters and appendices will appear here
-\hypertarget{introduction}{%
-\chapter*{Introduction}\label{introduction}}
-\addcontentsline{toc}{chapter}{Introduction}
+\hypertarget{covering-material}{%
+\chapter*{Covering material}\label{covering-material}}
+\addcontentsline{toc}{chapter}{Covering material}
 
 \adjustmtc
 
-Welcome to my thesis!
+Word count: 317
+
+Days: 1
+
+Words behind: 5463
+
+\includegraphics{_main_files/figure-latex/word-count-fig-1.pdf}
 
 \hypertarget{intro-intro}{%
 \chapter{Introduction}\label{intro-intro}}
 
 \minitoc 
 
-This is a test of the bibliography (\protect\hyperlink{ref-Darwin1859}{1})
+\hypertarget{aims-and-objectives-of-the-thesis}{%
+\section{Aims and Objectives of the thesis}\label{aims-and-objectives-of-the-thesis}}
+
+\hypertarget{aim}{%
+\subsection{Aim}\label{aim}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f <-}\StringTok{ }\NormalTok{flextable}\OperatorTok{::}\KeywordTok{flextable}\NormalTok{(robvis}\OperatorTok{::}\NormalTok{data_rob2)}
+
+\NormalTok{f <-}\StringTok{ }\NormalTok{flextable}\OperatorTok{::}\KeywordTok{autofit}\NormalTok{(f)}
+
+\NormalTok{f}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=9.31in,height=3.17in,keepaspectratio]{_main_files/figure-latex/unnamed-chunk-1-1.png}
+
+\hypertarget{objective}{%
+\subsection{Objective}\label{objective}}
+
+\hypertarget{chapter-overview}{%
+\section{Chapter Overview}\label{chapter-overview}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Chapter \ref{background-heading}:} Background information on dementia and blood lipid levels. This chapter provides an introduction to the topics covered in this thesis to non-subject area experts, and discusses the motivation for the remainder of the thesis.
+\item
+  \textbf{Chapter \ref{sys-rev-tools-heading}} This Chapter introduces new evidence synthesis two tools built in R: \texttt{robvis} and \texttt{medrixvr}. The motivation for, development and impact of, and future plans for these tools are outlined.
+\item
+  \textbf{Chapter \ref{sys-rev-heading}} This Chapter describes the
+\item
+  \textbf{Chapter \ref{cprd-analysis}:} This Chapter examines the relationship between lipid-regaulting agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database, based in England.
+\item
+  \textbf{Chapter @ref():} This Chapter seeks
+\end{itemize}
+
+\hypertarget{thesis-output}{%
+\section{Thesis Output}\label{thesis-output}}
+
+The outputs of this thesis are detailed below, and include published peer review papers, presentations at conferences, open source evidence synthesis tools, and . . .
+
+\hypertarget{peer-reviewed-papers}{%
+\subsection{Peer reviewed papers}\label{peer-reviewed-papers}}
+
+\textbf{Include other papers I have been involved in?}
+
+\hypertarget{papers-under-review}{%
+\subsection{Papers under review}\label{papers-under-review}}
+
+\begin{itemize}
+\tightlist
+\item
+  McGuinness et al.~
+\end{itemize}
+
+\hypertarget{software}{%
+\subsection{Software}\label{software}}
+
+\begin{itemize}
+\item
+  \texttt{robvis}: An R package and associated \texttt{shiny} web application that allows users to easily visualise the results of risk of bias graphs.
+\item
+  \texttt{medrxvir}: An R package and associated \texttt{shiny} web application that allows users to easily search and retrieve bibliographic data from the medRxiv\footnote{\url{https://www.medrxiv.org/}} preprint repository.
+\end{itemize}
+
+\hypertarget{talks}{%
+\subsection{Talks}\label{talks}}
+
+\begin{itemize}
+\tightlist
+\item
+  Talk at Cochrane on medrxivr
+\item
+  Webinar to Evidence Synthesis Ireland on Risk of Bias test
+\end{itemize}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\begin{itemize}
+\item
+\item
+\item
+\end{itemize}
+
+\hypertarget{background-heading}{%
+\chapter{Background}\label{background-heading}}
+
+\hypertarget{dementia}{%
+\section{Dementia}\label{dementia}}
+
+\hypertarget{definition-and-subtypes}{%
+\subsection{Definition and Subtypes}\label{definition-and-subtypes}}
+
+Dementia is major neurocognitive disorder, with symptoms including impairment of executive cognitive functions such as speech, judgement and memory. The most common causes of dementia are Alzheimer's disease and vascular dementia, accounting for \textasciitilde60-80\% and \textasciitilde10\% of cases respectively. The remaining 10-30\% of cases are caused other dementia subtypes (e.g.~Lewy Body dementia) or by progression of other neurological diseases (e.g.~Parkinson's disease).
+
+\hypertarget{diagnosis}{%
+\subsection{Diagnosis}\label{diagnosis}}
+
+Dementia is difficult to diagnose, primarily due to the absence of a gold standard test for the condition. Information from multiple diagnostic tools are utilised, from medical history examination, through assessment of patients mental ability (e.g.~the Mini-Mental State Examination), to clinical tests (e.g.~Magnetic Resonance Imaging (MRI) scans).
+
+\hypertarget{public-health-importance}{%
+\subsection{Public Health Importance}\label{public-health-importance}}
+
+Dementia is quickly becoming a critically important public health issue. Despite the age-specific incidence and prevalence of dementia remaining relatively constant over time,6 an ageing population looks set to create a dementia epidemic, particularly in Westernised countries. In the UK, there are estimated to be 800,000 people currently living with dementia, with this figure expected to double by 2040.7 Globally, the prevalence of dementia is expected to reach 75 million by 2030.8 Despite the number of dementia cases and decades of research, there remains much unknown about the pathogenesis and progression of the disease.
+
+\hypertarget{challenges-in-the-study-of-dementia-using-traditional-study-designs}{%
+\subsection{Challenges in the study of dementia using traditional study designs}\label{challenges-in-the-study-of-dementia-using-traditional-study-designs}}
+
+Speak to the
+
+Historically, studies on dementia have faced a range of challenges. As a range of determinants (genetic, environmental and lifestyle) are thought to jointly influence the risk, progression and outcomes of dementia, any individual association is likely to have only a small effect. Therefore, the statistical power need to detect these associations will often require sample sizes that are unfeasible using primary data collection.
+This fact is further complicated by the long latency of dementia, which necessitates a costly long-term approach to patient follow-up. Furthermore, dementia studies often have limited generalisability to the target population, as certain subgroups (e.g.~the very old) are frequently under-represented in study cohorts due to difficulties associated with their recruitment.9 Finally, studies employing a case-control design are further limited by the high potential for differential recall bias between those who have and have not developed dementia.10
+
+Fortunately, these limitations may potentially be addressed through the use of routinely collected health data, and the electronic health record databases in which they are stored.
+
+Include CIND definition here
+
+And MCI
+
+And different scales
+
+\hypertarget{history}{%
+\subsection{History}\label{history}}
+
+\begin{quote}
+Two major clinical trials are often cited as providing
+evidence that statins do not have an effect on the incidence ofdementia: the Prospective Study ofPravastatin in the Elderly (PROSPER)5
+and the Medical Research
+Council/British Heart Foundation Heart Protection Study27
+; however, because of methodologic limitations in relation to dementia outcomes in these two trials, the results of these trials are difficult to evaluate. Dementia incidence or cognitive outcomes were not preplanned endpoints in either of them, neither study included a clinical cognitive evaluation, and numbers of patients with follow-up information for cognitive evaluations were not reported in either study manuscript. In PROSPER a post hoc analysis compared changes in cognitive scores over a 3-year period between statintreated and placebo patients and found no significant differences. In the MRC/BHF HPS trial,27
+similar percentages ofparticipants (0.3\% in each---statin vs placebo---group) developed dementia during the 5-year follow-up period. The report did not state how the outcome of dementia was determined (e.g., reported as an adverse event or by follow-up phone interview).
+\emph{Taken from Cramer 2008 - included in review}
+\end{quote}
+
+\hypertarget{economic-impact}{%
+\subsection{Economic impact}\label{economic-impact}}
+
+\hypertarget{risk-factors}{%
+\subsection{Risk factors}\label{risk-factors}}
+
+\hypertarget{treatments}{%
+\subsection{Treatments}\label{treatments}}
+
+\hypertarget{preventative-measures}{%
+\subsection{Preventative measures}\label{preventative-measures}}
+
+\hypertarget{serum-lipids}{%
+\section{Serum lipids}\label{serum-lipids}}
+
+\hypertarget{range-of-lipids}{%
+\subsection{Range of lipids}\label{range-of-lipids}}
+
+\hypertarget{hdl-c}{%
+\subsection{HDL-c}\label{hdl-c}}
+
+\hypertarget{ldl-c}{%
+\subsection{LDL-c}\label{ldl-c}}
+
+\hypertarget{triglycerides}{%
+\subsection{Triglycerides}\label{triglycerides}}
+
+\hypertarget{total-cholesterol}{%
+\subsection{Total cholesterol}\label{total-cholesterol}}
+
+\hypertarget{serum-lipid-interventions}{%
+\section{Serum lipid interventions}\label{serum-lipid-interventions}}
+
+\hypertarget{statins}{%
+\subsection{Statins}\label{statins}}
+
+\hypertarget{lipophilic}{%
+\subsubsection{Lipophilic}\label{lipophilic}}
+
+\hypertarget{hydrophilic}{%
+\subsubsection{Hydrophilic}\label{hydrophilic}}
+
+\hypertarget{summary-1}{%
+\section{Summary}\label{summary-1}}
 
 \begin{savequote}
-There is grandeur in this view of life, with its several powers, having
-been originally breathed into a few forms or into one; and that, whilst
-this planet has gone cycling on according to the fixed law of gravity,
-from so simple a beginning endless forms most beautiful and most
-wonderful have been, and are being, evolved.
-\qauthor{--- Charles Darwin\textsuperscript{\protect\hyperlink{ref-Darwin1859}{1}}}\end{savequote}
+Hold
+\qauthor{--- Charles Darwin\textsuperscript{\protect\hyperlink{ref-chang2012}{1}}}\end{savequote}
 
 
 
-\hypertarget{chapter-2-headings}{%
-\chapter{Chapter 2: Systematic Review}\label{chapter-2-headings}}
+\hypertarget{sys-rev-heading}{%
+\chapter{Chapter 2: Systematic Review}\label{sys-rev-heading}}
 
 \minitoc 
 
-\hypertarget{test}{%
-\section{Test}\label{test}}
+\hypertarget{additional-ideas}{%
+\section{Additional ideas}\label{additional-ideas}}
 
-\hypertarget{references}{%
-\chapter{References}\label{references}}
+\begin{itemize}
+\tightlist
+\item
+  Evidence map - show the distribution of the different studies population across the world.
+\item
+  Living systematic review approach - update weekly based on medRxiv
+\end{itemize}
+
+\hypertarget{aims}{%
+\section{Aims}\label{aims}}
+
+The aim of this chapter is to systematically review all available literature on the association between blood levels of total cholesterol and it's constituent parts (HDL-c,LDL-c and triglycerides) on the subsequent risk of dementia.
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+\hypertarget{search-strategy}{%
+\subsection{Search strategy}\label{search-strategy}}
+
+We will systematically search electronic bibliographic databases to identify potentially relevant records. The search strategy used in each database will be developed in an iterative manner using a combination of free text and controlled vocabulary (MeSH/EMTREE) terms to identify studies which have examined the relationship between blood lipids levels and dementia, incorporating input from an information specialist. The strategy will include terms related to lipids, lipid modifying treatments, and dementia and its sub-types, and will be designed for MEDLINE before being adapted for use in the other bibliography databases listed. An outline of the general strategy is presented in the Table 3.2 below and the full draft search strategies for each database are attached to this protocol. To ensure that the study design filters are not excluding potentially relevant records, a random sample of 500 records identified by the main search but excluded by the filters (defined as Line 7 NOT Line 13 in Table 3.2) will be screened. If any potentially relevant studies are identified, their titles and abstracts will be searched for key terms that can be incorporated into the filters to improve search sensitivity.
+
+The following databases will be searched from inception onwards: Medline, EMBASE, Psychinfo, Cochrane Central Register of Controlled Trials (CENTRAL), and Web of Science Core Collection. We will also search clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials.
+
+The abstracts list of relevant conferences (e.g.~the proceedings of the Alzheimer's Association International Conference, published in the journal Alzheimer's \& Dementia) will be searched. Grey literature will also be searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses will be accessed using the Open Access Theses and Dissertations portal. We will also search BioArxiv, a preprint repository, to identify potentially relevant studies. Finally, the reference lists of included studies will be searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
+
+\hypertarget{study-selection}{%
+\subsection{Study selection}\label{study-selection}}
+
+Records will be imported into Endnote and deduplicated using the method outlined in Bramer et al.~(2016).\textsuperscript{\protect\hyperlink{ref-bramer2016}{2}} Screening (both title/abstract and full-text) will be performed using a combination of Endnote and Rayyan, a web based screening application.\textsuperscript{\protect\hyperlink{ref-ouzzani2016}{3}}
+Title and abstract screening to remove obviously irrelevant records will be performed by the primary author, with a random selection of excluded records being screened in duplicate to ensure consistency with the inclusion criteria. If this demonstrates a significant level of erroneous exclusion by the primary author a larger proportion will be dual-screened.
+Full-text screening will also be completed in full by the primary author. A second reviewer will screen a random sample of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage will be recorded. Disagreements occurring during either stage of the screening process will be resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.\textsuperscript{\protect\hyperlink{ref-zotero-766}{4}}
+
+\hypertarget{inclusion}{%
+\subsubsection{Inclusion}\label{inclusion}}
+
+We will seek studies that examine the relationship between blood lipid levels (or any specific lipid fraction, including total cholesterol, HDL, LDL, and triglycerides) and risk of incident dementia/MCI. Eligible study designs include randomized controlled trials and non-randomized observational studies of lipid modifying treatments, longitudinal studies examining the effect of increased/decreased blood lipid levels, and genetic instrumental variable (Mendelian randomization) studies examining the effect of genetically increased/decreased blood lipid levels.
+
+Participants will be free (or assumed to be free) of dementia/MCI at baseline. Studies of any duration will be included to allow for exploration of the effect of length of follow-up on the effect estimate using meta-regression. No limits will be placed on the sample size of included studies.
+
+Eligible studies will define dementia according to recognised criteria, for example the National Institute of Neurological Disorders and Stroke Association-Internationale pour la Recherche en l'Enseignement en Neurosciences (NINDS-AIREN), International Classification of Diseases (ICD), or Diagnostic and Statistical Manual of Mental Disorders (DSM) criteria. For MCI, eligible studies are those that attempted state a definition for diagnoses of MCI (e.g.~an adapted version of the Petersen criteria\textsuperscript{\protect\hyperlink{ref-petersen1999}{5}}) and create ordinal groups of patients (e.g.~no dementia or dementia/MCI/dementia) based on this definition.
+
+No limitations will be imposed on publication status, publication date, venue or language, although we will require sufficiently detailed reports of the studies to be able to examine their methods. Preprints and unpublished reports will be eligible for inclusion if relevant. Multiple publications resulting from the analysis of the same data will be included and grouped.
+
+\hypertarget{exclusion}{%
+\subsubsection{Exclusion}\label{exclusion}}
+
+Case-control studies, cross-sectional studies, qualitative studies, case reports/series and narrative reviews will be excluded. Studies which present no evidence of attempting to exclude prevalent cases from their analyses will also be excluded. Studies that measure change in continuous cognitive measures (e.g.~MoCA score) without attempt to map these scores to ordinal groups (e.g.~no dementia/MCI/dementia) will be excluded. Conference abstracts with no corresponding full-text publication will be examined, and we will contact authors to obtain information on the study's status. Studies that are reported in insufficient detail (e.g.~only in conference abstracts, new, letters, editorials and opinion) will be excluded. Previous systematic reviews will not be eligible, but their reference lists will be screened to identify any potentially relevant articles. Studies with outcomes not directly related to the clinical syndrome of dementia (e.g., neuroimaging), studies implementing a ``multi-domain intervention'' where the lipid-regulating agent is included in each arms (e.g.~for example, a study examining exercise + statins vs statins alone, but a study examining exercise + statins vs exercise alone would be included), and studies where there was no screening for dementia at baseline except if the sample was initially assessed in mid-life (i.e.~below the age of 50) will be excluded.
+
+Excluded studies performing autopsy unless it was done under accepted criteria
+Exclude studies using a dietary intervention, for example omega-3 fatty acid enriched diet, as it hard to disentangle the effect of other elements contained within te diet, vs simple tablet based supplements of
+
+\hypertarget{data-extraction}{%
+\subsection{Data extraction}\label{data-extraction}}
+
+Harmonisation of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorising lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
+
+\hypertarget{risk-of-bias-assessment}{%
+\subsection{Risk of bias assessment}\label{risk-of-bias-assessment}}
+
+Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomised controlled trials were assessed using the RoB2 tool,\textsuperscript{\protect\hyperlink{ref-sterne2019}{6}}, non-randomised studies of interventions were assessed using the ROBINS-I tool,\textsuperscript{\protect\hyperlink{ref-sterne2016}{7}} and non-randomised studies of exposures were assessed using the ROBINS-E tool.{[}TBC{]}
+
+At present, no risk of bias assessment tool for Mendelian randomisation studies is available. Bias in thesee studies was assessed with the help of an expert panel {[}TBC{]}
+
+\hypertarget{patient-and-public-involvement}{%
+\subsection{Patient and public involvement}\label{patient-and-public-involvement}}
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\hypertarget{screening-results}{%
+\subsection{Screening results}\label{screening-results}}
+
+\hypertarget{inter-rater-reliability}{%
+\subsubsection{Inter-rater reliability}\label{inter-rater-reliability}}
+
+Inter- and intra-rater reliability was asssessed for a 10\% subsample of records at the title and abstract screening stage. Intra-rater reliability involved a sinlge reviewer applying the inclusion criteria to the same set of records while blinded to their previous decisions, while inter-rater reliability involved two reviewers independently screening the same set of records.
+
+Rater reliability was assessed using Gwet's agreement coefficient (AC1).\textsuperscript{\protect\hyperlink{ref-gwet2008}{8}} This measure of inter-rater reliabilty was chosen over other methods of assessing inter-rater reliability such as percent agreeement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. {[}\protect\hyperlink{ref-cohen1960}{9}:\textsuperscript{\protect\hyperlink{ref-gwet2008}{8},\protect\hyperlink{ref-wongpakaran2013}{10}}
+
+How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,\textsuperscript{\protect\hyperlink{ref-mchugh2012}{11}} presented in Table \ref{tab:kappa-table}.
+
+Gwet's AC1 is calculated using the following:
+
+-\textgreater{} Insert formula here. Need to be sure of how to calculate.\textsuperscript{\protect\hyperlink{ref-gwet2008}{8},\protect\hyperlink{ref-sim2005}{12}}
+
+\begin{table}
+
+\caption{\label{tab:gwet-table}Guidelines for a stricter interpretation of Cohen's kappa, presented in McHugh (2012)}
+\centering
+\begin{tabular}[t]{l|l}
+\hline
+Kappa & Interpretation\\
+\hline
+0–.20 & None\\
+\hline
+.21–.39 & Minimal\\
+\hline
+.40–.59 & Weak\\
+\hline
+.60–.79 & Moderate\\
+\hline
+.80–.90 & Strong\\
+\hline
+Above.90 & Almost perfect\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:agreement-table-inter}Inter-rater reliability}
+\centering
+\begin{tabular}[t]{>{\bfseries}l|>{\bfseries}l||r|>{}r||r}
+\hline
+\multicolumn{2}{c|}{ } & \multicolumn{3}{c}{Initial screening descision} \\
+\cline{3-5}
+ &  & Exclude & Include & Total\\
+\hline
+ & Exclude & 1244 & 9 & 1253\\
+\cline{2-5}
+ & Include & 26 & 22 & 48\\
+\cline{2-5}
+\multirow{-3}{*}{\raggedright\arraybackslash Second reviewer decision} & Total & 1270 & 31 & 1301\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:agreement-table-intra}Intra-rater reliability}
+\centering
+\begin{tabular}[t]{>{\bfseries}l|>{\bfseries}l||r|>{}r||r}
+\hline
+\multicolumn{2}{c|}{ } & \multicolumn{3}{c}{Initial screening decision} \\
+\cline{3-5}
+ &  & Exclude & Include & Total\\
+\hline
+ & Exclude & 1266 & 14 & 1280\\
+\cline{2-5}
+ & Include & 4 & 17 & 21\\
+\cline{2-5}
+\multirow{-3}{*}{\raggedright\arraybackslash Same reviewer decision} & Total & 1270 & 31 & 1301\\
+\hline
+\end{tabular}
+\end{table}
+
+For the inter-rater reliability, percentage agreement was 97.3\% (AC1 = XXXX, Table \ref{tab:agreement-table-intra}), while for the intra-rater reliability, agreement was 98.6\% (AC1 = XXXX, Table \ref{tab:agreement-table-intra}).
+
+The discrepancy between the percent agreement and the associated value of AC is expected, due to the heavy imbalance in this sample towards exclusion.\textsuperscript{\protect\hyperlink{ref-feinstein1990}{13}}
+
+Those records which were excluded in the inital screening , but were included either by the same reviewer on their second vieweing (n=4), or by the second reviewer (n=29), were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline vs mild cognitive impairment and the definition of eligible lipids.
+
+\hypertarget{prisma-flowchart}{%
+\subsubsection{PRISMA flowchart}\label{prisma-flowchart}}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/prisma-flow-1.pdf}
+\caption{\label{fig:prisma-flow}PRISMA flow diagram, detailing the movement of studies through the systematic review.}
+\end{figure}
+
+\begin{verbatim}
+## pdf 
+##   2
+\end{verbatim}
+
+\begin{figure}
+\includegraphics[width=6.67in]{figures/sys-rev/prismaflow} \caption{PRISMA flow diagram, detailing the movement of studies through the systematic review.}\label{fig:prisma-flow}
+\end{figure}
+
+Following deduplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened.
+
+A breakdown of records by
+
+\hypertarget{included-studies}{%
+\section{Included studies}\label{included-studies}}
+
+XXXX studies met the criteria for inclusion in the review
+
+\hypertarget{section}{%
+\subsubsection{}\label{section}}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+\begin{savequote}
+``When dealing with human beings controlled experiments frequently prove
+to be impracticable, so for a scientific basis for our assumptions we
+turn to past history to reconstruct the suspected causal chain of events
+- and then our statistical troubles may begin''
+\qauthor{--- Harold F. Dorn, 1953\textsuperscript{\protect\hyperlink{ref-dorn1953}{14}}}\end{savequote}
+
+
+
+\hypertarget{cprd-analysis}{%
+\chapter{Primary analysis of lipid regulating agents and dementia}\label{cprd-analysis}}
+
+\minitoc 
+
+\hypertarget{additional-ideas-1}{%
+\section{Additional ideas}\label{additional-ideas-1}}
+
+One of the problems I'll point out with the trials in the systematic review chapter (Chapter \ref{sys-rev-heading}) is that they only included people with a high cardiovascular risk - we are kind of doing the same by using elevated test cholesterol results as the index event.
+
+Might be able to get around this by pointing
+
+\hypertarget{aims-1}{%
+\section{Aims}\label{aims-1}}
+
+\hypertarget{methods-1}{%
+\section{Methods}\label{methods-1}}
+
+\hypertarget{estimation-methods}{%
+\subsection{Estimation methods}\label{estimation-methods}}
+
+Potential biases included time varying confounding, selection bias due to censoring on death and
+We performed a Cox test this si to addd some words.
+
+\hypertarget{estimating-the-value-of-the-time-varying-confounders}{%
+\subsection{Estimating the value of the time-varying confounders}\label{estimating-the-value-of-the-time-varying-confounders}}
+
+Mean time from index event to first prescription of statins was 2.4 years. This negates the promised benefit of ruling out confounding by indication (where the test result leads to the prescription of the treatment and also increases the risk of the outcome, distorting the relationship between the two), as there is no relationship between index TC/LDL-c and eventual LRA prescription.
+
+Additionally, the time between index event and prescription does lead to a problem in terms of time varying confounding, as an average time of 2.4 years between current measurement of the covariates and treatment switching means there is plenty of time for the value of the covariate to change. This is problematic when the descision to change treatments (in this case to move from no LRA use to LRA use) is influenced by a set of prognostic factors that in turn may have been influenced by the inital treatment decision, as is likely to be the case for a range of covariates included in the model. For example:
+
+\begin{verbatim}
+_No CVD (t=0) -> No LRA (t=0) -> CVD (t=1) -> LRA (t=1) -> Dementia (t=2)_
+\end{verbatim}
+
+In this case, the decision to move to LRA use is influenced by CVD status at \emph{Time 1}, which will not be captured by adjusting only for CVD status at \emph{Time 0}.
+
+In practice, this means that the value of the prognostic factor should be regularly captured
+
+However, in electronic health records, a change in the value of the prongostic factors is only important if it is recorded in a patients record, as for it to have an impact on treatment decisions, it must be recorded.
+
+This means we can find the most recent value of the covariate before the switch and apply a marginal structural model approach, filling all values for that variable before the most recent measure with the baseline measurement, and all after the most recent meausure with the value of the most recent measure (on the basis that you won't go from having CVD back to not having CVD).
+
+i.e.\\
+Timepoint 12345678\\
+CVD 00001111\\
+Treatment 00000111
+
+Split into 3 month blocks since index event and use the same approach as above to work out the values of each covariate at each time point.
+
+Note: this will be harder for things that are not dichotmous and can go up as well as down. Examples include total cholesterol and BMI, which can go up as well as down.
+
+\hypertarget{the-effect-of-total-cholesterol-or-ldl-cholesterol-on-lra-prescription}{%
+\subsection{The effect of total cholesterol or LDL-cholesterol on LRA prescription}\label{the-effect-of-total-cholesterol-or-ldl-cholesterol-on-lra-prescription}}
+
+It would be fair to assume that the baseline total cholesterol/LDL-cholesterol would at least in part predict the liklihood of someone being prescribed a statin.
+
+However, this is not the case. Baseline cholesterol level are predicted to be a poorer instrument for than QRISK2 score,\textsuperscript{\protect\hyperlink{ref-hippisley-cox2008}{15}} which estimates a patients' 10-year risk of a cardiovascular event. Current NICE guidelines state that those with a QRISK score of 10\% or higher, and in whom lifestyle modifcation is ineffective/inappropriate, should recieved a lipid regulation agent. However, this analysis could not find any effect of QRISK2 scores on statins precription levels at 6 months. {[}Need to cite Lauren's eventual paper here focusing on QRISK2, but also display a RD analysis of TC/LDL-c levels here on statins at 6 months. Need also to check, as Lauren mentioned she found some evidence that there is a relationship in practices that acutally did what they should.{]}
+
+As expected, in a confirmatory analysis using lipid levels, there was no association between the most recent total cholesterol or LDL-cholesterol reading in the CPRD and the treatment, incdicating that adjusting for this variable was not required. *
+
+\begin{savequote}
+Why are open source statistical programming\\
+languages the best?
+
+Because they R.
+\qauthor{--- Bealy, 2013\textsuperscript{\protect\hyperlink{ref-bealy2013}{16}}}\end{savequote}
+
+
+
+\hypertarget{sys-rev-tools-heading}{%
+\chapter{Creating new systematic review tools in R}\label{sys-rev-tools-heading}}
+
+\minitoc 
+
+\hypertarget{background}{%
+\section{Background}\label{background}}
+
+Developing new tools for facilitating evidence synthesis will benefit patients by speeding up the speed with which systematic reviews are produced. A recent study put the mean duration of a systematic review project, from date of registration to date of publication is 67.3 weeks.\textsuperscript{\protect\hyperlink{ref-borah2017}{17}} A large proportion of this time will be spent on manual tasks such as title and abstract screening, - therefore, efforts to increase the efficiency of the process should focus on process that can be automated.
+
+Below I introduce two new R packages created to faciliate some aspects of the systematic review process.
+
+\hypertarget{producing-risk-of-bias-visualisation-with-robvis}{%
+\section{\texorpdfstring{Producing risk-of-bias visualisation with \texttt{robvis}}{Producing risk-of-bias visualisation with robvis}}\label{producing-risk-of-bias-visualisation-with-robvis}}
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+Risk of bias assessment - evaluation of the internal validity of studies included in a systematic review - often forms a key part of the evidence synthesis process, particularly in the health sciences.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{18}} A well-developed family of tools is widely used, which have in common the characteristic that they evaluate specific domains of bias rather being constructed as a checklist or a quantitative score.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{18}} These tools include the RoB 2 tool for randomized trials,\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{19}} the ROBINS-I tool for non-randomized studies of interventions,\textsuperscript{\protect\hyperlink{ref-sterne2016robins}{20}} the QUADAS 2 tool for test accuracy and the ROBIS tool for systematic reviews.\textsuperscript{\protect\hyperlink{ref-whiting2011quadas}{21}} Within each bias domains a judgement is reached about the strength of the study in that regard: for example, the first domain in the Cochrane RoB 2 tool deals with bias arising from the randomization process.\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{19}} Accessible graphics summarizing the results of these domain-based risk-of-bias assessments are included in reports of systematic reviews. A convenient plot in many reviews is a ``traffic light'' plot, which tabulates the judgement for each study in each domain. For larger numbers of studies, when such a table become unmanageable, a popular alternative is a weighted bar plot, which show the proportion of information with each judgement for each domain.\textsuperscript{\protect\hyperlink{ref-higgins2008assessing}{22}}
+
+Researchers can face a number of barriers in creating these plots. While some evidence synthesis platforms, such as Cochrane's Review Manager,\textsuperscript{\protect\hyperlink{ref-cochrane2014review}{23}} are able to produce these visualizations, not all researchers use these systems to conduct their systematic reviews, and copying the risk-of-bias data into these systems simply to produce the plots is inefficient and error prone. Likewise, creating the figures by hand, through software such as MS PowerPoint or Adobe Illustrator, may lead to unintentional errors and require the plots to be redrawn during an update to the review. Additionally, while the field of evidence synthesis software has grown rapidly in recent years,\textsuperscript{\protect\hyperlink{ref-marshall2015systematic}{24}} this growth has not been equally distributed across the different aspects of the systematic review process. For example, a recent review found several software offerings aimed specifically at the abstract screening stage of the review process,\textsuperscript{\protect\hyperlink{ref-harrison2020software}{25}} but no similar time- and error-reducing tool has been proposed for visualizing the results of risk-of-bias assessments.
+
+Fortunately, tools such as R, RStudio and \texttt{Shiny} (an R package for building interactive web apps) have made it easier than ever to produce such a tool.\textsuperscript{\protect\hyperlink{ref-rref}{26}--\protect\hyperlink{ref-shinyref}{28}} Here, we present \texttt{robvis} (Risk Of Bias VISualiation),\textsuperscript{\protect\hyperlink{ref-mcguinness2019a}{29}} an R package and \texttt{Shiny} web-app that allows users to create publication-ready risk-of-bias plots quickly and easily. Originally created for use with the major risk-of-bias assessment tools used in health research, the tool allows users to visualize the results from any domain-based risk-of-bias assessment or quality appraisal tool.
+
+The tool is open-source and available to use free of charge. Users can download a stable version of the R package from CRAN (\url{https://cran.r-project.org/package=robvis}); or access and contribute to the development version via GitHub (\url{https://github.com/mcguinlu/robvis}).
+
+\hypertarget{development}{%
+\subsection{Development}\label{development}}
+
+Development of \texttt{robvis} began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.\textsuperscript{\protect\hyperlink{ref-gibb2019consistent}{30}--\protect\hyperlink{ref-tanneru2020}{34}}
+
+\hypertarget{installation}{%
+\subsection{Installation}\label{installation}}
+
+A stable version of \texttt{robvis} is hosted on the Comprehensive R Archive Network (CRAN) and can be installed using:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"robvis"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+As development of \texttt{robvis} is ongoing, new features are often available in the development version some time before they appear in the stable CRAN version. The most recent development version can be install from GitHub using:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"mcguinlu/robvis"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{usage}{%
+\subsection{Usage}\label{usage}}
+
+\texttt{robvis} contains two main functions. The first, \texttt{rob\_traffic\_light()}, creates a traffic light plot by tabulating each study by each domain, providing a more detailed view of the results of the risk-of-bias assessment. The second, \texttt{rob\_summary()}, creates a weighted bar plot showing the proportion of information with each judgement for each domain in the assessment tool specified.
+
+A worked example using these functions is outlined below, showing the ease with which risk-of-bias plots can be created using \texttt{robvis}. A detailed description of the additional options that can be used with each function is presented in Table \ref{tab:robvisarguments}
+
+Using the example data set (\texttt{data\_rob2}) which is built into the package and is presented in Table \ref{tab:robdata} for reference, the traffic light plot shown in Figure \ref{fig:trafficplot} is created using:
+
+-\textgreater{} NEED TO ADD DATA HERE!
+
+~
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rob_traffic_light}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ data_rob2,}
+                  \DataTypeTok{tool =} \StringTok{"ROB2"}\NormalTok{,}
+                  \DataTypeTok{psize =} \DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth,height=1\textheight]{figures/sys-rev-tools/example-rob-traffic-light-plot} \caption{Example risk of bias traffic light plot created using `robvis`}\label{fig:trafficplot}
+\end{figure}
+
+Similary, using the same data set, the summary barplot shown in Figure \ref{fig:summaryplot} is created using:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rob_summary}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ data_rob2,}
+            \DataTypeTok{tool =} \StringTok{"ROB2"}\NormalTok{, }
+            \DataTypeTok{overall =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth,height=1\textheight]{figures/sys-rev-tools/example-rob-summary-barplot} \caption{Example risk of bias summary plot created using `robvis` and the example ROB2 dataset}\label{fig:summaryplot}
+\end{figure}
+
+A list of arguments available to the two functions in robvis are shown in Table \ref{tab:robvisarguments}
+
+\begingroup\fontsize{9}{11}\selectfont
+
+\begin{longtable}[t]{lcc>{\raggedright\arraybackslash}p{5cm}}
+\caption{\label{tab:robvisarguments}Description of the arguments available in the two main `robvis` functions. ‘X’ indicates that the option is available for the respective function.}\\
+\toprule
+Argument & rob\_traffic\_light() & rob\_summary() & Description\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:robvisarguments}Description of the arguments available in the two main `robvis` functions. ‘X’ indicates that the option is available for the respective function. \textit{(continued)}}\\
+\toprule
+Argument & rob\_traffic\_light() & rob\_summary() & Description\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+\rowcolor{gray!6}  data & X & X & Defines the dataframe containing the summary (domain) level risk-of-bias assessments. See the text and Table 1 for the format expected by `robvis`\\
+tool & X & X & Defines the risk of bias assessment tool used. The RoB2 (`tool="ROB2"`), ROBINS-I (`tool="ROBINS-I"`), and QUADAS-2 (`tool="QUADAS-2"`) assessments tools are currently supported. Other tools can be visualised using the generic template (`tool = "Generic"`)\\
+\rowcolor{gray!6}  colour & X & X & Defines the colour scheme for the plot. The default is `colour = "cochrane"` which uses the "Cochrane" (red, yellow, green) colours, while a preset option for a colour-blind friendly palette is also available (`colour = "colourblind"`). Alternatively, users can specify their own colour scheme e.g. `colour = c("\#f442c8", "\#bef441", "\#000000")`\\
+overall &  & X & Defines whether to include an additional bar showing the distibution of overall risk of bias judgements in the summary barplot figure. Default is `overall = FALSE`.\\
+\rowcolor{gray!6}  weighted &  & X & Defines whether weights should be used to produce the summary barplot figure. Default is `weighted = TRUE`, in line with current Cochrane Collaboration guidance.\\
+\addlinespace
+psize & X &  & Defines the size of the points in the traffic light plot. Default is `psize = 20`.\\*
+\end{longtable}
+\endgroup{}
+
+\hypertarget{reception-and-future-plans}{%
+\subsection{Reception and Future Plans}\label{reception-and-future-plans}}
+
+As of November 2020, \texttt{robvis} has been downloaded more than 8600 times. It has been well recieved but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{35}}
+
+While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{36}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{18}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
+
+\hypertarget{searching-for-health-related-preprints-with-medrxivr}{%
+\section{\texorpdfstring{Searching for health-related preprints with \texttt{medrxivr}}{Searching for health-related preprints with medrxivr}}\label{searching-for-health-related-preprints-with-medrxivr}}
+
+\hypertarget{introduction-1}{%
+\subsection{Introduction}\label{introduction-1}}
+
+Searching pre-print repositories is becoming an increasingly important part of a systematic review. Preprints - unpublished versions of manuscripts, frequently uploaded to a repository at the same time they are submitted to a journal for peer review - represent an important source of grey literature.
+
+However, while several of the main repositories (e.g.~arXiv, bioRxiv) have existing methods by which records can be searched and downloaded en masse,\footnote{\url{https://arxiv.org/help/api}} this is not true for medRxiv, a repository launched in June 2019 to host preprints in the medical, clinical, and related health sciences.
+
+At present, medRxiv allows only simple search queries, as opposed to the often complex Boolean logic that information specialists use to query other major databases. Additionally, record metadata (titles/abstracts/author lists) must be accessed individually, rather than in batches, meaning that downloading relevant records for title and abstract screening a time consuming task.
+
+The \texttt{medrxivr} R package was created in order to facilitate the searching of this data source, allow
+
+\hypertarget{usage-1}{%
+\subsection{Usage}\label{usage-1}}
+
+To install \texttt{medrxivr} from CRAN:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Currently doesn't work as not on CRAN}
+
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"medrxivr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To install the development version from GitHub:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"mcguinlu/medrxivr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{methods-2}{%
+\subsection{Methods}\label{methods-2}}
+
+The \texttt{medrxivr} project is split into two parts:
+
+\begin{itemize}
+\tightlist
+\item
+  A webscraper that runs once a day which collects and cleans new records uploaded to medRxiv, and adds them to a machine readable database.
+\item
+  A lightweight R package that provides an interface for this database, allowing users to search for relevant records, and easily retieve the associated full tex PDFs.
+\end{itemize}
+
+The webscraper is a straightforward R script built in R using \texttt{rvest} and a range of text processing packages\textsuperscript{\protect\hyperlink{ref-wickham2019}{37}--\protect\hyperlink{ref-wickham2020}{39}}. To quickly illustrate the process, the code to retrieve the total number of records on medRxiv is included below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Perform a search for "*" (defined by %252A), which acts as a wildcard  }
+\CommentTok{# This approach will capture all records}
+\NormalTok{url <-}\StringTok{ "https://www.medrxiv.org/search/%252A"}
+
+\CommentTok{# Read the HTML from this link}
+\NormalTok{page <-}\StringTok{ }\KeywordTok{read_html}\NormalTok{(url)}
+
+\CommentTok{# Extract the text (html_text()) value of the CSS node of interest, in this}
+\CommentTok{# case, the "#page-title" node}
+
+\NormalTok{results <-}\StringTok{ }\NormalTok{page }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_nodes}\NormalTok{(}\StringTok{"#page-title"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_text}\NormalTok{()}
+
+\CommentTok{# Remove any commas from the results (e.g. 1,500 become 1500)}
+\NormalTok{results <-}\StringTok{ }\KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,results)}
+
+\CommentTok{# Convert it from a character string to a numeric}
+\NormalTok{results <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{word}\NormalTok{(results))}
+\end{Highlighting}
+\end{Shaded}
+
+Using Windows Task Scheduler,\textsuperscript{\protect\hyperlink{ref-zotero-880}{40}} the script is scheduled to automatically run every morning, adding new records uploaded to medRxiv since the last run of the webscraper to a local comma-seperated-values (CSV) file. Following a quality control pipeline, which checks the completeness of the new records and ensures that all records have been captured, the updated dataset is automatically uploaded to a cloud server and immediately becomes available to the \texttt{medrxivr} package functions.
+
+The functions in the \texttt{medrxivr} package then facilitate users in working with this dataset. There are two main functions and a helper function:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{mx\_search()} {[}main{]}: Enables users to search the medrxivr data dump, using regular expressions and boolean logic.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{topic1  <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"dementia"}\NormalTok{,}\StringTok{"vascular"}\NormalTok{,}\StringTok{"alzheimer's"}\NormalTok{)  }\CommentTok{# Combined with OR}
+\NormalTok{topic2  <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"lipids"}\NormalTok{,}\StringTok{"statins"}\NormalTok{,}\StringTok{"cholesterol"}\NormalTok{)     }\CommentTok{# Combined with OR}
+
+\NormalTok{myquery <-}\StringTok{ }\KeywordTok{list}\NormalTok{(topic1, topic2)                    }\CommentTok{# Combined with AND}
+
+\NormalTok{results <-}\StringTok{ }\KeywordTok{mx_search}\NormalTok{(myquery)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{mx\_download()} {[}main{]}: Takes the output from \texttt{mx\_search()} and retrieves the full text PDF for each record, saving it to a folder specified by the user.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mx_download}\NormalTok{(results,        }\CommentTok{# Object returned by mx_search}
+            \StringTok{"pdf/"}\NormalTok{)         }\CommentTok{# Directory to save PDFs to }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{mx\_crosscheck()} {[}helper{]}: Provides information on the version of the data dump that the user is searching, and checks whether any new records have been uploaded to medRxiv since the last run of the webscraper.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mx_crosscheck}\NormalTok{()}
+
+\CommentTok{## Using medRxiv snapshot - 2020-03-04 10:55}
+\CommentTok{## No new records added to medRxiv since last snapshot.}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{reception-and-future-plans-1}{%
+\subsection{Reception and Future Plans}\label{reception-and-future-plans-1}}
+
+The tool has be well received by the community, and several use cases have been reported. The tool was primarily created to faciliate the searching performed as part of the review in Chapter \ref{sys-rev-heading}. However, several other use cases have emerged for the tool. It has been used to visalise the growing number of preprints related to the 2019 coronavirus outbreak,\footnote{\url{https://twitter.com/L_Brierley/status/1233109086444695553}} etc, etc
+
+Following peer-review, it has been onboarded into the rOpenSci suite of packages, a collection of ``carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web'', and an associated article published in the Journal of Open Source Software.
+
+The tool has also
+
+\hypertarget{dicussion}{%
+\section{Dicussion}\label{dicussion}}
+
+Packaging and sharing R scripts should be a fundamental part of evidence synthesis process. {[}EXPAND{]}
+
+By implementing the tools described above as both as an R package and a \texttt{Shiny} web app, the functionality is available to evidence synthesists with varying levels of ability in R. These tools serve as an example of the advantages of ``packaging'' the R scripts that evidence synthesists often create for personal use.\textsuperscript{\protect\hyperlink{ref-wickham2015r}{41}} In the case of \texttt{robvis}, it is likely that several other evidence synthesists have written scripts to produce similar risk-of-bias plots to those presented here - in fact, in the course of its development, I identified one other research group that has done so. This duplication of time and effort is inefficient, and creating and sharing well-documented R packages represents one way to reduce this inefficiency. Taking this approach one step further, \texttt{Shiny} apps represent a straightforward way to provide a user-friendly GUI for a newly created R package within a very short timeframe, expanding the potential pool of users of the package to anyone with an internet connection.
+
+Creating a package using R has a number of particular advantages. R provides access to a range of powerful tools including the \texttt{ggplot} infrastructure as demonstrated above, and RMarkdown, which enables creation of documents that can be rendered in a range of formats such as PDF, HTML, or Word.\textsuperscript{\protect\hyperlink{ref-xie2018r}{42}} Furthermore, and focusing specifically on evidence synthesis, building new tools as packages in R allows for easy integration with the range of existing evidence synthesis packages. Recently, the \texttt{metaverse} project,\textsuperscript{\protect\hyperlink{ref-variousauthors2020}{43}} of which \texttt{robvis} and \texttt{medrivr} are a part, has begun to curate a collection of R packages that cover different aspects of the systematic review and meta-analysis process which, when taken together, form a coherent end-to-end open-source alternative to commercial offerings such as Covidence or Review Manager. Key offerings in this suite of packages include litsearcher, which facilitates systematic search strategy development, revtools, a package for managing the review process and performing title and abstract screening, metaDigitise, a package for automatic extraction of data from figures in research papers, and metafor, a package for conducting meta-analyses in R.\textsuperscript{\protect\hyperlink{ref-grames2019automated}{44}--\protect\hyperlink{ref-westgate2019revtools}{47}}
+
+\hypertarget{summary-2}{%
+\section{Summary}\label{summary-2}}
+
+\begin{itemize}
+\item
+  In this Chapter, I have introduced two new tools for facilitating evidence syntheses: \texttt{robvis}, a tool for producing publication quality risk of bias assessments, and \texttt{medrxivr}, a tool for performing complex searches in the medRxiv preprint repository.
+\item
+  I have outlined the motivation for developing these tools in relation to this thesis - more specifically, that they were used extensively to the conduct the comprehensive systematic review described in Chapter \ref{sys-rev-heading}
+\item
+  The impact of these packages to date, their place in the broader evidence synthesis in R ecosystem, and a roadmap for their future development has been discussed.
+\end{itemize}
+
+\hypertarget{discussion-1}{%
+\chapter{Discussion}\label{discussion-1}}
+
+\hypertarget{summary-of-findings}{%
+\section{Summary of findings}\label{summary-of-findings}}
+
+\hypertarget{strengths-and-limitations}{%
+\section{Strengths and Limitations}\label{strengths-and-limitations}}
+
+\hypertarget{reproducible-research}{%
+\section{Reproducible research}\label{reproducible-research}}
+
+Reproducible science has been a key theme running through this thesis. An open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it.
+
+\hypertarget{public-involvement-and-engagement}{%
+\section{Public involvement and engagement}\label{public-involvement-and-engagement}}
+
+Involving and engaging the public and patients has been a central theme to this thesis.
+
+Public engagement activities included
+
+Public involvement also steered the creation of the topic
+
+\hypertarget{future-work}{%
+\section{Future work}\label{future-work}}
+
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
+
+\hypertarget{bibliography}{%
+\chapter{Bibliography}\label{bibliography}}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-chang2012}{}%
+1. Chang, C.-C. H., Zhao, Y., Lee, C.-W. \& Ganguli, M. Smoking, death, and Alzheimer's disease: A case of competing risks. \emph{Alzheimer Disease and Associated Disorders} \textbf{26}, 300--306 (2012).
+
+\leavevmode\hypertarget{ref-bramer2016}{}%
+2. Bramer, W. M., Giustini, D., de Jonge, G. B., Holland, L. \& Bekhuis, T. De-duplication of database search results for systematic reviews in EndNote. \emph{Journal of the Medical Library Association : JMLA} \textbf{104}, 240--243 (2016).
+
+\leavevmode\hypertarget{ref-ouzzani2016}{}%
+3. Ouzzani, M., Hammady, H., Fedorowicz, Z. \& Elmagarmid, A. Rayyan-a web and mobile app for systematic reviews. \emph{Systematic Reviews} \textbf{5}, 210 (2016).
+
+\leavevmode\hypertarget{ref-zotero-766}{}%
+4. The PRISMA statement for reporting systematic reviews and meta-analyses of studies that evaluate healthcare interventions: Explanation and elaboration \textbar{} The BMJ.
+
+\leavevmode\hypertarget{ref-petersen1999}{}%
+5. Petersen, R. C. \emph{et al.} Mild cognitive impairment: Clinical characterization and outcome. \emph{Archives of Neurology} \textbf{56}, 303--308 (1999).
+
+\leavevmode\hypertarget{ref-sterne2019}{}%
+6. Sterne, J. A. C. \emph{et al.} RoB 2: A revised tool for assessing risk of bias in randomised trials. \emph{BMJ} \textbf{366}, (2019).
+
+\leavevmode\hypertarget{ref-sterne2016}{}%
+7. Sterne, J. A. \emph{et al.} ROBINS-I: A tool for assessing risk of bias in non-randomised studies of interventions. \emph{BMJ} \textbf{355}, (2016).
+
+\leavevmode\hypertarget{ref-gwet2008}{}%
+8. Gwet, K. L. Computing inter-rater reliability and its variance in the presence of high agreement. \emph{British Journal of Mathematical and Statistical Psychology} \textbf{61}, 29--48 (2008).
+
+\leavevmode\hypertarget{ref-cohen1960}{}%
+9. Cohen, J. A Coefficient of Agreement for Nominal Scales. \emph{Educational and Psychological Measurement} \textbf{20}, 37--46 (1960).
+
+\leavevmode\hypertarget{ref-wongpakaran2013}{}%
+10. Wongpakaran, N., Wongpakaran, T., Wedding, D. \& Gwet, K. L. A comparison of Cohen's Kappa and Gwet's AC1 when calculating inter-rater reliability coefficients: A study conducted with personality disorder samples. \emph{BMC Medical Research Methodology} \textbf{13}, 61 (2013).
+
+\leavevmode\hypertarget{ref-mchugh2012}{}%
+11. McHugh, M. L. Interrater reliability: The kappa statistic. \emph{Biochemia Medica} \textbf{22}, 276--282 (2012).
+
+\leavevmode\hypertarget{ref-sim2005}{}%
+12. Sim, J. \& Wright, C. C. The Kappa Statistic in Reliability Studies: Use, Interpretation, and Sample Size Requirements. \emph{Physical Therapy} \textbf{85}, 257--268 (2005).
+
+\leavevmode\hypertarget{ref-feinstein1990}{}%
+13. Feinstein, A. R. \& Cicchetti, D. V. High agreement but low kappa: I. The problems of two paradoxes. \emph{Journal of Clinical Epidemiology} \textbf{43}, 543--549 (1990).
+
+\leavevmode\hypertarget{ref-dorn1953}{}%
+14. Dorn, H. F. Philosophy of Inferences from Retrospective Studies. \emph{American Journal of Public Health and the Nations Health} \textbf{43}, 677--683 (1953).
+
+\leavevmode\hypertarget{ref-hippisley-cox2008}{}%
+15. Hippisley-Cox, J. \emph{et al.} Predicting cardiovascular risk in England and Wales: Prospective derivation and validation of QRISK2. \emph{BMJ} \textbf{336}, 1475--1482 (2008).
+
+\leavevmode\hypertarget{ref-bealy2013}{}%
+16. Bealy, C. R Programming Humour. \emph{Stack Exchange} (2013).
+
+\leavevmode\hypertarget{ref-borah2017}{}%
+17. Borah, R., Brown, A. W., Capers, P. L. \& Kaiser, K. A. Analysis of the time and workers needed to conduct systematic reviews of medical interventions using data from the PROSPERO registry. \emph{BMJ Open} \textbf{7}, e012545 (2017).
+
+\leavevmode\hypertarget{ref-cochranechpt7}{}%
+18. Boutron, I. \emph{et al.} Chapter 7: Considering bias and conflicts of interest among the included studies. in \emph{Cochrane Handbook for Systematic Reviews of Interventions version 6.0 (updated August 2019)} (eds. Higgins, J. P. T. et al.) (Cochrane, 2019).
+
+\leavevmode\hypertarget{ref-sterne2019rob}{}%
+19. Sterne, J. A. C. \emph{et al.} RoB 2: A revised tool for assessing risk of bias in randomised trials. \emph{BMJ} \textbf{366}, l4898 (2019).
+
+\leavevmode\hypertarget{ref-sterne2016robins}{}%
+20. Sterne, J. A. C. \emph{et al.} ROBINS-I: A tool for assessing risk of bias in non-randomised studies of interventions. \emph{BMJ} \textbf{355}, i4919 (2016).
+
+\leavevmode\hypertarget{ref-whiting2011quadas}{}%
+21. Whiting, P. F. \emph{et al.} QUADAS-2: A revised tool for the quality assessment of diagnostic accuracy studies. \emph{Annals of Internal Medicine} \textbf{155}, 529--536 (2011).
+
+\leavevmode\hypertarget{ref-higgins2008assessing}{}%
+22. Higgins, J. P. T. \& Altman, D. G. Chapter 8: Assessing risk of bias in included studies. in \emph{Cochrane Handbook for Systematic Reviews of Interventions} (eds. Higgins, J. P. T. \& Green, S.) 187--241 (Wiley Online Library, 2008).
+
+\leavevmode\hypertarget{ref-cochrane2014review}{}%
+23. Cochrane Collaboration. Review Manager (RevMan) {[}Computer program{]}. (2014).
+
+\leavevmode\hypertarget{ref-marshall2015systematic}{}%
+24. Marshall, C. \& Brereton, P. Systematic review toolbox: A catalogue of tools to support systematic reviews. in \emph{Proceedings of the 19th international conference on evaluation and assessment in software engineering} Article 23; 1--6 (Association for Computing Machinery, 2015). doi:\href{https://doi.org/10.1145/2745802.2745824}{10.1145/2745802.2745824}
+
+\leavevmode\hypertarget{ref-harrison2020software}{}%
+25. Harrison, H., Griffin, S. J., Kuhn, I. \& Usher-Smith, J. A. Software tools to support title and abstract screening for systematic reviews in healthcare: An evaluation. \emph{BMC Medical Research Methodology} \textbf{20}, 7 (2020).
+
+\leavevmode\hypertarget{ref-rref}{}%
+26. R Core Team. \emph{R: A language and environment for statistical computing}. (R Foundation for Statistical Computing, 2019).
+
+\leavevmode\hypertarget{ref-rstudioref}{}%
+27. RStudio Team. \emph{RStudio: Integrated development environment for R}. (RStudio, Inc., 2015).
+
+\leavevmode\hypertarget{ref-shinyref}{}%
+28. Chang, W., Cheng, J., Allaire, J., Xie, Y. \& McPherson, J. \emph{Shiny: Web application framework for R}. (2019).
+
+\leavevmode\hypertarget{ref-mcguinness2019a}{}%
+29. McGuinness, L. A. Robvis: An R package for visualising risk-of-bias assessments. {[}Computer Software - v0.3.0{]}. (2019). doi:\href{https://doi.org/10.5281/zenodo.3552342}{10.5281/zenodo.3552342}
+
+\leavevmode\hypertarget{ref-gibb2019consistent}{}%
+30. Gibb, K. \emph{et al.} The consistent burden in published estimates of delirium occurrence in medical inpatients over four decades: A systematic review and meta-analysis study. \emph{medRxiv} 19005165 (2019). doi:\href{https://doi.org/10.1101/19005165}{10.1101/19005165}
+
+\leavevmode\hypertarget{ref-habadi2019prevalence}{}%
+31. Habadi, M. I. \emph{et al.} Prevalence of panic disorders in the primary health care setting: A systematic review and meta-analysis. \emph{EC Microbiology} \textbf{16}, 01--09 (2019).
+
+\leavevmode\hypertarget{ref-veloso2020effectiveness}{}%
+32. Veloso, A., Vicente, S. G. \& Filipe, M. G. Effectiveness of cognitive training for school-aged children and adolescents with attention Deficit/Hyperactivity disorder: A systematic review. \emph{Frontiers in Psychology} \textbf{10}, 2983 (2020).
+
+\leavevmode\hypertarget{ref-simillis2020}{}%
+33. Simillis, C. \emph{et al.} Postoperative chemotherapy improves survival in patients with resected high-risk stage II colorectal cancer: Results of a systematic review and meta-analysis. \emph{Colorectal Disease} \textbf{Published online 30th January}, (2020).
+
+\leavevmode\hypertarget{ref-tanneru2020}{}%
+34. Tanneru, K. \emph{et al.} Meta-analysis and systematic review of intermediate-term follow-up of prostatic urethral lift for benign prostatic hyperplasia. \emph{International Urology and Nephrology} (2020).
+
+\leavevmode\hypertarget{ref-mathias_harrer_2019_2551803}{}%
+35. Harrer, M., Cuijpers, P. \& Ebert, D. \emph{Doing Meta-Analysis in R: A Hands-on Guide}. (Zenodo, 2019).
+
+\leavevmode\hypertarget{ref-whiting2016robis}{}%
+36. Whiting, P. \emph{et al.} ROBIS: A new tool to assess risk of bias in systematic reviews was developed. \emph{Journal of Clinical Epidemiology} \textbf{69}, 225--234 (2016).
+
+\leavevmode\hypertarget{ref-wickham2019}{}%
+37. Wickham, H. Rvest: Easily Harvest (Scrape) Web Pages. (2019).
+
+\leavevmode\hypertarget{ref-wickham2019a}{}%
+38. Wickham, H. \& RStudio. Stringr: Simple, Consistent Wrappers for Common String Operations. (2019).
+
+\leavevmode\hypertarget{ref-wickham2020}{}%
+39. Wickham, H., François, R., Henry, L., Müller, K. \& RStudio. Dplyr: A Grammar of Data Manipulation. (2020).
+
+\leavevmode\hypertarget{ref-zotero-880}{}%
+40. Task Scheduler for developers - Win32 apps.
+
+\leavevmode\hypertarget{ref-wickham2015r}{}%
+41. Wickham, H. \emph{R packages: Organize, test, document, and share your code}. (O'Reilly Media, Inc., 2015).
+
+\leavevmode\hypertarget{ref-xie2018r}{}%
+42. Xie, Y., Allaire, J. J. \& Grolemund, G. \emph{R markdown: The definitive guide}. (Chapman and Hall/CRC, 2018).
+
+\leavevmode\hypertarget{ref-variousauthors2020}{}%
+43. Various Authors. Metaverse: An R ecosystem for meta-research. (2020).
+
+\leavevmode\hypertarget{ref-grames2019automated}{}%
+44. Grames, E. M., Stillman, A. N., Tingley, M. W. \& Elphick, C. S. An automated approach to identifying search terms for systematic reviews using keyword co-occurrence networks. \emph{Methods in Ecology and Evolution} \textbf{10}, 1645--1654 (2019).
+
+\leavevmode\hypertarget{ref-metaforref}{}%
+45. Viechtbauer, W. Conducting meta-analyses in R with the metafor package. \emph{Journal of Statistical Software} \textbf{36}, 1--48 (2010).
+
+\leavevmode\hypertarget{ref-pick2018}{}%
+46. Pick, J. L., Nakagawa, S. \& Noble, D. W. A. Reproducible, flexible and high-throughput data extraction from primary literature: The metaDigitise R package. \emph{Methods in Ecology and Evolution} \textbf{10}, 426--431 (2018).
+
+\leavevmode\hypertarget{ref-westgate2019revtools}{}%
+47. Westgate, M. J. Revtools: An R package to support article screening for evidence synthesis. \emph{Research Synthesis Methods} \textbf{10}, 606--614 (2019).
 
 \startappendices
 
-\hypertarget{list-of-one-thing}{%
-\chapter{List of one thing}\label{list-of-one-thing}}
+\hypertarget{by-chapter}{%
+\chapter{By Chapter}\label{by-chapter}}
 
-This first appendix includes an R chunk that was hidden in the document (using \texttt{echo\ =\ FALSE}) to help with readibility:
+\hypertarget{chapter-1}{%
+\section{Chapter 1}\label{chapter-1}}
 
-\hypertarget{list-of-something-else}{%
-\chapter{List of something else}\label{list-of-something-else}}
+\hypertarget{chapter-2}{%
+\section{Chapter 2}\label{chapter-2}}
 
-\hypertarget{refs}{}
-\leavevmode\hypertarget{ref-Darwin1859}{}%
-1. Darwin, C. \emph{On the Origin of Species by Means of Natural Selection or the Preservation of Favoured Races in the Struggle for Life}. (John Murray, 1859).
+\hypertarget{other-appendix}{%
+\chapter{Other Appendix}\label{other-appendix}}
 
 
 %%%%% REFERENCES

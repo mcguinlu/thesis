@@ -1,0 +1,87 @@
+---
+#########################################
+# options for knitting a single chapter #
+#########################################
+output:
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+documentclass: book
+---
+
+# Background {#background-heading}
+
+## Dementia
+
+### Definition and Subtypes
+Dementia is major neurocognitive disorder, with symptoms including impairment of executive cognitive functions such as speech, judgement and memory. The most common causes of dementia are Alzheimer’s disease and vascular dementia, accounting for ~60-80% and ~10% of cases respectively. The remaining 10-30% of cases are caused other dementia subtypes (e.g. Lewy Body dementia) or by progression of other neurological diseases (e.g. Parkinson’s disease).
+
+###	Diagnosis
+Dementia is difficult to diagnose, primarily due to the absence of a gold standard test for the condition. Information from multiple diagnostic tools are utilised, from medical history examination, through assessment of patients mental ability (e.g. the Mini-Mental State Examination), to clinical tests (e.g. Magnetic Resonance Imaging (MRI) scans). 
+
+###	Public Health Importance
+Dementia is quickly becoming a critically important public health issue. Despite the age-specific incidence and prevalence of dementia remaining relatively constant over time,6 an ageing population looks set to create a dementia epidemic, particularly in Westernised countries. In the UK, there are estimated to be 800,000 people currently living with dementia, with this figure expected to double by 2040.7 Globally, the prevalence of dementia is expected to reach 75 million by 2030.8 Despite the number of dementia cases and decades of research, there remains much unknown about the pathogenesis and progression of the disease. 
+
+###	Challenges in the study of dementia using traditional study designs
+
+Speak to the 
+
+
+
+
+
+Historically, studies on dementia have faced a range of challenges. As a range of determinants (genetic, environmental and lifestyle) are thought to jointly influence the risk, progression and outcomes of dementia, any individual association is likely to have only a small effect. Therefore, the statistical power need to detect these associations will often require sample sizes that are unfeasible using primary data collection. 
+This fact is further complicated by the long latency of dementia, which necessitates a costly long-term approach to patient follow-up. Furthermore, dementia studies often have limited generalisability to the target population, as certain subgroups (e.g. the very old) are frequently under-represented in study cohorts due to difficulties associated with their recruitment.9 Finally, studies employing a case-control design are further limited by the high potential for differential recall bias between those who have and have not developed dementia.10 
+
+Fortunately, these limitations may potentially be addressed through the use of routinely collected health data, and the electronic health record databases in which they are stored. 
+
+
+Include CIND definition here
+
+And MCI
+
+And different scales
+
+### History
+
+> Two major clinical trials are often cited as providing
+evidence that statins do not have an effect on the incidence ofdementia: the Prospective Study ofPravastatin in the Elderly (PROSPER)5
+and the Medical Research
+Council/British Heart Foundation Heart Protection Study27
+; however, because of methodologic limitations in relation to dementia outcomes in these two trials, the results of these trials are difficult to evaluate. Dementia incidence or cognitive outcomes were not preplanned endpoints in either of them, neither study included a clinical cognitive evaluation, and numbers of patients with follow-up information for cognitive evaluations were not reported in either study manuscript. In PROSPER a post hoc analysis compared changes in cognitive scores over a 3-year period between statintreated and placebo patients and found no significant differences. In the MRC/BHF HPS trial,27
+similar percentages ofparticipants (0.3% in each—statin vs placebo—group) developed dementia during the 5-year follow-up period. The report did not state how the outcome of dementia was determined (e.g., reported as an adverse event or by follow-up phone interview).
+*Taken from Cramer 2008 - included in review*
+
+
+### Economic impact
+
+### Risk factors
+
+### Treatments
+
+### Preventative measures
+
+## Serum lipids
+
+### Range of lipids
+
+### HDL-c
+
+### LDL-c
+
+### Triglycerides
+
+### Total cholesterol
+
+## Serum lipid interventions
+
+### Statins
+
+#### Lipophilic
+
+#### Hydrophilic
+
+
+## Summary
+

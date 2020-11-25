@@ -1,15 +1,21 @@
 both:
-	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book", output_dir = "docs/5abd0cd3e96bf9459398f146495c15129ee56682")'
+	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book", output_dir = "docs")'
 	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc front-and-back-matter/abbreviations.aux
-	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook", output_dir = "docs/5abd0cd3e96bf9459398f146495c15129ee56682")'
+	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook", output_dir = "docs")'
+	Rscript -e 'browseURL(here::here("docs","index.html"))'
 
 pdf:
-	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book", output_dir = "docs/5abd0cd3e96bf9459398f146495c15129ee56682")'
+	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book", output_dir = "docs")'
 	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc front-and-back-matter/abbreviations.aux
+	Rscript -e 'browseURL(here::here("docs","_main.pdf"))'
+	
+see-pdf:
+	Rscript -e 'browseURL(here::here("docs","_main.pdf"))'
 
 gitbook:
-	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook", output_dir = "docs/5abd0cd3e96bf9459398f146495c15129ee56682")'
-
+	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook", output_dir = "docs")'
+	Rscript -e 'browseURL(here::here("docs","index.html"))'
+	
 word:
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::word_document2")'
 	Rscript -e 'browseURL("docs/_main.docx")'
@@ -23,5 +29,5 @@ clean-knits:
 	rm -R *_cache
 
 clean-docs:
-	rm -f docs/5abd0cd3e96bf9459398f146495c15129ee56682/*
-	rm -R docs/5abd0cd3e96bf9459398f146495c15129ee56682/*
+	rm -f docs/*
+	rm -R docs/*

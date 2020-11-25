@@ -1,0 +1,321 @@
+---
+bibliography: bibliography/references.bib
+csl: bibliography/nature.csl
+output:
+  bookdown::word_document2: 
+      toc: false
+      toc_depth: 3
+      reference_docx: word-styles-reference-01.docx
+  bookdown::html_document2: default
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+documentclass: book
+---
+
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:sys-rev-tools-quote)'}
+Why are open source statistical programming  
+languages the best?
+
+Because they R.
+```
+(ref:sys-rev-tools-quote) --- Bealy, 2013 [@bealy2013]
+
+# Creating new systematic review tools in R {#sys-rev-tools-heading}
+\minitoc <!-- this will include a mini table of contents-->
+
+```{r setup, include=FALSE}
+source("R/doc_options.R")
+```
+
+<!----------------------------------------------------------------------------->
+
+
+## Background
+
+Developing new tools for facilitating evidence synthesis will benefit patients by speeding up the speed with which systematic reviews are produced. A recent study put the mean duration of a systematic review project, from date of registration to date of publication is 67.3 weeks.[@borah2017] A large proportion of this time will be spent on manual tasks such as title and abstract screening, - therefore, efforts to increase the efficiency of the process should focus on process that can be automated. 
+
+Below I introduce two new R packages created to faciliate some aspects of the systematic review process. 
+
+<!----------------------------------------------------------------------------->
+## Producing risk-of-bias visualisation with `robvis`
+
+### Introduction
+
+Risk of bias assessment - evaluation of the internal validity of studies included in a systematic review - often forms a key part of the evidence synthesis process, particularly in the health sciences.[@cochranechpt7] A well-developed family of tools is widely used, which have in common the characteristic that they evaluate specific domains of bias rather being constructed as a checklist or a quantitative score.[@cochranechpt7] These tools include the RoB 2 tool for randomized trials,[@sterne2019rob] the ROBINS-I tool for non-randomized studies of interventions,[@sterne2016robins] the QUADAS 2 tool for test accuracy and the ROBIS tool for systematic reviews.[@whiting2011quadas] Within each bias domains a judgement is reached about the strength of the study in that regard: for example, the first domain in the Cochrane RoB 2 tool deals with bias arising from the randomization process.[@sterne2019rob] Accessible graphics summarizing the results of these domain-based risk-of-bias assessments are included in reports of systematic reviews. A convenient plot in many reviews is a “traffic light” plot, which tabulates the judgement for each study in each domain. For larger numbers of studies, when such a table become unmanageable, a popular alternative is a weighted bar plot, which show the proportion of information with each judgement for each domain.[@higgins2008assessing]
+
+Researchers can face a number of barriers in creating these plots. While some evidence synthesis platforms, such as Cochrane’s Review Manager,[@cochrane2014review] are able to produce these visualizations, not all researchers use these systems to conduct their systematic reviews, and copying the risk-of-bias data into these systems simply to produce the plots is inefficient and error prone. Likewise, creating the figures by hand, through software such as MS PowerPoint or Adobe Illustrator, may lead to unintentional errors and require the plots to be redrawn during an update to the review. Additionally, while the field of evidence synthesis software has grown rapidly in recent years,[@marshall2015systematic] this growth has not been equally distributed across the different aspects of the systematic review process. For example, a recent review found several software offerings aimed specifically at the abstract screening stage of the review process,[@harrison2020software] but no similar time- and error-reducing tool has been proposed for visualizing the results of risk-of-bias assessments.
+
+Fortunately, tools such as R, RStudio and `Shiny` (an R package for building interactive web apps) have made it easier than ever to produce such a tool.[@rref; @rstudioref; @shinyref] Here, we present `robvis` (Risk Of Bias VISualiation),[@mcguinness2019a] an R package and `Shiny` web-app that allows users to create publication-ready risk-of-bias plots quickly and easily. Originally created for use with the major risk-of-bias assessment tools used in health research, the tool allows users to visualize the results from any domain-based risk-of-bias assessment or quality appraisal tool.
+
+The tool is open-source and available to use free of charge. Users can download a stable version of the R package from CRAN ([https://cran.r-project.org/package=robvis](https://cran.r-project.org/package=robvis)); or access and contribute to the development version via GitHub ([https://github.com/mcguinlu/robvis](https://github.com/mcguinlu/robvis)).
+
+### Development
+
+Development of `robvis` began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.[@gibb2019consistent; @habadi2019prevalence; @veloso2020effectiveness;@simillis2020; @tanneru2020]
+
+### Installation
+
+A stable version of `robvis` is hosted on the Comprehensive R Archive Network (CRAN) and can be installed using:
+
+```{r, eval = FALSE}
+install.packages("robvis")
+```
+
+As development of `robvis` is ongoing, new features are often available in the development version some time before they appear in the stable CRAN version. The most recent development version can be install from GitHub using:
+
+```{r, eval = FALSE}
+devtools::install_github("mcguinlu/robvis")
+```
+
+### Usage
+
+`robvis` contains two main functions. The first, `rob_traffic_light()`, creates a traffic light plot by tabulating each study by each domain, providing a more detailed view of the results of the risk-of-bias assessment. The second, `rob_summary()`, creates a weighted bar plot  showing the proportion of information with each judgement for each domain in the assessment tool specified.
+
+A worked example using these functions is outlined below, showing the ease with which risk-of-bias plots can be created using `robvis`. A detailed description of the additional options that can be used with each function is presented in Table \@ref(tab:robvisarguments)
+
+
+Using the example data set (`data_rob2`) which is built into the package and is presented in Table \@ref(tab:robdata) for reference, the traffic light plot shown in Figure \@ref(fig:trafficplot) is created using:
+
+-> NEED TO ADD DATA HERE! 
+
+&nbsp;
+
+``` {r, eval = FALSE}
+
+rob_traffic_light(data = data_rob2,
+                  tool = "ROB2",
+                  psize = 15)
+```
+
+
+``` {r trafficplot, echo = FALSE, eval = TRUE, fig.cap = "Example risk of bias traffic light plot created using `robvis`", out.width = "100%", out.height = "100%", fig.align = "centre"}
+
+plotdata <- robvis::data_rob2
+
+tfplot <- robvis::rob_traffic_light(data = plotdata, "ROB2", psize = 15) 
+
+ggplot2::ggsave(
+          filename = "figures/sys-rev-tools/example-rob-traffic-light-plot.png",
+          plot = tfplot,
+          width = 7,
+          height = 8,
+          dpi = 400
+          )
+
+
+knitr::include_graphics("figures/sys-rev-tools/example-rob-traffic-light-plot.png")
+```
+
+
+Similary, using the same data set, the summary barplot shown in Figure \@ref(fig:summaryplot) is created using:
+
+```{r, eval = FALSE}
+
+rob_summary(data = data_rob2,
+            tool = "ROB2", 
+            overall = TRUE)
+
+```
+
+
+``` {r summaryplot, echo = FALSE, eval = TRUE, fig.cap = "Example risk of bias summary plot created using `robvis` and the example ROB2 dataset", out.width = "100%", out.height = "100%"}
+
+sumplot <- robvis::rob_summary(plotdata, "ROB2", overall = TRUE) +
+   ggplot2::theme(plot.background = ggplot2::element_rect(colour = "black"),
+                  axis.text.y = ggplot2::element_text(size = 6)
+                  )
+
+ggplot2::ggsave(
+          filename = "figures/sys-rev-tools/example-rob-summary-barplot.png",
+          plot = sumplot,
+          width = 8,
+          height = 2.41,
+          dpi = 400
+          )
+
+knitr::include_graphics("figures/sys-rev-tools/example-rob-summary-barplot.png")
+
+```
+
+
+A list of arguments available to the two functions in robvis are shown in Table \@ref(tab:robvisarguments) 
+
+`r br`
+
+``` {r robvisarguments, echo = FALSE, eval = TRUE}
+
+arguments <- data.frame(stringsAsFactors=FALSE,
+              argument = c("data", "tool", "colour", "overall", "weighted",
+                           "psize"),
+     rob_traffic_light = c("\nX", "X", "X", "", "", "X"),
+           rob_summary = c("X", "X", "X", "X", "X", ""),
+           Description = c(
+"Defines the dataframe containing the summary (domain) level risk-of-bias assessments. See the text and Table 1 for the format expected by `robvis`",
+"Defines the risk of bias assessment tool used. The RoB2 (`tool=\"ROB2\"`), ROBINS-I (`tool=\"ROBINS-I\"`), and QUADAS-2 (`tool=\"QUADAS-2\"`) assessments tools are currently supported. Other tools can be visualised using the generic template (`tool = \"Generic\"`)",
+"Defines the colour scheme for the plot. The default is `colour = \"cochrane\"` which uses the \"Cochrane\" (red, yellow, green) colours, while a preset option for a colour-blind friendly palette is also available (`colour = \"colourblind\"`). Alternatively, users can specify their own colour scheme e.g. `colour = c(\"#f442c8\", \"#bef441\", \"#000000\")`",
+"Defines whether to include an additional bar showing the distibution of overall risk of bias judgements in the summary barplot figure. Default is `overall = FALSE`.",
+"Defines whether weights should be used to produce the summary barplot figure. Default is `weighted = TRUE`, in line with current Cochrane Collaboration guidance.",
+"Defines the size of the points in the traffic light plot. Default is `psize = 20`."))
+
+if(doc.type == "docx"){
+  
+  knitr::kable(arguments,escape = T,
+             caption = "Description of the arguments available in the two main `robvis` functions. ‘X’ indicates that the option is available for the respective function.",
+             
+             col.names = c("Argument","rob_traffic_light()","rob_summary()", "Description"))
+  
+}else{
+  
+  knitr::kable(arguments, booktabs = TRUE, longtable = TRUE, 
+             caption = "Description of the arguments available in the two main `robvis` functions. ‘X’ indicates that the option is available for the respective function.",
+             align = c("l","c","c","l"),
+             col.names = c("Argument","rob_traffic_light()","rob_summary()", "Description")) %>%
+  column_spec(4,"5cm") %>%
+  kable_styling(font_size = 9, 
+                bootstrap_options = c("striped", "hover"),
+                latex_options = c("repeat_header", "striped"))
+}
+
+```
+
+`r br`
+
+### Reception and Future Plans
+
+```{r, echo = FALSE}
+robvisstats <- cranlogs::cran_downloads("robvis", from = "2019-11-22", to = format(Sys.Date(),"%Y-%m-%d") )
+
+robvis_downloads <- plyr::round_any(sum(robvisstats$count),100, f = floor)
+
+date <- format(Sys.Date(),"%B %Y")
+
+```
+
+As of `r date`, `robvis` has been downloaded more than `r robvis_downloads` times. It has been well recieved but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the “Doing Meta-Analysis in R” online textbook.[@mathias_harrer_2019_2551803]
+
+While `robvis` is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in `robvis` is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.[@whiting2016robis] Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.[@cochranechpt7] This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the `metafor::reporter()` function, which generates a brief paragraph of text describing the results of a meta-analysis. The future `robvis::reporter()` function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
+
+<!----------------------------------------------------------------------------->
+## Searching for health-related preprints with `medrxivr`
+
+### Introduction
+
+Searching pre-print repositories is becoming an increasingly important part of a systematic review. Preprints - unpublished versions of manuscripts, frequently uploaded to a repository at the same time they are submitted to a journal for peer review - represent an important source of grey literature.
+
+However, while several of the main repositories (e.g. arXiv, bioRxiv) have existing methods by which records can be searched and downloaded en masse,^[https://arxiv.org/help/api] this is not true for medRxiv, a repository launched in June 2019 to host preprints in the medical, clinical, and related health sciences.
+
+At present, medRxiv allows only simple search queries, as opposed to the often complex Boolean logic that information specialists use to query other major databases. Additionally, record metadata (titles/abstracts/author lists) must be accessed individually, rather than in batches, meaning that downloading relevant records for title and abstract screening a time consuming task. 
+
+The `medrxivr` R package was created in order to facilitate the searching of this data source, allow
+
+### Usage
+
+To install `medrxivr` from CRAN:
+
+```{r, eval = FALSE}
+# Currently doesn't work as not on CRAN
+
+install.packages("medrxivr")
+```
+
+To install the development version from GitHub:
+
+```{r, eval = FALSE}
+devtools::install_github("mcguinlu/medrxivr")
+```
+
+
+### Methods
+
+The `medrxivr` project is split into two parts:
+
+* A webscraper that runs once a day which collects and cleans new records uploaded to medRxiv, and adds them to a machine readable database.
+* A lightweight R package that provides an interface for this database, allowing users to search for relevant records, and easily retieve the associated full tex PDFs.
+
+
+The webscraper is a straightforward R script built in R using `rvest` and a range of text processing packages[@wickham2019; @wickham2019a; @wickham2020]. To quickly illustrate the process, the code to retrieve the total number of records on medRxiv is included below:
+
+```{r,eval=FALSE}
+
+# Perform a search for "*" (defined by %252A), which acts as a wildcard  
+# This approach will capture all records
+url <- "https://www.medrxiv.org/search/%252A"
+
+# Read the HTML from this link
+page <- read_html(url)
+
+# Extract the text (html_text()) value of the CSS node of interest, in this
+# case, the "#page-title" node
+
+results <- page %>%
+  html_nodes("#page-title") %>%
+  html_text()
+
+# Remove any commas from the results (e.g. 1,500 become 1500)
+results <- gsub(",","",results)
+
+# Convert it from a character string to a numeric
+results <- as.numeric(word(results))
+
+```
+
+Using Windows Task Scheduler,[@zotero-880] the script is scheduled to automatically run every morning, adding new records uploaded to medRxiv since the last run of the webscraper to a local comma-seperated-values (CSV) file. Following a quality control pipeline, which checks the completeness of the new records and ensures that all records have been captured, the updated dataset is automatically uploaded to a cloud server and immediately becomes available to the `medrxivr` package functions.
+
+The functions in the `medrxivr` package then facilitate users in working with this dataset. There are two main functions and a helper function:
+
+* `mx_search()` [main]: Enables users to search the medrxivr data dump, using regular expressions and boolean logic.
+
+```{r, eval = FALSE}
+topic1  <- c("dementia","vascular","alzheimer's")  # Combined with OR
+topic2  <- c("lipids","statins","cholesterol")     # Combined with OR
+
+myquery <- list(topic1, topic2)                    # Combined with AND
+
+results <- mx_search(myquery)
+```
+
+* `mx_download()` [main]: Takes the output from `mx_search()` and retrieves the full text PDF for each record, saving it to a folder specified by the user. 
+
+```{r, eval = FALSE}
+mx_download(results,        # Object returned by mx_search
+            "pdf/")         # Directory to save PDFs to 
+```
+
+* `mx_crosscheck()` [helper]: Provides information on the version of the data dump that the user is searching, and checks whether any new records have been uploaded to medRxiv since the last run of the webscraper. 
+
+```{r, eval = FALSE}
+mx_crosscheck()
+
+## Using medRxiv snapshot - 2020-03-04 10:55
+## No new records added to medRxiv since last snapshot.
+```
+
+
+### Reception and Future Plans
+
+The tool has be well received by the community, and several use cases have been reported. The tool was primarily created to faciliate the searching performed as part of the review in Chapter \@ref(sys-rev-heading). However, several other use cases have emerged for the tool. It has been used to visalise the growing number of preprints related to the 2019 coronavirus outbreak ^[https://twitter.com/L_Brierley/status/1233109086444695553], etc, etc
+
+Following peer-review, it has been onboarded into the rOpenSci suite of packages, a collection of "carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web", and an associated article published in the Journal of Open Source Software.
+
+The tool has also 
+
+<!----------------------------------------------------------------------------->
+## Dicussion
+
+Packaging and sharing R scripts should be a fundamental part of evidence synthesis process. [EXPAND]
+
+By implementing the tools described above as both as an R package and a `Shiny` web app, the functionality is available to evidence synthesists with varying levels of ability in R.  These tools serve as an example of the advantages of “packaging” the R scripts that evidence synthesists often create for personal use.[@wickham2015r] In the case of `robvis`, it is likely that several other evidence synthesists have written scripts to produce similar risk-of-bias plots to those presented here - in fact, in the course of its development, I identified one other research group that has done so. This duplication of time and effort is inefficient, and creating and sharing well-documented R packages represents one way to reduce this inefficiency. Taking this approach one step further, `Shiny` apps represent a straightforward way to provide a user-friendly GUI for a newly created R package within a very short timeframe, expanding the potential pool of users of the package to anyone with an internet connection.
+
+Creating a package using R has a number of particular advantages. R provides access to a range of powerful tools including the `ggplot` infrastructure as demonstrated above, and RMarkdown, which enables creation of documents that can be rendered in a range of formats such as PDF, HTML, or Word.[@xie2018r] Furthermore, and focusing specifically on evidence synthesis, building new tools as packages in R allows for easy integration with the range of existing evidence synthesis packages. Recently, the `metaverse` project,[@variousauthors2020] of which `robvis` and `medrivr` are a part, has begun to curate a collection of R packages that cover different aspects of the systematic review and meta-analysis process which, when taken together, form a coherent end-to-end open-source alternative to commercial offerings such as Covidence or Review Manager. Key offerings in this suite of packages include litsearcher, which facilitates systematic search strategy development, revtools, a package for managing the review process and performing title and abstract screening, metaDigitise, a package for automatic extraction of data from figures in research papers, and metafor, a package for conducting meta-analyses in R.[@grames2019automated; @metaforref; @pick2018; @westgate2019revtools]
+
+
+<!----------------------------------------------------------------------------->
+## Summary
+
+* In this Chapter, I have introduced two new tools for facilitating evidence syntheses: `robvis`, a tool for producing publication quality risk of bias assessments, and `medrxivr`, a tool for performing complex searches in the medRxiv preprint repository.
+
+* I have outlined the motivation for developing these tools in relation to this thesis - more specifically, that they were used extensively to the conduct the comprehensive systematic review described in Chapter \@ref(sys-rev-heading)
+
+* The impact of these packages to date, their place in the broader evidence synthesis in R ecosystem, and a roadmap for their future development has been discussed.
+
+

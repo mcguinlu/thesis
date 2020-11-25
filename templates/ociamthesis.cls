@@ -80,7 +80,7 @@
 % CRESTS
 %
 
-\def\crest{{\includegraphics{figures/beltcrest.pdf}}}
+\def\crest{{\includegraphics{figures/UoBcrest.pdf}}}
 
 
 %
@@ -93,7 +93,7 @@
 \usepackage[includehead,hmargin={3.6cm, 2.6cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
 \fi
 
-\usepackage{xcolor}
+\usepackage[table]{xcolor}
 \usepackage{graphicx} 
 
 \usepackage{fancyhdr}
@@ -105,7 +105,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyhead[LO]{\emph{\leftmark}} 
 \fancyhead[RE]{\emph{\rightmark}} 
-\fancyhead[RO,LE]{\emph{\thepage}}
+\fancyfoot[C]{\emph{\thepage}}
 
 \fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
 
@@ -258,6 +258,20 @@
   \vspace*{\fill} \begin{center}}
 {\end{center}\vspace*{\fill}\vspace*{\fill} \end{alwayssingle}}
 
+% DECLARATION
+%
+% The acknowledgements environment puts a large, bold, centered 
+% "Acknowledgements" label at the top of the page. The acknowledgements
+% themselves appear in a quote environment, i.e. tabbed in at both sides, and
+% on its own page.
+
+\newenvironment{declaration}%
+{   \begin{alwayssingle}\chapter*{Author's declaration}
+    \thispagestyle{empty}
+	\pagestyle{empty}
+	\setlength{\baselineskip}{\frontmatterbaselineskip}
+}
+{\end{alwayssingle}}
 
 % ACKNOWLEDGEMENTS
 %

@@ -48,6 +48,16 @@ $highlighting-macros$
 }
 $endif$
 
+% define blank page argument
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+
 %UL 2 Dec 2018 reduce whitespace around verbatim environments
 \usepackage{etoolbox}
 \makeatletter
@@ -139,6 +149,8 @@ $endif$
 	\newcommand{\nd}{\textsuperscript{nd}}
 	\renewcommand{\st}{\textsuperscript{st}}
 	\newcommand{\rd}{\textsuperscript{rd}}
+	
+	\definecolor{ashgray}{rgb}{0.7,0.75,0.71}
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
@@ -193,12 +205,25 @@ $endif$
 % Title page is created here
 \maketitle
 
+\afterpage{\blankpage}
+
 %%%%% DEDICATION -- If you'd like one, un-comment the following.
 $if(dedication)$
 \begin{dedication}
   $dedication$
 \end{dedication}
 $endif$
+
+\afterpage{\blankpage}
+
+%%%%% DECALRATION -- Nothing to do here except comment out if you don't want it.
+$if(declaration)$
+\begin{declaration}
+ 	$declaration$
+\end{declaration}
+$endif$
+
+\afterpage{\blankpage}
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
 $if(acknowledgements)$
@@ -207,11 +232,14 @@ $if(acknowledgements)$
 \end{acknowledgements}
 $endif$
 
+\afterpage{\blankpage}
 
 %%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
 \begin{abstract}
 	$abstract$
 \end{abstract}
+
+\afterpage{\blankpage}
 
 %%%%% MINI TABLES
 % This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
