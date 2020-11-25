@@ -1,12 +1,10 @@
 ---
-bibliography: bibliography/references.bib
-csl: bibliography/nature.csl
+#########################################
+# options for knitting a single chapter #
+#########################################
 output:
-  bookdown::word_document2:  
-      toc: false
-      toc_depth: 3
-      reference_docx: word-styles-reference-01.docx
   bookdown::html_document2: default
+  bookdown::word_document2: default
   bookdown::pdf_document2:
     template: templates/brief_template.tex
 documentclass: book
@@ -17,7 +15,7 @@ Hold
 ```
 (ref:darwin-quote) --- Charles Darwin [@chang2012]
 
-# Chapter 2: Systematic Review {#sys-rev-heading}
+# Systematic Review {#sys-rev-heading}
 \minitoc <!-- this will include a mini table of contents-->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
