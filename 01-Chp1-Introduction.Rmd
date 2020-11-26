@@ -20,17 +20,24 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 ## Aims and Objectives of the thesis
 
+
+
 ### Aim
 
+
+
 ### Objective
+
+
 
 ## Chapter Overview
 
 * __Chapter \@ref(background-heading):__ Background information on dementia and blood lipid levels. This chapter provides an introduction to the topics covered in this thesis to non-subject area experts, and discusses the motivation for the remainder of the thesis. 
-* __Chapter \@ref(sys-rev-tools-heading)__ This Chapter introduces new evidence synthesis two tools built in R: `robvis` and `medrixvr`. The motivation for, development and impact of, and future plans for these tools are outlined.
-* __Chapter \@ref(sys-rev-heading)__ This Chapter describes the
-* __Chapter \@ref(cprd-analysis):__ This Chapter examines the relationship between lipid-regaulting agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database, based in England. 
+* __Chapter \@ref(sys-rev-heading)__ This Chapter describes a comprehensive systematic review and meta-analysis of all available evidence on the relationship between  
+* __Chapter \@ref(cprd-analysis):__ This Chapter examines the relationship between lipid-regulating agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database, based in England. 
 * __Chapter \@ref():__ This Chapter seeks 
+
+* __Appendix \@ref(sys-rev-tools-heading)__ This Chapter introduces new evidence synthesis two tools built in R: `robvis` and `medrixvr`. The motivation for, development and impact of, and future plans for these tools are outlined.
 
 ## Thesis Output
 
@@ -46,7 +53,7 @@ __Include other papers I have been involved in?__
 
 ### Software
 
-* `robvis`: An R package and associated `shiny` web application that allows users to easily visualise the results of risk of bias graphs. 
+* `robvis`: An R package and associated `shiny` web application that allows users to easily visualise the results of risk of bias graphs.
 
 * `medrxvir`: An R package and associated `shiny` web application that allows users to easily search and retrieve bibliographic data from the medRxiv^[https://www.medrxiv.org/] preprint repository.
 
@@ -54,7 +61,9 @@ __Include other papers I have been involved in?__
 ### Talks
 
 * Talk at Cochrane on medrxivr
-* Webinar to Evidence Synthesis Ireland on Risk of Bias test
+* Presentation to the 
+* Webinar to Evidence Synthesis Ireland on Risk of Bias
+
 
 
 

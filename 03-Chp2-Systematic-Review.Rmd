@@ -67,12 +67,9 @@ Excluded studies performing autopsy unless it was done under accepted criteria
 Exclude studies using a dietary intervention, for example omega-3 fatty acid enriched diet, as it hard to disentangle the effect of other elements contained within te diet, vs simple tablet based supplements of 
 
 
-
-
 ### Data extraction
 
 Harmonisation of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorising lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
-
 
 
 ### Risk of bias assessment
@@ -80,6 +77,8 @@ Harmonisation of cholesterol measures across studies was performed, as different
 Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomised controlled trials were assessed using the RoB2 tool,[@sterne2019], non-randomised studies of interventions were assessed using the ROBINS-I tool,[@sterne2016] and non-randomised studies of exposures were assessed using the ROBINS-E tool.[TBC] 
 
 At present, no risk of bias assessment tool for Mendelian randomisation studies is available. Bias in thesee studies was assessed with the help of an expert panel [TBC]
+
+Data will be visualized using a paired forest and risk of bias plot
 
 ### Patient and public involvement
 
@@ -93,9 +92,7 @@ At present, no risk of bias assessment tool for Mendelian randomisation studies 
 
 Inter- and intra-rater reliability was asssessed for a 10% subsample of records at the title and abstract screening stage. Intra-rater reliability involved a sinlge reviewer applying the inclusion criteria to the same set of records while blinded to their previous decisions, while inter-rater reliability involved two reviewers independently screening the same set of records.
 
-
 Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This measure of inter-rater reliabilty was chosen over other methods of assessing inter-rater reliability such as percent agreeement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. [@cohen1960: [@gwet2008; @wongpakaran2013]
-
 
 How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:kappa-table).
 
@@ -116,30 +113,52 @@ For the inter-rater reliability, percentage agreement was 97.3% (AC1 = XXXX, Tab
 
 The discrepancy between the percent agreement and the associated value of AC is expected, due to the heavy imbalance in this sample towards exclusion.[@feinstein1990]
 
-Those records which were excluded in the inital screening , but were included either by the same reviewer on their second vieweing (n=4), or by the second reviewer (n=29), were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline vs mild cognitive impairment and the definition of eligible lipids.
+Those records which were excluded in the initial screening, but were included either by the same reviewer on their second viewing (n=4), or by the second reviewer (n=29), were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline vs mild cognitive impairment and the definition of eligible lipids.
 
 
 #### PRISMA flowchart
 
-```{r prisma-flow, echo = FALSE, warning=FALSE, message=FALSE, fig.cap="PRISMA flow diagram, detailing the movement of studies through the systematic review."}
+```{r prisma-flow, echo = FALSE, warning=FALSE, message=FALSE, fig.cap="PRISMA flow diagram, detailing the movement of studies through the systematic review.", out.width="100%"}
 ```
 
-Following deduplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened. 
+Following de-duplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened. [**CROSS-REF to PRISMA flow here**]
 
 A breakdown of records by 
 
 ## Included studies
 
-XXXX studies met the criteria for inclusion in the review
+XXXX studies met the criteria for inclusion in the review.
 
+Include here:
 
+* PRISMA Flowchart (use PRISMA2020 from GitHub - depending on level of involvement, could refer to the Appendix here too.)
 
-####
+* Summary of types of study
+
+* Summary of locations
+
+* Summary of diagnostic criteria used
+
+* Summary of risk of bias
+
+* Long table, horizontally. Newer version of flextable (GH) allows for PDF output
+
+## Publication bias
+
+* Check if there are protocols available for any of the published reports, and whether there were
+* Vascular dementia has substantially less published reports. Many (reference Smeeth et al 2010 here) simply group into AD and non-AD making comparison between published st
+
+### Triangualtion across evidence sources
+
+One key question for which multiple distinct sources of evidence were available were those looking at Laz
+
+A key limitiation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia [**Is this true?**] This rules out the use
 
 
 
 ## Discussion
 
+Of note, as part of the review, we identified serveral previous systematic reviews of this topic. However, this review is the firest to
 
 
 ## Conclusion

@@ -22,11 +22,28 @@ documentclass: book
 
 One of the problems I'll point out with the trials in the systematic review chapter (Chapter \@ref(sys-rev-heading)) is that they only included people with a high cardiovascular risk - we are kind of doing the same by using elevated test cholesterol results as the index event.
 
-Might be able to get around this by pointing
+Might be able to get around this by pointing out
+
+
+## Things we tried
+
+- Conditioning entry to the cohort on QRISK score (as defined by codes) rather than. Need to be able to demonstrate here that not many meeting our original entry criteria actually go on to have a statin quickly. Need total number of those starting and average time to start.
+- Positive controls. Need to be able to explain why these controls have such wildly increased results.
+- Competing risk analysis, with death as a competing risk. Need numbers of deaths in each group, and preliminary results
+- Allowing for time-varying confounders for binary covariates.
+- Replicating a matched analysis a la Smeeth et al 2010 - though questions were raised as to how they had actually done the analysis (they did not match on propensity score, they simply adjusted for it - find paper that explores 4 ways of accounting for PS and shows this is the worst), they adjusted for things likely to be on the causal pathway, and they saw a huge change in direction for MI pre- vs post- adjustment.
+
+
+## Things we could try
+
+- Work through data using positive control to see if the way it is being added is what is causing the issues.
+- Examine Cramer et al. thesis and see what they did
+- Marginal structural models approach (a la J. Sterne)
+
 
 ## Aims
 
-
+In this
 
 ## Methods
 
@@ -63,7 +80,7 @@ Note: this will be harder for things that are not dichotmous and can go up as we
 
 ### The effect of total cholesterol or LDL-cholesterol on LRA prescription
 
-It would be fair to assume that the baseline total cholesterol/LDL-cholesterol would at least in part predict the liklihood of someone being prescribed a statin. 
+It would be fair to assume that the baseline total cholesterol/LDL-cholesterol would at least in part predict the likelihood of someone being prescribed a statin. 
 
 However, this is not the case. Baseline cholesterol level are predicted to be a poorer instrument for than QRISK2 score,[@hippisley-cox2008] which estimates a patients' 10-year risk of a cardiovascular event. Current NICE guidelines state that those with a QRISK score of 10% or higher, and in whom lifestyle modifcation is ineffective/inappropriate, should recieved a lipid regulation agent. However, this analysis could not find any effect of QRISK2 scores on statins precription levels at 6 months. [Need to cite Lauren's eventual paper here focusing on QRISK2, but also display a RD analysis of TC/LDL-c levels here on statins at 6 months. Need also to check, as Lauren mentioned she found some evidence that there is a relationship in practices that acutally did what they should.]
 

@@ -27,7 +27,7 @@
 % This one will format for PDF output (ie equal margins, no extra blank pages):
 %\documentclass[a4paper,nobind]{templates/ociamthesis}
 %UL 2 Dec 2018: pass this in from YAML
-\documentclass[a4paper, nobind]{templates/ociamthesis}
+\documentclass[a4paper, twoside]{templates/ociamthesis}
 
 
 % UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
@@ -84,16 +84,6 @@
   \end{snugshade}%
   \vspace{4pt}%
 }
-
-% define blank page argument
-\usepackage{afterpage}
-
-\newcommand\blankpage{%
-    \null
-    \thispagestyle{empty}%
-    \addtocounter{page}{-1}%
-    \newpage}
-
 
 %UL 2 Dec 2018 reduce whitespace around verbatim environments
 \usepackage{etoolbox}
@@ -239,14 +229,10 @@ An investigation of their relationship}
 % Title page is created here
 \maketitle
 
-\afterpage{\blankpage}
-
 %%%%% DEDICATION -- If you'd like one, un-comment the following.
 \begin{dedication}
   For Brendan McHugh
 \end{dedication}
-
-\afterpage{\blankpage}
 
 %%%%% DECALRATION -- Nothing to do here except comment out if you don't want it.
 \begin{declaration}
@@ -260,21 +246,31 @@ Canynge Hall, Bristol \\
 \end{flushright}
 \end{declaration}
 
-\afterpage{\blankpage}
-
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
 \begin{acknowledgements}
  	Additionally, I would like to thank Sharen Oâ€™Keefe.
 
 Thanks to the creator of the oxfordown which was used
 
+There are so many people without whom this would not have been possible:
+
+{[}\textbf{Check all name spellings}{]}
+
+Sharen O'Keffe
+Neal Haddaway
+Martin Westgate
+
+robvis contributors
+
+Statistical support:
+
+All authors who volunteered time and effort
+
 \begin{flushright}
 Canynge Hall, Bristol \\
 1 December 2021
 \end{flushright}
 \end{acknowledgements}
-
-\afterpage{\blankpage}
 
 %%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
 \begin{abstract}
@@ -288,8 +284,6 @@ strategies and will be critically important in maintaining the long-term health 
 levels have been implicated in the aetiology of dementia by genetic linkage and functional cell biology studies,
 but current epidemiological evidence has yet to reach a consensus on their role in dementia risk.
 \end{abstract}
-
-\afterpage{\blankpage}
 
 %%%%% MINI TABLES
 % This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
@@ -330,11 +324,15 @@ but current epidemiological evidence has yet to reach a consensus on their role 
 
 \adjustmtc
 
-Word count: 278
+Word count: 6010
 
-Days: 1
+Days: 2
 
-Words behind: 5502
+Words behind: 30
+
+~
+
+~
 
 \includegraphics{_main_files/figure-latex/word-count-fig-1.pdf}
 
@@ -356,17 +354,16 @@ Words behind: 5502
 \section{Chapter Overview}\label{chapter-overview}}
 
 \begin{itemize}
-\tightlist
 \item
   \textbf{Chapter \ref{background-heading}:} Background information on dementia and blood lipid levels. This chapter provides an introduction to the topics covered in this thesis to non-subject area experts, and discusses the motivation for the remainder of the thesis.
 \item
-  \textbf{Chapter \ref{sys-rev-tools-heading}} This Chapter introduces new evidence synthesis two tools built in R: \texttt{robvis} and \texttt{medrixvr}. The motivation for, development and impact of, and future plans for these tools are outlined.
+  \textbf{Chapter \ref{sys-rev-heading}} This Chapter describes a comprehensive systematic review and meta-analysis of all available evidence on the relationship between\\
 \item
-  \textbf{Chapter \ref{sys-rev-heading}} This Chapter describes the
-\item
-  \textbf{Chapter \ref{cprd-analysis}:} This Chapter examines the relationship between lipid-regaulting agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database, based in England.
+  \textbf{Chapter \ref{cprd-analysis}:} This Chapter examines the relationship between lipid-regulating agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database, based in England.
 \item
   \textbf{Chapter @ref():} This Chapter seeks
+\item
+  \textbf{Appendix \ref{sys-rev-tools-heading}} This Chapter introduces new evidence synthesis two tools built in R: \texttt{robvis} and \texttt{medrixvr}. The motivation for, development and impact of, and future plans for these tools are outlined.
 \end{itemize}
 
 \hypertarget{thesis-output}{%
@@ -406,7 +403,9 @@ The outputs of this thesis are detailed below, and include published peer review
 \item
   Talk at Cochrane on medrxivr
 \item
-  Webinar to Evidence Synthesis Ireland on Risk of Bias test
+  Presentation to the
+\item
+  Webinar to Evidence Synthesis Ireland on Risk of Bias
 \end{itemize}
 
 \hypertarget{summary}{%
@@ -592,6 +591,8 @@ Risk of bias assessment was performed using the domain-based risk-of-bias assess
 
 At present, no risk of bias assessment tool for Mendelian randomisation studies is available. Bias in thesee studies was assessed with the help of an expert panel {[}TBC{]}
 
+Data will be visualized using a paired forest and risk of bias plot
+
 \hypertarget{patient-and-public-involvement}{%
 \subsection{Patient and public involvement}\label{patient-and-public-involvement}}
 
@@ -679,15 +680,13 @@ For the inter-rater reliability, percentage agreement was 97.3\% (AC1 = XXXX, Ta
 
 The discrepancy between the percent agreement and the associated value of AC is expected, due to the heavy imbalance in this sample towards exclusion.\textsuperscript{\protect\hyperlink{ref-feinstein1990}{13}}
 
-Those records which were excluded in the inital screening , but were included either by the same reviewer on their second vieweing (n=4), or by the second reviewer (n=29), were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline vs mild cognitive impairment and the definition of eligible lipids.
+Those records which were excluded in the initial screening, but were included either by the same reviewer on their second viewing (n=4), or by the second reviewer (n=29), were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline vs mild cognitive impairment and the definition of eligible lipids.
 
 \hypertarget{prisma-flowchart}{%
 \subsubsection{PRISMA flowchart}\label{prisma-flowchart}}
 
 \begin{figure}
-\centering
-\includegraphics{_main_files/figure-latex/prisma-flow-1.pdf}
-\caption{\label{fig:prisma-flow}PRISMA flow diagram, detailing the movement of studies through the systematic review.}
+\includegraphics[width=1\linewidth]{_main_files/figure-latex/prisma-flow-1} \caption{PRISMA flow diagram, detailing the movement of studies through the systematic review.}\label{fig:prisma-flow}
 \end{figure}
 
 \begin{verbatim}
@@ -696,23 +695,57 @@ Those records which were excluded in the inital screening , but were included ei
 \end{verbatim}
 
 \begin{figure}
-\includegraphics[width=6.67in]{figures/sys-rev/prismaflow} \caption{PRISMA flow diagram, detailing the movement of studies through the systematic review.}\label{fig:prisma-flow}
+\includegraphics[width=1\linewidth]{figures/sys-rev/prismaflow} \caption{PRISMA flow diagram, detailing the movement of studies through the systematic review.}\label{fig:prisma-flow}
 \end{figure}
 
-Following deduplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened.
+Following de-duplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened. {[}\textbf{CROSS-REF to PRISMA flow here}{]}
 
 A breakdown of records by
 
 \hypertarget{included-studies}{%
 \section{Included studies}\label{included-studies}}
 
-XXXX studies met the criteria for inclusion in the review
+XXXX studies met the criteria for inclusion in the review.
 
-\hypertarget{section}{%
-\subsubsection{}\label{section}}
+Include here:
+
+\begin{itemize}
+\item
+  PRISMA Flowchart (use PRISMA2020 from GitHub - depending on level of involvement, could refer to the Appendix here too.)
+\item
+  Summary of types of study
+\item
+  Summary of locations
+\item
+  Summary of diagnostic criteria used
+\item
+  Summary of risk of bias
+\item
+  Long table, horizontally. Newer version of flextable (GH) allows for PDF output
+\end{itemize}
+
+\hypertarget{publication-bias}{%
+\section{Publication bias}\label{publication-bias}}
+
+\begin{itemize}
+\tightlist
+\item
+  Check if there are protocols available for any of the published reports, and whether there were
+\item
+  Vascular dementia has substantially less published reports. Many (reference Smeeth et al 2010 here) simply group into AD and non-AD making comparison between published st
+\end{itemize}
+
+\hypertarget{triangualtion-across-evidence-sources}{%
+\subsection{Triangualtion across evidence sources}\label{triangualtion-across-evidence-sources}}
+
+One key question for which multiple distinct sources of evidence were available were those looking at Laz
+
+A key limitiation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia {[}\textbf{Is this true?}{]} This rules out the use
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
+
+Of note, as part of the review, we identified serveral previous systematic reviews of this topic. However, this review is the firest to
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
@@ -736,10 +769,42 @@ turn to past history to reconstruct the suspected causal chain of events
 
 One of the problems I'll point out with the trials in the systematic review chapter (Chapter \ref{sys-rev-heading}) is that they only included people with a high cardiovascular risk - we are kind of doing the same by using elevated test cholesterol results as the index event.
 
-Might be able to get around this by pointing
+Might be able to get around this by pointing out
+
+\hypertarget{things-we-tried}{%
+\section{Things we tried}\label{things-we-tried}}
+
+\begin{itemize}
+\tightlist
+\item
+  Conditioning entry to the cohort on QRISK score (as defined by codes) rather than. Need to be able to demonstrate here that not many meeting our original entry criteria actually go on to have a statin quickly. Need total number of those starting and average time to start.
+\item
+  Positive controls. Need to be able to explain why these controls have such wildly increased results.
+\item
+  Competing risk analysis, with death as a competing risk. Need numbers of deaths in each group, and preliminary results
+\item
+  Allowing for time-varying confounders for binary covariates.
+\item
+  Replicating a matched analysis a la Smeeth et al 2010 - though questions were raised as to how they had actually done the analysis (they did not match on propensity score, they simply adjusted for it - find paper that explores 4 ways of accounting for PS and shows this is the worst), they adjusted for things likely to be on the causal pathway, and they saw a huge change in direction for MI pre- vs post- adjustment.
+\end{itemize}
+
+\hypertarget{things-we-could-try}{%
+\section{Things we could try}\label{things-we-could-try}}
+
+\begin{itemize}
+\tightlist
+\item
+  Work through data using positive control to see if the way it is being added is what is causing the issues.
+\item
+  Examine Cramer et al.~thesis and see what they did
+\item
+  Marginal structural models approach (a la J. Sterne)
+\end{itemize}
 
 \hypertarget{aims-1}{%
 \section{Aims}\label{aims-1}}
+
+In this
 
 \hypertarget{methods-1}{%
 \section{Methods}\label{methods-1}}
@@ -781,7 +846,7 @@ Note: this will be harder for things that are not dichotmous and can go up as we
 \hypertarget{the-effect-of-total-cholesterol-or-ldl-cholesterol-on-lra-prescription}{%
 \subsection{The effect of total cholesterol or LDL-cholesterol on LRA prescription}\label{the-effect-of-total-cholesterol-or-ldl-cholesterol-on-lra-prescription}}
 
-It would be fair to assume that the baseline total cholesterol/LDL-cholesterol would at least in part predict the liklihood of someone being prescribed a statin.
+It would be fair to assume that the baseline total cholesterol/LDL-cholesterol would at least in part predict the likelihood of someone being prescribed a statin.
 
 However, this is not the case. Baseline cholesterol level are predicted to be a poorer instrument for than QRISK2 score,\textsuperscript{\protect\hyperlink{ref-hippisley-cox2008}{15}} which estimates a patients' 10-year risk of a cardiovascular event. Current NICE guidelines state that those with a QRISK score of 10\% or higher, and in whom lifestyle modifcation is ineffective/inappropriate, should recieved a lipid regulation agent. However, this analysis could not find any effect of QRISK2 scores on statins precription levels at 6 months. {[}Need to cite Lauren's eventual paper here focusing on QRISK2, but also display a RD analysis of TC/LDL-c levels here on statins at 6 months. Need also to check, as Lauren mentioned she found some evidence that there is a relationship in practices that acutally did what they should.{]}
 
@@ -868,7 +933,7 @@ Using the example data set (\texttt{data\_rob2}) which is built into the package
 \end{Shaded}
 
 \begin{figure}
-\includegraphics[width=1\linewidth,height=1\textheight]{figures/sys-rev-tools/example-rob-traffic-light-plot} \caption{Example risk of bias traffic light plot created using `robvis`}\label{fig:trafficplot}
+\includegraphics[width=1\linewidth]{figures/sys-rev-tools/example-rob-traffic-light-plot} \caption{Example risk of bias traffic light plot created using `robvis`}\label{fig:trafficplot}
 \end{figure}
 
 Similary, using the same data set, the summary barplot shown in Figure \ref{fig:summaryplot} is created using:
@@ -882,7 +947,7 @@ Similary, using the same data set, the summary barplot shown in Figure \ref{fig:
 \end{Shaded}
 
 \begin{figure}
-\includegraphics[width=1\linewidth,height=1\textheight]{figures/sys-rev-tools/example-rob-summary-barplot} \caption{Example risk of bias summary plot created using `robvis` and the example ROB2 dataset}\label{fig:summaryplot}
+\includegraphics[width=1\linewidth]{figures/sys-rev-tools/example-rob-summary-barplot} \caption{Example risk of bias summary plot created using `robvis` and the example ROB2 dataset}\label{fig:summaryplot}
 \end{figure}
 
 A list of arguments available to the two functions in robvis are shown in Table \ref{tab:robvisarguments}
@@ -917,7 +982,7 @@ psize & X &  & Defines the size of the points in the traffic light plot. Default
 \hypertarget{reception-and-future-plans}{%
 \subsection{Reception and Future Plans}\label{reception-and-future-plans}}
 
-As of November 2020, \texttt{robvis} has been downloaded more than 8600 times. It has been well recieved but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{35}}
+As of November 2020, \texttt{robvis} has been downloaded more than 8700 times. It has been well recieved but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{35}}
 
 While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{36}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{18}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
 

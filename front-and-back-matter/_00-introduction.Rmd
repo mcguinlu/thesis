@@ -21,14 +21,14 @@ library(ggplot2)
 
 get_words <- function(){
 
-files <- list.files(pattern = "\\.Rmd$")
+files <- list.files(path = here::here(), pattern = "\\.Rmd$")
 
-files <- files[which(files != "index.Rmd")]
+files <- files[which(!(files %in% c("_main.Rmd","index.Rmd")))]
 
 words_v <- c()
 
 for (file in 1:length(files)) {
-  tmp <- wordcountaddin::word_count(files[file])
+  tmp <- wordcountaddin::word_count(here::here(files[file]))
   words_v <- c(words_v, tmp)
 }
 
@@ -60,15 +60,19 @@ write.csv(file = here::here("data","words","words.csv"),
           col.names = FALSE,
           row.names = FALSE)
 
+
+
 start_date <- as.Date("20201124", format="%Y%m%d")
 
 max_date <- as.Date(max(words$date), format="%Y%m%d")
+
+words_today <- words$words[which(as.Date(words$date, format="%Y%m%d")==max_date)]
 
 date_diff <- as.numeric((max_date) - start_date)
 
 target <- (date_diff*200)+5580
 
-words_behind <- target - words$words[which(words$date == max(words$date))]
+words_behind <- words$words[which(words$date == max(words$date))] - target
 
 target_df <- data.frame(date = c(start_date,max_date),
                            words = c(5580, target))
@@ -77,11 +81,15 @@ words$date <- as.Date(words$date, format="%Y%m%d")
 
 ```
 
-Word count: `r words$words`
+Word count: `r words_today`
 
 Days: `r date_diff`
 
 Words behind: `r words_behind`
+
+&nbsp;  
+
+&nbsp;  
 
 ```{r word-count-fig, echo=FALSE, warning=FALSE, message=FALSE}
 ggplot(mapping = aes(x=date,y=words)) +
