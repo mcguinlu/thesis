@@ -1,4 +1,16 @@
+---
+output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+  bookdown::word_document2: default
+  bookdown::html_document2: default
+documentclass: book
+---
 
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:dara-quote)'}
+Science knows it doesn't know everything; otherwise, it'd stop
+```
+(ref:dara-quote) --- Dara O'Briain
 
 # Background {#background-heading}
 \minitoc <!-- this will include a mini table of contents-->
@@ -18,10 +30,6 @@ Dementia is quickly becoming a critically important public health issue. Despite
 
 Speak to the 
 
-
-
-
-
 Historically, studies on dementia have faced a range of challenges. As a range of determinants (genetic, environmental and lifestyle) are thought to jointly influence the risk, progression and outcomes of dementia, any individual association is likely to have only a small effect. Therefore, the statistical power need to detect these associations will often require sample sizes that are unfeasible using primary data collection. 
 This fact is further complicated by the long latency of dementia, which necessitates a costly long-term approach to patient follow-up. Furthermore, dementia studies often have limited generalisability to the target population, as certain subgroups (e.g. the very old) are frequently under-represented in study cohorts due to difficulties associated with their recruitment.9 Finally, studies employing a case-control design are further limited by the high potential for differential recall bias between those who have and have not developed dementia.10 
 
@@ -30,22 +38,26 @@ Fortunately, these limitations may potentially be addressed through the use of r
 
 Include CIND definition here
 
+A further clinical subtype that is of particular import the  
+
 And MCI
 
 And different scales
 
-### History
 
-> Two major clinical trials are often cited as providing
-evidence that statins do not have an effect on the incidence ofdementia: the Prospective Study ofPravastatin in the Elderly (PROSPER)5
-and the Medical Research
-Council/British Heart Foundation Heart Protection Study27
-; however, because of methodologic limitations in relation to dementia outcomes in these two trials, the results of these trials are difficult to evaluate. Dementia incidence or cognitive outcomes were not preplanned endpoints in either of them, neither study included a clinical cognitive evaluation, and numbers of patients with follow-up information for cognitive evaluations were not reported in either study manuscript. In PROSPER a post hoc analysis compared changes in cognitive scores over a 3-year period between statintreated and placebo patients and found no significant differences. In the MRC/BHF HPS trial,27
-similar percentages ofparticipants (0.3% in each—statin vs placebo—group) developed dementia during the 5-year follow-up period. The report did not state how the outcome of dementia was determined (e.g., reported as an adverse event or by follow-up phone interview).
+
+### History
+> Two major clinical trials are often cited as providing evidence that statins do not have an effect on the incidence ofdementia: the Prospective Study ofPravastatin in the Elderly (PROSPER) and the Medical Research
+Council/British Heart Foundation Heart Protection Study; however, because of methodologic limitations in relation to dementia outcomes in these two trials, the results of these trials are difficult to evaluate. Dementia incidence or cognitive outcomes were not preplanned endpoints in either of them, neither study included a clinical cognitive evaluation, and numbers of patients with follow-up information for cognitive evaluations were not reported in either study manuscript. In PROSPER a post hoc analysis compared changes in cognitive scores over a 3-year period between statintreated and placebo patients and found no significant differences. In the MRC/BHF HPS trial,27
+similar percentages of participants (0.3% in each—statin vs placebo—group) developed dementia during the 5-year follow-up period. The report did not state how the outcome of dementia was determined (e.g., reported as an adverse event or by follow-up phone interview).
 *Taken from Cramer 2008 - included in review*
 
 
-### Economic impact
+There exist only two large scale randomized controlled trials - in fact these studies are the only two trials included in a 2016 review of statins for the prevention of dementia produced by the Cochrane [@mcguinness2016b]. Both showed no effect of 
+
+Queries around how the data were collected, along 
+
+### Economic impact 
 
 ### Risk factors
 
@@ -73,6 +85,13 @@ similar percentages ofparticipants (0.3% in each—statin vs placebo—group) de
 
 #### Hydrophilic
 
+## Methods used in the thesis
+
+## Evidence synthesis
+
+### Triangulation
+
+### Individual patient data meta-analyis
 
 ## Summary
 

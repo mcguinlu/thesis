@@ -5,7 +5,7 @@ output:
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
-      reference_docx: word-styles-reference-01.docx
+      reference_docx: templates/word-styles-reference-01.docx
   bookdown::html_document2: default
   bookdown::pdf_document2:
     template: templates/brief_template.tex
@@ -192,22 +192,26 @@ However, while several of the main repositories (e.g. arXiv, bioRxiv) have exist
 
 At present, medRxiv allows only simple search queries, as opposed to the often complex Boolean logic that information specialists use to query other major databases. Additionally, record metadata (titles/abstracts/author lists) must be accessed individually, rather than in batches, meaning that downloading relevant records for title and abstract screening a time consuming task. 
 
-The `medrxivr` R package was created in order to facilitate the searching of this data source, allow
+This source of information is particularly important to this thesis, in that one of the primary types of evidence that I planned to use in the triangulation exercise (Mendelian randomization (MR)) is still developing and many MR studies that look at the clinical question that this project aims to investigate are posted as preprints on the bioRxiv, and more recently medRxiv, preprint servers. Being able to systematically search these records for the purpose of the systematic review described in Chapter \@(ref:sys-rev-heading) was a necessity. In light of the above, the `medrxivr` R package was created in order to facilitate the searching of this data source.
+
+### Development
+
+Early versions of the tool
+
+
 
 ### Usage
 
 To install `medrxivr` from CRAN:
 
 ```{r, eval = FALSE}
-# Currently doesn't work as not on CRAN
-
 install.packages("medrxivr")
 ```
 
 To install the development version from GitHub:
 
 ```{r, eval = FALSE}
-devtools::install_github("mcguinlu/medrxivr")
+devtools::install_github("ropensci/medrxivr")
 ```
 
 
@@ -276,21 +280,48 @@ mx_crosscheck()
 ## No new records added to medRxiv since last snapshot.
 ```
 
+## Export
+
+One of the key 
+
+
+## Data visualisation and reporter functions
+
+
+
+**TBC**
 
 ### Reception and Future Plans
 
-The tool has be well received by the community, and several use cases have been reported. The tool was primarily created to faciliate the searching performed as part of the review in Chapter \@ref(sys-rev-heading). However, several other use cases have emerged for the tool. It has been used to visalise the growing number of preprints related to the 2019 coronavirus outbreak ^[https://twitter.com/L_Brierley/status/1233109086444695553], etc, etc
+The tool has be well received by the community, and several use cases have been reported. However, several other use cases have emerged for the tool. It has been used to visalise the growing number of preprints related to the 2019 coronavirus outbreak ^[https://twitter.com/L_Brierley/status/1233109086444695553], etc, etc
 
 Following peer-review, it has been onboarded into the rOpenSci suite of packages, a collection of "carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web", and an associated article published in the Journal of Open Source Software.
 
-The tool has also 
+A short paper describing the tool has been published in the Journal of Open Source Software following formal peer-review of the package and associated documentation and tutorials as part of the rOpenSci onboarding process. The entire review discussion can be viewed online.^[https://github.com/ropensci/software-review/issues/380]
+
+The tool has been used reasonably widely, included in the systematic reviews, but also to extract data to facilitate the compare the behavior of researchers under two different journal policies by comparing the preprint paper with the published journal paper. 
+
+Feedback from the systematic review community has been positive.
+
+### Package infrastructure
+
+The `medrxvir` package was written in R using RStudio, and followed development best practices, including complete and information documentation, a robust unit testing framework (99% of all code lines within the package are formally tested under this framework) across multiple platforms including Windows, MacOS, and Linux, and in-depth code review by two experienced reviewers. 
+
+The medRxiv snapshot is taken every morning using GitHub Actions, an automated system fo repetitive tasks.
+
+
+## Shiny app
+
+Part of the key theme of accessibility meant creating a web-application that l
 
 <!----------------------------------------------------------------------------->
 ## Dicussion
 
 Packaging and sharing R scripts should be a fundamental part of evidence synthesis process. [EXPAND]
 
-By implementing the tools described above as both as an R package and a `Shiny` web app, the functionality is available to evidence synthesists with varying levels of ability in R.  These tools serve as an example of the advantages of “packaging” the R scripts that evidence synthesists often create for personal use.[@wickham2015r] In the case of `robvis`, it is likely that several other evidence synthesists have written scripts to produce similar risk-of-bias plots to those presented here - in fact, in the course of its development, I identified one other research group that has done so. This duplication of time and effort is inefficient, and creating and sharing well-documented R packages represents one way to reduce this inefficiency. Taking this approach one step further, `Shiny` apps represent a straightforward way to provide a user-friendly GUI for a newly created R package within a very short timeframe, expanding the potential pool of users of the package to anyone with an internet connection.
+As
+
+By implementing the tools described above as both as an R package and a `Shiny` web app, the functionality is available to evidence synthesists with varying levels of ability in R. These tools serve as an example of the advantages of “packaging” the R scripts that evidence synthesists often create for personal use.[@wickham2015r] In the case of `robvis`, it is likely that several other evidence synthesists have written scripts to produce similar risk-of-bias plots to those presented here - in fact, in the course of its development, I identified one other research group that has done so. This duplication of time and effort is inefficient, and creating and sharing well-documented R packages represents one way to reduce this inefficiency. Taking this approach one step further, `Shiny` apps represent a straightforward way to provide a user-friendly GUI for a newly created R package within a very short timeframe, expanding the potential pool of users of the package to anyone with an internet connection.
 
 Creating a package using R has a number of particular advantages. R provides access to a range of powerful tools including the `ggplot` infrastructure as demonstrated above, and RMarkdown, which enables creation of documents that can be rendered in a range of formats such as PDF, HTML, or Word.[@xie2018r] Furthermore, and focusing specifically on evidence synthesis, building new tools as packages in R allows for easy integration with the range of existing evidence synthesis packages. Recently, the `metaverse` project,[@variousauthors2020] of which `robvis` and `medrivr` are a part, has begun to curate a collection of R packages that cover different aspects of the systematic review and meta-analysis process which, when taken together, form a coherent end-to-end open-source alternative to commercial offerings such as Covidence or Review Manager. Key offerings in this suite of packages include litsearcher, which facilitates systematic search strategy development, revtools, a package for managing the review process and performing title and abstract screening, metaDigitise, a package for automatic extraction of data from figures in research papers, and metafor, a package for conducting meta-analyses in R.[@grames2019automated; @metaforref; @pick2018; @westgate2019revtools]
 

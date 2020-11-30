@@ -1,32 +1,35 @@
 ---
-#########################################
-# options for knitting a single chapter #
-#########################################
 output:
-  bookdown::html_document2: default
-  bookdown::word_document2: default
+  bookdown::word_document2: 
+      reference_docx: templates/word-styles-reference-01.docx   
   bookdown::pdf_document2:
     template: templates/brief_template.tex
+  bookdown::html_document2: default
 documentclass: book
 ---
 
-
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:dara-quote)'}
+Science knows it doesn't know everything; otherwise, it'd stop
+```
+(ref:dara-quote) --- Dara O'Briain
 
 # Discussion
 
-## Summary of findings
+## Summary of findings (and implications for policy makers)
 
 ## Strengths and Limitations
 
-There are several strengths and limitations
+There are several strengths and limitations to the work presented in this thesis. One particularly strength is the lengths gone to find all available published and unpublished evidence around the question, and to integrate this evidence in a coherent framework, taking into account the limitations of ach source and how these limitations may be used to provide 
 
 ## Reproducible research
 
-Reproducible science has been a key theme running through this thesis. An open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
+Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tool to help search medRxiv and bioRxiv preprint metadata. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
 
-This is true to the extent that new tools were built specifically for this thesis to allow the results to be more reproducible
+Containerisation was used to ensure that the code is reproducible, in line iwht best practices
 
+Commentary on the fact that the best you can do is replicate vs reproducible (due the closed nature of the)
 
+One is the ability to recreate the results given the same data and code, the other is the ability to recreate the results given the same code but a different dataset. IN theory it is possible to gain access the dataset given the information presented in Chapter \@(ref:cprd-analysis). However, access is dependency on an ISAC application to the managing body of the CPRD. 
 
 ## Public involvement and engagement
 
@@ -35,6 +38,7 @@ Involving and engaging the public and patients has been a central theme to this 
 Public engagement activities included 
 
 Public involvement also steered the creation of the topic
+
 
 ## Future work
 

@@ -11,6 +11,7 @@ documentclass: book
 ---
 
 
+
 # Introduction {#intro-intro}
 \minitoc <!-- this will include a mini table of contents-->
 
@@ -18,22 +19,27 @@ documentclass: book
 The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of this chapter. Reference labels will automatically be generated if you don't specify them, as the lowercase title with spaces replaced by hypens (e.g. r-markdown-basics). Look for the reference to this label at the beginning of the next chapter.
 -->
 
+```{r load_helper_scripts, include=FALSE}
+source("R/citations.R")
+```
+
 ## Aims and Objectives of the thesis
 
 
 
 ### Aim
 
+### Objectives 
 
-
-### Objective
-
+   * To review the published literature with respect to the effec tof lipids and lipid regulating agents  
+   * To examine whether there is evidence for an effect of lipid-regulating agents on dementia and related outcomes in a large scale population-based cohort, the Clinical Practice Research Datalink
+   * To meta-analyze the 
 
 
 ## Chapter Overview
 
 * __Chapter \@ref(background-heading):__ Background information on dementia and blood lipid levels. This chapter provides an introduction to the topics covered in this thesis to non-subject area experts, and discusses the motivation for the remainder of the thesis. 
-* __Chapter \@ref(sys-rev-heading)__ This Chapter describes a comprehensive systematic review and meta-analysis of all available evidence on the relationship between  
+* __Chapter \@ref(sys-rev-heading)__ This Chapter describes a comprehensive systematic review and meta-analysis of all available evidence on the relationship between blood lipids and lipid 
 * __Chapter \@ref(cprd-analysis):__ This Chapter examines the relationship between lipid-regulating agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database, based in England. 
 * __Chapter \@ref():__ This Chapter seeks 
 
@@ -52,6 +58,8 @@ __Include other papers I have been involved in?__
 * McGuinness et al. 
 
 ### Software
+
+A lot of packages were used in this project`r gen_rmd_citation()`
 
 * `robvis`: An R package and associated `shiny` web application that allows users to easily visualise the results of risk of bias graphs.
 

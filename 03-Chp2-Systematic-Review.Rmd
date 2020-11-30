@@ -1,19 +1,16 @@
 ---
-#########################################
-# options for knitting a single chapter #
-#########################################
 output:
-  bookdown::html_document2: default
-  bookdown::word_document2: default
   bookdown::pdf_document2:
     template: templates/brief_template.tex
+  bookdown::word_document2: default
+  bookdown::html_document2: default
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:darwin-quote)'}
-Hold
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:dara-quote)'}
+Science knows it doesn't know everything; otherwise, it'd stop
 ```
-(ref:darwin-quote) --- Charles Darwin [@chang2012]
+(ref:dara-quote) --- Dara O'Briain
 
 # Systematic Review {#sys-rev-heading}
 \minitoc <!-- this will include a mini table of contents-->
@@ -33,6 +30,9 @@ knitr::read_chunk("R/Chp2-Systematic-Review.R")
 
 The aim of this chapter is to systematically review all available literature on the association between blood levels of total cholesterol and it's constituent parts (HDL-c,LDL-c and triglycerides) on the subsequent risk of dementia.
 
+Based on the review of prev, no previous 
+
+Literature con
 
 ## Methods
 
@@ -42,7 +42,7 @@ We will systematically search electronic bibliographic databases to identify pot
 
 The following databases will be searched from inception onwards: Medline, EMBASE, Psychinfo, Cochrane Central Register of Controlled Trials (CENTRAL), and Web of Science Core Collection. We will also search clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials.
 
-The abstracts list of relevant conferences (e.g. the proceedings of the Alzheimer’s Association International Conference, published in the journal Alzheimer’s & Dementia) will be searched. Grey literature will also be searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses will be accessed using the Open Access Theses and Dissertations portal. We will also search BioArxiv, a preprint repository, to identify potentially relevant studies. Finally, the reference lists of included studies will be searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
+The abstracts list of relevant conferences (e.g. the proceedings of the Alzheimer’s Association International Conference, published in the journal Alzheimer’s & Dementia) will be searched. Grey literature will also be searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses will be accessed using the Open Access Theses and Dissertations portal. We will also search bioRxiv and medRxiv, preprint repositories using a tool built as part of this thesis, to identify potentially relevant studies. Finally, the reference lists of included studies will be searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
 
 
 ### Study selection
@@ -66,10 +66,9 @@ Case-control studies, cross-sectional studies, qualitative studies, case reports
 Excluded studies performing autopsy unless it was done under accepted criteria
 Exclude studies using a dietary intervention, for example omega-3 fatty acid enriched diet, as it hard to disentangle the effect of other elements contained within te diet, vs simple tablet based supplements of 
 
-
 ### Data extraction
 
-Harmonisation of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorising lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
+Harmonization of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorising lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
 
 
 ### Risk of bias assessment
@@ -80,13 +79,24 @@ At present, no risk of bias assessment tool for Mendelian randomisation studies 
 
 Data will be visualized using a paired forest and risk of bias plot
 
+
 ### Patient and public involvement
-
-
 
 ## Results
 
 ### Screening results
+
+Following screening, XXX studies were included. 
+
+The distribution of included studies over time demonstrates that despite the conduct of several previous reviews of different types of literature surrounding this question, primary studies continue to the published as these reviews have yet to provide a definite answer. 
+
+Table \@ref(tab:incl-studies-character) shows the characteristics [**Include column here that says whether it was included in a systematic review - see below**]
+
+*As part of our our forward snowballing exercise (where articles citing an included study are cited), we recorded whether a study included in our review had been included in any previous evidence synthesis attempt in an attempt to qualify the added value of this analysis. Additionally, if an included article was subsequently cited by a review, all studies in that review were screened for inclusion for the sake of completeness. This analysis was performed by extracting the citing articles from Google Scholar on XXXX and screening them manually. The DOI of articles extracted from this analysis are included in the appendix, as the Google Scholar search functionality is not readily reproducible.*
+
+
+As a summary of the duplication of work in this area, we looked at how many reviews a single included study had previously been included in.  
+
 
 #### Inter-rater reliability
 
@@ -94,7 +104,7 @@ Inter- and intra-rater reliability was asssessed for a 10% subsample of records 
 
 Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This measure of inter-rater reliabilty was chosen over other methods of assessing inter-rater reliability such as percent agreeement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. [@cohen1960: [@gwet2008; @wongpakaran2013]
 
-How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:kappa-table).
+How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:gwet-table).
 
 Gwet's AC1 is calculated using the following:
 

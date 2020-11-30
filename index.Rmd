@@ -22,7 +22,9 @@ abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with ab
 #######################
 ## bibliography path ##
 #######################
-bibliography: bibliography/references.bib
+bibliography: 
+  - bibliography/references.bib
+  - bibliography/pkg-refs.bib
 csl: bibliography/nature.csl
 bibliography-heading-in-pdf: Bibliography
 
@@ -81,7 +83,9 @@ documentclass: book
 
 ```{r create_chunk_options, include=FALSE, eval=knitr::is_latex_output()}
 source('scripts_and_filters/create_chunk_options.R')
+source("R/citations.R")
 ```
+
 <!--
 Include the create_chunk_options chunk above at the top of your index.Rmd file
 This will include code to create additional chunk options (e.g. for adding author references to savequotes)

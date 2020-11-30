@@ -24,8 +24,14 @@ knitr::include_graphics("figures/sys-rev/prismaflow.png",
 
 kappa.table <- data.frame(
   stringsAsFactors = FALSE,
-  Kappa = c("0–.20", ".21–.39", ".40–.59", ".60–.79",
-            ".80–.90", "Above.90"),
+  Kappa = c(
+    "0 – 0.20",
+    "0.21 – 0.39",
+    "0.40 –.59",
+    "0.60 –0.79",
+    "0.80–0.90",
+    "> 0.90"
+  ),
   Interpretation = c(
     "None",
     "Minimal",
@@ -33,10 +39,14 @@ kappa.table <- data.frame(
     "Moderate",
     "Strong",
     "Almost perfect"
-  ))
+  )
+)
 
-knitr::kable(kappa.table,
-             caption = "Guidelines for a stricter interpretation of Cohen's kappa, presented in McHugh (2012)" )
+mal::aca_simple_table(kappa.table,
+                      autofit = FALSE,
+                      fontsize = 10) %>%
+  flextable::width(j = 1:2, 1.5) %>%
+  flextable::set_caption("Test")   
 
 # ---- agreement-table-inter
 
@@ -46,6 +56,8 @@ agreement.table.1 <- data.frame(group = rep("Second reviewer decision",3),
                                 Include = c(9,22,31), 
                                 Total = c(1253, 48,1301))
 
+
+# mal::aca_simple_table(agreement.table.1)
 
 knitr::kable(agreement.table.1, col.names = c("","","Exclude", "Include","Total"),  caption = 'Inter-rater reliability') %>%
   kable_styling("striped") %>%
