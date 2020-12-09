@@ -20,6 +20,10 @@ source("R/doc_options.R")
 knitr::read_chunk("R/Chp2-Systematic-Review.R")
 ```
 
+## Lay summary
+
+
+
 ## Additional ideas
 
 * Evidence map - show the distribution of the different studies population across the world.
@@ -104,19 +108,19 @@ Inter- and intra-rater reliability was asssessed for a 10% subsample of records 
 
 Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This measure of inter-rater reliabilty was chosen over other methods of assessing inter-rater reliability such as percent agreeement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. [@cohen1960: [@gwet2008; @wongpakaran2013]
 
-How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:gwet-table).
+How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:gwettable).
 
-Gwet's AC1 is calculated using the following:
+In a two by two table with cells A, B, C and D, Gwet's AC1 is calculated using the following:
+
+$$AC1 = \frac{p-e(\gamma)}{1-e(\gamma)}$$
+Here, $p = \frac{A+D}{N}$ and $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, where $q = \frac{(A+C)+(A+B)}{2N}$
 
 -> Insert formula here. Need to be sure of how to calculate. [@gwet2008; @sim2005]
 
-```{r gwet-table, echo = FALSE}
+```{r agreementtableinter, echo = FALSE}
 ```
 
-```{r agreement-table-inter, echo = FALSE}
-```
-
-```{r agreement-table-intra, echo = FALSE}
+```{r agreementtableintra, echo = FALSE}
 ```
 
 For the inter-rater reliability, percentage agreement was 97.3% (AC1 = XXXX, Table \@ref(tab:agreement-table-intra)), while for the intra-rater reliability, agreement was 98.6% (AC1 = XXXX, Table \@ref(tab:agreement-table-intra)).
@@ -127,9 +131,6 @@ Those records which were excluded in the initial screening, but were included ei
 
 
 #### PRISMA flowchart
-
-```{r prisma-flow, echo = FALSE, warning=FALSE, message=FALSE, fig.cap="PRISMA flow diagram, detailing the movement of studies through the systematic review.", out.width="100%"}
-```
 
 Following de-duplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened. [**CROSS-REF to PRISMA flow here**]
 

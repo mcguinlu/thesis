@@ -72,15 +72,21 @@ Treatment 00000111
 
 Split into 3 month blocks since index event and use the same approach as above to work out the values of each covariate at each time point.
 
-Note: this will be harder for things that are not dichotmous and can go up as well as down. Examples include total cholesterol and BMI, which can go up as well as down. 
+Note: this will be harder for things that are not dichotomous and can go up as well as down. Examples include total cholesterol and BMI, which can go up as well as down. 
 
 
 ### The effect of total cholesterol or LDL-cholesterol on LRA prescription
 
 It would be fair to assume that the baseline total cholesterol/LDL-cholesterol would at least in part predict the likelihood of someone being prescribed a statin. 
 
-However, this is not the case. Baseline cholesterol level are predicted to be a poorer instrument for than QRISK2 score,[@hippisley-cox2008] which estimates a patients' 10-year risk of a cardiovascular event. Current NICE guidelines state that those with a QRISK score of 10% or higher, and in whom lifestyle modifcation is ineffective/inappropriate, should recieved a lipid regulation agent. However, this analysis could not find any effect of QRISK2 scores on statins precription levels at 6 months. [Need to cite Lauren's eventual paper here focusing on QRISK2, but also display a RD analysis of TC/LDL-c levels here on statins at 6 months. Need also to check, as Lauren mentioned she found some evidence that there is a relationship in practices that acutally did what they should.]
+However, this is not the case. Baseline cholesterol level are predicted to be a poorer instrument for than QRISK2 score,[@hippisley-cox2008] which estimates a patients' 10-year risk of a cardiovascular event. Current NICE guidelines state that those with a QRISK score of 10% or higher, and in whom lifestyle modifcation is ineffective/inappropriate, should received a lipid regulation agent. However, this analysis could not find any effect of QRISK2 scores on statins precription levels at 6 months. [Need to cite Lauren's eventual paper here focusing on QRISK2, but also display a RD analysis of TC/LDL-c levels here on statins at 6 months. Need also to check, as Lauren mentioned she found some evidence that there is a relationship in practices that actually did what they should.]
 
-As expected, in a confirmatory analysis using lipid levels, there was no association between <span color="red">the most recent total cholesterol or LDL-cholesterol reading in the CPRD and the treatment, incdicating that adjusting for this variable was not required. *</span>
+As expected, in a confirmatory analysis using lipid levels, there was no association between *the most recent total cholesterol or LDL-cholesterol reading in the CPRD and the treatment, indicating that adjusting for this variable was not required.*
+
+
+### Replicating the analysis
+
+**Comparing and contrasting between different studies is particularly difficult** because of the impact that the use of differnet code list can have on the analysis [@wilkinson2018a; @mcguinness2019c]
+
 
 
