@@ -43,16 +43,11 @@ Preprints represent an increasingly important source of scientific information. 
 
 As a result, preprint repositories should be considered an distinct but complementary information source when reviewing the evidence base as part of a systematic review. The two key repositories in the health science are bioRxiv, established in 2013,[@sever2019] and medRxiv, which evolved to replace the "Epidemiology" and "Clinical Trial" categories of bioRxiv, which launched in 2019.[@rawlinson2019]
 
-
 Preprints represent a particularly important to this thesis, ias one of the primary types of evidence that I planned to use in the triangulation exercise (Mendelian randomization (MR)) is still developing and many MR studies that look at the clinical question that this project aims to investigate are posted as preprints on the bioRxiv, and more recently medRxiv, preprint servers. Being able to systematically search these records for the purpose of the systematic review described in Chapter \@ref(sys-rev-heading) was a necessity. In light of the above, the `medrxivr` R package was created in order to facilitate the searching of this data source.
 
 <!----------------------------------------------------------------------------->
 
-
-In addition the 
-
-
-Developing new tools for facilitating evidence synthesis will benefit patients by speeding up the speed with which systematic reviews are produced. A recent study put the mean duration of a systematic review project, from date of registration to date of publication is 67.3 weeks.[@borah2017] A large proportion of this time will be spent on manual tasks such as running searches and extracting records, title and abstract screening, and data extraction - therefore, efforts to increase the efficiency of the process should focus on process that can be automated. 
+More generally, developing new tools for facilitating evidence synthesis will benefit patients by speeding up the speed with which systematic reviews are produced. A recent study put the mean duration of a systematic review project, from date of registration to date of publication is 67.3 weeks.[@borah2017] A large proportion of this time will be spent on manual tasks such as running searches and extracting records, title and abstract screening, and data extraction - therefore, efforts to increase the efficiency of the process should focus on process that can be automated. 
 
 In addition, we need to focus on developing tools that allow systematic, reproducible access to more informal sources of scientific material. One key emerging source
 
@@ -170,7 +165,7 @@ Additional functionality allowing common syntax used by systematic reviewers and
 <!----------------------------------------------------------------------------->
 ### Exporting to bibliography
 
-One of the key features of the `medrxivr` is the ability for users to export the results of their
+One of the key features of the `medrxivr` is the ability for users to easily export the results of their systematic search to a reference manager. While it is a seemingly simple request, this is is one of the key ways in which `medrxivr` - as it was built with systematic reviews specifically in mind, it is 
 
 For example, the results of our simple search above can be exported using the following code:
 
@@ -261,7 +256,16 @@ There is the potential that the cross-section of literature posted on medrxiv wo
 
 As
 
-By implementing the tool described above as both as an R package and a `Shiny` web app, the functionality is available to evidence synthesists with varying levels of ability in R. These tools serve as an example of the advantages of “packaging” the R scripts that evidence synthesists often create for personal use.[@wickham2015r] In the case of `medrxivr`, it is likely that several other evidence synthesists had written scripts that have a similar functionality - in fact, in the course of its development, one other researcher that has done so was identified. This duplication of time and effort is inefficient, and creating and sharing well-documented R packages represents one way to reduce this inefficiency. Taking this approach one step further, `Shiny` apps represent a straightforward way to provide a user-friendly GUI for a newly created R package within a very short time-frame, expanding the potential pool of users of the package to anyone with an internet connection.
+By implementing the tool described above as both as an R package and a `Shiny` web app, the functionality is available to evidence synthesists with varying levels of ability in R. These tools serve as an example of the advantages of “packaging” the R scripts that evidence synthesists often create for personal use.[@wickham2015r] In the case of `medrxivr`, it is likely that several other evidence synthesists had written scripts that have a similar functionality - in fact, in the course of its development, one other researcher that has done so was identified (xxxx xxxx, author of the `rbiorxiv` pacakge).[@rbiorxiv] 
+
+``` {r, eval = TRUE, echo = FALSE}
+
+t<-rbiorxiv::biorxiv_summary()
+
+```
+
+
+This duplication of time and effort is inefficient, and creating and sharing well-documented R packages represents one way to reduce this inefficiency. Taking this approach one step further, `Shiny` apps represent a straightforward way to provide a user-friendly GUI for a newly created R package within a very short time-frame, expanding the potential pool of users of the package to anyone with an internet connection.
 
 Creating a package using R has a number of advantages unique to the R programming environment. R provides access to a range of powerful tools including the `ggplot` infrastructure for creating publication-quality plots, and RMarkdown, which enables creation of documents that can be rendered in a range of formats such as PDF, HTML, or Word.[@xie2018r] Furthermore, and focusing specifically on evidence synthesis, building new tools as packages in R allows for easy integration with the range of existing evidence synthesis packages. Recently, the `metaverse` project,[@variousauthors2020] of `medrivr` is a part, has begun to curate a collection of R packages that cover different aspects of the systematic review and meta-analysis process which, when taken together, form a coherent end-to-end open-source alternative to commercial offerings such as Covidence or Review Manager. Key offerings in this suite of packages include `litsearcher`, which facilitates systematic search strategy development, `revtools`, a package for managing the review process and performing title and abstract screening, `metaDigitise`, a package for automatic extraction of data from figures in research papers, and `metafor`, a package for conducting meta-analyses in R.[@grames2019automated; @metaforref; @pick2018; @westgate2019revtools]
 
@@ -274,3 +278,6 @@ Creating a package using R has a number of advantages unique to the R programmin
 * I have outlined the motivation for developing this tool in relation to this thesis - more specifically, that it was used to perform systematic and reproducible searches of a key literature source used in the comprehensive systematic review described in Chapter \@ref(sys-rev-heading).
 
 * The impact of this tool to date, its place in the broader evidence synthesis in R ecosystem, and a roadmap for its future development has been discussed.
+
+
+test
