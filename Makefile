@@ -1,5 +1,5 @@
 pdf:
-	Rscript -e 'grateful::get_citations(grateful::scan_packages(include.Rmd = TRUE),out.dir = "bibliography")'
+	Rscript -e 'grateful::get_citations(c(grateful::scan_packages(include.Rmd = TRUE),"rbiorxiv"),out.dir = "bibliography")'
 	Rscript -e 'source(here::here("R","abbreviations.R"))'
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book", output_dir = "docs")'
 	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc front-and-back-matter/abbreviations.aux
