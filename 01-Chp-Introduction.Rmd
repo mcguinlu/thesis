@@ -17,9 +17,8 @@ documentclass: book
 The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of this chapter. Reference labels will automatically be generated if you don't specify them, as the lowercase title with spaces replaced by hypens (e.g. r-markdown-basics). Look for the reference to this label at the beginning of the next chapter.
 -->
 
-```{r load_helper_scripts, include=FALSE}
-source("R/citations.R")
-```
+
+First I provide a background to the central concepts and themes of this thesis, and justify the motivations for this piece of work. I introduce a tool that allows for systematic searching of preprint literature, which is then used in a systematic review of all available evidence on my central research question.
 
 ## Additional ideas
 
@@ -27,15 +26,12 @@ source("R/citations.R")
 * Compare and contrast the codes used to find the AzD cases in the previous study and in this study, potentially with a view to contrasting misclassification between the two.
 
 
+
+
+
+
+
 ## Aims and Objectives of the thesis
-
-(ref:test2-cap) __This is a test for the intro:__
-
-(ref:test2-scap) This is a test for the intro
-
-```{r test2, echo = FALSE, results="asis", fig.cap='(ref:test2-cap)', out.width='100%', fig.scap='(ref:test2-scap)'}
-knitr::include_graphics(file.path("figures/sys-rev-tools/data_sources.png"))
-```
 
 ### Aim
 
@@ -45,15 +41,21 @@ knitr::include_graphics(file.path("figures/sys-rev-tools/data_sources.png"))
    * To examine whether there is evidence for an effect of lipid-regulating agents on dementia and related outcomes in a large scale population-based cohort, the Clinical Practice Research Datalink
    * To meta-analyze the 
 
+## Theoretical framework
+The main theoretical framework used in this thesis is evidence synthesis - the discovery and critical integration of all available evidence on a research question in order to either: a) provide a more definitive answer to that question or; b) highlight gaps in the existing evidence base so that future research address questions that have yet to be answered, or explores the same question in a way that increases our confidence in the result. 
+
+
+All elements of this thesis are based around this framework.
+
 
 ## Chapter Overview
 
 * __Chapter \@ref(background-heading):__ Background information on dementia and blood lipid levels. This chapter provides an introduction to the topics covered in this thesis to non-subject area experts, and discusses the motivation for the remainder of the thesis. 
-* __Chapter \@ref(sys-rev-heading)__ This Chapter describes a comprehensive systematic review and meta-analysis of all available evidence on the relationship between blood lipids and lipid 
-* __Chapter \@ref(cprd-analysis):__ This Chapter examines the relationship between lipid-regulating agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database, based in England. 
-* __Chapter \@ref():__ This Chapter seeks 
+* __Chapter \@ref(sys-rev-tools-heading)__ This CHhapter introduces a new tool, the `medrxivr` R package, which was used to developed to allow for systematic searches of the bioRxiv and medRxiv preprint repositories.
+* __Chapter \@ref(sys-rev-heading)__ This Chapter describes a comprehensive systematic review and meta-analysis of all available evidence on the relationship between blood lipids and lipid. 
+* __Chapter \@ref(cprd-analysis-heading):__ This Chapter examines the relationship between lipid-regulating agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database, based in England. 
+* __Chapter \@ref(ipd-heading):__ This Chapter describes an individual patient data analysis of several longitudinal cohort studies, to describe the relationship between blood serum lipids and dementia outcomes.
 
-* __Appendix \@ref(sys-rev-tools-heading)__ This Chapter introduces new evidence synthesis two tools built in R: `robvis` and `medrixvr`. The motivation for, development and impact of, and future plans for these tools are outlined.
 
 ## Thesis Output
 
@@ -63,28 +65,27 @@ The outputs of this thesis are detailed below, and include published peer review
 
 __Include other papers I have been involved in?__
 
+  * McGuinness, Luke A., and Lena Schmidt. "medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in R." Journal of Open Source Software 5.54 (2020): 2651. DOI: [10.21105/joss.02651](https://doi.org/10.21105/joss.02651)
+  
+  * McGuinness, Luke A., and Julian PT Higgins. "Risk‐of‐bias VISualization (robvis): An R package and Shiny web app for visualizing risk‐of‐bias assessments." Research Synthesis Methods (2020). DOI: [10.1002/jrsm.1411](https://doi.org/10.1002/jrsm.1411)
+  
 ### Papers under review
 
-* McGuinness et al. 
+  * 
+
+
 
 ### Software
 
-A lot of packages were used in this project`r gen_rmd_citation()`
+* `medrxvir`: An R package and associated `shiny` web application that allows users to easily search and retrieve bibliographic data from the medRxiv^[https://www.medrxiv.org/] and bioRxiv^[https://www.biorxiv.org/] preprint repositories. See Chapter \@ref(sys-rev-tools-heading) for more details. Install a stable version of the package from CRAN with `install.packages("medrxivr")` or alternatively install the development version from GitHub using `devtools::install_github("mcguinlu/medrxivr")`. Link: [https://ropensci.github.io/medrxivr/](https://ropensci.github.io/medrxivr/)
 
-* `robvis`: An R package and associated `shiny` web application that allows users to easily visualise the results of risk of bias graphs.
-
-* `medrxvir`: An R package and associated `shiny` web application that allows users to easily search and retrieve bibliographic data from the medRxiv^[https://www.medrxiv.org/] preprint repository.
-
+* `robvis`: An R package and associated `shiny` web application that allows users to easily visualize the results of the risk-of-bias assessments performed as part of a systematic review. See Appendix \@ref(appendix-robvis) for more details. Install a stable version of the package from CRAN using `install.packages("robvis")` or alternatively install the development version from GitHub using `devtools::install_github("mcguinlu/robvis")`. Link: [https://mcguinlu.github.io/robvis/](https://mcguinlu.github.io/robvis/)
 
 ### Talks
 
-* Talk at Cochrane on medrxivr
 * Presentation to the 
 * Webinar to Evidence Synthesis Ireland on Risk of Bias
-
-
-
-
+* Presentation(s) to the Evidence Synthesis and Meta-Analysis in R Conference (ESMARConf)
 
 ## Summary
 

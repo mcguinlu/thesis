@@ -11,7 +11,7 @@ documentclass: book
 Science knows it doesn't know everything; otherwise, it'd stop
 ```
 
-# Systematic Review {#sys-rev-heading}
+# Systematic review and triangulation of available evidence {#sys-rev-heading}
 \minitoc <!-- this will include a mini table of contents-->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
@@ -20,9 +20,12 @@ knitr::read_chunk("R/Chp2-Systematic-Review.R")
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## To Do
+
+* Examine how many times a primary study was included in a review  
+* Look at wether searching preprints made any difference to my results
+
 ## Lay summary
-
-
 
 ## Additional ideas
 
@@ -55,7 +58,7 @@ Records will be imported into Endnote and deduplicated using the method outlined
 Title and abstract screening to remove obviously irrelevant records will be performed by the primary author, with a random selection of excluded records being screened in duplicate to ensure consistency with the inclusion criteria. If this demonstrates a significant level of erroneous exclusion by the primary author a larger proportion will be dual-screened. 
 Full-text screening will also be completed in full by the primary author. A second reviewer will screen a random sample of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage will be recorded. Disagreements occurring during either stage of the screening process will be resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.[@zotero-766]
 
-#### Inclusion
+#### Inclusion criteria
 We will seek studies that examine the relationship between blood lipid levels (or any specific lipid fraction, including total cholesterol, HDL, LDL, and triglycerides) and risk of incident dementia/MCI. Eligible study designs include randomized controlled trials and non-randomized observational studies of lipid modifying treatments, longitudinal studies examining the effect of increased/decreased blood lipid levels, and genetic instrumental variable (Mendelian randomization) studies examining the effect of genetically increased/decreased blood lipid levels. 
 
 Participants will be free (or assumed to be free) of dementia/MCI at baseline. Studies of any duration will be included to allow for exploration of the effect of length of follow-up on the effect estimate using meta-regression. No limits will be placed on the sample size of included studies.
@@ -64,7 +67,7 @@ Eligible studies will define dementia according to recognised criteria, for exam
 
 No limitations will be imposed on publication status, publication date, venue or language, although we will require sufficiently detailed reports of the studies to be able to examine their methods. Preprints and unpublished reports will be eligible for inclusion if relevant. Multiple publications resulting from the analysis of the same data will be included and grouped. 
 
-#### Exclusion
+#### Exclusion criteria
 Case-control studies, cross-sectional studies, qualitative studies, case reports/series and narrative reviews will be excluded. Studies which present no evidence of attempting to exclude prevalent cases from their analyses will also be excluded. Studies that measure change in continuous cognitive measures (e.g. MoCA score) without attempt to map these scores to ordinal groups (e.g. no dementia/MCI/dementia) will be excluded. Conference abstracts with no corresponding full-text publication will be examined, and we will contact authors to obtain information on the study’s status. Studies that are reported in insufficient detail (e.g. only in conference abstracts, new, letters, editorials and opinion) will be excluded. Previous systematic reviews will not be eligible, but their reference lists will be screened to identify any potentially relevant articles. Studies with outcomes not directly related to the clinical syndrome of dementia (e.g., neuroimaging), studies implementing a “multi-domain intervention” where the lipid-regulating agent is included in each arms (e.g. for example, a study examining exercise + statins vs statins alone, but a study examining exercise + statins vs exercise alone would be included), and studies where there was no screening for dementia at baseline except if the sample was initially assessed in mid-life (i.e. below the age of 50) will be excluded. 
 
 Excluded studies performing autopsy unless it was done under accepted criteria
@@ -72,17 +75,15 @@ Exclude studies using a dietary intervention, for example omega-3 fatty acid enr
 
 ### Data extraction
 
-Harmonization of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorising lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
-
+Harmonization of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorizing lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
 
 ### Risk of bias assessment
 
-Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomised controlled trials were assessed using the RoB2 tool,[@sterne2019], non-randomised studies of interventions were assessed using the ROBINS-I tool,[@sterne2016] and non-randomised studies of exposures were assessed using the ROBINS-E tool.[TBC] 
+Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomized controlled trials were assessed using the RoB2 tool,[@sterne2019], non-randomized studies of interventions were assessed using the ROBINS-I tool,[@sterne2016] and non-randomized studies of exposures were assessed using the ROBINS-E tool.[CITE] 
 
-At present, no risk of bias assessment tool for Mendelian randomisation studies is available. Bias in thesee studies was assessed with the help of an expert panel [TBC]
+At present, no risk of bias assessment tool for Mendelian randomization studies is available. Bias in these studies was assessed with the help of an expert panel drawn from my supervisors and other external invited researchers.[CITE]
 
-Data will be visualized using a paired forest and risk of bias plot
-
+Data will be visualized using a paired forest and risk of bias plot, created using the `robvis` tool. This tool was developed as part of this thesis to aid in creating standard risk-of-bias figures, and is summarized in Appendix \@ref(appendix-robvis).[@mcguinness2019]
 
 ### Patient and public involvement
 
@@ -100,9 +101,6 @@ Table \@ref(tab:incl-studies-character) shows the characteristics [**Include col
 
 
 As a summary of the duplication of work in this area, we looked at how many reviews a single included study had previously been included in.  
-
-
-#### Inter-rater reliability
 
 Inter- and intra-rater reliability was asssessed for a 10% subsample of records at the title and abstract screening stage. Intra-rater reliability involved a sinlge reviewer applying the inclusion criteria to the same set of records while blinded to their previous decisions, while inter-rater reliability involved two reviewers independently screening the same set of records.
 
@@ -137,22 +135,22 @@ The discrepancy between the percent agreement and the associated value of AC is 
 
 Those records which were excluded in the initial screening, but were included either by the same reviewer on their second viewing (n=4), or by the second reviewer (n=29), were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline vs mild cognitive impairment and the definition of eligible lipids.
 
-
 <!----------------------------------------------------------------------------->
-``` {r chunkname_setup, results="hide", message=FALSE}
+``` {r prisma-flow-setup, results="hide", message=FALSE}
 ```
 
-```{r chunkname_table, message=FALSE, results="asis"}
+(ref:prisma-flow-cap) __PRISMA Flowchart:__ Overview of how records moved through the systematic review process
+
+(ref:prisma-flow-scap) PRISMA Flowchart
+
+```{r prisma-flow-fig, echo = FALSE, results="asis", fig.cap='(ref:prisma-flow-cap)', out.width='100%', fig.scap='(ref:prisma-flow-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
 ```
 <!----------------------------------------------------------------------------->
 
-#### PRISMA flowchart
+Following de-duplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened. \@ref(fig:prisma-flow-fig)
 
-Following de-duplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened. [**CROSS-REF to PRISMA flow here**]
-
-A breakdown of records by 
-
-## Included studies
+### Characteristics of included studies
 
 XXXX studies met the criteria for inclusion in the review.
 
@@ -172,24 +170,34 @@ Include here:
 
 * Long table, horizontally. Newer version of flextable (GH) allows for PDF output
 
-## Publication bias
+### Risk of bias {#risk-of-bias-subheading}
+
+### Publication bias
 
 * Check if there are protocols available for any of the published reports, and whether there were
 * Vascular dementia has substantially less published reports. Many (reference Smeeth et al 2010 here) simply group into AD and non-AD making comparison between published st
 
-### Triangualtion across evidence sources
+## Triangualtion across evidence sources
 
 One key question for which multiple distinct sources of evidence were available were those looking at Laz
 
-A key limitiation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia [**Is this true?**] This rules out the use
+A key limitation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia [**Is this true?**] This rules out the use. In addition, there was limited literature available - as discussed in CHapter \@ref()
 
 
+Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated. [@guyatt2011]
+
+Without our framework and as part of the risk of bias assessments reported in \@ref(risk-of-bias-subheading), we test  test
 
 ## Discussion
 
-Of note, as part of the review, we identified serveral previous systematic reviews of this topic. However, this review is the firest to
+### Comparison with other reviews
 
+Of note, as part of the review, we identified several previous systematic reviews of this topic.[CITE] However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)[@sterne2019] to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels.
 
-Consideration of the potential impact of the magnitude and direct of unaddressed confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Wihtin GRADE the overall quality of evidence can be upgraded when there is deemed to be **will need to confirm this.l** [@guyatt2011]
+Some previous reviews did assess risk of bias, but used non-domain based assessment tools. Newcastle-Ottowa scale, 
+
+__The duplication of work across reviews (including, ironically, by this review) is substantial. In Section XXXX, I demonstrated that the each primary study included in this review was also included in other review so this topic, but that not all studies were included in all reviews. However, by creating a comprehensive review that attempted to draw together all available evidence from across the full range of study types.__
+
+### Strenghts and limitations
 
 ## Conclusion

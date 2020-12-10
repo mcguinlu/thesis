@@ -4,16 +4,24 @@
 
 <!-- If you feel it necessary to include an appendix, it goes here. The first appendix should include the commands above. -->
 
-# By Chapter
+# By Chapter {#chapter-appendix-heading}
 
-## Chapter 1
+## Chapter 1 {#appendix-chapter-1}
 
-## Chapter 2
-
-# Other Appendix
+## Chapter 2 {#appendix-chapter-2}
 
 <!----------------------------------------------------------------------------->
-## Producing risk-of-bias visualisation with `robvis`
+# Other Appendix {#other-appendix-heading}
+
+## Software used to create this thesis
+
+This thesis was written in RMarkdown.
+Several R packages were used as part of this project.`r gen_rmd_citation()`
+
+
+
+
+## Producing risk-of-bias visualisation with `robvis` {#appendix-robvis}
 
 ### Introduction
 

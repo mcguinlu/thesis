@@ -1,26 +1,5 @@
-# ---- prismaflow
+# ---- prisma-flow-setup
 
-# png(file = "figures/sys-rev/prismaflow.png", bg = "transparent")
-# PRISMAstatement::prisma(
-#   found = 16109,
-#   found_other = 0,
-#   no_dupes = 16109,
-#   screened = 16109,
-#   screen_exclusions = 15722,
-#   full_text = 387,
-#   full_text_exclusions = 0,
-#   qualitative = 0,
-#   quantitative = 0,
-#   labels = NULL,
-#   extra_dupes_box = FALSE,
-#   dpi = 72,
-#   font_size = 10)
-# dev.off()
-# 
-# knitr::include_graphics("figures/sys-rev/prismaflow.png", 
-#                         )
-
- 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- gwet-setup

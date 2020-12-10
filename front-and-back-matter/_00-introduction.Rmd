@@ -19,6 +19,25 @@ documentclass: book
 library(dplyr)
 library(ggplot2)
 
+get_words_short <- function(){
+
+files <- list.files(path = here::here(), pattern = "\\.Rmd$")
+
+files <- files[which(!(files %in% c("_main.Rmd","index.Rmd")))]
+
+words_v <- c()
+
+for (file in 1:length(files)) {
+  tmp <- wordcountaddin::word_count(here::here(files[file]))
+  words_v <- c(words_v, tmp)
+}
+
+words <- sum(words_v)
+
+return(words)
+
+}
+
 get_words <- function(){
 
 files <- list.files(path = here::here(), pattern = "\\.Rmd$")
@@ -47,7 +66,8 @@ masterWords <- read.csv(here::here("data","words","words.csv"),
 masterWords <- rbind(masterWords,
                      tmpWords) %>%
   dplyr::group_by(date) %>%
-  dplyr::filter(time == max(time))
+  slice(which.max(time)) %>%
+  dplyr::ungroup()
 
 return(masterWords)
 
