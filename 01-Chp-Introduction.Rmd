@@ -10,9 +10,7 @@ output:
 documentclass: book
 ---
 
-
-
-# Introduction {#intro-intro}
+# Introduction {#intro-heading}
 \minitoc <!-- this will include a mini table of contents-->
 
 <!--
@@ -31,7 +29,13 @@ source("R/citations.R")
 
 ## Aims and Objectives of the thesis
 
+(ref:test2-cap) __This is a test for the intro:__
 
+(ref:test2-scap) This is a test for the intro
+
+```{r test2, echo = FALSE, results="asis", fig.cap='(ref:test2-cap)', out.width='100%', fig.scap='(ref:test2-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev-tools/data_sources.png"))
+```
 
 ### Aim
 

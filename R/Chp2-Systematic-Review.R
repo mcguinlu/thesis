@@ -20,9 +20,12 @@
 # knitr::include_graphics("figures/sys-rev/prismaflow.png", 
 #                         )
 
-# ---- gwettable
+ 
 
-kappa.table <- data.frame(
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- gwet-setup
+
+gwet_table <- data.frame(
   stringsAsFactors = FALSE,
   Kappa = c(
     "0 – 0.20",
@@ -42,7 +45,12 @@ kappa.table <- data.frame(
   )
 )
 
-knitr::kable(kappa.table, booktabs = TRUE)
+gwet_caption <- "Agreement for kappa"
+
+# ---- gwet-table
+
+knitr::kable(gwet_table, format = "latex", caption = gwet_caption, booktabs = TRUE) %>% 
+  kable_styling(latex_options = c("striped", "hold_position"))
 
 # ---- agreementtableinter
 
@@ -60,9 +68,6 @@ knitr::kable(agreement.table.1, booktabs = TRUE, col.names = c("","","Exclude", 
   kableExtra::column_spec(4, border_right = T) %>%
   kableExtra::collapse_rows(columns = 1, valign ="middle") %>%
   kableExtra::row_spec(2,extra_css = "border-bottom: 1px solid")
-
-
-
 
 # ---- agreementtableintra
 

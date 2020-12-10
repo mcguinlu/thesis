@@ -1,0 +1,35 @@
+---
+#########################################
+# options for knitting a single chapter #
+#########################################
+output:
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+documentclass: book
+---
+
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:ipd-quote)'}
+Science knows it doesn't know everything; otherwise, it'd stop
+```
+(ref:ipd-quote) --- Bealy, 2013 [@bealy2013]
+
+# Individual participant data meta-analysis {#ipd-heading}
+\minitoc <!-- this will include a mini table of contents-->
+
+## Data sources
+
+As part of this Chapter, I will use individual patient data from a range of sources. These sources are described here in detail for reference.
+
+Should also include a list of reasons why specific additional cohorts were not included - some like the EHR might be too big to get
+
+Each should have: 
+
+* Description (including period,numbers, numbers with outcome, etc)
+*
+*
+
+```{r tests, }
+
+```

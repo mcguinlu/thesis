@@ -10,7 +10,6 @@ documentclass: book
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:dara-quote)'}
 Science knows it doesn't know everything; otherwise, it'd stop
 ```
-(ref:dara-quote) --- Dara O'Briain
 
 # Systematic Review {#sys-rev-heading}
 \minitoc <!-- this will include a mini table of contents-->
@@ -18,6 +17,7 @@ Science knows it doesn't know everything; otherwise, it'd stop
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source("R/doc_options.R")
 knitr::read_chunk("R/Chp2-Systematic-Review.R")
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Lay summary
@@ -108,7 +108,15 @@ Inter- and intra-rater reliability was asssessed for a 10% subsample of records 
 
 Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This measure of inter-rater reliabilty was chosen over other methods of assessing inter-rater reliability such as percent agreeement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. [@cohen1960: [@gwet2008; @wongpakaran2013]
 
-How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:gwettable).
+How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:gwet-table).
+
+<!----------------------------------------------------------------------------->
+``` {r gwet-setup, results="hide", message=FALSE}
+```
+
+```{r gwet-table, message=FALSE, results="asis"}
+```
+<!----------------------------------------------------------------------------->
 
 In a two by two table with cells A, B, C and D, Gwet's AC1 is calculated using the following:
 
@@ -130,6 +138,14 @@ The discrepancy between the percent agreement and the associated value of AC is 
 Those records which were excluded in the initial screening, but were included either by the same reviewer on their second viewing (n=4), or by the second reviewer (n=29), were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline vs mild cognitive impairment and the definition of eligible lipids.
 
 
+<!----------------------------------------------------------------------------->
+``` {r chunkname_setup, results="hide", message=FALSE}
+```
+
+```{r chunkname_table, message=FALSE, results="asis"}
+```
+<!----------------------------------------------------------------------------->
+
 #### PRISMA flowchart
 
 Following de-duplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened. [**CROSS-REF to PRISMA flow here**]
@@ -140,6 +156,8 @@ A breakdown of records by
 
 XXXX studies met the criteria for inclusion in the review.
 
+
+<!----------------------------------------------------------------------------->
 Include here:
 
 * PRISMA Flowchart (use PRISMA2020 from GitHub - depending on level of involvement, could refer to the Appendix here too.)

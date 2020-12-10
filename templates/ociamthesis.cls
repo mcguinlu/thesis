@@ -100,10 +100,9 @@
 \setlength{\headheight}{15pt}
 \fancyhf{} % clear the header and footers
 \pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{\thechapter. #1}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}} 
+\renewcommand{\sectionmark}[1]{\markright{\thesection~-~#1}}
 \renewcommand{\headrulewidth}{0pt}
-\fancyhead[LO]{\emph{\leftmark}} 
+\fancyhead[RO]{\emph{\rightmark}} 
 \fancyhead[RE]{\emph{\rightmark}} 
 \fancyfoot[C]{\emph{\thepage}}
 
@@ -112,11 +111,11 @@
 % JEM fix header on cleared pages for openright
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
    \hbox{}
-   \fancyhead[RE,LO]{}
+   \fancyhead[RO,LE]{}
    \newpage
    \if@twocolumn\hbox{}\newpage
    \fi
-   \fancyhead[LO]{\emph{\leftmark}} 
+   \fancyhead[RO]{\emph{\rightmark}} 
    \fancyhead[RE]{\emph{\rightmark}} 
    \fi\fi}
 
