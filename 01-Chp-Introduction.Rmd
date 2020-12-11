@@ -10,6 +10,11 @@ output:
 documentclass: book
 ---
 
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:intro-quote)'}
+Hold
+```
+(ref:intro-quote) --- Hold
+
 # Introduction {#intro-heading}
 \minitoc <!-- this will include a mini table of contents-->
 

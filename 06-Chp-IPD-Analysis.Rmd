@@ -10,11 +10,6 @@ output:
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:ipd-quote)'}
-Science knows it doesn't know everything; otherwise, it'd stop
-```
-(ref:ipd-quote) --- Bealy, 2013 [@bealy2013]
-
 # Individual participant data meta-analysis {#ipd-heading}
 \minitoc <!-- this will include a mini table of contents-->
 
@@ -26,7 +21,7 @@ Should also include a list of reasons why specific additional cohorts were not i
 
 Each should have: 
 
-* Description (including period,numbers, numbers with outcome, etc)
+* Description (including observation period, numbers, numbers with outcome, etc)
 *
 *
 

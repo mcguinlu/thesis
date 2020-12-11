@@ -140,7 +140,7 @@
 
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
-\title{Lipids and dementia\\
+\title{Lipids and dementia:\\
 An investigation of their relationship}
 \author{Luke A McGuinness}
 \college{}
@@ -324,17 +324,25 @@ but current epidemiological evidence has yet to reach a consensus on their role 
 
 \adjustmtc
 
-Word count: 8080
+Word count: 8359
 
-Days: 16
+Days: 17
 
-Words behind: -700
+Words behind: -621
+
+Words today: 279
 
 ~
 
 ~
 
 \includegraphics{_main_files/figure-latex/word-count-fig-1.pdf}
+
+\begin{savequote}
+Hold
+\qauthor{--- Hold}\end{savequote}
+
+
 
 \hypertarget{intro-heading}{%
 \chapter{Introduction}\label{intro-heading}}
@@ -454,7 +462,7 @@ The outputs of this thesis are detailed below, and include published peer review
 \end{itemize}
 
 \begin{savequote}
-Science knows it doesn't know everything; otherwise, it'd stop
+Science knows it doesn't know everything; otherwise, it'd stop.
 \qauthor{--- Dara O'Briain}\end{savequote}
 
 
@@ -581,7 +589,7 @@ Because they R.
 
 
 \hypertarget{sys-rev-tools-heading}{%
-\chapter{medrxivr: an R package for searching medRxiv and bioRxiv preprint data}\label{sys-rev-tools-heading}}
+\chapter{medrxivr: an R package for performing systematic searches of health-related preprints}\label{sys-rev-tools-heading}}
 
 \minitoc 
 
@@ -815,44 +823,46 @@ The app is readily available and has
 \hypertarget{reception-and-future-plans}{%
 \section{Reception and future plans}\label{reception-and-future-plans}}
 
-The tool has be well received by the community (as of December 2020, \texttt{medrxivr} has been downloaded more than 1000 times, and the medRxivr app has been visited more than ????), and several use cases have been reported. It has been used to visualize the growing number of preprints related to the 2019 coronavirus outbreak,\footnote{\url{https://twitter.com/L_Brierley/status/1233109086444695553}} perform systematic searches in a number of other systematic reviews,\textsuperscript{\protect\hyperlink{ref-noone2020}{9}} in addition to forming a platform for an analysis of researcher's differing data-sharing tendencies under two different journal models (preprint server vs formal publication).{[}CITE{]}
+The tool has be well received by the community (as of December 2020, \texttt{medrxivr} has been downloaded more than 1100 times, and the medRxivr app has been visited more than ????), and several use cases have been reported. It has been used to visualize the growing number of preprints related to the 2019 coronavirus outbreak,\footnote{\url{https://twitter.com/L_Brierley/status/1233109086444695553}} perform systematic searches in a number of other systematic reviews,\textsuperscript{\protect\hyperlink{ref-noone2020}{9}} in addition to forming a platform for an analysis of researcher's differing data-sharing tendencies under two different journal models (preprint server vs formal publication).{[}CITE{]}
 
 Following rigorous peer-review, it has been onboarded into the rOpenSci suite of packages, a collection of ``carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web'', and an associated article published in the Journal of Open Source Software.\textsuperscript{\protect\hyperlink{ref-mcguinness2020a}{10}} The entire review discussion is publicly available and can be viewed online.\footnote{\url{https://github.com/ropensci/software-review/issues/380}}
 
-Lobbying of the cold springs harbour labratory has been ongoing. This would negate the current need to download a full copy of the relevant preprint database before searching it locally, which is currently the rate limiting step for.
+Lobbying of the cold springs harbour laboratory has been ongoing. This would negate the current need to download a full copy of the relevant preprint database before searching it locally, which is currently the rate limiting step for performing searches (for example, as of December 2020, downloading a copy of the bioRxiv database takes approximately an hour.)
 
-\hypertarget{comparison-with-other-biorxivmedrxiv-interfaces}{%
-\subsection{Comparison with other bioRxiv/medRxiv interfaces}\label{comparison-with-other-biorxivmedrxiv-interfaces}}
+\hypertarget{comparison-with-other-medrxivbiorxiv-interfaces}{%
+\subsection{Comparison with other medRxiv/bioRxiv interfaces}\label{comparison-with-other-medrxivbiorxiv-interfaces}}
 
-Prior development of \texttt{medrxivr}, several alternative search tools were considered as part of a audit of existing tools for accessing the metadata of records stored on the medRxiv and bioRxiv servers.
+Prior development of \texttt{medrxivr}, an informal audit of comparable tools search tools were considered as part of a audit of existing tools for accessing the metadata of records stored on the medRxiv and bioRxiv servers. Two of these tools are useful to consider to highlight the additional functionality that \texttt{medrxivr} contributes.
 
-Two key examples are useful to consider to highlight the additional functionality that \texttt{medrxivr} contributes.
+The first, a platform called Rxivist,\textsuperscript{\protect\hyperlink{ref-abdill2019}{11}} allows users to search preprints from the using keywords. Similar to \texttt{medrxivr}, this tool previously scrapped data straight from the medRxiv and bioRxiv websites but as of November 2020, Rxivist also provides access to Cold Spring Harbour API. However, the core functionality of the Rxivist platform is focused around exploring the number of times a preprint has been downloaded and/or shared on Twitter, to allow researchers to find the most popular papers related to their topic. The search interface\footnote{Available at \url{https://rxivist.org/}} does not allow for complex search strategies, and there is no option to batch-export the results of a search.
 
-The first, a platform called Rxivist,\textsuperscript{\protect\hyperlink{ref-abdill2019}{11}} Similar to \texttt{medrxivr}, this tool previously scrapped data straight from the bioRxiv. (at the time of development, Rxvist , but as of November 2020, Rxivist also provides access to
+The second, \texttt{search.bioPreprint}, allows users to search for terms across a range of preprint servers, including medRxiv, bioRxiv, but also publishing venues using post-publication peer-review such as F1000Research.\textsuperscript{\protect\hyperlink{ref-iwema2016}{12}} However, similar to the Rxivist platform, this tool is designed for researchers aiming to keep up to date with recent developments in their fields rather than systematically assess the entirety of the available literature. As such, the platform only returns the most recent 1,000 records by publication date.
 
-However, this platform is focused more on exploring the number of times a preprint has been downloaded and/r shared on Twitter, to allow researchers to find the most popular papers related to their topic. The search interface\footnote{Available at \url{https://rxivist.org/}} does not allow for either complex search strategies or
-The second \texttt{search.bioPreprint}, allows users to search for terms across a range of preprint servers, including medRxiv, bioRxiv, but also publishing venues such as F1000Research..\textsuperscript{\protect\hyperlink{ref-iwema2016}{12}} However, this tool is aimed more at those looking to keep up to date with recent developments rather than systematically assessing the entirety of the available literature, and as such, only returns the most recent 1,000 records by publication date.
-
-Finally, neither tool provides an easy way to programmatically download a copy of the PDF of relevant records.
-
-. As such, this tool does not meet the second success did not meet the success criteria laid out in the introduction to this Chapter.
+Finally, neither tool provides an easy way to programmatically download a copy of the PDF of relevant records which is required for the full-text screening stage of a systematic review.
 
 \hypertarget{discussion}{%
-\section{Discussion}\label{discussion}}
+\section[Discussion]{\texorpdfstring{Discussion\footnote{Some of the arguments presented here are repeated in a paper introducing second R package developed during this thesis, but not directly related to it.\textsuperscript{\protect\hyperlink{ref-mcguinness}{13}} A summary of this second tool, \texttt{robvis} is presented in Appendix \ref{appendix-robvis}.}}{Discussion}}\label{discussion}}
 
-Packaging and sharing R scripts should be a fundamental part of evidence synthesis process. {[}{]}
+The development and distribution of open source scripts and tools should be a fundamental part of evidence synthesis process.
 
-While searching of the medRxiv database was crucical for the systematic review element of this thesis presented in Chapter \ref{sys-rev-heading}
+While searching of the medRxiv database was crucial for the systematic review element of this thesis presented in Chapter \ref{sys-rev-heading}, there are some important limitations to note here. As key example is that the tool only searches the available metadata of preprint records (the title, abstract and keywords).
+There is the potential that the cross-section of literature posted on medrxiv would be substantially different from the true grey literature - studies or analysis that are not published for a range of reasons, including results that are not deemed ``novel'' or are not statistically significant.
+This is because simply lowering the barriers to publication may encourage authors to published ``null'' results,{[}CITE{]} but due to the effort involved in writing up a distributable manuscript, it is unlikely to completely address the ``file drawer'' effect.{[}CITE{]}
+It is likely too early, (and too difficult) to tell whether the popularity of preprint repositories will have any effect of the availability of research that was not considered ``publishable'' at other venues.
+\textbf{Of particular interest to this thesis is whether including unpublished preprints in the systematic review and meta-analysis is worthwhile. To this end, the additional contribution of searching these repositories to the systematic review element of this thesis is explored in Chapter \ref{sys-rev-heading} {[}CROSS{]}.}
 
-\textbf{Need to also touch on the biases involved in search preprint literature, in that the authors of those in the }
+By implementing the tool described above as both as an R package and a \texttt{Shiny} web app, the functionality is available to evidence synthesists with varying levels of ability in R.
+These tools serve as an example of the advantages of ``packaging'' the R scripts that evidence synthesists often create for personal use.\textsuperscript{\protect\hyperlink{ref-wickham2015r}{14}}
+In the case of \texttt{medrxivr}, it is likely that several other evidence synthesists had written personal scripts scripts that have a similar, or related, functionality - in fact, in the course of its development, one other researcher that has done so was identified (Nicholas Fraser, author of the \texttt{rbiorxiv} package).\textsuperscript{\protect\hyperlink{ref-rbiorxiv}{15}}
+If these scripts continue to be developed in private and never shared or publicised, this leads to inevitable harm to the evidence synthesis community, not only in terms of duplication of time and effort, but also due to lost collaboration opportunities.
 
-There is the potential that the cross-section of literature posted on medrxiv would be substantially different from the true grey literature - simply lowering the barriers to publication may encourage authors to published ``null'' results,{[}CITE{]} but due to the effort involved in writing up a distributable manuscript, it is unlikely to completely address the ``file drawer'' effect.{[}CITE{]} It is likely too early, (and too difficult) to tell whether. \textbf{The additional contribution of searching these repositories to the systematic review element of this thesis is explored in Chapter \ref{sys-rev-heading}}
+Creating and sharing well-documented packages, the recognised standard for sharing reproducible and useful code, represents one way to reduce this inefficiency.
+Progressing this argument further, \texttt{Shiny} apps represent a efficient way to provide a user-friendly interface for newly created R packages within a very short time-frame, expanding the potential pool of users of the package to anyone with an internet connection.
 
-By implementing the tool described above as both as an R package and a \texttt{Shiny} web app, the functionality is available to evidence synthesists with varying levels of ability in R. These tools serve as an example of the advantages of ``packaging'' the R scripts that evidence synthesists often create for personal use.\textsuperscript{\protect\hyperlink{ref-wickham2015r}{13}} In the case of \texttt{medrxivr}, it is likely that several other evidence synthesists had written scripts that have a similar functionality - in fact, in the course of its development, one other researcher that has done so was identified (xxxx xxxx, author of the \texttt{rbiorxiv} pacakge).\textsuperscript{\protect\hyperlink{ref-rbiorxiv}{14}}
+\colorbox[HTML]{CCCCFF}{\textbf{The next section needs to be reduced and fit a bit better to this Chapter - it was taken from the robvis paper, but the issues it raises are important and potentially relevant here.}}
 
-This duplication of time and effort is inefficient, and creating and sharing well-documented R packages represents one way to reduce this inefficiency. Taking this approach one step further, \texttt{Shiny} apps represent a straightforward way to provide a user-friendly GUI for a newly created R package within a very short time-frame, expanding the potential pool of users of the package to anyone with an internet connection.
-
-Creating a package using R has a number of advantages unique to the R programming environment. R provides access to a range of powerful tools including the \texttt{ggplot} infrastructure for creating publication-quality plots, and RMarkdown, which enables creation of documents that can be rendered in a range of formats such as PDF, HTML, or Word.\textsuperscript{\protect\hyperlink{ref-xie2018r}{15}} Furthermore, and focusing specifically on evidence synthesis, building new tools as packages in R allows for easy integration with the range of existing evidence synthesis packages. Recently, the \texttt{metaverse} project,\textsuperscript{\protect\hyperlink{ref-variousauthors2020}{16}} of \texttt{medrivr} is a part, has begun to curate a collection of R packages that cover different aspects of the systematic review and meta-analysis process which, when taken together, form a coherent end-to-end open-source alternative to commercial offerings such as Covidence or Review Manager. Key offerings in this suite of packages include \texttt{litsearcher}, which facilitates systematic search strategy development, \texttt{revtools}, a package for managing the review process and performing title and abstract screening, \texttt{metaDigitise}, a package for automatic extraction of data from figures in research papers, and \texttt{metafor}, a package for conducting meta-analyses in R.\textsuperscript{\protect\hyperlink{ref-grames2019automated}{17}--\protect\hyperlink{ref-westgate2019revtools}{20}}
+In addition
+Creating a package using R has a number of advantages unique to the R programming environment. R provides access to a range of powerful tools including the \texttt{ggplot} infrastructure for creating publication-quality plots, and RMarkdown, which enables creation of documents that can be rendered in a range of formats such as PDF, HTML, or Word.\textsuperscript{\protect\hyperlink{ref-xie2018r}{16}} Furthermore, and focusing specifically on evidence synthesis, building new tools as packages in R allows for easy integration with the range of existing evidence synthesis packages. Recently, the \texttt{metaverse} project,\textsuperscript{\protect\hyperlink{ref-variousauthors2020}{17}} of \texttt{medrivr} is a part, has begun to curate a collection of R packages that cover different aspects of the systematic review and meta-analysis process which, when taken together, form a coherent end-to-end open-source alternative to commercial offerings such as Covidence or Review Manager. Key offerings in this suite of packages include \texttt{litsearcher}, which facilitates systematic search strategy development, \texttt{revtools}, a package for managing the review process and performing title and abstract screening, \texttt{metaDigitise}, a package for automatic extraction of data from figures in research papers, and \texttt{metafor}, a package for conducting meta-analyses in R.\textsuperscript{\protect\hyperlink{ref-grames2019automated}{18}--\protect\hyperlink{ref-westgate2019revtools}{21}}
 
 \hypertarget{summary-2}{%
 \section{Summary}\label{summary-2}}
@@ -861,17 +871,21 @@ Creating a package using R has a number of advantages unique to the R programmin
 \item
   In this Chapter, I have introduced a new tool, \texttt{medrxivr}, for performing complex searches in the medRxiv and bioRxiv preprint repositories.
 \item
-  I have outlined the motivation for developing this tool in relation to this thesis - more specifically, that it was used to perform systematic and reproducible searches of a key literature source used in the comprehensive systematic review described in Chapter \ref{sys-rev-heading}.
+  I have outlined the motivation for developing this tool in relation to this thesis - more specifically, that it was used to perform systematic and reproducible searches of a key literature sources used in the comprehensive systematic review described in Chapter \ref{sys-rev-heading}.
 \item
-  The impact of this tool to date, its place in the broader evidence synthesis in R ecosystem, and a roadmap for its future development has been discussed.
+  I have contrasted \texttt{medrxivr} with other other platforms to highlight the added functionality it offers. I have also discussed its reception to date, its place in the broader evidence synthesis in R ecosystem, and a roadmap for its future development.
 \end{itemize}
 
 \begin{savequote}
-Science knows it doesn't know everything; otherwise, it'd stop
-\qauthor{--- Dara O'Briain}\end{savequote}
+``It is surely a great criticism of our profession that we have not
+organised a critical summary by speciality or sub-speciality, up-dated
+periodically, of all relevant RCTS.''
+\qauthor{--- Archie Cochrane, 2000\textsuperscript{\protect\hyperlink{ref-cochrane20001931}{22}}}\end{savequote}
+
+
 
 \hypertarget{sys-rev-heading}{%
-\chapter{Systematic Review}\label{sys-rev-heading}}
+\chapter{Systematic review and triangulation of available evidence}\label{sys-rev-heading}}
 
 \minitoc 
 
@@ -883,7 +897,7 @@ Science knows it doesn't know everything; otherwise, it'd stop
 \item
   Examine how many times a primary study was included in a review\\
 \item
-  Look at wether searching preprints made any difference to my results
+  Look at whether searching preprints made any difference to my results
 \end{itemize}
 
 \hypertarget{lay-summary-1}{%
@@ -924,9 +938,9 @@ The abstracts list of relevant conferences (e.g.~the proceedings of the Alzheime
 \hypertarget{study-selection}{%
 \subsection{Study selection}\label{study-selection}}
 
-Records will be imported into Endnote and deduplicated using the method outlined in Bramer et al.~(2016).\textsuperscript{\protect\hyperlink{ref-bramer2016}{21}} Screening (both title/abstract and full-text) will be performed using a combination of Endnote and Rayyan, a web based screening application.\textsuperscript{\protect\hyperlink{ref-ouzzani2016}{22}}
+Records will be imported into Endnote and deduplicated using the method outlined in Bramer et al.~(2016).\textsuperscript{\protect\hyperlink{ref-bramer2016}{23}} Screening (both title/abstract and full-text) will be performed using a combination of Endnote and Rayyan, a web based screening application.\textsuperscript{\protect\hyperlink{ref-ouzzani2016}{24}}
 Title and abstract screening to remove obviously irrelevant records will be performed by the primary author, with a random selection of excluded records being screened in duplicate to ensure consistency with the inclusion criteria. If this demonstrates a significant level of erroneous exclusion by the primary author a larger proportion will be dual-screened.
-Full-text screening will also be completed in full by the primary author. A second reviewer will screen a random sample of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage will be recorded. Disagreements occurring during either stage of the screening process will be resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.\textsuperscript{\protect\hyperlink{ref-zotero-766}{23}}
+Full-text screening will also be completed in full by the primary author. A second reviewer will screen a random sample of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage will be recorded. Disagreements occurring during either stage of the screening process will be resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.\textsuperscript{\protect\hyperlink{ref-zotero-766}{25}}
 
 \hypertarget{inclusion-criteria}{%
 \subsubsection{Inclusion criteria}\label{inclusion-criteria}}
@@ -935,7 +949,7 @@ We will seek studies that examine the relationship between blood lipid levels (o
 
 Participants will be free (or assumed to be free) of dementia/MCI at baseline. Studies of any duration will be included to allow for exploration of the effect of length of follow-up on the effect estimate using meta-regression. No limits will be placed on the sample size of included studies.
 
-Eligible studies will define dementia according to recognised criteria, for example the National Institute of Neurological Disorders and Stroke Association-Internationale pour la Recherche en l'Enseignement en Neurosciences (NINDS-AIREN), International Classification of Diseases (ICD), or Diagnostic and Statistical Manual of Mental Disorders (DSM) criteria. For MCI, eligible studies are those that attempted state a definition for diagnoses of MCI (e.g.~an adapted version of the Petersen criteria\textsuperscript{\protect\hyperlink{ref-petersen1999}{24}}) and create ordinal groups of patients (e.g.~no dementia or dementia/MCI/dementia) based on this definition.
+Eligible studies will define dementia according to recognised criteria, for example the National Institute of Neurological Disorders and Stroke Association-Internationale pour la Recherche en l'Enseignement en Neurosciences (NINDS-AIREN), International Classification of Diseases (ICD), or Diagnostic and Statistical Manual of Mental Disorders (DSM) criteria. For MCI, eligible studies are those that attempted state a definition for diagnoses of MCI (e.g.~an adapted version of the Petersen criteria\textsuperscript{\protect\hyperlink{ref-petersen1999}{26}}) and create ordinal groups of patients (e.g.~no dementia or dementia/MCI/dementia) based on this definition.
 
 No limitations will be imposed on publication status, publication date, venue or language, although we will require sufficiently detailed reports of the studies to be able to examine their methods. Preprints and unpublished reports will be eligible for inclusion if relevant. Multiple publications resulting from the analysis of the same data will be included and grouped.
 
@@ -955,11 +969,11 @@ Harmonization of cholesterol measures across studies was performed, as different
 \hypertarget{risk-of-bias-assessment}{%
 \subsection{Risk of bias assessment}\label{risk-of-bias-assessment}}
 
-Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomized controlled trials were assessed using the RoB2 tool,\textsuperscript{\protect\hyperlink{ref-sterne2019}{25}}, non-randomized studies of interventions were assessed using the ROBINS-I tool,\textsuperscript{\protect\hyperlink{ref-sterne2016}{26}} and non-randomized studies of exposures were assessed using the ROBINS-E tool.{[}CITE{]}
+Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomized controlled trials were assessed using the RoB2 tool,\textsuperscript{\protect\hyperlink{ref-sterne2019}{27}}, non-randomized studies of interventions were assessed using the ROBINS-I tool,\textsuperscript{\protect\hyperlink{ref-sterne2016}{28}} and non-randomized studies of exposures were assessed using the ROBINS-E tool.{[}CITE{]}
 
 At present, no risk of bias assessment tool for Mendelian randomization studies is available. Bias in these studies was assessed with the help of an expert panel drawn from my supervisors and other external invited researchers.{[}CITE{]}
 
-Data will be visualized using a paired forest and risk of bias plot, created using the \texttt{robvis} tool. This tool was developed as part of this thesis to aid in creating standard risk-of-bias figures, and is summarized in Appendix \ref{appendix-robvis}.\textsuperscript{\protect\hyperlink{ref-mcguinness2019}{27}}
+Data will be visualized using a paired forest and risk of bias plot, created using the \texttt{robvis} tool. This tool was developed as part of this thesis to aid in creating standard risk-of-bias figures, and is summarized in Appendix \ref{appendix-robvis}.\textsuperscript{\protect\hyperlink{ref-mcguinness2019}{29}}
 
 \hypertarget{patient-and-public-involvement}{%
 \subsection{Patient and public involvement}\label{patient-and-public-involvement}}
@@ -982,9 +996,9 @@ As a summary of the duplication of work in this area, we looked at how many revi
 
 Inter- and intra-rater reliability was asssessed for a 10\% subsample of records at the title and abstract screening stage. Intra-rater reliability involved a sinlge reviewer applying the inclusion criteria to the same set of records while blinded to their previous decisions, while inter-rater reliability involved two reviewers independently screening the same set of records.
 
-Rater reliability was assessed using Gwet's agreement coefficient (AC1).\textsuperscript{\protect\hyperlink{ref-gwet2008}{28}} This measure of inter-rater reliabilty was chosen over other methods of assessing inter-rater reliability such as percent agreeement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. {[}\protect\hyperlink{ref-cohen1960}{29}:\textsuperscript{\protect\hyperlink{ref-gwet2008}{28},\protect\hyperlink{ref-wongpakaran2013}{30}}
+Rater reliability was assessed using Gwet's agreement coefficient (AC1).\textsuperscript{\protect\hyperlink{ref-gwet2008}{30}} This measure of inter-rater reliabilty was chosen over other methods of assessing inter-rater reliability such as percent agreeement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. {[}\protect\hyperlink{ref-cohen1960}{31}:\textsuperscript{\protect\hyperlink{ref-gwet2008}{30},\protect\hyperlink{ref-wongpakaran2013}{32}}
 
-How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,\textsuperscript{\protect\hyperlink{ref-mchugh2012}{31}} presented in Table \ref{tab:gwet-table}.
+How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,\textsuperscript{\protect\hyperlink{ref-mchugh2012}{33}} presented in Table \ref{tab:gwet-table}.
 
 \begin{table}[!h]
 
@@ -1010,7 +1024,7 @@ In a two by two table with cells A, B, C and D, Gwet's AC1 is calculated using t
 \[AC1 = \frac{p-e(\gamma)}{1-e(\gamma)}\]
 Here, \(p = \frac{A+D}{N}\) and \(e(\gamma)\) is the chance agreement between raters, given as \(2q(1-q)\), where \(q = \frac{(A+C)+(A+B)}{2N}\)
 
--\textgreater{} Insert formula here. Need to be sure of how to calculate.\textsuperscript{\protect\hyperlink{ref-gwet2008}{28},\protect\hyperlink{ref-sim2005}{32}}
+-\textgreater{} Insert formula here. Need to be sure of how to calculate.\textsuperscript{\protect\hyperlink{ref-gwet2008}{30},\protect\hyperlink{ref-sim2005}{34}}
 
 \begin{table}
 
@@ -1052,7 +1066,7 @@ Here, \(p = \frac{A+D}{N}\) and \(e(\gamma)\) is the chance agreement between ra
 
 For the inter-rater reliability, percentage agreement was 97.3\% (AC1 = XXXX, Table \ref{tab:agreement-table-intra}), while for the intra-rater reliability, agreement was 98.6\% (AC1 = XXXX, Table \ref{tab:agreement-table-intra}).
 
-The discrepancy between the percent agreement and the associated value of AC is expected, due to the heavy imbalance in this sample towards exclusion.\textsuperscript{\protect\hyperlink{ref-feinstein1990}{33}}
+The discrepancy between the percent agreement and the associated value of AC is expected, due to the heavy imbalance in this sample towards exclusion.\textsuperscript{\protect\hyperlink{ref-feinstein1990}{35}}
 
 Those records which were excluded in the initial screening, but were included either by the same reviewer on their second viewing (n=4), or by the second reviewer (n=29), were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline vs mild cognitive impairment and the definition of eligible lipids.
 
@@ -1068,6 +1082,8 @@ Following de-duplication, the titles and abstracts of 16109 records were assesse
 
 \hypertarget{characteristics-of-included-studies}{%
 \subsection{Characteristics of included studies}\label{characteristics-of-included-studies}}
+
+\colorbox[HTML]{CCCCFF}{This is a test}
 
 XXXX studies met the criteria for inclusion in the review.
 
@@ -1109,7 +1125,7 @@ One key question for which multiple distinct sources of evidence were available 
 
 A key limitation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia {[}\textbf{Is this true?}{]} This rules out the use. In addition, there was limited literature available - as discussed in CHapter @ref()
 
-Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated.\textsuperscript{\protect\hyperlink{ref-guyatt2011}{34}}
+Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated.\textsuperscript{\protect\hyperlink{ref-guyatt2011}{36}}
 
 Without our framework and as part of the risk of bias assessments reported in \ref{risk-of-bias-subheading}, we test test
 
@@ -1119,7 +1135,7 @@ Without our framework and as part of the risk of bias assessments reported in \r
 \hypertarget{comparison-with-other-reviews}{%
 \subsection{Comparison with other reviews}\label{comparison-with-other-reviews}}
 
-Of note, as part of the review, we identified several previous systematic reviews of this topic.{[}CITE{]} However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)\textsuperscript{\protect\hyperlink{ref-sterne2019}{25}} to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels.
+Of note, as part of the review, we identified several previous systematic reviews of this topic.{[}CITE{]} However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)\textsuperscript{\protect\hyperlink{ref-sterne2019}{27}} to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels.
 
 Some previous reviews did assess risk of bias, but used non-domain based assessment tools. Newcastle-Ottowa scale,
 
@@ -1128,8 +1144,12 @@ Some previous reviews did assess risk of bias, but used non-domain based assessm
 \hypertarget{strenghts-and-limitations}{%
 \subsection{Strenghts and limitations}\label{strenghts-and-limitations}}
 
+Test
+
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
+
+Test
 
 
 
@@ -1222,16 +1242,14 @@ Note: this will be harder for things that are not dichotomous and can go up as w
 
 It would be fair to assume that the baseline total cholesterol/LDL-cholesterol would at least in part predict the likelihood of someone being prescribed a statin.
 
-However, this is not the case. Baseline cholesterol level are predicted to be a poorer instrument for than QRISK2 score,\textsuperscript{\protect\hyperlink{ref-hippisley-cox2008}{36}} which estimates a patients' 10-year risk of a cardiovascular event. Current NICE guidelines state that those with a QRISK score of 10\% or higher, and in whom lifestyle modifcation is ineffective/inappropriate, should received a lipid regulation agent. However, this analysis could not find any effect of QRISK2 scores on statins precription levels at 6 months. {[}Need to cite Lauren's eventual paper here focusing on QRISK2, but also display a RD analysis of TC/LDL-c levels here on statins at 6 months. Need also to check, as Lauren mentioned she found some evidence that there is a relationship in practices that actually did what they should.{]}
+However, this is not the case. Baseline cholesterol level are predicted to be a poorer instrument for than QRISK2 score,\textsuperscript{\protect\hyperlink{ref-hippisley-cox2008}{38}} which estimates a patients' 10-year risk of a cardiovascular event. Current NICE guidelines state that those with a QRISK score of 10\% or higher, and in whom lifestyle modifcation is ineffective/inappropriate, should received a lipid regulation agent. However, this analysis could not find any effect of QRISK2 scores on statins precription levels at 6 months. {[}Need to cite Lauren's eventual paper here focusing on QRISK2, but also display a RD analysis of TC/LDL-c levels here on statins at 6 months. Need also to check, as Lauren mentioned she found some evidence that there is a relationship in practices that actually did what they should.{]}
 
 As expected, in a confirmatory analysis using lipid levels, there was no association between \emph{the most recent total cholesterol or LDL-cholesterol reading in the CPRD and the treatment, indicating that adjusting for this variable was not required.}
 
 \hypertarget{replicating-the-analysis}{%
 \subsection{Replicating the analysis}\label{replicating-the-analysis}}
 
-\textbf{Comparing and contrasting between different studies is particularly difficult} because of the impact that the use of differnet code list can have on the analysis\textsuperscript{\protect\hyperlink{ref-wilkinson2018a}{37},\protect\hyperlink{ref-mcguinness2019c}{38}}
-
-
+\textbf{Comparing and contrasting between different studies is particularly difficult} because of the impact that the use of differnet code list can have on the analysis\textsuperscript{\protect\hyperlink{ref-wilkinson2018a}{39},\protect\hyperlink{ref-mcguinness2019c}{40}}
 
 \hypertarget{ipd-heading}{%
 \chapter{Individual participant data meta-analysis}\label{ipd-heading}}
@@ -1249,13 +1267,13 @@ Each should have:
 
 \begin{itemize}
 \item
-  Description (including period,numbers, numbers with outcome, etc)
+  Description (including observation period, numbers, numbers with outcome, etc)
 \item
 \item
 \end{itemize}
 
-\hypertarget{discussion-2}{%
-\chapter{Discussion}\label{discussion-2}}
+\hypertarget{discussion-heading}{%
+\chapter{Discussion}\label{discussion-heading}}
 
 \hypertarget{summary-of-findings-and-implications-for-policy-makers}{%
 \section{Summary of findings (and implications for policy makers)}\label{summary-of-findings-and-implications-for-policy-makers}}
@@ -1331,182 +1349,188 @@ Public involvement also steered the creation of the topic
 \leavevmode\hypertarget{ref-iwema2016}{}%
 12. Iwema, C. L., LaDue, J., Zack, A. \& Chattopadhyay, A. Search.bioPreprint: A discovery tool for cutting edge, preprint biomedical research articles. \emph{F1000Research} \textbf{5}, 1396 (2016).
 
+\leavevmode\hypertarget{ref-mcguinness}{}%
+13. McGuinness, L. A. \& Higgins, J. P. T. Risk-of-bias VISualization (robvis): An R package and Shiny web app for visualizing risk-of-bias assessments. \emph{Research Synthesis Methods} \textbf{n/a},
+
 \leavevmode\hypertarget{ref-wickham2015r}{}%
-13. Wickham, H. \emph{R packages: Organize, test, document, and share your code}. (O'Reilly Media, Inc., 2015).
+14. Wickham, H. \emph{R packages: Organize, test, document, and share your code}. (O'Reilly Media, Inc., 2015).
 
 \leavevmode\hypertarget{ref-rbiorxiv}{}%
-14. Fraser, N. \emph{Rbiorxiv: Client for the 'bioRxiv' api}. (2020).
+15. Fraser, N. \emph{Rbiorxiv: Client for the 'bioRxiv' api}. (2020).
 
 \leavevmode\hypertarget{ref-xie2018r}{}%
-15. Xie, Y., Allaire, J. J. \& Grolemund, G. \emph{R markdown: The definitive guide}. (Chapman and Hall/CRC, 2018).
+16. Xie, Y., Allaire, J. J. \& Grolemund, G. \emph{R markdown: The definitive guide}. (Chapman and Hall/CRC, 2018).
 
 \leavevmode\hypertarget{ref-variousauthors2020}{}%
-16. Various Authors. Metaverse: An R ecosystem for meta-research. (2020).
+17. Various Authors. Metaverse: An R ecosystem for meta-research. (2020).
 
 \leavevmode\hypertarget{ref-grames2019automated}{}%
-17. Grames, E. M., Stillman, A. N., Tingley, M. W. \& Elphick, C. S. An automated approach to identifying search terms for systematic reviews using keyword co-occurrence networks. \emph{Methods in Ecology and Evolution} \textbf{10}, 1645--1654 (2019).
+18. Grames, E. M., Stillman, A. N., Tingley, M. W. \& Elphick, C. S. An automated approach to identifying search terms for systematic reviews using keyword co-occurrence networks. \emph{Methods in Ecology and Evolution} \textbf{10}, 1645--1654 (2019).
 
 \leavevmode\hypertarget{ref-metaforref}{}%
-18. Viechtbauer, W. Conducting meta-analyses in R with the metafor package. \emph{Journal of Statistical Software} \textbf{36}, 1--48 (2010).
+19. Viechtbauer, W. Conducting meta-analyses in R with the metafor package. \emph{Journal of Statistical Software} \textbf{36}, 1--48 (2010).
 
 \leavevmode\hypertarget{ref-pick2018}{}%
-19. Pick, J. L., Nakagawa, S. \& Noble, D. W. A. Reproducible, flexible and high-throughput data extraction from primary literature: The metaDigitise R package. \emph{Methods in Ecology and Evolution} \textbf{10}, 426--431 (2018).
+20. Pick, J. L., Nakagawa, S. \& Noble, D. W. A. Reproducible, flexible and high-throughput data extraction from primary literature: The metaDigitise R package. \emph{Methods in Ecology and Evolution} \textbf{10}, 426--431 (2018).
 
 \leavevmode\hypertarget{ref-westgate2019revtools}{}%
-20. Westgate, M. J. Revtools: An R package to support article screening for evidence synthesis. \emph{Research Synthesis Methods} \textbf{10}, 606--614 (2019).
+21. Westgate, M. J. Revtools: An R package to support article screening for evidence synthesis. \emph{Research Synthesis Methods} \textbf{10}, 606--614 (2019).
+
+\leavevmode\hypertarget{ref-cochrane20001931}{}%
+22. Cochrane, A. L. 1931-1971: A critical review, with particular reference to the medical profession. \emph{Medicines for the year 2000} (1979).
 
 \leavevmode\hypertarget{ref-bramer2016}{}%
-21. Bramer, W. M., Giustini, D., de Jonge, G. B., Holland, L. \& Bekhuis, T. De-duplication of database search results for systematic reviews in EndNote. \emph{Journal of the Medical Library Association : JMLA} \textbf{104}, 240--243 (2016).
+23. Bramer, W. M., Giustini, D., de Jonge, G. B., Holland, L. \& Bekhuis, T. De-duplication of database search results for systematic reviews in EndNote. \emph{Journal of the Medical Library Association : JMLA} \textbf{104}, 240--243 (2016).
 
 \leavevmode\hypertarget{ref-ouzzani2016}{}%
-22. Ouzzani, M., Hammady, H., Fedorowicz, Z. \& Elmagarmid, A. Rayyan-a web and mobile app for systematic reviews. \emph{Systematic Reviews} \textbf{5}, 210 (2016).
+24. Ouzzani, M., Hammady, H., Fedorowicz, Z. \& Elmagarmid, A. Rayyan-a web and mobile app for systematic reviews. \emph{Systematic Reviews} \textbf{5}, 210 (2016).
 
 \leavevmode\hypertarget{ref-zotero-766}{}%
-23. The PRISMA statement for reporting systematic reviews and meta-analyses of studies that evaluate healthcare interventions: Explanation and elaboration \textbar{} The BMJ.
+25. The PRISMA statement for reporting systematic reviews and meta-analyses of studies that evaluate healthcare interventions: Explanation and elaboration \textbar{} The BMJ.
 
 \leavevmode\hypertarget{ref-petersen1999}{}%
-24. Petersen, R. C. \emph{et al.} Mild cognitive impairment: Clinical characterization and outcome. \emph{Archives of Neurology} \textbf{56}, 303--308 (1999).
+26. Petersen, R. C. \emph{et al.} Mild cognitive impairment: Clinical characterization and outcome. \emph{Archives of Neurology} \textbf{56}, 303--308 (1999).
 
 \leavevmode\hypertarget{ref-sterne2019}{}%
-25. Sterne, J. A. C. \emph{et al.} RoB 2: A revised tool for assessing risk of bias in randomised trials. \emph{BMJ} \textbf{366}, (2019).
+27. Sterne, J. A. C. \emph{et al.} RoB 2: A revised tool for assessing risk of bias in randomised trials. \emph{BMJ} \textbf{366}, (2019).
 
 \leavevmode\hypertarget{ref-sterne2016}{}%
-26. Sterne, J. A. \emph{et al.} ROBINS-I: A tool for assessing risk of bias in non-randomised studies of interventions. \emph{BMJ} \textbf{355}, (2016).
+28. Sterne, J. A. \emph{et al.} ROBINS-I: A tool for assessing risk of bias in non-randomised studies of interventions. \emph{BMJ} \textbf{355}, (2016).
 
 \leavevmode\hypertarget{ref-mcguinness2019}{}%
-27. McGuinness, L. A. Chapter 10 - Risk of Bias Plots. in \emph{Doing Meta-Analysis in R: A Hands-on Guide} (eds. Mathias Harrer, Pim Cuijpers, David D Ebert \& Toshi A Furukawa) (2019).
+29. McGuinness, L. A. Chapter 10 - Risk of Bias Plots. in \emph{Doing Meta-Analysis in R: A Hands-on Guide} (eds. Mathias Harrer, Pim Cuijpers, David D Ebert \& Toshi A Furukawa) (2019).
 
 \leavevmode\hypertarget{ref-gwet2008}{}%
-28. Gwet, K. L. Computing inter-rater reliability and its variance in the presence of high agreement. \emph{British Journal of Mathematical and Statistical Psychology} \textbf{61}, 29--48 (2008).
+30. Gwet, K. L. Computing inter-rater reliability and its variance in the presence of high agreement. \emph{British Journal of Mathematical and Statistical Psychology} \textbf{61}, 29--48 (2008).
 
 \leavevmode\hypertarget{ref-cohen1960}{}%
-29. Cohen, J. A Coefficient of Agreement for Nominal Scales. \emph{Educational and Psychological Measurement} \textbf{20}, 37--46 (1960).
+31. Cohen, J. A Coefficient of Agreement for Nominal Scales. \emph{Educational and Psychological Measurement} \textbf{20}, 37--46 (1960).
 
 \leavevmode\hypertarget{ref-wongpakaran2013}{}%
-30. Wongpakaran, N., Wongpakaran, T., Wedding, D. \& Gwet, K. L. A comparison of Cohen's Kappa and Gwet's AC1 when calculating inter-rater reliability coefficients: A study conducted with personality disorder samples. \emph{BMC Medical Research Methodology} \textbf{13}, 61 (2013).
+32. Wongpakaran, N., Wongpakaran, T., Wedding, D. \& Gwet, K. L. A comparison of Cohen's Kappa and Gwet's AC1 when calculating inter-rater reliability coefficients: A study conducted with personality disorder samples. \emph{BMC Medical Research Methodology} \textbf{13}, 61 (2013).
 
 \leavevmode\hypertarget{ref-mchugh2012}{}%
-31. McHugh, M. L. Interrater reliability: The kappa statistic. \emph{Biochemia Medica} \textbf{22}, 276--282 (2012).
+33. McHugh, M. L. Interrater reliability: The kappa statistic. \emph{Biochemia Medica} \textbf{22}, 276--282 (2012).
 
 \leavevmode\hypertarget{ref-sim2005}{}%
-32. Sim, J. \& Wright, C. C. The Kappa Statistic in Reliability Studies: Use, Interpretation, and Sample Size Requirements. \emph{Physical Therapy} \textbf{85}, 257--268 (2005).
+34. Sim, J. \& Wright, C. C. The Kappa Statistic in Reliability Studies: Use, Interpretation, and Sample Size Requirements. \emph{Physical Therapy} \textbf{85}, 257--268 (2005).
 
 \leavevmode\hypertarget{ref-feinstein1990}{}%
-33. Feinstein, A. R. \& Cicchetti, D. V. High agreement but low kappa: I. The problems of two paradoxes. \emph{Journal of Clinical Epidemiology} \textbf{43}, 543--549 (1990).
+35. Feinstein, A. R. \& Cicchetti, D. V. High agreement but low kappa: I. The problems of two paradoxes. \emph{Journal of Clinical Epidemiology} \textbf{43}, 543--549 (1990).
 
 \leavevmode\hypertarget{ref-guyatt2011}{}%
-34. Guyatt, G. H. \emph{et al.} GRADE guidelines: 9. Rating up the quality of evidence. \emph{Journal of Clinical Epidemiology} \textbf{64}, 1311--1316 (2011).
+36. Guyatt, G. H. \emph{et al.} GRADE guidelines: 9. Rating up the quality of evidence. \emph{Journal of Clinical Epidemiology} \textbf{64}, 1311--1316 (2011).
 
 \leavevmode\hypertarget{ref-dorn1953}{}%
-35. Dorn, H. F. Philosophy of Inferences from Retrospective Studies. \emph{American Journal of Public Health and the Nations Health} \textbf{43}, 677--683 (1953).
+37. Dorn, H. F. Philosophy of Inferences from Retrospective Studies. \emph{American Journal of Public Health and the Nations Health} \textbf{43}, 677--683 (1953).
 
 \leavevmode\hypertarget{ref-hippisley-cox2008}{}%
-36. Hippisley-Cox, J. \emph{et al.} Predicting cardiovascular risk in England and Wales: Prospective derivation and validation of QRISK2. \emph{BMJ} \textbf{336}, 1475--1482 (2008).
+38. Hippisley-Cox, J. \emph{et al.} Predicting cardiovascular risk in England and Wales: Prospective derivation and validation of QRISK2. \emph{BMJ} \textbf{336}, 1475--1482 (2008).
 
 \leavevmode\hypertarget{ref-wilkinson2018a}{}%
-37. Wilkinson, T. \emph{et al.} Identifying dementia cases with routinely collected health data: A systematic review. \emph{Alzheimer's \& Dementia} \textbf{14}, 1038--1051 (2018).
+39. Wilkinson, T. \emph{et al.} Identifying dementia cases with routinely collected health data: A systematic review. \emph{Alzheimer's \& Dementia} \textbf{14}, 1038--1051 (2018).
 
 \leavevmode\hypertarget{ref-mcguinness2019c}{}%
-38. McGuinness, L. A., Warren-Gash, C., Moorhouse, L. R. \& Thomas, S. L. The validity of dementia diagnoses in routinely collected electronic health records in the United Kingdom: A systematic review. \emph{Pharmacoepidemiology and Drug Safety} \textbf{28}, 244--255 (2019).
+40. McGuinness, L. A., Warren-Gash, C., Moorhouse, L. R. \& Thomas, S. L. The validity of dementia diagnoses in routinely collected electronic health records in the United Kingdom: A systematic review. \emph{Pharmacoepidemiology and Drug Safety} \textbf{28}, 244--255 (2019).
 
 \leavevmode\hypertarget{ref-base}{}%
-39. R Core Team. \emph{R: A language and environment for statistical computing}. (R Foundation for Statistical Computing, 2019).
+41. R Core Team. \emph{R: A language and environment for statistical computing}. (R Foundation for Statistical Computing, 2019).
 
 \leavevmode\hypertarget{ref-cranlogs}{}%
-40. Csárdi, G. \emph{Cranlogs: Download logs from the 'rstudio' 'cran' mirror}. (2019).
+42. Csárdi, G. \emph{Cranlogs: Download logs from the 'rstudio' 'cran' mirror}. (2019).
 
 \leavevmode\hypertarget{ref-dplyr}{}%
-41. Wickham, H., François, R., Henry, L. \& Müller, K. \emph{Dplyr: A grammar of data manipulation}. (2020).
+43. Wickham, H., François, R., Henry, L. \& Müller, K. \emph{Dplyr: A grammar of data manipulation}. (2020).
 
 \leavevmode\hypertarget{ref-flextable}{}%
-42. Gohel, D. \emph{Flextable: Functions for tabular reporting}. (2020).
+44. Gohel, D. \emph{Flextable: Functions for tabular reporting}. (2020).
 
 \leavevmode\hypertarget{ref-ggplot2}{}%
-43. Wickham, H. \emph{Ggplot2: Elegant graphics for data analysis}. (Springer-Verlag New York, 2016).
+45. Wickham, H. \emph{Ggplot2: Elegant graphics for data analysis}. (Springer-Verlag New York, 2016).
 
 \leavevmode\hypertarget{ref-glue}{}%
-44. Hester, J. \emph{Glue: Interpreted string literals}. (2020).
+46. Hester, J. \emph{Glue: Interpreted string literals}. (2020).
 
 \leavevmode\hypertarget{ref-here}{}%
-45. Müller, K. \emph{Here: A simpler way to find your files}. (2020).
+47. Müller, K. \emph{Here: A simpler way to find your files}. (2020).
 
 \leavevmode\hypertarget{ref-kableExtra}{}%
-46. Zhu, H. \emph{KableExtra: Construct complex table with 'kable' and pipe syntax}. (2020).
+48. Zhu, H. \emph{KableExtra: Construct complex table with 'kable' and pipe syntax}. (2020).
 
 \leavevmode\hypertarget{ref-knitr}{}%
-47. Xie, Y. \emph{Knitr: A general-purpose package for dynamic report generation in r}. (2020).
+49. Xie, Y. \emph{Knitr: A general-purpose package for dynamic report generation in r}. (2020).
 
 \leavevmode\hypertarget{ref-medrxivr}{}%
-48. McGuinness, L. A. \& Schmidt, L. Medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in r. \emph{Journal of Open Source Software} \textbf{5}, 2651 (2020).
+50. McGuinness, L. A. \& Schmidt, L. Medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in r. \emph{Journal of Open Source Software} \textbf{5}, 2651 (2020).
 
 \leavevmode\hypertarget{ref-plyr}{}%
-49. Wickham, H. The split-apply-combine strategy for data analysis. \emph{Journal of Statistical Software} \textbf{40}, 1--29 (2011).
+51. Wickham, H. The split-apply-combine strategy for data analysis. \emph{Journal of Statistical Software} \textbf{40}, 1--29 (2011).
 
 \leavevmode\hypertarget{ref-robvis}{}%
-50. McGuinness, A, L., Higgins \& PT, J. Risk-of-bias visualization (robvis): An r package and shiny web app for visualizing risk-of-bias assessments. \emph{Research Synthesis Methods} (2020). doi:\href{https://doi.org/10.1002/jrsm.1411}{10.1002/jrsm.1411}
+52. McGuinness, A, L., Higgins \& PT, J. Risk-of-bias visualization (robvis): An r package and shiny web app for visualizing risk-of-bias assessments. \emph{Research Synthesis Methods} (2020). doi:\href{https://doi.org/10.1002/jrsm.1411}{10.1002/jrsm.1411}
 
 \leavevmode\hypertarget{ref-stringr}{}%
-51. Wickham, H. \emph{Stringr: Simple, consistent wrappers for common string operations}. (2019).
+53. Wickham, H. \emph{Stringr: Simple, consistent wrappers for common string operations}. (2019).
 
 \leavevmode\hypertarget{ref-xfun}{}%
-52. Xie, Y. \emph{Xfun: Miscellaneous functions by 'yihui xie'}. (2020).
+54. Xie, Y. \emph{Xfun: Miscellaneous functions by 'yihui xie'}. (2020).
 
 \leavevmode\hypertarget{ref-cochranechpt7}{}%
-53. Boutron, I. \emph{et al.} Chapter 7: Considering bias and conflicts of interest among the included studies. in \emph{Cochrane Handbook for Systematic Reviews of Interventions version 6.0 (updated August 2019)} (eds. Higgins, J. P. T. et al.) (Cochrane, 2019).
+55. Boutron, I. \emph{et al.} Chapter 7: Considering bias and conflicts of interest among the included studies. in \emph{Cochrane Handbook for Systematic Reviews of Interventions version 6.0 (updated August 2019)} (eds. Higgins, J. P. T. et al.) (Cochrane, 2019).
 
 \leavevmode\hypertarget{ref-sterne2019rob}{}%
-54. Sterne, J. A. C. \emph{et al.} RoB 2: A revised tool for assessing risk of bias in randomised trials. \emph{BMJ} \textbf{366}, l4898 (2019).
+56. Sterne, J. A. C. \emph{et al.} RoB 2: A revised tool for assessing risk of bias in randomised trials. \emph{BMJ} \textbf{366}, l4898 (2019).
 
 \leavevmode\hypertarget{ref-sterne2016robins}{}%
-55. Sterne, J. A. C. \emph{et al.} ROBINS-I: A tool for assessing risk of bias in non-randomised studies of interventions. \emph{BMJ} \textbf{355}, i4919 (2016).
+57. Sterne, J. A. C. \emph{et al.} ROBINS-I: A tool for assessing risk of bias in non-randomised studies of interventions. \emph{BMJ} \textbf{355}, i4919 (2016).
 
 \leavevmode\hypertarget{ref-whiting2011quadas}{}%
-56. Whiting, P. F. \emph{et al.} QUADAS-2: A revised tool for the quality assessment of diagnostic accuracy studies. \emph{Annals of Internal Medicine} \textbf{155}, 529--536 (2011).
+58. Whiting, P. F. \emph{et al.} QUADAS-2: A revised tool for the quality assessment of diagnostic accuracy studies. \emph{Annals of Internal Medicine} \textbf{155}, 529--536 (2011).
 
 \leavevmode\hypertarget{ref-higgins2008assessing}{}%
-57. Higgins, J. P. T. \& Altman, D. G. Chapter 8: Assessing risk of bias in included studies. in \emph{Cochrane Handbook for Systematic Reviews of Interventions} (eds. Higgins, J. P. T. \& Green, S.) 187--241 (Wiley Online Library, 2008).
+59. Higgins, J. P. T. \& Altman, D. G. Chapter 8: Assessing risk of bias in included studies. in \emph{Cochrane Handbook for Systematic Reviews of Interventions} (eds. Higgins, J. P. T. \& Green, S.) 187--241 (Wiley Online Library, 2008).
 
 \leavevmode\hypertarget{ref-cochrane2014review}{}%
-58. Cochrane Collaboration. Review Manager (RevMan) {[}Computer program{]}. (2014).
+60. Cochrane Collaboration. Review Manager (RevMan) {[}Computer program{]}. (2014).
 
 \leavevmode\hypertarget{ref-marshall2015systematic}{}%
-59. Marshall, C. \& Brereton, P. Systematic review toolbox: A catalogue of tools to support systematic reviews. in \emph{Proceedings of the 19th international conference on evaluation and assessment in software engineering} Article 23; 1--6 (Association for Computing Machinery, 2015). doi:\href{https://doi.org/10.1145/2745802.2745824}{10.1145/2745802.2745824}
+61. Marshall, C. \& Brereton, P. Systematic review toolbox: A catalogue of tools to support systematic reviews. in \emph{Proceedings of the 19th international conference on evaluation and assessment in software engineering} Article 23; 1--6 (Association for Computing Machinery, 2015). doi:\href{https://doi.org/10.1145/2745802.2745824}{10.1145/2745802.2745824}
 
 \leavevmode\hypertarget{ref-harrison2020software}{}%
-60. Harrison, H., Griffin, S. J., Kuhn, I. \& Usher-Smith, J. A. Software tools to support title and abstract screening for systematic reviews in healthcare: An evaluation. \emph{BMC Medical Research Methodology} \textbf{20}, 7 (2020).
+62. Harrison, H., Griffin, S. J., Kuhn, I. \& Usher-Smith, J. A. Software tools to support title and abstract screening for systematic reviews in healthcare: An evaluation. \emph{BMC Medical Research Methodology} \textbf{20}, 7 (2020).
 
 \leavevmode\hypertarget{ref-rref}{}%
-61. R Core Team. \emph{R: A language and environment for statistical computing}. (R Foundation for Statistical Computing, 2019).
+63. R Core Team. \emph{R: A language and environment for statistical computing}. (R Foundation for Statistical Computing, 2019).
 
 \leavevmode\hypertarget{ref-rstudioref}{}%
-62. RStudio Team. \emph{RStudio: Integrated development environment for R}. (RStudio, Inc., 2015).
+64. RStudio Team. \emph{RStudio: Integrated development environment for R}. (RStudio, Inc., 2015).
 
 \leavevmode\hypertarget{ref-shinyref}{}%
-63. Chang, W., Cheng, J., Allaire, J., Xie, Y. \& McPherson, J. \emph{Shiny: Web application framework for R}. (2019).
+65. Chang, W., Cheng, J., Allaire, J., Xie, Y. \& McPherson, J. \emph{Shiny: Web application framework for R}. (2019).
 
 \leavevmode\hypertarget{ref-mcguinness2019a}{}%
-64. McGuinness, L. A. Robvis: An R package for visualising risk-of-bias assessments. {[}Computer Software - v0.3.0{]}. (2019). doi:\href{https://doi.org/10.5281/zenodo.3552342}{10.5281/zenodo.3552342}
+66. McGuinness, L. A. Robvis: An R package for visualising risk-of-bias assessments. {[}Computer Software - v0.3.0{]}. (2019). doi:\href{https://doi.org/10.5281/zenodo.3552342}{10.5281/zenodo.3552342}
 
 \leavevmode\hypertarget{ref-gibb2019consistent}{}%
-65. Gibb, K. \emph{et al.} The consistent burden in published estimates of delirium occurrence in medical inpatients over four decades: A systematic review and meta-analysis study. \emph{medRxiv} 19005165 (2019). doi:\href{https://doi.org/10.1101/19005165}{10.1101/19005165}
+67. Gibb, K. \emph{et al.} The consistent burden in published estimates of delirium occurrence in medical inpatients over four decades: A systematic review and meta-analysis study. \emph{medRxiv} 19005165 (2019). doi:\href{https://doi.org/10.1101/19005165}{10.1101/19005165}
 
 \leavevmode\hypertarget{ref-habadi2019prevalence}{}%
-66. Habadi, M. I. \emph{et al.} Prevalence of panic disorders in the primary health care setting: A systematic review and meta-analysis. \emph{EC Microbiology} \textbf{16}, 01--09 (2019).
+68. Habadi, M. I. \emph{et al.} Prevalence of panic disorders in the primary health care setting: A systematic review and meta-analysis. \emph{EC Microbiology} \textbf{16}, 01--09 (2019).
 
 \leavevmode\hypertarget{ref-veloso2020effectiveness}{}%
-67. Veloso, A., Vicente, S. G. \& Filipe, M. G. Effectiveness of cognitive training for school-aged children and adolescents with attention Deficit/Hyperactivity disorder: A systematic review. \emph{Frontiers in Psychology} \textbf{10}, 2983 (2020).
+69. Veloso, A., Vicente, S. G. \& Filipe, M. G. Effectiveness of cognitive training for school-aged children and adolescents with attention Deficit/Hyperactivity disorder: A systematic review. \emph{Frontiers in Psychology} \textbf{10}, 2983 (2020).
 
 \leavevmode\hypertarget{ref-simillis2020}{}%
-68. Simillis, C. \emph{et al.} Postoperative chemotherapy improves survival in patients with resected high-risk stage II colorectal cancer: Results of a systematic review and meta-analysis. \emph{Colorectal Disease} \textbf{Published online 30th January}, (2020).
+70. Simillis, C. \emph{et al.} Postoperative chemotherapy improves survival in patients with resected high-risk stage II colorectal cancer: Results of a systematic review and meta-analysis. \emph{Colorectal Disease} \textbf{Published online 30th January}, (2020).
 
 \leavevmode\hypertarget{ref-tanneru2020}{}%
-69. Tanneru, K. \emph{et al.} Meta-analysis and systematic review of intermediate-term follow-up of prostatic urethral lift for benign prostatic hyperplasia. \emph{International Urology and Nephrology} (2020).
+71. Tanneru, K. \emph{et al.} Meta-analysis and systematic review of intermediate-term follow-up of prostatic urethral lift for benign prostatic hyperplasia. \emph{International Urology and Nephrology} (2020).
 
 \leavevmode\hypertarget{ref-mathias_harrer_2019_2551803}{}%
-70. Harrer, M., Cuijpers, P. \& Ebert, D. \emph{Doing Meta-Analysis in R: A Hands-on Guide}. (Zenodo, 2019).
+72. Harrer, M., Cuijpers, P. \& Ebert, D. \emph{Doing Meta-Analysis in R: A Hands-on Guide}. (Zenodo, 2019).
 
 \leavevmode\hypertarget{ref-whiting2016robis}{}%
-71. Whiting, P. \emph{et al.} ROBIS: A new tool to assess risk of bias in systematic reviews was developed. \emph{Journal of Clinical Epidemiology} \textbf{69}, 225--234 (2016).
+73. Whiting, P. \emph{et al.} ROBIS: A new tool to assess risk of bias in systematic reviews was developed. \emph{Journal of Clinical Epidemiology} \textbf{69}, 225--234 (2016).
 
 \startappendices
 
@@ -1526,7 +1550,7 @@ Public involvement also steered the creation of the topic
 \section{Software used to create this thesis}\label{software-used-to-create-this-thesis}}
 
 This thesis was written in RMarkdown.
-Several R packages were used as part of this project.\textsuperscript{\protect\hyperlink{ref-base}{39}--\protect\hyperlink{ref-xfun}{52}}
+Several R packages were used as part of this project.\textsuperscript{\protect\hyperlink{ref-base}{41}--\protect\hyperlink{ref-xfun}{54}}
 
 \hypertarget{appendix-robvis}{%
 \section{\texorpdfstring{Producing risk-of-bias visualisation with \texttt{robvis}}{Producing risk-of-bias visualisation with robvis}}\label{appendix-robvis}}
@@ -1534,18 +1558,18 @@ Several R packages were used as part of this project.\textsuperscript{\protect\h
 \hypertarget{introduction-1}{%
 \subsection{Introduction}\label{introduction-1}}
 
-Risk of bias assessment - evaluation of the internal validity of studies included in a systematic review - often forms a key part of the evidence synthesis process, particularly in the health sciences.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{53}} A well-developed family of tools is widely used, which have in common the characteristic that they evaluate specific domains of bias rather being constructed as a checklist or a quantitative score.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{53}} These tools include the RoB 2 tool for randomized trials,\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{54}} the ROBINS-I tool for non-randomized studies of interventions,\textsuperscript{\protect\hyperlink{ref-sterne2016robins}{55}} the QUADAS 2 tool for test accuracy and the ROBIS tool for systematic reviews.\textsuperscript{\protect\hyperlink{ref-whiting2011quadas}{56}} Within each bias domains a judgement is reached about the strength of the study in that regard: for example, the first domain in the Cochrane RoB 2 tool deals with bias arising from the randomization process.\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{54}} Accessible graphics summarizing the results of these domain-based risk-of-bias assessments are included in reports of systematic reviews. A convenient plot in many reviews is a ``traffic light'' plot, which tabulates the judgement for each study in each domain. For larger numbers of studies, when such a table become unmanageable, a popular alternative is a weighted bar plot, which show the proportion of information with each judgement for each domain.\textsuperscript{\protect\hyperlink{ref-higgins2008assessing}{57}}
+Risk of bias assessment - evaluation of the internal validity of studies included in a systematic review - often forms a key part of the evidence synthesis process, particularly in the health sciences.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{55}} A well-developed family of tools is widely used, which have in common the characteristic that they evaluate specific domains of bias rather being constructed as a checklist or a quantitative score.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{55}} These tools include the RoB 2 tool for randomized trials,\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{56}} the ROBINS-I tool for non-randomized studies of interventions,\textsuperscript{\protect\hyperlink{ref-sterne2016robins}{57}} the QUADAS 2 tool for test accuracy and the ROBIS tool for systematic reviews.\textsuperscript{\protect\hyperlink{ref-whiting2011quadas}{58}} Within each bias domains a judgement is reached about the strength of the study in that regard: for example, the first domain in the Cochrane RoB 2 tool deals with bias arising from the randomization process.\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{56}} Accessible graphics summarizing the results of these domain-based risk-of-bias assessments are included in reports of systematic reviews. A convenient plot in many reviews is a ``traffic light'' plot, which tabulates the judgement for each study in each domain. For larger numbers of studies, when such a table become unmanageable, a popular alternative is a weighted bar plot, which show the proportion of information with each judgement for each domain.\textsuperscript{\protect\hyperlink{ref-higgins2008assessing}{59}}
 
-Researchers can face a number of barriers in creating these plots. While some evidence synthesis platforms, such as Cochrane's Review Manager,\textsuperscript{\protect\hyperlink{ref-cochrane2014review}{58}} are able to produce these visualizations, not all researchers use these systems to conduct their systematic reviews, and copying the risk-of-bias data into these systems simply to produce the plots is inefficient and error prone. Likewise, creating the figures by hand, through software such as MS PowerPoint or Adobe Illustrator, may lead to unintentional errors and require the plots to be redrawn during an update to the review. Additionally, while the field of evidence synthesis software has grown rapidly in recent years,\textsuperscript{\protect\hyperlink{ref-marshall2015systematic}{59}} this growth has not been equally distributed across the different aspects of the systematic review process. For example, a recent review found several software offerings aimed specifically at the abstract screening stage of the review process,\textsuperscript{\protect\hyperlink{ref-harrison2020software}{60}} but no similar time- and error-reducing tool has been proposed for visualizing the results of risk-of-bias assessments.
+Researchers can face a number of barriers in creating these plots. While some evidence synthesis platforms, such as Cochrane's Review Manager,\textsuperscript{\protect\hyperlink{ref-cochrane2014review}{60}} are able to produce these visualizations, not all researchers use these systems to conduct their systematic reviews, and copying the risk-of-bias data into these systems simply to produce the plots is inefficient and error prone. Likewise, creating the figures by hand, through software such as MS PowerPoint or Adobe Illustrator, may lead to unintentional errors and require the plots to be redrawn during an update to the review. Additionally, while the field of evidence synthesis software has grown rapidly in recent years,\textsuperscript{\protect\hyperlink{ref-marshall2015systematic}{61}} this growth has not been equally distributed across the different aspects of the systematic review process. For example, a recent review found several software offerings aimed specifically at the abstract screening stage of the review process,\textsuperscript{\protect\hyperlink{ref-harrison2020software}{62}} but no similar time- and error-reducing tool has been proposed for visualizing the results of risk-of-bias assessments.
 
-Fortunately, tools such as R, RStudio and \texttt{Shiny} (an R package for building interactive web apps) have made it easier than ever to produce such a tool.\textsuperscript{\protect\hyperlink{ref-rref}{61}--\protect\hyperlink{ref-shinyref}{63}} Here, we present \texttt{robvis} (Risk Of Bias VISualiation),\textsuperscript{\protect\hyperlink{ref-mcguinness2019a}{64}} an R package and \texttt{Shiny} web-app that allows users to create publication-ready risk-of-bias plots quickly and easily. Originally created for use with the major risk-of-bias assessment tools used in health research, the tool allows users to visualize the results from any domain-based risk-of-bias assessment or quality appraisal tool.
+Fortunately, tools such as R, RStudio and \texttt{Shiny} (an R package for building interactive web apps) have made it easier than ever to produce such a tool.\textsuperscript{\protect\hyperlink{ref-rref}{63}--\protect\hyperlink{ref-shinyref}{65}} Here, we present \texttt{robvis} (Risk Of Bias VISualiation),\textsuperscript{\protect\hyperlink{ref-mcguinness2019a}{66}} an R package and \texttt{Shiny} web-app that allows users to create publication-ready risk-of-bias plots quickly and easily. Originally created for use with the major risk-of-bias assessment tools used in health research, the tool allows users to visualize the results from any domain-based risk-of-bias assessment or quality appraisal tool.
 
 The tool is open-source and available to use free of charge. Users can download a stable version of the R package from CRAN (\url{https://cran.r-project.org/package=robvis}); or access and contribute to the development version via GitHub (\url{https://github.com/mcguinlu/robvis}).
 
 \hypertarget{development-1}{%
 \subsection{Development}\label{development-1}}
 
-Development of \texttt{robvis} began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.\textsuperscript{\protect\hyperlink{ref-gibb2019consistent}{65}--\protect\hyperlink{ref-tanneru2020}{69}}
+Development of \texttt{robvis} began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.\textsuperscript{\protect\hyperlink{ref-gibb2019consistent}{67}--\protect\hyperlink{ref-tanneru2020}{71}}
 
 \hypertarget{installation-1}{%
 \subsection{Installation}\label{installation-1}}
@@ -1609,17 +1633,17 @@ psize & X &  & Defines the size of the points in the traffic light plot. Default
 \hypertarget{reception-and-future-plans-1}{%
 \subsection{Reception and Future Plans}\label{reception-and-future-plans-1}}
 
-As of December 2020, \texttt{robvis} has been downloaded more than 8900 times. It has been well recieved but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{70}}
+As of December 2020, \texttt{robvis} has been downloaded more than 8900 times. It has been well recieved but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{72}}
 
-While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{71}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{53}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
+While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{73}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{55}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
 
 
 %%%%% REFERENCES
 
 % JEM: Quote for the top of references (just like a chapter quote if you're using them).  Comment to skip.
 % \begin{savequote}[8cm]
-% The first kind of intellectual and artistic personality belongs to the hedgehogs, the second to the foxes \dots
-%   \qauthor{--- Sir Isaiah Berlin \cite{berlin_hedgehog_2013}}
+% Lasciate ogne speranza, voi ch'intrate \dots
+% \qauthor{--- Sir Isaiah Berlin \cite{berlin_hedgehog_2013}}
 % \end{savequote}
 
 \setlength{\baselineskip}{0pt} % JEM: Single-space References

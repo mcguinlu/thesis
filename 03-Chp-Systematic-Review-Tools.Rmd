@@ -20,7 +20,7 @@ Because they R.
 ```
 (ref:sys-rev-tools-quote) --- Bealy, 2013 [@bealy2013]
 
-# medrxivr: an R package for searching medRxiv and bioRxiv preprint data {#sys-rev-tools-heading}
+# medrxivr: an R package for performing systematic searches of health-related preprints {#sys-rev-tools-heading}
 \minitoc <!-- this will include a mini table of contents-->
 
 ```{r setup, include=FALSE}
@@ -241,47 +241,43 @@ date <- format(Sys.Date(),"%B %Y")
 
 The tool has be well received by the community (as of `r date`, `medrxivr` has been downloaded more than `r medrxivr_downloads` times, and the medRxivr app has been visited more than ????), and several use cases have been reported. It has been used to visualize the growing number of preprints related to the 2019 coronavirus outbreak ^[https://twitter.com/L_Brierley/status/1233109086444695553], perform systematic searches in a number of other systematic reviews,[@noone2020] in addition to forming a platform for an analysis of researcher's differing data-sharing tendencies under two different journal models (preprint server vs formal publication).[CITE]
 
-Following rigorous peer-review, it has been onboarded into the rOpenSci suite of packages, a collection of "carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web", and an associated article published in the Journal of Open Source Software.[@mcguinness2020a] The entire review discussion is publicly available and can be viewed online.^[https://github.com/ropensci/software-review/issues/380]
+Following rigorous peer-review, it has been onboarded into the rOpenSci suite of packages, a collection of "carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web", and an associated article published in the Journal of Open Source Software.[@mcguinness2020a] The entire review discussion is publicly available and can be viewed online. ^[https://github.com/ropensci/software-review/issues/380]
 
-Lobbying of the cold springs harbour labratory has been ongoing. This would negate the current need to download a full copy of the relevant preprint database before searching it locally, which is currently the rate limiting step for. 
-
-<!----------------------------------------------------------------------------->
-### Comparison with other bioRxiv/medRxiv interfaces
-
-Prior development of `medrxivr`, several alternative search tools were considered as part of a audit of existing tools for accessing the metadata of records stored on the medRxiv and bioRxiv servers.
-
-Two key examples are useful to consider to highlight the additional functionality that `medrxivr` contributes.
-
-The first, a platform called Rxivist [@abdill2019], Similar to `medrxivr`, this tool previously scrapped data straight from the bioRxiv. (at the time of development, Rxvist , but as of November 2020, Rxivist also provides access to
-
-However, this platform is focused more on exploring the number of times a preprint has been downloaded and/r shared on Twitter, to allow researchers to find the most popular papers related to their topic. The search interface^[Available at https://rxivist.org/] does not allow for either complex search strategies or 
-The second `search.bioPreprint`, allows users to search for terms across a range of preprint servers, including medRxiv, bioRxiv, but also publishing venues such as F1000Research.  [@iwema2016]. However, this tool is aimed more at those looking to keep up to date with recent developments rather than systematically assessing the entirety of the available literature, and as such, only returns the most recent `r comma(1000)` records by publication date. 
-
-Finally, neither tool provides an easy way to programmatically download a copy of the PDF of relevant records.
-
-
-. As such, this tool does not meet the second success did not meet the success criteria laid out in the introduction to this Chapter.
-
-
+Lobbying of the cold springs harbour laboratory has been ongoing. This would negate the current need to download a full copy of the relevant preprint database before searching it locally, which is currently the rate limiting step for performing searches (for example, as of December 2020, downloading a copy of the bioRxiv database takes approximately an hour.)
 
 <!----------------------------------------------------------------------------->
-## Discussion 
+### Comparison with other medRxiv/bioRxiv interfaces
 
-Packaging and sharing R scripts should be a fundamental part of evidence synthesis process. []
+Prior development of `medrxivr`, an informal audit of comparable tools search tools were considered as part of a audit of existing tools for accessing the metadata of records stored on the medRxiv and bioRxiv servers. Two of these tools are useful to consider to highlight the additional functionality that `medrxivr` contributes.
 
+The first, a platform called Rxivist [@abdill2019], allows users to search preprints from the using keywords. Similar to `medrxivr`, this tool previously scrapped data straight from the medRxiv and bioRxiv websites but as of November 2020, Rxivist also provides access to Cold Spring Harbour API. However, the core functionality of the Rxivist platform is focused around exploring the number of times a preprint has been downloaded and/or shared on Twitter, to allow researchers to find the most popular papers related to their topic. The search interface^[Available at https://rxivist.org/] does not allow for complex search strategies, and there is no option to batch-export the results of a search.
 
-While searching of the medRxiv database was crucical for the systematic review element of this thesis presented in Chapter \@ref(sys-rev-heading)
+The second, `search.bioPreprint`, allows users to search for terms across a range of preprint servers, including medRxiv, bioRxiv, but also publishing venues using post-publication peer-review such as F1000Research.[@iwema2016] However, similar to the Rxivist platform, this tool is designed for researchers aiming to keep up to date with recent developments in their fields rather than systematically assess the entirety of the available literature. As such, the platform only returns the most recent `r comma(1000)` records by publication date. 
 
-**Need to also touch on the biases involved in search preprint literature, in that the authors of those in the **
+Finally, neither tool provides an easy way to programmatically download a copy of the PDF of relevant records which is required for the full-text screening stage of a systematic review. 
 
+<!----------------------------------------------------------------------------->
+## Discussion ^[Some of the arguments presented here are repeated in a paper introducing second R package developed during this thesis, but not directly related to it.[@mcguinness] A summary of this second tool, `robvis` is presented in Appendix \@ref(appendix-robvis).]
 
+The development and distribution of open source scripts and tools should be a fundamental part of evidence synthesis process. 
 
-There is the potential that the cross-section of literature posted on medrxiv would be substantially different from the true grey literature - simply lowering the barriers to publication may encourage authors to published "null" results,[CITE] but due to the effort involved in writing up a distributable manuscript, it is unlikely to completely address the "file drawer" effect.[CITE] It is likely too early, (and too difficult) to tell whether. **The additional contribution of searching these repositories to the systematic review element of this thesis is explored in Chapter \@ref(sys-rev-heading)**
+While searching of the medRxiv database was crucial for the systematic review element of this thesis presented in Chapter \@ref(sys-rev-heading), there are some important limitations to note here. As key example is that the tool only searches the available metadata of preprint records (the title, abstract and keywords).
+There is the potential that the cross-section of literature posted on medrxiv would be substantially different from the true grey literature - studies or analysis that are not published for a range of reasons, including results that are not deemed "novel" or are not statistically significant. 
+This is because simply lowering the barriers to publication may encourage authors to published "null" results,[CITE] but due to the effort involved in writing up a distributable manuscript, it is unlikely to completely address the "file drawer" effect.[CITE] 
+It is likely too early, (and too difficult) to tell whether the popularity of preprint repositories will have any effect of the availability of research that was not considered "publishable" at other venues. 
+**Of particular interest to this thesis is whether including unpublished preprints in the systematic review and meta-analysis is worthwhile. To this end, the additional contribution of searching these repositories to the systematic review element of this thesis is explored in Chapter \@ref(sys-rev-heading) [CROSS].**
 
-By implementing the tool described above as both as an R package and a `Shiny` web app, the functionality is available to evidence synthesists with varying levels of ability in R. These tools serve as an example of the advantages of “packaging” the R scripts that evidence synthesists often create for personal use.[@wickham2015r] In the case of `medrxivr`, it is likely that several other evidence synthesists had written scripts that have a similar functionality - in fact, in the course of its development, one other researcher that has done so was identified (xxxx xxxx, author of the `rbiorxiv` pacakge).[@rbiorxiv] 
+By implementing the tool described above as both as an R package and a `Shiny` web app, the functionality is available to evidence synthesists with varying levels of ability in R. 
+These tools serve as an example of the advantages of “packaging” the R scripts that evidence synthesists often create for personal use.[@wickham2015r] 
+In the case of `medrxivr`, it is likely that several other evidence synthesists had written personal scripts scripts that have a similar, or related, functionality - in fact, in the course of its development, one other researcher that has done so was identified (Nicholas Fraser, author of the `rbiorxiv` package).[@rbiorxiv] 
+If these scripts continue to be developed in private and never shared or publicised, this leads to inevitable harm to the evidence synthesis community, not only in terms of duplication of time and effort, but also due to lost collaboration opportunities. 
 
-This duplication of time and effort is inefficient, and creating and sharing well-documented R packages represents one way to reduce this inefficiency. Taking this approach one step further, `Shiny` apps represent a straightforward way to provide a user-friendly GUI for a newly created R package within a very short time-frame, expanding the potential pool of users of the package to anyone with an internet connection.
+Creating and sharing well-documented packages, the recognised standard for sharing reproducible and useful code, represents one way to reduce this inefficiency.
+Progressing this argument further, `Shiny` apps represent a efficient way to provide a user-friendly interface for newly created R packages within a very short time-frame, expanding the potential pool of users of the package to anyone with an internet connection.
 
+[**The next section needs to be reduced and fit a bit better to this Chapter - it was taken from the robvis paper, but the issues it raises are important and potentially relevant here.**]{.correction}
+
+In addition
 Creating a package using R has a number of advantages unique to the R programming environment. R provides access to a range of powerful tools including the `ggplot` infrastructure for creating publication-quality plots, and RMarkdown, which enables creation of documents that can be rendered in a range of formats such as PDF, HTML, or Word.[@xie2018r] Furthermore, and focusing specifically on evidence synthesis, building new tools as packages in R allows for easy integration with the range of existing evidence synthesis packages. Recently, the `metaverse` project,[@variousauthors2020] of `medrivr` is a part, has begun to curate a collection of R packages that cover different aspects of the systematic review and meta-analysis process which, when taken together, form a coherent end-to-end open-source alternative to commercial offerings such as Covidence or Review Manager. Key offerings in this suite of packages include `litsearcher`, which facilitates systematic search strategy development, `revtools`, a package for managing the review process and performing title and abstract screening, `metaDigitise`, a package for automatic extraction of data from figures in research papers, and `metafor`, a package for conducting meta-analyses in R.[@grames2019automated; @metaforref; @pick2018; @westgate2019revtools]
 
 
@@ -290,7 +286,6 @@ Creating a package using R has a number of advantages unique to the R programmin
 
 * In this Chapter, I have introduced a new tool, `medrxivr`, for performing complex searches in the medRxiv and bioRxiv preprint repositories.
 
-* I have outlined the motivation for developing this tool in relation to this thesis - more specifically, that it was used to perform systematic and reproducible searches of a key literature source used in the comprehensive systematic review described in Chapter \@ref(sys-rev-heading).
+* I have outlined the motivation for developing this tool in relation to this thesis - more specifically, that it was used to perform systematic and reproducible searches of a key literature sources used in the comprehensive systematic review described in Chapter \@ref(sys-rev-heading).
 
-* The impact of this tool to date, its place in the broader evidence synthesis in R ecosystem, and a roadmap for its future development has been discussed.
-
+* I have contrasted `medrxivr` with other other platforms to highlight the added functionality it offers. I have also discussed its reception to date, its place in the broader evidence synthesis in R ecosystem, and a roadmap for its future development.

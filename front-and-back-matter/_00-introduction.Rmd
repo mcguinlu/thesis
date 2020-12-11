@@ -94,6 +94,8 @@ target <- (date_diff*200)+5580
 
 words_behind <- words$words[which(words$date == max(words$date))] - target
 
+words_new_today <- words$words[which(words$date == max(words$date))] - words$words[length(words$words)-1]
+
 target_df <- data.frame(date = c(start_date,max_date),
                            words = c(5580, target))
 
@@ -106,6 +108,8 @@ Word count: `r words_today`
 Days: `r date_diff`
 
 Words behind: `r words_behind`
+
+Words today: `r words_new_today`
 
 &nbsp;  
 

@@ -3,7 +3,7 @@
 ## thesis metadata ##
 #####################
 title: |
-   Lipids and dementia\
+   Lipids and dementia:\
    An investigation of their relationship
    
 author: Luke A McGuinness
@@ -84,7 +84,6 @@ documentclass: book
 ```{r create_chunk_options, include=FALSE, eval=knitr::is_latex_output()}
 source('scripts_and_filters/create_chunk_options.R')
 source("R/helper.R")
-source
 ```
 
 <!--

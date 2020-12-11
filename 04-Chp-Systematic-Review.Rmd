@@ -7,9 +7,10 @@ output:
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:dara-quote)'}
-Science knows it doesn't know everything; otherwise, it'd stop
+```{block type='savequote', include=knitr::is_latex_output(),quote_author='(ref:sys-rev-quote)'}
+"It is surely a great criticism of our profession that we have not organised a critical summary by speciality or sub-speciality, up-dated periodically, of all relevant RCTS."  
 ```
+(ref:sys-rev-quote) --- Archie Cochrane, 2000 [@cochrane20001931]
 
 # Systematic review and triangulation of available evidence {#sys-rev-heading}
 \minitoc <!-- this will include a mini table of contents-->
@@ -23,7 +24,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## To Do
 
 * Examine how many times a primary study was included in a review  
-* Look at wether searching preprints made any difference to my results
+* Look at whether searching preprints made any difference to my results
 
 ## Lay summary
 
@@ -152,6 +153,9 @@ Following de-duplication, the titles and abstracts of 16109 records were assesse
 
 ### Characteristics of included studies
 
+
+[This is a test]{.correction}
+
 XXXX studies met the criteria for inclusion in the review.
 
 
@@ -200,4 +204,9 @@ __The duplication of work across reviews (including, ironically, by this review)
 
 ### Strenghts and limitations
 
+Test
+
 ## Conclusion
+
+
+Test

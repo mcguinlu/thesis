@@ -8,7 +8,7 @@ documentclass: book
 ---
 
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:dara-quote)'}
-Science knows it doesn't know everything; otherwise, it'd stop
+Science knows it doesn't know everything; otherwise, it'd stop.
 ```
 (ref:dara-quote) --- Dara O'Briain
 
