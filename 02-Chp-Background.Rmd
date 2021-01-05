@@ -26,6 +26,19 @@ Dementia is difficult to diagnose, primarily due to the absence of a gold standa
 ###	Public Health Importance
 Dementia is quickly becoming a critically important public health issue. Despite the age-specific incidence and prevalence of dementia remaining relatively constant over time,6 an ageing population looks set to create a dementia epidemic, particularly in Westernised countries. In the UK, there are estimated to be 800,000 people currently living with dementia, with this figure expected to double by 2040.7 Globally, the prevalence of dementia is expected to reach 75 million by 2030.8 Despite the number of dementia cases and decades of research, there remains much unknown about the pathogenesis and progression of the disease. 
 
+``` {r}
+library(gt)
+library(dplyr)
+
+gt(data = mtcars) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = list(cells_body(
+      columns = vars(mpg)),
+      cells_column_labels(columns = vars(mpg))))
+
+```
+
 ###	Challenges in the study of dementia using traditional study designs
 
 Speak to the 
