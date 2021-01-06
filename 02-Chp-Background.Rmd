@@ -15,13 +15,24 @@ Science knows it doesn't know everything; otherwise, it'd stop.
 # Background {#background-heading}
 \minitoc <!-- this will include a mini table of contents-->
 
+This Chapter will provide an overview of the key exposures, outcomes and methods used throughout this thesis.
+
 ## Dementia
 
 ### Definition and Subtypes
 Dementia is major neurocognitive disorder, with symptoms including impairment of executive cognitive functions such as speech, judgement and memory. The most common causes of dementia are Alzheimer’s disease and vascular dementia, accounting for ~60-80% and ~10% of cases respectively. The remaining 10-30% of cases are caused other dementia subtypes (e.g. Lewy Body dementia) or by progression of other neurological diseases (e.g. Parkinson’s disease).
 
 ###	Diagnosis
-Dementia is difficult to diagnose, primarily due to the absence of a gold standard test for the condition. Information from multiple diagnostic tools are utilised, from medical history examination, through assessment of patients mental ability (e.g. the Mini-Mental State Examination), to clinical tests (e.g. Magnetic Resonance Imaging (MRI) scans). 
+Dementia is difficult to diagnose, primarily due to the absence of a gold standard test for the condition (is this true, or would it be better to say that there is no gold standard test without an autopsy). Information from multiple diagnostic tools are utilised, from medical history examination, through assessment of patients mental ability (e.g. the Mini-Mental State Examination), to clinical tests (e.g. Magnetic Resonance Imaging (MRI) scans). 
+
+
+
+### Criteria
+
+Several scales are commonly used to diagnose dementia and associated diseases for research purposes. Two of the most commonly used include the criteria of the Diagnostic and Statistical Manual of Mental Disorders, fourth edition (DSM-IV-TR)1 and the National Institute of Neurological Disorders and Stroke–Alzheimer Disease and Related Disorders (NINCDS–ADRDA).[@dubois2007] [**Need first NINCDS-ADRDA citation and DSM- **]
+
+**Note important differences between the scales and whether they affect results. Could cross-reference with an exploratory analysis in Chapter \@ref(sys-rev-heading)**
+
 
 ###	Public Health Importance
 Dementia is quickly becoming a critically important public health issue. Despite the age-specific incidence and prevalence of dementia remaining relatively constant over time,6 an ageing population looks set to create a dementia epidemic, particularly in Westernised countries. In the UK, there are estimated to be 800,000 people currently living with dementia, with this figure expected to double by 2040.7 Globally, the prevalence of dementia is expected to reach 75 million by 2030.8 Despite the number of dementia cases and decades of research, there remains much unknown about the pathogenesis and progression of the disease. 
@@ -43,13 +54,13 @@ gt(data = mtcars) %>%
 
 Speak to the 
 
-Historically, studies on dementia have faced a range of challenges. As a range of determinants (genetic, environmental and lifestyle) are thought to jointly influence the risk, progression and outcomes of dementia, any individual association is likely to have only a small effect. Therefore, the statistical power need to detect these associations will often require sample sizes that are unfeasible using primary data collection. 
+Historically, studies on dementia have faced a range of challenges. As a range of determinants (genetic, environmental and lifestyle) are thought to jointly influence the risk, progression and outcomes of dementia, any individual association is likely to have only a small effect. Therefore, the statistical power need to detect these associations will often require sample sizes that are **unfeasible** using primary data collection. 
 This fact is further complicated by the long latency of dementia, which necessitates a costly long-term approach to patient follow-up. Furthermore, dementia studies often have limited generalisability to the target population, as certain subgroups (e.g. the very old) are frequently under-represented in study cohorts due to difficulties associated with their recruitment.9 Finally, studies employing a case-control design are further limited by the high potential for differential recall bias between those who have and have not developed dementia.10 
 
 Fortunately, these limitations may potentially be addressed through the use of routinely collected health data, and the electronic health record databases in which they are stored. 
 
 
-Include CIND definition here
+*Cognitive impairment not dementia* (CIND) is another term used to described those with cognitivie impairment but who fall below the diagnostic criteria for dementia. 
 
 A further clinical subtype that is of particular import the  
 
@@ -82,13 +93,36 @@ Queries around how the data were collected, along
 
 ### Range of lipids
 
+The blood profile has a range of lipid fractions to it. However, for the sake of this thesis, we will only consider the three most important fractions, namely total cholesterol, low density lipoprotein cholesterol (LDLc), high density lipoprotein cholesterol (HDLc) and trigylcerides (TG).
+
 ### HDL-c
+
+
 
 ### LDL-c
 
+Include formula for working out total cholesterol and the ranges.
+
+LDL-c levels are not directly measured but instead are estimated from using the Friedewald formula,[@friedewald1972] where the :
+
+$$LDLc \approx TC - HDLc - kTG$$
+where $k$ is 0.20 if measurements are in mg/dl and 0.45 if in mmol/l.
+
+
+Limitations to the method include a requirement to fast for 12-14hrs prior to measures, an inability to estimate LDLc if TG levels are high
+
+``` {block type='correction'}
+Measurement error is a big deal for this thesis, as will discuss measurement error regarding how  different codelists/measurement of AD vs vascular dementia affect results in later chapters.
+```
+
+
 ### Triglycerides
 
+
+
 ### Total cholesterol
+
+
 
 ## Serum lipid interventions
 
@@ -100,7 +134,9 @@ Queries around how the data were collected, along
 
 ## Methods used in the thesis
 
-## Evidence synthesis
+### Evidence synthesis
+
+### Primary cohort analysis
 
 ### Triangulation
 
