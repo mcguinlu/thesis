@@ -1,0 +1,132 @@
+---
+output:
+  bookdown::word_document2:
+    reference_docx: ../../templates/word-styles-reference-01.docx
+---
+
+```{r include=FALSE}
+## packages
+library(tidyverse)
+library(kableExtra)
+library(flextable)
+```
+
+# STaR report {#star-report}
+## Introduction
+
+**Title**
+
+
+**Maximum submission date**
+01/01/2022
+
+## Looking back
+### Research progress
+
+* Chapter 1: Introduction
+  * This short chapter presents the aims and objectives of the thesis, an overview of each chapter, an introduction to evidence synthesis as the theoretical framework underlying the thesis, and a summary of thesis output.
+
+* Chapter 2: Background
+  * This is a small introductory chapter to put the thesis into context, lay out the aims and objectives and to propose the idea of a pipeline for MR studies using metabolomics data. I have almost completed this chapter.
+
+* Chapter 3: medrxivr tool for searching preprints
+  * A short chapter describing the motivation, development and reception of medrxivr, a tool built to facilitate the systematic searching of the medRxiv and bioRxiv preprint servers. This chapter represents a more comprehensive version of a published manuscript [https://doi.org/10.21105/joss.02651](https://doi.org/10.21105/joss.02651).
+
+* Chapter 4: Comprehensive systematic review
+  * This Chapter presents the methods and findings of a comprehensive systematic review into the relationship between blood lipids levels/statins and dementia subtypes.
+  * Data extraction is complete and I am in the midst of finishing the risk-of-bias assessments. 
+  
+* Chapter 5: observational analysis: adiposity -> metabolites
+  * This chapter uses data from the Clinical Practice Research Datalink (CPRD) to investigate the relationship between statin use and dementia. 
+  * This analysis has proven challenging likely due to the presence of confounding by indication. The suggestion has been to write up the corresponding paper as an example of the dangers of EHR in cases where strong confounding by indication is likely. 
+
+* chapter 6: Individual patient data meta-analysis
+  * This chapter will use data from several Dementia Platform cohorts (plus some of the cohorts identified through the systematic review) to investigate the relationship between blood lipids levels and dementia outcomes. This analysis has not yet started, but data access has been secured.
+
+* Chapter 7: Triangulation
+  * This short chapter will draw together different sources of information (including the primary analysis performed as part of this thesis) in a triangulation framework.
+
+* Chapter 8: Discussion
+  * This chapter a summary of the main findings of the thesis, a discussion of the strengths and limitations, a roadmap for future work, and a conclusion.
+
+### Training
+
+Due to the pandemic, the majority of the training courses and workshops I had planned to attend during the review period were cancelled. However, I plan to attend the next iteration of each event in the coming year, and have confirmed with my funder that this is possible.
+
+### Presenting your research
+
+In the review period, I have not presented work related to my thesis. 
+
+### Public engagement and outreach
+
+### Teaching
+I have taught on the following:
+
+* MSc Epi/Public Health "Clinical Epidemiology" module
+    * Tutored a small group of several weeks
+    * Marked the end-of-module presentations
+* Introduction to R short course for new PhD students, Bristol Medical School short course
+    * Presented a lecture on the 
+    * Tutor helping participants on a data manipulation practical
+* Introduction to data visualisation and web applications using R, Bristol Medical School short course
+    * Designed and delivered the web applications aspects of the course.
+    * Tutor helping on practicals on data visualisations and Rmarkdown.
+    
+I also ran an open-door "Intro to R" session each Friday in the autumn term to help new students with questions about R.
+
+### Summary / further comments 
+
+None
+
+
+## Planning ahead
+### Research objectives
+
+January-April:
+
+1. Finish systematic review data extraction
+1. Complete replication of chapter 5 analysis in INTERVAL and complete write-up of chapter and manuscript
+1. Finish chapter 1
+1. Finish chapter 3
+1. Finish chapter 6 
+
+April-June:
+
+1. Finish chapter 2 - systematic review chapter
+1. Finish chapter 4 - complete observational analysis and write-up of chapter 4
+1. Complete one clustering analysis and begin work on a second and third (chapters 7 and 8)
+
+July-October:
+
+1. Finish chapter 7 second and third clustering analyses
+1. Begin writing chapter 8 rules for instrumenting clusters 
+
+November-December:
+
+1. Finish chapter 7 and 8
+1. Begin final analysis for chapter 9
+1. Finish write-up of chapter 9
+
+1. finishing touches to thesis
+1. finish outstanding manuscripts
+1. Submit
+
+### Planned training and development
+
+I am booked onto the Mendelian Randomisation (17th-19 March) and Advanced Methods for Multiple Imputation (2nd March). 
+
+In addition, as per my Fellowship training scheme, I plan to attend the Royal Society "Writing about your research" course.
+
+### Communicating your research
+
+I plan on producing the following outputs from the coming 12 months:
+
+* Comprehensive systematic review
+  * preprint/publication
+  * poster/presentation at the Alzheimer's Association International Conference (deadline 25th January)
+* Primary analysis of the CPRD
+  * preprint/publication
+
+## Further comments
+
+None.

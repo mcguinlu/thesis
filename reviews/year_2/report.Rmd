@@ -1,0 +1,266 @@
+---
+output:
+  bookdown::word_document2:
+    reference_docx: ../../templates/word-styles-reference-01.docx
+---
+
+```{r include=FALSE}
+## packages
+library(tidyverse)
+library(kableExtra)
+library(flextable)
+```
+
+# Annual Review - Year 2 {-}
+
+**Title**: 
+
+&nbsp;
+
+**Supervisors**:
+
+* Julian Higgins (Primary)
+* Yoav Ben-Shlomo
+* Liz Coulthard
+* George Davey-Smith
+
+&nbsp;
+
+**Current date**: 19/01/2021
+
+&nbsp;
+
+**PhD Start date**: 01/01/2019
+
+&nbsp;
+
+**Expected submission date**: 01/01/2022
+
+&nbsp;
+
+**Maximum submission date**: 01/01/2023
+
+&nbsp;
+
+**Note:** The content of this report represents a more comprehensive version of that entered into the STaR University of Bristol PGR reporting system.
+
+\newpage
+
+# Overview of PhD
+I am on a 3 year PhD funded by an NIHR Doctoral Research Fellowship. I have just entered my third year and expect to finish in January 2021.
+
+&nbsp;
+
+## Rationale
+
+Several existing studies exist. However, there has been no attempt to review the entirity of information related to this research question, regardless of source.
+
+&nbsp;
+
+## Theoretical framework
+The main theoretical framework used in this thesis is evidence synthesis - the discovery and critical integration of all available evidence on a research question in order to either: a) provide a more definitive answer to that question or; b) highlight gaps in the existing evidence base, so that future research can address questions that have yet to be answered, or explore existing questions in a way that increases our confidence in the result. 
+
+The primary evidence generation aspects of this thesis are performed with the primary intention of providing a further source of evidence for the evidence synthesis/triangulation.
+
+## Aim {#aim}
+The central aim of this thesis is to: <br>
+
+* **To investigate the relationship between blood lipid levels and dementia outcomes using **
+
+&nbsp;
+
+## Objectives {#objectives}
+In order to achieve this aim this thesis will:
+
+1. Identify all existing on the relationship between blood lipid levels (and interventions that affect blood lipid levels) and dementia
+    * The review will include all types of study design including randomised controlled trials, Mendelian randomisation analyses, and non-randomised studies of exposures and interventions.
+    
+&nbsp;    
+
+2. Examine the relationship between lipid-regulating agents and dementia and related outcomes in a large scale population-based cohort, the Clinical Practice Research Datalink
+
+&nbsp;
+
+3. To integrate the existing evidence from the review with the primary evidence produced as part of this thesis in a triangulation framewok. 
+
+\newpage
+
+# Chapter progress
+
+The thesis is laid out in a similar manner to that successfully defended by Sam Abbott of the MRC IEU ([https://www.samabbott.co.uk/thesis](https://www.samabbott.co.uk/thesis)). Each chapter is self-contained in that it presents the relevant methods and results for that particular analysis, as opposed to having the Methods and Results of an analysis presented in distinct chapters.
+
+The exact order in which chapters are presented is yet to be confirmed - advice on the best way to present this would be appreciated!
+
+**Include Gantt chart here**
+
+## Chapter 1: Introduction
+
+**Overview**
+
+This short chapter presents the aims and objectives of the thesis, an overview of each chapter, an introduction to evidence synthesis as the theoretical framework underlying the thesis, and a summary of thesis output.
+
+**Progress**
+
+A preliminary draft of this chapter is complete. Additional outputs and  .
+
+&nbsp;
+
+<!----------------------------------------------------------------->
+## Chapter 2: Background
+
+**Overview**
+
+This chapter provides an overview of the main topics covered in the thesis, including dementia (prevalence and impact, clinical presentation, diagnostic criteria, treatments), blood lipids fractions (fractions of interest (TC, HDL, LDL, TG), accepted ranges for each), and lipid regulating agents (type (statin vs non-statin), mechanism of action, indications for use).
+
+**Progress**
+
+This chapter is approximately 70% complete.
+
+&nbsp;
+
+<!----------------------------------------------------------------->
+## Chapter 3: Tool for systematically searching health-related preprints (medrxiv)
+**Overview**
+This chapter introduces a tool built to allow for systematic searching of the medRxiv and preprint repositories. The development of this tool was necessitated by the fact that preprints represent an important source of grey literature.
+
+
+**Progress**
+
+Paper: 100% (Published)
+Chapter: 100%
+
+&nbsp;
+
+<!----------------------------------------------------------------->
+## Chapter 4: Systematic review
+
+**Overview**
+
+This chapter presents the methods and findings of a comprehensive systematic review into the relationship between blood lipids levels/statins and dementia subtypes. 
+  
+**Progress**
+
+The data extraction stage is complete, and I am in the midst of finalising the few remaining risk-of-bias assessments. 
+
+Paper: 80%  
+Chapter: 70%
+ 
+&nbsp;
+
+<!----------------------------------------------------------------->
+## Chapter 5: Observational analyses
+
+**Overview**
+
+This chapter uses data from the Clinical Practice Research Datalink (CPRD) to investigate the relationship between statin use and dementia. 
+
+This analysis has two motivations: firstly that the availability of the data and secondly, the opportunity to use a separate analytical technique to many of the studies included in the systematic review. As an example, the Hippsley-Cox BMJ paper examining the effect of statins likely suffers from immortal time bias, as exposed and unexposed participants were not followed up from a common point. [CITE].
+
+This analysis has proven challenging likely due to the presence of confounding by indication. The suggestion has been to write up the corresponding paper as an example of the dangers of EHR in cases where strong confounding by indication is likely. 
+
+While this limitation is important, it presents a nice opportunity to compare the effect of different analytical strategies with competing directions (immortal time makes statins look better, condounding by indication makes statins look worse) of bias on the same question.
+
+
+**Progress**
+
+Paper: 80%
+Chapter: 80%
+
+&nbsp;
+
+<!----------------------------------------------------------------->
+## Chapter 6: Individual patient data meta-analysis
+
+**Overview**
+
+This chapter will use data from several Dementia Platform cohorts (plus some of the cohorts identified through the systematic review) to investigate the relationship between blood lipids levels and dementia outcomes. This analysis has not yet started, but data access has been secured.
+
+**Progress**
+
+This analysis has not yet formally started. Cohorts identified through the systematic review have been invited to participate (though I am sceptical about the chance of response), but regardless I have access to the CPRD data in addition to several DPUK cohorts
+
+&nbsp;
+
+<!----------------------------------------------------------------->
+## Chapter 8: Triangulation
+
+**Overview**
+
+This chapter will draw together different sources of information (including the primary analysis performed as part of this thesis) in a triangulation framework, along with a consideration of the key sources/direction of bias in each, to inform. 
+
+**Progress**
+
+Not started, though several of the key data sources included the systema
+
+&nbsp;
+
+<!----------------------------------------------------------------->
+## Chapter 10: Discussion/limitations/conclusion
+**Overview**
+
+This chapter a summary of the main findings of the thesis, a discussion of the strengths and limitations, a roadmap for future work, and a conclusion.
+
+**Progress**
+
+Not started.
+
+\newpage
+
+<!----------------------------------------------------------------->
+# Other
+## Courses
+
+All training courses planned for the past year have either been cancelled or postponed due to the pandemic. As a resutl, in the review period, I have not taken part in any courses related to my thesis. 
+
+&nbsp;
+
+<!----------------------------------------------------------------->
+## Conferences/ presentations
+
+In the review period, I have not presented work related to my thesis.
+
+&nbsp;
+
+<!----------------------------------------------------------------->
+## Teaching
+
+In the review period, I have taught on the following courses:
+
+* MSc Epidemiology/Public Health "Clinical Epidemiology" module
+    * Tutored a small group of several weeks
+    * Marked the end-of-module assessments
+* Introduction to R short course for new PhD students, Bristol Medical School short course
+    * Presented a lecture on advanced R topics (data visualisation, literate programming and web applications)
+* Introduction to data visualisation and web applications using R, Bristol Medical School short course
+    * Designed and delivered the web applications aspects of the course
+    * Tutor helping on practicals on data visualisations and literate programming with Rmarkdown
+    
+I also hosted a drop-in "Intro to R" session each Friday in the autumn term to help new students with questions about R.
+
+&nbsp;
+
+<!----------------------------------------------------------------->
+## Other work
+
+__COVID-related work__
+
+* *Living review:* As part of national team, I developed and deployed an integrated literature searching and screening pipeline to help a team of national experts produce the first iteration of a living systematic review on the impact of COVID-19 on suicide and self-harm (now published: [https://doi.org/10.12688/f1000research.24274.1](https://doi.org/10.12688/f1000research.24274.1))
+
+* *Rapid review of symptoms:* Through my work on the medrxivr (the preprint search tool described in Chapter 2), I was involved in developing and running preprint searches for a rapid systematic review of COVID-19 symptoms (now published: [https://dx.doi.org/10.2139/ssrn.3582819](https://dx.doi.org/10.2139/ssrn.3582819))
+
+__Evidence synthesis methods__
+
+* *robvis:* A paper describing the risk-of-bias visualisation tool that I developed was published as part of special issue of "Research Synthesis Methods". The tool has now been used ~100 published reviews. 
+
+* *PRISMA2020:* I contributed to the updated PRISMA2020 guidelines on the preferred reporting items for systematic reviews and meta-analyses, and am a co-author on two papers describing the new version of this reporting checklist which have been accepted for publication in the BMJ.
+
+__Primary research__
+
+* *Comparison of data availability statements:*
+Using medrxivr (the preprint search tool described in Chapter 2), myself and a fellow PhD student compared the 
+
+* *Making primary research synthesis-ready:* I acted as last author on a commentary describing the best practice and advatnages for primary researchers in the field of prevention science to ensure that their research is "synthesis-ready" (i.e. can be easily found and integrated into an evidence synthesis project). This commentary is under consideration at "Prevention Science".
+
+\newpage
+
+## References

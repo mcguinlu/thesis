@@ -105,16 +105,16 @@ As a summary of the duplication of work in this area, we looked at how many revi
 
 Inter- and intra-rater reliability was asssessed for a 10% subsample of records at the title and abstract screening stage. Intra-rater reliability involved a sinlge reviewer applying the inclusion criteria to the same set of records while blinded to their previous decisions, while inter-rater reliability involved two reviewers independently screening the same set of records.
 
-Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This measure of inter-rater reliabilty was chosen over other methods of assessing inter-rater reliability such as percent agreeement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. [@cohen1960: [@gwet2008; @wongpakaran2013]
+Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This measure of inter-rater reliabilty was chosen over other methods of assessing inter-rater reliability such as percent agreeement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. [@cohen1960: @gwet2008; @wongpakaran2013]
 
 How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpreation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:gwet-table).
 
 <!----------------------------------------------------------------------------->
-``` {r gwet-setup, results="hide", message=FALSE}
-```
-
-```{r gwet-table, message=FALSE, results="asis"}
-```
+<!-- # ``` {r gwet-setup, results="hide", message=FALSE} -->
+<!-- # ``` -->
+<!-- # -->
+<!-- # ```{r gwet-table, message=FALSE, results="asis"} -->
+<!-- # ``` -->
 <!----------------------------------------------------------------------------->
 
 In a two by two table with cells A, B, C and D, Gwet's AC1 is calculated using the following:
@@ -124,11 +124,10 @@ Here, $p = \frac{A+D}{N}$ and $e(\gamma)$ is the chance agreement between raters
 
 -> Insert formula here. Need to be sure of how to calculate. [@gwet2008; @sim2005]
 
-```{r agreementtableinter, echo = FALSE}
-```
-
-```{r agreementtableintra, echo = FALSE}
-```
+<!-- # ```{r agreementtableinter, echo = FALSE} -->
+<!-- # ``` -->
+<!-- # ```{r agreementtableintra, echo = FALSE} -->
+<!-- # ``` -->
 
 For the inter-rater reliability, percentage agreement was 97.3% (AC1 = XXXX, Table \@ref(tab:agreement-table-intra)), while for the intra-rater reliability, agreement was 98.6% (AC1 = XXXX, Table \@ref(tab:agreement-table-intra)).
 
@@ -152,9 +151,6 @@ knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
 Following de-duplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened. \@ref(fig:prisma-flow-fig)
 
 ### Characteristics of included studies
-
-
-[This is a test]{.correction}
 
 XXXX studies met the criteria for inclusion in the review.
 
@@ -189,7 +185,7 @@ Detail that some of these are exploratory, in particular the effect of different
 
 One key question for which multiple distinct sources of evidence were available were those looking at Laz
 
-A key limitation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia [**Is this true?**] This rules out the use. In addition, there was limited literature available - as discussed in CHapter \@ref()
+A key limitation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia [**Is this true?**] This rules out the use. In addition, there was limited literature available - as discussed in CHapter \@ref(sys-rev)
 
 
 Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated. [@guyatt2011]
