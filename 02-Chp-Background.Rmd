@@ -7,7 +7,7 @@ output:
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:dara-quote)'}
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:dara-quote)', echo = TRUE}
 Science knows it doesn't know everything; otherwise, it'd stop.
 ```
 (ref:dara-quote) --- Dara O'Briain
@@ -18,6 +18,9 @@ Science knows it doesn't know everything; otherwise, it'd stop.
 ## Lay summary
 
 ## Introduction
+
+
+> This chapter provides the context of the thesis. It briefly gives the background on the problem of increased adiposity, the biology of adipose tissue, and diseases linking increased body mass index and mortality. The chapter briefly explores different measures of increased adiposity and potential hypotheses for underlying aetiology of diseases associated with increased adiposity. Finally, the potential application of metabolites and Mendelian randomization in the context of understanding underlying aetiology are discussed. *From Matt Lee's thesis.*
 
 This Chapter will provide an overview of the key exposures, outcomes and methods used throughout this thesis.
 
@@ -58,7 +61,7 @@ gt(data = mtcars) %>%
 
 Speak to the 
 
-Historically, studies on dementia have faced a range of challenges. As a range of determinants (genetic, environmental and lifestyle) are thought to jointly influence the risk, progression and outcomes of dementia, any individual association is likely to have only a small effect. Therefore, the statistical power need to detect these associations will often require sample sizes that are **unfeasible** using primary data collection. 
+Historically, studies on dementia have faced a range of challenges. As a range of determinants (genetic, environmental and lifestyle) are thought to jointly influence the risk, progression and outcomes of dementia, any individual association is likely to have only a small effect. Therefore, the statistical power need to detect these associations will often require sample sizes that are unfeasible using primary data collection. 
 This fact is further complicated by the long latency of dementia, which necessitates a costly long-term approach to patient follow-up. Furthermore, dementia studies often have limited generalisability to the target population, as certain subgroups (e.g. the very old) are frequently under-represented in study cohorts due to difficulties associated with their recruitment.9 Finally, studies employing a case-control design are further limited by the high potential for differential recall bias between those who have and have not developed dementia.10 
 
 Fortunately, these limitations may potentially be addressed through the use of routinely collected health data, and the electronic health record databases in which they are stored. 

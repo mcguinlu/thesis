@@ -23,8 +23,7 @@ abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with ab
 ## bibliography path ##
 #######################
 bibliography: 
-  - bibliography/references.bib
-  - bibliography/pkg-refs.bib
+    - "bibliography/references.bib"
 csl: bibliography/nature.csl
 bibliography-heading-in-pdf: Bibliography
 
@@ -91,7 +90,6 @@ Include the create_chunk_options chunk above at the top of your index.Rmd file
 This will include code to create additional chunk options (e.g. for adding author references to savequotes)
 If you need to create your own additional chunk options, edit the file R/create_chunk_options.R
 -->
-
 
 ```{r introduction, child = 'front-and-back-matter/_00-introduction.Rmd'}
 ```

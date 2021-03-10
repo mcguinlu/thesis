@@ -107,7 +107,7 @@ Word count: `r words_today`
 
 Days: `r date_diff`
 
-Words behind: `r words_behind`
+Words behind: `r format(words_behind, scientific = F)`
 
 Words today: `r words_new_today`
 

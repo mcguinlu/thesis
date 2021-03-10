@@ -25,12 +25,17 @@ library(flextable)
 
 * Chapter 1: Introduction
   * This short chapter presents the aims and objectives of the thesis, an overview of each chapter, an introduction to evidence synthesis as the theoretical framework underlying the thesis, and a summary of thesis output.
+  * A draft of this chapter is complete.
 
 * Chapter 2: Background
-  * This is a small introductory chapter to put the thesis into context, lay out the aims and objectives and to propose the idea of a pipeline for MR studies using metabolomics data. I have almost completed this chapter.
+  * This chapter will provide an overview of the main topics covered in the thesis, including dementia, blood lipids fractions, and lipid regulating agents.
+  * This chapter is ~70% complete.
+
 
 * Chapter 3: medrxivr tool for searching preprints
   * A short chapter describing the motivation, development and reception of medrxivr, a tool built to facilitate the systematic searching of the medRxiv and bioRxiv preprint servers. This chapter represents a more comprehensive version of a published manuscript [https://doi.org/10.21105/joss.02651](https://doi.org/10.21105/joss.02651).
+  * A draft of this chapter is complete.
+
 
 * Chapter 4: Comprehensive systematic review
   * This Chapter presents the methods and findings of a comprehensive systematic review into the relationship between blood lipids levels/statins and dementia subtypes.
@@ -38,13 +43,14 @@ library(flextable)
   
 * Chapter 5: observational analysis: adiposity -> metabolites
   * This chapter uses data from the Clinical Practice Research Datalink (CPRD) to investigate the relationship between statin use and dementia. 
-  * This analysis has proven challenging likely due to the presence of confounding by indication. The suggestion has been to write up the corresponding paper as an example of the dangers of EHR in cases where strong confounding by indication is likely. 
+  * This analysis has proven challenging, likely due to the presence of unaddressed confounding by indication. The suggestion has been to write up the corresponding paper as an example of the dangers of EHR in cases where strong confounding by indication is likely. 
 
-* chapter 6: Individual patient data meta-analysis
+* Chapter 6: Individual patient data meta-analysis
   * This chapter will use data from several Dementia Platform cohorts (plus some of the cohorts identified through the systematic review) to investigate the relationship between blood lipids levels and dementia outcomes. This analysis has not yet started, but data access has been secured.
 
 * Chapter 7: Triangulation
-  * This short chapter will draw together different sources of information (including the primary analysis performed as part of this thesis) in a triangulation framework.
+  * This short chapter will draw together different sources of information (including the primary analyses performed as part of this thesis) as part of a qualitative triangulation exercise.
+  * This aspect of my thesis has not started.
 
 * Chapter 8: Discussion
   * This chapter a summary of the main findings of the thesis, a discussion of the strengths and limitations, a roadmap for future work, and a conclusion.
@@ -55,7 +61,7 @@ Due to the pandemic, the majority of the training courses and workshops I had pl
 
 ### Presenting your research
 
-In the review period, I have not presented work related to my thesis. 
+In the review period, I presented on the preprint search tool described in Chapter 3 at the Bristol “Auto-synthesis Club” and “Methods in Evidence Synthesis” seminars.
 
 ### Public engagement and outreach
 
@@ -78,44 +84,39 @@ I also ran an open-door "Intro to R" session each Friday in the autumn term to h
 
 None
 
-
 ## Planning ahead
 ### Research objectives
 
 January-April:
 
-1. Finish systematic review data extraction
-1. Complete replication of chapter 5 analysis in INTERVAL and complete write-up of chapter and manuscript
-1. Finish chapter 1
-1. Finish chapter 3
-1. Finish chapter 6 
+1. Finish risk of bias assessments for systematic review
+1. Draft systematic review manuscript
+1. Finish Chapter 4 - Systematic review
+1. Finish Chapter 2 - Background
+1. Clean datasets from DPUK and begin IPD analysis
 
 April-June:
 
-1. Finish chapter 2 - systematic review chapter
-1. Finish chapter 4 - complete observational analysis and write-up of chapter 4
-1. Complete one clustering analysis and begin work on a second and third (chapters 7 and 8)
+1. Perform IPD analyses
+1. Plan triangulation exercise
 
 July-October:
 
-1. Finish chapter 7 second and third clustering analyses
-1. Begin writing chapter 8 rules for instrumenting clusters 
+1. Finish Chapter 6 - IPD analysis
+1. Perform triangulation exercise
 
 November-December:
 
-1. Finish chapter 7 and 8
-1. Begin final analysis for chapter 9
-1. Finish write-up of chapter 9
-
-1. finishing touches to thesis
-1. finish outstanding manuscripts
-1. Submit
+1. Finish Chapter 7 - Triangulation
+1. Make final changes to thesis
+1. Produce final drafts of remaining manuscripts and submit as preprints
+1. Submit thesis
 
 ### Planned training and development
 
 I am booked onto the Mendelian Randomisation (17th-19 March) and Advanced Methods for Multiple Imputation (2nd March). 
 
-In addition, as per my Fellowship training scheme, I plan to attend the Royal Society "Writing about your research" course.
+In addition, as per my Fellowship training scheme, I plan to attend the Royal Society "Writing about your research" course and the “Causal Inference in Epidemiology: Recent Methodological Developments” short course at LSHTM.
 
 ### Communicating your research
 
@@ -123,9 +124,12 @@ I plan on producing the following outputs from the coming 12 months:
 
 * Comprehensive systematic review
   * preprint/publication
-  * poster/presentation at the Alzheimer's Association International Conference (deadline 25th January)
 * Primary analysis of the CPRD
   * preprint/publication
+  
+It’s only in writing this report that I realized that I am yet to publicly present on the some parts of my thesis, and so this is a particular aspect of my PhD that I would like to develop. As such, I aim to present at more diverse events in the coming year, including at an IEU monthly meeting and the Faculty of Health Sciences research showcase.
+In addition, I plan to submit an abstract to the Alzheimer’s Association International Conference in July (deadline 25th January).
+  
 
 ## Further comments
 

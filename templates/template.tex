@@ -91,6 +91,8 @@ $endif$
 % \usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
 % \newcommand*{\bibtitle}{Works Cited}
 
+
+
 %UL 3 Dec 2018: set this from YAML in index.Rmd
 $if(bib-humanities)$
 \usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=$if(doi-in-bibliography)$$doi-in-bibliography$$else$false$endif$, isbn=false, uniquename=false]{biblatex}
@@ -100,16 +102,34 @@ $else$
 \newcommand*{\bibtitle}{$bibliography-heading-in-pdf$}
 $endif$
 
-% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
-\renewcommand*{\bibfont}{\raggedright\small}
-
 % Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
 \addbibresource{$bibliography$}
 
 
+% Add definition of CSLReferences section to allow for compatibility with new pan
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc} % for \widthof, \maxof
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\maxof{\widthof{#1}}{\csllabelwidth}}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
 % Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
 %\numberwithin{equation}{subsection}
-
 
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
@@ -141,7 +161,7 @@ $endif$
 	\newcommand{\rd}{\textsuperscript{rd}}
 	
 	\definecolor{ashgray}{rgb}{0.7,0.75,0.71}
-
+	
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
 
@@ -270,14 +290,7 @@ $endif$
 % all your chapters and appendices will appear here
 $body$
 
-
 %%%%% REFERENCES
-
-% JEM: Quote for the top of references (just like a chapter quote if you're using them).  Comment to skip.
-% \begin{savequote}[8cm]
-% Lasciate ogne speranza, voi ch'intrate \dots
-% \qauthor{--- Sir Isaiah Berlin \cite{berlin_hedgehog_2013}}
-% \end{savequote}
 
 \setlength{\baselineskip}{0pt} % JEM: Single-space References
 

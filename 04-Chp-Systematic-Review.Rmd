@@ -7,12 +7,12 @@ output:
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(),quote_author='(ref:sys-rev-quote)'}
+```{block type='savequote', include=knitr::is_latex_output(),quote_author='(ref:sys-rev-quote)', echo = TRUE}
 "It is surely a great criticism of our profession that we have not organised a critical summary by speciality or sub-speciality, up-dated periodically, of all relevant RCTS."  
 ```
 (ref:sys-rev-quote) --- Archie Cochrane, 2000 [@cochrane20001931]
 
-# Systematic review and triangulation of available evidence {#sys-rev-heading}
+# Systematic review of all available evidence {#sys-rev-heading}
 \minitoc <!-- this will include a mini table of contents-->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
@@ -25,6 +25,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 * Examine how many times a primary study was included in a review  
 * Look at whether searching preprints made any difference to my results
+* Could apply ROBIS to previous reviews to see how they stack-up?
 
 ## Lay summary
 
@@ -89,6 +90,29 @@ Data will be visualized using a paired forest and risk of bias plot, created usi
 ### Patient and public involvement
 
 ## Results
+
+### Previous reviews
+
+__Will need to include something in the methods section on this__
+
+As part of this analysis, we examined the overlap between different published reviews on this topic.
+
+Several primary studies were captured in multiple systematic reviews. However, some studies were not captured by any previous review, 
+
+Put upSet plot here.
+
+An upset plot shows the total size of each set (in this case, the set of included studies in each review) in the bottom left hand bar plot. For example, the XXXX review includes XXXX studies. 
+
+Where a line joins two points in the matrix, the main barchart shows the number of records shared by these reviews. So for example, XXXX records were captured both by the XXXX review and the XXXX review. 
+
+Where the matrix has just a single point highlighted, this shows the records unique to that review. 
+
+The reviews are ordered by date, to attempt to show the increasing overlap and total number of studies
+
+Our review is presented as the last point on this plot, and captured XXXX records 
+
+The alternative is to have a barplot showing the total cumulative number of records over the years, using our set as the master, with the bars coloured by the number of records included in 1/2/3/4 reviews. The information below the bar axis could then show the number of reviews published in that year, or alternative, you could have an upsidedown bar to show cumulative number of reviews on this topic.
+
 
 ### Screening results
 

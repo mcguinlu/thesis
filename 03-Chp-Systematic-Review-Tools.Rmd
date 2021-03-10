@@ -2,17 +2,17 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
   bookdown::html_document2: default
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:sys-rev-tools-quote)'}
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:sys-rev-tools-quote)', echo = TRUE}
 Why are open source statistical programming  
 languages the best?
 
@@ -20,15 +20,26 @@ Because they R.
 ```
 (ref:sys-rev-tools-quote) --- Bealy, 2013 [@bealy2013]
 
-# medrxivr: an R package for performing systematic searches of health-related preprints {#sys-rev-tools-heading}
+# medrxivr: an R package for systematically searching biomedical preprints {#sys-rev-tools-heading}
 \minitoc <!-- this will include a mini table of contents-->
 
 ```{r setup, include=FALSE}
 source("R/doc_options.R")
 source("R/helper.R")
+library(medrxivr)
 ```
 
 <!----------------------------------------------------------------------------->
+
+## Main points (to be removed)
+
+The main points I want to get across in this Chapter are:
+
+* Why searching preprints is important
+
+* Why existing methods are not sufficient
+
+* What the medrxivr tool adds
 
 ## Lay summary
 
@@ -40,76 +51,88 @@ Development of this tool was an essential part of this thesis, as preprints repr
 <!----------------------------------------------------------------------------->
 ## Introduction
 
-Preprints represent an increasingly important source of scientific information. Authors can use preprint servers for several purposes - to establish primacy when submitting to a journal where a the peer-review process may take several months; to post complete manuscripts that will never be formally published,[CITE] such as those reporting updated case reports during the COVID-19 pandemic;[CITE] and to make available publications that may not have been accepted elsewhere in an attempt to combat publication bias, or the "file-drawer" effect.
+Preprints represent an increasingly important source of scientific information. Defined by the The Committee on Publication Ethics (COPE) as ‘a scholarly manuscript posted by the author(s) in an openly accessible platform, usually before or in parallel with the peer review process’[@committeeonpublicationethicscope2018], preprints serve several purposes. They are used to establish primacy when submitting to a journal where the peer-review process may take several months;[@vale2016] to rapidly disseminate research findings, as occurred during the COVID-19 pandemic;[@fraser2020a] and to make available publications that may not have been accepted elsewhere in an attempt to combat publication bias or the "file-drawer" effect.[@rosenthal1979]
 
-As a result, preprint repositories should be considered an distinct but complementary information source when reviewing the evidence base as part of a systematic review. The two key repositories in the health science are bioRxiv, established in 2013,[@sever2019] and medRxiv, which evolved to replace the "Epidemiology" and "Clinical Trial" categories of bioRxiv, which launched in 2019.[@rawlinson2019]
+As a result, repositories of preprinted articles should be considered a distinct but complementary information source when reviewing the evidence base as part of a systematic review. The two key repositories in the health science are bioRxiv, established in 2013,[@sever2019] and medRxiv, which evolved to replace the "Epidemiology" and "Clinical Trial" categories of bioRxiv, which launched in 2019.[@rawlinson2019]
 
-Preprints represent a particularly important to this thesis, ias one of the primary types of evidence that I planned to use in the triangulation exercise (Mendelian randomization (MR)) is still developing and many MR studies that look at the clinical question that this project aims to investigate are posted as preprints on the bioRxiv, and more recently medRxiv, preprint servers. Being able to systematically search these records for the purpose of the systematic review described in Chapter \@ref(sys-rev-heading) was a necessity. In light of the above, the `medrxivr` R package was created in order to facilitate the searching of this data source.
+Being able to systematically search these preprints for the purpose of the systematic review described in Chapter \@ref(sys-rev-heading) was a necessity, as many of the existing reviews on the topic of lipids and dementia have not considered this important source of grey literature. 
 
-More generally, developing new tools for facilitating evidence synthesis will benefit patients by speeding up the speed with which systematic reviews are produced. A recent study put the mean duration of a systematic review project, from date of registration to date of publication is 67.3 weeks.[@borah2017] A large proportion of this time will be spent on manual tasks such as running searches and extracting records, title and abstract screening, and data extraction - therefore, efforts to increase the efficiency of the process should focus on process that can be automated. 
+At present, the medRxiv website allows only simple search queries as opposed to the often complex Boolean logic that information specialists use to query other major databases. Additionally, previous extraction mechanisms for obtaining the results of searches from medRxiv were to go through each record, one-by-one, downloading individual citations. As the scale of the medRxiv database increases, particularly in light of the massive expansion of the repository as a result of COVID, this already time-consuming and error-prone method is not longer feasible.
 
-In addition, we need to focus on developing tools that allow systematic, reproducible access to more informal sources of scientific material. One key emerging source
+This chapter outlines the development and key functionality of `medrxivr` (version 0.0.5), a tool created to facilitate the searching of medRxiv preprints. The factors that necessitated the development of this tool in the context of this thesis are outlined, and the use of `medrxivr` in external projects and by other researchers is discussed. As the majority of work on this aspect of this thesis is represented by lines of code, this Chapter is a high-level summary. The GitHub repository^[Available at [https://github.com/ropensci/medrxivr](https://github.com/ropensci/medrxivr)] for the `medrxivr` contains a complete record of the development of this tool, including discussion with other members of the systematic review community.
 
-Searching pre-print repositories is becoming an increasingly important part of a systematic review. Preprints - unpublished versions of manuscripts, frequently uploaded to a repository at the same time they are submitted to a journal for peer review - represent an important source of grey literature. As the barriers and time to publication are both lower, they also represent an important source of information that may be either currently tied up in the peer-review process
-
-At present, medRxiv allows only simple search queries, as opposed to the often complex Boolean logic that information specialists use to query other major databases. Additionally, record metadata (titles/abstracts/author lists) must be accessed individually, rather than in batches, meaning that downloading relevant records for title and abstract screening a time consuming task. 
-
-This chapter outlines the development and key functionality of `medrxivr (version 0.2)`. The motivating factors that necessitated the development of this tool as part of this thesis are discussed. The use of medrxivr in external projects and by other researchers is discussed. As the majority of work on this aspect of this thesis is represented by lines of code, this Chapter is a high-level summary. The GitHub repository for the `medrxivr` contains a complete record of the development of this tool, including discussion with other members of the systematic review community.
-
-Current extraction mechanisms for extracting the results of searches from medRxiv are to go through each record, one-by-one, downloading individual citations. As the scale of the medRxiv database increases, particularly in light of the massive expansion as a result of COVID, this alreay time-consuming and error-prone method is not longer feasible.
 
 <!----------------------------------------------------------------------------->
 
-(ref:medrxivr-sr-cap) __Role of `medrxivr` in a systematic review workflow:__ `medrxivr` allows for systematic searching of biomedical preprints as part of the initial literature searching. Following title and abstract screening, reviewers can then programmatically retrieve a copy of the PDF of included records to faciliate the full-text screening stage (similar to Endnote's "Find Full Text" feature).
+(ref:medrxivr-sr-cap) __Role of `medrxivr` in a systematic review workflow:__ `medrxivr` allows for systematic searching of biomedical preprints as part of the initial literature searching. Following title and abstract screening, reviewers can then programmatically retrieve a copy of the PDF of included records to facilitate the full-text screening stage (similar to Endnote's "Find Full Text" feature).
 
 (ref:medrxivr-sr-scap) Role of `medrxivr` in a systematic review workflow
 
 ```{r medrxivr-sr, echo = FALSE, results="asis", fig.cap='(ref:medrxivr-sr-cap)', out.width='100%', fig.scap='(ref:medrxivr-sr-scap)'}
-knitr::include_graphics(file.path("figures/UoBcrest.pdf"))
+knitr::include_graphics(file.path("figures","sys-rev-tools","medrxiv-role.png"))
 ```
-  
-  <!----------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
 
 ## Development
 
-### Success criteria
+### Success criteria {#success-criteria}
 
-The tool was developed to meet three success criteria,[@wateridge1995] created both from the list of functionality needed to perform the systematic searches as part of the review in Chapter \@ref(sys-rev-heading) and from an informal survey of colleagues and the evidence synthesis and health librarians on Twitter. These criteria were as follows:
+The tool was developed to meet three success criteria,[@wateridge1995] influenced both by the functionality required to perform the systematic searches as part of the review in Chapter \@ref(sys-rev-heading) and from an informal survey of colleagues and the evidence synthesis and health librarian community on Twitter. These criteria were as follows:
 
-1. reliable, reproducible and transparent search functionality, allowing for similar Boolean (AND/OR/NOT) operator logic as that available from other literature search platforms such as OvidSP;  
-2. support for bulk export of references returned by the search to a file type that can be imported into a reference manager (e.g., .bib  or .ris);  
+1. reliable, reproducible and transparent search functionality, allowing for Boolean (AND/OR/NOT) operator logic;  
+
+2. support for bulk export of references returned by the search to a file type that can be imported into a reference manager (e.g., _.bib_  or _.ris_); and 
+
 3. automated retrieval of the full-text PDFs of relevant records. 
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+### Alternative medRxiv/bioRxiv interfaces
+
+Prior development of this tool, an informal audit of existing tools for accessing medRxiv and bioRxiv metadata was conducted. While none address the success criteria described above, two of these tools are useful to consider to highlight the additional functionality that `medrxivr` contributes.
+
+The first, a platform called Rxivist [@abdill2019], allows users to search preprints from the using keywords. Similar to `medrxivr`, this tool previously scrapped data straight from the medRxiv and bioRxiv websites but as of November 2020, Rxivist also provided access to Cold Spring Harbor API. However, the core functionality of the Rxivist platform is focused around exploring the number of times a preprint has been downloaded and/or shared on Twitter, to allow researchers to find the most popular papers related to their topic. The search interface^[Available at https://rxivist.org/] does not allow for complex search strategies using Boolean operators, and there is no option to batch-export the results of a search.
+
+The second, `search.bioPreprint`, allows users to search for terms across a range of preprint servers, including medRxiv, bioRxiv, but also publishing venues using post-publication peer-review such as F1000Research.[@iwema2016] However, similar to the Rxivist platform, this tool is designed for researchers aiming to keep up to date with recent developments in their fields rather than systematically assess the entirety of the available literature. As such, the platform only returns the most recent `r comma(1000)` records by publication date. 
+
+Finally, neither tool provides an easy way to programmatically download a copy of the PDF of relevant records which is required for the full-text screening stage of a systematic review. 
+
+&nbsp;
 
 <!----------------------------------------------------------------------------->
 
 ### Early versions
 
-Work on this element began in Summer 2019, and initially existed as a collection of scripts built to allow for searching medRxiv and bioRxiv as part of the systematic search outline in Chapter \@ref(sys-rev-heading). Following interest from other researchers in using the ad-hoc web-scraping scripts, the initial version of the `medrxivr` package was released in February 2020. Additional development work took place, allowing for improved searching and exporting function
+Work on this tool began in Summer 2019, which initially existed as a collection of scripts built to allow for searching medRxiv and bioRxiv as part of the systematic search outlined in Chapter \@ref(sys-rev-heading). Following interest from other researchers in using the _ad-hoc_ web-scraping scripts, the initial version of the `medrxivr` package was released in February 2020. Additional development work took place in 2019/2020, allowing for improved searching and exporting functionality.
 
-The updates to the systematic search to capture new literature published since the last search was performed with the fully developed package.
+Early versions of the tool had a reliance on web-scraping data directly from the medRxiv website. Web-scraping is a fragile mechanism for extracting data, as it is entirely dependent on consistent website design and underlying code structure remaining unchanged.[@shaw2002;@laprie1992]. In the case of `medrxivr`, constant maintenance work was required to ensure the web-scraping script performed as expected, as the medRxiv website was regularly updated.
 
-Early versions of the tool had a reliance on web-scraping data directly from the medRxiv website. Web-scraping is a fragile mechanism for extracting data, as it is entirely dependent on consistent website design and underlying code structure remaining unchanged.[@shaw2002;@laprie1992]. In the case of early versions of `medrxivr`, constant maintenance work was required to ensure the web-scraping script performed as expected, as the medRxiv website was regularly updated.
-
-However, an Application Programming Interface (API) for the medRxiv and bioRxiv repositories was released in early 2020, allowing for a newer version of the medrxivr package to engage in "fault prevention" and work towards a more robust interface with the available data.[@laprie1992]
+However, an Application Programming Interface (API) for the medRxiv and bioRxiv repositories was released in early 2020, allowing for a newer version of the `medrxivr` package to engage in active "fault prevention" and provide a more robust interface to the data.[@laprie1992]
 
 Finally, while initial versions of the tool focused primarily on the medRxiv repository, discovery of some eligible papers for the review detailed in Chapter \@ref(sys-rev-heading) required expansion to allow for similar searching of the bioRxiv repository. 
+
+&nbsp;
 
 <!----------------------------------------------------------------------------->
 ### Package infrastructure 
 
-The `medrxvir` package was written in R using RStudio, and followed development best-practice, including complete and information documentation, a robust unit testing framework (99% of all code lines within the package are formally tested under this framework) across multiple platforms including Windows, MacOS, and Linux, and in-depth code review by two experienced, independent reviewers. 
+The `medrxvir` package was written in R using RStudio,[@rcoreteam2019] and followed development best-practice, including detailed documentation, a robust unit testing framework (99% of all code lines within the package are formally tested across multiple platforms including Windows, MacOS, and Linux), and in-depth code review by two experienced, independent reviewers. 
 
-An automatically generated documentation website is also generated on each update to the code-base. ^[https://docs.ropensci.org/medrxivr/]
+&nbsp;
 
 <!-----------------------------------------------------------------------------> 
 ## Usage
 
 The `medrxivr` R package is split into two component parts:
 
-* An interface to the Cold Springs Harbor Laboratory API, which allows the wholesale import of the medRxiv and bioRxiv metadata
+* An interface to the Cold Springs Harbor Laboratory API, which imports medRxiv and bioRxiv metadata into R; and
 * A collection of functions for working with the imported metadata, with an explicit focus on searching this data as part of a systematic review or evidence synthesis project.
 
-The standard workflow is to download a copy of the preprint repository metadata, and then run your searchers locally. This is a workaround as the Cold Springs Harbor Labratory API does not provide any functionality to search the database.
+The standard workflow is to download a copy of the metadata, and then run your searchers locally. This is a workaround as the Cold Springs Harbor Laboratory API does not provide any functionality to search the database.
+
+&nbsp;
 
 <!-----------------------------------------------------------------------------> 
 
@@ -125,107 +148,148 @@ install.packages("medrxivr")
 
 &nbsp;
 
-Alternatively, the development version of the pacakage can be installed from GitHub:
+Alternatively, the development version of the package can be installed from GitHub:
+&nbsp;
 
 ```{r, eval = FALSE}
 # install.packages("devtools") 
 devtools::install_github("ropensci/medrxivr")
 ```
 
+&nbsp;
+
 <!----------------------------------------------------------------------------->
 ### Importing preprint metadata
 
-`medrixvr` provides two ways to access medRxiv data.
+`medrixvr` provides two ways to access medRxiv data. The first, via the `mx_api_content()` function, creates a local copy of all data available from the medRxiv API at the time the function is run.
 
-`mx_api_content(server = "medrxiv")` creates a local copy of all data available from the medRxiv API at the time the function is run.
+&nbsp;
 
 ``` {r, eval = FALSE}
 # Get a copy of the database from the live medRxiv API endpoint
-preprint_data <- mx_api_content()  
+mx_data <- mx_api_content()  
 ```
 
-As an alternative to downloading a copy fo the database from the API in realtime, the `mx_snapshot()` function provides access to a maintained static snapshot of the database. The snapshot is created each morning at 6am. This method, which doet not rely on the API, was created as during development e unavailable during peak usage times) and has the additional advantage of being faster, as it reads data from a comma-seperated file rather than having to re-extract it from the API. 
+&nbsp;
 
-The relationship between the two methods for accessing the data conatined in the medRxiv database is summarized in the figure below:
-
-(ref:medrxivr-data-sources-cap) __Overview of `medrxivr` data sources:__ Users can either access the API directly via `mx-api_content()`, or can import a maintained snapshot of the database, taken each morning at 6am, via the `mx_snapshot()` function. Note: due to the size of bioRxiv, a maintained snapshot of medrxiv is available via `mx_snapshot()`.
-
-(ref:medrxivr-data-sources-scap) Overview of `medrxivr` data sources
-
-```{r medrxivr-data-sources, echo = FALSE, results="asis", fig.cap='(ref:medrxivr-data-sources-cap)', out.width='100%', fig.scap='(ref:medrxivr-data-sources-scap)'}
-knitr::include_graphics(file.path("figures","sys-rev-tools","data_sources.png"))
-```
-
-
-<!----------------------------------------------------------------------------->
-### Performing a search
-
-Once a local copy of the database has been created, the functions in the `medrxivr` package then facilitate users in working with this dataset. There are two main functions and a helper function:
-
-* `mx_search()`: Enables users to search the preprint data, using regular expressions and Boolean logic.
+The second, via the `mx_snapshot()` function, provides access to a maintained static snapshot of the database, created each morning at 6am. This method removes the dependency on the API which can become unavailable during peak usage times. The relationship between the two methods for accessing the data contained in the medRxiv database is summarized in Figure \@ref(fig:medrxivr-data-sources).
 
 &nbsp;
 
 ```{r, eval = FALSE}
-topic1  <- c("dementia","alzheimer's")  # Combined with OR
-topic2  <- c("lipids","statins")        # Combined with OR
-
-myquery <- list(topic1, topic2)         # Combined with AND
-
-results <- mx_search(myquery)
+# Import a copy of the medRxiv data from the snapshot
+mx_data <- mx_snapshot()
 ```
 
 &nbsp;
 
-Additional functionality allowing common syntax used by systematic reviewers and health librarians, including the use of NEAR statements (which allows for ), 
+<!----------------------------------------------------------------------------->
+
+(ref:medrxivr-data-sources-cap) __Overview of `medrxivr` data sources:__ Users can either access the API directly via `mx-api_content()`, or can import a maintained snapshot of the database, taken each morning at 6am, via the `mx_snapshot()` function. Note: due to the size of bioRxiv, only a maintained snapshot of the medRxiv repository is available via `mx_snapshot()`.
+
+(ref:medrxivr-data-sources-scap) Overview of `medrxivr` data sources
+
+```{r medrxivr-data-sources, fig.pos="!h", echo = FALSE, results="asis", fig.cap='(ref:medrxivr-data-sources-cap)', out.width='100%', fig.scap='(ref:medrxivr-data-sources-scap)'}
+knitr::include_graphics(file.path("figures","sys-rev-tools","data_sources.png"))
+```
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+
+### Performing a search
+
+The first step is to create your search strategy. Terms to be combined with the OR operator are contained in vectors, while topics to be combined with the AND operator are contained in lists.
+ 
+&nbsp;
+
+```{r, eval = TRUE}
+# Create the search query
+topic1  <- c("dementia","alzheimer's")  # Combined with OR
+topic2  <- c("lipids","statins")        # Combined with OR
+
+myquery <- list(topic1, topic2)         # Combined with AND
+```
+
+&nbsp;
+
+For example, the search above written in standard syntax would be: "((dementia __OR__ alzheimer's) __AND__ (lipids __OR__ statins))".
+
+Once a local copy of the database has been created and your search strategy has been defined, both are passed to the `mx_search()` function.
+
+&nbsp;
+
+```{r, eval = FALSE}
+# Run the search
+results <- mx_search(mx_data,
+                     myquery)
+```
+
+&nbsp;
+
+The search also supports common syntax used by systematic reviewers and health librarians, including the use of NEAR statements (which allows for identification of co-localised terms) and wildcards (which allow for alternate spellings, e.g. "randomi*s*ation" vs "randomi*z*ation").
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+### Refining your search
+
+An important argument of the `mx_search()` is `report`, which outputs a structured table with each search strategy presented on an individual line and the number of records associated with this strategy.
+
+&nbsp;
+
+```{r, eval = FALSE}
+results  <- mx_search(mx_data,
+                      c("dementia", "alzheimer's"),
+                      report = TRUE)
+```
+
+```{r, eval = FALSE}
+## Found 203 record(s) matching your search.
+## Total topic 1 records: 203
+## dementia: 203
+## Total topic 2 records: 0
+## alzheimer’s: 0
+```
+
+&nbsp;
+
+This allows users to discover which aspects of their search is contributing most to the total results returned. This is important as part of developing a search strategy,[@bramer2018] as it allows for the key terms related to each topic to be discovered.
+
+&nbsp;
 
 <!----------------------------------------------------------------------------->
 ### Exporting to a bibliography file
 
-In line with the second success criteria, one of the key features of the `medrxivr` is the ability for users to easily export the results of their systematic search to a reference manager. While it is a seemingly simple request, this is is one of the key ways in which `medrxivr` - as it was built with systematic reviews specifically in mind, it is 
+In line with the second success criteria (Section \@ref(success-criteria)), one of the key features of the `medrxivr` is the ability for users to easily export the results of their systematic search to a reference manager. While it is a seemingly simple request, this is is one of the key ways in which `medrxivr` - as it was built with systematic reviews specifically in mind, it is 
 
 For example, the results of our simple search above can be exported using the following code:
 
 ``` {r, eval = FALSE}
 mx_export(results, 
-          file = "medrxiv_export.bib")
+          file = "medrxiv_export.bib",
+          report = TRUE)
 ```
+
+&nbsp;
 
 <!----------------------------------------------------------------------------->
 ### Downloading the PDFs of relevant records
 
-A second key use of `medrxivr` is to download the full text papers for records that are deemed eligible for full-text screening (see Figure \@ref(fig:medrxivr-sr)). `mx_download()` takes the list of records included following title and abstract screening, and saves the PDF for each to a folder specified by the user. This funcationality is similar to the "Find Full Text" feature offered by EndNote.
+Finally, `medrxivr` allows users to download the full text papers for records that are deemed eligible for full-text screening (see Figure \@ref(fig:medrxivr-sr)). `mx_download()` takes the list of included records and saves the PDF for each to a folder specified by the user. This functionality is similar to the "Find Full Text" feature offered by EndNote.
+
+&nbsp;
 
 ```{r, eval = FALSE}
-mx_download(results,        # Object returned by search, less excluded records
-            "pdf/")         # Directory to save PDFs to 
+mx_download(results,  # Object containing included records
+            "pdf/")   # Directory to save PDFs to 
 ```
 
-<!----------------------------------------------------------------------------->
-### Refining your search
-
-An important argument of the `mx_search()` is XXXX, which creates a formatted output table with each search strategy presented on an individual line and the number of records associated with this strategy.
-
-```{r, eval = FALSE}
-mx_reporter(results)
-```
-
-This allows users to discover which aspects of their search is contributing most to the total results returned.
-
-This is crucial as part of developing a search strategy [@bramer2018], as it allows for the key terms related to each topic to be discovered.
-
-### Visualising your results
-
-A final part of this tool is the ability to visualise the growth of popularity of a particular topic. 
-
-**Need to include figures produced by this function here- use the simple search described above**
+&nbsp;
 
 <!----------------------------------------------------------------------------->
 ## Discussion 
 
-Intro text
-
-<!----------------------------------------------------------------------------->
 ### Reception and future plans
 
 ```{r, echo = FALSE}
@@ -236,48 +300,31 @@ medrxivr_downloads <- plyr::round_any(sum(medstats$count), 100, f = floor)
 date <- format(Sys.Date(),"%B %Y")
 ```
 
-The tool has be well received by the community (as of `r date`, `medrxivr` has been downloaded more than `r medrxivr_downloads` times, and the medRxivr app has been visited more than ????), and several use cases have been reported. It has been used to visualize the growing number of preprints related to the 2019 coronavirus outbreak ^[https://twitter.com/L_Brierley/status/1233109086444695553], perform systematic searches in a number of other systematic reviews,[@noone2020] and examine how data-sharing behaviour is affected by different publication policies (preprint server versus journal).[CITE]
+The tool has be well received by the community (as of `r date`, `medrxivr` has been downloaded more than `r medrxivr_downloads` times), and several use cases have been reported. It has been used to visualize the growing number of preprints related to the 2019 coronavirus outbreak ^[https://twitter.com/L_Brierley/status/1233109086444695553], perform systematic searches in systematic reviews,[@noone2020] and examine how data-sharing behaviour is affected by different publication policies (preprint server versus journal).[CITE]
 
-Following rigorous peer-review, it has been onboarded into the rOpenSci suite of packages, a collection of "carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web", and an associated article published in the Journal of Open Source Software.[@mcguinness2020a] The entire review discussion is publicly available and can be viewed online. ^[https://github.com/ropensci/software-review/issues/380] The tool has also been well recieved by the open-source community, demonstrated by the engagement of other developers in contributing to important functionality and suggesting bug-fixes.
+Following rigorous peer-review, it has been onboarded into the rOpenSci suite of packages, a collection of "carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web", and an associated article published in the Journal of Open Source Software.[@mcguinness2020a] The entire review discussion is publicly available and can be viewed online. ^[https://github.com/ropensci/software-review/issues/380] The tool has also been well received by the open-source community, demonstrated by the engagement of other developers in contributing to important new functionality and suggesting bug-fixes.
 
-Lobbying of the Cold Springs Harbour Laboratory has been ongoing to develop the API further to allow for direct searching of the database. This would negate the current need to download a full copy of the relevant preprint database before searching it locally, which is currently the rate limiting step for performing searches (for example, as of January 2021, downloading a copy of the bioRxiv database takes approximately an hour).
+Lobbying of the Cold Springs Harbor Laboratoryto develop the API to allow for direct searching of the database has been ongoing. This would negate the current need to download a local copy of the relevant preprint database before searching it, which is currently the rate limiting step for performing searches. For example, as of January 2021, downloading a copy of the bioRxiv database takes approximately an hour.
 
-<!----------------------------------------------------------------------------->
-### Comparison with other medRxiv/bioRxiv interfaces
-
-Prior development of `medrxivr`, an informal audit of comparable tools search tools were considered as part of a audit of existing tools for accessing the metadata of records stored on the medRxiv and bioRxiv servers. Two of these tools are useful to consider to highlight the additional functionality that `medrxivr` contributes.
-
-The first, a platform called Rxivist [@abdill2019], allows users to search preprints from the using keywords. Similar to `medrxivr`, this tool previously scrapped data straight from the medRxiv and bioRxiv websites but as of November 2020, Rxivist also provides access to Cold Spring Harbour API. However, the core functionality of the Rxivist platform is focused around exploring the number of times a preprint has been downloaded and/or shared on Twitter, to allow researchers to find the most popular papers related to their topic. The search interface^[Available at https://rxivist.org/] does not allow for complex search strategies, and there is no option to batch-export the results of a search.
-
-The second, `search.bioPreprint`, allows users to search for terms across a range of preprint servers, including medRxiv, bioRxiv, but also publishing venues using post-publication peer-review such as F1000Research.[@iwema2016] However, similar to the Rxivist platform, this tool is designed for researchers aiming to keep up to date with recent developments in their fields rather than systematically assess the entirety of the available literature. As such, the platform only returns the most recent `r comma(1000)` records by publication date. 
-
-Finally, neither tool provides an easy way to programmatically download a copy of the PDF of relevant records which is required for the full-text screening stage of a systematic review. 
+&nbsp;
 
 <!----------------------------------------------------------------------------->
-### Role of open source tools in evidence synthesis ^[Some of the arguments presented here are repeated in a paper introducing second R package developed during this thesis, but not directly related to the thesis content.[@mcguinness] A summary of this second tool, `robvis`, which creates publication quality risk-of-bias plots, is presented in Appendix \@ref(appendix-robvis).]
+### Limitations of `medrxivr`
 
-The development and distribution of open source scripts and tools should be a fundamental part of evidence synthesis process. 
+While searching of the medRxiv and bioRxiv databases was crucial for the systematic review element of this thesis presented in Chapter \@ref(sys-rev-heading), there are some important limitations to note here. A key example is that the tool only searches the available metadata of preprint records (the title, abstract and keywords), rather than the full text of preprints, meaning some relevant records might be missed. However, this approach ethos other search platforms such as OvidSP, and while some relevant records may be missed (reduced sensitivity), limiting the search to the metadata fields prevents non-relevant records from being returned (high specificity). A key example of the reduced specificity when searching the full text, identified during development of `medrxivr`, is that a search for "dementia" would return a record where the only occurrence of this term is in the title of one of the references.[@bong2019]
 
-While searching of the medRxiv database was crucial for the systematic review element of this thesis presented in Chapter \@ref(sys-rev-heading), there are some important limitations to note here. As key example is that the tool only searches the available metadata of preprint records (the title, abstract and keywords).
-There is the potential that the cross-section of literature posted on medrxiv would be substantially different from the true grey literature - studies or analyses that are not published for a range of reasons including results that are not deemed "novel" or are not statistically significant. 
-This is because simply lowering the barriers to publication may well encourage authors to published "null" results,[CITE] but due to the effort involved in writing up a distributable manuscript, it is unlikely to completely address the "file drawer" effect.[CITE] 
-It is likely too early (and too difficult) to tell whether the popularity of preprint repositories will have any effect of the availability of research that was not considered "publishable" at other venues. 
-**Of particular interest to this thesis is whether including unpublished preprints in the systematic review and meta-analysis is worthwhile. To this end, the additional contribution of searching these repositories to the systematic review element of this thesis is explored in Chapter \@ref(sys-rev-heading) [CROSS].**
+There is also the potential that the cross-section of literature posted on medrxiv/bioRxiv would be substantially different from the true grey literature (studies or analyses that are not published for a range of reasons including results that are not deemed "novel" or are not statistically significant).[@song2010] This is because simply lowering the barriers to publication may well encourage authors to published "null" results, but due to the effort involved in writing up a distributable manuscript, it is unlikely to completely address the "file drawer" effect.[@rosenthal1979] It is likely too early (and too methodologically difficult) to tell whether the increased popularity and acceptance of preprint repositories will have any effect of the availability of research that was not considered "publishable" at other venues. 
 
-By implementing the tool described above as both as an R package and a `Shiny` web app, the functionality is available to evidence synthesists with varying levels of ability in R. 
-These tools serve as an example of the advantages of “packaging” the R scripts that evidence synthesists often create for personal use.[@wickham2015r] 
-In the case of `medrxivr`, it is likely that several other evidence synthesists had written personal scripts scripts that have a similar, or related, functionality - in fact, in the course of developing the tool, I identified one other researcher that has done so (Nicholas Fraser, author of the `rbiorxiv` package).[@rbiorxiv] 
-If these useful scripts continue to be developed in private and are never shared or publicised, this will inevitably lead to harm to the evidence synthesis community, not only in terms of duplication of time and effort but also due to lost collaboration opportunities. 
+&nbsp;
 
-Creating and sharing well-documented packages, the recognised standard for sharing reproducible and useful code, represents one way to reduce this inefficiency.
-Progressing this argument further, `Shiny` apps represent a efficient way to provide a user-friendly interface for newly created R packages within a very short time-frame, expanding the potential pool of users of the package to anyone with an internet connection.
+<!----------------------------------------------------------------------------->
+### Role of open source tools in evidence synthesis
 
-```{block type='correction'}
-**The next section needs to be reduced and fit a bit better to this Chapter - it was taken from the robvis paper, but the issues it raises are important and potentially relevant here.**
-```
+_Not sure where this should go, but keen to include it_
 
-In addition
-Creating a package using R has a number of advantages unique to the R programming environment. R provides access to a range of powerful tools including the `ggplot` infrastructure for creating publication-quality plots, and RMarkdown, which enables creation of documents that can be rendered in a range of formats such as PDF, HTML, or Word.[@xie2018r] Furthermore, and focusing specifically on evidence synthesis, building new tools as packages in R allows for easy integration with the range of existing evidence synthesis packages. Recently, the `metaverse` project,[@variousauthors2020] of `medrivr` is a part, has begun to curate a collection of R packages that cover different aspects of the systematic review and meta-analysis process which, when taken together, form a coherent end-to-end open-source alternative to commercial offerings such as Covidence or Review Manager. Key offerings in this suite of packages include `litsearcher`, which facilitates systematic search strategy development, `revtools`, a package for managing the review process and performing title and abstract screening, `metaDigitise`, a package for automatic extraction of data from figures in research papers, and `metafor`, a package for conducting meta-analyses in R.[@grames2019automated; @metaforref; @pick2018; @westgate2019revtools]
+Part of the motivation for creating the `medrxivr` tool was a belief that the development and distribution of open source scripts and tools should be a fundamental part of evidence synthesis research.[@goldacre2019b;@mckiernan2016c] In the case of `medrxivr`, it is likely that several other evidence synthesists had written personal scripts that have a similar, or related, functionality - in fact, following development of the tool, I identified one other researcher that has done so (Nicholas Fraser, author of the `rbiorxiv` package, which allows for importing medRxiv metadata into R but does not provide search functionality).[@rbiorxiv] If these scripts continue to be developed in private and are never shared or publicised, this will inevitably lead to harm to the evidence synthesis community, not only in terms of duplication of time and effort but also due to lost opportunities for collaboration.[@mckiernan2016c] Creating and sharing well-documented packages, the recognised standard for sharing code in R, represents one way to reduce this inefficiency.[@vuorre2020]
+
+&nbsp;
 
 <!----------------------------------------------------------------------------->
 ## Summary
@@ -286,4 +333,4 @@ Creating a package using R has a number of advantages unique to the R programmin
 
 * I have outlined the motivation for developing this tool in relation to this thesis - more specifically, that it was used to perform systematic and reproducible searches of a key literature sources used in the comprehensive systematic review described in Chapter \@ref(sys-rev-heading).
 
-* I have contrasted `medrxivr` with other interfaces to medRxiv/bioRxiv data to highlight the added functionality it offers. I have also discussed its reception to date, its place in the broader evidence synthesis in R ecosystem, and a roadmap for its future development.
+* I have contrasted `medrxivr` with other available interfaces to medRxiv/bioRxiv data to highlight the added functionality it offers. I have also discussed the tools reception to date, a roadmap for its future development and its place in the broader evidence synthesis in R ecosystem.

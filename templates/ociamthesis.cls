@@ -45,7 +45,6 @@
 \setlength{\abstractseparatelineskip}{10pt plus1pt minus1pt}
 \setlength{\abstractseparateparskip}{0pt plus 1pt}
 
-
 \newcommand{\submittedtext}{{A thesis submitted for the degree of}}
 \usepackage{varwidth}
 \newcommand{\originalitytext}{%
