@@ -15,3 +15,4 @@
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice
+- [ ] Check spelling of Appendices

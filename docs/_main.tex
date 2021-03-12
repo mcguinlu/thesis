@@ -346,13 +346,13 @@ An investigation of their relationship}
 
 \adjustmtc
 
-Word count: 10647
+Word count: 10750
 
-Days: 106
+Days: 107
 
-Words behind: -16133
+Words behind: -16230
 
-Words today: 0
+Words today: 103
 
 ~
 
@@ -734,29 +734,26 @@ The main points I want to get across in this Chapter are:
 \item
   Why existing methods are not sufficient
 \item
-  What the medrxivr tool adds
+  What the \texttt{medrxivr} tool adds
 \end{itemize}
 
 \hypertarget{lay-summary-1}{%
 \section{Lay summary}\label{lay-summary-1}}
 
-Preprints are copies of academic manuscripts that are posted online in advance of being formally published by an academic journal.
-They represent an important source of scientific literature.
-A new software program called \texttt{medrxivr} was created to allow researchers to find preprints related to their research in a transparent and reproducible way.
-Development of this tool was an essential part of this thesis, as preprints represent a key source of information needed for the research reported in future chapters.
+Preprints are copies of academic manuscripts that are posted online in advance of being formally published by an academic journal. They represent an important source of scientific literature. A new software program called \texttt{medrxivr} was created to allow researchers to find preprints related to their research in a transparent and reproducible way. Development of this tool was an essential part of this thesis, as preprints represent a key source of information needed for the research reported in future chapters.
 
 \hypertarget{introduction-1}{%
 \section{Introduction}\label{introduction-1}}
 
-Preprints represent an increasingly important source of scientific information. Defined by the The Committee on Publication Ethics (COPE) as `a scholarly manuscript posted by the author(s) in an openly accessible platform, usually before or in parallel with the peer review process'\textsuperscript{\protect\hyperlink{ref-committeeonpublicationethicscope2018}{5}}, preprints serve several purposes. They are used to establish primacy when submitting to a journal where the peer-review process may take several months;\textsuperscript{\protect\hyperlink{ref-vale2016}{6}} to rapidly disseminate research findings, as occurred during the COVID-19 pandemic;\textsuperscript{\protect\hyperlink{ref-fraser2020a}{7}} and to make available publications that may not have been accepted elsewhere in an attempt to combat publication bias or the ``file-drawer'' effect.\textsuperscript{\protect\hyperlink{ref-rosenthal1979}{8}}
+Preprints represent an increasingly important source of scientific information. Defined by the Committee on Publication Ethics (COPE) as `scholarly manuscript{[}s{]} posted by the author(s) in an openly accessible platform, usually before or in parallel with the peer review process'\textsuperscript{\protect\hyperlink{ref-committeeonpublicationethicscope2018}{5}}, preprints serve several purposes. They are used to establish primacy when submitting to a journal where the peer-review process may take several months;\textsuperscript{\protect\hyperlink{ref-vale2016}{6}} to rapidly disseminate research findings, as occurred during the COVID-19 pandemic;\textsuperscript{\protect\hyperlink{ref-fraser2020a}{7}} and to make available publications that may not have been accepted elsewhere in an attempt to combat publication bias or the ``file-drawer'' effect.\textsuperscript{\protect\hyperlink{ref-rosenthal1979}{8}}
 
 As a result, repositories of preprinted articles should be considered a distinct but complementary information source when reviewing the evidence base as part of a systematic review. The two key repositories in the health science are bioRxiv, established in 2013,\textsuperscript{\protect\hyperlink{ref-sever2019}{9}} and medRxiv, which evolved to replace the ``Epidemiology'' and ``Clinical Trial'' categories of bioRxiv, which launched in 2019.\textsuperscript{\protect\hyperlink{ref-rawlinson2019}{10}}
 
-Being able to systematically search these preprints for the purpose of the systematic review described in Chapter \ref{sys-rev-heading} was a necessity, as many of the existing reviews on the topic of lipids and dementia have not considered this important source of grey literature.
+Searching these preprints as part of the systematic review described in Chapter \ref{sys-rev-heading} was a necessity, as many of the existing reviews on the topic of lipids and dementia have not considered this important source of grey literature. At the time of writing, however, the bioRxiv.medRxiv websites allow only simple search queries as opposed to the often complex Boolean logic (AND/OR/NOT) that information specialists use to query other major databases.{[}@bramer2018a;@gusenbauer2020{]} Additionally, the best available extraction mechanism for obtaining references for all records returned by a search were to go through each record, one-by-one, downloading individual citations. As the scale of these preprint databases increase, particularly in light of the massive expansion of the medRxiv repository as a result of COVID, this already time-consuming and error-prone method is no longer feasible.
 
-At present, the medRxiv website allows only simple search queries as opposed to the often complex Boolean logic that information specialists use to query other major databases. Additionally, previous extraction mechanisms for obtaining the results of searches from medRxiv were to go through each record, one-by-one, downloading individual citations. As the scale of the medRxiv database increases, particularly in light of the massive expansion of the repository as a result of COVID, this already time-consuming and error-prone method is not longer feasible.
+This chapter outlines the development and key functionality of \texttt{medrxivr} (version 0.0.5), a tool created to facilitate the searching of medRxiv and bioRxiv preprints. The factors that necessitated the development of this tool in the context of this thesis are outlined, and the use of \texttt{medrxivr} in external projects and by other researchers is discussed. As the majority of work on this aspect of this thesis is represented by lines of code, this Chapter is a high-level summary of the work done on this project. The GitHub repository\footnote{Available at \url{https://github.com/ropensci/medrxivr}} for the \texttt{medrxivr} contains a complete record of the development of this tool, including discussion with other members of the systematic review community.
 
-This chapter outlines the development and key functionality of \texttt{medrxivr} (version 0.0.5), a tool created to facilitate the searching of medRxiv preprints. The factors that necessitated the development of this tool in the context of this thesis are outlined, and the use of \texttt{medrxivr} in external projects and by other researchers is discussed. As the majority of work on this aspect of this thesis is represented by lines of code, this Chapter is a high-level summary. The GitHub repository\footnote{Available at \url{https://github.com/ropensci/medrxivr}} for the \texttt{medrxivr} contains a complete record of the development of this tool, including discussion with other members of the systematic review community.
+~
 
 
 
@@ -772,16 +769,16 @@ This chapter outlines the development and key functionality of \texttt{medrxivr}
 \hypertarget{success-criteria}{%
 \subsection{Success criteria}\label{success-criteria}}
 
-The tool was developed to meet three success criteria,\textsuperscript{\protect\hyperlink{ref-wateridge1995}{11}} influenced both by the functionality required to perform the systematic searches as part of the review in Chapter \ref{sys-rev-heading} and from an informal survey of colleagues and the evidence synthesis and health librarian community on Twitter. These criteria were as follows:
+The tool was developed to meet three success criteria,\textsuperscript{\protect\hyperlink{ref-wateridge1995}{11}} influenced both by the functionality required to perform systematic searches as part of the review in Chapter \ref{sys-rev-heading}, discussion with information specialist colleagues, and an informal survey of the evidence synthesis and health librarian communities on Twitter. The criteria were as follows:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
   reliable, reproducible and transparent search functionality, allowing for Boolean (AND/OR/NOT) operator logic;
 \item
-  support for bulk export of references returned by the search to a file type that can be imported into a reference manager (e.g., \emph{.bib} or \emph{.ris}); and
+  support for bulk export of references returned by the search to a file type that can be readily imported into a reference manager (e.g., \emph{.bib} or \emph{.ris}); and
 \item
-  automated retrieval of the full-text PDFs of relevant records.
+  automated retrieval of the full-text PDFs of relevant records, similar to the Find Full Text feature offered by EndNote.
 \end{enumerate}
 
 ~
@@ -789,28 +786,24 @@ The tool was developed to meet three success criteria,\textsuperscript{\protect\
 \hypertarget{alternative-medrxivbiorxiv-interfaces}{%
 \subsection{Alternative medRxiv/bioRxiv interfaces}\label{alternative-medrxivbiorxiv-interfaces}}
 
-Prior development of this tool, an informal audit of existing tools for accessing medRxiv and bioRxiv metadata was conducted. While none address the success criteria described above, two of these tools are useful to consider to highlight the additional functionality that \texttt{medrxivr} contributes.
+Prior development of this tool, an audit of existing tools for accessing medRxiv and bioRxiv metadata was conducted. While none address the success criteria described above, two of these tools are useful to consider to highlight the additional functionality that \texttt{medrxivr} contributes.
 
-The first, a platform called Rxivist,\textsuperscript{\protect\hyperlink{ref-abdill2019}{12}} allows users to search preprints from the using keywords. Similar to \texttt{medrxivr}, this tool previously scrapped data straight from the medRxiv and bioRxiv websites but as of November 2020, Rxivist also provided access to Cold Spring Harbor API. However, the core functionality of the Rxivist platform is focused around exploring the number of times a preprint has been downloaded and/or shared on Twitter, to allow researchers to find the most popular papers related to their topic. The search interface\footnote{Available at \url{https://rxivist.org/}} does not allow for complex search strategies using Boolean operators, and there is no option to batch-export the results of a search.
+The first, a platform called Rxivist,\textsuperscript{\protect\hyperlink{ref-abdill2019}{12}} allows users to search preprints using keywords. However, the core functionality of the Rxivist platform is focused around exploring the number of times a preprint has been downloaded and/or shared on Twitter, to allow researchers to find the most popular papers related to their topic. The search interface\footnote{Available at \url{https://rxivist.org/}} does not allow for complex search strategies using Boolean operators and there is no option to batch-export the results of a search.
 
-The second, \texttt{search.bioPreprint}, allows users to search for terms across a range of preprint servers, including medRxiv, bioRxiv, but also publishing venues using post-publication peer-review such as F1000Research.\textsuperscript{\protect\hyperlink{ref-iwema2016}{13}} However, similar to the Rxivist platform, this tool is designed for researchers aiming to keep up to date with recent developments in their fields rather than systematically assess the entirety of the available literature. As such, the platform only returns the most recent 1,000 records by publication date.
+The second tool, \texttt{search.bioPreprint}, allows users to search for terms across a range of preprint servers, including medRxiv and bioRxiv, but also journals which use a post-publication peer-review process such as F1000Research.\textsuperscript{\protect\hyperlink{ref-iwema2016}{13}} However, similar to the Rxivist platform, this tool is designed for researchers aiming to keep up to date with recent developments in their fields rather than systematically assess the entirety of the available literature. As such, the platform only returns the most recent 1,000 records by publication date.
 
-Finally, neither tool provides an easy way to programmatically download a copy of the PDF of relevant records which is required for the full-text screening stage of a systematic review.
+Finally, neither tool provides an easy way to programmatically download a copy of the PDF of relevant preprints as part of the preparation for the full-text screening stage of a systematic review.
 
 ~
 
 \hypertarget{early-versions}{%
 \subsection{Early versions}\label{early-versions}}
 
-Work on this tool began in Summer 2019, which initially existed as a collection of scripts built to allow for searching medRxiv and bioRxiv as part of the systematic search outlined in Chapter \ref{sys-rev-heading}. Following interest from other researchers in using the \emph{ad-hoc} web-scraping scripts, the initial version of the \texttt{medrxivr} package was released in February 2020. Additional development work took place in 2019/2020, allowing for improved searching and exporting functionality.
+Work on the \texttt{medrxivr} tool began in Summer 2019, and initially consisted of a development of set of R scripts to allow for searching medRxiv and bioRxiv as part of the systematic search outlined in Chapter \ref{sys-rev-heading}. Following interest from other researchers in using the \emph{ad-hoc} web-scraping scripts, additional development work took place in 2019/2020, allowing for improved searching and exporting functionality and the initial version of the \texttt{medrxivr} R package was released in February 2020.
 
-Early versions of the tool had a reliance on web-scraping data directly from the medRxiv website. Web-scraping is a fragile mechanism for extracting data, as it is entirely dependent on consistent website design and underlying code structure remaining unchanged.\textsuperscript{\protect\hyperlink{ref-shaw2002}{14},\protect\hyperlink{ref-laprie1992}{15}}. In the case of \texttt{medrxivr}, constant maintenance work was required to ensure the web-scraping script performed as expected, as the medRxiv website was regularly updated.
+Early versions of the tool had a reliance on scraping data directly from the repository website. Web-scraping is a fragile mechanism for extracting data, as it is entirely dependent on consistent website design and underlying code structure remaining unchanged.\textsuperscript{\protect\hyperlink{ref-shaw2002}{14},\protect\hyperlink{ref-laprie1992}{15}}. In the case of \texttt{medrxivr}, constant maintenance work was required to ensure the web-scraping script performed as expected, as the repository website was regularly updated.
 
-However, an Application Programming Interface (API) for the medRxiv and bioRxiv repositories was released in early 2020, allowing for a newer version of the \texttt{medrxivr} package to engage in active ``fault prevention'' and provide a more robust interface to the data.\textsuperscript{\protect\hyperlink{ref-laprie1992}{15}}
-
-Finally, while initial versions of the tool focused primarily on the medRxiv repository, discovery of some eligible papers for the review detailed in Chapter \ref{sys-rev-heading} required expansion to allow for similar searching of the bioRxiv repository.
-
-~
+However, an Application Programming Interface (API) for the medRxiv and bioRxiv repositories was made public in early 2020 by the institution responsible for managing these preprint repositories, the Cold Springs Harbor Laboratory. This allowed for newer versions of the \texttt{medrxivr} package to engage in active ``fault prevention'' and provide a more robust interface to the data by removing the reliance of web-scraping.\textsuperscript{\protect\hyperlink{ref-laprie1992}{15}}
 
 \hypertarget{package-infrastructure}{%
 \subsection{Package infrastructure}\label{package-infrastructure}}
@@ -827,12 +820,14 @@ The \texttt{medrxivr} R package is split into two component parts:
 \begin{itemize}
 \tightlist
 \item
-  An interface to the Cold Springs Harbor Laboratory API, which imports medRxiv and bioRxiv metadata into R; and
+  an interface to the Cold Springs Harbor Laboratory API, which imports medRxiv and bioRxiv metadata into R; and
 \item
-  A collection of functions for working with the imported metadata, with an explicit focus on searching this data as part of a systematic review or evidence synthesis project.
+  a collection of functions for working with the imported metadata, with an explicit focus on searching this data as part of a systematic review or evidence synthesis project.
 \end{itemize}
 
-The standard workflow is to download a copy of the metadata, and then run your searchers locally. This is a workaround as the Cold Springs Harbor Laboratory API does not provide any functionality to search the database.
+The standard workflow is to download a copy of all metadata contained in the repository, and then to perform searches on this local copy. This is a workaround as the Cold Springs Harbor Laboratory API does not provide any functionality to search the database.
+
+While the package allows for users to search both medRxiv and bioRxiv, as the process is identical for both, the examples in the sections are limited to the medRxiv repository.
 
 ~
 
@@ -852,6 +847,7 @@ The standard workflow is to download a copy of the metadata, and then run your s
 ~
 
 Alternatively, the development version of the package can be installed from GitHub:
+
 ~
 
 \begin{Shaded}
@@ -879,7 +875,7 @@ Alternatively, the development version of the package can be installed from GitH
 
 ~
 
-The second, via the \texttt{mx\_snapshot()} function, provides access to a maintained static snapshot of the database, created each morning at 6am. This method removes the dependency on the API which can become unavailable during peak usage times. The relationship between the two methods for accessing the data contained in the medRxiv database is summarized in Figure \ref{fig:medrxivr-data-sources}.
+The second, via the \texttt{mx\_snapshot()} function, provides access to a maintained static snapshot of the database, created each morning at 6am using \texttt{mx\_api\_content()}. Allowing users of \texttt{medrxivr} to access a maintained snapshot removes any dependency on the API, which can become unavailable during peak usage times. The relationship between the two methods for accessing the data contained in the medRxiv database is summarized in Figure \ref{fig:medrxivr-data-sources}.
 
 ~
 
@@ -905,7 +901,7 @@ The second, via the \texttt{mx\_snapshot()} function, provides access to a maint
 \hypertarget{performing-a-search}{%
 \subsection{Performing a search}\label{performing-a-search}}
 
-The first step is to create your search strategy. Terms to be combined with the OR operator are contained in vectors, while topics to be combined with the AND operator are contained in lists.
+Once a local copy of the metadata is created, the first step in searching it is to create a search strategy. Search terms to be combined with the OR operator are contained in vectors (\texttt{c(...)}), while topics to be combined with the AND operator are contained in lists (\texttt{list(\ldots{})}).
 
 ~
 
@@ -921,9 +917,9 @@ The first step is to create your search strategy. Terms to be combined with the 
 
 ~
 
-For example, the search above written in standard syntax would be: ``((dementia \textbf{OR} alzheimer's) \textbf{AND} (lipids \textbf{OR} statins))''.
+For example, when written in standard syntax, the search contained in the \texttt{myquery} object above would be: ``((dementia \textbf{OR} alzheimer's) \textbf{AND} (lipids \textbf{OR} statins))''. There is now limit to the number of search terms that can be included in each topic, nor in the number of topics that can be search for. Search terms can also contain common syntax used by systematic reviewers and health librarians, including the use of NEAR statements which allows for identification of co-localised terms, and wild-cards, which allow for alternate spellings, e.g.~``randomi\emph{s}ation'' vs ``randomi\emph{z}ation''.
 
-Once a local copy of the database has been created and your search strategy has been defined, both are passed to the \texttt{mx\_search()} function.
+Once a strategy has been defined, it is passed along with the local copy of the database to the \texttt{mx\_search()} function.
 
 ~
 
@@ -937,10 +933,6 @@ Once a local copy of the database has been created and your search strategy has 
 
 ~
 
-The search also supports common syntax used by systematic reviewers and health librarians, including the use of NEAR statements (which allows for identification of co-localised terms) and wildcards (which allow for alternate spellings, e.g.~``randomi\emph{s}ation'' vs ``randomi\emph{z}ation'').
-
-~
-
 \hypertarget{refining-your-search}{%
 \subsection{Refining your search}\label{refining-your-search}}
 
@@ -951,7 +943,7 @@ An important argument of the \texttt{mx\_search()} is \texttt{report}, which out
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{results  }\OtherTok{\textless{}{-}} \FunctionTok{mx\_search}\NormalTok{(mx\_data,}
-                      \FunctionTok{c}\NormalTok{(}\StringTok{"dementia"}\NormalTok{, }\StringTok{"alzheimer\textquotesingle{}s"}\NormalTok{),}
+                      \FunctionTok{c}\NormalTok{(}\StringTok{"dementia"}\NormalTok{, }\StringTok{"alzheimer\textquotesingle{}s"}\NormalTok{), }\CommentTok{\# Combined with OR}
                       \AttributeTok{report =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -968,16 +960,16 @@ An important argument of the \texttt{mx\_search()} is \texttt{report}, which out
 
 ~
 
-This allows users to discover which aspects of their search is contributing most to the total results returned. This is important as part of developing a search strategy,\textsuperscript{\protect\hyperlink{ref-bramer2018}{17}} as it allows for the key terms related to each topic to be discovered.
+This allows users to discover which terms in their search are contributing most to the total number of results returned. This is important as part of developing a search strategy,\textsuperscript{\protect\hyperlink{ref-bramer2018}{17}} as it allows for the key terms related to each topic to be discovered. It also aids in identifying misspelled search terms, which will frequently return no results.
 
 ~
 
 \hypertarget{exporting-to-a-bibliography-file}{%
 \subsection{Exporting to a bibliography file}\label{exporting-to-a-bibliography-file}}
 
-In line with the second success criteria (Section \ref{success-criteria}), one of the key features of the \texttt{medrxivr} is the ability for users to easily export the results of their systematic search to a reference manager. While it is a seemingly simple request, this is is one of the key ways in which \texttt{medrxivr} - as it was built with systematic reviews specifically in mind, it is
+In line with the second success criteria (Section \ref{success-criteria}), one of the key features of the \texttt{medrxivr} is the ability for users to easily export the results of their systematic search to a reference manager. While it is a seemingly simple request, this is is one of the key ways in which \texttt{medrxivr} is set apart for other preprint search tools, including the native medRxiv/bioRxiv website search functionality.
 
-For example, the results of our simple search above can be exported using the following code:
+For example, the results of our simple search above can be exported to the \texttt{"medrxiv\_export.bib"} file using the following code:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -992,13 +984,13 @@ For example, the results of our simple search above can be exported using the fo
 \hypertarget{downloading-the-pdfs-of-relevant-records}{%
 \subsection{Downloading the PDFs of relevant records}\label{downloading-the-pdfs-of-relevant-records}}
 
-Finally, \texttt{medrxivr} allows users to download the full text papers for records that are deemed eligible for full-text screening (see Figure \ref{fig:medrxivr-sr}). \texttt{mx\_download()} takes the list of included records and saves the PDF for each to a folder specified by the user. This functionality is similar to the ``Find Full Text'' feature offered by EndNote.
+\texttt{medrxivr} alos allows users to download the full text papers for records that are deemed eligible for full-text screening (see Figure \ref{fig:medrxivr-sr}). \texttt{mx\_download()} takes the list of included records and saves the PDF for each to a folder specified by the user. This functionality is similar to the ``Find Full Text'' feature offered by EndNote.
 
 ~
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{mx\_download}\NormalTok{(results,  }\CommentTok{\# Object containing included records}
+\FunctionTok{mx\_download}\NormalTok{(results,  }\CommentTok{\# Search results, less excluded records}
             \StringTok{"pdf/"}\NormalTok{)   }\CommentTok{\# Directory to save PDFs to }
 \end{Highlighting}
 \end{Shaded}
@@ -1011,11 +1003,13 @@ Finally, \texttt{medrxivr} allows users to download the full text papers for rec
 \hypertarget{reception-and-future-plans}{%
 \subsection{Reception and future plans}\label{reception-and-future-plans}}
 
-The tool has be well received by the community (as of March 2021, \texttt{medrxivr} has been downloaded more than 2400 times), and several use cases have been reported. It has been used to visualize the growing number of preprints related to the 2019 coronavirus outbreak,\footnote{\url{https://twitter.com/L_Brierley/status/1233109086444695553}} perform systematic searches in systematic reviews,\textsuperscript{\protect\hyperlink{ref-noone2020}{18}} and examine how data-sharing behaviour is affected by different publication policies (preprint server versus journal).{[}CITE{]}
+The tool has be well received by the community (as of March 2021, \texttt{medrxivr} has been downloaded more than 2400 times), and several use cases have been reported. It has been used to visualize the growing number of preprints related to the 2019 coronavirus outbreak,\footnote{\url{https://twitter.com/L_Brierley/status/1233109086444695553}} perform searches of preprints as part of systematic reviews,\textsuperscript{\protect\hyperlink{ref-noone2020}{18}} and examine how data-sharing behaviour is affected by different publication policies (preprint server versus journal).{[}CITE{]}
 
-Following rigorous peer-review, it has been onboarded into the rOpenSci suite of packages, a collection of ``carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web'', and an associated article published in the Journal of Open Source Software.\textsuperscript{\protect\hyperlink{ref-mcguinness2020a}{19}} The entire review discussion is publicly available and can be viewed online.\footnote{\url{https://github.com/ropensci/software-review/issues/380}} The tool has also been well received by the open-source community, demonstrated by the engagement of other developers in contributing to important new functionality and suggesting bug-fixes.
+Following rigorous peer-review, it has been onboarded into the rOpenSci suite of packages, a collection of ``carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web'',{[}CITE{]} and an associated article published in the Journal of Open Source Software.\textsuperscript{\protect\hyperlink{ref-mcguinness2020a}{19}} The entire review discussion is publicly available and can be viewed online.\footnote{\url{https://github.com/ropensci/software-review/issues/380}} The tool has also been well received by the open-source community, demonstrated by the engagement of other developers in contributing to important new functionality and suggesting bug-fixes.
 
-Lobbying of the Cold Springs Harbor Laboratoryto develop the API to allow for direct searching of the database has been ongoing. This would negate the current need to download a local copy of the relevant preprint database before searching it, which is currently the rate limiting step for performing searches. For example, as of January 2021, downloading a copy of the bioRxiv database takes approximately an hour.
+{[}Add bit about the benefits of the rOpenSci review process{]}
+
+Lobbying of the Cold Springs Harbor Laboratory to develop the API to allow for direct searching of the database has been ongoing. This would negate the current need to download a local copy of the relevant preprint database before searching it, which is currently the rate limiting step for performing searches. For example, as of January 2021, downloading a copy of the bioRxiv database takes approximately an hour.
 
 ~
 
@@ -1024,7 +1018,7 @@ Lobbying of the Cold Springs Harbor Laboratoryto develop the API to allow for di
 
 While searching of the medRxiv and bioRxiv databases was crucial for the systematic review element of this thesis presented in Chapter \ref{sys-rev-heading}, there are some important limitations to note here. A key example is that the tool only searches the available metadata of preprint records (the title, abstract and keywords), rather than the full text of preprints, meaning some relevant records might be missed. However, this approach ethos other search platforms such as OvidSP, and while some relevant records may be missed (reduced sensitivity), limiting the search to the metadata fields prevents non-relevant records from being returned (high specificity). A key example of the reduced specificity when searching the full text, identified during development of \texttt{medrxivr}, is that a search for ``dementia'' would return a record where the only occurrence of this term is in the title of one of the references.\textsuperscript{\protect\hyperlink{ref-bong2019}{20}}
 
-There is also the potential that the cross-section of literature posted on medrxiv/bioRxiv would be substantially different from the true grey literature (studies or analyses that are not published for a range of reasons including results that are not deemed ``novel'' or are not statistically significant).\textsuperscript{\protect\hyperlink{ref-song2010}{21}} This is because simply lowering the barriers to publication may well encourage authors to published ``null'' results, but due to the effort involved in writing up a distributable manuscript, it is unlikely to completely address the ``file drawer'' effect.\textsuperscript{\protect\hyperlink{ref-rosenthal1979}{8}} It is likely too early (and too methodologically difficult) to tell whether the increased popularity and acceptance of preprint repositories will have any effect of the availability of research that was not considered ``publishable'' at other venues.
+There is also the potential that the cross-section of literature posted on medrxiv/bioRxiv would be substantially different from the true grey literature (studies or analyses that are not published for a range of reasons including results that are not deemed ``novel'' or are not statistically significant).\textsuperscript{\protect\hyperlink{ref-song2010}{21}} This is because simply lowering the barriers to publication may well encourage authors to published ``null'' results, but due to the effort involved in writing up a distributable manuscript, it is unlikely to completely address the ``file drawer'' effect.\textsuperscript{\protect\hyperlink{ref-rosenthal1979}{8}} It is likely too early (and likely too methodologically difficult) to tell whether the increased popularity and acceptance of preprint repositories will have any effect of the availability of research that was not considered ``publishable'' at other venues. (This disagress with the use cases listed in the intro!)
 
 ~
 
@@ -1034,8 +1028,6 @@ There is also the potential that the cross-section of literature posted on medrx
 \emph{Not sure where this should go, but keen to include it}
 
 Part of the motivation for creating the \texttt{medrxivr} tool was a belief that the development and distribution of open source scripts and tools should be a fundamental part of evidence synthesis research.\textsuperscript{\protect\hyperlink{ref-goldacre2019b}{22},\protect\hyperlink{ref-mckiernan2016c}{23}} In the case of \texttt{medrxivr}, it is likely that several other evidence synthesists had written personal scripts that have a similar, or related, functionality - in fact, following development of the tool, I identified one other researcher that has done so (Nicholas Fraser, author of the \texttt{rbiorxiv} package, which allows for importing medRxiv metadata into R but does not provide search functionality).\textsuperscript{\protect\hyperlink{ref-rbiorxiv}{24}} If these scripts continue to be developed in private and are never shared or publicised, this will inevitably lead to harm to the evidence synthesis community, not only in terms of duplication of time and effort but also due to lost opportunities for collaboration.\textsuperscript{\protect\hyperlink{ref-mckiernan2016c}{23}} Creating and sharing well-documented packages, the recognised standard for sharing code in R, represents one way to reduce this inefficiency.\textsuperscript{\protect\hyperlink{ref-vuorre2020}{25}}
-
-~
 
 \hypertarget{summary-2}{%
 \section{Summary}\label{summary-2}}
@@ -1508,9 +1500,9 @@ To our knowledge, there is no previous study of the effect of preventative treat
 
 A major strength of our analysis is the size of the included cohort and the length of follow-up that the use of electronic health records allowed. In addition, we followed users and non-users from a common index date, using a time-updating treatment indicator to correctly assign time-at-risk to the exposed and unexposed groups.
 
-However, the findings of our analysis are subject to several limitations. There is a strong possibility of differential misclassification of dementia-related condition based on the exposure, as those with memory complaints are more likely to be classified as vascular dementia than Alzheimer's disease if their medical records contains prescriptions for lipid-regulating agents. Further, there is a potential for non-differential misclassification of the outcome based on the use of electronic health records to identify dementia cases.\textsuperscript{\protect\hyperlink{ref-mcguinness2019b}{56},\protect\hyperlink{ref-wilkinson2018}{\textbf{wilkinson2018?}}}
+However, the findings of our analysis are subject to several limitations. There is a strong possibility of differential misclassification of dementia-related condition based on the exposure, as those with memory complaints are more likely to be classified as vascular dementia than Alzheimer's disease if their medical records contains prescriptions for lipid-regulating agents. Further, there is a potential for non-differential misclassification of the outcome based on the use of electronic health records to identify dementia cases.\textsuperscript{\protect\hyperlink{ref-wilkinson2018}{56},\protect\hyperlink{ref-mcguinness2019b}{57}}
 
-Our study may be subject to confounding by indication, which occurs when factors that affect whether a participant is exposed also affect their outcome. We attempted to address this by limiting inclusion to those either prescribed or ``at risk'' of being prescribed, which was determined using an elevated test result. We also adjusted for several additional potential confounding variables. However, the negative control analysis of back pain demonstrated a harmful association with lipid-regulating agent use, indicting that our findings may be biased by residual confounding. Important confounding variables for which we have not adjusted could include genetic factors. A recent preprint of a study in the UK Biobank demonstrated that an Alzheimer's disease polygenic risk score was associated with an increased risk of unspecified Alzheimer's and vascular dementia, and also with an increased frequency of self-reported raised cholesterol levels, a diagnosis of hypercholesterolaemia, and a history of taking lipid-regulating agents such as statins or ezetimibe.\textsuperscript{\protect\hyperlink{ref-korologou-linden2020}{57}} This finding, combined with the potential for differential misclassification between Alzheimer's disease and vascular dementia, could explain part of the observed association between lipid-regulating agents and vascular dementia.
+Our study may be subject to confounding by indication, which occurs when factors that affect whether a participant is exposed also affect their outcome. We attempted to address this by limiting inclusion to those either prescribed or ``at risk'' of being prescribed, which was determined using an elevated test result. We also adjusted for several additional potential confounding variables. However, the negative control analysis of back pain demonstrated a harmful association with lipid-regulating agent use, indicting that our findings may be biased by residual confounding. Important confounding variables for which we have not adjusted could include genetic factors. A recent preprint of a study in the UK Biobank demonstrated that an Alzheimer's disease polygenic risk score was associated with an increased risk of unspecified Alzheimer's and vascular dementia, and also with an increased frequency of self-reported raised cholesterol levels, a diagnosis of hypercholesterolaemia, and a history of taking lipid-regulating agents such as statins or ezetimibe.\textsuperscript{\protect\hyperlink{ref-korologou-linden2020}{58}} This finding, combined with the potential for differential misclassification between Alzheimer's disease and vascular dementia, could explain part of the observed association between lipid-regulating agents and vascular dementia.
 
 Finally, there is also the potential for reverse causation in this analysis. Dementia and associated conditions have a long prodromal period, during which preclinial disease could cause indications for the prescription of a lipid-regulating agent.
 
@@ -1547,9 +1539,9 @@ Each should have:
 \hypertarget{epic-norfolk}{%
 \subsection{Epic Norfolk}\label{epic-norfolk}}
 
-The European Prospective Investigation of Cancer - Norfolk is a\textsuperscript{\protect\hyperlink{ref-riboli1997}{58},\protect\hyperlink{ref-riboli2002}{59}}
+The European Prospective Investigation of Cancer - Norfolk is a\textsuperscript{\protect\hyperlink{ref-riboli1997}{59},\protect\hyperlink{ref-riboli2002}{60}}
 
-Different approaches to combining subgroups.\textsuperscript{\protect\hyperlink{ref-fisher2017}{60}}
+Different approaches to combining subgroups.\textsuperscript{\protect\hyperlink{ref-fisher2017}{61}}
 
 \hypertarget{discussion-3}{%
 \section{Discussion}\label{discussion-3}}
@@ -1571,7 +1563,7 @@ Range of reasons why
 
 There are several strengths and limitations to the work presented in this thesis. One particularly strength is the lengths gone to find all available published and unpublished evidence around the question, and to integrate this evidence in a coherent framework, taking into account the limitations of ach source and how these limitations may be used to provide
 
-Need for large simple trials for common disease where small treatment effect can have large effect -\textsuperscript{\protect\hyperlink{ref-yusuf1984}{61}}
+Need for large simple trials for common disease where small treatment effect can have large effect -\textsuperscript{\protect\hyperlink{ref-yusuf1984}{62}}
 
 \hypertarget{reproducible-research}{%
 \section{Reproducible research}\label{reproducible-research}}
@@ -1828,172 +1820,176 @@ Lasciate ogne speranza, voi ch'intrate. . .
 \CSLLeftMargin{55. }
 \CSLRightInline{Chu, C.-S. \emph{et al.} Use of statins and the risk of dementia and mild cognitive impairment: {A} systematic review and meta-analysis. \emph{Scientific Reports} \textbf{8}, 5804 (2018).}
 
-\leavevmode\hypertarget{ref-mcguinness2019b}{}%
+\leavevmode\hypertarget{ref-wilkinson2018}{}%
 \CSLLeftMargin{56. }
+\CSLRightInline{Wilkinson, T. \emph{et al.} Identifying dementia cases with routinely collected health data: {A}~systematic review. \emph{Alzheimer's \& Dementia} \textbf{14}, 1038--1051 (2018).}
+
+\leavevmode\hypertarget{ref-mcguinness2019b}{}%
+\CSLLeftMargin{57. }
 \CSLRightInline{McGuinness, L. A., Warren-Gash, C., Moorhouse, L. R. \& Thomas, S. L. The validity of dementia diagnoses in routinely collected electronic health records in the {United Kingdom}: {A} systematic review. \emph{Pharmacoepidemiology and Drug Safety} \textbf{28}, 244--255 (2019).}
 
 \leavevmode\hypertarget{ref-korologou-linden2020}{}%
-\CSLLeftMargin{57. }
+\CSLLeftMargin{58. }
 \CSLRightInline{Korologou-Linden, R. \emph{et al.} The causes and consequences of {Alzheimer}'s disease: Phenome-wide evidence from {Mendelian} randomization. \emph{medRxiv} 2019.12.18.19013847 (2020). doi:\href{https://doi.org/10.1101/2019.12.18.19013847}{10.1101/2019.12.18.19013847}}
 
 \leavevmode\hypertarget{ref-riboli1997}{}%
-\CSLLeftMargin{58. }
+\CSLLeftMargin{59. }
 \CSLRightInline{Riboli, E. The {EPIC Project}: Rationale and study design. {European Prospective Investigation} into {Cancer} and {Nutrition}. \emph{International Journal of Epidemiology} \textbf{26}, 6S--14 (1997).}
 
 \leavevmode\hypertarget{ref-riboli2002}{}%
-\CSLLeftMargin{59. }
+\CSLLeftMargin{60. }
 \CSLRightInline{Riboli, E. \emph{et al.} European {Prospective Investigation} into {Cancer} and {Nutrition} ({EPIC}): Study populations and data collection. \emph{Public Health Nutrition} \textbf{5}, 1113--1124 (2002).}
 
 \leavevmode\hypertarget{ref-fisher2017}{}%
-\CSLLeftMargin{60. }
+\CSLLeftMargin{61. }
 \CSLRightInline{Fisher, D. J., Carpenter, J. R., Morris, T. P., Freeman, S. C. \& Tierney, J. F. Meta-analytical methods to identify who benefits most from treatments: Daft, deluded, or deft approach? \emph{BMJ} \textbf{356}, j573 (2017).}
 
 \leavevmode\hypertarget{ref-yusuf1984}{}%
-\CSLLeftMargin{61. }
+\CSLLeftMargin{62. }
 \CSLRightInline{Yusuf, S., Collins, R. \& Peto, R. Why do we need some large, simple randomized trials? \emph{Statistics in Medicine} \textbf{3}, 409--420 (1984).}
 
 \leavevmode\hypertarget{ref-base}{}%
-\CSLLeftMargin{62. }
+\CSLLeftMargin{63. }
 \CSLRightInline{R Core Team. \emph{R: {A} language and environment for statistical computing}. ({R Foundation for Statistical Computing}, 2019).}
 
 \leavevmode\hypertarget{ref-cranlogs}{}%
-\CSLLeftMargin{63. }
+\CSLLeftMargin{64. }
 \CSLRightInline{Csárdi, G. \emph{Cranlogs: {Download} logs from the '{RStudio}' '{CRAN}' mirror}. (2019).}
 
 \leavevmode\hypertarget{ref-dplyr}{}%
-\CSLLeftMargin{64. }
+\CSLLeftMargin{65. }
 \CSLRightInline{Wickham, H., François, R., Henry, L. \& Müller, K. \emph{Dplyr: {A} grammar of data manipulation}. (2020).}
 
 \leavevmode\hypertarget{ref-flextable}{}%
-\CSLLeftMargin{65. }
+\CSLLeftMargin{66. }
 \CSLRightInline{Gohel, D. \emph{Flextable: {Functions} for tabular reporting}. (2020).}
 
 \leavevmode\hypertarget{ref-ggplot2}{}%
-\CSLLeftMargin{66. }
+\CSLLeftMargin{67. }
 \CSLRightInline{Wickham, H. \emph{Ggplot2: {Elegant} graphics for data analysis}. ({Springer-Verlag New York}, 2016).}
 
 \leavevmode\hypertarget{ref-glue}{}%
-\CSLLeftMargin{67. }
+\CSLLeftMargin{68. }
 \CSLRightInline{Hester, J. \emph{Glue: {Interpreted} string literals}. (2020).}
 
 \leavevmode\hypertarget{ref-gt}{}%
-\CSLLeftMargin{68. }
+\CSLLeftMargin{69. }
 \CSLRightInline{Iannone, R., Cheng, J. \& Schloerke, B. \emph{Gt: {Easily} create presentation-ready display tables}. (2020).}
 
 \leavevmode\hypertarget{ref-here}{}%
-\CSLLeftMargin{69. }
+\CSLLeftMargin{70. }
 \CSLRightInline{Müller, K. \emph{Here: {A} simpler way to find your files}. (2020).}
 
 \leavevmode\hypertarget{ref-kableExtra}{}%
-\CSLLeftMargin{70. }
+\CSLLeftMargin{71. }
 \CSLRightInline{Zhu, H. \emph{{kableExtra}: {Construct} complex table with 'kable' and pipe syntax}. (2020).}
 
 \leavevmode\hypertarget{ref-knitr}{}%
-\CSLLeftMargin{71. }
+\CSLLeftMargin{72. }
 \CSLRightInline{Xie, Y. \emph{Dynamic documents with {R} and knitr}. ({Chapman and Hall/CRC}, 2015).}
 
 \leavevmode\hypertarget{ref-medrxivr}{}%
-\CSLLeftMargin{72. }
+\CSLLeftMargin{73. }
 \CSLRightInline{McGuinness, L. A. \& Schmidt, L. Medrxivr: {Accessing} and searching {medRxiv} and {bioRxiv} preprint data in {R}. \emph{Journal of Open Source Software} \textbf{5}, 2651 (2020).}
 
 \leavevmode\hypertarget{ref-plyr}{}%
-\CSLLeftMargin{73. }
+\CSLLeftMargin{74. }
 \CSLRightInline{Wickham, H. The split-apply-combine strategy for data analysis. \emph{Journal of Statistical Software} \textbf{40}, 1--29 (2011).}
 
 \leavevmode\hypertarget{ref-robvis}{}%
-\CSLLeftMargin{74. }
+\CSLLeftMargin{75. }
 \CSLRightInline{McGuinness, L. A. \& Higgins, J. P. Risk-of-bias {VISualization} (robvis): {An R} package and {Shiny} web app for visualizing risk-of-bias assessments. \emph{Research Synthesis Methods} (2020). doi:\href{https://doi.org/10.1002/jrsm.1411}{10.1002/jrsm.1411}}
 
 \leavevmode\hypertarget{ref-stringr}{}%
-\CSLLeftMargin{75. }
+\CSLLeftMargin{76. }
 \CSLRightInline{Wickham, H. \emph{Stringr: {Simple}, consistent wrappers for common string operations}. (2019).}
 
 \leavevmode\hypertarget{ref-tidyverse}{}%
-\CSLLeftMargin{76. }
+\CSLLeftMargin{77. }
 \CSLRightInline{Wickham, H. \emph{et al.} Welcome to the {tidyverse}. \emph{Journal of Open Source Software} \textbf{4}, 1686 (2019).}
 
 \leavevmode\hypertarget{ref-wordcountaddin}{}%
-\CSLLeftMargin{77. }
+\CSLLeftMargin{78. }
 \CSLRightInline{Marwick, B. \emph{Wordcountaddin: {Word} counts and readability statistics in {R} markdown documents}. (2020).}
 
 \leavevmode\hypertarget{ref-xfun}{}%
-\CSLLeftMargin{78. }
+\CSLLeftMargin{79. }
 \CSLRightInline{Xie, Y. \emph{Xfun: {Miscellaneous} functions by '{Yihui Xie}'}. (2021).}
 
 \leavevmode\hypertarget{ref-cochranechpt7}{}%
-\CSLLeftMargin{79. }
+\CSLLeftMargin{80. }
 \CSLRightInline{Boutron, I. \emph{et al.} Chapter 7: {Considering} bias and conflicts of interest among the included studies. in \emph{Cochrane {Handbook} for {Systematic Reviews} of {Interventions} version 6.0 (updated {August} 2019)} (eds. Higgins, J. P. T. et al.) ({Cochrane}, 2019).}
 
 \leavevmode\hypertarget{ref-sterne2019rob}{}%
-\CSLLeftMargin{80. }
+\CSLLeftMargin{81. }
 \CSLRightInline{Sterne, J. A. C. \emph{et al.} {RoB} 2: A revised tool for assessing risk of bias in randomised trials. \emph{BMJ} \textbf{366}, l4898 (2019).}
 
 \leavevmode\hypertarget{ref-sterne2016robins}{}%
-\CSLLeftMargin{81. }
+\CSLLeftMargin{82. }
 \CSLRightInline{Sterne, J. A. C. \emph{et al.} {ROBINS}-{I}: A tool for assessing risk of bias in non-randomised studies of interventions. \emph{BMJ} \textbf{355}, i4919 (2016).}
 
 \leavevmode\hypertarget{ref-whiting2011quadas}{}%
-\CSLLeftMargin{82. }
+\CSLLeftMargin{83. }
 \CSLRightInline{Whiting, P. F. \emph{et al.} {QUADAS}-2: A revised tool for the quality assessment of diagnostic accuracy studies. \emph{Annals of Internal Medicine} \textbf{155}, 529--536 (2011).}
 
 \leavevmode\hypertarget{ref-higgins2008assessing}{}%
-\CSLLeftMargin{83. }
+\CSLLeftMargin{84. }
 \CSLRightInline{Higgins, J. P. T. \& Altman, D. G. Chapter 8: {Assessing} risk of bias in included studies. in \emph{Cochrane {Handbook} for {Systematic Reviews} of {Interventions}} (eds. Higgins, J. P. T. \& Green, S.) 187--241 ({Wiley Online Library}, 2008).}
 
 \leavevmode\hypertarget{ref-cochrane2014review}{}%
-\CSLLeftMargin{84. }
+\CSLLeftMargin{85. }
 \CSLRightInline{Cochrane Collaboration. Review {Manager} ({RevMan}) {[}{Computer} program{]}. (2014).}
 
 \leavevmode\hypertarget{ref-marshall2015systematic}{}%
-\CSLLeftMargin{85. }
+\CSLLeftMargin{86. }
 \CSLRightInline{Marshall, C. \& Brereton, P. Systematic review toolbox: A catalogue of tools to support systematic reviews. in \emph{Proceedings of the 19th international conference on evaluation and assessment in software engineering} Article 23; 1--6 ({Association for Computing Machinery}, 2015). doi:\href{https://doi.org/10.1145/2745802.2745824}{10.1145/2745802.2745824}}
 
 \leavevmode\hypertarget{ref-harrison2020software}{}%
-\CSLLeftMargin{86. }
+\CSLLeftMargin{87. }
 \CSLRightInline{Harrison, H., Griffin, S. J., Kuhn, I. \& Usher-Smith, J. A. Software tools to support title and abstract screening for systematic reviews in healthcare: An evaluation. \emph{BMC Medical Research Methodology} \textbf{20}, 7 (2020).}
 
 \leavevmode\hypertarget{ref-rref}{}%
-\CSLLeftMargin{87. }
+\CSLLeftMargin{88. }
 \CSLRightInline{R Core Team. \emph{R: {A} language and environment for statistical computing}. ({R Foundation for Statistical Computing}, 2019).}
 
 \leavevmode\hypertarget{ref-rstudioref}{}%
-\CSLLeftMargin{88. }
+\CSLLeftMargin{89. }
 \CSLRightInline{RStudio Team. \emph{{RStudio}: {Integrated} development environment for {R}}. ({RStudio, Inc.}, 2015).}
 
 \leavevmode\hypertarget{ref-shinyref}{}%
-\CSLLeftMargin{89. }
+\CSLLeftMargin{90. }
 \CSLRightInline{Chang, W., Cheng, J., Allaire, J., Xie, Y. \& McPherson, J. \emph{Shiny: {Web} application framework for {R}}. (2019).}
 
 \leavevmode\hypertarget{ref-mcguinness2019a}{}%
-\CSLLeftMargin{90. }
+\CSLLeftMargin{91. }
 \CSLRightInline{McGuinness, L. A. Robvis: {An R} package for visualising risk-of-bias assessments. {[}{Computer Software} - v0.3.0{]}. (2019). doi:\href{https://doi.org/10.5281/zenodo.3552342}{10.5281/zenodo.3552342}}
 
 \leavevmode\hypertarget{ref-gibb2019consistent}{}%
-\CSLLeftMargin{91. }
+\CSLLeftMargin{92. }
 \CSLRightInline{Gibb, K. \emph{et al.} The consistent burden in published estimates of delirium occurrence in medical inpatients over four decades: A systematic review and meta-analysis study. \emph{medRxiv} 19005165 (2019). doi:\href{https://doi.org/10.1101/19005165}{10.1101/19005165}}
 
 \leavevmode\hypertarget{ref-habadi2019prevalence}{}%
-\CSLLeftMargin{92. }
+\CSLLeftMargin{93. }
 \CSLRightInline{Habadi, M. I. \emph{et al.} Prevalence of panic disorders in the primary health care setting: {A} systematic review and meta-analysis. \emph{EC Microbiology} \textbf{16}, 01--09 (2019).}
 
 \leavevmode\hypertarget{ref-veloso2020effectiveness}{}%
-\CSLLeftMargin{93. }
+\CSLLeftMargin{94. }
 \CSLRightInline{Veloso, A., Vicente, S. G. \& Filipe, M. G. Effectiveness of cognitive training for school-aged children and adolescents with attention {Deficit}/{Hyperactivity} disorder: {A} systematic review. \emph{Frontiers in Psychology} \textbf{10}, 2983 (2020).}
 
 \leavevmode\hypertarget{ref-simillis2020}{}%
-\CSLLeftMargin{94. }
+\CSLLeftMargin{95. }
 \CSLRightInline{Simillis, C. \emph{et al.} Postoperative chemotherapy improves survival in patients with resected high-risk stage {II} colorectal cancer: Results of a systematic review and meta-analysis. \emph{Colorectal Disease} \textbf{Published online 30th January}, (2020).}
 
 \leavevmode\hypertarget{ref-tanneru2020}{}%
-\CSLLeftMargin{95. }
+\CSLLeftMargin{96. }
 \CSLRightInline{Tanneru, K. \emph{et al.} Meta-analysis and systematic review of intermediate-term follow-up of prostatic urethral lift for benign prostatic hyperplasia. \emph{International Urology and Nephrology} (2020).}
 
 \leavevmode\hypertarget{ref-mathias_harrer_2019_2551803}{}%
-\CSLLeftMargin{96. }
+\CSLLeftMargin{97. }
 \CSLRightInline{Harrer, M., Cuijpers, P. \& Ebert, D. \emph{Doing {Meta}-{Analysis} in {R}: {A Hands}-on {Guide}}. ({Zenodo}, 2019).}
 
 \leavevmode\hypertarget{ref-whiting2016robis}{}%
-\CSLLeftMargin{97. }
+\CSLLeftMargin{98. }
 \CSLRightInline{Whiting, P. \emph{et al.} {ROBIS}: A new tool to assess risk of bias in systematic reviews was developed. \emph{Journal of Clinical Epidemiology} \textbf{69}, 225--234 (2016).}
 
 \end{CSLReferences}
@@ -2015,7 +2011,7 @@ Lasciate ogne speranza, voi ch'intrate. . .
 \hypertarget{software-used-to-create-this-thesis}{%
 \section{Software used to create this thesis}\label{software-used-to-create-this-thesis}}
 
-This thesis was written in RMarkdown. Several R packages were used as part of this project.\textsuperscript{\protect\hyperlink{ref-rbiorxiv}{24},\protect\hyperlink{ref-base}{62}--\protect\hyperlink{ref-xfun}{78}}
+This thesis was written in RMarkdown. Several R packages were used as part of this project.\textsuperscript{\protect\hyperlink{ref-rbiorxiv}{24},\protect\hyperlink{ref-base}{63}--\protect\hyperlink{ref-xfun}{79}}
 
 \hypertarget{appendix-robvis}{%
 \section{\texorpdfstring{Producing risk-of-bias visualisations with \texttt{robvis}}{Producing risk-of-bias visualisations with robvis}}\label{appendix-robvis}}
@@ -2023,18 +2019,18 @@ This thesis was written in RMarkdown. Several R packages were used as part of th
 \hypertarget{introduction-2}{%
 \subsection{Introduction}\label{introduction-2}}
 
-Risk of bias assessment - evaluation of the internal validity of studies included in a systematic review - often forms a key part of the evidence synthesis process, particularly in the health sciences.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{79}} A well-developed family of tools is widely used, which have in common the characteristic that they evaluate specific domains of bias rather being constructed as a checklist or a quantitative score.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{79}} These tools include the RoB 2 tool for randomized trials,\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{80}} the ROBINS-I tool for non-randomized studies of interventions,\textsuperscript{\protect\hyperlink{ref-sterne2016robins}{81}} the QUADAS 2 tool for test accuracy and the ROBIS tool for systematic reviews.\textsuperscript{\protect\hyperlink{ref-whiting2011quadas}{82}} Within each bias domains a judgement is reached about the strength of the study in that regard: for example, the first domain in the Cochrane RoB 2 tool deals with bias arising from the randomization process.\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{80}} Accessible graphics summarizing the results of these domain-based risk-of-bias assessments are included in reports of systematic reviews. A convenient plot in many reviews is a ``traffic light'' plot, which tabulates the judgement for each study in each domain. For larger numbers of studies, when such a table become unmanageable, a popular alternative is a weighted bar plot, which show the proportion of information with each judgement for each domain.\textsuperscript{\protect\hyperlink{ref-higgins2008assessing}{83}}
+Risk of bias assessment - evaluation of the internal validity of studies included in a systematic review - often forms a key part of the evidence synthesis process, particularly in the health sciences.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{80}} A well-developed family of tools is widely used, which have in common the characteristic that they evaluate specific domains of bias rather being constructed as a checklist or a quantitative score.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{80}} These tools include the RoB 2 tool for randomized trials,\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{81}} the ROBINS-I tool for non-randomized studies of interventions,\textsuperscript{\protect\hyperlink{ref-sterne2016robins}{82}} the QUADAS 2 tool for test accuracy and the ROBIS tool for systematic reviews.\textsuperscript{\protect\hyperlink{ref-whiting2011quadas}{83}} Within each bias domains a judgement is reached about the strength of the study in that regard: for example, the first domain in the Cochrane RoB 2 tool deals with bias arising from the randomization process.\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{81}} Accessible graphics summarizing the results of these domain-based risk-of-bias assessments are included in reports of systematic reviews. A convenient plot in many reviews is a ``traffic light'' plot, which tabulates the judgement for each study in each domain. For larger numbers of studies, when such a table become unmanageable, a popular alternative is a weighted bar plot, which show the proportion of information with each judgement for each domain.\textsuperscript{\protect\hyperlink{ref-higgins2008assessing}{84}}
 
-Researchers can face a number of barriers in creating these plots. While some evidence synthesis platforms, such as Cochrane's Review Manager,\textsuperscript{\protect\hyperlink{ref-cochrane2014review}{84}} are able to produce these visualizations, not all researchers use these systems to conduct their systematic reviews, and copying the risk-of-bias data into these systems simply to produce the plots is inefficient and error prone. Likewise, creating the figures by hand, through software such as MS PowerPoint or Adobe Illustrator, may lead to unintentional errors and require the plots to be redrawn during an update to the review. Additionally, while the field of evidence synthesis software has grown rapidly in recent years,\textsuperscript{\protect\hyperlink{ref-marshall2015systematic}{85}} this growth has not been equally distributed across the different aspects of the systematic review process. For example, a recent review found several software offerings aimed specifically at the abstract screening stage of the review process,\textsuperscript{\protect\hyperlink{ref-harrison2020software}{86}} but no similar time- and error-reducing tool has been proposed for visualizing the results of risk-of-bias assessments.
+Researchers can face a number of barriers in creating these plots. While some evidence synthesis platforms, such as Cochrane's Review Manager,\textsuperscript{\protect\hyperlink{ref-cochrane2014review}{85}} are able to produce these visualizations, not all researchers use these systems to conduct their systematic reviews, and copying the risk-of-bias data into these systems simply to produce the plots is inefficient and error prone. Likewise, creating the figures by hand, through software such as MS PowerPoint or Adobe Illustrator, may lead to unintentional errors and require the plots to be redrawn during an update to the review. Additionally, while the field of evidence synthesis software has grown rapidly in recent years,\textsuperscript{\protect\hyperlink{ref-marshall2015systematic}{86}} this growth has not been equally distributed across the different aspects of the systematic review process. For example, a recent review found several software offerings aimed specifically at the abstract screening stage of the review process,\textsuperscript{\protect\hyperlink{ref-harrison2020software}{87}} but no similar time- and error-reducing tool has been proposed for visualizing the results of risk-of-bias assessments.
 
-Fortunately, tools such as R, RStudio and \texttt{Shiny} (an R package for building interactive web apps) have made it easier than ever to produce such a tool.\textsuperscript{\protect\hyperlink{ref-rref}{87}--\protect\hyperlink{ref-shinyref}{89}} Here, we present \texttt{robvis} (Risk Of Bias VISualiation),\textsuperscript{\protect\hyperlink{ref-mcguinness2019a}{90}} an R package and \texttt{Shiny} web-app that allows users to create publication-ready risk-of-bias plots quickly and easily. Originally created for use with the major risk-of-bias assessment tools used in health research, the tool allows users to visualize the results from any domain-based risk-of-bias assessment or quality appraisal tool.
+Fortunately, tools such as R, RStudio and \texttt{Shiny} (an R package for building interactive web apps) have made it easier than ever to produce such a tool.\textsuperscript{\protect\hyperlink{ref-rref}{88}--\protect\hyperlink{ref-shinyref}{90}} Here, we present \texttt{robvis} (Risk Of Bias VISualiation),\textsuperscript{\protect\hyperlink{ref-mcguinness2019a}{91}} an R package and \texttt{Shiny} web-app that allows users to create publication-ready risk-of-bias plots quickly and easily. Originally created for use with the major risk-of-bias assessment tools used in health research, the tool allows users to visualize the results from any domain-based risk-of-bias assessment or quality appraisal tool.
 
 The tool is open-source and available to use free of charge. Users can download a stable version of the R package from CRAN (\url{https://cran.r-project.org/package=robvis}); or access and contribute to the development version via GitHub (\url{https://github.com/mcguinlu/robvis}).
 
 \hypertarget{development-1}{%
 \subsection{Development}\label{development-1}}
 
-Development of \texttt{robvis} began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.\textsuperscript{\protect\hyperlink{ref-gibb2019consistent}{91}--\protect\hyperlink{ref-tanneru2020}{95}}
+Development of \texttt{robvis} began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.\textsuperscript{\protect\hyperlink{ref-gibb2019consistent}{92}--\protect\hyperlink{ref-tanneru2020}{96}}
 
 \hypertarget{installation-1}{%
 \subsection{Installation}\label{installation-1}}
@@ -2098,9 +2094,9 @@ psize & X &  & Defines the size of the points in the traffic light plot. Default
 \hypertarget{reception-and-future-plans-1}{%
 \subsection{Reception and Future Plans}\label{reception-and-future-plans-1}}
 
-As of March 2021, \texttt{robvis} has been downloaded more than 10500 times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{96}}
+As of March 2021, \texttt{robvis} has been downloaded more than 10600 times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{97}}
 
-While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{97}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{79}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
+While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{98}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{80}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
 
 %%%%% REFERENCES
 
