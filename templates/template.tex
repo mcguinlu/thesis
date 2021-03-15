@@ -215,18 +215,16 @@ $endif$
 % Title page is created here
 \maketitle
 
+%%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
+\begin{abstract}
+	$abstract$
+\end{abstract}
+
 %%%%% DEDICATION -- If you'd like one, un-comment the following.
 $if(dedication)$
 \begin{dedication}
   $dedication$
 \end{dedication}
-$endif$
-
-%%%%% DECALRATION -- Nothing to do here except comment out if you don't want it.
-$if(declaration)$
-\begin{declaration}
- 	$declaration$
-\end{declaration}
 $endif$
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
@@ -236,10 +234,12 @@ $if(acknowledgements)$
 \end{acknowledgements}
 $endif$
 
-%%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
-\begin{abstract}
-	$abstract$
-\end{abstract}
+%%%%% DECALRATION -- Nothing to do here except comment out if you don't want it.
+$if(declaration)$
+\begin{declaration}
+ 	$declaration$
+\end{declaration}
+$endif$
 
 %%%%% MINI TABLES
 % This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line

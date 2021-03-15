@@ -17,9 +17,12 @@ Science knows it doesn't know everything; otherwise, it'd stop.
 
 ## Lay summary
 
-## Introduction
+This thesis is 
 
-  
+
+Lay summaries appear at the beginning of each chapter, reviewed by the Patient and Public Involvement P
+
+## Introduction
 
 > This chapter provides the context of the thesis. It briefly gives the background on the problem of increased adiposity, the biology of adipose tissue, and diseases linking increased body mass index and mortality. The chapter briefly explores different measures of increased adiposity and potential hypotheses for underlying aetiology of diseases associated with increased adiposity. Finally, the potential application of metabolites and Mendelian randomization in the context of understanding underlying aetiology are discussed. *From Matt Lee's thesis.*
 
@@ -45,19 +48,6 @@ Several scales are commonly used to diagnose dementia and associated diseases fo
 ###	Public Health Importance
 Dementia is quickly becoming a critically important public health issue. Despite the age-specific incidence and prevalence of dementia remaining relatively constant over time,6 an ageing population looks set to create a dementia epidemic, particularly in Westernised countries. In the UK, there are estimated to be 800,000 people currently living with dementia, with this figure expected to double by 2040.7 Globally, the prevalence of dementia is expected to reach 75 million by 2030.8 Despite the number of dementia cases and decades of research, there remains much unknown about the pathogenesis and progression of the disease. 
 
-``` {r}
-library(gt)
-library(dplyr)
-
-gt(data = mtcars) %>%
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = list(cells_body(
-      columns = vars(mpg)),
-      cells_column_labels(columns = vars(mpg))))
-
-```
-
 ###	Challenges in the study of dementia using traditional study designs
 
 Speak to the 
@@ -68,7 +58,7 @@ This fact is further complicated by the long latency of dementia, which necessit
 Fortunately, these limitations may potentially be addressed through the use of routinely collected health data, and the electronic health record databases in which they are stored. 
 
 
-*Cognitive impairment not dementia* (CIND) is another term used to described those with cognitivie impairment but who fall below the diagnostic criteria for dementia. 
+*Cognitive impairment not dementia* (CIND) is another term used to described those with cognitive impairment but who fall below the diagnostic criteria for dementia. 
 
 A further clinical subtype that is of particular import the  
 
@@ -84,12 +74,19 @@ Council/British Heart Foundation Heart Protection Study; however, because of met
 similar percentages of participants (0.3% in each—statin vs placebo—group) developed dementia during the 5-year follow-up period. The report did not state how the outcome of dementia was determined (e.g., reported as an adverse event or by follow-up phone interview).
 *Taken from Cramer 2008 - included in review*
 
+There exist only two large scale randomized controlled trials of the effect of statins on dementia risk - in fact these studies are the only two trials included in a 2016 review of statins for the prevention of dementia produced by the Cochrane [@mcguinness2016b]. Both showed no effect of 
 
-There exist only two large scale randomized controlled trials - in fact these studies are the only two trials included in a 2016 review of statins for the prevention of dementia produced by the Cochrane [@mcguinness2016b]. Both showed no effect of 
+However, while being widely cited, 
 
 Queries around how the data were collected, along 
 
 ### Economic impact 
+
+The economic impact of dementia is enormous, but in terms of the direct care required 
+
+Patients with dementia stay in hospital for longer,[@mollers2019]
+
+Patients are more prone to falls and other con
 
 ### Risk factors
 
@@ -104,6 +101,7 @@ Queries around how the data were collected, along
 The blood profile has a range of lipid fractions to it. However, for the sake of this thesis, we will only consider the three most important fractions, namely total cholesterol, low density lipoprotein cholesterol (LDLc), high density lipoprotein cholesterol (HDLc) and trigylcerides (TG).
 
 ### HDL-c
+
 
 
 
@@ -122,6 +120,7 @@ Limitations to the method include a requirement to fast for 12-14hrs prior to me
 ``` {block type='correction'}
 Measurement error is a big deal for this thesis, as will discuss measurement error regarding how  different codelists/measurement of AD vs vascular dementia affect results in later chapters.
 ```
+
 
 
 ### Triglycerides
@@ -143,6 +142,11 @@ Measurement error is a big deal for this thesis, as will discuss measurement err
 ## Methods used in the thesis
 
 ### Evidence synthesis
+
+he main theoretical framework used in this thesis is evidence synthesis - the identification, critical assessment, and integration of all available evidence on a research question in order to either: a) provide a more definitive answer to that question; or b) highlight gaps in the existing evidence base.
+
+While this thesis does include a research tool (Chapter 2 - systematic searching of preprint) and a primary evidence generation element (Chapter 5 - observational analysis of CPRD data), this was performed with the intention of providing a further source of evidence for the evidence synthesis/triangulation aspect of the thesis.
+
 
 ### Primary cohort analysis
 

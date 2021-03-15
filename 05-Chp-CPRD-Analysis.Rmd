@@ -81,7 +81,7 @@ We considered five outcomes as part of this analysis: probable  Alzheimer’s di
 
 &nbsp;
 
-## Covariates
+### Covariates
 
 The analysis was adjusted for a range of baseline covariates including sex, grouped year of entry into the cohort (<2000, 2000-2004, 2005-2009, >2010), Charlson co-morbidity index, Index of Multiple Deprivation (IMD), consultation rate, alcohol (current, former,  never), smoking (current, former,  never), BMI, baseline total cholesterol, and history of cardiovascular disease, coronary bypass surgery, coronary artery disease, peripheral arterial disease, hypertension, chronic kidney disease, and Type 1 and Type 2 diabetes. All
 covariates were determined at index and definitions for each can be found in Supplementary Table 1.
@@ -91,8 +91,7 @@ covariates were determined at index and definitions for each can be found in Sup
 ### Estimation methods
 
 Potential biases included time varying confounding, selection bias due to censoring on death and 
-We performed a Cox 
-
+We use a Cox proportional hazards model with a time-varying treatment indicator.
 
 
 ### Estimating the value of the time-varying confounders
@@ -130,26 +129,26 @@ However, this is not the case. Baseline cholesterol level are predicted to be a 
 As expected, in a confirmatory analysis using lipid levels, there was no association between *the most recent total cholesterol or LDL-cholesterol reading in the CPRD and the treatment, indicating that adjusting for this variable was not required.*
 
 
-### Replicating the analysis
+### Replicating other analytical strategies
 
 **Comparing and contrasting between different studies is particularly difficult** because of the impact that the use of different code list can have on the analysis [@wilkinson2018a; @mcguinness2019c]
 
 In order to 
 
-As part of our exploration of the, we chose to explore whether our results were comparable with 
+As part of our exploration of the unexpected results, 
 
-As discussed in
+]
 
 
 ## Discussion
 
-## Main findings
+### Main findings
 
 Lipid-regulating agents had no effect on probable and possible Alzheimer's when compared with no treatment, but were associated with increased risk of an all-cause dementia, vascular dementia and other dementia diagnosis. The effect observed in each case was driven by the statin subgroup, which included a substantial majority of participants. For the other drug classes, no association was found with any outcome, with two exceptions being that ezetimibe was associated with increased risk of vascular and other dementia, while fibrates were associated with increase risk of all-cause dementia and probable Alzheimer's disease.
 
 &nbsp;
 
-## Comparison to other literature
+### Comparison to other literature
 
 Much of the existing literature focuses on the association of statins alone with neurodegenerative outcomes, with other lipid-regulating agents being grouped as "non-statin cholesterol-lowering drugs".[@ancelin2012] This echoes the distribution of participants among subgroups in our analysis, with the statin subgroup including almost all participants.
 
@@ -187,7 +186,14 @@ To our knowledge, there is no previous study of the effect of preventative treat
 
 &nbsp;
 
-## Strengths and Limitations
+### Original contribution to research
+
+There are two primary ways in which this research adds to the topic:
+
+* _Size of the CPRD and length of follow-up:_ Having reviewed the other studies identified by the systematic review in Chapter 4, this analysis of 1.7 million participants is one of the largest studies of this research question.
+* _Addressing the limitations of other observational analyses:_ Analyzing this data has provided the opportunity to use a separate analytical technique to many of the studies identified in the systematic review, As an example, the Hippsley-Cox BMJ paper examining the effect of statins, which makes use of the THIN EHR database, likely suffers from immortal time bias as exposed and unexposed participants are not followed up from a common time point.[@hippisley-cox2010] As touched on in the section above, this provides an additional evidence point with a different source and direction of bias, which is useful for the triangulation aspect of the thesis.
+
+### Strengths and Limitations
 
 A major strength of our analysis is the size of the included cohort and the length of follow-up that the use of electronic health records allowed. In addition, we followed users and non-users from a common index date, using a time-updating treatment indicator to correctly assign time-at-risk to the exposed and unexposed groups.
 
@@ -197,7 +203,7 @@ Our study may be subject to confounding by indication, which occurs when factors
 
 Finally, there is also the potential for reverse causation in this analysis. Dementia and associated conditions have a long prodromal period, during which preclinial disease could cause indications for the prescription of a lipid-regulating agent.
 
-## Conclusions
+### Conclusions
 
 We have provided new evidence on the potential repurposing of lipid-regulating agents for the prevention of all-cause dementia, Alzheimer’s disease, vascular dementia, and other dementia. We found use of lipid-regulating agents not associated with probable or possible Alzheimer’s disease, but were associated with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations were driven by those observed in the statin subgroup, which comprised the majority of participants in our cohort.
 
