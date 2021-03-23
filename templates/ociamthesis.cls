@@ -26,7 +26,7 @@
 \ProcessOptions\relax
 
 % Defines space between paragraphs and paragraph indents
-\setlength{\parskip}{2pt plus 1pt}
+\setlength{\parskip}{6pt plus 1pt}
 \setlength{\parindent}{0pt}
 \setlength{\parfillskip}{0pt plus .7\textwidth}
 

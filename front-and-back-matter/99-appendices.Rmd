@@ -6,9 +6,55 @@
 
 # By Chapter {#chapter-appendix-heading}
 
-## Chapter 1 {#appendix-chapter-1}
+## Chapter \@ref(intro-heading) {#appendix-into}
 
-## Chapter 2 {#appendix-chapter-2}
+## Chapter \@ref(sys-rev-tools-heading) {#appendix-sys-rev-tools}
+
+### Search strategy {#appendix-search-strategy}
+
+### Code to search preprints {#appendix-medrxivr-code}
+
+<!-- Double check this is the final code used -->
+
+```{r, eval = FALSE}
+
+library(medrxivr)
+
+mx_data <- mx_api_content(to_date = "2019-09-01")
+
+bx_data <- mx_api_content(server = "biorxiv",
+                                    to_date = "2019-09-01")
+
+topic1 <- c("statin",
+            mx_caps("ldl"),
+            mx_caps("hdl"),
+            mx_caps("TG"),
+            paste0("\\b",mx_caps("TC"),"\\b"),
+            "ezetim",
+            "lipoprotein",
+            "lipid",
+            "cholesterol")
+
+topic2 <- c(mx_caps("dementia"),
+            mx_caps("alzheim"),
+            mx_caps("MCI"),
+            mx_caps("mild cognitive"))
+
+query <- list(
+  topic1,
+  topic2
+)
+
+test <- mx_search(bx_data, query)
+
+
+test2 <- mx_search(mx_data, query)
+
+```
+
+### MR risk of bias tool {#appendix-mr-rob}
+
+## Chapter \@ref(sys-rev-heading) {#appendix-sys-rev}
 
 <!----------------------------------------------------------------------------->
 

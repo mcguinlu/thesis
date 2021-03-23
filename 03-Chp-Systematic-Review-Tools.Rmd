@@ -306,7 +306,7 @@ medrxivr_downloads <- plyr::round_any(sum(medstats$count), 100, f = floor)
 date <- format(Sys.Date(),"%B %Y")
 ```
 
-The tool has been well received by the community (as of `r date`, `medrxivr` has been downloaded more than `r medrxivr_downloads` times), and several use cases have been reported. It has been used to visualize the growing number of preprints related to the 2019 coronavirus outbreak [^chp-systematic-review-tools-3], perform searches of preprints as part of systematic reviews,[@noone2020] and examine how data-sharing behaviour is affected by different publication policies (preprint server versus journal).[CITE]
+The tool has been well received by the community (as of `r date`, `medrxivr` has been downloaded more than `r medrxivr_downloads` times), and several use cases have been reported. It has been used to visualize the growing number of preprints related to the 2019 coronavirus outbreak [^chp-systematic-review-tools-3], perform searches of preprints as part of systematic reviews,[@noone2020] and examine how data-sharing behaviour is affected by different publication policies (see \@ref(thesis-output)).[CITE]
 
 [^chp-systematic-review-tools-3]: <https://twitter.com/L_Brierley/status/1233109086444695553>
 

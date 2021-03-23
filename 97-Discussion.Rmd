@@ -10,6 +10,18 @@ documentclass: book
 
 # Discussion {#discussion-heading}
 
+## Triangulation
+
+Summary table of different studies and results
+
+## Discussion of E-values
+
+How strong unmeasured confounding would have to be in order to explain the observed effect.
+
+Heavily criticised in a range of papers.
+
+## Use of concensus panel to bring everything together
+
 
 ## Additional topics for the discussion
 
@@ -17,9 +29,7 @@ There are several addition topics I would like to cover:
 
 * The difference between the peer review of the software vs. the peer review of papers. A conversation until everything is fixed/clear reporting guidelines/checklists, with acceptance dependent on them being implemented /built-in version control, and cross linking discussion points to changes through the linking of commits and comments.  Essentially, a more transparent and open
 
-* The management of 
-
-Doing systematic reviews as a 
+* That systematic review should no be 
 
 
 ## Summary of findings (and implications for policy makers)
@@ -37,7 +47,7 @@ Reproducible and science has been a key theme running through this thesis, as re
 
 Containerisation was used to ensure that the code is reproducible, in line iwht best practices
 
-Commentary on the fact that the best you can do is replicate vs reproducible (due the closed nature of the)
+Commentary on the fact that the best you can do is replicate vs reproducible (due the closed nature of the data).
 
 One is the ability to recreate the results given the same data and code, the other is the ability to recreate the results given the same code but a different dataset. IN theory it is possible to gain access the dataset given the information presented in Chapter \@(ref:cprd-analysis-heading). However, access is dependency on an ISAC application to the managing body of the CPRD. 
 
@@ -48,6 +58,8 @@ Involving and engaging the public and patients has been a central theme to this 
 Public engagement activities included 
 
 Public involvement also steered the creation of the topic
+
+P
 
 
 ## Future work

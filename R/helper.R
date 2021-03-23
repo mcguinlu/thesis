@@ -1,3 +1,5 @@
+library(magrittr)
+
 # Generates an line pandoc citation string for all packages used in the 
 
 gen_rmd_citation <- function(filename = "pkg-refs.bib") {
@@ -54,3 +56,4 @@ num_to_text <- function(x, start_of_sentence = FALSE)
   }
   return(out)
 }
+

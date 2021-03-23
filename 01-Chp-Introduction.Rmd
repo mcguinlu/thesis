@@ -26,34 +26,7 @@ First I provide a background to the central concepts and themes of this thesis, 
 * Compare and contrast the codes used to find the AzD cases in the previous study and in this study, potentially with a view to contrasting misclassification between the two.
 
 
-
-## Aims and Objectives of the thesis
-
-### Aim
-
-### Objectives 
-
-   * To review the published literature with respect to the effec tof lipids and lipid regulating agents  
-   * To examine whether there is evidence for an effect of lipid-regulating agents on dementia and related outcomes in a large scale population-based cohort, the Clinical Practice Research Datalink
-   * To meta-analyze the 
-
-## Theoretical framework
-The main theoretical framework used in this thesis is evidence synthesis - the discovery and critical integration of all available evidence on a research question in order to either: a) provide a more definitive answer to that question or; b) highlight gaps in the existing evidence base, so that future research address questions that have yet to be answered, or explores the same question in a way that increases our confidence in the result. 
-
-
-All elements of this thesis are based around this framework.
-
-
-## Chapter Overview
-
-* __Chapter \@ref(background-heading):__ Background information on dementia and blood lipid levels. This chapter provides an introduction to the topics covered in this thesis to non-subject area experts, and discusses the motivation for the remainder of the thesis. 
-* __Chapter \@ref(sys-rev-tools-heading)__ This CHhapter introduces a new tool, the `medrxivr` R package, which was used to developed to allow for systematic searches of the bioRxiv and medRxiv preprint repositories.
-* __Chapter \@ref(sys-rev-heading)__ This Chapter describes a comprehensive systematic review and meta-analysis of all available evidence on the relationship between blood lipids and lipid. 
-* __Chapter \@ref(cprd-analysis-heading):__ This Chapter examines the relationship between lipid-regulating agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database, based in England. 
-* __Chapter \@ref(ipd-heading):__ This Chapter describes an individual patient data analysis of several longitudinal cohort studies, to describe the relationship between blood serum lipids and dementia outcomes.
-
-
-## Thesis Output
+## Thesis Output {#thesis-output}
 
 The outputs of this thesis are detailed below, and include published peer review papers, presentations at conferences, open source evidence synthesis tools, and . . . 
 
@@ -64,6 +37,14 @@ __Include other papers I have been involved in?__
   * McGuinness, Luke A., and Lena Schmidt. "medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in R." Journal of Open Source Software 5.54 (2020): 2651. DOI: [10.21105/joss.02651](https://doi.org/10.21105/joss.02651)
   
   * McGuinness, Luke A., and Julian PT Higgins. "Risk‐of‐bias VISualization (robvis): An R package and Shiny web app for visualizing risk‐of‐bias assessments." Research Synthesis Methods (2020). DOI: [10.1002/jrsm.1411](https://doi.org/10.1002/jrsm.1411)
+  
+  * McGuinness & Sheppard. 
+  
+  * PRISMA papers and software
+  
+  * Discursive paper on open source in Evidence Synthesis
+  
+<!-- Essentially, look at the Trello   -->
   
 ### Papers under review/Preprints
 
@@ -87,7 +68,3 @@ __Include other papers I have been involved in?__
 * 2 papers for Systematic Reviews
 * 1 paper for Environment International
 * 1 paper for Journal of Clinical Epidemiology
-
-
-
-

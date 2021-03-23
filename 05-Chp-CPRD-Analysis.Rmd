@@ -19,12 +19,17 @@ When dealing with human beings controlled experiments frequently prove to be imp
 \minitoc <!-- this will include a mini table of contents-->
 
 
+Include the early analysis we did here, that did not work as a result of limited scope. Could include some of the genetic work also.
+
+
 
 ## Additional ideas
 
 One of the problems I'll point out with the trials in the systematic review chapter (Chapter \@ref(sys-rev-heading)) is that they only included people with a high cardiovascular risk - we are kind of doing the same by using elevated test cholesterol results as the index event.
 
 Might be able to get around this by pointing out
+
+
 
 
 ## Things we tried
@@ -92,6 +97,15 @@ covariates were determined at index and definitions for each can be found in Sup
 
 Potential biases included time varying confounding, selection bias due to censoring on death and 
 We use a Cox proportional hazards model with a time-varying treatment indicator.
+
+
+Expand on use of age as the time scale, but describe the problems this introduced
+
+Expand on post estimation analyses, which showed that nothing except age had an effect.
+
+
+
+
 
 
 ### Estimating the value of the time-varying confounders
