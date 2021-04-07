@@ -77,21 +77,23 @@ Case-control studies, cross-sectional studies, qualitative studies, case reports
 
 Excluded studies performing autopsy unless it was done under accepted criteria Exclude studies using a dietary intervention, for example omega-3 fatty acid enriched diet, as it hard to disentangle the effect of other elements contained within te diet, vs simple tablet based supplements of
 
+
+
 ### Data extraction
 
 Harmonization of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorizing lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
 
-### Risk of bias assessment
+### Risk of bias assessment {#risk-of-bias}
 
 Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomized controlled trials were assessed using the RoB2 tool,[@sterne2019], non-randomized studies of interventions were assessed using the ROBINS-I tool,[@sterne2016] and non-randomized studies of exposures were assessed using the ROBINS-E tool.[CITE]
 
-At present, no risk of bias assessment tool for Mendelian randomization studies is available. Bias in these studies was assessed with the help of an expert panel drawn from my supervisors and other external invited researchers.[CITE]
+I opted to use the ROBINS-E tool, despite it still being in development,[@morganr2020] in place of other existing published tools such as the Newcastle-Ottowa scale (NOS).[@wells2000newcastle] There are two primary reasons for this: firstly, current thinking in assessing internal validity has moved away from scales.
 
-Data will be visualized using a paired forest and risk of bias plot, created using the `robvis` tool. This tool was developed as part of this thesis to aid in creating standard risk-of-bias figures, and is summarized in Appendix \@ref(appendix-robvis).[@mcguinness2019]
+Secondly, using a domain based to assess the risk of bias in studies of exposure allowed for better comparison and consistency across the tool used for different study designs, as they are all domain based.
 
-The risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation, as identified by a review of risk of bias assessments in systematic reviews of MR studies.[@mamluk2020] 
+At present, no risk of bias assessment tool for Mendelian randomization studies is available. Bias in these studies was assessed with the help of an expert panel drawn from my supervisors and other external invited researchers.[CITE] The risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation, as identified by a review of risk of bias assessments in systematic reviews of MR studies.[@mamluk2020] A copy of the is available in Appendix \@ref(appendix-mr-rob). Advance results from this review were obtained from contact with the authors.
 
-A copy of the is available in Appendix \@ref(appendix-mr-rob). Advance results from this review were obtained from contact with the authors.
+Results from the risk-of-bias assessment will be visualized using a paired forest/risk-of-bias blobbogram, created using the `robvis` tool. This tool was developed as part of this thesis to aid in creating standard risk-of-bias figures, and is summarized in Appendix \@ref(appendix-robvis).[@mcguinness2019]
 
 ### Patient and public involvement
 
@@ -244,7 +246,7 @@ Detail that some of these are exploratory, in particular the effect of different
 -   Check if there are protocols available for any of the published reports (unlikely for non-randomised controlled trials), and whether there were
 -   Vascular dementia has substantially less published reports. Many (reference Smeeth et al 2010 here) simply group into AD and non-AD making comparison between published st
 
-## Triangualtion across evidence sources
+### Triangualtion across evidence sources
 
 One key question for which multiple distinct sources of evidence were available were those looking at Laz
 
@@ -272,12 +274,29 @@ While the total number of relevant studies found using this method was
 
 <!-- Add bit on comparison of preprints and published papers, demonstrating the preprints are a good reflection of -->
 
+On further investigation, the argument that . 
 
-While these preprint have subsequently 
+It is not so much that they provide a source of unpublished grey-literature, more so that they provide a "future" look at . 
+
+However, if the aim is to find the current state of the art in the topic area at the time of searching, inclusion of preprints is a requirement. 
+
+While concerns have been raised that 
+
+Previous meta-studies have found high concordance between the main interpretations and other study design details in preprint-journal article pairs,[@shi2021] though quality of reporting was slightly better in formally published articles.[@carneiro2020]
+
+A common criticism of preprinted articles is that they have not formally been peer-reviewed. __[CITATION NEEDED]__ However, I believe this criticism is less warranted in the context of inclusion of preprints in a systematic review, given a formal assessment of risk of bias, which provides a structured approach to assessing the internal validity of a study. 
+
+> Anyone who can't assess a study to the level of peer review shouldn't do a systematic review
+
+References included in the review were also searched for on PubPeer, a platform which enables post-publication peer review of published journal articles.[@hunter2012]
+
+The added value of peer-review to papers that is questionable and difficult to quantify for a number of reasons, including the fact that most peer reviews are closed
+
+While [__some__] preprint have subsequently been published, this does not cause any major issues. 
 
 ## Discussion
 
-Major limitation is that several included studies used data from electronic health databases, which come with serious concerns regarding validity [@hsieh2019] [ALSO CITE WILKINSON AND MCGUINNESS HERE].
+Major limitation is that several included studies used data from electronic health databases, which come with serious concerns regarding validity [@hsieh2019] __[ALSO CITE WILKINSON AND MCGUINNESS HERE]__.
 
 In addition, the a
 
@@ -291,7 +310,7 @@ A final point on the progress of the review is that, due to the need for dual sc
 
 ### Original contribution to research
 
-I believe there are three aspects where this review is distinct from those reviews already available in the published literature (as identified by [CITE]):
+I believe there are three aspects where this review is distinct from those reviews already available in the published literature (as identified by __[CITATION NEEDED]__):
 
 -   *Comprehensiveness:* While several reviews of this research topic exist,[@chu2018b; @yang2020; @muangpaisan2010; @poly2020b] the overlap between the list of studies included in each is not 100%. As part of this review, I have not only performed a original search of primary literature databases, but have also screened the reference lists of comparable reviews to ensure no study has been omitted.
 -   *Structured risk of bias assessment:* The majority of the highly cited reviews on this topic either do not formally consider the risk of bias in the observational studies they include or do not use an appropriate domain-based assessment tool (e.g. ROBINS-I/E). This is important area in which this thesis can add value, as based on the risk-of-bias assessments I have performed to date, several primary studies are at high risk of bias and this should be reflected in the findings of any review on this topic.

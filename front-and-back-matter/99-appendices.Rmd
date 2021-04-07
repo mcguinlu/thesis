@@ -8,6 +8,41 @@
 
 ## Chapter \@ref(intro-heading) {#appendix-into}
 
+### Publications beyond the scope of this thesis {#appendix-publications}
+
+__Peer reviewed__
+
+  * McGuinness & Sheppard. Comparison of pairwise
+  
+  * PRISMA main paper
+  
+  * PRISMA E&E
+  
+  * PRISMA 2020 software
+  
+  * COVID Suicide Living Review
+  
+  * Data extraction tools systematic review
+  
+<!-- Essentially, look at the Trello -->
+__Under review/Preprints__
+
+  * MSc Paper on systematic reviews of this thesis topic
+  
+  *
+  
+  
+### Involvement of patients and the public {#appendix-ppi}
+
+Patients were involved at several stages of this research. when designing the PhD programme of work, a Patient and Public Advisory Group (PPAG) provided feedback on the relevance of the question.
+
+Additionally,
+
+Lay summaries appear at the beginning of each chapter, reviewed by the Patient and Public Involvement panel. They provide a plain language summary
+
+
+
+
 ## Chapter \@ref(sys-rev-tools-heading) {#appendix-sys-rev-tools}
 
 ### Search strategy {#appendix-search-strategy}
@@ -52,9 +87,17 @@ test2 <- mx_search(mx_data, query)
 
 ```
 
+Note
+
 ### MR risk of bias tool {#appendix-mr-rob}
 
 ## Chapter \@ref(sys-rev-heading) {#appendix-sys-rev}
+
+
+## Chapter \@ref(cprd-analysis-heading) {#appendix-cprd-analysis}
+
+### Code lists
+
 
 <!----------------------------------------------------------------------------->
 
@@ -63,6 +106,8 @@ test2 <- mx_search(mx_data, query)
 ## Software used to create this thesis
 
 This thesis was written in RMarkdown. Several R packages were used as part of this project.[@base; @cranlogs; @dplyr; @flextable; @ggplot2; @glue; @gt; @here; @kableExtra; @knitr; @medrxivr; @plyr; @robvis; @stringr; @tidyverse; @wordcountaddin; @xfun; @rbiorxiv]
+
+All projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
 
 ## Producing risk-of-bias visualisations with `robvis` {#appendix-robvis}
 
@@ -102,9 +147,8 @@ A worked example using these functions is outlined below, showing the ease with 
 
 Using the example data set (`data_rob2`) which is built into the package and is presented in Table \@ref(tab:robdata) for reference, the traffic light plot shown in Figure \@ref(fig:trafficplot) is created using:
 
--\> NEED TO ADD DATA HERE!
+__NEED TO ADD DATA HERE!__
 
- 
 
 ```{r, eval = FALSE}
 

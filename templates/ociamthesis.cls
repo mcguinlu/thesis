@@ -175,7 +175,6 @@
 	% for linking between references, figures, TOC, etc in the pdf document
 
 \usepackage[nohints,tight]{minitoc} 
-	\setcounter{minitocdepth}{2} 
 	% Generates mini tables of contents per chapter
 	
 % JEM: The following fixes minitoc to not be multiple-spaced.

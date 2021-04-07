@@ -237,7 +237,7 @@ results <- mx_search(mx_data,
 
 ### Refining your search
 
-An important argument of the `mx_search()` is `report`, which outputs a structured table with each search strategy presented on an individual line and the number of records associated with this strategy.
+An important argument of the `mx_search()` is `report`, which outputs a structured table with each search strategy presented on an individual line and the number of records associated with this strategy. __[CITATION NEEDED - PRISMA-S]__
 
 &nbsp;
 

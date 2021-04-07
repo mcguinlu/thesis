@@ -22,7 +22,6 @@ Heavily criticised in a range of papers.
 
 ## Use of concensus panel to bring everything together
 
-
 ## Additional topics for the discussion
 
 There are several addition topics I would like to cover:
@@ -38,8 +37,9 @@ There are several addition topics I would like to cover:
 
 There are several strengths and limitations to the work presented in this thesis. One particularly strength is the lengths gone to find all available published and unpublished evidence around the question, and to integrate this evidence in a coherent framework, taking into account the limitations of ach source and how these limitations may be used to provide 
 
-
 Need for large simple trials for common disease where small treatment effect can have large effect - [@yusuf1984]
+
+
 
 ## Reproducible research
 
@@ -51,7 +51,7 @@ Commentary on the fact that the best you can do is replicate vs reproducible (du
 
 One is the ability to recreate the results given the same data and code, the other is the ability to recreate the results given the same code but a different dataset. IN theory it is possible to gain access the dataset given the information presented in Chapter \@(ref:cprd-analysis-heading). However, access is dependency on an ISAC application to the managing body of the CPRD. 
 
-## Public involvement and engagement
+## Public involvement and engagement {#disc-PPI}
 
 Involving and engaging the public and patients has been a central theme to this thesis. 
 
@@ -60,7 +60,6 @@ Public engagement activities included
 Public involvement also steered the creation of the topic
 
 P
-
 
 ## Future work
 

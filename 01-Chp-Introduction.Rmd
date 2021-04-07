@@ -25,46 +25,5 @@ First I provide a background to the central concepts and themes of this thesis, 
 * Explore difference/similarities between the published and unpublished literature, potentially formally, using funnel plots and also by following up preprints to see if they are eventually published. Limit to the date we ran the original search and see if any study included in the study had not been published by the time the review was finished. 
 * Compare and contrast the codes used to find the AzD cases in the previous study and in this study, potentially with a view to contrasting misclassification between the two.
 
+&nbsp;
 
-## Thesis Output {#thesis-output}
-
-The outputs of this thesis are detailed below, and include published peer review papers, presentations at conferences, open source evidence synthesis tools, and . . . 
-
-### Peer reviewed papers 
-
-__Include other papers I have been involved in?__
-
-  * McGuinness, Luke A., and Lena Schmidt. "medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in R." Journal of Open Source Software 5.54 (2020): 2651. DOI: [10.21105/joss.02651](https://doi.org/10.21105/joss.02651)
-  
-  * McGuinness, Luke A., and Julian PT Higgins. "Risk‐of‐bias VISualization (robvis): An R package and Shiny web app for visualizing risk‐of‐bias assessments." Research Synthesis Methods (2020). DOI: [10.1002/jrsm.1411](https://doi.org/10.1002/jrsm.1411)
-  
-  * McGuinness & Sheppard. 
-  
-  * PRISMA papers and software
-  
-  * Discursive paper on open source in Evidence Synthesis
-  
-<!-- Essentially, look at the Trello   -->
-  
-### Papers under review/Preprints
-
-  * MSc Paper
-
-
-### Software
-
-* `medrxvir`: An R package and associated `shiny` web application that allows users to easily search and retrieve bibliographic data from the medRxiv^[https://www.medrxiv.org/] and bioRxiv^[https://www.biorxiv.org/] preprint repositories. See Chapter \@ref(sys-rev-tools-heading) for more details. Install a stable version of the package from CRAN with `install.packages("medrxivr")` or alternatively install the development version from GitHub using `devtools::install_github("mcguinlu/medrxivr")`. Link: [https://ropensci.github.io/medrxivr/](https://ropensci.github.io/medrxivr/)
-
-* `robvis`: An R package and associated `shiny` web application that allows users to easily visualize the results of the risk-of-bias assessments performed as part of a systematic review. See Appendix \@ref(appendix-robvis) for more details. Install a stable version of the package from CRAN using `install.packages("robvis")` or alternatively install the development version from GitHub using `devtools::install_github("mcguinlu/robvis")`. Link: [https://mcguinlu.github.io/robvis/](https://mcguinlu.github.io/robvis/)
-
-### Talks
-
-* Presentation to the 
-* Webinar to Evidence Synthesis Ireland on Risk of Bias
-* Presentation(s) to the Evidence Synthesis and Meta-Analysis in R Conference (ESMARConf)
-
-### Peer review
-
-* 2 papers for Systematic Reviews
-* 1 paper for Environment International
-* 1 paper for Journal of Clinical Epidemiology

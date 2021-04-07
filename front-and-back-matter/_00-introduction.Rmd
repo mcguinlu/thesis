@@ -90,7 +90,7 @@ words_today <- words$words[which(as.Date(words$date, format="%Y%m%d")==max_date)
 
 date_diff <- as.numeric((max_date) - start_date)
 
-target <- (date_diff*200)+5580
+target <- (date_diff*200)+5580-17000
 
 words_behind <- words$words[which(words$date == max(words$date))] - target
 
