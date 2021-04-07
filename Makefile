@@ -25,7 +25,7 @@ clean:
 	rm -f *.log *.mtc* *.maf *.aux
 	
 clean-knits:
-	rm -f *.docx *.html *.pdf *.log *.maf *.mtc*
+	rm -f *.docx *.tex *.html *.pdf *.log *.maf *.mtc*
 	rm -R *_files
 	rm -R *_cache
 
