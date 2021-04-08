@@ -57,3 +57,35 @@ num_to_text <- function(x, start_of_sentence = FALSE)
   return(out)
 }
 
+add_words <- function(words = 100){
+  
+  t <- wordcountaddin::text_stats()
+  w <- as.numeric(stringr::str_extract(t[3], "[0-9]+"))
+  n <- w + words
+  
+  message("Start:   ",format(Sys.time(),"%H:%M"),"\nNext:    ", n," <------\n")
+}
+
+
+check_words <- function(fp){
+  
+  i <- 0
+  
+  while (i < 26) {
+    
+    t <- wordcountaddin::text_stats(filename = fp)
+    
+    w <- as.numeric(stringr::str_extract(t[3], "[0-9]+"))
+    
+    message(i," - Current: ",w)
+    
+    i <- i +1
+    
+    Sys.sleep(60)
+  }
+  
+  beepr::beep(sound = "fanfare")
+  
+  rstudioapi::showDialog("Pomodoro done!", "Take a break . . . ")
+
+}

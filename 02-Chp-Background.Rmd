@@ -1,8 +1,8 @@
 ---
 output:
+  bookdown::word_document2: default
   bookdown::pdf_document2:
     template: templates/brief_template.tex
-  bookdown::word_document2: default
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -16,97 +16,67 @@ Science knows it doesn't know everything; otherwise, it'd stop.
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source("R/doc_options.R")
 knitr::read_chunk("R/background.R")
+
+knitr::opts_chunk$set(
+  include = FALSE
+)
 ```
 
-# Background & Objectives {#background-heading}
+# Background, Theoretical framework, Aims & Objectives {#background-heading}
 
 \minitoc <!-- this will include a mini table of contents-->
 
-## Lay summary
+<!-- ## Lay summary -->
 
-Around __[NUMBER]__ people in the UK live with dementia, and by 2040, nearly twice as many will have the condition. No cure for dementia exists, so researchers are trying to find ways to prevent the condition. This involves finding risk factors for dementia that we can change. Risk factors increase a person's risk of developing a disease. Avoiding a risk factor does not guarantee that a person will not develop dementia, but makes it less likely. A key risk factor for dementia may be the levels of lipids (fatty substances such as cholesterol) in a person's blood. However, researchers remain unsure, as studies disagree on whether a role for lipids in dementia exists. 
+<!-- Around 850,000 people in the UK live with dementia, and by 2040, nearly twice as many will have the condition. Despite many promising candidates, no cure for dementia currently exists, so the focus is now on figuring out ways to prevent the condition by finding risk factors (characteristics that influence a person's chance of developing a disease) that we can easily change. Avoiding a risk factor does not guarantee that a person will not develop dementia, but makes it less likely. A key risk factor for dementia may be the levels of lipids (fatty substances such as cholesterol) in a person's blood.  -->
 
-Additionally, because of problems in the design of previous studies, a cause and effect link between lipids and dementia could not be confirmed. 
+<!-- This Chapter provides background information on dementia and lipids. It also provides a description. -->
 
-The research contained in this thesis will sum up what we know about the relationship between lipids and dementia. 
-
-I will use all available evidence, including that preprinted by authors (i.e. not formally reviewed by others in their field to assess the accuracry of their claims) to assess whether lipid levels cause dementia.
-
-Finally, I will attempt to find the groups of patients that might benefit most from treatment to change their lipid levels.
+<!-- Evidence synthesis involves drawing on multiple sources of information to obtain the best possible to a research question, in this case, do lipids influence dementia risk.  -->
 
 <!----------------------------------------------------------------------------->
 
 ## Introduction
 
-<!-- This chapter provides the context of the thesis. It briefly gives the background on the problem of increased adiposity, the biology of adipose tissue, and diseases linking increased body mass index and mortality. The chapter briefly explores different measures of increased adiposity and potential hypotheses for underlying aetiology of diseases associated with increased adiposity. Finally, the potential application of metabolites and Mendelian randomization in the context of understanding underlying aetiology are discussed. *From Matt Lee's thesis.* -->
+This Chapter provides an overview of the broad context of this thesis, introducing the core concepts used throughout and providing some background context on each. It will briefly discuss the underlying pathologies and diagnosis of dementia, its public health importance, and the current state of treatment and prevention therapeutics.
 
-This Chapter will provide an overview of the thesis, introducing the core concepts used throughout and providing some background context on each. It will briefly discuss the natural history of dementia, it's public health importance and the
+In this context, it will highlight the importance of identifying easily modified risk factors and introduce blood lipids, and blood lipid-modifying treatments such as statins, as the primary exposures considered by this research.
 
-In this context it will highlight the importance of identifying easily modified risk factors, and introduce blood lipids, and blood lipid-modifying treatements such as statins, as the primary exposures e
+The central theoretical framework used - the synthesis of diverse sources of evidence - is introduced, and the research presented in this thesis is then framed in terms of three types of diverse evidence, with opposing viewpoints for each being discussed. 
 
-It will also introduce the primary exposures used in this thesis, covering the biological role, measurement and. It will cover the mechanism of common lipid regulating agents.
-
-Finally, it will outline the theoretical framework used in this thesis.
+Finally, it will outline the aims, objectives and structure of this thesis, and briefly summarise the contributions to the scientific literature that arose from this research. 
 
 <!----------------------------------------------------------------------------->
 
 ## Dementia
 
-Dementia is a progressive neurocognitive disorder, characterised by impaired memory, reduced executive function and
+Dementia is major neurocognitive disorder, with symptoms including impairment of executive cognitive functions such as speech, judgement and memory. 
 
-A
-
-The most common types of which are Alzheimer's disease (AD) and vascular dementia (VaD) [1].
-
-Several cardiovascular elements have been identified as potential risk factors for dementia, and of these, lipid levels represent a promising target for preventative intervention due to the availability of lipid-modifying treatments. In this context, determining whether variations in lipid levels are causative for dementia may prove critical in reducing the future burden of the condition.
-
-Dementia is major neurocognitive disorder, with symptoms including impairment of executive cognitive functions such as speech, judgement and memory. The most common causes of dementia are Alzheimer's disease and vascular dementia, accounting for ~60-80% and ~10% of cases respectively. The remaining 10-30% of cases are caused other dementia subtypes (e.g. Lewy Body dementia) or by progression of other neurological diseases (e.g. Parkinson's disease).
-
-Two important considerations on the
-
-Dementia is difficult to diagnose, primarily due to the absence of a gold standard test for the condition. <!-- is this true, or would it be better to say that there is no gold standard test without an autopsy?--> Information from multiple diagnostic tools are utilised, from medical history examination, through assessment of patients mental ability (e.g. the Mini-Mental State Examination), to clinical tests (e.g. Magnetic Resonance Imaging (MRI) scans).
-
-### Public Health importance
-
-Dementia is quickly becoming a critically important public health issue. Despite the age-specific incidence and prevalence of dementia remaining relatively constant over time,[@prince2016] an ageing population looks set to create a dementia epidemic, particularly in Westernised countries. While approximately have received a dementia diagnosis, the true number of people currently living with dementia in the UK is thought to be closer to 850,000, with this figure expected to double by 2040.[@baker2019] Globally, the prevalence of dementia is expected to reach 75 million by 2030.[@prince2016] Despite the increasing number of dementia cases and decades of research, there remains much unknown about the pathogenesis and progression of the disease.
-
-
-### Chronic underfunding
-
-Despite it's 
-
-Statistic comparison
-
-
-Given all of this, the systematic assessment of easily modifiable targets (such as blood lipid levels) for their utility in the prevention of dementia should be considered.
 
 <!----------------------------------------------------------------------------->
 
-### Natural history
+### Underlying pathologies
 
-Much remains unknown about dementia pathogenesis, despite research implicating amyloid plaques and neurofibrillary tangles as potential mechanisms of disease [2]. Progression from onset is an average
+Dementia is a collective umbrella term for a range of conditions each with different clinical presentations and disease courses, and is generally defined as "". <!--- Cite ---> 
+
+Alzheimer's disease, named after Dr. Alois Alzheimer who presented the first recorded case in 1907, is the most common cause of dementia, accounting for approximately 60-80% of cases. Characterised by substantial cognitive impairment and diffculty with high level executive function to the extent that it interferes with, it is an insidious disease, within initial onset thought to occur up to 15 years prior to symptomatic presentation. Much remains unknown unknown about Alzheimer's pathogenesis, despite research implicating the accumluation of amyloid plaques and neurofibrillary tangles, or alternatively the cholingeric nervous system, <!--- check ---> as potential mechanisms of disease.
+
+<!-- [__Need a bit more here__] -->
+ 
+Vascular dementia (VaD) is the second largest underlying pathology of dementia, accounting for ~10% of cases and is caused by a range of cerebrovascular disorders. Presentation can vary widely based on the underlying cause, and due to the varied underlying  pathopysiology, VaD can onset quite rapidly following a cerbrovascular event such as a stroke or over a long period due to series of small infarcts. VaD is diagnosed using the NINCDS-AIREN criteria.[@roman1993vascular]
+
+The remaining 10-30% of cases are caused other dementia subtypes (e.g. Lewy Body dementia) or by progression of other neurological diseases (e.g. Parkinson's disease). 
+
+Where more than one underlying dementia pathologies co-occur, this is termed mixed dementia. It is common for patients to present with mixed dementia, as the occurrence of one underlying cause weakens overall brain health and increases the likeliness of occurrence of the other. <!--- Double check this --->
+
+<!-- __MCI__ and difference between MCI and dementia, MCI as a stepping stone to dementia, etc. -->
 
 <!----------------------------------------------------------------------------->
 
-### Alzheimer's disease
+### Diagnostic criteria
 
-Named after Aloi
-
-### Vascular dementia
-
-Second largest underlying pathology of dementia
-
-Diagnosed using the NINCDS-AIREN criteria.[@roman1993vascular]
-
-<!----------------------------------------------------------------------------->
-
-### Diagnostis criteria
-
-There exist several diagnostic criteria for dementia and related disease, many of which have existed for quite some time and have more recently been updated to reflect current understanding in deme.
-
-In all cases, dementia is diagnosed on the basis of behavioural.
-
-it is a inherently subjective diagnosis made by an experience clinican. This means the potential for misclassification both of dementia vs no-dementia and between the different underlying conditions is extremely likely.
+Dementia is difficult to diagnose, primarily due to the absence of a gold standard test for the condition. <!-- is this true, or would it be better to say that there is no gold standard test without an autopsy?--> There exist several diagnostic criteria for dementia and related disease, many of which have existed for quite some time and have more recently been updated to reflect current understanding in dementia pathology. In all cases, dementia is diagnosed on the basis of behavioural and congitive changes as assessed by an experience clinician. 
+<!-- This means the potential for misclassification both of dementia versus no-dementia and between the different underlying conditions is extremely likely. -->
 
 <!----------------------------------------------------------------------------->
 
@@ -118,51 +88,46 @@ it is a inherently subjective diagnosis made by an experience clinican. This mea
 
 <!----------------------------------------------------------------------------->
 
-Several sets of criteria are commonly used to diagnose dementia, and the underlying diseases for research purposes. Two of the most commonly used include the criteria of the Diagnostic and Statistical Manual of Mental Disorders, fourth edition (DSM-IV-TR)1 and the National Institute of Neurological Disorders and Stroke--Alzheimer Disease and Related Disorders (NINCDS-ADRDA).[@dubois2007]
+Two of the most commonly used criteria include the the Diagnostic and Statistical Manual of Mental Disorders, fourth edition (DSM-IV-TR) <!-- __[CITATION NEEDED]__ --> criteria and the National Institute of Neurological Disorders and Stroke--Alzheimer Disease and Related Disorders (NINCDS-ADRDA) criteria.[@dubois2007]
 
-[**Need first NINCDS-ADRDA citation and DSM-IV citations**]
+<!-- [**Need first NINCDS-ADRDA citation and DSM-IV citations**] -->
 
-While these criteria define the, they are informed using practical scales to measure patients cognitive health. 
+While these define the overall parameters for a assinging a dementia diagnosis, they are informed using practical scales to measure patients cognitive health, with two of the best known of these scales being the Mini Mental State Exam (MMSE) and Montreal Cognitive Assessment (MoCA) scale.
 
-One of the best known of thes scales is the
-
-A further sclae is the MoCA
-
-Also touch on aspects of each, such as the clock-drawing and whether or not they need to validated with input from another person.
+<!-- Also touch on aspects of each, such as the clock-drawing and whether or not they need to validated with input from another person. -->
 
 <!-- Note important differences between the scales and whether they affect results. Could cross-reference with an exploratory analysis in systematic review -->
 
-The distinction between memory scales and dementia diagnosis scales should be noted, and the common confluence of the two addressed.
+The distinction between these memory scales and diagnostic criteria presented above should be noted. For example, the MMSE is a tool for assessing cognitive impairment, but does not by itself indicate the absence or presence of dementia, instead merely indicating congitive impairment which could be due to another cause (for example, temporary delerium as a result of an infection or surgery). <!--- Check --->
+ A low score on the MMSE should feed into the diagnostic process, potentially as a screening tool to help identify which patients require further assessment by a trained clinician. Studies that use a memory scale alone are likely to be biased.
 
-For example MMSE scores is a tool for assessing cognitive impairment, but does not by itself indicate the absence or presence of dementia. A low score on the MMSE should feed into the diagnostic process, potentiall as a screenign tool to help identify which patients require further assessment by a trained clinican. Studies that use it alone are likely to be biased.
+<!-- Differentiating between the underlying causes of a dementia diagnosis is challenging but necessary, as whether the patient has Alzheimer's disease or vascular dementia will affect expect progression and potential treatment options available. -->
 
-Differentiating between the underlying causes of a dementia diagnosis is challenging but necessary, as whether the patient has Alzheimer's disease or vascular dementia will affect expect progression and potential treatment options available.
+<!-- ### Differing risk by sex -->
 
-### Differing risk by sex
+<!-- Transparency guidelines that suggest sex should eb treated as biological variable and so results should be presented stratified t -->
 
-Transparency guidelines that suggest sex should eb treated as biological variable and so results should be presented stratified t
+<!-- Rate of dementia/AD differs in men and women <!--- Though is this just due to the different lifestyles and life expectancies --->
 
-Rate of dementia/AD differs in men and women <!--- Though is this just due to the different lifestyles and life expectancies --->
-
-Previous studies have hinted that the relationship is dependent on individual-level characteristics such as age and sex [16,28].
+<!-- Previous studies have hinted that the relationship is dependent on individual-level characteristics such as age and sex [16,28]. -->
 
 <!----------------------------------------------------------------------------->
 
-## Challenges in the study of dementia using traditional study designs
+<!-- ## Challenges in the study of dementia using traditional study designs -->
 
-Speak to the
+<!-- Speak to the -->
 
-Historically, studies on dementia have faced a range of challenges. As a range of determinants (genetic, environmental and lifestyle) are thought to jointly influence the risk, progression and outcomes of dementia, any individual association is likely to have only a small effect. Therefore, the statistical power need to detect these associations will often require sample sizes that are unfeasible using primary data collection. This fact is further complicated by the long latency of dementia, which necessitates a costly long-term approach to patient follow-up. Furthermore, dementia studies often have limited generalisability to the target population, as certain subgroups (e.g. the very old) are frequently under-represented in study cohorts due to difficulties associated with their recruitment.9 Finally, studies employing a case-control design are further limited by the high potential for differential recall bias between those who have and have not developed dementia.10
+<!-- Historically, studies on dementia have faced a range of challenges. As a range of determinants (genetic, environmental and lifestyle) are thought to jointly influence the risk, progression and outcomes of dementia, any individual association is likely to have only a small effect. Therefore, the statistical power need to detect these associations will often require sample sizes that are unfeasible using primary data collection. This fact is further complicated by the long latency of dementia, which necessitates a costly long-term approach to patient follow-up. Furthermore, dementia studies often have limited generalisability to the target population, as certain subgroups (e.g. the very old) are frequently under-represented in study cohorts due to difficulties associated with their recruitment.9 Finally, studies employing a case-control design are further limited by the high potential for differential recall bias between those who have and have not developed dementia.10 -->
 
-Fortunately, these limitations may potentially be addressed through the use of routinely collected health data, and the electronic health record databases in which they are stored.
+<!-- Fortunately, these limitations may potentially be addressed through the use of routinely collected health data, and the electronic health record databases in which they are stored. -->
 
-*Cognitive impairment not dementia* (CIND) is another term used to described those with cognitive impairment but who fall below the diagnostic criteria for dementia.
+<!-- *Cognitive impairment not dementia* (CIND) is another term used to described those with cognitive impairment but who fall below the diagnostic criteria for dementia. -->
 
-A further clinical subtype that is of particular import the
+<!-- A further clinical subtype that is of particular import the -->
 
-And MCI
+<!-- And MCI -->
 
-hr
+<!-- hr -->
 
 <!-- I -->
 
@@ -170,312 +135,284 @@ hr
 
 <!----------------------------------------------------------------------------->
 
-### Economic impact
+### Public Health Importance
 
-The economic impact of dementia is enormous, but in terms of the direct care required
+Dementia is quickly becoming a critically important public health issue. Despite the age-specific incidence and prevalence of dementia remaining relatively constant over time,[@prince2016] an ageing population looks set to create a dementia epidemic, particularly in Westernised countries. While approximately 525,000 patients have received a dementia diagnosis, the true number of people currently living with dementia in the UK is thought to be closer to 850,000, with this figure expected to double by 2040.[@baker2019] Globally, the prevalence of dementia is expected to reach 75 million by 2030.[@prince2016]
 
-Patients with dementia stay in hospital for longer,[@mollers2019]
+<!--- Talk about chronic underfunding here --->
+<!--- Talk about impact on health systems and  --->
 
-Patients are more prone to falls and other con
+Dementia also has a substantial economic impact. In 2015, the estimated total cost of dementia in England was £24.2 billion. Health care costs alone were £3.8 billion.[@wittenberg2019] <!--- Cross check against old data on cost to NHS --->. Based on the implications of a dementia diagnosis, this is perhaps unsurprising. Patients living with dementia are more prone to falls and other conditions that necessitate admission to hospital. Once admitted, patients with dementia are more likely to be stay in hospital for longer.[@mollers2019]
 
-Costs can be categorised as direct and indirect, in terms of direct costs of hospitalisations an, but alos in terms of caring responsibilities for those re
+
+<!-- For the same period, unpaid care was estimated at .[@wittenberg2019] -->
+<!-- While the burden of dementia on patients themselves... comment here on the economic strain of unpaid care and the emotional strain of lookign after someone who has dementia - part. related to emotional and personality changes. -->
+
+The urgent need to reduce the burden of dementia, both at the personal and system (national health systemic) level, is clear. As such, the systematic assessment of easily modifiable targets (such as blood lipid levels) for their utility in the prevention of dementia should be prioritized.
 
 <!----------------------------------------------------------------------------->
+
+<!-- ### Risk factors -->
+
+<!-- Dyslipidemia (see Section \@ref(evidence-association) for a fuller dicussion). -->
 
 ### Treatments
 
-At present, there are no known curative treatments for dementia, though several 
+Developing treatments for dementia is regularly deemed to be one of the hardest markets in the pharmaceutical world, with trials of seemingly promising therapeutics, such as BACE inhibitors, being regularly abandoned due to futility.[@cummings2020]. At present, there are no known curative treatments for dementia, regardless of the underlying cause, though several therapeutics can help alleviate the symptoms of Alzheimer's disease. 
 
+The most common of these are acetylcholinesterase (ACE) inhibitors, which inhibit the degradation of the neurotransmitter acetylcholine by competitively binding the ACE enzyme. Acetylcholine plays a key role in controlling the cholingeric synapses, which are highly concentrated in regions of the brain (such as the neocortex) that control higher level brain functions such as memory and attention.[@hampel2018] Commonly prescribed ACE inhibitors include donepezil and galantamine.[@pariente2008] ACE inhibitors increase the availability of the neurotransmitter, and has shown clinical effect is easing the behavioural and memeory-related symptoms of Alzheimer's disease.[@marucci2020] ACE inhibitors are only a stop-gap treatment, treating the symptoms rather than the underlying pathology which may continue to progress.
 
-Development treatments for dementia is regularly deemed to be one of the hardest markets in the pharmaceultical world, given the overall lack of success of multiple promining therapeutics. 
-
-
-
-<!----------------------------------------------------------------------------->
-
-### Risk factors and Preventative measures
-
-Given the lack of available treatments, a strong focus has landed on preventative measures for dementia. 
-
-
-Several elements are considered to be risk factors for subsequent dementia risk. 
-
-These
-
-
-
-
+Several cardiovascular elements have been identified as potential risk factors for dementia, and of these, lipid levels represent a promising target for preventative treatment due to the availability of lipid-modifying treatments. In this context, determining whether variations in lipid levels are causative for dementia may prove critical in reducing the future burden of the condition. The next section provides an overview of blood lipid fractions and therapeutic interventions that modify them.
 
 <!----------------------------------------------------------------------------->
 
 ## Serum lipids
 
-Cholestorol
-
-Basic cholesterol structure is a  steroid nucleus   
-
-Cholesterol is a fat soluble molecule, meaning that
-
 <!----------------------------------------------------------------------------->
 
-### Range of lipids
+### Lipid fractions
 
-The blood profile has a range of lipid fractions to it. However, for the sake of this thesis, we will only consider the three most important fractions, namely total cholesterol, low density lipoprotein cholesterol (LDLc), high density lipoprotein cholesterol (HDLc) and trigylcerides (TG).
+The blood lipid profile contains a range of fractions. However, for the sake of this thesis, we will only consider the two most important fractions, trigylcerides (TG) and cholesterol, which are either absorded from food (exogenouse lipids) or produced internally (endogenous lipids).
 
-Range of other higher and lower density (VLDL, etc)
+Triglycerides are the simplest and most common type of lipids found across the body. They are used to store unused calories from food, and to move energy around the body. In contrast, cholesterol is primarily used to create cell walls and certain sex hormones. As lipids are not water soluble, within the blood stream, cholesterol is transported in lipoprotein structures of varying densities. Low-Density-Lipoprotein-cholesterol (LDL-c), commonly know as the "bad" cholesterol, transports fat to cells. In contrast, High Density-Lipoprotein-cholestel (HDL-c), transports cholesterol to the liver to be broken down and excreted. 
+<!-- Need to also touch on the interplay between the different subcategories of lipids Does lowering one fraction affect the other(s)? Are there feedback loops? This is important because if not, statins can only be used to triangulate with findings for LDL-c. May also need to standardise in terms of -->
 
 <!--- Will need to explain why I am focusing on these fractions rather that looking at others include VLDL, etc --->
 
 <!----------------------------------------------------------------------------->
 
-### Total cholesterol
+<!-- Measurement error is a big deal for this thesis, as will discuss measurement error regarding how  different codelists/measurement of AD vs vascular dementia affect results in later chapters. -->
 
-Total serum cholesterol is a summary measures, derived from the measure c
+Total serum cholesterol is a commonly used summary measure to estimate the total lipid burden in a patients blood, and  derived from the HDL-c, LDL-c and TG fractions using the Friedewald formula:[@friedewald1972]
+
+$$TC \approx LDLc - HDLc - kTG$$ where $k$ is 0.20 if measurements are in mg/dl and 0.45 if in mmol/l.
 
 <!--- Include formula for working out total cholesterol and a table detailing the acceptable ranges. --->
 
-Total cholesterol can be measured directly. Minimal clinical difference in measurements between fasting and non-fasting states.
+Elevated cholesterol in the bloodstream via high LDL-c levels leads to atherosclerosis, the build-up of fatty deposits in the blood vessels, which constrict blood flow and can lead to vascular complications. Alternatively, part of the deposit can detach from the artery walls, forming a clot that can lead to a heart attach or stroke. Globally, the prevalence of elevated total cholesterol, or hypercholestoreolemia, was estimated by the World Health Organisation to be approximately 40%.
+
 
 <!----------------------------------------------------------------------------->
 
-### Triglycerides
+<!-- ### Hypercholesterolemia -->
 
-These are the smallest/simplest type of lipids and so should go first, then build up to more complex phospholipids like LDL-c, HDL-c.
+<!-- Clinical diagnosisof cholesterol above a certain level - moves from a continuous . realtively improtant in EHR where blood lipid levels may not be measured, but the formal diag -->
 
-Triglycerides are a simple molecule
+<!-- Scales for Hypercholesterolemia in UK - see NICE guidance -->
 
-<!----------------------------------------------------------------------------->
-
-### HDL-c
-
-Cholesterol ratio
-
-<!----------------------------------------------------------------------------->
-
-### LDL-c
-
-LDL-c levels are not directly measured but instead are estimated from using the Friedewald formula,[@friedewald1972] where the:
-
-$$LDLc \approx TC - HDLc - kTG$$ where $k$ is 0.20 if measurements are in mg/dl and 0.45 if in mmol/l.
-
-Limitations to the method include a requirement to fast for 12-14hrs prior to measures, an inability to estimate LDLc if TG levels are high
-
-<!-- Measurement error is a big deal for this thesis, as will discuss measurement error regarding how  different codelists/measurement of AD vs vascular dementia affect results in later chapters. -->
+<!-- Can also be familial Hypercholesterolemia - -->
 
 ### Statins
 
-Statins are by far away the most common method of modufthe primary
-
-
-Statins inhibit the conversion of 3-Hydroxy-3-Methylglutaryl-Coenzyme-A (HMG-CoA) into mevalonic acid,  by compeitivlely binding with HMG-CoA Reductase (HMG-CoA-R). This conversion is the key rate limiting step in the biochemical pathway that produces cholesterol (see Figure \ref()), allowing statins to reduce prevention of cholesterol
-
-
-
+Statins are by far the most common method of lipid regulation currently prescribed. Statins inhibit the conversion of 3-Hydroxy-3-Methylglutaryl-Coenzyme-A (HMG-CoA) into mevalonic acid,  by compeitivlely binding with HMG-CoA Reductase (HMG-CoA-R). This conversion is the key rate limiting step in the biochemical pathway that produces cholesterol (see Figure \ref(), allowing statins to reduce the production of LDL cholesterol.
 
 <!----------------------------------------------------------------------------->
 
-(ref:statin-mechanisam-cap) **Statin mechanism of action:**
+(ref:statin-mechanisam-cap) **Statin mechanism of action:** Overview of the 
 
 (ref:statin-mechanisam-scap) Statin mechanism of action
 
 ```{r statin-mechanisam, echo = FALSE, results="asis", fig.cap='(ref:statin-mechanisam-cap)', out.width='100%', fig.scap='(ref:statin-mechanisam-scap)'}
-knitr::include_graphics(file.path("figures/sys-rev/prisma_flow.png"))
+knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
 ```
 
 <!----------------------------------------------------------------------------->
 
-#### Lipophilic
-
-Lipophic
-
-Lipophilic statins are particularly important in the context of dementia, as they are able to cross the blood-brain barrier.
-
-#### Hydrophilic
+Statins can either be lipophilic or hydrophilic, with several of the common brands falling into each category. The distinction between the two is of particular importance in the assessment of their impact on dementia, as only lipophilic statins can cross the blood brain barrier. However, this is only applicable if the relationship between statins and dementia risk is independent of their impact on circulating blood levels. 
 
 ### Other lipid regulating agents (LRA)
 
-There are a range of other interventions that can be used to modify a persons lipid profile, though each act is slightly different want
+There are a range of other interventions that can be used to modify a persons lipid profile, though each act is slightly different ways. Most commonly though, these treatments are either used as adjunct (additional) treatments with statins therapy, or are used in situations where statins are contra-indicated or not tolerated. 
 
-For example, ezetimibe
+<!-- see https://www.heart.org/en/health-topics/cholesterol/prevention-and-treatment-of-high-cholesterol-hyperlipidemia/cholesterol-medications for information on the indications for treatment - could present as a table -->
 
+The most commonly used non-statin therapeutic is ezetimbibe, which prevents intestinal absorption of cholesterol. However, when used alone, it has a limited LDL-c lowering effect, leading to the creation of combined statin/ezetimbe therapies (both compounds contained in a single pill, as opposed to complimentary treatemnts).
 
+A second example are fibrates, used to treat hypertriglyceridaemia by reducing production of triglyceride carrying compounds in the liver. They are commonly used in patients with mixed hyperlipidaemia if treatment with statins has failed to sufficiently control cholesterol levels. 
 
-<!----------------------------------------------------------------------------->
-
-## Evidence synthesis
-
-
-From a brief scoping literature search, Systematic reviews of the literature exist, with two main caveats: __[CITATION NEEDED - REFER to MSc project]__ 
-
-Firstly, the majority of reviews
+Finally, PCSK9 inhibitors (or PCSK9i) are a relatively new treatment with strong lipid lowering effects, lauded as a potential alternative to statins.[@chaudhary2017] Their mechanism of action is to bind to and inhibit PCSK9, which breaks down LDL-c receptors on the surface of the liver, thus allowing more LDL-c to be internalised and broken down.
 
 <!----------------------------------------------------------------------------->
 
-## Thesis focus: Integrating diverse sources of evidence
+## Evidence for the association between blood lipids and dementia {#evidence-association}
 
-The main theoretical framework used in this thesis is evidence synthesis - the discovery and critical integration of all available evidence on a research question in order to either: a) provide a more definitive answer to that question or; b) highlight gaps in the existing evidence base, so that future research address questions that have yet to be answered, or explores the same question in a way that increases our confidence in the result.
-
-All elements of this thesis are based around this framework.
-
-And the aim to integrate diverse sources of evidence. By diverse here, 
-
-Of particular interest is the synthesis of evidence from a range of diverse soources, 
-
-The main theoretical framework used in this thesis is evidence synthesis - the identification, critical assessment, and integration of all available evidence on a research question in order to either: a) provide a more definitive answer to that question; or b) highlight gaps in the existing evidence base.
-
-While this thesis does include a research tool Chapter \@ref(sys-rev-tools) and a primary evidence generation element (Chapter 5 - observational analysis of CPRD data), this was performed with the intention of providing a further source of evidence for the evidence synthesis/triangulation aspect of the thesis.
-
-More specifically this includes the accurate searching of sources of grey literature (as enabled by the too presented in Chapter \@ref(sys-rev-tools-heading)) and risk of bias assessment.
+In this section I provide an overview of the varying sources of evidence on the relationship between blood lipid levels and dementia risk.
 
 <!----------------------------------------------------------------------------->
-
-### Study designs and sources of bias
-
-<!-- Need to talk about biases here? Or have a different section: Diverse sources of evidence: different underlying biases -->
-
-Meta-analyses of randomised controlled trials are commonly seen as the gold standard in the 
-
-Indeed in the "evidence pyramid", meta-analysis of trials sit proudly on top. However, there included several potential limitations to this trial-only approach.
-
-RCTs may be unfeasible if the outcome of interest is one with a long prodomal period, such as dementia, <!--- Cross link here to section on presentation of dementia ---> as they would require exteremely long and costly follow-up.[@ritchie2015] <!--- Check citation --->
-
-Additionally randomised trials require clinical equipoise - something that is unlikely in the case of statins, as while equipose may exist, it would be unethical to randomised patients to statins or not given their proven protective effect against coronary disease. 
-
-It is no surprise then that the two know existing trials of statins for the prevention of dementia are in fact trials of statins for the prevention of coronary related outcomes.[@mcguinness2016a] The Prospective Study of Pravastatin in the Elderly (PROSPER) examined the protective effect of pravastating on coronary outcomes, 
-
-However, while being widely cited and indeed included in a Cochrane review on this topic (ironically, the lead author on this Cochrane review is ), these studies have major limitations that their utility to provide evidence on the effect of statin treatment on in assessing the impact of lipid-lowering treatment on dementia risk.
-
-Firstly, there was no clinical cognitive evaluation of patients to . In fact, the PROSPER trial reported not on dementia outcomes, but on the change in cognitive scores over a mean of 3.2 years. As highlighted in Section \@() <!--- Cross with section on how scores alone are insufficient --->, change in scores alone is insufficient to diagnose a dementia outcome. 
-
-The second trial, the Medical Research Council/British Health Foundation Protection Study
-
-Additionally, there two trials, whiel putatively examining all cause dementia subject to the limitation described above, do not make any effort to assign an underlying pathogy to each case. 
-
-As discussed in Section
-
-
-<!-- > Two major clinical trials are often cited as providing evidence that statins do not have an effect on the incidence ofdementia: the Prospective Study of Pravastatin in the Elderly (PROSPER) and the Medical Research Council/British Heart Foundation Heart Protection Study; however, because of methodologic limitations in relation to dementia outcomes in these two trials, the results of these trials are difficult to evaluate. Dementia incidence or cognitive outcomes were not preplanned endpoints in either of them, neither study included a clinical cognitive evaluation, and numbers of patients with follow-up information for cognitive evaluations were not reported in either study manuscript. In PROSPER a post hoc analysis compared changes in cognitive scores over a 3-year period between statintreated and placebo patients and found no significant differences. In the MRC/BHF HPS trial,27 similar percentages of participants (0.3% in each---statin vs placebo---group) developed dementia during the 5-year follow-up period. The report did not state how the outcome of dementia was determined (e.g., reported as an adverse event or by follow-up phone interview). *Taken from Cramer 2008 - included in review* -->
-
-__Maybe take a stand here - and in the systematic review, and say that you are not going to __
-
-There exist only two large scale randomized controlled trials of the effect of statins on dementia risk [CITE] - in fact these studies are the only two trials included in a 2016 review of statins for the prevention of dementia produced by the Cochrane [@mcguinness2016b]. Both showed no effect of
-
-
-
-Queries around how the data were collected, along
+### Basic science
 
 A role for lipids in the aetiology of dementia is supported by both genetic linkage studies and functional cell biology studies. The generation of the amyloid plaques found in the brains of Alzheimer's patients is cholesterol dependent [CITE], while the most established genetic risk factor for late-onset dementia, apolipoprotein E (ApoE), is involved in cerebral cholesterol transport. Several other genes involved in cholesterol transport have also been found to be robustly associated with increased AD susceptibility [CITE].
 
-Despite these encouraging results, evidence from epidemiological studies to date has been anecdotally been contradictory.
+<!--- might need some more here --->
+
+Despite these encouraging results, evidence from the diverse range of epidemiological studies on this topic has to date been been contradictory.
+
+<!----------------------------------------------------------------------------->
+### Observational studies
 
 Several observational studies have examined the relationships between concentrations of serum lipids (total cholesterol (TC), low density lipoprotein cholesterol (LDL-c), high density lipoprotein cholesterol (HDL-c) and triglycerides) and both Alzheimer's disease and vascular dementia and reported widely different results. A high serum cholesterol concentration has been found to be associated with an increase in susceptibility to AD [8-13], though other studies have shown no association [14-17], or a reduced susceptibility [18,19]. With regards VaD, decreased levels of HDL-c appear to be associated with increased risk [18,20,21], while for LDL-c, studies have reported both positive and negative association [18,22].
 
-Observational studies do not represent the only source of evidence examining the link between lipid levels and dementia. A recent Cochrane review identified two large randomised controlled trials (RCTs) of statins for the prevention of dementia, indicating that assignment to late-life lipid modifying treatment, as a proxy for lower lipid levels, does not reduce dementia risk [23]. However, both RCTs were limited, primarily by the relatively short follow-up period examined, while one failed to report the criteria used to diagnose dementia [24,25]. Finally, as they included only patients at high vascular risk, their generalisability to other settings is limited [23].
+<!--- Will need more here - particularly on the --->
 
-Comment here on the use of MR studies as a different approach - one that is growing and commonly preprinted.
+<!-- Need to talk about biases here? Or have a different section: Diverse sources of evidence: different underlying biases -->
 
-The use of newer methodological approaches, such as Mendelian randomisation (MR), has also produced contradictory results. In brief, MR uses genetic variants that are both strongly associated with the exposure of interest and are independent from potential confounders to strengthen causal inference [26]. A recent MR study indicated that low levels of LDL-c may cause a reduction in AD risk [27]. However, this study was criticised as it did not exclude the region surrounding the ApoE gene, meaning the risk reduction observed could be driven by variants in this region.
+<!----------------------------------------------------------------------------->
+### Randomised controlled trials
 
-n short, each individual epidemiological approach taken to examine this research question is subject to distinct biases and short-comings that limit our ability to infer a causal relationship between blood lipids and subsequent dementia risk. However, as each approach will be subject to distinct biases, these differences in design can be advantageous. If all approaches point, or triangulate, towards the same answer, this strengthens the evidence of a causal link between lipid levels and dementia risk [26]. In this context, systematically identifying, assessing and integrating all available evidence in a triangulation framework, regardless of study design or approach taken, may help to increase our confidence that a causal relationship truly exists.
+Meta-analyses of randomised controlled trials are commonly seen as the gold standard in terms of epidemiological evidence. Indeed in the "evidence pyramid", meta-analysis of trials sit proudly on top. However, there included several potential limitations to this trial-only approach. In terms of the central research of this theis, RCTs of statin therapy can be used to provide indirect evidence for the effect of reducing blood LDL-c levels on dementia risk.
 
+<!----------------------------------------------------------------------------->
+(ref:evidence-pyramid-cap) __The "evidence pyramid":__ Overview of the widely accepted relative ranking of different sources of evidence, with meta-analyses of RCTS being considered the best form of evidence.
 
-This thesis aims to find all exisiting evidence on the relationship between lipids/statins and dementia, critically assess it using a domain based tool 
+(ref:evidence-pyramid-scap) The "evidence pyramid"
 
-And then triangulate the different sources of evidence along with the primary analyses performed in this thesis.
+```{r evidence-pyramid, echo = FALSE, results="asis", fig.cap='(ref:evidence-pyramid-cap)', out.width='100%', fig.scap='(ref:evidence-pyramid-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
+```
+<!----------------------------------------------------------------------------->
 
+However, RCTs may be infeasible if the outcome of interest is one with a long prodomal period, such as dementia (see Section \@()), <!--- Cross link here to section on presentation of dementia ---> as they would require extremely long and costly follow-up.[@ritchie2015] <!--- Check citation --->Additionally randomised trials require clinical equipoise - something that is unlikely in the case of statins, as while equipose may exist, it would be unethical to randomised patients to statins or not given their proven protective effect against coronary disease. It is no surprise then that the two know existing trials providing evidence on the effect of statins on dementia risk, identified by a recent Cochrane review,[@mcguinness2016a]  are in fact trials of statins for the prevention of coronary related outcomes. The Prospective Study of Pravastatin in the Elderly (PROSPER) examined the protective effect of pravastatin on coronary outcomes.
+
+While being widely cited and indeed included in a Cochrane review on this topic (ironically, the lead author on this Cochrane review is ), these studies have major limitations that their utility to provide evidence on the effect of statin treatment on in assessing the impact of lipid-lowering treatment on dementia risk. Firstly, there was no clinical cognitive evaluation of patients to determine a dementia outcome. In fact, the PROSPER trial reported not on dementia outcomes, but on the change in cognitive scores over a mean of 3.2 years. As highlighted in Section \@() <!--- Cross with section on how scores alone are insufficient --->, change in scores alone is insufficient to diagnose a dementia outcome. The second trial, the Medical Research Council/British Health Foundation Protection Study found no effect of simvastatin on dementia (`r mal::mal_estimate(1, 0.61, 1.65)`), but did not report how the outcome was assessed/recorded within the trial.
+
+Additionally, the two trials, while putatively examining all-cause dementia subject to the limited applicability of change in cognitive scores as described above, do not make any effort to assign an underlying pathology to each case. As discussed in Section \@ref(), <!--- Cross to section on difference disease courses in Ad vs VaD vs other ---> the different underlying pathology of dementia have different mechanisms of action, and so it is not given that the effect of statins would be consistent across them.
+
+Additionally, both trials were limited by the relatively short follow-up period examined, expected when the primary outcome of the trials were coronary related conditions rather than dementia [24,25]. The PROSPER trial had a mean follow-up of 3.2 years, while the MRC/BHF Protection Study estimated risk at 5 years of follow-up. Given the long leg time between non-symptomatic onset of dementia and clinical presentation. Finally, as they included only patients at high vascular risk, their generalisability to other settings is limited [23].
 
 <!----------------------------------------------------------------------------->
 
-### Different sources of bias
+### Mendelian randomisation
 
-While we can expect different study designs, this thesis also considers diverse sources of evidence in terms of the methodological approaches taken within a
+Newer methodological approaches, such as Mendelian randomisation (MR),[@daveysmith2014] have also been used to examine the effect of varying lipid levels on dementia risk. In brief, MR uses genetic variants that are both strongly associated with the exposure of interest and are independent from potential confounders to strengthen causal inference [26]. The analytic method relies on several assumptions about the instrumental variable (IV),[@davies2018] as shown in Figure \@ref(fig:mr-overview), namely that:
 
-The term "observational study", unlike RCT, belies wide range of analytical approaches,[@thiese2014] each with it's own limitations which can 
+1. the IV is associated with the exposure of interest (the relevance assumption);
+2. the IV and outcome do not share a common cause (the independence assumption); and
+3. the IV does not affect the outcome other than via the exposure (the exclusion restriction assumption).
 
-Of particular interest in the context of interventional research is immortal time bias.
+This approach relies on the results of genome wide association studies (GWAS) to identify appropriate instruments, and as such, analysis of this type are restricted by the availability of relevant GWAS. As the cost of genome sequence falls, more and more GWAS are being performed, and so number of MR studies had increased in tandem.
 
-#### Misclassification bias
+<!--- Can you compare the frequency of terms between PubMed and medRxiv to show that it is overrepresented --->
 
-Incredibly hard to diagnose dementia, and even if diagnosed dementia, how to distinguish between different subtypes.
+<!----------------------------------------------------------------------------->
+(ref:mr-overview-cap) __Overview of Mendelian randomisation study design:__ Shows the central assumptions of the Mendelian randomisation study design, using the example of lipids and dementia.
 
-When using code lists to define outcomes in large, population scale electronic health databases, evidence exists that there is wild misclassification between the 
+(ref:mr-overview-scap) Overview of Mendelian randomisation study design
 
-<!--- Be careful here, as you don't account for misclassification in your CPRD study --->
+```{r mr-overview, echo = FALSE, results="asis", fig.cap='(ref:mr-overview-cap)', out.width='100%', fig.scap='(ref:mr-overview-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
+```
+<!----------------------------------------------------------------------------->
 
-Misclassification can also affect studies of interventions through the intorudction of immortal time. Several high profile observational studies of the effect of statins on dementi.
-
-#### Reverse causation
-
-Reverse causation is where the assumed exposure in an analytical framework is actually the outcome. **[CITATION NEEDED]** In the case of lipids and dementia, a reverse casaul relationship would be observed by the early prodomal effects of dementia influencing a change
-
-#### Ascertainment bias
-
-When examining the effect of treatment on low-lying diseases, number of consultations has an impact.
-
-In this context, evidence synthesis exercises must account for these threats to internal validity as part of the synthesis. However, many previous highly cited systematic reviews have now done so.
-
-<!--- This is a key advantage of this study, as we account for . --->
-
-
-Given the range of biases that can be expected to effect studies into dementia, any evidence synthesis effort must take account of these and perform a robust risk of bias assessment to assess the internal validity.
-
-A key issues here, particularly in the context of using statins as a proxy for blood lipid levels, is that there is a key distinction between internal validity and generalisability. One can be called the wrong answer to the right question, the other, the right answer to the wrong question.
-
-Having identified a gap in the literature in the systematic review, both in terms of an absence of observational studies using the specific deisng and in an absence of data related to vascular dementia, in Chapter \@ref(cprd-analysis-heading), I aim to address this evidence gap and provide a further source of information for the triangulation in Chapter \@ref(discussion-heading)
+A recent MR study indicated that low levels of LDL-c may cause a reduction in AD risk.[27] However, this study was widely criticised as it did not exclude the region surrounding the ApoE gene, the strongest know risk factor for Alzheimer's disease. This invalidated the exclusion exclusion restriction criteria (Assumption 3, above), as the risk reduction observed in this study could be driven by variants in this region via a pathway independent of lipid levels. <!--- Need more on MR here --->
 
 <!----------------------------------------------------------------------------->
 
-### Preprints versus peer-reviewed articles
+&nbsp;
 
-Preprints
-
-Preprints have existed in several fields, such as the aRxiv in the field of physics and mathematics, but more recently. Preprint repositories exist for everything from ecology (EcoEvoRxiv) to meta-research (metaArXiv)
-
-Preprints can 
-
-Comment on good concordance between preprinted and published versions
-
-There is much ongoing debate in, particulary in light of the explosion of prep
-
-The outlook on this topic has shifted noticeab
-
-One of the major criticisms of preprints is that they have not yet undergone formal peer review. Some researchers recommend treating 
-
-However, t
-
-
-Additionally, in the context of systematic review. This however, substantially increases the need for thourough and detailed risk-of-bias assessment as part of a systematic review. In theory this should be donw anyways, but several of the existing highly cited reviews of observationsal studies of the relationship between tstatins and dementia did not perform a risk-of-bias assessment, or used
-
-Checklists for risk of bias domains 
-
-However, the a noticeable s
-
-
-
-One of the major current limitations for inclusion of data from preprint repositories in systematic reviews is the absence of a replicable and transparent search tool for performing systematic searches. The tool presented in Chapter \@ref(sys-rev-tools) aims to address this. 
-
-
-
+In summary, multiple sources of evidence exist on the relationship between statins and dementia. In the next section, I introduce the theoretical framework used in this thesis.
 
 <!----------------------------------------------------------------------------->
 
-### Summary level results vs existing un-analysed datasets
+## Theoretical framework: Evidence synthesis
 
-Analysis of summary level data, that is the data extracted from publications describing primary studies, can only take investigations so far. 
+The central theoretical framework used in this thesis is evidence synthesis - the discovery and critical integration of all available evidence on a research question in order to either: a) provide a more definitive answer to that question or; b) highlight gaps in the existing evidence base, so that future research address questions that have yet to be answered or explores the same question in a way that increases our confidence in the result. 
 
-We are limited to the question that the original investigators wanted to ask, and the summar statistics they choose to present (see Section , which contributed to a discursive piece on present summary statistics of prevention reasearch for eacy inclusion in systematic reviews).
+This thesis applies seeks to use an evidence synthesis framework to assess the relationship between lipids/statins and dementia. Of particular interest is the synthesis of evidence from a range of diverse sources. This thesis considers three sources of diversity in the evidence base:
 
-However, requesting the individual patient-level data from relevant cohorts is error prone. A commonly cited example is the editor of Molecular Brain, who require
+* Diverse study designs (and sources of bias)
+* Diverse publication status (preprints vs published articles)
+* Diverse sources of data (summary level data vs individual-level data)
 
-As such, portals 
+These three elements are expanded on below and are used to frame the research presented in the subsequent Chapters.
 
-There has recently been a push to acknowledge the systematic differences between the sexes in terms of the life course and propensity for different diseases. As discussed above in Section 
+<!----------------------------------------------------------------------------->
 
-If lipids have a causal role in development of dementia, evidence-based preventative strategies would be informed by identifying the types of individuals who are most likely to receive benefit from treatment with lipid-modifying agents. 
+### Study designs
 
-This thesis will request raw data from primary studies identified by the systematic review and through other means, including the DPUK Portal, describe how it could be made more readily available in the first place and 
+<!----------------------------------------------------------------------------->
+As illustrated in Section \@ref(evidence-association), each individual epidemiological approach taken to examine the central research question of this thesis is subject to distinct biases and short-comings that limit our ability to infer a causal relationship between blood lipids and subsequent dementia risk.
 
-However, due to a lack of primary studies readily presenting this data, meta-analyses of patient-level data often have limited ability to examine exposure-covariate interactions. An individual participant data (IPD) meta-analysis is therefore the best (/only) option to examine the modification of dementia risk by individual-level covariates.
+However, as each approach will be subject to distinct biases, these differences in design can be advantageous. If all approaches point, or triangulate, towards the same answer, this strengthens the evidence of a causal link between lipid levels and dementia risk.[26] In this context, systematically identifying, assessing and integrating all available evidence in a "aetiological triangulation" framework,[@lawlor2016a] regardless of study design or approach taken, may help to increase our confidence that a causal relationship truly exists. 
+
+<!--- May need an extra bit here about how the different types of research apply to different time scales --->
+
+<!--- May need a bit about the differeny sources of bias, and why this lead me to do the CPRD analysis, which has a distinct source of bias --->
+
+As such, this thesis aims to find all existing evidence on the relationship between lipids/statins and dementia via the comprehensive review in Chapter \@ref(sys-rev-heading), and then triangulate the different sources of evidence along with the primary analyses performed in this thesis (Chapters \@ref(cprd-analysis-heading) and \@ref(ipd-analysis-heading)) in Chapter \@ref(dicussion-heading).
+
+<!----------------------------------------------------------------------------->
+
+<!-- ### Different sources of bias -->
+
+<!-- While we can expect different study designs to be subject to different inherent sources of bias - for example, issues with the randomisation procedure will only apply to randomised controlled trials - this thesis also considers diverse sources of evidence in terms of the methodological approaches taken within study type. -->
+
+<!-- The term "observational study", unlike RCT, belies wide range of analytical approaches,[@thiese2014] each with it's own limitations which can  -->
+
+<!-- #### Misclassification bias -->
+
+<!-- Incredibly hard to diagnose dementia, and even if diagnosed dementia,  distinguishing between the different subtypes. -->
+
+<!-- When using code lists to define outcomes in large, population scale electronic health databases, evidence exists that there is wild misclassification between the  -->
+
+<!-- Given the diagnostic criteria for vascular dementia, it adds a particular difficulty to  -->
+
+<!-- <!--- Be careful here, as you don't account for misclassification in your CPRD study ---> 
+
+<!-- Misclassification can also affect studies of interventions through the introduction of immortal time. Several high profile observational studies of the effect of statins on dementia. -->
+
+<!-- #### Reverse causation -->
+
+<!-- Reverse causation is where the assumed exposure in an analytical framework is actually the outcome, reversing the direction of the assumed causal diagram. __[CITATION NEEDED]__ In the case of lipids and dementia, a reverse casual relationship would be observed by the early prodomal effects of dementia influencing a change in blood lipids. -->
+
+<!-- In this context, evidence synthesis exercises must account for these threats to internal validity as part of the synthesis. However, many previous highly cited systematic reviews have now done so. -->
+
+<!-- <!--- This is a key advantage of this study, as we account for . ---> 
+
+<!-- Given the range of biases that can be expected to effect studies into dementia, any evidence synthesis effort must take account of these and perform a robust risk of bias assessment to assess the internal validity. -->
+
+<!-- A key issues here, particularly in the context of using statins as a proxy for blood lipid levels, is that there is a key distinction between internal validity and generalisability. One can be called the wrong answer to the right question, the other, the right answer to the wrong question. -->
+
+<!-- Having identified a gap in the literature in the systematic review, both in terms of an absence of observational studies using the specific deisng and in an absence of data related to vascular dementia, in Chapter \@ref(cprd-analysis-heading), I aim to address this evidence gap and provide a further source of information for the triangulation in Chapter \@ref(discussion-heading) -->
+
+<!----------------------------------------------------------------------------->
+
+### Preprints versus peer-reviewed articles {#diverse-sources-preprints}
+
+Defined by the Committee on Publication Ethics (COPE) as 'scholarly manuscript[s] posted by the author(s) in an openly accessible platform, usually before or in parallel with the peer review process'[@committeeonpublicationethicscope2018], preprints serve several purposes. They are used to establish primacy when submitting to a journal where the peer-review process may take several months;[@vale2016] to rapidly disseminate research findings, as occurred during the COVID-19 pandemic;[@fraser2020a] and to make available publications that may not have been accepted elsewhere in an attempt to combat publication bias or the "file-drawer" effect.[@rosenthal1979]
+
+Preprint repositories have existed in certain fields for many years, such as the aRxiv for preprints in physics and mathematics, but have recently expanded into other fields. Repositories now exist for everything from ecology (EcoEvoRxiv) to meta-research (metaArXiv).  There is much ongoing debate, particularly in light of the explosion of preprints following their widespread use to disseminate research related to the COVID-19 pandemic, about how preprints should be handled in the context of an evidence synthesis. 
+
+<!----------------------------------------------------------------------------->
+(ref:medrxiv-growth-cap) __Growth of the medRxiv and bioRxiv repositories over time:__ Additional caption info here.
+
+(ref:medrxiv-growth-scap) Growth of the medRxiv and bioRxiv repositories over time
+
+```{r medrxiv-growth, echo = FALSE, results="asis", fig.cap='(ref:medrxiv-growth-cap)', out.width='100%', fig.scap='(ref:medrxiv-growth-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
+```
+<!----------------------------------------------------------------------------->
+
+One of the major criticisms of using preprints as an evidence source is that they have not yet undergone formal peer review. Some researchers recommend treating preprints as a separate category to peer-reviewed publication, using a flag or marker to indicate that certain evidence was sourced from. However, this approach assigns a lot of weight to peer-review as a indicator of "quality". Given the rise of predatory journals, and the (anecdotally) variable quality of peer-review across legitimate journals depending on the reviewer selected for a paper, peer-review is not always a reliable indicator. 
+
+Meta-studies of the concordance between preprints and published studies showed that results were broadly comparable between the two, indicating that while the numerical results may change, the overall interpretation of the results were consistent in the overwhelming majority of cases.[@shi2021a] This indicates that preprints should be considered a reliable reflection of the study, though these analyses are by necessity limited to preprinted studies that were subsequently published - the effect of peer review in limiting the publication of poorly design or executed studies is harder to assess. However, in the absence of any information on the subsequent publication, the preprint contains the best available evidence on a given research study, and so should be included in the review. 
+
+The inclusion of non-peer-reviewed preprints substantially increases the need for thorough and detailed risk-of-bias assessment as part of the systematic review, in lieu of formal peer review. Risk-of-bias assessments provide a structured and transparent way to assess the internal validity of a study across several domains of bias. In theory, risk-of-bias assessments should be performed as part of systematic reviews, regardless of whether they included preprints,<!--- cite PRISMA and ROB2 paper here ---> but several of the existing highly cited reviews of observational studies of the relationship between statins and dementia did not perform any risk-of-bias assessment. <!-- __[CITATION NEEDED]__ -->
+
+Accepting that preprints represent an import source of information, their inclusion in systematic reviews is limited in practical terms by the absence of a replicable and transparent search tool for performing systematic searches in preprint repositories. The tool presented in Chapter \@ref(sys-rev-tools) aims to address this, and enables the inclusion of health-related preprints as evidence sources in the systematic review presented in Chapter \@ref(sys-rev-heading).
+
+<!--- Talk a bit more about studification, and link to how medrxivr allows you to do this --->
+
+<!----------------------------------------------------------------------------->
+
+### Summary level results vs individual patient data
+
+If lipids are found to have a causal role in development of dementia, evidence-based preventative strategies would be informed by identifying the types of individuals who are most likely to receive benefit from treatment with lipid-modifying agents. 
+
+Analysis of summary level data, that is the data extracted from publications describing primary studies, can only take investigators so far in this regard. Due to a lack of primary studies readily presenting results stratified by covariates of interests, for example sex and ethnicity (see Section \@ref()), meta-analyses of summary-level data often have limited ability to examine exposure-covariate interactions (for example, sex and ethnicity. 
+
+An individual participant data (IPD) meta-analysis is therefore the best option to examine the modification of dementia risk by individual-level covariates. This analytical approach has the added benefit of allowing a common set of inclusion criteria and statistical model to be applied across all dataset, potentially eliminating some important sources of heterogeneity. It also allows for the incorporation of relevant, previously un-analysed datasets, available via new initiatives such as the Dementia Portal UK,<!--- Cite this ---> which aim to provide access to several dementia-related datasets via a single simplified application process.
+
+This thesis will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapter \@ref(sys-rev-heading) and combine this with previously unanalysed data from the DPUK portal as part of an individual participant data meta-analysis in Chapter \@ref(ipd-analysis-heading).
 
 <!----------------------------------------------------------------------------->
 
@@ -487,12 +424,12 @@ Circulating blood lipid levels, and by extension treatments that modify blood li
 
 ### Aims and Objectives
 
-The specific research questions that this thesis seeks to address are:
+The specific research objectives that this thesis seeks to address are:
 
 * To create a tool that allows for the inclusion of health related preprints in evidence syntheses in a systematic and reproducible manner
 * To review all available evidence across multiple diverse study designs to assess the effect of lipids and lipid regulating agents on dementia risk
 * To examine whether there is evidence for an effect of lipid-regulating agents on dementia and related outcomes in a large scale population-based cohort, the Clinical Practice Research Datalink (CPRD)
-* To meta-analyse previously unexplored dataset as part of a
+* To meta-analyse previously unexplored datasets as part of a individual participant data (IPD meta-analysis)
 
 ### Thesis Structure
 
@@ -510,40 +447,51 @@ The outputs of this thesis are detailed below, and include published peer review
 
 ### Contributions to the scientific literature
 
-During the course of this thesis, 
-
-See Appendix \@ref
-
-
+During the course of this thesis, I have made several contributions to the scienitfic literature. Those arising from or directly related to the contents of this submission are presented below.
 
 &nbsp;
 
-_McGuinness, L. A., and L Schmidt. "medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in R." Journal of Open Source Software 5.54 (2020): 2651. DOI: [10.21105/joss.02651](https://doi.org/10.21105/joss.02651)_
+_**McGuinness, L. A.**, and L Schmidt. (2020) "medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in R." Journal of Open Source Software 5.54 2651. DOI: [10.21105/joss.02651](https://doi.org/10.21105/joss.02651)_
 
-A short paper introducing the open source preprint search tool described in Chapter \@ref(sys-rev-tools). <!--- need a bit here on why it is short - better to have documentation online, describe it as a lesson learned from the robvis paper, showing personal growth and improved experience. --->
+A short paper introducing the open-source preprint search tool described in Chapter \@ref(sys-rev-tools). <!--- need a bit here on why it is short - better to have documentation online, describe it as a lesson learned from the robvis paper, showing personal growth and improved experience. --->
 
 &nbsp;
 
-_Hennessy, E. A., Acabchuk, R., Arnold, P. A., Dunn, A. G., Foo, Y. Z., Johnson, B. T., Geange, S. R., Haddaway, N. R., Nakagawa, S., Mapanga, W., Mengersen, K., Page, M., Sánchez-Tójar, A. Welch, V.,  McGuinness L. A. (2020). Ensuring Prevention Science Research is Synthesis-Ready for Immediate and Lasting Scientific Impact. MetaArXiv.DOI: [10.31222/osf.io/ptg9j](https://doi.org/10.31222/osf.io/ptg9j)_
+_Hennessy, E. A., Acabchuk, R., Arnold, P. A., Dunn, A. G., Foo, Y. Z., Johnson, B. T., Geange, S. R., Haddaway, N. R., Nakagawa, S., Mapanga, W., Mengersen, K., Page, M., Sánchez-Tójar, A. Welch, V.,  **McGuinness L. A.** (2020). Ensuring Prevention Science Research is Synthesis-Ready for Immediate and Lasting Scientific Impact. MetaArXiv. DOI: [10.31222/osf.io/ptg9j](https://doi.org/10.31222/osf.io/ptg9j)_
 
-The experience of extracting data for the systematic review in Chapter \@ref(sys-rev-heading) inspired a practical guide for researchers in prevention science is currently under review at Prevention Science. 
+The experience of extracting data for the systematic review in Chapter \@ref(sys-rev-heading) inspired a practical guide for researchers in prevention science is currently under review at Prevention Science. This piece was co-written with Dr. Emily Hennessy (see author declarations). <!--- Will need to cross-reference this bit! --->
 
-I co-wrote the discursive piece with Emily Hennessy (see author declarations).
 
 &nbsp; 
 
-_McGuinness, L. A., and J. P. T. Higgins. "Risk‐of‐bias VISualization (robvis): An R package and Shiny web app for visualizing risk‐of‐bias assessments." Research Synthesis Methods (2020). DOI: [10.1002/jrsm.1411](https://doi.org/10.1002/jrsm.1411)_
+_**McGuinness, L. A.**, and Higgins J. P. T. (2020) "Risk‐of‐bias VISualization (robvis): An R package and Shiny web app for visualizing risk‐of‐bias assessments." Research Synthesis Method). DOI: [10.1002/jrsm.1411](https://doi.org/10.1002/jrsm.1411)_
   
 The tool used to visualise the risk-of-bias assessments in Chapter \@ref(sys-rev-heading) has been published in Research Synthesis Methods. See Appendix \@ref(appendix-robvis) for more details on this tool.
 
-For information on the additional contributions to the scientific literature not directly related to this thesis, see Appendix \@ref(appendix-publications).
+&nbsp; 
+
+_**McGuinness, L. A.**, and Sheppard A. L. 2020. “A Descriptive Analysis of the Data Availability Statements Accompanying Medrxiv Preprints and a Comparison with Their Published Counterparts.” MetaArXiv. DOI: [10.31222/osf.io/p75xe](https://doi.org/10.31222/osf.io/p75xe)_
+
+Using the tool described in Chapter \@ref(sys-rev-tools), I performed a "research-on-research" study, comparing the concordance between the data availability statements accompanying a sample of medRxiv preprints and their published counterparts.
+
+&nbsp; 
+
+For information on additional contributions to the scientific literature not directly related to this thesis, see Appendix \@ref(appendix-publications).
 
 &nbsp;
 
-### Software
+### Presentations/Talks
+
+* Abstract accepted to the Cochrane Colloquium 2019
+* ARUK abstract on systematic review (I hope!)
+* Presentation to the Evidence Synthesis and Meta-Analysis in R Conference (ESMARConf)
+* Invited seminar series on the RoB2 risk-of-bias assessment tool for randomised controlled trials to for Evidence Synthesis Ireland
+* Presentations to internal department wide seminar series, including the Methods in Evidence Synthesis Salon (MESS) and the MRC-IEU seminar series.
+
+### Software {#outputs-software}
 **`medrxvir`**
 
-An R package and associated `shiny` web application that allows users to easily search and retrieve bibliographic data from the medRxiv[@rawlinson2019] and bioRxiv[@sever2019] preprint repositories. See Chapter \@ref(sys-rev-tools-heading) for more details. Install a stable version of the package from CRAN or alternatively install the development version from GitHub using:
+An R package and associated `shiny` web application that allows users to easily search and retrieve bibliographic data from the medRxiv[@rawlinson2019] and bioRxiv[@sever2019] preprint repositories. See Chapter \@ref(sys-rev-tools-heading) for more details. Install a stable version of the package from the Comprehensive R Archive Network (CRAN), or alternatively install the development version from GitHub, using:
 
 ```{r, eval = FALSE}
 # CRAN version
@@ -557,7 +505,7 @@ devtools::install_github("mcguinlu/medrxivr")
 
 **`robvis`**
 
-An R package and associated `shiny` web application that allows users to easily visualize the results of the risk-of-bias assessments performed as part of a systematic review. See Appendix \@ref(appendix-robvis) for more details. Install a stable version of the package from CRAN or alternatively install the development version from GitHub using:
+An R package and associated `shiny` web application that allows users to easily visualize the results of the risk-of-bias assessments performed as part of a systematic review. See Appendix \@ref(appendix-robvis) for more details. Install a stable version of the package from CRAN, or alternatively install the development version from GitHub, using:
 
 ``` {r, eval = FALSE}
 # CRAN version
@@ -569,14 +517,6 @@ devtools::install_github("mcguinlu/robvis")
 
 &nbsp;
 
-### Presentations/Talks
-
-* Abstract accepted to the Cochrane Colloquium 2019
-* ARUK abstract on systematic review <!--- I hope! --->
-* Presentations to the Evidence Synthesis and Meta-Analysis in R Conference (ESMARConf)
-* Risk of bias webinars for Evidence Synthesis Ireland
-* Presentations to internal department wide seminar series, including the Methods in Evidence Synthesis Salon (MESS) and the MRC-IEU seminar series.
-
 ## Summary
 
-This Chapter has provided background information on the core elements of the central research question, framed the research in the context of a specific theoretical framework, and described the contributions of the research in this thesis to the scientific literature.
+This Chapter has provided background information on the core elements of the central research question, framed the research presented in this thesis in the context of an evidence synthesis framework, and described the contributions of the research in this thesis to the scientific literature.

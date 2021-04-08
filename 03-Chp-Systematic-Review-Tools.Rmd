@@ -2,12 +2,12 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -33,6 +33,9 @@ library(medrxivr)
 
 <!----------------------------------------------------------------------------->
 
+[Need to include bit on linking to published version via the tool]{.correction}
+
+
 ## Main points (to be removed)
 
 The main points I want to get across in this Chapter are:
@@ -51,15 +54,13 @@ Preprints are copies of academic manuscripts that are posted online in advance o
 
 ## Introduction
 
-Preprints represent an increasingly important source of scientific information. Defined by the Committee on Publication Ethics (COPE) as 'scholarly manuscript[s] posted by the author(s) in an openly accessible platform, usually before or in parallel with the peer review process'[@committeeonpublicationethicscope2018], preprints serve several purposes. They are used to establish primacy when submitting to a journal where the peer-review process may take several months;[@vale2016] to rapidly disseminate research findings, as occurred during the COVID-19 pandemic;[@fraser2020a] and to make available publications that may not have been accepted elsewhere in an attempt to combat publication bias or the "file-drawer" effect.[@rosenthal1979]
-
-As a result, repositories of preprinted articles should be considered a distinct but complementary information source when reviewing the evidence base as part of a systematic review. The two key repositories in the health science are bioRxiv, established in 2013,[@sever2019] and medRxiv, which evolved to replace the "Epidemiology" and "Clinical Trial" categories of bioRxiv, which launched in 2019.[@rawlinson2019]
+Preprints represent an increasingly important source of scientific information (see Section \@ref(diverse-sources-preprints)). As a result, repositories of preprinted articles should be considered a distinct but complementary information source when reviewing the evidence base as part of a systematic review. The two key repositories in the health science are bioRxiv, established in 2013,[@sever2019] and medRxiv, which evolved to replace the "Epidemiology" and "Clinical Trial" categories of bioRxiv, which launched in 2019.[@rawlinson2019]
 
 Searching these preprints as part of the systematic review described in Chapter \@ref(sys-rev-heading) was a necessity, as many of the existing reviews on the topic of lipids and dementia have not considered this important source of grey literature. At the time of writing, however, the bioRxiv.medRxiv websites allow only simple search queries as opposed to the often complex Boolean logic (AND/OR/NOT) that information specialists use to query other major databases.[\@bramer2018a;\@gusenbauer2020] Additionally, the best available extraction mechanism for obtaining references for all records returned by a search were to go through each record, one-by-one, downloading individual citations. As the scale of these preprint databases increase, particularly in light of the massive expansion of the medRxiv repository as a result of COVID, this already time-consuming and error-prone method is no longer feasible.
 
-This chapter outlines the development and key functionality of `medrxivr` (version 0.0.5), a tool created to facilitate the searching of medRxiv and bioRxiv preprints. The factors that necessitated the development of this tool in the context of this thesis are outlined, and the use of `medrxivr` in external projects and by other researchers is discussed. As the majority of work on this aspect of this thesis is represented by lines of code, this Chapter is a high-level summary of the work done on this project. The GitHub repository[^chp-systematic-review-tools-1] for the `medrxivr` contains a complete record of the development of this tool, including discussion with other members of the systematic review community.
+This chapter outlines the development and key functionality of `medrxivr` (version 0.0.5), a tool created to facilitate the searching of medRxiv and bioRxiv preprints. The factors that necessitated the development of this tool in the context of this thesis are outlined, and the use of `medrxivr` in external projects and by other researchers is discussed. As the majority of work on this aspect of this thesis is represented by lines of code (available at [https://github.com/ropensci/medrxivr](https://github.com/ropensci/medrxivr)) this Chapter is an intentionally short, high-level summary of the work done on this project. The GitHub repository for the `medrxivr` contains a complete record of the development of this tool, including discussion with other members of the systematic review community.
 
-[^chp-systematic-review-tools-1]: Available at <https://github.com/ropensci/medrxivr>
+
 
 &nbsp;
 

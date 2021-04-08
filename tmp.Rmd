@@ -1,0 +1,221 @@
+Chapter 1. Introduction
+1.1. Summary
+This chapter presents the problem that the research conducted in this thesis seeks to
+address and an outline of the main output of this thesis: new evidence concerning
+repurposing antihypertensives for dementia prevention using genetic and non-genetic
+instrumental variable analyses. This chapter then introduces three issues that arose and
+have been addressed during the conduct of this research. They are: how to calculate
+power for instrumental variable analyses in pharmacoepidemiology; how to use
+Mendelian randomization to predict drug repurposing opportunities; and what factors
+have effected prescribing of existing dementia drugs. This chapter concludes with the
+aims and objectives of this thesis, a summary of its organization and a list of the
+associated outputs.
+1.2. Statement of the problem
+There is a substantial unmet clinical need for treatments for dementia where significant
+benefits to patients, society and the public purse can be gained. Despite this, some drug
+companies have recently withdrawn from this therapy area due to failed and costly efforts
+to find new treatments. (1,2) Drug repurposing, the identification of properties in existing
+or abandoned compounds for other clinical conditions, offers significant advantages over
+traditional drug discovery approaches. This includes immediate access to human safety
+data from the original clinical development work, which can accelerate testing in clinical
+trials, saving both time and money. (3–5)
+Many antihypertensive medications have been proposed as drug repurposing candidates
+for the prevention of dementia. In part, because of research to better understand several
+reports of observed associations between midlife hypertension and later-life risk of
+Alzheimer’s disease and vascular dementia. (5–8) There is also increasing recognition
+that one of the earliest pathological events in the development of Alzheimer’s disease is
+vascular dysregulation. (9) As well as suggestions that some antihypertensives,
+specifically those that block angiotensin receptor and calcium channel signalling, may
+have other neurological benefits. (9–11)
+2
+Several observational studies have investigated repurposing antihypertensives for
+dementia prevention. (12–19) However, these studies have typically used case-control
+designs with logistic regression and cohort designs with survival analysis, both of which
+are observational study designs that may be subject to unmeasured or residual
+confounding and reverse causation. Specific concerns of observational studies are
+confounding by indication, where the reasons that a patient receives a treatment relate to
+the reasons that the patient is at an increased risk of the outcome; and healthy adherer
+bias, where patients initiating or adhering to a drug for prevention of a condition are
+more likely to be healthy. There is also potential for reverse causation due to preclinical
+or early stages of the disease, which could lead to more frequent contacts with general
+practitioners (GPs) and lead to raised blood pressure being more likely to be detected.
+This, in turn, could lead to the prescription of an antihypertensive drug in advance of
+dementia being formally diagnosed. Consequently, current evidence concerning
+repurposing antihypertensives for dementia prevention is considered inconclusive.
+1.3. New evidence concerning repurposing antihypertensives for dementia prevention
+using instrumental variable analysis
+Instrumental variable analysis, which estimates the causal effect of an exposure on an
+outcome by using a third variable (the instrument), can be robust to confounding and
+reverse causation if certain assumptions are met. That is:
+  IV1. The instrument must associate with the exposure
+IV2. The instrument must only affect the outcome through the exposure
+IV3. The instrument and the outcome must have no common causes
+These assumptions can be represented on a directed acyclic graph, as shown in Figure
+1.1. Instrumental variable analysis, with other sources of evidence, can be used in a
+triangulation framework to obtain a reliable answer concerning the potential repurposing
+of antihypertensives for dementia prevention. (20) This thesis presents two forms of
+instrumental variable analysis to provide new evidence concerning this hypothesis. The
+first uses physicians’ prescribing preference as a non-genetic instrument in electronic
+health record data obtained from the United Kingdom (UK) Clinical Practice Research
+Datalink (CPRD). The second uses single nucleotide polymorphisms (SNPs) i.e.
+differences in the deoxyribonucleic acid (DNA) nucleotides between individuals, which
+have been selected to mimic the biological function of the protein targets of 
+3
+antihypertensive drug classes, as a genetic instrument in an approach more commonly
+known as Mendelian randomization. The results of both these instrumental variable
+analyses have been made available via the following references. (21,22)
+1.4. Calculating power for instrumental variable analysis in pharmacoepidemiology
+Instrumental variable analysis is an increasingly popular method in the field of
+pharmacoepidemiology. (23–28) However, the power calculators that were available for
+studies using instrumental variable analysis at the start of my PhD – such as Mendelian
+randomisation power calculators – did not allow for the structure of research questions
+using non-genetic instruments (for example, physicians’ prescribing preference) in this
+field. (29,30) This is because analysis using non-genetic instruments in pharmacoepidemiology will typically have stronger instruments and so can detect smaller causal
+effects. Consequently, there was a need for dedicated power calculators for these type of
+research questions in pharmacoepidemiology. In this thesis, I investigate how to conduct
+Figure 1.1: A directed acyclic graph illustrating the basic instrumental variable analysis model.
+Directed acyclic graphs are a visual representation of a model, which represent variables by ‘nodes’
+and the relationships between them by ‘directed edges’. (68) The graphs are defined as acyclic
+because edges cannot form ‘cycles’, whereby the edges all act in the same direction. This prevents a
+variable from being both a cause and a consequence of itself. Directed acyclic graphs are a common
+tool in epidemiology and, more specifically, causal inference when edges are given a causal
+interpretation, as they allow researchers to depict their model and its assumptions using a common
+graphing scheme. (69)
+4
+power calculations for pharmacoepidemiological studies, which use a single binary
+instrument to analyse the causal effect of a binary exposure on a continuous outcome. I
+also provide an online calculator, as well as packages in both R and Stata, for the
+implementation of the formula by others (https://github.com/venexia/PharmIV). This
+work has been published in the International Journal of Epidemiology. (31)
+1.5. Using Mendelian randomization to predict drug repurposing opportunities
+Identification of drug repurposing opportunities can maximize the benefit of a drug.
+However, as highlighted before, the more traditional observational research methods
+used to investigate these opportunities are subject to several biases. These include
+confounding by indication, reverse causality, and missing data. In this thesis, I propose
+Mendelian randomization as a novel approach that can be used for the prediction of drug
+repurposing opportunities. Mendelian randomization addresses some of the limitations
+associated with the existing methods in this field. Furthermore, it can be applied either
+pre- or post-approval of the drug and could therefore prevent the potentially harmful
+exposure of patients in clinical trials and beyond. This thesis includes discussion of
+examples from the literature that have used Mendelian randomization to predict drug
+repurposing opportunities and covers the strengths and limitations associated with using
+this method for this purpose. There was relatively little discussion focussed on using
+Mendelian randomization for drug repurposing when I commenced my PhD and I have
+since published on this topic. (32)
+1.6. Factors effecting existing dementia drug prescribing
+Drugs for dementia have been available in England from 1997. However, since their
+launch, there have been several changes to national guidelines and initiatives that may
+have influenced prescribing. These include changes in National Institute for Health and
+Care Excellence (NICE) guidance; several government dementia strategies; the addition
+of dementia to the Quality and Outcomes Framework (QOF); and the expiry of drug
+patents. Despite this, little research had been conducted prior to my PhD into the effect
+of these events on prescribing. (33,34) In this thesis, I investigate prescribing trends in
+England since the launch of these drugs up to 1st January 2016 using data from the
+CPRD to address this gap in the literature. The key motivation for this analysis was to 
+5
+identify factors that have affected prescriptions of existing treatments that may also
+influence repurposed drug candidates in the future. However, the results from this
+analysis could also be used to identify breaks in the prescription of these drugs that could
+be exploited as natural experiments for progression studies. For example, if these drugs
+were not prescribed when the NICE guidelines stopped recommending their use between
+2006 and 2011, the progression of people diagnosed during this time who did not access
+the drugs could be compared with the progression of people diagnosed before and after
+this time who did have access to the drugs. The results presented in this chapter have
+been published in Alzheimer’s Research & Therapy. (35)
+1.7. Aims and objectives
+The objective of this thesis was to use instrumental variable analysis methods, in existing
+data sources, to triangulate evidence for repurposing antihypertensive drugs for the
+prevention of dementia.
+The specific aims were as follows:
+  1. Develop a power calculator for non-genetic instrumental variable analysis studies
+in the context of pharmacoepidemiology.
+2. Describe the use of genetic instrumental variable analysis, namely Mendelian
+randomization, for predicting drug repurposing opportunities.
+3. Examine the impact of regulatory guidance and patent expiry on dementia drug
+prescribing.
+4. Investigate whether antihypertensive drugs have a causal effect on incident
+dementia using instrumental variable analysis with electronic health record data.
+5. Investigate whether antihypertensive drugs have a causal effect on incident
+dementia using instrumental variable analysis with genetic data.
+1.8. Organization of this thesis
+Chapter 2 provides the background necessary for the rest of this thesis through the
+introduction of dementia, the concept of drug repurposing, and discussion of the existing
+evidence regarding antihypertensive drugs for dementia prevention. It also covers the 
+6
+strengths and limitations of observational pharmacoepidemiology and explains why it
+might be preferable over ‘gold standard’ randomized controlled trials for some
+hypotheses. Chapter 3 describes instrumental variable analysis, the method utilized
+throughout this thesis, and documents the development of a power calculator for this
+method in the context of pharmacoepidemiology (Aim 1). Chapter 4 introduces the idea
+of using Mendelian randomization, a form of instrumental variable analysis that uses
+genetic variants as instruments, for drug repurposing and covers the strengths and
+limitations of this approach (Aim 2). Chapter 5 describes the CPRD and my use of this
+data source. Chapter 6 covers the current treatments available for dementia and factors
+affecting their prescription in England based on data from the CPRD (Aim 3). Chapter 7
+presents an assessment of the effects of antihypertensive drugs on dementia prevention
+using instrumental variable analysis with data from the CPRD (Aim 4); while Chapter 8
+presents an assessment of the effects of antihypertensive drugs on dementia prevention
+using instrumental variable analysis with genetic data (Aim 5). The thesis concludes with
+a discussion in Chapter 9 that brings together all the elements of this thesis and discusses
+their implications.
+1.9. Outputs from this thesis
+1.9.1. Contributions to scientific literature
+Contributions to scientific literature arising from this thesis are detailed below and
+provided in Appendix A.
+The protocol for the observational work using CPRD data to investigate drug
+repurposing opportunities is published in the BMJ Open. (36) Its contents are referenced
+in several places throughout this thesis, particularly Chapter 5:
+  Walker VM, Davies NM, Jones T, Kehoe PG, Martin RM. Can commonly prescribed
+drugs be repurposed for the prevention or treatment of Alzheimer’s and other
+neurodegenerative diseases? Protocol for an observational cohort study in the UK
+Clinical Practice Research Datalink. BMJ Open. 2016 Dec 1;6(12):e012044.
+7
+The power calculator for instrumental variable analysis in pharmacoepidemiology,
+described in Chapter 3, is published in the International Journal of Epidemiology (31):
+  Walker VM, Davies NM, Windmeijer F, Burgess S, Martin RM. Power calculator for
+instrumental variable analysis in pharmacoepidemiology. Int J Epidemiol. 2017 Oct
+1;46(5):1627–32.
+Also published in the International Journal of Epidemiology is an article discussing
+Mendelian randomization as a novel approach for the prediction of adverse drug events
+and drug repurposing opportunities (32), which formed the basis of Chapter 4:
+  Walker VM, Davey Smith G, Davies NM, Martin RM. Mendelian randomization: a
+novel approach for the prediction of adverse drug events and drug repurposing
+opportunities. Int J Epidemiol. 2017 Dec 1;46(6):2078–89.
+The trend analysis examining prescribing practice for drugs for dementia in the CPRD,
+presented in Chapter 6, is available from Alzheimer’s Research & Therapy (35):
+  Walker VM, Davies NM, Kehoe PG, Martin RM. What is the impact of regulatory
+guidance and expiry of drug patents on dementia drug prescriptions in England? A trend
+analysis in the Clinical Practice Research Datalink. Alzheimer’s Research & Therapy.
+2018 May 29;10:51.
+The assessment of antihypertensives for dementia prevention using electronic health
+record data, reported in Chapter 7, is currently under peer review and available from
+bioRxiv (21):
+  Walker VM, Davies NM, Martin RM, Kehoe PG. Comparison of antihypertensive drug
+classes for dementia prevention. bioRxiv. 2019 Jan 12;517482.
+The assessment of antihypertensives for dementia prevention using genetic data, reported
+in Chapter 8, has been made available as an advance article from the International
+Journal of Epidemiology (22):
+  8
+Walker VM, Kehoe PG, Martin RM, Davies NM. Repurposing antihypertensive drugs
+for the prevention of Alzheimer’s disease: a Mendelian Randomization study. Int J
+Epidemiol. 2019 Jul 4; Advance article.
+1.9.2. Contributions to scientific meetings
+I presented the paper “Power calculator for instrumental variable analysis in
+pharmacoepidemiology”, described in Chapter 3, at the UK Administrative Data
+Research Network Annual Research Conference 2017 in Edinburgh, UK.
+I presented the paper “Mendelian randomization: a novel approach for the prediction of
+adverse drug events and drug repurposing opportunities”, which formed the basis of
+Chapter 4, at the University of Bristol Population Health Symposium 2016 in Bristol, UK
+and at the International Society for Pharmacoepidemiology mid-year meeting 2018 in
+Toronto, Canada.
+I presented posters, based on the paper “What is the impact of regulatory guidance and
+expiry of drug patents on dementia drug prescriptions in England?” detailed in Chapter
+6, at the Alzheimer’s Research UK Research Conference 2016 in Aberdeen, UK and at
+the University of Bristol brain research showcase and networking day 2018 in Bristol,
+UK.
+I presented “Can treatments for hypertension be repurposed for the treatment of
+dementia?” at the Society of Epidemiologic Research annual conference 2018 in
+Baltimore, United States of America (USA); at the European Congress of Epidemiology
+2018 in Lyon, France and the International Society for Pharmacoepidemiology annual
+meeting 2018 in Prague, Czech Republic. These presentations combined results from
+Chapters 7 and 8.
