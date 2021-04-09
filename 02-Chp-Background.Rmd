@@ -15,6 +15,7 @@ Science knows it doesn't know everything; otherwise, it'd stop.
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source("R/doc_options.R")
+source("R/helper.R")
 knitr::read_chunk("R/background.R")
 
 knitr::opts_chunk$set(
@@ -73,7 +74,7 @@ Where more than one underlying dementia pathologies co-occur, this is termed mix
 
 <!----------------------------------------------------------------------------->
 
-### Diagnostic criteria
+### Diagnostic criteria {#diagnostic-criteria}
 
 Dementia is difficult to diagnose, primarily due to the absence of a gold standard test for the condition. <!-- is this true, or would it be better to say that there is no gold standard test without an autopsy?--> There exist several diagnostic criteria for dementia and related disease, many of which have existed for quite some time and have more recently been updated to reflect current understanding in dementia pathology. In all cases, dementia is diagnosed on the basis of behavioural and congitive changes as assessed by an experience clinician. 
 <!-- This means the potential for misclassification both of dementia versus no-dementia and between the different underlying conditions is extremely likely. -->
@@ -273,7 +274,7 @@ knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
 
 However, RCTs may be infeasible if the outcome of interest is one with a long prodomal period, such as dementia (see Section \@()), <!--- Cross link here to section on presentation of dementia ---> as they would require extremely long and costly follow-up.[@ritchie2015] <!--- Check citation --->Additionally randomised trials require clinical equipoise - something that is unlikely in the case of statins, as while equipose may exist, it would be unethical to randomised patients to statins or not given their proven protective effect against coronary disease. It is no surprise then that the two know existing trials providing evidence on the effect of statins on dementia risk, identified by a recent Cochrane review,[@mcguinness2016a]  are in fact trials of statins for the prevention of coronary related outcomes. The Prospective Study of Pravastatin in the Elderly (PROSPER) examined the protective effect of pravastatin on coronary outcomes.
 
-While being widely cited and indeed included in a Cochrane review on this topic (ironically, the lead author on this Cochrane review is ), these studies have major limitations that their utility to provide evidence on the effect of statin treatment on in assessing the impact of lipid-lowering treatment on dementia risk. Firstly, there was no clinical cognitive evaluation of patients to determine a dementia outcome. In fact, the PROSPER trial reported not on dementia outcomes, but on the change in cognitive scores over a mean of 3.2 years. As highlighted in Section \@() <!--- Cross with section on how scores alone are insufficient --->, change in scores alone is insufficient to diagnose a dementia outcome. The second trial, the Medical Research Council/British Health Foundation Protection Study found no effect of simvastatin on dementia (`r mal::mal_estimate(1, 0.61, 1.65)`), but did not report how the outcome was assessed/recorded within the trial.
+While being widely cited and indeed included in a Cochrane review on this topic (ironically, the lead author on this Cochrane review is ), these studies have major limitations that their utility to provide evidence on the effect of statin treatment on in assessing the impact of lipid-lowering treatment on dementia risk. Firstly, there was no clinical cognitive evaluation of patients to determine a dementia outcome. In fact, the PROSPER trial reported not on dementia outcomes, but on the change in cognitive scores over a mean of 3.2 years. As highlighted in Section \@() <!--- Cross with section on how scores alone are insufficient --->, change in scores alone is insufficient to diagnose a dementia outcome. The second trial, the Medical Research Council/British Health Foundation Protection Study found no effect of simvastatin on dementia (`r estimate(1, 0.61, 1.65)`), but did not report how the outcome was assessed/recorded within the trial.
 
 Additionally, the two trials, while putatively examining all-cause dementia subject to the limited applicability of change in cognitive scores as described above, do not make any effort to assign an underlying pathology to each case. As discussed in Section \@ref(), <!--- Cross to section on difference disease courses in Ad vs VaD vs other ---> the different underlying pathology of dementia have different mechanisms of action, and so it is not given that the effect of statins would be consistent across them.
 
@@ -327,7 +328,7 @@ These three elements are expanded on below and are used to frame the research pr
 
 <!----------------------------------------------------------------------------->
 
-### Study designs
+### Study designs and sources of bias
 
 <!----------------------------------------------------------------------------->
 As illustrated in Section \@ref(evidence-association), each individual epidemiological approach taken to examine the central research question of this thesis is subject to distinct biases and short-comings that limit our ability to infer a causal relationship between blood lipids and subsequent dementia risk.
@@ -336,7 +337,15 @@ However, as each approach will be subject to distinct biases, these differences 
 
 <!--- May need an extra bit here about how the different types of research apply to different time scales --->
 
-<!--- May need a bit about the differeny sources of bias, and why this lead me to do the CPRD analysis, which has a distinct source of bias --->
+<!--- May need a bit about the differeny sources of bias, and why this lead me to do the CPRD analysis, which has a distinct source of bias 
+
+In this context, assessment of 
+
+even within certain study designs, underlying biases are different
+
+In some cases, synthesis across evidence required the 
+
+--->
 
 As such, this thesis aims to find all existing evidence on the relationship between lipids/statins and dementia via the comprehensive review in Chapter \@ref(sys-rev-heading), and then triangulate the different sources of evidence along with the primary analyses performed in this thesis (Chapters \@ref(cprd-analysis-heading) and \@ref(ipd-analysis-heading)) in Chapter \@ref(dicussion-heading).
 
@@ -453,13 +462,13 @@ During the course of this thesis, I have made several contributions to the scien
 
 _**McGuinness, L. A.**, and L Schmidt. (2020) "medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in R." Journal of Open Source Software 5.54 2651. DOI: [10.21105/joss.02651](https://doi.org/10.21105/joss.02651)_
 
-A short paper introducing the open-source preprint search tool described in Chapter \@ref(sys-rev-tools). <!--- need a bit here on why it is short - better to have documentation online, describe it as a lesson learned from the robvis paper, showing personal growth and improved experience. --->
+A short paper introducing the open-source preprint search tool described in Chapter \@ref(sys-rev-tools-heading). <!--- need a bit here on why it is short - better to have documentation online, describe it as a lesson learned from the robvis paper, showing personal growth and improved experience. --->
 
 &nbsp;
 
 _Hennessy, E. A., Acabchuk, R., Arnold, P. A., Dunn, A. G., Foo, Y. Z., Johnson, B. T., Geange, S. R., Haddaway, N. R., Nakagawa, S., Mapanga, W., Mengersen, K., Page, M., Sánchez-Tójar, A. Welch, V.,  **McGuinness L. A.** (2020). Ensuring Prevention Science Research is Synthesis-Ready for Immediate and Lasting Scientific Impact. MetaArXiv. DOI: [10.31222/osf.io/ptg9j](https://doi.org/10.31222/osf.io/ptg9j)_
 
-The experience of extracting data for the systematic review in Chapter \@ref(sys-rev-heading) inspired a practical guide for researchers in prevention science is currently under review at Prevention Science. This piece was co-written with Dr. Emily Hennessy (see author declarations). <!--- Will need to cross-reference this bit! --->
+The experience of extracting data for the systematic review in Chapter \@ref(sys-rev-heading) inspired a practical guide for researchers in prevention science is currently under review at Prevention Science. This piece was co-written with Dr. Emily Hennessy (see Author Declarations in the front materials). <!--- Will need to cross-reference this bit! --->
 
 
 &nbsp; 

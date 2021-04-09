@@ -89,3 +89,45 @@ check_words <- function(fp){
   rstudioapi::showDialog("Pomodoro done!", "Take a break . . . ")
 
 }
+
+
+estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-"){
+  
+  if (!hasArg(estimate)) {
+    stop("Estimate missing")
+  }
+  
+  if (!hasArg(lci)) {
+    stop("LCI missing")
+  }
+  
+  if (!hasArg(uci)) {
+    stop("UCI missing")
+  }
+  
+  if (type != "") {
+    type <- paste0(type, ": ")
+  }
+  
+  if (sep == ",") {
+    start <- ", "
+    end <- ""
+  } else {
+    start <- " ("
+    end <- ")"
+  }
+  
+  if(estimate > uci | estimate < lci){
+    stop("Estimate outside CI bounds")
+  }
+  
+  if(lci > uci){
+    stop("Lower CI is greater than upper CI")
+  }
+  
+  estimate <- stringr::str_trim(sprintf("%7.1f", estimate))
+  lci <- stringr::str_trim(sprintf("%7.1f", lci))
+  uci <- stringr::str_trim(sprintf("%7.1f", uci))
+  z <- paste0(type, estimate, start, "95% CI: ", lci, to, uci, end)
+  return(z)
+}

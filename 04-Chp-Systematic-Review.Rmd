@@ -121,6 +121,15 @@ Our review is presented as the last point on this plot, and captured XXXX record
 
 The alternative is to have a barplot showing the total cumulative number of records over the years, using our set as the master, with the bars coloured by the number of records included in 1/2/3/4 reviews. The information below the bar axis could then show the number of reviews published in that year, or alternative, you could have an upsidedown bar to show cumulative number of reviews on this topic.
 
+<!--- Take a stand here! --->
+
+
+Of note, this review did not include the commonly cited PROSPER study, which examined the effect of pravastatin on CVD risk and putatively provides no evidence for an effect of the statin on dementia outcomes. While widely cited and included in the Cochrane review on this topic, it has not been included here, for the reason that it only reported the change from cognitive score (as measured using the [CHECK] scale) over a mean follow-up. While this is a useful indicator of general cognitive decline, it is not equivalent to a dementia outcome, as cogntive scales should feed into a broader diagnostic pathway - See section \@ref(diagnostic-criteria)
+
+This does introduce some conflicts with other studies where a change score has been dichotomised in order to have a binary dementia or not dementia outcome.
+
+Does it also cause issues in terms of self-report?
+
 ### Screening results
 
 Following screening, XXX studies were included.
@@ -129,7 +138,7 @@ The distribution of included studies over time demonstrates that despite the con
 
 Table \@ref(tab:incl-studies-character) shows the characteristics [**Include column here that says whether it was included in a systematic review - see below**]
 
-*As part of our our forward snowballing exercise (where articles citing an included study are cited), we recorded whether a study included in our review had been included in any previous evidence synthesis attempt in an attempt to qualify the added value of this analysis. Additionally, if an included article was subsequently cited by a review, all studies in that review were screened for inclusion for the sake of completeness. This analysis was performed by extracting the citing articles from Google Scholar on [DATE] and screening them manually. The DOI of articles extracted from this analysis are included in the appendix, as the Google Scholar search functionality is not readily reproducible.*
+As part of our our forward snowballing exercise (where articles citing an included study are cited), we recorded whether a study included in our review had been included in any previous evidence synthesis attempt in an attempt to qualify the added value of this analysis. Additionally, if an included article was subsequently cited by a review, all studies in that review were screened for inclusion for the sake of completeness. This analysis was performed by extracting the citing articles from Google Scholar on [DATE] and screening them manually. The DOI of articles extracted from this analysis are included in the appendix, as the Google Scholar search functionality is not readily reproducible.*
 
 <!-- For the snowballing exercise - make sure you don't include studies published after review date: ~ June 2019 -->
 
@@ -244,7 +253,9 @@ Detail that some of these are exploratory, in particular the effect of different
 ### Publication bias
 
 -   Check if there are protocols available for any of the published reports (unlikely for non-randomised controlled trials), and whether there were
--   Vascular dementia has substantially less published reports. Many (reference Smeeth et al 2010 here) simply group into AD and non-AD making comparison between published st
+-   Vascular dementia has substantially less published reports. Many (reference Smeeth et al 2010 here) simply group into AD and non-AD making comparison between published studies difficult
+
+
 
 ### Triangualtion across evidence sources
 
@@ -256,7 +267,7 @@ Consideration of the potential impact of the magnitude and direct of residual co
 
 Without our framework and as part of the risk of bias assessments reported in \@ref(risk-of-bias-subheading), we test test
 
-### Added evidental value of including preprints
+### Added evidental value of including preprints {}
 
 <!-- Will to get actual numbers for this section -->
 
@@ -307,6 +318,14 @@ Systematic reviews should not be performed as part of a thesis, without suitable
 Great learning experience in terms of managing a team, but due to a rotating schedule of people, much harder to do that expected.
 
 A final point on the progress of the review is that, due to the need for dual screening and data extraction, a number of external researchers became involved in this review. I found the people-management aspect particularly challenging and could definitely have improved the process through better communication of deadlines, but it has provided good experience of leading a review team.
+
+### Inclusion of preprints
+
+As highlighted in Section \@ref(diverse-sources-preprints), this thesis sought to syntheze evidence across different publication statuses, predominantly preprinted. Using the tool described in Chapter \@ref(), two preprint serves related to health and biomedical sciences were search as part of this review. 
+
+The added evidental value of including these preprints was highlighted in Section 
+
+On further investigation, X of these preprints were subsequently published since the search was performed in 2019. While this provides some additional evidence that the quality of the research desribed by included preprints was sufficiently high to pass peer-review, it does not invalidate the approach, as the future publication status was unavaialble at the time the search was conducted.
 
 ### Original contribution to research
 
