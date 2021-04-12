@@ -31,6 +31,7 @@ knitr::read_chunk("R/Chp2-Systematic-Review.R")
 ## Extra studies to include:
 
 * Smeet et al. reference in the CPRD analysis
+* Larsson - 10.1136/bmj.j5375 [@larsson2017b]
 
 ## Lay summary
 
@@ -80,8 +81,6 @@ No limitations will be imposed on publication status, publication date, venue or
 Case-control studies, cross-sectional studies, qualitative studies, case reports/series and narrative reviews will be excluded. Studies which present no evidence of attempting to exclude prevalent cases from their analyses will also be excluded. Studies that measure change in continuous cognitive measures (e.g. MoCA score) without attempt to map these scores to ordinal groups (e.g. no dementia/MCI/dementia) will be excluded. Conference abstracts with no corresponding full-text publication will be examined, and we will contact authors to obtain information on the study's status. Studies that are reported in insufficient detail (e.g. only in conference abstracts, new, letters, editorials and opinion) will be excluded. Previous systematic reviews will not be eligible, but their reference lists will be screened to identify any potentially relevant articles. Studies with outcomes not directly related to the clinical syndrome of dementia (e.g., neuroimaging), studies implementing a "multi-domain intervention" where the lipid-regulating agent is included in each arms (e.g. for example, a study examining exercise + statins vs statins alone, but a study examining exercise + statins vs exercise alone would be included), and studies where there was no screening for dementia at baseline except if the sample was initially assessed in mid-life (i.e. below the age of 50) will be excluded.
 
 Excluded studies performing autopsy unless it was done under accepted criteria Exclude studies using a dietary intervention, for example omega-3 fatty acid enriched diet, as it hard to disentangle the effect of other elements contained within te diet, vs simple tablet based supplements of
-
-
 
 ### Data extraction
 
@@ -206,6 +205,8 @@ knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
 
 Following de-duplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened. \@ref(fig:prisma-flow-fig)
 
+<!----------------------------------------------------------------------------->
+
 ### Characteristics of included studies
 
 XXXX studies met the criteria for inclusion in the review.
@@ -325,6 +326,14 @@ While [__some__] preprint have subsequently been published, this does not cause 
 Major limitation is that several included studies used data from electronic health databases, which come with serious concerns regarding validity [@hsieh2019] __[ALSO CITE WILKINSON AND MCGUINNESS HERE]__.
 
 In addition, the a
+
+### Searching for/including Mendelian randomisation studies
+
+As a form of analysis that lends itself to multiple comparison, there is a strong
+
+Through snowballing and other measurse, we identified [@larsson2017b]
+
+Is it a big issue that the studies have the same underlying datasets? <!--- see discussion from Matt Lee thesis, in email --->
 
 
 
