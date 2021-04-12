@@ -14,7 +14,7 @@
 - [ ] Check context of table cross-references to ensure they are pointing to the right table.
 - [ ] Search for common true mispellings (e.g. casual, )
 - [ ] Check all codeblocks with `eval = FALSE` to make sure they are still valid
-
+- [ ] Do search for everything in parentheses "(...)" and make sure all acronyms are in abbreviations list 
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice

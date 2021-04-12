@@ -57,17 +57,21 @@ num_to_text <- function(x, start_of_sentence = FALSE)
   return(out)
 }
 
-add_words <- function(words = 100){
+check_words <- function(words = 100){
   
   t <- wordcountaddin::text_stats()
   w <- as.numeric(stringr::str_extract(t[3], "[0-9]+"))
   n <- w + words
   
-  message("Start:   ",format(Sys.time(),"%H:%M"),"\nNext:    ", n," <------\n")
+  message("Start:   ",format(Sys.time(),"%H:%M"),"\nCurrent: ",w,"\nNext:    ", n," <------\n")
 }
 
-
-check_words <- function(fp){
+pomodoro <- function(fp){
+  
+  if (!hasArg(fp)) {
+    fp <- rstudioapi::getSourceEditorContext()$path
+    message("File: ",fp)
+  }
   
   i <- 0
   
