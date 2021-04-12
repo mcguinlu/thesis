@@ -18,9 +18,6 @@ source("R/doc_options.R")
 source("R/helper.R")
 knitr::read_chunk("R/background.R")
 
-knitr::opts_chunk$set(
-  include = FALSE
-)
 ```
 
 # Background, Theoretical framework, Aims & Objectives {#background-heading}
@@ -52,7 +49,6 @@ Finally, it will outline the aims, objectives and structure of this thesis, and 
 ## Dementia
 
 Dementia is major neurocognitive disorder, with symptoms including impairment of executive cognitive functions such as speech, judgement and memory. 
-
 
 <!----------------------------------------------------------------------------->
 

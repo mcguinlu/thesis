@@ -158,17 +158,24 @@ How to interpret agreement co-efficients is widely debated. Here we use guidelin
 
 <!-- ------------------------------------------------------------------------- -->
 
-```{r gwet-setup, results="hide", message=FALSE}
+```{r gwet-setup, results="hide", message=FALSE, echo = FALSE}
 ```
 
-```{r gwet-table, message=FALSE, results="asis"}
+```{r gwet-table, message=FALSE, results="asis", echo = FALSE}
 ```
 
 <!-- ------------------------------------------------------------------------- -->
 
-In a two by two table with cells A, B, C and D, Gwet's AC1 is calculated using the following:
+<!--- Need example table here, showing relevant cells --->
 
-$$AC1 = \frac{p-e(\gamma)}{1-e(\gamma)}$$ Here, $p = \frac{A+D}{N}$ and $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, where $q = \frac{(A+C)+(A+B)}{2N}$
+
+In a two-by-two table with cells A, B, C and D, Gwet's AC1 is calculated using the following:
+
+$$AC1 = \frac{\frac{A+D}{N}-e(\gamma)}{1-e(\gamma)}$$ 
+
+where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, where 
+
+$$q = \frac{(A+C)+(A+B)}{2N}$$
 
 -\> Insert formula here. Need to be sure of how to calculate. [@gwet2008; @sim2005]
 
@@ -331,7 +338,7 @@ In addition, the a
 
 As a form of analysis that lends itself to multiple comparison, there is a strong
 
-Through snowballing and other measurse, we identified [@larsson2017b]
+Through snowballing and other measures, we identified at least one Mendelian randomisation studi [@larsson2017b]
 
 Is it a big issue that the studies have the same underlying datasets? <!--- see discussion from Matt Lee thesis, in email --->
 

@@ -1,6 +1,6 @@
 ---
 bibliography: bibliography/references.bib
-csl: bibliography/nature.csl
+csl: bibliography/bmj.csl
 output:
   bookdown::pdf_document2:
     template: templates/brief_template.tex
@@ -60,8 +60,6 @@ Searching these preprints as part of the systematic review described in Chapter 
 
 This chapter outlines the development and key functionality of `medrxivr` (version 0.0.5), a tool created to facilitate the searching of medRxiv and bioRxiv preprints. The factors that necessitated the development of this tool in the context of this thesis are outlined, and the use of `medrxivr` in external projects and by other researchers is discussed. As the majority of work on this aspect of this thesis is represented by lines of code (available at [https://github.com/ropensci/medrxivr](https://github.com/ropensci/medrxivr)) this Chapter is an intentionally short, high-level summary of the work done on this project. The GitHub repository for the `medrxivr` contains a complete record of the development of this tool, including discussion with other members of the systematic review community.
 
-
-
 &nbsp;
 
 <!----------------------------------------------------------------------------->
@@ -116,6 +114,8 @@ Early versions of the tool had a reliance on scraping data directly from the rep
 
 However, an Application Programming Interface (API) for the medRxiv and bioRxiv repositories was made public in early 2020 by the institution responsible for managing these preprint repositories, the Cold Springs Harbor Laboratory. This allowed for newer versions of the `medrxivr` package to engage in active "fault prevention" and provide a more robust interface to the data by removing the reliance of web-scraping.[@laprie1992]
 
+&nbsp;
+
 <!----------------------------------------------------------------------------->
 
 ### Package infrastructure
@@ -168,7 +168,7 @@ devtools::install_github("ropensci/medrxivr")
 
 ### Importing preprint metadata
 
-`medrixvr` provides two ways to access medRxiv data. The first, via the `mx_api_content()` function, creates a local copy of all data available from the medRxiv API at the time the function is run.
+`medrixvr` provides two ways to access medRxiv data, as shown in Figure \@ref(fig:medrxivr-data-sources). The first, via the `mx_api_content()` function, creates a local copy of all data available from the medRxiv API at the time the function is run.
 
 &nbsp;
 
@@ -179,7 +179,7 @@ mx_data <- mx_api_content()
 
 &nbsp;
 
-The second, via the `mx_snapshot()` function, provides access to a maintained static snapshot of the database, created each morning at 6am using `mx_api_content()`. Allowing users of `medrxivr` to access a maintained snapshot removes any dependency on the API, which can become unavailable during peak usage times. The relationship between the two methods for accessing the data contained in the medRxiv database is summarized in Figure \@ref(fig:medrxivr-data-sources).
+The second, via the `mx_snapshot()` function, provides access to a maintained static snapshot of the database, created each morning at 6am using `mx_api_content()`. 
 
 &nbsp;
 
@@ -190,9 +190,13 @@ mx_data <- mx_snapshot()
 
 &nbsp;
 
+Allowing users of `medrxivr` to access a maintained snapshot removes any dependency on the API, which can become unavailable during peak usage times. The relationship between the two methods for accessing the data contained in the medRxiv database is summarized in Figure \@ref(fig:medrxivr-data-sources).
+
+&nbsp;
+
 <!----------------------------------------------------------------------------->
 
-(ref:medrxivr-data-sources-cap) **Overview of `medrxivr` data sources:** Users can either access the API directly via `mx-api_content()`, or can import a maintained snapshot of the database, taken each morning at 6am, via the `mx_snapshot()` function. Note: due to the size of bioRxiv, only a maintained snapshot of the medRxiv repository is available via `mx_snapshot()`.
+(ref:medrxivr-data-sources-cap) **Overview of `medrxivr` data sources:** Users can either access the API directly via `mx_api_content()`, or can import a maintained snapshot of the database, taken each morning at 6am, via the `mx_snapshot()` function. Note: due to the size of bioRxiv, only a maintained snapshot of the medRxiv repository is available via `mx_snapshot()`.
 
 (ref:medrxivr-data-sources-scap) Overview of `medrxivr` data sources
 
@@ -203,6 +207,8 @@ knitr::include_graphics(file.path("figures","sys-rev-tools","data_sources.png"))
 &nbsp;
 
 <!----------------------------------------------------------------------------->
+
+&nbsp;
 
 ### Performing a search
 
@@ -220,7 +226,7 @@ myquery <- list(topic1, topic2)         # Combined with AND
 
 &nbsp;
 
-For example, when written in standard syntax, the search contained in the `myquery` object above would be: "((dementia **OR** alzheimer's) **AND** (lipids **OR** statins))". There is now limit to the number of search terms that can be included in each topic, nor in the number of topics that can be search for. Search terms can also contain common syntax used by systematic reviewers and health librarians, including the use of NEAR statements which allows for identification of co-localised terms, and wild-cards, which allow for alternate spellings, e.g. "randomi*s*ation" vs "randomi*z*ation".
+For example, when written in standard syntax, the search contained in the `myquery` object above would be: "((dementia **OR** alzheimer's) **AND** (lipids **OR** statins))". There is no limit to the number of search terms that can be included in each topic, nor in the number of topics that can be search for. Search terms can also contain common syntax used by systematic reviewers and health librarians, including the use of NEAR statements which allows for identification of co-localised terms, and wild-cards, which allow for alternate spellings, e.g. "randomi*s*ation" vs "randomi*z*ation".
 
 Once a strategy has been defined, it is passed along with the local copy of the database to the `mx_search()` function.
 
@@ -244,21 +250,25 @@ An important argument of the `mx_search()` is `report`, which outputs a structur
 
 ```{r, eval = FALSE}
 results  <- mx_search(mx_data,
-                      c("dementia", "alzheimer's"), # Combined with OR
+                      myquery, # Combined with OR
                       report = TRUE)
 ```
 
 ```{r, eval = FALSE}
-## Found 203 record(s) matching your search.
-## Total topic 1 records: 203
-## dementia: 203
-## Total topic 2 records: 0
-## alzheimer’s: 0
+## Found 1 record(s) matching your search.
+## 
+## Total topic 1 records: 224
+## dementia: 224
+## alzheimer's: 0
+## 
+## Total topic 2 records: 119
+## lipids: 90
+## statins: 33
 ```
 
 &nbsp;
 
-This allows users to discover which terms in their search are contributing most to the total number of results returned. This is important as part of developing a search strategy,[@bramer2018] as it allows for the key terms related to each topic to be discovered. It also aids in identifying misspelled search terms, which will frequently return no results.
+This allows users to discover which terms in their search are contributing most to the total number of results returned. This is important as part of developing a search strategy,[@bramer2018] as it allows for the key terms related to each topic to be discovered. It also aids in identifying misspelled or case-sensitive search terms, which will frequently return no results. As an example, in the search presented above, the term "alzheimer's" returns no records. This is expected, as "Alzheimer" is a proper noun and so should be capitalised, but serves to illustrate the usefulness of the reporting function.
 
 &nbsp;
 

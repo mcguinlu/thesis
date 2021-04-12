@@ -135,3 +135,12 @@ estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-"){
   z <- paste0(type, estimate, start, "95% CI: ", lci, to, uci, end)
   return(z)
 }
+
+
+end_of_day <- function(words = NULL) {
+
+  gert::git_add(files = ".")
+  gert::git_commit(paste0("End of day", words))
+  gert::git_push()
+  
+}
