@@ -18,3 +18,7 @@
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice
+
+## Useful info
+
+Width of portrait page in em for use with col_spec is __32__

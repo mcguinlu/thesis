@@ -137,10 +137,25 @@ estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-"){
 }
 
 
-end_of_day <- function(words = NULL) {
+make <- function(arg = "pdf") {
+  system(paste0("make ", arg))
+}
 
+covering <- function(){
+  rmarkdown::render("front-and-back-matter/_00-introduction.Rmd")
+  browseURL("front-and-back-matter/_00-introduction.html")
+}
+
+end_of_day <- function(words = NULL) {
+  
+  # Make PDF and Word, and clean
+  system("make pdf-quiet")
+  system("make word")
+  system("make clean")
+  system("make clean-knits")
+  
   gert::git_add(files = ".")
-  gert::git_commit(paste0("End of day", words))
+  gert::git_commit(paste0("End of day: ", words))
   gert::git_push()
   
 }

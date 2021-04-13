@@ -1,8 +1,10 @@
 ---
+bibliography: bibliography/references.bib
+csl: bibliography/nature.csl
 output:
-  bookdown::word_document2: default
   bookdown::pdf_document2:
     template: templates/brief_template.tex
+  bookdown::word_document2: default
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -17,30 +19,36 @@ Science knows it doesn't know everything; otherwise, it'd stop.
 source("R/doc_options.R")
 source("R/helper.R")
 knitr::read_chunk("R/background.R")
-
+doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
 
 # Background, Theoretical framework, Aims & Objectives {#background-heading}
 
+
 \minitoc <!-- this will include a mini table of contents-->
 
-<!-- ## Lay summary -->
+## Figures/Tables To 
 
-<!-- Around 850,000 people in the UK live with dementia, and by 2040, nearly twice as many will have the condition. Despite many promising candidates, no cure for dementia currently exists, so the focus is now on figuring out ways to prevent the condition by finding risk factors (characteristics that influence a person's chance of developing a disease) that we can easily change. Avoiding a risk factor does not guarantee that a person will not develop dementia, but makes it less likely. A key risk factor for dementia may be the levels of lipids (fatty substances such as cholesterol) in a person's blood.  -->
+* Diagnostic criteria
+* Statin mechanism of action 
+* Evidence pyramid
+* Overview of MR studies
 
-<!-- This Chapter provides background information on dementia and lipids. It also provides a description. -->
+## Lay summary
 
-<!-- Evidence synthesis involves drawing on multiple sources of information to obtain the best possible to a research question, in this case, do lipids influence dementia risk.  -->
+Around 850,000 people in the UK live with dementia, and by 2040, nearly twice as many will have the condition. Despite many promising candidates, no cure for dementia currently exists, meaning the focus is on finding ways to prevent the condition. The best way to do this is to find risk factors (characteristics that influence a person's chance of developing a disease) for dementia that we can easily change. Avoiding a risk factor does not guarantee that a person will not develop dementia, but makes it less likely. A key risk factor for dementia may be the levels of lipids (fatty substances such as cholesterol) in a person's blood, though not all available research agrees. The aim of this thesis is to use all available evidence to assess whether blood lipids levels are in fact a risk factor for dementia.
+
+This introductory chapter provides background information on both dementia and blood lipids, and on the potential link between them. It introduces the combination of evidence from different sources as the key framework used to guide the research presented in the remaining chapters. It then maps the formal aims and objectives of the research project to the relevant chapters of this thesis. Finally, it summarises the outputs (journal articles, presentations and software) that were created as part of this thesis.
 
 <!----------------------------------------------------------------------------->
 
 ## Introduction
 
-This Chapter provides an overview of the broad context of this thesis, introducing the core concepts used throughout and providing some background context on each. It will briefly discuss the underlying pathologies and diagnosis of dementia, its public health importance, and the current state of treatment and prevention therapeutics.
+This Chapter provides an overview of the broad context of this thesis, introducing the core concepts used throughout and providing some background on each. It will briefly discuss the underlying pathologies and diagnosis of dementia, its public health importance, and the current state of treatment and prevention therapeutics.
 
-In this context, it will highlight the importance of identifying easily modified risk factors and introduce blood lipids, and blood lipid-modifying treatments such as statins, as the primary exposures considered by this research.
+This chapter will highlight the importance of identifying easily modified risk factors and introduce blood lipids, and blood lipid-modifying treatments such as statins, as the primary exposures considered by this research.
 
-The central theoretical framework used - the synthesis of diverse sources of evidence - is introduced, and the research presented in this thesis is then framed in terms of three types of diverse evidence, with opposing viewpoints for each being discussed. 
+The central theoretical framework used throughout this thesis will be the synthesis of diverse sources of evidence. This framework is introduced, and the research presented in this thesis is then framed in terms of three types of diverse evidence, with opposing viewpoints for each being discussed. 
 
 Finally, it will outline the aims, objectives and structure of this thesis, and briefly summarise the contributions to the scientific literature that arose from this research. 
 
@@ -54,17 +62,17 @@ Dementia is major neurocognitive disorder, with symptoms including impairment of
 
 ### Underlying pathologies
 
-Dementia is a collective umbrella term for a range of conditions each with different clinical presentations and disease courses, and is generally defined as "". <!--- Cite ---> 
+Dementia is a collective umbrella term for a range of conditions each with different clinical presentations and disease courses, and is generally __defined as ""__. <!--- Cite ---> 
 
-Alzheimer's disease, named after Dr. Alois Alzheimer who presented the first recorded case in 1907, is the most common cause of dementia, accounting for approximately 60-80% of cases. Characterised by substantial cognitive impairment and diffculty with high level executive function to the extent that it interferes with, it is an insidious disease, within initial onset thought to occur up to 15 years prior to symptomatic presentation. Much remains unknown unknown about Alzheimer's pathogenesis, despite research implicating the accumluation of amyloid plaques and neurofibrillary tangles, or alternatively the cholingeric nervous system, <!--- check ---> as potential mechanisms of disease.
+Alzheimer's disease, named after Dr. Alois Alzheimer who presented the first recorded case in 1907, is the most common cause of dementia, accounting for approximately 60-80% of cases. Characterised by substantial cognitive impairment and diffculty with high level executive function to the extent that it interferes with, it is an insidious disease, within initial onset thought to occur up to 15 years prior to symptomatic presentation. Despite research implicating the accumulation of amyloid plaques and neurofibrillary tangles, or alternatively the cholingeric nervous system, <!--- check ---> as potential mechanisms of disease, much remains unknown unknown about Alzheimer's pathogenesi
 
 <!-- [__Need a bit more here__] -->
  
-Vascular dementia (VaD) is the second largest underlying pathology of dementia, accounting for ~10% of cases and is caused by a range of cerebrovascular disorders. Presentation can vary widely based on the underlying cause, and due to the varied underlying  pathopysiology, VaD can onset quite rapidly following a cerbrovascular event such as a stroke or over a long period due to series of small infarcts. VaD is diagnosed using the NINCDS-AIREN criteria.[@roman1993vascular]
+Vascular dementia (VaD) is the second largest underlying pathology of dementia, accounting for ~10% of cases and is caused by a range of cerebrovascular disorders. Presentation can vary widely based on the underlying cause. Due to the varied underlying  pathophysiology, VaD can either onset quite rapidly following a cerebrovascular event such as a stroke or over a long time-frame due to a series of small infarcts. VaD is diagnosed using the __NINCDS-AIREN__ criteria.[@roman1993vascular]
 
 The remaining 10-30% of cases are caused other dementia subtypes (e.g. Lewy Body dementia) or by progression of other neurological diseases (e.g. Parkinson's disease). 
 
-Where more than one underlying dementia pathologies co-occur, this is termed mixed dementia. It is common for patients to present with mixed dementia, as the occurrence of one underlying cause weakens overall brain health and increases the likeliness of occurrence of the other. <!--- Double check this --->
+The term mixed dementia is used when more than one underlying dementia pathologies co-occur. This is a  common presentation of dementia because the presence  of one underlying condition  weakens overall brain health and increases the likelihood  of another condition developing. <!--- Double check this --->
 
 <!-- __MCI__ and difference between MCI and dementia, MCI as a stepping stone to dementia, etc. -->
 
@@ -72,7 +80,7 @@ Where more than one underlying dementia pathologies co-occur, this is termed mix
 
 ### Diagnostic criteria {#diagnostic-criteria}
 
-Dementia is difficult to diagnose, primarily due to the absence of a gold standard test for the condition. <!-- is this true, or would it be better to say that there is no gold standard test without an autopsy?--> There exist several diagnostic criteria for dementia and related disease, many of which have existed for quite some time and have more recently been updated to reflect current understanding in dementia pathology. In all cases, dementia is diagnosed on the basis of behavioural and congitive changes as assessed by an experience clinician. 
+Dementia is difficult to diagnose, primarily due to the absence of a gold standard test for the condition. <!-- is this true, or would it be better to say that there is no gold standard test without an autopsy?--> There exist several diagnostic criteria for dementia and related disease. In all cases, dementia is diagnosed on the basis of behavioural and cognitive changes as assessed by an experience clinician. 
 <!-- This means the potential for misclassification both of dementia versus no-dementia and between the different underlying conditions is extremely likely. -->
 
 <!----------------------------------------------------------------------------->
@@ -85,7 +93,7 @@ Dementia is difficult to diagnose, primarily due to the absence of a gold standa
 
 <!----------------------------------------------------------------------------->
 
-Two of the most commonly used criteria include the the Diagnostic and Statistical Manual of Mental Disorders, fourth edition (DSM-IV-TR) <!-- __[CITATION NEEDED]__ --> criteria and the National Institute of Neurological Disorders and Stroke--Alzheimer Disease and Related Disorders (NINCDS-ADRDA) criteria.[@dubois2007]
+Two of the most commonly used criteria include those found in the Diagnostic and Statistical Manual of Mental Disorders, fourth edition (DSM-IV-TR) <!-- __[CITATION NEEDED]__ --> criteria and the National Institute of Neurological Disorders and those developed by the Stroke-Alzheimer's Disease and Related Disorders Association (NINCDS-ADRDA).[@dubois2007]
 
 <!-- [**Need first NINCDS-ADRDA citation and DSM-IV citations**] -->
 
@@ -132,7 +140,7 @@ The distinction between these memory scales and diagnostic criteria presented ab
 
 <!----------------------------------------------------------------------------->
 
-### Public Health Importance
+### Public health importance
 
 Dementia is quickly becoming a critically important public health issue. Despite the age-specific incidence and prevalence of dementia remaining relatively constant over time,[@prince2016] an ageing population looks set to create a dementia epidemic, particularly in Westernised countries. While approximately 525,000 patients have received a dementia diagnosis, the true number of people currently living with dementia in the UK is thought to be closer to 850,000, with this figure expected to double by 2040.[@baker2019] Globally, the prevalence of dementia is expected to reach 75 million by 2030.[@prince2016]
 
@@ -180,14 +188,26 @@ Triglycerides are the simplest and most common type of lipids found across the b
 
 <!-- Measurement error is a big deal for this thesis, as will discuss measurement error regarding how  different codelists/measurement of AD vs vascular dementia affect results in later chapters. -->
 
-Total serum cholesterol is a commonly used summary measure to estimate the total lipid burden in a patients blood, and  derived from the HDL-c, LDL-c and TG fractions using the Friedewald formula:[@friedewald1972]
+Total serum cholesterol (TC) is a commonly-used summary measure to estimate the total amount of lipid present in the blood. The measure is derived from measurements of the individual HDL-c, LDL-c and TG levels using the Friedwald formula:[@friedewald1972]
 
-$$TC \approx LDLc - HDLc - kTG$$ where $k$ is 0.20 if measurements are in mg/dl and 0.45 if in mmol/l.
+$$TC \approx LDLc - HDLc - kTG$$
+where $k$ is 0.20 if measurements are in milligrams per decilitre (_mg/dl_) and 0.45 if measured in millimole per litre (_mmol/l_).
 
-<!--- Include formula for working out total cholesterol and a table detailing the acceptable ranges. --->
+Widely used criteria for assessing the acceptable levels of different types of lipids are based on the National Cholesterol Education Program (NCEP)[@national2002third], and are outlined in Table \@ref(tab:lipidLevels-table).
 
-Elevated cholesterol in the bloodstream via high LDL-c levels leads to atherosclerosis, the build-up of fatty deposits in the blood vessels, which constrict blood flow and can lead to vascular complications. Alternatively, part of the deposit can detach from the artery walls, forming a clot that can lead to a heart attach or stroke. Globally, the prevalence of elevated total cholesterol, or hypercholestoreolemia, was estimated by the World Health Organisation to be approximately 40%.
+&nbsp;
 
+<!----------------------------------------------------------------------------->
+
+(ref:lipidLevels-caption) Classificaion of lipid levels according to the National Cholesterol Education Program guidelines.[@national2002third]
+
+```{r lipidLevels-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
+Elevated cholesterol in the bloodstream via high LDL-c levels leads to atherosclerosis, the build-up of fatty deposits in the blood vessels. These deposits constrict blood flow and can lead to vascular complications. Alternatively, part of the deposit can detach from the artery walls, forming a clot that can lead to a heart attach or stroke. Globally, the prevalence of elevated total cholesterol, or hypercholesterolemia, was estimated by the World Health Organisation to be approximately 40%.
 
 <!----------------------------------------------------------------------------->
 
@@ -201,7 +221,7 @@ Elevated cholesterol in the bloodstream via high LDL-c levels leads to atheroscl
 
 ### Statins
 
-Statins are by far the most common method of lipid regulation currently prescribed. Statins inhibit the conversion of 3-Hydroxy-3-Methylglutaryl-Coenzyme-A (HMG-CoA) into mevalonic acid,  by compeitivlely binding with HMG-CoA Reductase (HMG-CoA-R). This conversion is the key rate limiting step in the biochemical pathway that produces cholesterol (see Figure \ref(), allowing statins to reduce the production of LDL cholesterol.
+Statins are by far the most common method of lipid regulation currently prescribed. Statins inhibit the conversion of 3-Hydroxy-3-Methylglutaryl-Coenzyme-A (HMG-CoA) into mevalonic acid,  by competitively binding with HMG-CoA Reductase (HMG-CoA-R). This conversion limits the rate at which cholesterol (see Figure \ref(), can be produced, enabling statins to effectively reduce the production of LDL cholesterol.
 
 <!----------------------------------------------------------------------------->
 
@@ -213,41 +233,54 @@ Statins are by far the most common method of lipid regulation currently prescrib
 knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
 ```
 
+
 <!----------------------------------------------------------------------------->
 
 Statins can either be lipophilic or hydrophilic, with several of the common brands falling into each category. The distinction between the two is of particular importance in the assessment of their impact on dementia, as only lipophilic statins can cross the blood brain barrier. However, this is only applicable if the relationship between statins and dementia risk is independent of their impact on circulating blood levels. 
 
 ### Other lipid regulating agents (LRA)
 
-There are a range of other interventions that can be used to modify a persons lipid profile, though each act is slightly different ways. Most commonly though, these treatments are either used as adjunct (additional) treatments with statins therapy, or are used in situations where statins are contra-indicated or not tolerated. 
+There are a range of other interventions that can be used to modify a persons lipid profile, which each acting in slightly different ways. However, in general, these treatments are either used as adjunct (additional) treatments with statins therapy or are used in situations where statins are contra-indicated or not tolerated. 
 
 <!-- see https://www.heart.org/en/health-topics/cholesterol/prevention-and-treatment-of-high-cholesterol-hyperlipidemia/cholesterol-medications for information on the indications for treatment - could present as a table -->
 
-The most commonly used non-statin therapeutic is ezetimbibe, which prevents intestinal absorption of cholesterol. However, when used alone, it has a limited LDL-c lowering effect, leading to the creation of combined statin/ezetimbe therapies (both compounds contained in a single pill, as opposed to complimentary treatemnts).
+The most commonly used non-statin therapeutic is ezetimibe, which prevents intestinal absorption of cholesterol. However, when used alone, it has a limited LDL-c lowering effect, leading to the creation of combined statin/ezetimibe therapies (both compounds contained in a single pill, as opposed to complimentary treatments).
 
 A second example are fibrates, used to treat hypertriglyceridaemia by reducing production of triglyceride carrying compounds in the liver. They are commonly used in patients with mixed hyperlipidaemia if treatment with statins has failed to sufficiently control cholesterol levels. 
 
 Finally, PCSK9 inhibitors (or PCSK9i) are a relatively new treatment with strong lipid lowering effects, lauded as a potential alternative to statins.[@chaudhary2017] Their mechanism of action is to bind to and inhibit PCSK9, which breaks down LDL-c receptors on the surface of the liver, thus allowing more LDL-c to be internalised and broken down.
 
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:lipidTreatments-caption) Summary of available treatments for hyperlipidaemia.
+
+```{r lipidTreatments-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
 <!----------------------------------------------------------------------------->
 
 ## Evidence for the association between blood lipids and dementia {#evidence-association}
 
-In this section I provide an overview of the varying sources of evidence on the relationship between blood lipid levels and dementia risk.
+This section provides an overview of the varying sources of evidence on the relationship between blood lipid levels and dementia risk.
 
 <!----------------------------------------------------------------------------->
 ### Basic science
 
-A role for lipids in the aetiology of dementia is supported by both genetic linkage studies and functional cell biology studies. The generation of the amyloid plaques found in the brains of Alzheimer's patients is cholesterol dependent [CITE], while the most established genetic risk factor for late-onset dementia, apolipoprotein E (ApoE), is involved in cerebral cholesterol transport. Several other genes involved in cholesterol transport have also been found to be robustly associated with increased AD susceptibility [CITE].
+A role for lipids in the aetiology of dementia is supported by both genetic linkage studies and functional cell biology studies. The generation of the amyloid plaques found in the brains of Alzheimer's patients is cholesterol dependent [CITE], while the most established genetic risk factor for late-onset dementia, apolipoprotein E (ApoE), is involved in cerebral cholesterol transport. Several other genes involved in cholesterol transport have also been found to be associated with increased AD susceptibility [CITE].
 
 <!--- might need some more here --->
 
-Despite these encouraging results, evidence from the diverse range of epidemiological studies on this topic has to date been been contradictory.
+Despite these results, evidence from the diverse range of epidemiological studies on this topic has been inconclusive.
 
 <!----------------------------------------------------------------------------->
 ### Observational studies
 
-Several observational studies have examined the relationships between concentrations of serum lipids (total cholesterol (TC), low density lipoprotein cholesterol (LDL-c), high density lipoprotein cholesterol (HDL-c) and triglycerides) and both Alzheimer's disease and vascular dementia and reported widely different results. A high serum cholesterol concentration has been found to be associated with an increase in susceptibility to AD [8-13], though other studies have shown no association [14-17], or a reduced susceptibility [18,19]. With regards VaD, decreased levels of HDL-c appear to be associated with increased risk [18,20,21], while for LDL-c, studies have reported both positive and negative association [18,22].
+Several observational studies have examined the relationships between concentrations of serum lipids (total cholesterol (TC), low density lipoprotein cholesterol (LDL-c), high density lipoprotein cholesterol (HDL-c) and triglycerides) and both Alzheimer's disease and vascular dementia and reported extremely varied results. In some studies, a high serum cholesterol concentration has been found to be associated with an increase in susceptibility to AD [8-13], however others have shown no association [14-17], or a reduced susceptibility [18,19]. With regards VaD, decreased levels of HDL-c appear to be associated with increased risk [18,20,21], while for LDL-c, studies have reported both positive and negative association [18,22].
 
 <!--- Will need more here - particularly on the --->
 
@@ -409,7 +442,7 @@ Accepting that preprints represent an import source of information, their inclus
 
 <!----------------------------------------------------------------------------->
 
-### Summary level results vs individual patient data
+### Summary level results versus individual patient data
 
 If lipids are found to have a causal role in development of dementia, evidence-based preventative strategies would be informed by identifying the types of individuals who are most likely to receive benefit from treatment with lipid-modifying agents. 
 
@@ -421,13 +454,13 @@ This thesis will attempt to obtain the raw data from relevant primary studies id
 
 <!----------------------------------------------------------------------------->
 
-## Aims and Objectives of the thesis
+## Thesis overview
 
 ### Hypothesis
 
 Circulating blood lipid levels, and by extension treatments that modify blood lipid levels such as statins, affect the risk of subsequent dementia.
 
-### Aims and Objectives
+### Aims and objectives
 
 The specific research objectives that this thesis seeks to address are:
 
@@ -436,7 +469,7 @@ The specific research objectives that this thesis seeks to address are:
 * To examine whether there is evidence for an effect of lipid-regulating agents on dementia and related outcomes in a large scale population-based cohort, the Clinical Practice Research Datalink (CPRD)
 * To meta-analyse previously unexplored datasets as part of a individual participant data (IPD meta-analysis)
 
-### Thesis Structure
+### Structure
 
 Chapters are self-contained, presenting the methods and results of that specific research project. The are bookended by introductory and discussion sections which place the methods and results in context. Each chapter is prefaced by a "Lay" or plain English summary, developed with input from the Patient and Public Advisory Group (see Section \@ref(disc-PPI) for a discussion of the group's involvement and Appendix \@ref(appedix-ppi) for more detail on the group).
 

@@ -75,7 +75,8 @@ output:
     output_dir: "docs"
     toc: true
     toc_depth: 2
-    reference_docx: templates/word-styles-reference-01.docx   
+    reference_docx: templates/word-styles-reference-01.docx
+    number_sections: false   
 link-citations: true
 documentclass: book
 

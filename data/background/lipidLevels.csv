@@ -1,0 +1,15 @@
+Fraction,Measure,Classification
+LDL Cholesterol,<100,Optimal
+LDL Cholesterol,100-129,Near/above optimal
+LDL Cholesterol,130-159,Borderline high
+LDL Cholesterol,160-189,High
+LDL Cholesterol,>190,Very high
+HDL Cholesterol,<40,Low
+HDL Cholesterol,>60,High
+Triglycerides,<150,Normal
+Triglycerides,150-199,Borderline high
+Triglycerides,200-499,High
+Triglycerides,>500,Very high
+Total Cholesterol,<200,Desirable
+Total Cholesterol,200-239,Borderline high
+Total Cholesterol,>240,High

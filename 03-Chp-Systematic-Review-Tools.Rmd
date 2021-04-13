@@ -1,6 +1,6 @@
 ---
 bibliography: bibliography/references.bib
-csl: bibliography/bmj.csl
+csl: bibliography/nature.csl
 output:
   bookdown::pdf_document2:
     template: templates/brief_template.tex
