@@ -57,8 +57,8 @@ if(doc_type == "docx"){
     caption = "(ref:lipidTreatments-caption)",
     booktabs = TRUE
   ) %>%
-  column_spec(1:4, width = paste0(col_widths,"em")) %>%
-  column_spec(1, bold = TRUE) %>%  
+  column_spec(2:4, width = paste0(col_widths,"em")) %>%
+  column_spec(1, bold = TRUE,width = paste0(col_widths,"em")) %>%  
   row_spec(0, bold = TRUE) %>%
   row_spec(2:nrow(lipidTreatments_table)-1, hline_after = TRUE) %>%  
   kable_styling(latex_options = c("hold_position"))
