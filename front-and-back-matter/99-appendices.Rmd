@@ -235,11 +235,11 @@ if(doc.type == "docx"){
 ### Reception and Future Plans
 
 ```{r, echo = FALSE}
-robvisstats <- cranlogs::cran_downloads("robvis", from = "2019-11-22", to = format(Sys.Date(),"%Y-%m-%d") )
+robvisstats <- cranlogs::cran_downloads("robvis", from = "2019-11-22", to = "2021-12-01")
 
 robvis_downloads <- format(plyr::round_any(sum(robvisstats$count),100, f = floor), scientific = FALSE)
 
-date <- format(Sys.Date(),"%B %Y")
+date <- format(as.Date("2021-12-01"),"%B %Y")
 
 ```
 

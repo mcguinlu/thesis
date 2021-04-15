@@ -1,9 +1,7 @@
 tab:lipidLevels-table
 fig:statin-mechanisam
 tab:lipidTreatments-table
-fig:evidence-pyramid
-fig:mr-overview
-fig:medrxiv-growth
+tab:thesisOverview-table
 fig:medrxivr-sr
 fig:medrxivr-data-sources
 fig:prisma-flow-fig
@@ -26,6 +24,7 @@ underlying-pathologies
 diagnostic-criteria
 public-health-importance
 treatments
+risk-factors
 serum-lipids
 lipid-fractions
 statins
@@ -36,9 +35,9 @@ observational-studies
 randomised-controlled-trials
 mendelian-randomisation
 theoretical-framework-evidence-synthesis
-study-designs-and-sources-of-bias
+triangulating-across-study-designs
 diverse-sources-preprints
-summary-level-results-versus-individual-patient-data
+individual-patient-data-meta-analysis
 thesis-overview
 hypothesis
 aims-and-objectives
@@ -51,7 +50,7 @@ summary
 sys-rev-tools-heading
 main-points-to-be-removed
 lay-summary-1
-introduction-1
+sys-rev-tools-intro
 development
 success-criteria
 alternative-medrxivbiorxiv-interfaces
@@ -109,7 +108,7 @@ additional-ideas-2
 things-we-tried
 things-we-could-try
 lay-summary-3
-introduction-2
+introduction-1
 methods-1
 data-source
 study-design-and-protocol
@@ -163,7 +162,7 @@ code-lists
 other-appendix-heading
 software-used-to-create-this-thesis
 appendix-robvis
-introduction-3
+introduction-2
 development-1
 installation-1
 usage-1

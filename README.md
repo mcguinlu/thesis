@@ -1,6 +1,6 @@
 ## Things to check 
 
-- [ ] Check if references are duplicated via distinct bibtex keys.
+- [ ] Check if references are duplicated via distinct bibtex keys. || Sort out duplicated citation keys (e.g.[mcguinness2019a] vs [mcguinness2019b])
 - [ ] Check use of "we" vs "I"
 - [ ] Check each chapter has a Lay summary.
 - [ ] Quotes are rendering properly.

@@ -57,9 +57,14 @@ num_to_text <- function(x, start_of_sentence = FALSE)
   return(out)
 }
 
-check_words <- function(words = 100){
+check_words <- function(fp, words = 100){
   
-  t <- wordcountaddin::text_stats()
+  if (!hasArg(fp)) {
+    fp <- rstudioapi::getSourceEditorContext()$path
+    message("File: ",fp)
+  }
+  
+  t <- wordcountaddin::text_stats(fp)
   w <- as.numeric(stringr::str_extract(t[3], "[0-9]+"))
   n <- w + words
   
