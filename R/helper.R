@@ -64,8 +64,7 @@ check_words <- function(fp, words = 100){
     message("File: ",fp)
   }
   
-  t <- wordcountaddin::text_stats(fp)
-  w <- as.numeric(stringr::str_extract(t[3], "[0-9]+"))
+  w <- wordcountaddin::word_count(fp)
   n <- w + words
   
   message("Start:   ",format(Sys.time(),"%H:%M"),"\nCurrent: ",w,"\nNext:    ", n," <------\n")
@@ -82,9 +81,7 @@ pomodoro <- function(fp){
   
   while (i < 26) {
     
-    t <- wordcountaddin::text_stats(filename = fp)
-    
-    w <- as.numeric(stringr::str_extract(t[3], "[0-9]+"))
+    w <- wordcountaddin::word_count(filename = fp)
     
     message(i," - Current: ",w)
     
@@ -134,9 +131,9 @@ estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-"){
     stop("Lower CI is greater than upper CI")
   }
   
-  estimate <- stringr::str_trim(sprintf("%7.1f", estimate))
-  lci <- stringr::str_trim(sprintf("%7.1f", lci))
-  uci <- stringr::str_trim(sprintf("%7.1f", uci))
+  estimate <- stringr::str_trim(sprintf("%7.2f", estimate))
+  lci <- stringr::str_trim(sprintf("%7.2f", lci))
+  uci <- stringr::str_trim(sprintf("%7.2f", uci))
   z <- paste0(type, estimate, start, "95% CI: ", lci, to, uci, end)
   return(z)
 }

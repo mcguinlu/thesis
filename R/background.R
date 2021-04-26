@@ -1,22 +1,34 @@
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- diagnosticCriteria-setup
-
-diagnosticCriteria_table <- data.frame(stringsAsFactors = FALSE,
-                                       Disease = c("AD", "VaD"),
-                                       Criteria = c("NINCDS-ADRDA", "NINCDS-AIREN"),
-                                       Summary = c("Lorem ipsum", "Lorem ipsum 2"))
-
-diagnosticCriteria_caption <- "Diagnostic criteria used to diagnose different types of dementia"
-
 # ---- diagnosticCriteria-table
 
-knitr::kable(
-  diagnosticCriteria_table,
-  format = "latex",
-  caption = diagnosticCriteria_caption,
-  booktabs = TRUE
-) %>% kable_styling(latex_options = c("HOLD_position"))
+diagnosticCriteria_table <- read.csv("data/background/dementiaCriteria.csv") %>%
+  mutate("Major neurocognitive event (previously dementia)" = Dementia) %>%
+  select(Criterion, "Major neurocognitive event (previously dementia)")
 
+col_widths <- 32/ncol(diagnosticCriteria_table)
+
+if(doc_type == "docx") {
+  knitr::kable(diagnosticCriteria_table, caption = "(ref:diagnosticCriteria-caption)")
+} else{
+  table <- knitr::kable(
+    diagnosticCriteria_table,
+    format = "latex",
+    caption = "(ref:diagnosticCriteria-caption)",
+    caption.short = "(ref:diagnosticCriteria-scaption)",
+    align = "cl",
+    booktabs = TRUE
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(2, width = paste0(27,"em")) %>%
+    column_spec(1, bold = TRUE,  width = paste0(5,"em")) %>%
+    row_spec(2:nrow(diagnosticCriteria_table)-1, hline_after = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position")) %>%
+    kableExtra::footnote(threeparttable = TRUE, symbol = "From DSM: Evidence of decline is based on concern of the individual, a knowledgeable informant, or the clinician that there has been a significant decline in cognitive function and a substantial impairment in cognitive performance, preferably documented by standardized neuropsychological testing or, in its absence, another quantified clinical assessment.")
+  
+  table <- gsub("textbackslash\\{\\}newline","\\newline",table)
+  
+  table
+}
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- lipidLevels-table
@@ -28,7 +40,7 @@ lipidLevels_table <- read.csv("data/background/lipidLevels.csv") %>%
 if(doc_type == "docx"){
   knitr::kable(lipidLevels_table,caption = "(ref:lipidLevels-caption)")
 }else{
-  knitr::kable(
+  table <- knitr::kable(
     lipidLevels_table,
     format = "latex",
     caption = "(ref:lipidLevels-caption)",
@@ -38,6 +50,10 @@ if(doc_type == "docx"){
     collapse_rows() %>%
     row_spec(0, bold = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position")) 
+  
+  table <- gsub("textbackslash\\{\\}newline","\\newline",table)
+  
+  table
 }
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- lipidTreatments-table

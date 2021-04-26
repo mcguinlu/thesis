@@ -1,15 +1,12 @@
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- smeeth-comparison-setup
+# ---- smeethComparison-table
 
-smeeth-comparison_table <- mtcars
+smeethComparison_table <- mtcars[1:4,1:3]
 
-smeeth-comparison_caption <- "Caption"
-
-# ---- smeeth-comparison-table
-
-knitr::kable(
-  smeeth - comparison_table,
-  format = "latex",
-  caption = smeeth - comparison_caption,
-  booktabs = TRUE
-) %>% kable_styling(latex_options = c("striped", "hold_position"))
+if(doc_type == "docx"){
+knitr::kable(smeethComparison_table,caption = "(ref:smeethComparison-caption)")
+}else{
+knitr::kable(smeethComparison_table, format = "latex", caption = "(ref:smeethComparison-caption)", caption.short = "(ref:smeethComparison-scaption)", booktabs = TRUE) %>% 
+row_spec(0, bold = TRUE) %>%
+kable_styling(latex_options = c("HOLD_position"))
+}
