@@ -77,7 +77,7 @@ Cross reference here aswell re: the lack of information on Vascular dementia and
 
 The Clinical Practice Research Datalink (CPRD) is a large, population-based, electronic health record database.[@herrett2015] It contains the primary care records for 
 
-Originally termed the GPRD (General Practice Research Database), 
+Originally termed the General Practice Research Database, 
 
 The
 
@@ -105,6 +105,8 @@ These index events allowed us to define a population of participants who were ei
 
 The index date for a participant was defined as the date where the first relevant code or test result was recorded on their clinical record, and participants were followed up until the earliest of: an outcome of interest; death; end of follow-up (29 February 2016); or last registration date with their GP practice. Participants were removed from our sample if they were less than 40 years of age, had less than 12 months of "research quality" data, were simultaneously prescribed more than one lipid-regulating agent (due to the difficult of assigning these to a single exposure group), or were diagnosed with dementia before or on the date of the index event. 
 
+<!--- Insert flow-chart here --->
+
 &nbsp;
 
 ### Exposures
@@ -119,8 +121,13 @@ A participant’s drug class was assigned based on their first recorded prescrip
 
 <!--- Include short bit on follow-up here, describing how and why it was defined --->
 
-
 We considered five outcomes as part of this analysis: probable  Alzheimer’s disease, possible Alzheimer’s disease, vascular dementia, other dementia, and a composite all-cause dementia outcome (Supplementary Figure 1). When two or more outcomes were coded in a participant’s clinical record, a decision tree was used to differentiate between them (Supplementary Figure 1). The diagnosis date of the outcome was determined by the first record of a relevant code.
+
+Participants were followed up, and were censored at the earliest of date of diagnosis, death, date of transfer out of the study cohort or end of follow-up ( <!--- Get date here ---> )
+
+_As a positive control outcome, we included cornonary artery disease. Statins have a known effect on this outcome on the basis of randomised controlled trials._
+
+We also used a negative control of backpain to investigate the potential for residual confounding. 
 
 &nbsp;
 
@@ -130,8 +137,9 @@ A range of additional variables were included in the analysis, intended to addre
 
 <!--- Need a lot more here - see other thesis for example of how covariates are described --->
 
-The analysis was adjusted for a range of baseline covariates including sex, grouped year of entry into the cohort (<2000, 2000-2004, 2005-2009, >2010),
+The analysis was adjusted for a range of baseline covariates including sex,
 
+grouped year of entry into the cohort (<2000, 2000-2004, 2005-2009, >2010),
 
 Charlson co-morbidity index, 
 
@@ -149,32 +157,45 @@ baseline total cholesterol,
 
 and history of cardiovascular disease, coronary bypass surgery, coronary artery disease, peripheral arterial disease, hypertension, chronic kidney disease, and Type 1 and Type 2 diabetes. 
 
-All covariates were determined at index and definitions for each can be found in Supplementary Table 1.
+All covariates were determined at index and definitions for each can be found in the archived data repository reflecting this study <!--- link to Zenodo here --->
 
+&nbsp; 
 
-### Missing data
+<!----------------------------------------------------------------------------->
+
+### Missing data 
+
+<!--- Review materials from multiple imputation course --->
+
 
 Missing data was handled using a multiple imputation approach. Variables with missing observations were identified, and 
 
-Binary variables were modelled using a
+<!-- Binary variables were modelled using a -->
 
-continuo
+<!-- continuos -->
 
-As per best practice, all other variables, including the out 
+<!-- As per best practice, all other variables, including the out  -->
 
-The MICE command in Stata was used
+<!-- The MICE command in Stata was used -->
 
+In the case of missing data, we used multiple imputation by chained equations (MICE) in STATA to create 20 imputed datasets. All covariates included in the analytic model were also included in the imputation model.
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
 
 ### Time axis
 
-In Cox models, there is the option to
+<!-- In Cox models, there is the option to -->
 
-Age vs time-since entry
+<!-- Age vs time-since entry -->
 
-Expand on use of age as the time scale, but describe the problems this introduced
+<!-- Expand on use of age as the time scale, but describe the problems this introduced -->
 
+To address the potential for immortal time bias, we employed a time-varying indicator of treatment status to correctly allocate time-at-risk to the exposed and unexposed groups.[@levesque2010] We ran two models, one unadjusted except for age, which was captured by using the participant's age as the time axis for the model,[@lamarca1998; @gail2009; @pencina2007] and a second adjusted for the additional covariates described above. Additional analyses stratified by outcome and drug class were also performed.
 
 &nbsp;
+<!----------------------------------------------------------------------------->
 
 ### Estimation methods
 
@@ -197,7 +218,7 @@ As the values of $b_i$ increases, value of $exp(b_i)$ (i.e. the hazard ratio) in
 
 __Bit on why Cox models are slightly different from others, due to proportional hazards assumptions__
 
-Hazard rations are
+Hazard ratios are
 
 Test for non-proportionality are therefore very important, as models which fail
 
@@ -260,7 +281,8 @@ However, this is not the case. Baseline cholesterol level are predicted to be a 
 
 As expected, in a confirmatory analysis using lipid levels, there was no association between *the most recent total cholesterol or LDL-cholesterol reading in the CPRD and the treatment, indicating that adjusting for this variable was not required.*
 
-<!--- This hasn't been done! --->
+<!--- This hasn't been done! Plus I do not think this is the case --->
+
 
 ### Replicating other analytical strategies
 
@@ -288,7 +310,6 @@ The reason for the discrepancy in terms of the number of Alzheimer cases as a pe
 
 Using the Smeeth code-list, we get a similar breakdown of cases to that paper, with Alzheimer’s disease being a lot less frequent than when using our code-lists (which is not surprising based on the points above). <!-- This, in addition to unexplained statistical issues such as adjusting for post-baseline covariates, means I am sceptical of the value of comparing our findings with Smeeth. -->
 
-
 Replicating a matched analysis a la Smeeth et al 2010 - though questions were raised as to how they had actually done the analysis (they did not match on propensity score, they simply adjusted for it - find paper that explores 4 ways of accounting for PS and shows this is the worst), they adjusted for things likely to be on the causal pathway, and they saw a huge change in direction for MI pre- vs post- adjustment.
 
 &nbsp;
@@ -302,7 +323,35 @@ Replicating a matched analysis a la Smeeth et al 2010 - though questions were ra
 ```
 <!----------------------------------------------------------------------------->
 
+## Results
+
 &nbsp;
+<!----------------------------------------------------------------------------->
+
+### Patient characteristics
+
+&nbsp;
+<!----------------------------------------------------------------------------->
+
+### Missing data
+
+### Primary analysis
+
+### Sensitivity analyses
+
+By pregnancy
+
+By age-at-entry
+
+By statin type (lipo vs hydrophilic)
+
+### Controls 
+
+Backpain
+
+Coronary artery disease
+
+
 
 ## Discussion
 
@@ -386,7 +435,8 @@ This study was reported in line with the Strengthening the Reporting of Observat
 
 Reporting guidelines do not always work, but help to guide
 
-All code and summary statistics (i.e. the tables presented in this chapter, plus summary tables of effect estimates) are readily available in machine readable formats, without any formatting, from the Github repository for this project. 
+All code and summary statistics (i.e. the tables presented in this chapter, plus summary tables of effect estimates) are readily available in machine readable formats, without any formatting (i.e. as comma separated values, or CSV, files) from the Github repository for this project. <!--- Will need to cite this, and may need to archive on Zenodo. --->
+
 
 &nbsp;
 

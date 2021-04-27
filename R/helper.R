@@ -72,28 +72,43 @@ check_words <- function(fp, words = 100){
 
 pomodoro <- function(fp){
   
+  # Get file path ----
+    
   if (!hasArg(fp)) {
     fp <- rstudioapi::getSourceEditorContext()$path
     message("File: ",fp)
   }
+
+  # Fail early if wrong file type
+  sink <- wordcountaddin::word_count(filename = fp)
   
+  # Add job
+  # job_id <- rstudioapi::jobAdd("Long Pomodoro", progressUnits = 25L)   
+      
   i <- 0
+  
+  # rstudioapi::jobAddOutput(job_id, paste0("File: ",fp))
+  
+  # Run Long Pomodoro
   
   while (i < 26) {
     
     w <- wordcountaddin::word_count(filename = fp)
+    
+    # rstudioapi::jobAddOutput(job_id, paste0(i," - Current: ",w,"\n"))
     
     message(i," - Current: ",w)
     
     i <- i +1
     
     Sys.sleep(60)
+    
+    # rstudioapi::jobSetProgress(job_id, i-1)
   }
   
   beepr::beep(sound = "fanfare")
   
-  rstudioapi::showDialog("Pomodoro done!", "Take a break . . . ")
-
+  rstudioapi::showDialog("Pomodoro done!", paste0("Take a break . . . \n Final count: ", w))
 }
 
 
@@ -161,3 +176,4 @@ end_of_day <- function(words = NULL) {
   gert::git_push()
   
 }
+

@@ -15,6 +15,10 @@ both:
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook", output_dir = "docs")'
 	Rscript -e 'browseURL(here::here("docs","index.html"))'
 
+chapter:
+	Rscript -e 'source(here::here("R","helper.R")); make_chapter()'
+	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc front-and-back-matter/abbreviations.aux
+
 gitbook:
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook", output_dir = "docs")'
 	Rscript -e 'browseURL(here::here("docs","index.html"))'
