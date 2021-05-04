@@ -70,6 +70,10 @@ check_words <- function(fp, words = 100){
   message("Start:   ",format(Sys.time(),"%H:%M"),"\nCurrent: ",w,"\nNext:    ", n," <------\n")
 }
 
+pomodoro_bg <- function(){
+  job::job({pomodoro()},import = c(pomodoro))  
+}
+
 pomodoro <- function(fp){
   
   # Get file path ----
@@ -177,3 +181,7 @@ end_of_day <- function(words = NULL) {
   
 }
 
+
+hold <- function(){
+  "**PLACEHOLDER**"
+}

@@ -359,13 +359,13 @@ An investigation of their relationship}
 
 \adjustmtc
 
-Word count: 17751
+Word count: 18341
 
-Days: 154
+Days: 161
 
-Words behind: -2767
+Words behind: -2856
 
-Words today: 165
+Words today: 590
 
 ~
 
@@ -1202,7 +1202,7 @@ For example, the results of our simple search above can be exported to the \text
 \hypertarget{reception-and-future-plans}{%
 \subsection{Reception and future plans}\label{reception-and-future-plans}}
 
-The tool has been well received by the community (as of December 2021, \texttt{medrxivr} has been downloaded more than 3100 times), and several use cases have been reported. It has been used to investigate the role of preprints in the response to the 2019 coronavirus outbreak,\textsuperscript{\protect\hyperlink{ref-kodvanj2020}{122}} perform searches of preprints as part of a systematic review,\textsuperscript{\protect\hyperlink{ref-noone2020}{123},\protect\hyperlink{ref-grassly2020}{124}} and examine how data-sharing behaviour is affected by journal policies (see \ref{thesis-output}).\textsuperscript{\protect\hyperlink{ref-mcguinness2020c}{125}}
+The tool has been well received by the community (as of December 2021, \texttt{medrxivr} has been downloaded more than 3200 times), and several use cases have been reported. It has been used to investigate the role of preprints in the response to the 2019 coronavirus outbreak,\textsuperscript{\protect\hyperlink{ref-kodvanj2020}{122}} perform searches of preprints as part of a systematic review,\textsuperscript{\protect\hyperlink{ref-noone2020}{123},\protect\hyperlink{ref-grassly2020}{124}} and examine how data-sharing behaviour is affected by journal policies (see \ref{thesis-output}).\textsuperscript{\protect\hyperlink{ref-mcguinness2020c}{125}}
 
 The package was been onboarded into the rOpenSci suite of packages, a collection of ``carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web''.\textsuperscript{\protect\hyperlink{ref-boettiger2015}{126}} As part of this process, following rigorous peer-review, an associated article introducing the tool was published by the Journal of Open Source Software.\textsuperscript{\protect\hyperlink{ref-mcguinness2020a}{127}} The entire review discussion is publicly available and can be viewed online.\footnote{\url{https://github.com/ropensci/software-review/issues/380}} The tool has also been well received by the open-source community, demonstrated by the engagement of other developers in contributing to important new functionality and suggesting bug-fixes.
 
@@ -1722,7 +1722,7 @@ Lack of evidence for the association of statins on vascular dementia risk
 
 Large scale databases advantages over other means
 
-Cross reference here aswell re: the lack of information on Vascular dementia and the need for analyses at different sources of bias.
+Cross reference here as well re: the lack of information on Vascular dementia and the need for analyses at different sources of bias.
 
 \hypertarget{methods-1}{%
 \section{Methods}\label{methods-1}}
@@ -1757,8 +1757,6 @@ Participants were included in our study cohort if their record contained any of 
 These index events allowed us to define a population of participants who were either at risk of hypercholesterolemia, as indicated by the elevated total or LDL cholesterol test results, or had already been diagnosed with it, as indicated by a diagnostic code/related prescription. This approach was employed in an attempt to reduce confounding by indication that we would expect to observe in the full cohort, because individuals not prescribed lipid-regulating agents likely be less healthy across a range of variables than those prescribed lipid-regulating agents, leading to a biased association been lipid-regulating agent use and dementia. Conditioning entry into the study into the study on being either ``at-risk'' or already diagnosed with hypercholesterolemia attempts to mitigate this bias.
 
 The index date for a participant was defined as the date where the first relevant code or test result was recorded on their clinical record, and participants were followed up until the earliest of: an outcome of interest; death; end of follow-up (29 February 2016); or last registration date with their GP practice. Participants were removed from our sample if they were less than 40 years of age, had less than 12 months of ``research quality'' data, were simultaneously prescribed more than one lipid-regulating agent (due to the difficult of assigning these to a single exposure group), or were diagnosed with dementia before or on the date of the index event.
-
-~
 
 \hypertarget{exposures}{%
 \subsection{Exposures}\label{exposures}}
@@ -1941,6 +1939,7 @@ The reason for the discrepancy in terms of the number of Alzheimer cases as a pe
 • Several of the codes in our ``Possible Alzheimer's'' code list are included in the ``Other dementia'' code list used by Smeeth.
 
 Using the Smeeth code-list, we get a similar breakdown of cases to that paper, with Alzheimer's disease being a lot less frequent than when using our code-lists (which is not surprising based on the points above).
+IN addition, this analysis used propensity s. IN addition, an analytical approach which appeared to adjust for key variables likely to be on the analytical pathway between
 
 Replicating a matched analysis a la Smeeth et al 2010 - though questions were raised as to how they had actually done the analysis (they did not match on propensity score, they simply adjusted for it - find paper that explores 4 ways of accounting for PS and shows this is the worst), they adjusted for things likely to be on the causal pathway, and they saw a huge change in direction for MI pre- vs post- adjustment.
 
@@ -1971,32 +1970,136 @@ Hornet 4 Drive & 21.4 & 6 & 258\\
 
 ~
 
+\hypertarget{patient-sample}{%
+\subsection{Patient sample}\label{patient-sample}}
+
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/cohort_attrition} \caption[Attrition of CPRD participants]{\textbf{Attrition of CPRD participants as the eligibility criteria were applied:}}\label{fig:cprdFlowchart}
+\end{figure}
+
+~
+
+~
+
 \hypertarget{patient-characteristics}{%
 \subsection{Patient characteristics}\label{patient-characteristics}}
+
+Of the 3,179,733 participants included in our extract, 1,711,381 met the inclusion criteria (See Supplementary Figure 2 for the attrition flowchart), with a total follow-up of 11,091,437 patient years at risk. The median age at index was 57 years (IQR:48-67) and participants were followed up for a median of 5.9 years (IQR:2.7-9.7). During follow-up, an all-cause dementia diagnosis was recorded for 42,313 patients (12,751 probable AD, 10,107 possible AD, 8,542 vascular dementia, 10,913 other dementia; see Supplementary Figure 1). The distribution of baseline characteristics across the drug classes can be seen in Table \ref{tab:cprdCharacteristics-table}.
+
+~
+
+\blandscape
+
+
+
+
+
+\begin{table}[H]
+
+\caption[Patient characteristics by drug class]{\label{tab:cprdCharacteristics-table}Patient characteristics by drug class}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{threeparttable}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{10em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}}
+\toprule
+\textbf{ } & \textbf{Whole Sample} & \textbf{No LRA} & \textbf{Statins} & \textbf{Bile acid sequestrants} & \textbf{Ezetimibe} & \textbf{Ezetimibe \& Statins} & \textbf{Fibrates} & \textbf{Nicotinic acid groups} & \textbf{Omega-3 Fatty Acid Groups}\\
+\midrule
+\textbf{Sample size} & 1711381 & 1118651 & 581499 & 5350 & 753 & 126 & 3851 & 164 & 987\\
+\midrule
+\textbf{Index year \newline(median)} & 2006 & 2007 & 2004 & 2005 & 2004 & 2005 & 2001 & 2001 & 2005\\
+\midrule
+\textbf{Female} & 53.1\% (908324) & 56.1\% (627791) & 47.2\% (274402) & 66.5\% (3560) & 54.4\% (410) & 53.2\% (67) & 38.6\% (1486) & 54.9\% (90) & 52.5\% (518)\\
+\midrule
+\textbf{Age} & 57 & 54 & 62 & 57 & 60 & 57 & 58 & 62 & 56\\
+\midrule
+\textbf{CAD} & 0.4\% (6956) & 0.1\% (640) & 1.1\% (6238) & 0.1\% (6) & 0.9\% (7) & 0.0\% (0) & 1.4\% (52) & 0.0\% (0) & 1.3\% (13)\\
+\midrule
+\addlinespace
+\textbf{CBS} & 0.3\% (5636) & 0.1\% (737) & 0.8\% (4810) & 0.1\% (4) & 0.3\% (2) & 0.0\% (0) & 2.0\% (77) & 0.0\% (0) & 0.6\% (6)\\
+\midrule
+\textbf{CVD} & 2.1\% (35196) & 1.1\% (12260) & 3.9\% (22635) & 1.6\% (86) & 2.5\% (19) & 2.4\% (3) & 4.4\% (169) & 4.3\% (7) & 1.7\% (17)\\
+\midrule
+\textbf{Charlson (ever > 0)} & 30.5\% (522725) & 25.3\% (283183) & 40.3\% (234530) & 42.2\% (2258) & 41.3\% (311) & 24.6\% (31) & 50.5\% (1945) & 43.3\% (71) & 40.1\% (396)\\
+\midrule
+\textbf{IMD-2010 (median)} & 9 & 8 & 9 & 8 & 9 & 13 & 10 & 10 & 10\\
+\midrule
+\textbf{Consulation rate (mean/SD)} & 5.4 (5.4) & 5.0 (5.0) & 6.2 (6.0) & 8.5 (7.3) & 7.3 (6.6) & 4.8 (4.3) & 7.0 (6.0) & 9.2 (7.8) & 8.0 (8.0)\\
+\midrule
+\addlinespace
+\textbf{Alcohol (ever)} & 85.9\% (1469813) & 86.5\% (967461) & 84.8\% (493036) & 82.9\% (4436) & 84.2\% (634) & 88.1\% (111) & 82.8\% (3188) & 83.5\% (137) & 82.1\% (810)\\
+\midrule
+\textbf{Smoking (ever)} & 51.1\% (873795) & 47.1\% (526337) & 58.7\% (341051) & 55.3\% (2960) & 58.0\% (437) & 59.5\% (75) & 60.3\% (2322) & 52.4\% (86) & 53.4\% (527)\\
+\midrule
+\textbf{BMI (mean/SD)} & 27.0 (5.3) & 26.7 (5.2) & 27.7 (5.2) & 26.8 (5.8) & 28.0 (5.7) & 28.2 (4.8) & 28.9 (5.2) & 26.5 (5.0) & 26.8 (5.4)\\
+\midrule
+\textbf{PAD} & 0.7\% (12622) & 0.4\% (4234) & 1.4\% (8241) & 0.9\% (46) & 0.8\% (6) & 0.8\% (1) & 1.9\% (74) & 6.1\% (10) & 1.0\% (10)\\
+\midrule
+\textbf{Hypertension} & 15.9\% (272095) & 11.6\% (129624) & 24.1\% (140431) & 12.5\% (667) & 22.8\% (172) & 25.4\% (32) & 25.5\% (981) & 21.3\% (35) & 15.5\% (153)\\
+\midrule
+\addlinespace
+\textbf{Total cholesterol (mean/SD)} & 5.8 (10.1) & 5.5 (6.3) & 6.3 (15.5) & 5.6 (1.0) & 7.3 (27.0) & 6.8 (1.4) & 6.6 (5.7) & 5.6 (1.1) & 5.8 (1.4)\\
+\midrule
+\textbf{CKD} & 0.1\% (1319) & 0.1\% (828) & 0.1\% (482) & 0.1\% (5) & 0.1\% (1) & 0.0\% (0) & 0.0\% (0) & 0.0\% (0) & 0.3\% (3)\\
+\midrule
+\textbf{Type 1 Diabetes} & 0.2\% (3974) & 0.1\% (997) & 0.5\% (2926) & 0.3\% (14) & 0.8\% (6) & 0.8\% (1) & 0.8\% (29) & 0.0\% (0) & 0.1\% (1)\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Abbreviations: } 
+\item LRA - Lipid regulating agent;  IMD - Index of Multiple Deprivation; BMI - Body Mass Index; CAD - Coronary Arterial Disease; CBS - Coronary Bypass Surgery; CVD - Cardiovascular disease; PAD - Peripheral arterial disease; CKD - Chronic Kidney Disease
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\elandscape
+
+~
+
+A substantial majority (98.11\%) of participants prescribed a lipid-regulating agent were prescribed a statin. We excluded the ``Ezetimibe and statins'' and ``Nicotinic acid groups'' classes from subsequent analysis based on the extremely small number of participants in these groups (Table \ref{tab:cprdCharacteristics-table}). The ``Ezetimibe and statins'' treatment group represent those prescribed a treatment containing both ezetimibe and statins, rather than those where the two treats were prescribed concurrently.
 
 ~
 
 \hypertarget{missing-data-1}{%
 \subsection{Missing data}\label{missing-data-1}}
 
+Full covariate information was available for 773,305 participants (45.2\%). Five key variables had some missing data: IMD 2010 score, a proxy for socioeconomic position that is measured as twentiles with 1 indicating the least deprived and 20 indicating the most deprived, was missing for 636,394 participants (37.2\%), because it is only recorded for English practices; alcohol status was missing for 273,918 participants (16\%); smoking status was missing for 85,862 participants (5\%); BMI, or a calculated BMI from height and weight measurements, was missing for 270,923 participants (15.8\%), and baseline total cholesterol was missing for 148,588 participants (8.7\%).
+
 \hypertarget{primary-analysis}{%
 \subsection{Primary analysis}\label{primary-analysis}}
+
+All results described below are from the fully adjusted model. The results of the age-only model are presented in Supplementary Figure 3, and demonstrate that adjustment for additional covariates had a minimal effect.
+
+~
+
+\textbf{Alzheimer's disease}
+
+As shown in Figure \ref{fig:fig-results}, our results show no effect of lipid-regulating agents on probable (HR: 0.99, 95\%CI: 0.95-1.02) and possible (HR: 0.97, 95\%CI: 0.93-1.01) Alzheimer's disease when compared with no treatment, with the exception of fibrates on probable Alzheimer's disease (HR: 1.29, 95\%CI: 1.09-1.53).
+
+~
+
+\textbf{Non-Alzheimer's disease dementias}
+
+In contrast to the findings for Alzheimer's disease outcomes, lipid-regulating agents were associated with an increased risk of a subsequent diagnosis of vascular dementia (HR: 1.8, 95\%CI: 1.72-1.89) or other dementia (HR: 1.19, 95\%CI: 1.15-1.24). Again this effect was driven mainly by the statin subgroup, but there was some evidence that ezetimibe was associated with an increased risk of vascular (HR: 2.35, 95\%CI: 1.12-4.93) and other (HR: 1.9, 95\%CI: 1.02-3.54) dementia.
+
+~
+
+\textbf{All-cause dementia}
+
+For the composite all-cause dementia outcome, we found treatment with a lipid-regulating agent was associated with a slightly increased risk (HR: 1.17, 95\%CI: 1.14-1.19), but the magnitude of the association was not as extreme as that observed for the vascular dementia subgroup. There was also some evidence that fibrates were associated with increased risk of all-cause dementia (HR: 1.29, 95\%CI: 1.09-1.53).
 
 \hypertarget{sensitivity-analyses}{%
 \subsection{Sensitivity analyses}\label{sensitivity-analyses}}
 
-By pregnancy
-
-By age-at-entry
-
-By statin type (lipo vs hydrophilic)
+When stratifying based on year of entry to the cohort, we observed no variation in risk by time period in any subgroup except for probable Alzheimer's disease (Appendix XXX). Removing participants coded as female aged 55 and under at index from our analysis had minimal effect on our estimates (Appendix XXX).
 
 \hypertarget{controls}{%
 \subsection{Controls}\label{controls}}
 
-Backpain
-
-Coronary artery disease
+\emph{TBC - supervisors to email about it}
 
 \hypertarget{discussion-2}{%
 \section{Discussion}\label{discussion-2}}
@@ -2012,6 +2115,8 @@ Lipid-regulating agents had no effect on probable and possible Alzheimer's when 
 \subsection{Comparison to other literature}\label{comparison-to-other-literature}}
 
 Much of the existing literature focuses on the association of statins alone with neurodegenerative outcomes, with other lipid-regulating agents being grouped as ``non-statin cholesterol-lowering drugs''.\textsuperscript{\protect\hyperlink{ref-ancelin2012}{175}} This echoes the distribution of participants among subgroups in our analysis, with the statin subgroup including almost all participants.
+
+Several previous studies have demonstrated that statins are the overwhelmingly favoured methods of cholesterol control. \textbf{{[}CITATION NEEDED{]}}
 
 ~
 
@@ -2081,22 +2186,26 @@ Finally, there is also the potential for reverse causation in this analysis. Dem
 \hypertarget{enabling-easy-synthesis}{%
 \subsection{Enabling easy synthesis}\label{enabling-easy-synthesis}}
 
-In light of my own experiences in attempting to extract information for papers assessing prevantive measures, I attempted to document
+In light of my own experiences in attempting to extract information for papers assessing preventative measures, as documented in Section @ref(), the outputs from this analysis are described in detail in both. IN line with this, this analyses has been reported in line with the Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) reporting guidelines\textsuperscript{\protect\hyperlink{ref-vandenbroucke2007}{186}} (see Appendix @ref() for the STROBE checklist)
 
-This study was reported in line with the Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) reporting guidelines\textsuperscript{\protect\hyperlink{ref-vandenbroucke2007}{186}} (see Appendix @ref() for the STROBE checklist)
+Reporting guidelines do not always work, but help to guide accurate rep
 
-Reporting guidelines do not always work, but help to guide
-
-All code and summary statistics (i.e.~the tables presented in this chapter, plus summary tables of effect estimates) are readily available in machine readable formats, without any formatting (i.e.~as comma separated values, or CSV, files) from the Github repository for this project.
+All code and summary statistics (i.e.~the tables presented in this chapter, plus summary tables of effect estimates) are readily available in machine readable formats (i.e.~as comma separated values, or CSV, files) from the Github repository for this project.
 
 ~
 
 \hypertarget{conclusions}{%
 \subsection{Conclusions}\label{conclusions}}
 
-We have provided new evidence on the potential repurposing of lipid-regulating agents for the prevention of all-cause dementia, Alzheimer's disease, vascular dementia, and other dementia. We found use of lipid-regulating agents not associated with probable or possible Alzheimer's disease, but were associated with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations were driven by those observed in the statin subgroup, which comprised the majority of participants in our cohort.
+This chapter has provided new evidence on the potential repurposing of lipid-regulating agents for the prevention of all-cause dementia, Alzheimer's disease, vascular dementia, and other dementia. It found use of lipid-regulating agents associated with a small reduction in probable or possible Alzheimer's disease, and were associated with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations were driven by those observed in the statin subgroup, which comprised the majority of participants in our cohort.
 
-We have attempted to account for important sources of bias in our analysis and provide a comparison with other available literature. However, there is a strong potential for unmeasured confounding, misclassification and reverse causation, which raises questions about our findings, in particular the unexpected increase in risk of vascular dementia associated with statin use. Future research should aim to address these potential biases and, while it may be costly in terms of time and resources, a large scale, long-term randomized controlled trial would provide useful additional information on the effect of lipid-regulating agents on the risk of dementia and related outcomes.
+This chapter attempted to account for important sources of bias and provide a comparison with other available literature, as identified in the systematic review presented in Chapter \ref{sys-rev-heading}. However, there is a strong potential for unmeasured confounding, misclassification and reverse causation, which raises questions about our findings, in particular the unexpected increase in risk of vascular dementia associated with statin use.
+
+Given the observed increased association of statins in other
+
+While these
+
+Future research should aim to address these potential biases and, while it may be costly in terms of time and resources, a large scale, long-term randomized controlled trial would provide useful additional information on the effect of lipid-regulating agents on the risk of dementia and related outcomes.
 
 \newpage
 
@@ -3377,7 +3486,7 @@ psize & X &  & Defines the size of the points in the traffic light plot. Default
 \hypertarget{reception-and-future-plans-1}{%
 \subsection{Reception and Future Plans}\label{reception-and-future-plans-1}}
 
-As of December 2021, \texttt{robvis} has been downloaded more than 11600 times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{227}}
+As of December 2021, \texttt{robvis} has been downloaded more than 11800 times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{227}}
 
 While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{228}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{210}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
 
