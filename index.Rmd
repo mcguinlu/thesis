@@ -85,6 +85,7 @@ documentclass: book
 ```{r create_chunk_options, include=FALSE, eval=knitr::is_latex_output()}
 source('scripts_and_filters/create_chunk_options.R')
 source("R/helper.R")
+options(scipen=999)
 ```
 
 <!--

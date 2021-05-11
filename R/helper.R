@@ -29,7 +29,11 @@ gen_rmd_citation <- function(filename = "pkg-refs.bib") {
 
 # Place comma at thousand position
 # Taken from https://github.com/thomasbattram/thesis
-comma <- function(x){format(x, digits = 2, big.mark = ",")}
+comma <- function(x){
+  
+  format(x, digits = 2, big.mark = ",")
+  
+  }
 
 # Apply comma to all values in a table
 # Taken from https://github.com/thomasbattram/thesis
@@ -184,4 +188,15 @@ end_of_day <- function(words = NULL) {
 
 hold <- function(){
   "**PLACEHOLDER**"
+}
+
+todo <- function(fp){
+  
+  if (!hasArg(fp)) {
+    fp <- rstudioapi::getSourceEditorContext()$path
+    message("File: ",fp)
+  }
+  
+  todor::todor_file(fp)
+  
 }

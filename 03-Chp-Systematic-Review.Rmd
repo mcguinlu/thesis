@@ -32,6 +32,7 @@ knitr::read_chunk("R/Chp2-Systematic-Review.R")
 
 * Smeet et al. reference in the CPRD analysis
 * Larsson - 10.1136/bmj.j5375 [@larsson2017b]
+* Statins and the risk of dementia Jick
 
 ## Lay summary
 
@@ -342,8 +343,6 @@ Through snowballing and other measures, we identified at least one Mendelian ran
 
 Is it a big issue that the studies have the same underlying datasets? <!--- see discussion from Matt Lee thesis, in email --->
 
-
-
 ### Comments on the process
 
 Systematic reviews should not be performed as part of a thesis, without suitable support and resourcing guaranteed. Assumption that everyone does a systematic review (without risk of bias assessments, inclusion of all literature, searching for other reviews) is foolish.
@@ -370,6 +369,9 @@ On further investigation, X of these preprints were subsequently published since
 ### Open data sharing {#sys-rev-open-data}
 
 <!--- How many of the included studies accurately reported the diagnostic criteria for EHR? Cross link with section in CPRD analysis --->
+
+<!--- Comment here on issues involved in extracting data --->
+
 
 
 

@@ -24,6 +24,27 @@ p1 <- read.csv(here::here("data","cprd","regression_results_p1.csv")) %>%
 p1$outcome <- factor(p1$outcome, levels = c("Any dementia", "Probable AD", "Possible AD", "Vascular dementia", "Other dementia"))
 p1 <- p1[order(p1$outcome),]
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- readExample-table
+
+readExample_table <- read.csv(here::here("data","cprd","read_code_example.csv")) %>%
+  dplyr::mutate("Read code" = Read.code) %>%
+  dplyr::select("Level","Read code","Term")
+
+if (doc_type == "docx") {
+  knitr::kable(readExample_table, caption = "(ref:readExample-caption)")
+} else{
+  knitr::kable(
+    readExample_table,
+    format = "latex",
+    caption = "(ref:readExample-caption)",
+    caption.short = "(ref:readExample-scaption)",
+    booktabs = TRUE,
+    align = "cll"
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
+}
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- cprdCharacteristics-table
@@ -91,12 +112,12 @@ if(doc_type == "docx") {
     column_spec(1, width = paste0(10,"em"), bold = TRUE) %>%
     column_spec(2:10, width = paste0(6,"em")) %>%
     row_spec(2:nrow(cprdCharacteristics_table)-1, hline_after = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"), font_size = 7) %>%
+    kable_styling(latex_options = c("HOLD_position"), font_size = 6) %>%
     kableExtra::footnote(
       threeparttable = TRUE,
-      general_title = "Abbreviations: ",
+      general_title = "Abbreviations:",
       general = paste(
-        "LRA - Lipid regulating agent; ",
+        "LRA - Lipid regulating agent;",
         "IMD - Index of Multiple Deprivation;",
         "BMI - Body Mass Index;",
         "CAD - Coronary Arterial Disease;",
