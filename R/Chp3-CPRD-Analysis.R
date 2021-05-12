@@ -133,6 +133,43 @@ if(doc_type == "docx") {
     table
   
 }
+
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- cprdSSA-table
+
+cprdSSA_table <- table1[19:21,-3]
+
+if(doc_type == "docx") {
+  knitr::kable(cprdSSA_table, caption = "(ref:cprdSSA-caption)")
+} else{
+  knitr::kable(
+    cprdSSA_table,
+    format = "latex",
+    caption = "(ref:cprdSSA-caption)",
+    caption.short = "(ref:cprdSSA-scaption)",
+    booktabs = TRUE,
+    row.names = FALSE,
+    align = "lccccccccc"
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(1, width = paste0(5,"em"), bold = TRUE) %>%
+    column_spec(2:9, width = paste0(4.225,"em")) %>%
+    row_spec(2:nrow(cprdSSA_table)-1, hline_after = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"), font_size = 7) %>%
+    kableExtra::footnote(
+      threeparttable = TRUE,
+      general_title = "Definitions:",
+      general = paste(
+        "Stopped - last prescription of the primary drug class followed by at least six months of observation with no further prescriptions;",
+        "Added - second drug class prescribed before the last prescription of the initial class;",
+        "Switched - second drug class being prescribed after the last prescription of the initial class."
+      )
+    )
+}
+
+
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- missing-data
 
@@ -170,7 +207,7 @@ choltext <- paste0(format(chol, big.mark = ","), " participants (", cholpercent,
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- characteristics
 
-characteristics <- read.csv(here::here("data","cprd","characteristics.csv"),header=TRUE)
+characteristics <- read.csv(here::here("data","cprd","characteristics.csv"), header=TRUE)
 
 # Median and IQR for follow-up
 fu_text <- paste0(round(characteristics$c1[1],1),
@@ -190,6 +227,8 @@ age_text <- paste0(characteristics$c1[4],
                    "-",
                    characteristics$c1[6],
                    ")")
+
+total_followup <- as.numeric(format(characteristics$c1[7], scientific = F))
 
 # Percentage of users taking a statin
 t1 <- read.csv(here::here("data","cprd","table1.csv"),

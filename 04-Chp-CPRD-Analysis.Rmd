@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -27,6 +27,7 @@ When dealing with human beings controlled experiments frequently prove to be imp
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source("R/doc_options.R")
 source("R/helper.R")
+options(scipen = 99)
 knitr::read_chunk("R/Chp3-CPRD-Analysis.R")
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
@@ -115,7 +116,7 @@ Using this system, lists of relevant codes for each of the index events, exposur
 
 We performed a prospective cohort study using data from the CPRD. Our initial sample included all participants registered at a participating practice between 1 January 1995 and 29 February 2016 who had a flag for "research quality" data. All events of interest were identified using predetermined code lists, which are available for inspection.
 
-<!-- Note: If protocol was written by Venexia, how do I reference this? -->
+<!-- NOTE If protocol was written by Venexia, how do I reference this? -->
 
 Participants were included in our study cohort if their record contained any of the following index events: a Read code for a diagnosis of hypercholesterolemia or related condition; a Read code for prescription of a lipid-regulating agent (such as statins); a total cholesterol test result of >4 mmol/L; or an LDL-c test result of >2 mmol/L. 
 
@@ -132,10 +133,6 @@ The index date for a participant was defined as the date where the first relevan
 We considered seven lipid-regulating drug classes based on groupings in the British National Formulary (BNF)[@wishart2017], namely: statins, fibrates, bile acid sequestrants, ezetimibe, nicotinic acid groups, ezetimibe and statin (representing one treatment containing both drugs, rather than the two classes being prescribed concurrently), and omega-3 fatty acid groups.  
  
 A participant’s drug class was assigned based on their first recorded prescription, and any drug switching was ignored in an effort to mimic an intention-to-treat approach. We did however examine how often the initial drug class was stopped (defined as last prescription of the primary class being followed by at least six months of observation), added to (defined as a second drug class being prescribed before the last prescription of the initial class), or switched (defined as a second drug class being prescribed after the last prescription of the initial class).
-
-<!--- TODO this table doesn't exist anywhere as it has been cut off the bottom of Table 1 --->
-
-
 
 <!----------------------------------------------------------------------------->
 
@@ -288,7 +285,7 @@ knitr::include_graphics(file.path("figures/sys-rev/prisma_flow.png"))
 ```{r characteristics, echo = FALSE}
 ```
 
-Of the `r comma(attrition[1,1])` participants included in our extract, `r comma(attrition[14,1])` met the inclusion criteria (Figure \@ref(fig:cprdFlowchart)), with a total follow-up of 11,091,437 <!--- TODO make this reactive! ---> patient years at risk. 
+Of the `r comma(attrition[1,1])` participants included in our extract, `r comma(attrition[14,1])` met the inclusion criteria (Figure \@ref(fig:cprdFlowchart)), with a total follow-up of `r comma(total_followup)` <!--- TODO make this reactive! ---> patient years at risk. 
 
 &nbsp;
 
@@ -323,6 +320,21 @@ The median age at index was `r age_text` and participants were followed up for a
 <!--- Table 1 is missing type 2 diabetes --->
 
 A substantial majority (`r percentage.statins`) of participants prescribed a lipid-regulating agent were prescribed a statin. We excluded the "Ezetimibe and statins" and "Nicotinic acid groups" classes from subsequent analysis based on the extremely small number of participants in these groups (Table \@ref(tab:cprdCharacteristics-table)). The "Ezetimibe and statins" treatment group represent those prescribed a treatment containing both ezetimibe and statins, rather than those where the two treats were prescribed concurrently.
+
+<!--- TODO Describe impact of SSA table - is the fact that many people stopped statin treatment (~10%) an issue? --->
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:cprdSSA-caption) Participants who stopped, switched or added treatements by initial treatment type
+
+(ref:cprdSSA-scaption) Participants who stopped, switched or added treatements by initial treatment type
+
+```{r cprdSSA-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
 
 &nbsp;
 
@@ -614,7 +626,7 @@ This chapter has provided new evidence on the potential repurposing of lipid-reg
 
 Future research should aim to address these potential biases and, while it may be costly in terms of time and resources, a large scale, long-term randomized controlled trial would provide useful additional information on the effect of lipid-regulating agents on the risk of dementia and related outcomes.
 
-<!--- TODO In my most recent discussion with --->
+<!--- TODO In my most recent discussion with supervisors, I discussed that a long term RCT isn't encouraged by the results --->
 
 <!--- TODO Need better linkage with next chapter and triangulation --->
 

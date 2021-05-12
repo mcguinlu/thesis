@@ -22,4 +22,5 @@
 ## Useful info
 
 Width of portrait page in em for use with col_spec is __32__
+Width of portrait page in em for use with col_spec is __38.8__ at font size __6__
 Width of landscape page in em for use with col_spec is __52__
