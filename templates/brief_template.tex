@@ -128,6 +128,9 @@ $endif$
 % Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
 \addbibresource{$bibliography$}
 
+\setcounter{tocdepth}{0} 
+\setcounter{minitocdepth}{1} 
+
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newenvironment{CSLReferences}%
@@ -163,14 +166,13 @@ $endif$
 
 % UL: You can set the general paragraph spacing here - I've set it to 2pt (was 0) so
 % it's less claustrophobic
-\setlength{\parskip}{2pt plus 1pt}
+\setlength{\parskip}{6pt plus 1pt}
 
 % Leave this line alone; it gets things started for the real document.
 \setlength{\baselineskip}{\textbaselineskip}
 
 % all your chapters and appendices will appear here
 $body$
-
 
 %%%%% REFERENCES
 

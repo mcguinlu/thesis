@@ -6,12 +6,13 @@ fig:medrxivr-sr
 fig:medrxivr-data-sources
 fig:prisma-flow-fig
 tab:readExample-table
-fig:cprd-dag-1
+fig:negativeOutcome
 fig:immortalTimeBias
 fig:cprdFlowchart
 tab:cprdCharacteristics-table
 tab:cprdSSA-table
 fig:cprdPrimary
+fig:indicationBias
 tab:smeethComparison-table
 fig:trafficplot
 fig:summaryplot
@@ -134,7 +135,7 @@ main-findings
 comparison-to-other-literature
 strengths-and-limitations
 replicating-other-analytical-strategies
-enabling-easy-synthesis-of-this-analysis
+cprd-data-avail
 conclusions
 references-2
 ipd-heading

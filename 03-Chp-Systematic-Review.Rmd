@@ -87,6 +87,12 @@ Excluded studies performing autopsy unless it was done under accepted criteria E
 
 Harmonization of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorizing lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
 
+
+Following guidance for a dose response meta-analysis, we picked m
+
+<!-- TODO Cross reference with the data extraction issues here - i.e. not providing qratile cut-off values, not poviding numbers per group, etc. -->
+
+
 ### Risk of bias assessment {#risk-of-bias}
 
 Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomized controlled trials were assessed using the RoB2 tool,[@sterne2019], non-randomized studies of interventions were assessed using the ROBINS-I tool,[@sterne2016] and non-randomized studies of exposures were assessed using the ROBINS-E tool.[CITE]

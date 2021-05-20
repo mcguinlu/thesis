@@ -1,11 +1,13 @@
 ## Things to check 
 
+- [ ] Check if the layout of chapters is okay in the fully-rendered document (the by chapter examples don't always reflect the truth!)
 - [ ] Check if references are duplicated via distinct bibtex keys. || Sort out duplicated citation keys (e.g.[mcguinness2019a] vs [mcguinness2019b])
 - [ ] Check use of "we" vs "I"
 - [ ] Check each chapter has a Lay summary.
+- [ ] Check start of chapter quotes, including references
 - [ ] Quotes are rendering properly.
 - [ ] URLs resolve
-- [ ] Corrections don't overrun.
+- [ ] Corrections don't overrun, TODO, <!-.
 - [ ] Search for [CITE], XXXX, YYYY
 - [ ] Search for "??" to find broken cross-links.
 - [ ] Fancy headings are in the right place, and are rendering properly.
@@ -15,6 +17,7 @@
 - [ ] Search for common true mispellings (e.g. casual, )
 - [ ] Check all codeblocks with `eval = FALSE` to make sure they are still valid
 - [ ] Do search for everything in parentheses "(...)" and make sure all acronyms are in abbreviations list 
+- [ ] Check figure and table titles are appropriately bolded
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice
