@@ -79,11 +79,12 @@ table1[18,1] <-"Type 1 Diabetes"
 table1[19,1] <-"Stopped"
 table1[20,1] <-"Added"
 table1[21,1] <-"Switched"
-table1[22,1] <-"Other drug within 5yrs"
+table1[22,1] <-"LDL cholesterol (mean/SD)"
+table1[23,1] <-"Type 2 Diabetes"
 table1.copy <- table1
 
 table1 <- table1[,c(1,10,7,9,2:6,8)]
-table1_disp <- table1[c(1:18),]
+table1_disp <- table1[c(1:16,22,17:18,23),]
 
 # Quick check to ensure data quality
 t<- table1_disp[1,2:10]
@@ -204,6 +205,10 @@ chol <- missingdata[7,1]
 cholpercent <- round(chol/as.numeric(missingdata[1,1])*100,1)
 choltext <- paste0(format(chol, big.mark = ","), " participants (", cholpercent,"%)")
 
+ldl <- missingdata[8,1]
+ldlpercent <- round(ldl/as.numeric(missingdata[1,1])*100,1)
+ldltext <- paste0(format(ldl, big.mark = ","), " participants (", ldlpercent,"%)")
+
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- characteristics
 
@@ -238,7 +243,9 @@ t1 <- read.csv(here::here("data","cprd","table1.csv"),
 
 t1$V2 <- as.numeric(t1$V2)
 
-percentage.statins <- paste0(round((t1$V2[7]/sum(t1$V2[1:7])*100),2),"%")
+percentage.statins <-
+  paste0(round((t1$V2[which(t1$V1 == "Statins")] / sum(t1$V2[which(t1$V1 != "None")]) *
+                  100), 2), "%")
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- sas
@@ -624,9 +631,177 @@ S13 [width = 7]
 
 # Save 
 
-htmltools::html_print(DiagrammeR::add_mathjax(graph)) %>%
-  webshot::webshot(file = "figures/cprd-analysis/cohort_attrition_test.png", delay = 1,
+htmltools::html_print(DiagrammeR::add_mathjax(graph), viewer = NULL) %>%
+webshot::webshot(file = "figures/cprd-analysis/cohort_attrition_test.png", delay = 1,
                    # selector = '.html-widget-static-bound',
-                   cliprect = c(5,230, 510, 510),
+                   vwidth = 600,
+                   vheight = 744,
+                   cliprect = c(5,300, 370, 510),
                    zoom = 6)
 
+
+################################################################################
+# ---- sankeydiagram 
+library(networkD3)
+library(dplyr)
+
+# A connection data frame is a list of flows with intensity for each flow
+links <- data.frame(
+  source=c(" Possible AD"," Possible AD"," Probable AD", " Vascular Dementia", " Other dementia", " Other dementia"), 
+  target=c("AD","Not included" , "Non-AD dementia", "Non-AD dementia", "Non-AD dementia", "Not included"), 
+  value=c(2,2, 3, 2, 3, 1)
+)
+
+# From these flows we need to create a node data frame: it lists every entities involved in the flow
+nodes <- data.frame(
+  name=c(as.character(links$source), 
+         as.character(links$target)) %>% unique()
+)
+
+# With networkD3, connection must be provided using id, not using real name like in the links dataframe.. So we need to reformat it.
+links$IDsource <- match(links$source, nodes$name)-1 
+links$IDtarget <- match(links$target, nodes$name)-1
+
+# Make the Network
+p <- sankeyNetwork(Links = links, Nodes = nodes,
+                   Source = "IDsource", Target = "IDtarget",
+                   Value = "value", NodeID = "name", 
+                   sinksRight=FALSE,fontSize = 10,
+                   colourScale = JS("d3.scaleOrdinal(d3.schemeGreys);"),)
+
+
+sn <- htmlwidgets::onRender(
+  p,
+  '
+  function(el,x){
+  // select all our node text
+  d3.select(el)
+  .selectAll(".node text")
+  .filter(function(d) { return d.name.startsWith(" "); })
+  .attr("x", x.options.nodeWidth - 20)
+  .attr("text-anchor", "end");
+  }
+  '
+)
+
+networkD3::saveNetwork(sn, "sn.html")
+
+webshot::webshot(
+  "sn.html",
+  file = "figures/cprd-analysis/sankey_diagram.png",
+  vwidth = 698,
+  vheight = 357,
+  delay = 2,
+  zoom = 7
+)
+
+file.remove("sn.html")
+
+# ---- p1Figure
+# Load result files
+library(patchwork)
+
+results_p1 <-
+  read.csv(here::here("data", "cprd", "regression_results_p1.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE)
+
+results_p2 <-
+  read.csv(here::here("data", "cprd", "regression_results_p2.csv"), header =
+             TRUE)
+
+results <- results_p1 %>%
+  rbind(results_p2) %>%
+  filter(!drug %in% c("hc_eze_sta","hc_nag")) %>%
+  filter(N_fail != 2227) %>%
+  mutate(
+    grouping = ifelse(drug=="Any", "All classes", "Single class"),
+    imputed = ifelse(stringr::str_detect(string = analysis,pattern = "Imputed"),"Imputed","Raw")) %>%
+  unique()
+
+# Plot primary analyses #1 & #2 
+
+results$outcome <- factor(results$outcome, levels = c("Any dementia", "Probable AD", "Possible AD", "Vascular dementia", "Other dementia"))
+
+results$drug <- forcats::fct_rev(factor(results$drug, levels = c("Any","Statins", "Omega-3 Fatty Acid Groups", "Fibrates", "Ezetimibe","Bile acid sequestrants")))
+results <- results[order(results$outcome, results$drug),]
+
+
+results$label <- paste0("HR: ",
+                        ifelse(sprintf("%.2f",results$HR)<0.0051,
+                               format(results$HR,scientific = TRUE,digits=3),
+                               sprintf("%.2f",results$HR)),
+                        " (95% CI: ", 
+                        ifelse(sprintf("%.2f",results$ci_lower)<0.0051,
+                               format(results$ci_lower,scientific = TRUE,digits=3),
+                               sprintf("%.2f",results$ci_lower)),
+                        " to ",
+                        ifelse(sprintf("%.2f",results$ci_upper)<0.0051,
+                               format(results$ci_upper,scientific = TRUE,digits=3),
+                               sprintf("%.2f",results$ci_upper)),
+                        "), N: ",
+                        results$N_sub, ", Event: ", results$N_fail)
+
+
+results$label <-
+  factor(results$label,
+         levels = unique(results$label[order(results$drug)]),
+         ordered = TRUE)
+
+g1 <-
+  ggplot(results, aes(y = HR, x = drug, colour = grouping)) +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper), size = .8) +
+  geom_point(size = 2) +
+  facet_grid(outcome ~ ., switch = "both") +
+  # theme_minimal() +
+  coord_flip() +
+  scale_color_manual(values = c("black", "#999999")) +
+  geom_hline(yintercept = 1, linetype = 2) +
+  scale_x_discrete(name = "", position = "top") +
+  scale_y_log10(
+    limits = c(0.1, 5),
+    breaks = c(0.3, 1, 3),
+    name = paste0(
+      "HR and 95% CI comparing those treated with any \n",
+      "lipid regulating drug class to those not treated."
+    )) +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(size = 10, colour = "black"),
+    axis.text.y = element_text(size = 11, colour = "black"),
+    axis.title.x = element_text(size = 11),
+    strip.text.y.left = element_text(
+      size = 10,
+      angle = 90,
+      hjust = 0.5
+    ),
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    panel.spacing = unit(0.5, "lines"),
+    legend.position = "none",
+    legend.text = element_text(size = 10),
+    legend.title = element_blank()
+  ) +
+  NULL
+
+gt <- ggplot(results, aes(y = 1, x = drug, label = label)) +
+  geom_text(hjust = 0, ) +
+  facet_grid(outcome ~ ., switch = "both") +
+  theme_void() +
+  coord_flip() + 
+  scale_y_continuous(
+    limits = c(1, 1.125)) +
+  theme(strip.text = element_blank(),
+        panel.spacing = unit(0.5, "lines"))
+
+gt2 <- g1 + gt
+
+ggsave(
+  "figures/cprd-analysis/fp_p1.jpeg",
+  gt2,
+  height = 10,
+  width = 18,
+  unit = "cm",
+  dpi = 600,
+  scale = 1.75
+)
