@@ -52,11 +52,12 @@ if (doc_type == "docx") {
 table1 <- read.csv(here::here("data","cprd","table1.csv"),header=FALSE)
 table1 <- data.table::transpose(table1)
 colnames(table1) <- as.character(unlist(table1[1,]))
+colnames(table1)[5] <- "Bile acid sequestrants"
 table1 = table1[-1, ]
 
 colnames(table1)[1] <- " "
 
-table1[1,1] <- "Sample size"
+table1[1,1] <- "Sample size (N)"
 table1[2,1] <- "Index year \\newline(median)"
 table1[3,1] <- "Female"
 table1[4,1] <- "Age"
@@ -113,7 +114,7 @@ if(doc_type == "docx") {
     column_spec(1, width = paste0(10,"em"), bold = TRUE) %>%
     column_spec(2:10, width = paste0(6,"em")) %>%
     row_spec(2:nrow(cprdCharacteristics_table)-1, hline_after = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"), font_size = 6) %>%
+    kable_styling(latex_options = c("HOLD_position"), font_size = 5) %>%
     kableExtra::footnote(
       threeparttable = TRUE,
       general_title = "Abbreviations:",
@@ -405,7 +406,8 @@ sens_bp_text <- paste0("HR: ",
                        round(sens_bp$ci_upper,2))
 
 
-################################################################################
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- attritionFigure
 #Define main dataset
 main <- read.csv(here::here("data","cprd","cohort_attrition.csv"))
@@ -639,18 +641,153 @@ webshot::webshot(file = "figures/cprd-analysis/cohort_attrition_test.png", delay
                    cliprect = c(5,300, 370, 510),
                    zoom = 6)
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- decisionTree
 
-################################################################################
+graph <- DiagrammeR::grViz("digraph flowchart {
+graph [pad=\"0.5\", nodesep=\"0.75\", ranksep=\"2\"]
+      # node definitions with substituted label text
+      node [fontname = Helvetica, shape = rectangle, fontsize = 30]
+
+M1 [width = 4];
+M2 [width = 4];
+M3 [width = 4];
+M4 [width = 4];
+
+S1 [width = 4];
+S2 [width = 4];
+S3 [width = 4];
+
+T1 [width = 3.5];
+T2 [width = 3.5];
+T3 [width = 3.5];
+T4 [width = 3.5];
+T5 [width = 3.5];
+
+
+      #Define ranks
+      subgraph {
+          rank = same; S1; S2; S3
+            }
+      
+      subgraph {
+          rank = same; T1; T2; T3
+      }
+      
+      subgraph {
+          rank = same; T4; T5
+      }
+
+      # edge definitions with the node IDs
+      {rank = same; M1 ->  M2 -> M3 -> M4[label = '  No', fontsize = 25, style = \"dashed\", color = \"DimGrey\"]}
+      
+      {rank = same; T1 ->  T2 -> T3 -> T4 -> T5[color = \"White\"]}
+
+
+      M1 -> S1 [label = '  Yes', fontsize = 25]
+      M2 -> S2 [label = '  Yes', fontsize = 25]
+      M3 -> S3 [label = '  Yes', fontsize = 25]
+      
+      S1 -> T1 [label = '  No', fontsize = 25, style = \"dashed\", color = \"DimGrey\"]
+      S1 -> T4 [label = '  Yes', fontsize = 25]
+      
+      S2 -> T2 [label = '  No', fontsize = 25, style = \"dashed\", color = \"DimGrey\"]
+      S2 -> T4 [label = 'Yes', fontsize = 25]
+      
+      S3 -> T3 [label = '    No', fontsize = 25, style = \"dashed\", color = \"DimGrey\"]
+      S3 -> T4 [label = 'Yes', fontsize = 25]
+      
+      M4 -> T4 [label = '  Yes', fontsize = 25]
+      M4 -> T5 [label = '  No', fontsize = 25, style = \"dashed\", color = \"DimGrey\"]
+      
+      # Define labels
+      M1 [label = \"Code for `Probable AD`?\"]
+      M2 [label = \"Code for `Possible AD`?\"]
+      M3 [label = \"Code for `Vascular` dementia?\"]
+      M4 [label = \"Code for `Other` dementia \nor any dementia treatment?\"]
+      
+      S1 [label = \"Code for `Vascular` \nor `Other` dementia?\"]
+      S2 [label = \"Code for `Vascular` \nor `Other` dementia?\"]
+      S3 [label = \"Code for `Other` dementia?\"]
+
+      T1 [label = \"Probable AD\"]
+      T2 [label = \"Possible AD\"]
+      T3 [label = \"Vascular dementia\"]
+      T4 [label = \"Other dementia\"]
+      T5 [label = \"No dementia\"]
+      }
+      
+
+
+      ")
+
+htmltools::html_print(DiagrammeR::add_mathjax(graph), viewer = NULL) %>%
+  webshot::webshot(file = "figures/cprd-analysis/decision_tree.png", delay = 1,
+                   # selector = '.html-widget-static-bound',
+                   vwidth = 700,
+                   vheight = 300,
+                   zoom = 6)
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- sankeydiagram 
 library(networkD3)
 library(dplyr)
 
-# A connection data frame is a list of flows with intensity for each flow
-links <- data.frame(
-  source=c(" Possible AD"," Possible AD"," Probable AD", " Vascular Dementia", " Other dementia", " Other dementia"), 
-  target=c("AD","Not included" , "Non-AD dementia", "Non-AD dementia", "Non-AD dementia", "Not included"), 
-  value=c(2,2, 3, 2, 3, 1)
-)
+library(readxl)
+
+#initialize readin listing
+all_codes <- data.frame()
+
+mysheetlist <- c("med_dem_adprob","med_dem_adposs","med_dem_vas","med_dem_oth")
+
+i=1
+for (i in 1:length(mysheetlist)){
+  tempdf <- read_excel(path="data/cprd/all_codes.xlsx", sheet = mysheetlist[i])
+  tempdf$sheetname <- mysheetlist[i]
+  all_codes <- rbind(all_codes, tempdf) 
+}
+
+all_codes_N <- all_codes %>%
+  group_by(sheetname) %>%
+  summarise(N=n())
+
+all_codes <- all_codes %>%
+  rename(condition = sheetname) %>%
+  select(read_code, condition) %>%
+  mutate(condition = case_when(condition =="med_dem_adprob"~ paste0(" Probable AD (N=",all_codes_N[which(all_codes_N$sheetname == "med_dem_adprob"),2],")"),
+                               condition =="med_dem_adposs"~ paste0(" Possible AD (N=",all_codes_N[which(all_codes_N$sheetname == "med_dem_adposs"),2],")"),
+                               condition =="med_dem_vas" ~ paste0(" Vascular dementia (N=",all_codes_N[which(all_codes_N$sheetname == "med_dem_vas"),2],")"),
+                               condition =="med_dem_oth"~ paste0(" Other dementia (N=",all_codes_N[which(all_codes_N$sheetname == "med_dem_oth"),2],")")))
+
+
+
+
+
+smeeth_codes <- read_excel(path="data/cprd/smeeth_codes.xlsx") %>%
+  mutate(alzheimers = alzhemiers) %>%
+  select(-alzhemiers) %>%
+  filter(is.na(prevalent)) %>%
+  mutate(condition_smeeth = case_when(alzheimers == "Y" ~ "AD",
+                                      other == "Y" ~ "Non-AD dementia")) %>%
+  filter(!is.na(condition_smeeth)) %>%
+  rename(read_code = medcode) %>%
+  select(read_code, condition_smeeth)
+
+smeeth_codes_N <- smeeth_codes %>%
+  group_by(condition_smeeth) %>%
+  summarise(n = n())
+  
+smeeth_codes <- smeeth_codes %>%
+  mutate(condition_smeeth = case_when(condition_smeeth == "AD" ~ paste0("AD (N=",smeeth_codes_N[which(smeeth_codes_N$condition_smeeth == "AD"),2],")"),
+                                      condition_smeeth == "Non-AD dementia" ~ paste0("Non-AD dementia (N=",smeeth_codes_N[which(smeeth_codes_N$condition_smeeth == "Non-AD dementia"),2],")")))
+
+
+links <- full_join(all_codes, smeeth_codes) %>%
+  mutate(condition_smeeth = ifelse(is.na(condition_smeeth),"Not included (N = 21)",condition_smeeth)) %>%
+  mutate(condition = ifelse(is.na(condition), "Not included (N = 6)",condition))%>%
+  group_by(condition, condition_smeeth) %>%
+  summarise(value = n()) %>%
+  rename(source = condition, target = condition_smeeth)
 
 # From these flows we need to create a node data frame: it lists every entities involved in the flow
 nodes <- data.frame(
@@ -666,7 +803,7 @@ links$IDtarget <- match(links$target, nodes$name)-1
 p <- sankeyNetwork(Links = links, Nodes = nodes,
                    Source = "IDsource", Target = "IDtarget",
                    Value = "value", NodeID = "name", 
-                   sinksRight=FALSE,fontSize = 10,
+                   sinksRight=FALSE, fontSize = 10,
                    colourScale = JS("d3.scaleOrdinal(d3.schemeGreys);"),)
 
 
@@ -684,14 +821,15 @@ sn <- htmlwidgets::onRender(
   '
 )
 
-networkD3::saveNetwork(sn, "sn.html")
+networkD3::saveNetwork(sn, "sn.html",)
 
 webshot::webshot(
   "sn.html",
   file = "figures/cprd-analysis/sankey_diagram.png",
-  vwidth = 698,
-  vheight = 357,
-  delay = 2,
+  vwidth = 900,
+  vheight = 357,cliprect = c(1,150,600,350),
+  
+  delay = 0,
   zoom = 7
 )
 
@@ -805,3 +943,838 @@ ggsave(
   dpi = 600,
   scale = 1.75
 )
+
+
+# ---- immortalTime
+
+library(ggplot2)
+library(patchwork)
+
+df <- data.frame(type = c("Exposed", "Exposed", "Unexposed"),
+                 length = c(1,2,2), 
+                 group = c("Excluded immortal time","Captured time","Captured time"))
+
+df2 <- data.frame(type = c("Exposed", "Exposed", "Unexposed"),
+                 length = c(1,2,2), 
+                 group = c("Misclassified immortal time","Exposed","Unexposed"))
+
+plot1 <- ggplot(df, aes(y = type, x = length, fill = group, alpha = group)) +
+  geom_bar(stat = "identity", width = .1, colour = "black") +
+  scale_fill_manual(values = c("black", "white")) +
+  scale_alpha_manual(values = c(1,0.5)) +
+  scale_x_continuous(expand = c(0,.2)) +
+  theme_minimal() + theme(
+    panel.grid = element_blank(),
+    axis.text.y.left = element_text(color = "black"),
+    axis.title = element_blank(),
+    axis.text.x = element_blank(), 
+    legend.title = element_blank()) +
+      geom_text(data = data.frame(x = c(0.060048391976198,0.060048391976198),
+                                  y = c(0.803071359423899,1.8),
+                                  label = c("Diagnosis","Diagnosis\n(cohort entry)")),
+                mapping = aes(x = x,
+                              y = y,
+                              label = label),
+                angle = 0L,
+                lineheight = 1L,
+                hjust = 0.5,
+                vjust = 0.5,
+                size = 3,
+                colour = "black",
+                family = "sans",
+                fontface = "plain",
+                inherit.aes = FALSE,
+                show.legend = FALSE) +
+geom_text(data = data.frame(x = 1,
+                            y = 0.803071359423899,
+                            label = "Drug prescription\n(cohort entry)"),
+          mapping = aes(x = x,
+                        y = y,
+                        label = label),
+          angle = 0L,
+          lineheight = 1L,
+          hjust = 0.5,
+          vjust = 0.5,
+          size = 3,
+          colour = "black",
+          family = "sans",
+          fontface = "plain",
+          inherit.aes = FALSE,
+          show.legend = FALSE) +
+  geom_text(data = data.frame(x = c(3,2),
+                              y = c(0.803071359423899,1.8),
+                              label = "Outcome"),
+            mapping = aes(x = x,
+                          y = y,
+                          label = label),
+            angle = 0L,
+            lineheight = 1L,
+            hjust = 0.5,
+            vjust = 0.5,
+            size = 3,
+            colour = "black",
+            family = "sans",
+            fontface = "plain",
+            inherit.aes = FALSE,
+            show.legend = FALSE)
+    
+plot2 <- ggplot(df2, aes(y = type, x = length, fill = group, alpha = group)) +
+  geom_bar(stat = "identity", width = .1, colour = "black") +
+  scale_fill_manual(values = c("black","white", "grey50")) +
+  scale_alpha_manual(values = c(1,1,1)) +
+  scale_x_continuous(expand = c(0,.2)) +
+  theme_minimal() + theme(
+    panel.grid = element_blank(),
+    axis.text.y.left = element_text(color = "black"),
+    axis.title = element_blank(),
+    axis.text.x = element_blank(), 
+    legend.title = element_blank()) +
+  geom_text(data = data.frame(x = c(0.060048391976198,0.060048391976198),
+                              y = c(0.803071359423899,1.8),
+                              label = "Diagnosis\n(cohort entry)"),
+            mapping = aes(x = x,
+                          y = y,
+                          label = label),
+            angle = 0L,
+            lineheight = 1L,
+            hjust = 0.5,
+            vjust = 0.5,
+            size = 3,
+            colour = "black",
+            family = "sans",
+            fontface = "plain",
+            inherit.aes = FALSE,
+            show.legend = FALSE) +
+  geom_text(data = data.frame(x = 1,
+                              y = 0.803071359423899,
+                              label = "Drug prescription"),
+            mapping = aes(x = x,
+                          y = y,
+                          label = label),
+            angle = 0L,
+            lineheight = 1L,
+            hjust = 0.5,
+            vjust = 0.5,
+            size = 3,
+            colour = "black",
+            family = "sans",
+            fontface = "plain",
+            inherit.aes = FALSE,
+            show.legend = FALSE) +
+  geom_text(data = data.frame(x = c(3,2),
+                              y = c(0.803071359423899,1.8),
+                              label = "Outcome"),
+            mapping = aes(x = x,
+                          y = y,
+                          label = label),
+            angle = 0L,
+            lineheight = 1L,
+            hjust = 0.5,
+            vjust = 0.5,
+            size = 3,
+            colour = "black",
+            family = "sans",
+            fontface = "plain",
+            inherit.aes = FALSE,
+            show.legend = FALSE)  
+
+plot <- plot1/plot2 +
+  plot_annotation(
+    tag_levels = c("A","B")
+  )
+
+
+ggsave(
+  plot,
+  filename =  "figures/cprd-analysis/immortal_time.png",
+  width = 21,
+  height = 14,
+  units = "cm"
+)
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- statinTypeTable-table
+
+statinTypeTable_table <- rio::import("data/cprd/sta_type_table.tsv")[c(-1:-3, -8),-7] %>%
+  mutate(V2 = as.numeric(gsub(pattern = ",","",V2)),
+         V4 = as.numeric(gsub(pattern = ",","",V4)),
+         V6 = as.numeric(gsub(pattern = ",","",V6))) %>%
+  tidyr::unite("Hydrophilic", 2:3,remove = TRUE, sep = " (") %>%
+  tidyr::unite("Lipophilic", 3:4,remove = TRUE, sep = " (") %>%
+  mutate(Hydrophilic = paste0(Hydrophilic,"%)")) %>%
+  mutate(Lipophilic = paste0(Lipophilic,"%)")) %>%
+  rename("Total" = V6) %>%
+  rename("Prescription Year Group" = V1)
+
+if (doc_type == "docx") {
+  knitr::kable(statinTypeTable_table, caption = "(ref:statinTypeTable-caption)")
+} else{
+  knitr::kable(
+    statinTypeTable_table,
+    format = "latex",
+    caption = "(ref:statinTypeTable-caption)",
+    caption.short = "(ref:statinTypeTable-scaption)",
+    booktabs = TRUE,
+    row.names = FALSE,
+    align = "lccc"
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"), font_size = 7) %>%
+    row_spec(2:nrow(statinTypeTable_table)-1, hline_after = TRUE) %>%
+    row_spec(0, bold = TRUE)
+}
+
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- statinType
+
+sta_type <-
+  read.csv(here::here("data", "cprd", "regression_results_sta_type.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE)
+
+sta_type$outcome[which(sta_type$outcome=="")] <- "Vascular dementia"
+
+sta_type$outcome <- factor(sta_type$outcome, levels = c("Any dementia","Probable AD","Possible AD", "Vascular dementia","Other dementia"))
+sta_type <- sta_type[order(sta_type$outcome ),]
+
+sta_type$analysis <- factor(sta_type$analysis, levels = c("Hydrophilic","Lipophilic"))
+sta_type <- sta_type[order(sta_type$analysis ),]
+
+
+sta_type$grouping <- "Hydrophilic"
+sta_type$grouping[which(sta_type$analysis!="Hydrophilic")] <- "Lipophilic"
+
+sta_type$label <- paste0(sta_type$source, " - HR: ",
+                         ifelse(sprintf("%.2f",sta_type$HR)<0.0051,
+                                format(sta_type$HR,scientific = TRUE,digits=3),
+                                sprintf("%.2f",sta_type$HR)),
+                         " (95% CI: ",
+                         ifelse(sprintf("%.2f",sta_type$ci_lower)<0.0051,
+                                format(sta_type$ci_lower,scientific = TRUE,digits=3),
+                                sprintf("%.2f",sta_type$ci_lower)),
+                         " to ",
+                         ifelse(sprintf("%.2f",sta_type$ci_upper)<0.0051,
+                                format(sta_type$ci_upper,scientific = TRUE,digits=3),
+                                sprintf("%.2f",sta_type$ci_upper)),
+                         "), N: ",
+                         sta_type$N_sub, ", Fail: ", sta_type$N_fail)
+
+sta_type$label <- factor(sta_type$label, levels=unique(sta_type$label[order(sta_type$analysis)]), ordered=TRUE)
+
+g3 <- ggplot(sta_type, aes(y = HR, x= analysis, colour = grouping)) +
+  facet_grid(outcome  ~ ., switch = "both", scales = "free") +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper), size = .8) +
+  geom_point(size = 2) +
+  coord_flip() +
+  scale_color_manual(values = c("#999999","black")) +
+  geom_hline(yintercept=1, linetype = 2) +
+  scale_y_log10(limits = c(0.18, 4),
+                breaks = c(0.3, 1, 3),
+                name = "HR and 95% CI comparing those treated with a \nlipid regulating drug class to those not treated.") +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(size = 10, colour = "black"),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(), 
+    axis.title.y = element_blank(),
+    axis.title.x = element_text(size = 11),
+    strip.text.y.left = element_text(
+      size = 10,
+      angle = 90,
+      hjust = 0.5
+    ),
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    panel.spacing = unit(0.5, "lines"),
+    legend.position = "bottom",
+    legend.text = element_text(size = 10),
+    legend.title = element_blank()
+  ) +
+  NULL
+
+
+gt <-  ggplot(sta_type, aes(y = 1, x = analysis, label = label)) +
+  geom_text(hjust = 0) +
+  facet_grid(outcome ~ ., switch = "both", scales = "free") +
+  coord_flip() + 
+  theme_void() +
+  scale_y_continuous(
+    limits = c(1, 1.125)) +
+  theme(strip.text = element_blank(),
+        panel.spacing = unit(0.5, "lines"))
+
+gt2  <- g3 +gt
+
+ggsave(
+  "figures/cprd-analysis/fp_sta_type.jpeg",
+  gt2,
+  height = 12,
+  width = 15,
+  unit = "cm",
+  dpi = 600,
+  scale = 1.75
+)
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- completeCase
+
+results_p1 <-
+  read.csv(here::here("data","cprd", "regression_results_p1.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE) %>%
+  mutate(analysis = "Imputed data")
+
+results_cc <-
+  read.csv(here::here("data","cprd", "regression_results_complete_case.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE)
+
+results_cc <- results_p1 %>%
+  rbind(results_cc)
+
+results_cc$outcome <- factor(results_cc$outcome, levels = c("Any dementia","Probable AD","Possible AD", "Vascular dementia","Other dementia"))
+results_cc <- results_cc[order(results_cc$outcome ),]
+
+results_cc$analysis <- factor(results_cc$analysis, levels = c("Imputed data","Complete case"))
+results_cc <- results_cc[order(results_cc$analysis ),]
+
+
+results_cc$grouping <- results_cc$analysis
+
+results_cc$label <- paste0(results_cc$source, " - HR: ",
+                         ifelse(sprintf("%.2f",results_cc$HR)<0.0051,
+                                format(results_cc$HR,scientific = TRUE,digits=3),
+                                sprintf("%.2f",results_cc$HR)),
+                         " (95% CI: ",
+                         ifelse(sprintf("%.2f",results_cc$ci_lower)<0.0051,
+                                format(results_cc$ci_lower,scientific = TRUE,digits=3),
+                                sprintf("%.2f",results_cc$ci_lower)),
+                         " to ",
+                         ifelse(sprintf("%.2f",results_cc$ci_upper)<0.0051,
+                                format(results_cc$ci_upper,scientific = TRUE,digits=3),
+                                sprintf("%.2f",results_cc$ci_upper)),
+                         "), N: ",
+                         results_cc$N_sub, ", Fail: ", results_cc$N_fail)
+
+results_cc$label <- factor(results_cc$label, levels=unique(results_cc$label[order(results_cc$analysis)]), ordered=TRUE)
+
+g3 <- ggplot(results_cc, aes(y = HR, x = analysis, colour = grouping)) +
+  facet_grid(outcome  ~ ., switch = "both", scales = "free") +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper), size = .8) +
+  geom_point(size = 2) +
+  coord_flip() +
+  scale_color_manual(values = c("black", "#999999")) +
+  geom_hline(yintercept=1, linetype = 2) +
+  scale_y_log10(limits = c(0.18, 4),
+                breaks = c(0.3, 1, 3),
+                name = "HR and 95% CI comparing those treated with a \nlipid regulating drug class to those not treated.") +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(size = 10, colour = "black"),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(), 
+    axis.title.y = element_blank(),
+    axis.title.x = element_text(size = 11),
+    strip.text.y.left = element_text(
+      size = 10,
+      angle = 90,
+      hjust = 0.5
+    ),
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    panel.spacing = unit(0.5, "lines"),
+    legend.position = "bottom",
+    legend.text = element_text(size = 10),
+    legend.title = element_blank()
+  ) +
+  NULL
+
+gt <-  ggplot(results_cc, aes(y = 1, x = analysis, label = label)) +
+  geom_text(hjust = 0) +
+  facet_grid(outcome ~ ., switch = "both", scales = "free") +
+  coord_flip() + 
+  theme_void() +
+  scale_y_continuous(
+    limits = c(1, 1.125)) +
+  theme(strip.text = element_blank(),
+        panel.spacing = unit(0.5, "lines"))
+
+gt2  <- g3 +gt
+
+
+ggsave(
+  "figures/cprd-analysis/fp_complete_case.jpeg",
+  gt2,
+  height = 11,
+  width = 15,
+  unit = "cm",
+  dpi = 600,
+  scale = 1.75
+)
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- unadjustedComparison
+
+results_p1 <-
+  read.csv(here::here("data","cprd", "regression_results_p1.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE) %>%
+  mutate(analysis = "Full covariates",
+         covariates = "Full covariates")
+
+results_un<-
+  read.csv(here::here("data","cprd", "regression_results_unadjusted.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE)
+
+results_un<- results_p1 %>%
+  rbind(results_un)
+
+results_un$outcome <- factor(results_un$outcome, levels = c("Any dementia","Probable AD","Possible AD", "Vascular dementia","Other dementia"))
+results_un<- results_un[order(results_un$outcome ),]
+
+results_un$covariates <- factor(results_un$covariates, levels = c("Full covariates","Age + Sex", "Age"))
+results_un<- results_un[order(results_un$covariates ),]
+
+results_un$grouping <- results_un$covariates
+
+results_un$label <- paste0(results_un$source, " - HR: ",
+                           ifelse(sprintf("%.2f",results_un$HR)<0.0051,
+                                  format(results_un$HR,scientific = TRUE,digits=3),
+                                  sprintf("%.2f",results_un$HR)),
+                           " (95% CI: ",
+                           ifelse(sprintf("%.2f",results_un$ci_lower)<0.0051,
+                                  format(results_un$ci_lower,scientific = TRUE,digits=3),
+                                  sprintf("%.2f",results_un$ci_lower)),
+                           " to ",
+                           ifelse(sprintf("%.2f",results_un$ci_upper)<0.0051,
+                                  format(results_un$ci_upper,scientific = TRUE,digits=3),
+                                  sprintf("%.2f",results_un$ci_upper)),
+                           "), N: ",
+                           results_un$N_sub, ", Fail: ", results_un$N_fail)
+
+results_un$label <- factor(results_un$label, levels=unique(results_un$label[order(results_un$covariates)]), ordered=TRUE)
+
+g3 <- ggplot(results_un, aes(y = HR, x = covariates, colour = grouping)) +
+  facet_grid(outcome  ~ ., switch = "both", scales = "free") +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper), size = .8) +
+  geom_point(size = 2) +
+  coord_flip() +
+  scale_color_manual(values = c("black","grey40","grey70"), guide = guide_legend(reverse = TRUE)) +
+  geom_hline(yintercept=1, linetype = 2) +
+  scale_y_log10(limits = c(0.18, 4),
+                breaks = c(0.3, 1, 3),
+                name = "HR and 95% CI comparing those treated with a \nlipid regulating drug class to those not treated.") +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(size = 10, colour = "black"),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(), 
+    axis.title.y = element_blank(),
+    axis.title.x = element_text(size = 11),
+    strip.text.y.left = element_text(
+      size = 10,
+      angle = 90,
+      hjust = 0.5
+    ),
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    panel.spacing = unit(0.5, "lines"),
+    legend.position = "bottom",
+    legend.text = element_text(size = 10),
+    legend.title = element_blank()
+  ) +
+  NULL
+
+gt <-  ggplot(results_un, aes(y = 1, x = covariates, label = label)) +
+  geom_text(hjust = 0) +
+  facet_grid(outcome ~ ., switch = "both", scales = "free") +
+  coord_flip() + 
+  theme_void() +
+  scale_y_continuous(
+    limits = c(1, 1.125)) +
+  theme(strip.text = element_blank(),
+        panel.spacing = unit(0.5, "lines"))
+
+gt2  <- g3 +gt
+
+ggsave(
+  "figures/cprd-analysis/fp_unadjusted.jpeg",
+  gt2,
+  height = 11,
+  width = 15,
+  unit = "cm",
+  dpi = 600,
+  scale = 1.75
+)
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- controlOutcomes
+
+results_ihd <-
+  read.csv(here::here("data","cprd", "regression_results_ihd.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE) %>%
+  mutate(outcome = "IHD")
+
+results_bp <-
+  read.csv(here::here("data","cprd", "regression_results_backpain.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE) %>%
+  mutate(outcome = "Back pain")
+
+results_co<- results_ihd %>%
+  rbind(results_bp) %>%
+  filter((drug %in% c("Statins"))) %>%
+  mutate(grouping = ifelse(drug=="Any", "All classes", "Single class"))
+
+ihd_text <- estimate(results_co$HR[1], results_co$ci_lower[1],results_co$ci_upper[1], type = "HR")
+
+backpain_text <- estimate(results_co$HR[2], results_co$ci_lower[2],results_co$ci_upper[2], type = "HR")
+
+results_co$outcome <- factor(results_co$outcome, levels = c("Back pain", "IHD"))
+results_co<- results_co[order(results_co$outcome ),]
+
+results_co$drug <- forcats::fct_rev(factor(results_co$drug, levels = c("Any","Statins", "Omega-3 Fatty Acid Groups", "Fibrates", "Ezetimibe","Bile acid sequestrants")))
+results_co <- results_co[order(results_co$outcome, results_co$drug),]
+
+results_co$label <- paste0(results_co$source, " - HR: ",
+                           ifelse(sprintf("%.2f",results_co$HR)<0.0051,
+                                  format(results_co$HR,scientific = TRUE,digits=3),
+                                  sprintf("%.2f",results_co$HR)),
+                           " (95% CI: ",
+                           ifelse(sprintf("%.2f",results_co$ci_lower)<0.0051,
+                                  format(results_co$ci_lower,scientific = TRUE,digits=3),
+                                  sprintf("%.2f",results_co$ci_lower)),
+                           " to ",
+                           ifelse(sprintf("%.2f",results_co$ci_upper)<0.0051,
+                                  format(results_co$ci_upper,scientific = TRUE,digits=3),
+                                  sprintf("%.2f",results_co$ci_upper)),
+                           "), N: ",
+                           results_co$N_sub, ", Fail: ", results_co$N_fail)
+
+results_co$label <-
+  factor(results_co$label,
+         levels = unique(results_co$label[order(results_co$drug)]),
+         ordered = TRUE)
+
+g1 <-
+  ggplot(results_co, aes(y = HR, x = drug, colour = grouping)) +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper), size = .8) +
+  geom_point(size = 2) +
+  facet_grid(outcome ~ ., switch = "both") +
+  coord_flip() +
+  scale_color_manual(values = c("black", "#999999")) +
+  geom_hline(yintercept = 1, linetype = 2) +
+  scale_x_discrete(name = "", position = "top") +
+  scale_y_log10(
+    limits = c(0.3, 3),
+    breaks = c(0.3, 1, 3),
+    name = paste0(
+      "HR and 95% CI comparing those treated with any \n",
+      "lipid regulating drug class to those not treated."
+    )) +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(size = 10, colour = "black"),
+    axis.text.y = element_text(size = 11, colour = "black"),
+    axis.title.x = element_text(size = 11),
+    strip.text.y.left = element_text(
+      size = 10,
+      angle = 90,
+      hjust = 0.5
+    ),
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    panel.spacing = unit(0.5, "lines"),
+    legend.position = "none",
+    legend.text = element_text(size = 10),
+    legend.title = element_blank()
+  ) +
+  NULL
+
+gt <- ggplot(results_co, aes(y = 1, x = drug, label = label)) +
+  geom_text(hjust = 0, ) +
+  facet_grid(outcome ~ ., switch = "both") +
+  theme_void() +
+  coord_flip() + 
+  scale_y_continuous(
+    limits = c(1, 1.125)) +
+  theme(strip.text = element_blank(),
+        panel.spacing = unit(0.5, "lines"))
+
+gt2 <- g1 + gt
+
+ggsave(
+  "figures/cprd-analysis/fp_control_outcomes.jpeg",
+  gt2,
+  height = 4,
+  width = 18,
+  unit = "cm",
+  dpi = 600,
+  scale = 1.75
+)
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- diagnosisType-table
+
+diagnosisType_table <- rio::import("data/cprd/dementia_types.tsv")[c(-1:-3),c(-13)] %>%
+  mutate(V2 = as.numeric(gsub(pattern = ",","",V2)),
+         V4 = as.numeric(gsub(pattern = ",","",V4)),
+         V6 = as.numeric(gsub(pattern = ",","",V6)),
+         V8 = as.numeric(gsub(pattern = ",","",V8)),
+         V10 = as.numeric(gsub(pattern = ",","",V10)),
+         V12 = as.numeric(gsub(pattern = ",","",V12))) %>%
+  tidyr::unite("No dementia", 2:3,remove = TRUE, sep = " (") %>%
+  tidyr::unite("Probable AD", 3:4,remove = TRUE, sep = " (") %>%
+  tidyr::unite("Possible AD", 4:5, remove = TRUE, sep = " (") %>%
+  tidyr::unite("Vascular dementia", 5:6,remove = TRUE, sep = " (") %>%
+  tidyr::unite("Other dementia", 6:7,remove = TRUE, sep = " (") %>%
+  mutate(across(c(2:6), ~ paste0(.x,"%)"))) %>%
+  rename("Total" = V12) %>%
+  rename("Year of cohort entry" = V1)
+
+if (doc_type == "docx") {
+  knitr::kable(diagnosisType_table, caption = "(ref:diagnosisType-caption)")
+} else{
+  knitr::kable(
+    diagnosisType_table,
+    format = "latex",
+    caption = "(ref:diagnosisType-caption)",
+    caption.short = "(ref:diagnosisType-scaption)",
+    booktabs = TRUE,
+    row.names = FALSE,
+    align = "lccccc"
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(1:6, width = paste0(5.33,"em")) %>%
+    kable_styling(latex_options = c("HOLD_position"), font_size = 7) %>%
+    row_spec(2:nrow(diagnosisType_table)-1, hline_after = TRUE) %>%
+    row_spec(0, bold = TRUE)
+}
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- cohortEntry
+
+results_ce <-
+  read.csv(here::here("data","cprd", "regression_results_entry_year.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE) %>%
+  filter(outcome == "Probable AD") %>%
+  mutate(analysis = case_when(analysis == "Year Group 1" ~ ">=1996",
+                              analysis == "Year Group 2" ~ ">=2001",
+                              analysis == "Year Group 3" ~ ">=2006",
+                              analysis == "Year Group 4" ~ ">=2011"))
+
+results_ce$outcome <- factor(results_ce$outcome, levels = c("Probable AD"))
+results_ce<- results_ce[order(results_ce$outcome ),]
+
+results_ce$analysis <- forcats::fct_rev(factor(results_ce$analysis, levels = c(">=1996", ">=2001", ">=2006", ">=2011")))
+results_ce <- results_ce[order(results_ce$analysis),]
+
+results_ce$label <- paste0(results_ce$source, " - HR: ",
+                           ifelse(sprintf("%.2f",results_ce$HR)<0.0051,
+                                  format(results_ce$HR,scientific = TRUE,digits=3),
+                                  sprintf("%.2f",results_ce$HR)),
+                           " (95% CI: ",
+                           ifelse(sprintf("%.2f",results_ce$ci_lower)<0.0051,
+                                  format(results_ce$ci_lower,scientific = TRUE,digits=3),
+                                  sprintf("%.2f",results_ce$ci_lower)),
+                           " to ",
+                           ifelse(sprintf("%.2f",results_ce$ci_upper)<0.0051,
+                                  format(results_ce$ci_upper,scientific = TRUE,digits=3),
+                                  sprintf("%.2f",results_ce$ci_upper)),
+                           "), N: ",
+                           results_ce$N_sub, ", Fail: ", results_ce$N_fail)
+
+results_ce$label <-
+  factor(results_ce$label,
+         levels = unique(results_ce$label[order(results_ce$analysis)]),
+         ordered = TRUE)
+
+g1 <-
+  ggplot(results_ce, aes(y = HR, x = analysis)) +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper), size = .8) +
+  geom_point(size = 2) +
+  facet_grid(outcome ~ ., switch = "both") +
+  coord_flip() +
+  scale_color_manual(values = c("#999999")) +
+  geom_hline(yintercept = 1, linetype = 2) +
+  scale_x_discrete(name = "", position = "top") +
+  scale_y_log10(
+    limits = c(0.3, 3),
+    breaks = c(0.3, 1, 3),
+    name = paste0(
+      "HR and 95% CI comparing those treated with any \n",
+      "lipid regulating drug class to those not treated."
+    )) +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(size = 10, colour = "black"),
+    axis.text.y = element_text(size = 11, colour = "black"),
+    axis.title.x = element_text(size = 11),
+    strip.text.y.left = element_text(
+      size = 10,
+      angle = 90,
+      hjust = 0.5
+    ),
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    panel.spacing = unit(0.5, "lines"),
+    legend.position = "none",
+    legend.text = element_text(size = 10),
+    legend.title = element_blank()
+  ) +
+  NULL
+
+gt <- ggplot(results_ce, aes(y = 1, x = analysis, label = label)) +
+  geom_text(hjust = 0, ) +
+  facet_grid(outcome ~ ., switch = "both") +
+  theme_void() +
+  coord_flip() + 
+  scale_y_continuous(
+    limits = c(1, 1.125)) +
+  theme(strip.text = element_blank(),
+        panel.spacing = unit(0.5, "lines"))
+
+gt2 <- g1 + gt
+
+ggsave(
+  "figures/cprd-analysis/fp_cohort_entry.jpeg",
+  gt2,
+  height = 4,
+  width = 18,
+  unit = "cm",
+  dpi = 600,
+  scale = 1.75
+)
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- pregnancy
+
+results_p1 <-
+  read.csv(here::here("data", "cprd", "regression_results_p1.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE) %>%
+  mutate(analysis = "Main cohort")
+
+results_p2 <-
+  read.csv(here::here("data","cprd","regression_results_pregnancy.csv"), header =
+             TRUE)
+
+results <- results_p1 %>%
+  rbind(results_p2) %>%
+  filter(!drug %in% c("hc_eze_sta","hc_nag"))
+
+
+# Plot primary analyses #1 & #2 
+
+results$outcome <- factor(results$outcome, levels = c("Any dementia", "Probable AD", "Possible AD", "Vascular dementia", "Other dementia"))
+
+results$analysis <- forcats::fct_rev(factor(results$analysis, levels = c("Main cohort","Pregnancy cohort")))
+results <- results[order(results$outcome, results$analysis),]
+
+
+results$label <- paste0("HR: ",
+                        ifelse(sprintf("%.2f",results$HR)<0.0051,
+                               format(results$HR,scientific = TRUE,digits=3),
+                               sprintf("%.2f",results$HR)),
+                        " (95% CI: ", 
+                        ifelse(sprintf("%.2f",results$ci_lower)<0.0051,
+                               format(results$ci_lower,scientific = TRUE,digits=3),
+                               sprintf("%.2f",results$ci_lower)),
+                        " to ",
+                        ifelse(sprintf("%.2f",results$ci_upper)<0.0051,
+                               format(results$ci_upper,scientific = TRUE,digits=3),
+                               sprintf("%.2f",results$ci_upper)),
+                        "), N: ",
+                        results$N_sub, ", Event: ", results$N_fail)
+
+
+results$label <-
+  factor(results$label,
+         levels = unique(results$label[order(results$drug)]),
+         ordered = TRUE)
+
+g1 <-
+  ggplot(results, aes(y = HR, x = analysis, colour = analysis)) +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper), size = .8) +
+  geom_point(size = 2) +
+  facet_grid(outcome ~ ., switch = "both") +
+  # theme_minimal() +
+  coord_flip() +
+  scale_color_manual(values = c("#999999","black")) +
+  geom_hline(yintercept = 1, linetype = 2) +
+  scale_x_discrete(name = "", position = "top") +
+  scale_y_log10(
+    limits = c(0.1, 5),
+    breaks = c(0.3, 1, 3),
+    name = paste0(
+      "HR and 95% CI comparing those treated with any \n",
+      "lipid regulating drug class to those not treated."
+    )) +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(size = 10, colour = "black"),
+    axis.text.y = element_text(size = 11, colour = "black"),
+    axis.title.x = element_text(size = 11),
+    strip.text.y.left = element_text(
+      size = 10,
+      angle = 90,
+      hjust = 0.5
+    ),
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    panel.spacing = unit(0.5, "lines"),
+    legend.position = "none",
+    legend.text = element_text(size = 10),
+    legend.title = element_blank()
+  ) +
+  NULL
+
+gt <- ggplot(results, aes(y = 1, x = analysis, label = label)) +
+  geom_text(hjust = 0, ) +
+  facet_grid(outcome ~ ., switch = "both") +
+  theme_void() +
+  coord_flip() + 
+  scale_y_continuous(
+    limits = c(1, 1.125)) +
+  theme(strip.text = element_blank(),
+        panel.spacing = unit(0.5, "lines"))
+
+gt2 <- g1 + gt
+
+ggsave(
+  "figures/cprd-analysis/fp_pregnancy.jpeg",
+  gt2,
+  height = 10,
+  width = 18,
+  unit = "cm",
+  dpi = 600,
+  scale = 1.75
+)
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- smeethText
+
+results_smeeth_azd <-
+  read.csv(here::here("data/cprd/regression_results_smeeth_azd.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE) %>%
+  filter(drug == "Any")
+
+results_smeeth_oth <-
+  read.csv(here::here("data/cprd/regression_results_smeeth_oth.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE) %>%
+  filter(drug == "Any")
+
+smeeth_azd_text <- estimate(results_smeeth_azd$HR,results_smeeth_azd$ci_lower,results_smeeth_azd$ci_upper, type = "HR", sep=")")
+
+smeeth_oth_text <- estimate(results_smeeth_oth$HR,results_smeeth_oth$ci_lower,results_smeeth_oth$ci_upper, type = "HR", sep=")")

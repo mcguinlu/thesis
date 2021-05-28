@@ -1,0 +1,10 @@
+var,HR,stderr,pval,ci_lower,ci_upper,N,drug,analysis,covariates,outcome,N_sub,N_fail,age
+"treatment",1.857942,.063332,0,1.641057,2.10349,217236,"Any","Year Group 1","full","Vascular dementia",149895,1345,"All"
+"treatment",.6568944,.0954126,.0000106,.544854,.7919741,393480,"Any","Year Group 4","full","Probable AD",358107,845,"All"
+"treatment",.8090367,.0384028,3.43e-08,.7503774,.8722816,655173,"Any","Year Group 3","full","Probable AD",527268,3355,"All"
+"treatment",1.042588,.0249011,.0939585,.9929261,1.094734,869549,"Any","Year Group 2","full","Probable AD",619681,6672,"All"
+"treatment",1.204046,.0500159,.0002052,1.091615,1.328057,217759,"Any","Year Group 1","full","Probable AD",150325,1775,"All"
+"treatment",.9776087,.052132,.6640021,.8826535,1.082779,395051,"Any","Year Group 4","full","Any dementia",359477,2215,"All"
+"treatment",1.088767,.0213447,.0000676,1.044158,1.135282,663628,"Any","Year Group 3","full","Any dementia",533833,9920,"All"
+"treatment",1.18109,.013368,0,1.150547,1.212445,893536,"Any","Year Group 2","full","Any dementia",636322,23313,"All"
+"treatment",1.287464,.0267772,0,1.221638,1.356838,224576,"Any","Year Group 1","full","Any dementia",154932,6382,"All"

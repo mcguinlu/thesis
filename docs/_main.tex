@@ -357,13 +357,13 @@ An investigation of their relationship}
 
 \adjustmtc
 
-Word count: 19047
+Word count: 20122
 
-Days: 178
+Days: 185
 
-Words behind: -3799
+Words behind: -3403
 
-Words today: 541
+Words today: 0
 
 ~
 
@@ -1200,7 +1200,7 @@ For example, the results of our simple search above can be exported to the \text
 \hypertarget{reception-and-future-plans}{%
 \subsection{Reception and future plans}\label{reception-and-future-plans}}
 
-The tool has been well received by the community (as of December 2021, \texttt{medrxivr} has been downloaded more than 3400 times), and several use cases have been reported. It has been used to investigate the role of preprints in the response to the 2019 coronavirus outbreak,\textsuperscript{\protect\hyperlink{ref-kodvanj2020}{122}} perform searches of preprints as part of a systematic review,\textsuperscript{\protect\hyperlink{ref-noone2020}{123},\protect\hyperlink{ref-grassly2020}{124}} and examine how data-sharing behaviour is affected by journal policies (see \ref{thesis-output}).\textsuperscript{\protect\hyperlink{ref-mcguinness2020c}{125}}
+The tool has been well received by the community (as of December 2021, \texttt{medrxivr} has been downloaded more than 3500 times), and several use cases have been reported. It has been used to investigate the role of preprints in the response to the 2019 coronavirus outbreak,\textsuperscript{\protect\hyperlink{ref-kodvanj2020}{122}} perform searches of preprints as part of a systematic review,\textsuperscript{\protect\hyperlink{ref-noone2020}{123},\protect\hyperlink{ref-grassly2020}{124}} and examine how data-sharing behaviour is affected by journal policies (see \ref{thesis-output}).\textsuperscript{\protect\hyperlink{ref-mcguinness2020c}{125}}
 
 The package was been onboarded into the rOpenSci suite of packages, a collection of ``carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web''.\textsuperscript{\protect\hyperlink{ref-boettiger2015}{126}} As part of this process, following rigorous peer-review, an associated article introducing the tool was published by the Journal of Open Source Software.\textsuperscript{\protect\hyperlink{ref-mcguinness2020a}{127}} The entire review discussion is publicly available and can be viewed online.\footnote{\url{https://github.com/ropensci/software-review/issues/380}} The tool has also been well received by the open-source community, demonstrated by the engagement of other developers in contributing to important new functionality and suggesting bug-fixes.
 
@@ -1671,29 +1671,33 @@ Test
 
 
 \hypertarget{cprd-analysis-heading}{%
-\chapter{Primary analysis of lipid regulating agents and dementia}\label{cprd-analysis-heading}}
+\chapter{Primary analysis of lipid regulating agents and dementia outcomes}\label{cprd-analysis-heading}}
 
 \minitoc 
 
 \hypertarget{lay-summary-3}{%
 \section{Lay summary}\label{lay-summary-3}}
 
-Large-scale electronic health record (EHR) databases are created through the routine collection of information from patients. Under this system, whenever a patient attends their GP, their clinical data is recorded in a central database using a standard set of codes. These databases have substantial advantages for research studies, including the number of people they contain and the length of time for which participants are followed. This is particulary important when studying diseases such as dementia, which may begin to develop long before symptoms are seen.
+Electronic health record (EHR) databases are large collections of patients data, used to manage patient administration and care. Under these systems, whenever a patient attends their GP, their clinical data is recorded in a central database using a standard set of codes. These databases have several advantages over traditional methods of data collection, including the number of people they contain and the length of time for which participants are followed. This is particularly important when studying diseases such as dementia, which may begin to develop in patients long before symptoms are seen.
 
-This analysis makes use of the Clinical Practice Research Datalink (CPRD), which contains the electronic medical records of more than 3 million people from general practices across England. Using this data, I examined the effect of treatment which lower cholesterol levels, such as statins, on the risk of dementia and related outcomes.
+This analysis makes use of the Clinical Practice Research Datalink (CPRD), which contains the electronic medical records of more than 3 million people from general practices across the UK. Using this data, the analysis presented in this chapter examined the effect of treatment which lower cholesterol levels, such as statins, on the risk of dementia and related outcomes.
 
-Lipid regulating agents were found to have no or minimal effect on Alzheimer's disease, but increased the risk of vascular dementia. This increase is very likely to be due to the presence of bias in the analysis despite best efforts to address it. However, this analysis still provides important sources of information which will be used in later chapters.
+No evidence for an effect of lipid regulating agents effect on the risk of Alzheimer's disease was found, with the exception of a slightly increased risk in those prescribed a certain type of drugs called fibrates. In contrast, I found an increased risk of vascular and other (i.e.~non-Alzheimer's) dementia with lipid regulating agent use.
+
+This increased risk is unexpected, and is very likely to be due to the presence of bias in the analysis. This bias, called ``confounding by indication'', is caused when those who are prescribed a statin are more at risk of vascular dementia for a range of reasons, and so it appears as if statins are harmful. However, despite this limitation, the analysis presented provides an important source of information which will be used in later chapters.
 
 ~
 
 \hypertarget{introduction-1}{%
 \section{Introduction}\label{introduction-1}}
 
-This chapter details an analysis of a large population-based electronic health record dataset to investigate the relationship between lipid regulating agent use and dementia outcomes. The analysis aims to address two important limitations of the current evidence base as identified by the systematic review presented in Chapter \ref{sis-rev-heading}.
+In this Chapter, I present the results of an analysis of a large population-based electronic health record dataset to investigate the relationship between lipid regulating agent (LRA) use and dementia outcomes.
 
-In the first instance, it explicitly examines vascular dementia as an outcome. This is particular important to the thesis as a whole, as the systematic review identified an absence of information on the effect of lipids on dementia risk.
+The analysis aims to address important two limitations of the current evidence base as identified by the systematic review presented in Chapter \ref{sis-rev-heading}.
 
-In the second instance, the analysis intentionally takes a different analytical approach to that most commonly used to examine the effect of statins on dementia. This approach was taken to provide a further distinct evidence source for the triangulation exercise presented in Chapter \ref{discussion-heading}.
+Firstly, it explicitly examines vascular dementia as an outcome. The systematic review presented in the previous chapter identified an evidence gap around the effect of lipid regulating agents on the risk of vascular dementia. As triangulation exercises require as many diverse sources of evidence as possible, this analysis provides a source of information on this outcome.
+
+Secondly, and in a similar vein, the analysis intentionally takes a different analytical approach to that most commonly used to examine the effect of statins on dementia (as identified by the systematic review). Specifically, this involved a concerted effort to address immortal time bias though use of a Cox Proportional time-varying treatment indicator. This approach provides a evidence source at risk of a distinct set of biases due to the alternative analytical strategy that will be incorporated into the triangulation exercise presented in Chapter \ref{discussion-heading}.
 
 ~
 
@@ -1710,9 +1714,9 @@ An \emph{a priori} protocol for this study was published,\textsuperscript{\prote
 \hypertarget{cprd-data-source}{%
 \subsection{Data source}\label{cprd-data-source}}
 
-Previously know as the General Practice Research Database (GPRD), the Clinical Practice Research Datalink (CPRD) is a large population-based, electronic health record (EHR) database.\textsuperscript{\protect\hyperlink{ref-herrett2015}{165}} The database has been collected primary care data from participating practices across England since 1987.\textsuperscript{\protect\hyperlink{ref-williams2012}{166},\protect\hyperlink{ref-wood2001revitalizing}{167}} It contains the primary care records for more than 10 million primary care patients in England, and is broadly representative of the UK population in terms of age, sex and ethnicity.\textsuperscript{\protect\hyperlink{ref-herrett2015}{165},\protect\hyperlink{ref-mathur2014}{168}}
+Previously known as the General Practice Research Database (GPRD), the Clinical Practice Research Datalink (CPRD) is a large population-based, electronic health record (EHR) database.\textsuperscript{\protect\hyperlink{ref-herrett2015}{165}} The database has been collecting primary care data from participating practices across England since 1987.\textsuperscript{\protect\hyperlink{ref-williams2012}{166},\protect\hyperlink{ref-wood2001revitalizing}{167}} It contains the primary care records for more than 10 million primary care patients in England, and is broadly representative of the UK population in terms of age, sex and ethnicity.\textsuperscript{\protect\hyperlink{ref-herrett2015}{165},\protect\hyperlink{ref-mathur2014}{168}}
 
-To avoid the ambiguity of interpreting free-text clinical notes and to allow for easy analysis of the resulting data, the CPRD collects data use a predefined coding system known as Read codes.\textsuperscript{\protect\hyperlink{ref-booth1994}{169}} All clinical events can be identified by a specific code. The codes use a nested approach (see Table \ref{tab:readExample-table}), with the initial characters defining broad diagnostic topics (e.g.~Eu\ldots{} - Mental and behavioural disorders), while subsequent digits provide addition information on the specific condition diagnosed (e.g.~Eu001 - Dementia in Alzheimer's disease with late onset).
+To avoid the ambiguity of interpreting free-text clinical notes and to allow for easy analysis of the resulting data, the CPRD primarily collects data using a predefined coding system known as Read codes.\textsuperscript{\protect\hyperlink{ref-booth1994}{169}} All clinical events, included clinical test results and diagnoses, can be identified by a specific Read code. The codes use a nested approach (see Table \ref{tab:readExample-table}), with the initial characters defining broad diagnostic topics (e.g.~Eu\ldots{} - Mental and behavioural disorders), while subsequent characters provide additional information on the specific condition diagnosed (e.g.~Eu001 - Dementia in Alzheimer's disease with late onset).
 
 ~
 
@@ -1722,7 +1726,7 @@ To avoid the ambiguity of interpreting free-text clinical notes and to allow for
 
 \begin{table}[H]
 
-\caption[Example of CPRD Read code hierarchy]{\label{tab:readExample-table}Example of CPRD Read code hierarchy, showing how ``Dementia in Alzheimer's disease with late onset'' is nested under the top-level of ``Mental disorders''. Broad topics are specified using the initial two alpha-numeric characters of the Read code, while subsequent characters are used to define specific conditions and context.}
+\caption[Example of CPRD Read code hierarchy]{\label{tab:readExample-table}Example of CPRD Read code hierarchy, showing how ``Dementia in Alzheimer's disease with late onset'' (\emph{Eu001}) is nested under the top-level of ``Mental disorders'' (\emph{Eu\ldots{}}). Broad topics are specified using the initial two alpha-numeric characters of the Read code, while subsequent characters are used to define specific conditions and context.}
 \centering
 \begin{tabular}[t]{cll}
 \toprule
@@ -1739,67 +1743,69 @@ To avoid the ambiguity of interpreting free-text clinical notes and to allow for
 
 ~
 
-Using this system, lists of relevant codes for each of the index events, exposures and outcomes used in the analysis were created.
+Lists of relevant codes for each of the index events, exposures and outcomes used in the analysis were created. Each of these are described in more detail in the following sections.
 
 ~
 
 \hypertarget{cohort-definition}{%
 \subsection{Cohort definition}\label{cohort-definition}}
 
-This analysis was a prospective cohort study using data from the CPRD. It included all participants registered at a participating practice between 1 January 1995 and 29 February 2016 who had a flag for ``research quality'' data. Records pre-dating the 1995 cutoff were included in the original CPRD extract but were excluded from the analysis as records are expected to be more complete and reliable after this date.\textsuperscript{\protect\hyperlink{ref-wolf2019}{170}} Additionally, individuals with less than 12 months of continuous records prior to cohort entry were excluded, making the effective start date of the cohort the 1st January 1996.
+This analysis included all participants registered at a participating practice between 1 January 1995 and 29 February 2016 who had a flag for ``research quality'' data. Records pre-dating the 1995 cutoff were included in the original CPRD extract obtained for this analysis. However, these were excluded from the analysis as data quality and reliability is thought to be higher after this date.\textsuperscript{\protect\hyperlink{ref-wolf2019}{170}} Additionally, individuals with less than 12 months of continuous records prior to cohort entry were excluded, making the effective start date of the cohort 1 January 1996.
+
+Participants were included in the study cohort if their record contained any of the following index events: a Read code for a diagnosis of hypercholesterolemia or related condition; a Read code for prescription of a lipid-regulating agent (such as statins); a total cholesterol test result of \textgreater4 mmol/L; or an LDL-c test result of \textgreater2 mmol/L. These index events allowed me to define a population of participants who were either at risk of hypercholesterolemia, as indicated by the elevated total or LDL cholesterol test results, or had already been diagnosed with it, as indicated by a diagnostic code/related prescription.
 
 All events of interest were identified using predetermined code lists, which are available for inspection from the archived repository accompanying this analysis (data/code availability is discussed in Section \ref{cprd-data-avail}).
 
-Participants were included in our study cohort if their record contained any of the following index events: a Read code for a diagnosis of hypercholesterolemia or related condition; a Read code for prescription of a lipid-regulating agent (such as statins); a total cholesterol test result of \textgreater4 mmol/L; or an LDL-c test result of \textgreater2 mmol/L.
-
-These index events allowed us to define a population of participants who were either at risk of hypercholesterolemia, as indicated by the elevated total or LDL cholesterol test results, or had already been diagnosed with it, as indicated by a diagnostic code/related prescription. This approach was employed in an attempt to reduce confounding by indication that we would expect to observe in the full cohort, because individuals not prescribed lipid-regulating agents likely be less healthy across a range of variables than those prescribed lipid-regulating agents, leading to a biased association been lipid-regulating agent use and dementia. Conditioning entry into the study into the study on being either ``at-risk'' or already diagnosed with hypercholesterolemia attempts to mitigate this bias.
-
-The index date for a participant was defined as the date where the first relevant code or test result was recorded on their clinical record, and participants were followed up until the earliest of: an outcome of interest; death; end of follow-up (29 February 2016); or last registration date with their GP practice. Participants were removed from our sample if they were less than 40 years of age, had less than 12 months of ``research quality'' data, were simultaneously prescribed more than one lipid-regulating agent (due to the difficult of assigning these to a single exposure group), or were diagnosed with dementia before or on the date of the index event.
+The index date for a participant was defined as the date where the first relevant code or test result was recorded on their clinical record, and participants were followed up until the earliest of: an outcome of interest; death; end of follow-up (29 February 2016); or last registration date with their GP practice. Participants were removed from the sample if they were less than 40 years of age, had less than 12 months of ``research quality'' data, were simultaneously prescribed more than one lipid-regulating agent (due to the difficult of assigning these to a single exposure group), or were diagnosed with an outcome of interest before or on the date of the index event (i.e.~had less than one full day of follow-up).
 
 ~
 
 \hypertarget{exposures}{%
 \subsection{Exposures}\label{exposures}}
 
-We considered seven lipid-regulating drug classes based on groupings in the British National Formulary (BNF)\textsuperscript{\protect\hyperlink{ref-wishart2017}{171}}, namely: statins, fibrates, bile acid sequestrants, ezetimibe, nicotinic acid groups, ezetimibe and statin (representing one treatment containing both drugs, rather than the two classes being prescribed concurrently), and omega-3 fatty acid groups.
+We considered seven lipid-regulating drug classes based on groupings in the British National Formulary (BNF),\textsuperscript{\protect\hyperlink{ref-wishart2017}{171}} namely: statins, fibrates, bile acid sequestrants, ezetimibe, nicotinic acid groups, ezetimibe and statin (representing one treatment containing both drugs, rather than the two classes being prescribed concurrently), and omega-3 fatty acid groups.
 
-A participant's drug class was assigned based on their first recorded prescription, and any drug switching was ignored in an effort to mimic an intention-to-treat approach. We did however examine how often the initial drug class was stopped (defined as last prescription of the primary class being followed by at least six months of observation), added to (defined as a second drug class being prescribed before the last prescription of the initial class), or switched (defined as a second drug class being prescribed after the last prescription of the initial class).
+A participant's drug class was assigned based on their first recorded prescription, and any drug switching was ignored in an effort to mimic an intention-to-treat approach. We did however examine how often the initial drug class altered according to one of three criteria:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{stopped}: defined as the last prescription of the primary class being followed by at least six months of observation;
+\item
+  \textbf{added}: defined as a second drug class being prescribed before the last prescription of the initial class; and
+\item
+  \textbf{switched}: defined as a second drug class being prescribed after the last prescription of the initial class.
+\end{itemize}
 
 ~
 
-\hypertarget{outcomes}{%
-\subsection{Outcomes}\label{outcomes}}
+\hypertarget{cprd-outcomes}{%
+\subsection{Outcomes}\label{cprd-outcomes}}
 
-We considered five outcomes as part of this analysis: probable Alzheimer's disease, possible Alzheimer's disease, vascular dementia, other dementia, and a composite all-cause dementia outcome (Supplementary Figure 1). When two or more outcomes were coded in a participant's clinical record, a decision tree was used to differentiate between them (see Figure ). The diagnosis date of the outcome was determined by the first record of a relevant code.
-
-Participants were followed up, and were censored at the earliest of date of diagnosis, death, date of transfer out of the study cohort or end of follow-up (29th February 2016).
-
-In addition to our primary outcomes of interest, we created two additional control outcomes. The inclusion of control outcomes in observational analyses are a useful technique to assess the strength of uncontrolled confounding.\textsuperscript{\protect\hyperlink{ref-lipsitch2010}{172}} Negative outcomes are those without a likely causal pathway between the exposure and outcome (see Figure @ref()). Conversely, positive control outcomes are those with a known causal association with the exposure of interest, ideally sourced from large well conducted randomised controlled trials. Positive control outcomes are useful in observational epidemiology, as if the analysis can reproduce a known result for the control outcome, our confidence in the result for the outcome of interest is increased.
-
-Muscular backpain was used as a negative control outcome in this analysis. Despite observational analyses suggesting a link between statins and muscle pain (as opposed to more serious complications such as myopathy), systematic reviews of the adverse events of statin use\textsuperscript{\protect\hyperlink{ref-collins2016a}{173}} and N-of-1 trials explicitly exploring the effect of statin use on muscle pain\textsuperscript{\protect\hyperlink{ref-herrett2021}{174}} have found no evidence of an effect.
-
-Additionally, incident ischemic heart disease was included as a positive control outcome, given the well-established protective effect of lipid-lowering treatment on the risk of this condition.\textsuperscript{\protect\hyperlink{ref-collins2016a}{173}}
+We considered five outcomes as part of this analysis: probable Alzheimer's disease, possible Alzheimer's disease, vascular dementia, other dementia, and a composite all-cause dementia outcome. When two or more outcomes were coded in a participant's clinical record, a decision tree was used to differentiate between them (see Figure \ref{fig:decisionTreeFig}). The diagnosis date of the outcome was determined by the first record of a relevant code.
 
 
 
 
 
 \begin{figure}[H]
-\includegraphics[width=1\linewidth]{figures/cprd-analysis/negativeOutcome} \caption[DAG of ideal negative outcome]{Causal diagram showing relationship between exposure \(X\), outcome \(Y\), confounders (measured \(C\) and unmeasured \(U\)) and an ideal negative outcome \(N\). Note the absence of an arrow between \(X\) and \(N\). In this scenario, any association observed between \(X\) and \(N\) is due to the presence of uncontrolled confounders (assuming \(C\) has been adjusted for).}\label{fig:negativeOutcome}
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/decision_tree} \caption[Decision tree for assigning dementia subtypes]{Decision tree for assigning dementia subtypes, based on the presence of Read codes in the patient's record. Note that an outcome of ``Probable'' or ``Possible'' Alzheimer's disease (AD) requires the absence of any vascular outcome codes.}\label{fig:decisionTreeFig}
 \end{figure}
+
+Participants were censored at the earliest of date of: diagnosis; death; transfer out of the study cohort; or end of follow-up (29th February 2016).
 
 ~
 
 \hypertarget{covariates}{%
 \subsection{Covariates}\label{covariates}}
 
-A range of additional variables were included in the analysis, intended to address differential distributions of potential confounding variables between those who had were prescribed an LRA and those who were not.
+A range of additional variables were included in the analysis, intended to address the different distributions of potential confounding variables between those who were prescribed an lipid-regulating agent and those who were not.
 
-The analysis was adjusted for a range of baseline covariates. Demographic covariates included age and gender. Age was calculated at date of entry into the cohort. Socioeconomic status was proxied using the Index of Multiple Deprivation, which draws on seven domains (income; employment; education, skills and training; health and disability; crime; barriers to housing and services; living environment) to create an overall deprivation score for each of 32844 statistical geography areas in England. Smoking and alcohol use was determined at index, and participants were categorised as current, former, or never users of each.
+Demographic covariates adjusted for included age and gender. Age was calculated at date of entry into the cohort. Socioeconomic status was proxied using the Index of Multiple Deprivation (IMD) 2010, which draws on seven domains (income; employment; education, skills and training; health and disability; crime; barriers to housing and services; living environment) to create an overall deprivation score for each of 32844 statistical geography areas in England. To help preserve patient privacy, IMD score is only available from the CPRD in twentiles, with 1 indicating the least deprived and 20 indicating the most deprived. Smoking and alcohol use was determined at index, and participants were categorised as current, former, or never users of each.
 
-Body mass index (calculated as \(weight/height^2\)), baseline total cholesterol and baseline LDL cholesterol measures were obtained, using the last recorded value prior to the index date. A variable indicating grouped year of entry into the cohort (\textless2000, 2000-2004, 2005-2009, \textgreater2010) was included to allow for changes in prescribing trends across the lifetime of the cohort. To assess healthcare utilisation, I calculated the average annual number of consultations between the beginning of a patients data and their entry into the cohort
+Body mass index (a summary measure calculated as \(weight/height^2\)), baseline total cholesterol and baseline LDL cholesterol measures were obtained, using the last recorded value prior to the index date. A variable indicating grouped year of entry into the cohort (\textless2000, 2000-2004, 2005-2009, \textgreater2010) was included to allow for changes in prescribing trends across the lifetime of the cohort. To assess healthcare utilisation, I adjusted for the average annual number of consultations between the beginning of a patients data and their entry into the cohort.
 
-Finally, presence of a range of related conditions at baseline were accounted for, including cardiovascular disease, coronary bypass surgery, coronary artery disease, peripheral arterial disease, hypertension, chronic kidney disease, and Type 1 and Type 2 diabetes. In addition to adjusting for these covariates individually, a Charlson co-morbidity index (CCI) score was calculated for each participant. The CCI is a weighted index that uses presence and severity of a number of conditions to enable adjustment for the general health of a participant in terms of their mortality risk.\textsuperscript{\protect\hyperlink{ref-charlson1987new}{175}}
+Finally, presence of a range of related conditions at baseline were accounted for, including cardiovascular disease, coronary bypass surgery, coronary artery disease, peripheral arterial disease, hypertension, chronic kidney disease, and Type 1 and Type 2 diabetes. In addition to adjusting for these covariates individually, a Charlson co-morbidity index (CCI) score was calculated for each participant. The CCI is a weighted index that uses presence and severity of a number of conditions to enable adjustment for the general health of a participant in terms of their mortality risk.\textsuperscript{\protect\hyperlink{ref-charlson1987new}{172}} Inclusion of this index allowed me to attempt to adjust for the general health of patients included in the analysis.
 
 Codelists for all covariates can be found in the archived data repository accompanying this analysis (see Section \ref{cprd-data-avail}).
 
@@ -1808,20 +1814,20 @@ Codelists for all covariates can be found in the archived data repository accomp
 \hypertarget{missing-data}{%
 \subsection{Missing data}\label{missing-data}}
 
-Given that they contain an administrative data, collected for the purposes of patient management and care rather than academic research, missing data are a recognised issue in electronic health records databases.\textsuperscript{\protect\hyperlink{ref-wells2013strategies}{176}}
+Missing data are a recognised issue in electronic health records databases,\textsuperscript{\protect\hyperlink{ref-wells2013strategies}{173}} given that they contain administrative data, collected primarily for the purposes of patient management and care rather than academic research.
 
-In this analysis, missing data were handled using a multiple imputation approach. Variables with missing observations were identified, and 20 imputed dataset.\textsuperscript{\protect\hyperlink{ref-sterne2009a}{177}} Nominal variables with missing values were modelled using multinomial logistic regression, while continuous variables were modelled using linear regression. As per best practice, all variables used in the analytic model, including the outcome, were included in the imputation model.\textsuperscript{\protect\hyperlink{ref-moons2006using}{178}} Imputation was performed using the MICE (Multiple Imputation by Chained Equations) command in STATA16.
+In this analysis, missing data were handled using a multiple imputation approach. Variables with missing observations were identified, and 20 imputed datasets were created.\textsuperscript{\protect\hyperlink{ref-sterne2009a}{174}} Nominal variables with missing values were modelled using multinomial logistic regression, while continuous variables were modelled using linear regression. As per best practice, all variables used in the analytic model, including the outcome, were included in the imputation model.\textsuperscript{\protect\hyperlink{ref-moons2006using}{175}} Imputation was performed using the MICE (Multiple Imputation by Chained Equations) command in STATA16.
 
-Missing data was only considered an issue for variables where a numerical test result was expected, (e.g.~BMI) or where a code existed for the absence of the condition (e.g.~categorical smoking status). This approach was necessary, as absence of a code for other treatments or conditions (e.g.~statin use or dementia) was assumed to indicate absence of the treatment/condition, rather than being considered missing.\textsuperscript{\protect\hyperlink{ref-wells2013strategies}{176}}
+Missing data was only considered an issue for variables where a numerical test result was expected (e.g.~BMI), or where a code existed for the absence of the condition (e.g.~categorical smoking status). This approach was necessary, as absence of a code for other treatments or conditions (e.g.~statin use or dementia) was assumed to indicate absence of the treatment/condition, rather than being considered missing.\textsuperscript{\protect\hyperlink{ref-wells2013strategies}{173}}
 
-To investigate the impact of multiple imputation versus a complete case analysis,\textsuperscript{\protect\hyperlink{ref-pigott2001review}{179}} where participants missing any covariate are dropped from the dataset, we preformed and compared the results of both approaches.\textsuperscript{\protect\hyperlink{ref-hughes2019a}{180}}
+Using multiple imputation to handle missing data is an alternative to a ``complete case'' approach,\textsuperscript{\protect\hyperlink{ref-pigott2001review}{176}} where participants missing any covariate are dropped from the dataset. As a sensitivity analysis, I preformed and compared the results of both methods,\textsuperscript{\protect\hyperlink{ref-hughes2019a}{177}} to investigate the impact of multiple imputation on the results.
 
 ~
 
 \hypertarget{estimation-methods}{%
 \subsection{Estimation methods}\label{estimation-methods}}
 
-To estimate the effect of statins on dementia outcomes, we used a Cox proportional hazards model, defined as:
+A Cox proportional hazards (PR) model was used to estimate the effect of statins on dementia outcomes. Cox PR models are defined, in general terms, as:
 
 \[h(t) = h_o(t) \times exp(b_1x_1 + b_2x_2 + ... +b_px_p)\]
 
@@ -1841,44 +1847,93 @@ where:
 
 As the values of \(b_i\) increases, value of \(exp(b_i)\) (i.e.~the hazard ratio) increases in tandem, thus reducing the survival time, \(t\).
 
-\hypertarget{time-axis}{%
-\subsection{Time axis}\label{time-axis}}
-
-As part of a Cox proportional hazard model, there is the option to use either absolute time in cohort or participants age as the time scale of interest.\textsuperscript{\protect\hyperlink{ref-lamarca1998}{181}--\protect\hyperlink{ref-pencina2007}{183}} A model using age as the time axis inherently accounts, or adjusts, for participants age as a potential confounded of the exposure-outcome relationship. The main analyses presented all used age as the time axis.
-
-In order to explore whether the choice of time axis affects the results of the analysis,I ran two simple models, one using participants age as the time-scale and a second using absolute time-since-entry and adjusting for participant age.
+A Cox PR model was chosen for this analysis as it inherently accounts for the length of time participants spend in each exposure group. Using this approach, time-at-risk can be properly attributed, thus mitigating the impact of immortal time bias. This is discussed in detail in the following section.
 
 ~
 
-\hypertarget{immortal-time-bias-and-time-varying-treatment-indicators}{%
-\subsection{Immortal time bias and time-varying treatment indicators}\label{immortal-time-bias-and-time-varying-treatment-indicators}}
+\hypertarget{cprd-immortal-time-bias}{%
+\subsection{Immortal time bias and time-varying treatment indicators}\label{cprd-immortal-time-bias}}
 
-Immortal time bias covers two distinct but related types of bias. The first presentation, the selection bias aspect (Panel A, Figure \ref{fig:immortalTimeBias}), occurs when time prior to exposure is excluded, leading to the exposed and control groups being followed up from different time points.\textsuperscript{\protect\hyperlink{ref-levesque2010a}{184}} In this case, events that occur prior to the exposure event are missing from the analysis.
+Immortal time bias covers two distinct but related types of bias. The first presentation, the selection bias aspect (Panel A, Figure \ref{fig:immortalTimeBias}), occurs when time prior to the exposure is excluded leading to the exposed and control groups being followed up from different time points.\textsuperscript{\protect\hyperlink{ref-levesque2010a}{178}} For example, if the unexposed group are followed from a cholesterol test result, while the exposed group is followed from date of LRA prescription, any events that occur in the exposed group prior to the exposure event will be inappropriately excluded from the analysis.
 
-The second presentation of immortal time bias is as a type of misclassification bias (Panel B, Figure \ref{fig:immortalTimeBias}). It occurs when the exposure time prior to the exposure date, and any events occurring within it, is inappropriately assigned to the exposed group. This second presentation appears to be common in the existing literature, as many of the studies included in the review in Chapter \ref{sys-rev-heading} were identified as being at risk of immortal time bias following formal risk of bias assessment using the ROBINS-I tool (see Section @ref(\#risk-of-bias-subheading))
+The second presentation of immortal time bias is as a type of misclassification bias (Panel B, Figure \ref{fig:immortalTimeBias}). It occurs when the exposure time prior to the exposure date, and any events occurring within it, is inappropriately assigned to the exposed group. This second presentation appears to be common in the existing literature, as several of the studies included in the systematic review presented in Chapter \ref{sys-rev-heading} were identified as being at risk of immortal time bias following formal risk of bias assessment using the ROBINS-I tool (see Section \ref{risk-of-bias-subheading}).
 
-To address the potential for immortal time bias in our analysis, we employed a time-varying indicator of treatment status to correctly allocate time-at-risk to the exposed and unexposed groups.\textsuperscript{\protect\hyperlink{ref-levesque2010}{185}}
+This analysis is primarily concerned with the second presentation of immortal time bias, as all participants were followed from a common index date (earliest of: date of raised cholesterol test results; hypercholesterolemeia diagnosis; or LRA prescription). To address the potential for this second form of immortal time bias in the analysis, I employed a time-varying indicator of treatment status to correctly allocate time-at-risk to the exposed and unexposed groups.\textsuperscript{\protect\hyperlink{ref-levesque2010}{179}}
+
+Under this approach, all patients start in the unexposed group, \& contribute time-at-risk until they are prescribed a lipid regulating agent and move into the exposed group. Note, patients for whom prescription of a lipid regulating agent was the index event only contribute time to the exposed group (i.e.~they enter the cohort and move into the exposed group on the same day).
 
 
 
 
 
 \begin{figure}[H]
-\includegraphics[width=1\linewidth]{figures/sys-rev/prisma_flow} \caption[shortcap]{Diagram illustrating immortal time bias}\label{fig:immortalTimeBias}
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/immortal_time} \caption[shortcap]{Diagram illustrating the two presentations of immortal time bias, as a selection bias (Panel A) and a misclassification bias (Panal B).}\label{fig:immortalTimeBias}
 \end{figure}
+
+\hypertarget{time-axis}{%
+\subsection{Time axis}\label{time-axis}}
+
+As part of a Cox proportional hazard model, there is the option to use either absolute time in cohort or participants age as the time scale of interest.\textsuperscript{\protect\hyperlink{ref-lamarca1998}{180}--\protect\hyperlink{ref-pencina2007}{182}} A model using age as the time axis inherently accounts, or adjusts, for participants age as a potential confounded of the exposure-outcome relationship. The main analyses presented all used age as the time axis.
+
+~
 
 \hypertarget{sensitivity-analyses}{%
 \subsection{Sensitivity analyses}\label{sensitivity-analyses}}
 
+The primary analysis examined the effect of a lipid regulating agent on dementia risk, stratified by outcome and drug class. To assess the robustness of the results, a number of sensitivity analyses were performed. These are described in the following sections.
+
+\hypertarget{control-outcomes}{%
+\subsubsection{Control outcomes}\label{control-outcomes}}
+
+In addition to the primary outcomes of interest (described in Section \ref{cprd-outcomes}), I extracted data on two additional control outcomes. The inclusion of control outcomes in observational analyses are a useful technique to assess the strength of uncontrolled confounding,\textsuperscript{\protect\hyperlink{ref-lipsitch2010}{183}} and these outcomes are usually class as either ``negative'' or ``positive'' outcomes. Negative outcomes are those without a likely causal path between the exposure and outcome (see Figure \ref{fig:negativeOutcome} for a directed acyclic graph describing an ideal negative outcome).
+
+Conversely, positive control outcomes are those with a known causal association with the exposure of interest, ideally sourced from large well conducted randomised controlled trials. Positive control outcomes are useful in observational epidemiology, as if the analysis can reproduce a known result for the control outcome, confidence in the result for the outcome of interest is increased.
+
+Due to the wealth of data available on statins as a lipid regulating agent, control outcomes were chosen in reference to this drug class. Muscular backpain was chosen as a negative control outcome in this analysis. Despite observational analyses suggesting a link between statins and muscle pain (as opposed to more serious complications such as myopathy),\textsuperscript{\protect\hyperlink{ref-selva-ocallaghan2018}{184}} systematic reviews of the adverse events of statin use\textsuperscript{\protect\hyperlink{ref-collins2016a}{185}} and N-of-1 trials explicitly exploring the effect of statin use on muscle pain\textsuperscript{\protect\hyperlink{ref-herrett2021}{186}} have found no evidence of an effect. As such, if no evidence of an effect of statins on backpain is found in the analysis, then confidence in the results for the dementia outcomes is increased.
+
+Additionally, incident ischemic heart disease was included as a positive control outcome, given the well-established protective effect of lipid-lowering treatment, via statins, on the risk of this condition.\textsuperscript{\protect\hyperlink{ref-collins2016a}{185}} Similar to the backpain outcome, if the analysis strategy can reproduce this known protective association, this will provide evidence that potential confounders have been sufficiently adjusted for.
+
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/negativeOutcome} \caption[DAG of ideal negative outcome]{Causal diagram showing relationship between exposure \(X\), outcome \(Y\), confounders (measured \(C\) and unmeasured \(U\)) and an ideal negative outcome \(N\). Note the absence of any arrow between \(X\) and \(N\). In this scenario, any association observed between \(X\) and \(N\) is due to the presence of uncontrolled confounders \(U\) (assuming \(C\) has been adjusted for).}\label{fig:negativeOutcome}
+\end{figure}
+
+\hypertarget{impact-of-additional-covariates}{%
+\subsubsection{Impact of additional covariates}\label{impact-of-additional-covariates}}
+
 To observe the effect of adjusting for additional covariates, I ran a model unadjusted except for age (captured via the time axis in the Cox model) and gender, and compared the results with the full adjusted model.
-
-Sensitivity cohorts were also created, stratifying first by year of entry into the cohort and second by remiving participants who may have been pregnant (as statins are contraindicated in pregnancy).
-
-Additional analyses stratified by outcome and drug class were also performed.
 
 ~
 
-Exploring the results when using a different codelist
+\hypertarget{sensitivity-cohorts}{%
+\subsubsection{Sensitivity cohorts}\label{sensitivity-cohorts}}
+
+Two sensitivity cohorts were also created. The first stratified by year of entry into the cohort in an attempt to assess for time period effects. The second removed participants who may have been pregnant (coded as under 55 and female) to assess the robustness of the estimates, as statins are contraindicated in pregnancy, .\textsuperscript{\protect\hyperlink{ref-karalis2016}{187}}
+
+~
+
+\hypertarget{statin-properties}{%
+\subsubsection{Statin properties}\label{statin-properties}}
+
+As detailed in the introduction, the properties of statins may be important in their effect, based on the ability of lipophilic statins to cross the blood brain barrier (see Section \ref{hold} in the Introductory Chapter).
+
+To explore whether any observed effect for the statin analysis varied by statin property, a sensitivity analysis was performed, stratifying by statin lipophilicity.
+
+~
+
+\hypertarget{impact-of-dementia-code-lists}{%
+\subsubsection{Impact of dementia code lists}\label{impact-of-dementia-code-lists}}
+
+As part of an exploratory analysis of the effect of the choice of code lists on the analysis, I created an alternative Alzheimer's disease and non-Alzheimer's dementia outcome using code lists from a previous study published in 2009 by Smeeth \emph{et al}.\textsuperscript{\protect\hyperlink{ref-smeeth2009}{188}}
+
+This previous study used a propensity matching approach to estimate the effect of statins on a range of outcomes, and a protective effect of statin use on all-cause dementia (HR: 0.81, 95\% CI: 0.69-0.96) and non-AD dementia (HR: 0.82, 95\% CI: 0.69-0.97), but no evidence of an effect on AD (HR: 0.81, 95\% CI: 0.49-1.35).
+
+The code lists used were obtained through correspondence with the authors of that study, and are available for inspection (see Section \ref{cprd-data-avail}).
+
+~
 
 \hypertarget{results-1}{%
 \section{Results}\label{results-1}}
@@ -1886,7 +1941,7 @@ Exploring the results when using a different codelist
 \hypertarget{patient-characteristics}{%
 \subsection{Patient characteristics}\label{patient-characteristics}}
 
-Of the 3,179,733 participants included in our extract, 1,684,564 met the inclusion criteria (Figure \ref{fig:cprdFlowchart}), with a total follow-up of 10,800,903 patient years at risk.
+Of the 3,179,733 participants included in the extract, 1,684,564 met the inclusion criteria (Figure \ref{fig:cprdFlowchart}), with a total follow-up of 10,800,903 patient years at risk.
 
 ~
 
@@ -1895,12 +1950,12 @@ Of the 3,179,733 participants included in our extract, 1,684,564 met the inclusi
 
 
 \begin{figure}[H]
-\includegraphics[width=1\linewidth]{figures/cprd-analysis/cohort_attrition_test} \caption[Attrition of CPRD participants]{Attrition of CPRD participants as the eligibility criteria were applied}\label{fig:cprdFlowchart}
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/cohort_attrition_test} \caption[Attrition of CPRD participants]{Attrition of CPRD participants as the eligibility criteria were applied. Most attrition was due to the absence of an index event of interest.}\label{fig:cprdFlowchart}
 \end{figure}
 
 ~
 
-The median age at index was 57 years (IQR:48-68) and participants were followed up for a median of 5.8 years (IQR:2.7-9.7). During follow-up, an all-cause dementia diagnosis was recorded for 41,830 patients (12,647 probable AD, 9,954 possible AD, 8,466 vascular dementia, 10,763 other dementia). The distribution of baseline characteristics across the drug classes can be seen in Table \ref{tab:cprdCharacteristics-table}.
+The median participant age at index was 57 years (IQR:48-68) and participants were followed up for a median of 5.8 years (IQR:2.7-9.7). During follow-up, an all-cause dementia diagnosis was recorded for 41,830 patients (12,647 probable AD, 9,954 possible AD, 8,466 vascular dementia, 10,763 other dementia). The distribution of baseline characteristics across the seven drug classes can be seen in Table \ref{tab:cprdCharacteristics-table}.
 
 \blandscape
 
@@ -1910,15 +1965,15 @@ The median age at index was 57 years (IQR:48-68) and participants were followed 
 
 \begin{table}[H]
 
-\caption[Patient characteristics by drug class]{\label{tab:cprdCharacteristics-table}Patient characteristics by drug class}
+\caption[Patient characteristics by drug class]{\label{tab:cprdCharacteristics-table}Patient characteristics by drug class. Summary statistics are presented as ``\% (N)'' unless otherwise specified in the variable name.}
 \centering
-\fontsize{6}{8}\selectfont
+\fontsize{5}{7}\selectfont
 \begin{threeparttable}
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{10em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}}
 \toprule
-\textbf{ } & \textbf{Whole Sample} & \textbf{None} & \textbf{Statins} & \textbf{Bile acid sequestrants} & \textbf{Ezetimibe} & \textbf{Ezetimibe \& Statins} & \textbf{Fibrates} & \textbf{Nicotinic acid groups} & \textbf{Omega-3 Fatty Acid Groups}\\
+\textbf{ } & \textbf{Whole Sample} & \textbf{None} & \textbf{Statins} & \textbf{Bile acid sequestrants} & \textbf{Ezetimibe} & \textbf{Ezetimibe \& Statins} & \textbf{Bile acid sequestrants.1} & \textbf{Nicotinic acid groups} & \textbf{Omega-3 Fatty Acid Groups}\\
 \midrule
-\textbf{Sample size} & 1695683 & 1095857 & 588455 & 5417 & 766 & 127 & 3896 & 168 & 997\\
+\textbf{Sample size (N)} & 1695683 & 1095857 & 588455 & 5417 & 766 & 127 & 3896 & 168 & 997\\
 \midrule
 \textbf{Index year \newline(median)} & 2006 & 2007 & 2004 & 2005 & 2004 & 2005 & 2001 & 2001 & 2005\\
 \midrule
@@ -1971,7 +2026,7 @@ The median age at index was 57 years (IQR:48-68) and participants were followed 
 
 \elandscape
 
-A substantial majority (98.1\%) of participants prescribed a lipid-regulating agent were prescribed a statin. We excluded the ``Ezetimibe and statins'' and ``Nicotinic acid groups'' classes from subsequent analysis based on the extremely small number of participants in these groups (Table \ref{tab:cprdCharacteristics-table}). The ``Ezetimibe and statins'' treatment group represent those prescribed a treatment containing both ezetimibe and statins, rather than those where the two treats were prescribed concurrently.
+A substantial majority (98.1\%) of participants prescribed a lipid-regulating agent were prescribed a statin. I excluded the ``Ezetimibe and statins'' and ``Nicotinic acid groups'' classes from subsequent analysis based on the extremely small number of participants in these groups (N=127 \& N=168 respectively; see Table \ref{tab:cprdCharacteristics-table}). Note that the ``Ezetimibe and statins'' treatment group represent those prescribed a single treatment containing both ezetimibe and statins, rather than those where the two treatments were prescribed concurrently.
 
 ~
 
@@ -1981,13 +2036,13 @@ A substantial majority (98.1\%) of participants prescribed a lipid-regulating ag
 
 \begin{table}[H]
 
-\caption[Participants who stopped, switched or added treatements by initial treatment type]{\label{tab:cprdSSA-table}Participants who stopped, switched or added treatements by initial treatment type}
+\caption[Participants who stopped, switched or added treatements by initial treatment type]{\label{tab:cprdSSA-table}Participants who stopped, switched or added treatments by initial treatment type.}
 \centering
 \fontsize{7}{9}\selectfont
 \begin{threeparttable}
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}>{\centering\arraybackslash}p{4.225em}>{\centering\arraybackslash}p{4.225em}>{\centering\arraybackslash}p{4.225em}>{\centering\arraybackslash}p{4.225em}>{\centering\arraybackslash}p{4.225em}>{\centering\arraybackslash}p{4.225em}>{\centering\arraybackslash}p{4.225em}>{\centering\arraybackslash}p{4.225em}}
 \toprule
-\textbf{ } & \textbf{Whole Sample} & \textbf{Statins} & \textbf{Bile acid sequestrants} & \textbf{Ezetimibe} & \textbf{Ezetimibe \& Statins} & \textbf{Fibrates} & \textbf{Nicotinic acid groups} & \textbf{Omega-3 Fatty Acid Groups}\\
+\textbf{ } & \textbf{Whole Sample} & \textbf{Statins} & \textbf{Bile acid sequestrants} & \textbf{Ezetimibe} & \textbf{Ezetimibe \& Statins} & \textbf{Bile acid sequestrants.1} & \textbf{Nicotinic acid groups} & \textbf{Omega-3 Fatty Acid Groups}\\
 \midrule
 \textbf{Stopped} & 6.8\% (115899) & 19.0\% (111798) & 55.9\% (3028) & 19.6\% (150) & 12.6\% (16) & 12.3\% (478) & 44.0\% (74) & 35.6\% (355)\\
 \midrule
@@ -2005,33 +2060,39 @@ A substantial majority (98.1\%) of participants prescribed a lipid-regulating ag
 
 ~
 
+The stopping, addition and switching of drug classes was common across all drug classes (Table \ref{tab:cprdSSA-table}).
+
 ~
 
 \hypertarget{missing-data-1}{%
 \subsection{Missing data}\label{missing-data-1}}
 
-Full covariate information was available for 451,897 participants (26.6\%). Six key variables had some missing data: IMD 2010 score, a proxy for socioeconomic position that is measured as twentiles with 1 indicating the least deprived and 20 indicating the most deprived, was missing for 630,439 participants (37.2\%), because it is only recorded for English practices; alcohol status was missing for 272,745 participants (16.1\%); smoking status was missing for 85,267 participants (5\%); BMI, or a calculated BMI from height and weight measurements, was missing for 270,122 participants (15.9\%); baseline total cholesterol was missing for 121,101 participants (7.1\%), and baseline LDL cholesterol was missing for 793,720 participants (46.8\%)
+Full covariate information was available for 451,897 participants (26.6\%). Six key variables had some missing data: IMD 2010 score was missing for 630,439 participants (37.2\%), because it is only recorded for English practices; alcohol status was missing for 272,745 participants (16.1\%); smoking status was missing for 85,267 participants (5\%); BMI, or a calculated BMI from height and weight measurements, was missing for 270,122 participants (15.9\%); baseline total cholesterol was missing for 121,101 participants (7.1\%), and baseline LDL cholesterol was missing for 793,720 participants (46.8\%)
 
 ~
 
 \hypertarget{primary-analysis}{%
 \subsection{Primary analysis}\label{primary-analysis}}
 
-All results described below are from the fully adjusted model. The results of the age-only model are presented in Supplementary Figure 3, and demonstrate that adjustment for additional covariates had a minimal effect.
+The results of the primary analysis using the fully adjusted Cox proportional hazards model with participant age as the time scale are presented for each drug/outcome combination in Figure \ref{fig:cprdPrimary}.
+
+For each outcome, the overall ``Any drug'' estimate was driven by the statin subgroup, based on it's large size relative to the other drug classes.
+
+~
 
 
 
 
 
 \begin{figure}[H]
-\includegraphics[width=1\linewidth]{figures/cprd-analysis/fp_p1} \caption[Results from primary analyses of CPRD data]{\textbf{Results from primary analyses of CPRD data:}}\label{fig:cprdPrimary}
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/fp_p1} \caption[Results from primary analyses of CPRD data]{Results from primary analyses of CPRD data using the fully adjusted model and participant age as the time scale.}\label{fig:cprdPrimary}
 \end{figure}
 
 ~
 
 \textbf{Alzheimer's disease}
 
-As shown in Figure \ref{fig:cprdPrimary}, the results of the analysis do not support an effect of lipid-regulating agents on probable (HR: 0.98, 95\%CI: 0.94-1.01) and possible (HR: 0.97, 95\%CI: 0.93-1.01) Alzheimer's disease when compared with no treatment, with the exception of fibrates on probable Alzheimer's disease (HR: 1.28, 95\%CI: 1.08-1.52).
+No evidence was found for an effect of lipid-regulating agents on probable (HR: 0.98, 95\%CI: 0.94-1.01) and possible (HR: 0.97, 95\%CI: 0.93-1.01) Alzheimer's disease when compared with no treatment, with the sole exception of fibrates on probable Alzheimer's disease (HR: 1.28, 95\%CI: 1.08-1.52).
 
 ~
 
@@ -2050,180 +2111,272 @@ For the composite all-cause dementia outcome, I found treatment with a lipid-reg
 \hypertarget{sensitivity-analyses-1}{%
 \subsection{Sensitivity analyses}\label{sensitivity-analyses-1}}
 
-\textbf{Choice of time axis}
+The results of the series of sensitivity analyses performed are described in the following sections.
 
-\textbf{Complete case versus imputed data}
+\hypertarget{complete-case-versus-imputed-data}{%
+\subsubsection{Complete case versus imputed data}\label{complete-case-versus-imputed-data}}
 
-\textbf{Unadjusted versus full adjusted models}
+In almost all cases, the use of imputed data resulted in a marginal attenuation of the effects observed when using a complete cases analysis. It should be noted that due to the large amount of missing data (e.g.~793,720 participants (46.8\%) were missing a baseline LDL cholesterol measure), the number of participants included in the complete case analysis was substantially smaller than that included when using imputed data. In this case, though the overall position of the effect estimates does not change substantially when using the imputed dataset, there is a noticeable gain in power.\textsuperscript{\protect\hyperlink{ref-sterne2009b}{189}}
 
-\textbf{Sensitivity cohorts}
+~
 
-When stratifying based on year of entry to the cohort, I observed no variation in risk by time period in any subgroup except for probable Alzheimer's disease (Figure \ref{hold}). Removing participants coded as female and aged 55 and under at index from our analysis had minimal effect on our estimates (Figure \ref{hold}).
 
-\textbf{By statin type}
 
-As detailed in the introduction, the properties of statins may be important in their effect, based on the ability of lip
 
-\textbf{Control outcomes}
 
-Using the fully adjusted model, the for the backpain negative control outcome was \textbf{PLACEHOLDER} and the ischemic heart disease was \textbf{PLACEHOLDER}
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/fp_complete_case} \caption[Complete case vs.~imputed data analysis]{Comparison of complete case versus imputed data analyses.}\label{fig:completeCaseFig}
+\end{figure}
+
+~
+
+\hypertarget{control-outcomes-1}{%
+\subsubsection{Control outcomes}\label{control-outcomes-1}}
+
+Following the primary analysis, the fully adjusted model was used to estimate the effect of treatment with a statin on the two control outcomes of back pain (negative) and ischemic heart disease (positive). The results of this analysis are presented in Figure \ref{fig:controlOutcomeFig}.
+
+For the negative control, there was some evidence that treatment with a statin was associated with an increased risk of back pain (HR: 1.04, 95\% CI: 1.03-1.05), suggesting there may be some residual confounding. However, statin prescription was also associated with a substantially increased risk of ischemic heart disease (HR: 1.63, 95\% CI: 1.60-1.65).
+
+~
+
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/fp_control_outcomes} \caption[Results of control outcome analysis]{Results of control outcome analysis.}\label{fig:controlOutcomeFig}
+\end{figure}
+
+~
+
+\hypertarget{impact-of-additional-covariates-1}{%
+\subsubsection{Impact of additional covariates}\label{impact-of-additional-covariates-1}}
+
+The results of three models adjusted for age only, age and sex, and the full covariates respectively, are presented in Figure \ref{fig:unadjustedComparisonFig}.
+
+These models were used to estimate the impact of adjustment for additional covariates. Note that obtaining an completely unadjusted model is not possible, as age was used in the Cox model as the time scale.
+
+Adjustment for additional covariates beyond age and sex had a limited impact on the observed effect estimates, with the exception of the Probable AD outcome. In this case, adjustment for the full set of covariates attenuated to the null the protective effect observed when adjusting only for age and sex.
+
+~
+
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/fp_unadjusted} \caption[Comparison of different combinations of covariates]{Results of three models adjusting for a different set of covariates.}\label{fig:unadjustedComparisonFig}
+\end{figure}
+
+\hypertarget{sensitivity-cohorts-entry-year}{%
+\subsubsection{Sensitivity cohorts: Entry year}\label{sensitivity-cohorts-entry-year}}
+
+When stratifying based on year of entry to the cohort, I observed no variation in risk by time period in any subgroup except for probable Alzheimer's disease (Figure \ref{fig:diagnosisTypeFig}).
+
+~
+
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/fp_cohort_entry} \caption[Sensitivty analus]{Analysis of any lipid regulating agent on Probable AD outcome, stratified by grouped year of cohort entry.}\label{fig:diagnosisTypeFig}
+\end{figure}
+
+~
+
+On the assumption that this variation could be caused by changes in the frequency of codes used to define Probable AD in the cohort, I performed a \emph{post-hoc} investigation of the frequency of each diagnoses stratified by year of entry (Table \ref{tab:diagnosisType-table}). While the total frequency of any dementia outcome declines in more recent strata, likely due to the limited follow-up inherent to these groups, the decline in frequency is relatively constant across all dementia subtypes.
+
+~
+
+
+
+
+
+\begin{table}[H]
+
+\caption[Frequency of diagnoses by grouped year of cohort entry]{\label{tab:diagnosisType-table}Frequency of diagnoses by grouped year of cohort entry}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5.33em}>{\centering\arraybackslash}p{5.33em}>{\centering\arraybackslash}p{5.33em}>{\centering\arraybackslash}p{5.33em}>{\centering\arraybackslash}p{5.33em}>{\centering\arraybackslash}p{5.33em}l}
+\toprule
+\textbf{\textbf{Year of cohort entry}} & \textbf{\textbf{No dementia}} & \textbf{\textbf{Probable AD}} & \textbf{\textbf{Possible AD}} & \textbf{\textbf{Vascular dementia}} & \textbf{\textbf{Other dementia}} & \textbf{\textbf{Total}}\\
+\midrule
+>=1996 & 148550 (95.9\%) & 1775 (1.1\%) & 1677 (1.1\%) & 1345 (0.9\%) & 1585 (1.0\%) & 154932\\
+\midrule
+>=2001 & 613009 (96.3\%) & 6672 (1.0\%) & 5711 (0.9\%) & 4857 (0.8\%) & 6073 (1.0\%) & 636322\\
+\midrule
+>=2006 & 523913 (98.1\%) & 3355 (0.6\%) & 2169 (0.4\%) & 1890 (0.4\%) & 2506 (0.5\%) & 533833\\
+\midrule
+>=2011 & 357262 (99.4\%) & 845 (0.2\%) & 397 (0.1\%) & 374 (0.1\%) & 599 (0.2\%) & 359477\\
+\midrule
+Total & 1642734 (97.5\%) & 12647 (0.8\%) & 9954 (0.6\%) & 8466 (0.5\%) & 10763 (0.6\%) & 1684564\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+~
+
+\hypertarget{sensitivity-cohorts-pregnancy}{%
+\subsubsection{Sensitivity cohorts: Pregnancy}\label{sensitivity-cohorts-pregnancy}}
+
+In the second sensitivity cohort, removing participants coded as female and aged 55 and under at index from the analysis had minimal effect on the effect estimates (Figure \ref{fig:pregnancyFig}).
+
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/fp_pregnancy} \caption[Comparison of pregnancy analysis]{Comparison of analysis using main cohort and a cohort with potentially pregnany women removed.}\label{fig:pregnancyFig}
+\end{figure}
+
+~
+
+\hypertarget{statin-properties-1}{%
+\subsubsection{Statin properties}\label{statin-properties-1}}
+
+In the cohort, statins with lipophilic properties were much more frequently prescribed than hydrophilic statins (Table \ref{tab:statinTypeTable-table}). Additionally, there is evidence for a increasing tendency to favour hydrophilic statins in recent years, as the proportion of lipophilic statins prescribed fell from 18.2\% in 1996-2000 to \textless1\% in 2011-2016.
+
+~
+
+
+
+
+
+\begin{table}[H]
+
+\caption[Summary of statin properties (lipophilicity vs hydrophilicity).]{\label{tab:statinTypeTable-table}Summary of statin properties (lipophilicity vs hydrophilicity) by grouped year of prescription.}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{lccc}
+\toprule
+\textbf{\textbf{Prescription Year Group}} & \textbf{\textbf{Hydrophilic}} & \textbf{\textbf{Lipophilic}} & \textbf{\textbf{Total}}\\
+\midrule
+>=1996 & 7037 (18.2\%) & 31531 (81.8\%) & 38568\\
+\midrule
+>=2001 & 21427 (10.3\%) & 187018 (89.7\%) & 208445\\
+\midrule
+>=2006 & 3566 (1.6\%) & 217726 (98.4\%) & 221292\\
+\midrule
+>=2011 & 1115 (0.9\%) & 119035 (99.1\%) & 120150\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+~
+
+When stratifying by statin properties, hydrophilic statins were less harmful in the any, vascular and other dementia outcomes compared to lipophilic statins (Figure \ref{fig:statinTypeFig}). Additionally, in the AD outcomes, hydrophilic statins had a small protective effect, compared to the absence of evidence for an effect for lipophilic statins.
+
+~
+
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/fp_sta_type} \caption[Analysis stratified by statin properties]{Analysis stratified by statin properties (hydrophilic vs lipophilic)}\label{fig:statinTypeFig}
+\end{figure}
+
+~
+
+\hypertarget{comparing-codelists}{%
+\subsubsection{Comparing codelists}\label{comparing-codelists}}
+
+When using the Smeeth et al code lists to define dementia outcomes, effect estimates of HR: 1.19 (95\% CI: 1.07-1.32) and HR: 1.33 (95\% CI: 1.26-1.42) were obtained for the Alzheimer's disease and non-Alzheimer's dementia outcomes respectively.
+
+However, comparison of the results using the two sets of code lists was deemed less useful following a comparison of the codes used. While all of the codes used to define Alzheimer's in the Smeeth paper are included in the Probable Alzheimer's code-list (see Figure \ref{fig:smeethComparison}), I included several additional codes used to define this outcome (including, for example, ``Eu00013: {[}X{]}AD disease type 2''). Additionally, several of the codes used to define ``Possible Alzheimer's'' in this analysis are included in the ``Other dementia'' code list used by Smeeth.
+
+~
+
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/sankey_diagram} \caption[Comparison of code used in this analysis with those used in the Smeeth et al.~2010 paper]{Sankey diagram comparing the codes used in this analysis with those used in the Smeeth \emph{et al} paper.\textsuperscript{\protect\hyperlink{ref-smeeth2009}{188}} The outcomes and number of codes contributing to each are presented (the Smeeth \emph{et al} outcomes are on the right hand side of the figure). The joining lines showing the overlap between the categories in the two analyses.}\label{fig:smeethComparison}
+\end{figure}
+
+This analysis serves to illustrative the importance of the code lists chosen to define the outcomes of interest, particularly if they are competing (e.g.~AD vs non-AD dementia).
 
 ~
 
 \hypertarget{discussion-2}{%
 \section{Discussion}\label{discussion-2}}
 
-\hypertarget{main-findings}{%
-\subsection{Main findings}\label{main-findings}}
+\hypertarget{summary-of-findings}{%
+\subsection{Summary of findings}\label{summary-of-findings}}
 
-Lipid-regulating agents had a small effect on probable and possible Alzheimer's when compared with no treatment, but were associated with increased risk of an all-cause dementia, vascular dementia and other dementia diagnosis. The effect observed in each case was driven by the statin subgroup, which included a substantial majority of participants. For the other drug classes, no association was found with any outcome, with two exceptions being that ezetimibe was associated with increased risk of vascular and other dementia, while fibrates were associated with increase risk of all-cause dementia and probable Alzheimer's disease.
+Lipid-regulating agents showed no evidence of an effect on probable and possible Alzheimer's disease when compared with no treatment, but were associated with increased risk of an all-cause dementia, vascular dementia and other dementia diagnosis. The effect observed in each case was driven by the statin subgroup, which included a substantial majority of participants. For the other drug classes, no association was found with any outcome, with two exceptions being that ezetimibe was associated with increased risk of vascular and other dementia, while fibrates were associated with increase risk of all-cause dementia and probable Alzheimer's disease.
 
-The effect estimate seems to increase as the casemix ratio of Alzheimers:vascular dementia decreases.
+The effect estimates were robust to the exclusion of potentially pregnant participants, and for all outcomes except Probable AD, no variation across grouped year of entry was observed. When looking at the statin subgroup alone, statin properties appeared to have a modifying effect, with hydrophilic statins being less harmful in the any, vascular and other dementia outcomes compared to lipophilic statins.
 
-The fact that a similar increased risk of IHD is observed in those taking statins likely means that those who end up taking statins (or another lipid regulating agent) are inherently different from those who do not in some way that this analysis does not account for.
+~
 
-Likely confounding by indication
+\hypertarget{interpretation-of-results}{%
+\subsection{Interpretation of results}\label{interpretation-of-results}}
 
-Confounding by indication occurs when an unobserved variable both prompts exposure to the intervention and modifies a participants risk of the outcome. In this case, this confounder would prompt prescription of statins (or another lipid regultating agent) but also represent a vascular risk factor that contributes to the development of the control outcome (ischemic heart disease) and also dementia outcomes with an increasing casemix of vascular origin (e.g.~the vascular dementia and other dementia endpoints)
+This section will expand on a potential explanation for the observed results detailed above. However, as the comparison of evidence across different sources is the aim of the triangulation exercise presented in later chapters, the section will not provide a detailed comparison with other published literature, except where needed to illustrate a methodological point. For a comparison of the result presented above with those from the systematic review (Chapter \ref{hold}) and the individual patient data analysis (Chapter \ref{hold}), see Section \ref{hold}.
 
-In causal inference language, statins and dementia are said to be d-connected (see Figure \ref{fig:indicationBias}), as there is an open ``backdoor'' path between them, via the
-
-Alternatively, rather than a single variable, it is likely that those that take statins are different in a myriad of ways, each of which contributes a
-
-A common example of this bias
-
-While this analysis has attempted to adjust for several baseline variables that my prompt
-
-Possible further analysis techniques would be the use of
+A likely explanation for the observed increased risk of vascular and other dementia with lipid regulating agent use is residual confounding by indication. While the term has been used to describe different source of bias in epidemiological analyses,\textsuperscript{\protect\hyperlink{ref-salas1999}{190}} ``confounding by indication'' is used here to described the role of risk factors that both prompt treatment (in this case statins) and increase the risk of the outcome (in this case vascular dementia), thus causing a distorted positive association between the treatment and outcome (see Figure \ref{fig:indicationBias}). In causal inference language, statins and dementia are said to be d-connected as there is an open ``backdoor'' path between them via the uncontrolled confounders.\textsuperscript{\protect\hyperlink{ref-suttorp2015}{191}}
 
 
 
 
 
 \begin{figure}[H]
-\includegraphics[width=1\linewidth]{figures/cprd-analysis/indicationBias} \caption[Confounding by indication causal diagram]{Causal diagram (directed acyclic graph) illustrating confounding by indication}\label{fig:indicationBias}
+\includegraphics[width=1\linewidth]{figures/cprd-analysis/indicationBias} \caption[Confounding by indication causal diagram]{Causal diagram (directed acyclic graph) illustrating confounding by indication.}\label{fig:indicationBias}
 \end{figure}
 
-Similar suprising findings for the effect of statins on
+In the case of this analysis, the confounding variable (or, more likely, variables) would prompt prescription of statins (or another lipid regulating agent) but also represent a vascular risk factor that contributes to the development of the vascular dementia.
 
-In essence, this
+Supporting evidence for this interpretation comes from a variety of sources, including the results of the control outcome analyses. The slight harmful effect for the backpain outcome is substantially smaller that that observed for the ischemic heart disease outcome, indicating that the majority of the uncontrolled confounding is likely related to vascular factors. This is supported by the increasingly harmful effect moving from Probable/Possible AD to other dementia to vascular dementia, indicating that the confounding by indication likely increases as the proportion of vascular outcomes increase. This is supported by the decision tree for assigning outcomes in the presence of greater than one dementia code, where the Alzheimer's disease outcomes require a ``pure'' condition, and the presence of any vascular or other dementia codes excludes participants from this group (Figure \ref{fig:decisionTreeFig}).
 
-~
+A review of other available literature suggests that this observation (a harmful effect of lipid regulating agents on vascular-related outcome) is not unusual. Using a conventional epidemiological technique, a previous analysis also found an increased risk of coronary heart disease (analogous to ischemic heart disease) in those taking statins (HR: 1.31, 95\% CI: 1.04-1.66).\textsuperscript{\protect\hyperlink{ref-danaei2013b}{192}} Following control for confounding by indication through use of a trial emulation analysis, the expected protective effect of statins was observed.
 
-\hypertarget{comparison-to-other-literature}{%
-\subsection{Comparison to other literature}\label{comparison-to-other-literature}}
+Conditioning entry into the study on being either ``at-risk'' or already diagnosed with hypercholesterolemia was employed in a pre-emptive attempt to mitigate confounding by indication, but evidence from the control outcomes suggests this was unsuccessful. I also adjusted for several additional potential baseline variables. However, important confounding variables for which I have not adjusted could include genetic factors. A recent preprint of a study in the UK Biobank demonstrated that an Alzheimer's disease polygenic risk score was associated with an increased risk of vascular dementia, and also with an increased frequency of self-reported raised cholesterol levels, a diagnosis of hypercholesterolaemia, and a history of taking lipid-regulating agents such as statins or ezetimibe.\textsuperscript{\protect\hyperlink{ref-korologou-linden2020}{193}}
 
-Much of the existing literature focuses on the association of statins alone with neurodegenerative outcomes, with other lipid-regulating agents being grouped as ``non-statin cholesterol-lowering drugs''.\textsuperscript{\protect\hyperlink{ref-ancelin2012}{186}} This echoes the distribution of participants among subgroups in our analysis, with the statin subgroup including almost all participants.
+On a more general note, the unexpected increase in vascular dementia risk with statin use is particularly interesting given the absence of vascular dementia in the published literature, as highlighted in the previous chapter (see Section \ref{sys-rev-pub-bias}). It is possible that previous research identified a similar effect to this analysis, and via a publication bias mechanism, these results did not make it into the evidence base.
 
-Several previous studies have demonstrated that statins are the overwhelmingly favoured methods of cholesterol control.
-
-~
-
-\textbf{Statins and all-cause dementia}
-
-A recent Cochrane Review identified two randomized trials comparing treatment with statins versus non-treatment for the prevention of dementia, only one of which presented information on the incidence of dementia.\textsuperscript{\protect\hyperlink{ref-mcguinness2016a}{62}} This study (Heart Protection Study) showed no effect of treatment with simvastatin on all-cause dementia risk (OR: 1.00, 95\%CI:0.61-1.65),\textsuperscript{\protect\hyperlink{ref-heartprotectionstudycollaborativegroup2002}{187}} but concerns were raised over the diagnostic criteria used. A meta-analysis of 30 observational studies found a reduced risk of all-cause dementia was associated with statin treatment (RR 0.83, 95\%CI: 0.79--0.87).\textsuperscript{\protect\hyperlink{ref-poly2020}{188}}
-
-These sources of evidence conflict with the findings of our analysis, where statin use was associated with an increased risk of all-cause dementia. However, some of the included studies in the meta-analysis specifically exclude vascular dementia from the definition of all-cause dementia,\textsuperscript{\protect\hyperlink{ref-chao2015}{189}} which may lead to a artifical protective effect of statins on all-cause dementia
-
-~
-
-\textbf{Statins and Alzheimer's disease}
-
-Our results are broadly in line with the findings of two distinct approaches examining the effect of statin treatment on subsequent Alzheimer's disease. No randomized trials of statins for the prevention of Alzheimer's disease have been reported, but a recent meta-analysis of 20 observational studies found statins were associated with a reduced risk of Alzheimer's disease (RR 0.69, 95\% CI 0.60--0.80), though the reduction was more extreme than observed in our analysis.\textsuperscript{\protect\hyperlink{ref-poly2020}{188}} In addition, a recent Mendelian randomization study examining the effect of genetic inhibition of HMGCR on Alzheimer's disease found a small reduction in risk of Alzheimer's disease, comparable in magnitude to our findings, but could not rule out no effect (OR: 0.91, 95\%CI: 0.63-1.31).\textsuperscript{\protect\hyperlink{ref-williams}{190}}
-
-An additional analysis found no difference in effect between lipophilic and hydrophilic statins for the prevention of Alzheimer's disease, consistent with a recent meta-analysis.\textsuperscript{\protect\hyperlink{ref-chu2018}{191}}
-
-~
-
-\textbf{Statins and non-Alzheimer's disease dementia}
-
-Much less literature is available on the association between lipid-regulating agents and vascular dementia or other dementia. A recent review found four observational studies examining the association of statins and vascular dementia found no effect (RR:0.93, 95\% CI 0.74--1.16).\textsuperscript{\protect\hyperlink{ref-poly2020}{188}} This contrasts with the increased effect found in our analysis. An additional analysis found that lipophilic statins were more harmful than hydrophilic statins in vascular dementia, potentially due to their ability to cross the blood brain barrier.
-
-~
-
-\textbf{Other drug classes}
-
-Apart from statins, few studies examining a lipid-regulating agent have been reported. One of the few classes for which data was available were fibrates, which were shown to have no effect on all-cause dementia,\textsuperscript{\protect\hyperlink{ref-ancelin2012}{186}} inconsistent with our finding of a small increase in all-cause dementia risk in those prescribed a fibrate.
-
-To our knowledge, there is no previous study of the effect of preventative treatment with ezetimibe on any dementia outcome, and so I cannot compare our unexpected finding that treatment with the drug associated with an increased risk of the vascular and other dementia outcomes.
+In summary, despite best efforts to account for strong confounding, participants prescribed a lipid regulating agent likely have a different vascular risk profile that those who are not, which may induce a spurious harmful association between lipid regulating agent use and vascular dementia outcomes.
 
 ~
 
 \hypertarget{strengths-and-limitations}{%
 \subsection{Strengths and limitations}\label{strengths-and-limitations}}
 
-There are two primary strenghts to this analysis compared to others available in the literature:
+The primary strength of this analysis compared to others available in the literature is the relative size of the CPRD and length of follow-up. Having reviewed the other studies identified by the systematic review in Chapter \ref{sys-rev-heading}, this analysis of 1,684,564 participants is one of the largest available studies of this research question. Additionally, this analysis followed LRA users and non-users from a common index date, using a time-updating treatment indicator to correctly assign time-at-risk to the exposed and unexposed groups. This approach has been less commonly used in the literature and allows for the mitigation of potential immortal time bias.
 
-\begin{itemize}
-\tightlist
-\item
-  \emph{Size of the CPRD and length of follow-up:} Having reviewed the other studies identified by the systematic review in Chapter \ref{sys-rev-heading}, this analysis of 1,684,564 participants is one of the largest studies of this research question.
-\item
-  \emph{Addressing the limitations of other observational analyses:} Analyzing this data has provided the opportunity to use a separate analytical technique to many of the studies identified in the systematic review, As an example, the Hippsley-Cox BMJ paper examining the effect of statins, which makes use of the THIN EHR database, likely suffers from immortal time bias as exposed and unexposed participants are not followed up from a common time point.\textsuperscript{\protect\hyperlink{ref-hippisley-cox2010}{192}} As touched on in the section above, this provides an additional evidence point with a different source and direction of bias, which is useful for the triangulation aspect of the thesis.
-\end{itemize}
+However, the findings of this analysis are subject to several limitations. There is a strong possibility of differential misclassification\textsuperscript{\protect\hyperlink{ref-porta2014dictionary}{194}} of dementia-related conditions based on the exposure. As an illustrative example, those with memory complaints may be more likely to be classified as vascular dementia than Alzheimer's disease if their medical records contains prescriptions for lipid-regulating agents. Further, there is a potential for general non-differential misclassification of the outcome based on varying positive predictive value of electronic health record code lists to identify dementia cases.\textsuperscript{\protect\hyperlink{ref-wilkinson2018}{195},\protect\hyperlink{ref-mcguinness2019b}{196}}
 
-However, the findings of this analysis are subject to several limitations. There is a strong possibility of differential misclassification of dementia-related condition based on the exposure, as those with memory complaints are more likely to be classified as vascular dementia than Alzheimer's disease if their medical records contains prescriptions for lipid-regulating agents. Further, there is a potential for non-differential misclassification of the outcome based on the use of electronic health records to identify dementia cases.\textsuperscript{\protect\hyperlink{ref-wilkinson2018}{193},\protect\hyperlink{ref-mcguinness2019b}{194}}
-
-This analysis may be subject to confounding by indication, which occurs when factors that affect whether a participant is exposed also affect their outcome. We attempted to address this by limiting inclusion to those either prescribed or ``at risk'' of being prescribed, which was determined using an elevated test result. We also adjusted for several additional potential confounding variables. However, the negative control analysis of back pain demonstrated a harmful association with lipid-regulating agent use, indicting that this findings may be biased by residual confounding. Important confounding variables for which I have not adjusted could include genetic factors. A recent preprint of a study in the UK Biobank demonstrated that an Alzheimer's disease polygenic risk score was associated with an increased risk of unspecified Alzheimer's and vascular dementia, and also with an increased frequency of self-reported raised cholesterol levels, a diagnosis of hypercholesterolaemia, and a history of taking lipid-regulating agents such as statins or ezetimibe.\textsuperscript{\protect\hyperlink{ref-korologou-linden2020}{195}} This finding, combined with the potential for differential misclassification between Alzheimer's disease and vascular dementia, could explain part of the observed association between lipid-regulating agents and vascular dementia.
-
-Finally, there is also the potential for reverse causation in this analysis. Dementia and associated conditions have a long prodromal period, during which preclinial disease could cause indications for the prescription of a lipid-regulating agent.
-
-~
-
-\hypertarget{use-of-alternative-code-lists}{%
-\subsection{Use of alternative code lists}\label{use-of-alternative-code-lists}}
-
-WHen using the Smeeth et al codelists were \textbf{PLACEHOLDER} for Alzheimer's disease and \textbf{PLACEHOLDER} for
-
-However, direct comparison between the results is difficul
-
-Misclassification of outcomes, as discussed in the section above, is not the only issue introduced by the use of EHR codes to define outcomes. Comparing and contrasting between different studies is particularly difficult because of the impact that the use of different code list can have on the analysis\textsuperscript{\protect\hyperlink{ref-wilkinson2018a}{196},\protect\hyperlink{ref-mcguinness2019c}{197}} This is a particular challenge in comparing research across different time-periods and coding systems. Previous work has demonstrated that electronic health records have variable positive and negative predictive values, based substantially on the exact code-lists used to define each outcome.
-
-As part of my exploration of the unexpected results, I attempted to replicate the analyses of another research group (Smeeth et al.)\textbf{{[}CITATION NEEDED{]}} that employed a different approach to explore the effect of statin use on dementia outcomes.
-
-However, there was a large difference in the dementia ``case mix'', or proportion of different dementia diagnoses, between the two analyses, particularly in terms of the number of Alzheimer cases as a percentage of total dementia cases. The reason for this discrepancy between this analysis study and the previous paper is due to two things. While all of the codes used to define Alzheimer's in the Smeeth paper are included in my ``Probable Alzheimer's'' code-list, I included several additional codes used to define this outcome (including, for example, ``Eu00013: {[}X{]}Alzheimer's disease type 2''). Several of the codes in my ``Possible Alzheimer's'' code list are included in the ``Other dementia'' code list used by Smeeth.
-
-Using the Smeeth code-list, I obtained a similar breakdown of cases to that paper, with Alzheimer's disease being a lot less frequent than when using our code-lists (which is not surprising based on the points above).
-
-~
-
-
-
-
-
-\begin{figure}[H]
-\includegraphics[width=1\linewidth]{figures/cprd-analysis/sankey_diagram} \caption[Comparison of code used in this analysis with those used in the Smeeth et al.~2010 paper]{Comparison of code used in this analysis with those used in the Smeeth et al.~2010 paper}\label{fig:smeethComparison}
-\end{figure}
-
-~
+Misclassification of outcomes is not the only issue introduced by the use of EHR codes to define outcomes. Comparing and contrasting between different studies is particularly difficult because of the impact that the use of different code list can have on the analysis. This is a particular challenge in comparing research across different time-periods and coding systems, as illustrated by the discrepancy between the results when using the codes lists defined for this study and those used by Smeeth \emph{et al}.
 
 ~
 
 \hypertarget{cprd-data-avail}{%
 \subsection{Enabling easy synthesis of this analysis}\label{cprd-data-avail}}
 
-In light of my own experiences in attempting to extract information for papers assessing preventative measures, as documented in Section \ref{sys-rev-open-data}, the outputs from this analysis are described in detail in both.
+In light of my own experiences in attempting to extract information for papers assessing preventative treatments, as documented in Section \ref{sys-rev-open-data}, the outputs from this analysis are readily available.
 
-All code, Read codelist and summary statistics (i.e.~the tables presented in this chapter, plus summary tables of effect estimates) are readily available in machine readable formats (i.e.~as comma separated values, or CSV, files) from the archived repository for this project.
+All code, Read codelists and summary statistics (i.e.~the tables presented in this chapter, plus summary tables of effect estimates) are readily available in machine readable formats (i.e.~as comma separated values, or CSV, files) from the archived repository for this project (Zotero DOI: XXXX-XXXX).
 
-The raw data supporting this analysis is not available, as access to the CPRD data is controlled by a data monitoring committee. Interested researchers can apply directly to the In this scenario, sharing the code represents a
+The raw data supporting this analysis is not available, as access to the CPRD data is controlled by a data monitoring committee. In the context of access-controlled data, sharing the analysis code represents a way for readers to validate the findings.\textsuperscript{\protect\hyperlink{ref-goldacre2019c}{197}}
 
-As such, this analyses has been reported in line with the Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) reporting guidelines\textsuperscript{\protect\hyperlink{ref-vandenbroucke2007}{198}} (see Appendix \ref{hold} for the STROBE checklist).
+Additionally, to help ensure accurate reporting of this analysis, the Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) reporting guidelines were used\textsuperscript{\protect\hyperlink{ref-vandenbroucke2007}{198}} (see Appendix \ref{hold} for the STROBE checklist).
+
+This open approach will enable easy inclusion of this analysis in future evidence synthesis exercises, allowing new work to readily build on that presented here.
 
 ~
 
 \hypertarget{conclusions}{%
 \subsection{Conclusions}\label{conclusions}}
 
-This chapter has provided new evidence on the potential repurposing of lipid-regulating agents for the prevention of all-cause dementia, Alzheimer's disease, vascular dementia, and other dementia. It found that the use of lipid-regulating agents was associated with a small reduction in probable or possible Alzheimer's disease, and with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations were driven by those observed in the statin subgroup, which comprised the majority of participants in this cohort.
+This chapter has provided new evidence on the potential repurposing of lipid-regulating agents for the prevention of all-cause dementia, Alzheimer's disease, vascular dementia, and other dementia. It made use of a large scale electronic health record database, the CPRD, and employed a time-varying Cox proportional hazards model to account for the potential immortal time bias.
 
-This chapter attempted to account for important sources of bias and provide a comparison with other available literature, as identified in the systematic review presented in Chapter \ref{sys-rev-heading}. However, there is a strong potential for unmeasured confounding by indication and differential misclassification of the outcome on the basis of exposure, which raises questions about our findings, in particular the unexpected increase in risk of vascular dementia associated with statin use. This is supported by our findings for the negative and positive control outcomes used. Future research using large scale electronic health records should aim to address these potential biases, potentially using a analytical design that more closely emulates a trial.\textsuperscript{\protect\hyperlink{ref-danaei2013b}{199}}
+It found no evidence for an effect of lipid-regulating agents on probable or possible Alzheimer's disease. However, lipid regulating agent use was associated with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations were driven by those observed in the statin subgroup, which comprised the majority of exposed participants in this cohort.
 
-The unexpected increase in vascular dementia risk with statin use is particularly interesting given the absence of vascular dementia in the published literature, as highlighted by the previous chapter (see Section \ref{sys-rev-pub-bias}) . It is possible that previous research identified a similar effect and via a publication bias mechanism, these results did not make it into the evidence base.
+This chapter attempted to account for important sources of bias and provide a comparison with other available literature, as identified in the systematic review presented in Chapter \ref{sys-rev-heading}. However, there is a strong potential for uncontrolled confounding by indication and differential misclassification of the outcome on the basis of exposure, which raises questions about the findings, in particular the unexpected increase in risk of vascular dementia associated with statin use. This is supported by our findings for the negative and positive control outcomes used, which provide some evidence of uncontrolled vascular confounders that may both prompt LRA prescription and increase risk of vascular dementia. Future research using large scale electronic health records should aim to address these limitations, potentially by using a analytical design that more closely emulates a trial.\textsuperscript{\protect\hyperlink{ref-danaei2013b}{192}}
 
-Regardless, this analysis has provided an additional source of evidence for the triangulation exercise presented in Chapter \ref{discussion-heading}.
-
-In the following Chapter, the dataset described here is incorporated along with several other datasets
+Regardless, this analysis has provided an additional source of evidence for the triangulation exercise presented in Chapter \ref{discussion-heading}. In the following Chapter, the dataset described here is incorporated along with several other datasets as part of an IPD analysis to investigate the effect of blood lipid levels on dementia outcomes directly, rather than via the proxy of treatment.
 
 \newpage
 
@@ -2261,9 +2414,9 @@ Each should have:
 \hypertarget{epic-norfolk}{%
 \subsection{Epic Norfolk}\label{epic-norfolk}}
 
-The European Prospective Investigation of Cancer - Norfolk is a\textsuperscript{\protect\hyperlink{ref-riboli1997}{200},\protect\hyperlink{ref-riboli2002}{201}}
+The European Prospective Investigation of Cancer - Norfolk is a\textsuperscript{\protect\hyperlink{ref-riboli1997}{199},\protect\hyperlink{ref-riboli2002}{200}}
 
-Different approaches to combining subgroups.\textsuperscript{\protect\hyperlink{ref-fisher2017}{202}}
+Different approaches to combining subgroups.\textsuperscript{\protect\hyperlink{ref-fisher2017}{201}}
 
 \hypertarget{risk-of-bias-assessment}{%
 \section{Risk of bias assessment}\label{risk-of-bias-assessment}}
@@ -2330,7 +2483,7 @@ There are several addition topics I would like to cover:
 
 There are several strengths and limitations to the work presented in this thesis. One particularly strength is the lengths gone to find all available published and unpublished evidence around the question, and to integrate this evidence in a coherent framework, taking into account the limitations of ach source and how these limitations may be used to provide
 
-Need for large simple trials for common disease where small treatment effect can have large effect -\textsuperscript{\protect\hyperlink{ref-yusuf1984}{203}}
+Need for large simple trials for common disease where small treatment effect can have large effect -\textsuperscript{\protect\hyperlink{ref-yusuf1984}{202}}
 
 \hypertarget{reproducible-research}{%
 \section{Reproducible research}\label{reproducible-research}}
@@ -3053,284 +3206,280 @@ Lasciate ogne speranza, voi ch'intrate. . .
 \CSLLeftMargin{171. }
 \CSLRightInline{Wishart, D. S. \emph{et al.} {DrugBank} 5.0: A major update to the {DrugBank} database for 2018. \emph{Nucleic Acids Research} \textbf{46}, D1074--D1082 (2017).}
 
-\leavevmode\hypertarget{ref-lipsitch2010}{}%
-\CSLLeftMargin{172. }
-\CSLRightInline{Lipsitch, M., Tchetgen, E. T. \& Cohen, T. Negative {Controls}: {A Tool} for {Detecting Confounding} and {Bias} in {Observational Studies}. \emph{Epidemiology (Cambridge, Mass.)} \textbf{21}, 383--388 (2010).}
-
-\leavevmode\hypertarget{ref-collins2016a}{}%
-\CSLLeftMargin{173. }
-\CSLRightInline{Collins, R. \emph{et al.} Interpretation of the evidence for the efficacy and safety of statin therapy. \emph{The Lancet} \textbf{388}, 2532--2561 (2016).}
-
-\leavevmode\hypertarget{ref-herrett2021}{}%
-\CSLLeftMargin{174. }
-\CSLRightInline{Herrett, E. \emph{et al.} Statin treatment and muscle symptoms: Series of randomised, placebo controlled n-of-1 trials. \emph{BMJ} \textbf{372}, n135 (2021).}
-
 \leavevmode\hypertarget{ref-charlson1987new}{}%
-\CSLLeftMargin{175. }
+\CSLLeftMargin{172. }
 \CSLRightInline{Charlson, M. E., Pompei, P., Ales, K. L. \& MacKenzie, C. R. A new method of classifying prognostic comorbidity in longitudinal studies: Development and validation. \emph{Journal of chronic diseases} \textbf{40}, 373--383 (1987).}
 
 \leavevmode\hypertarget{ref-wells2013strategies}{}%
-\CSLLeftMargin{176. }
+\CSLLeftMargin{173. }
 \CSLRightInline{Wells, B. J., Chagin, K. M., Nowacki, A. S. \& Kattan, M. W. Strategies for handling missing data in electronic health record derived data. \emph{Egems} \textbf{1}, (2013).}
 
 \leavevmode\hypertarget{ref-sterne2009a}{}%
-\CSLLeftMargin{177. }
+\CSLLeftMargin{174. }
 \CSLRightInline{Sterne, J. A. C. \emph{et al.} Multiple imputation for missing data in epidemiological and clinical research: Potential and pitfalls. \emph{BMJ} \textbf{338}, b2393 (2009).}
 
 \leavevmode\hypertarget{ref-moons2006using}{}%
-\CSLLeftMargin{178. }
+\CSLLeftMargin{175. }
 \CSLRightInline{Moons, K. G., Donders, R. A., Stijnen, T. \& Harrell Jr, F. E. Using the outcome for imputation of missing predictor values was preferred. \emph{Journal of clinical epidemiology} \textbf{59}, 1092--1101 (2006).}
 
 \leavevmode\hypertarget{ref-pigott2001review}{}%
-\CSLLeftMargin{179. }
+\CSLLeftMargin{176. }
 \CSLRightInline{Pigott, T. D. A review of methods for missing data. \emph{Educational research and evaluation} \textbf{7}, 353--383 (2001).}
 
 \leavevmode\hypertarget{ref-hughes2019a}{}%
-\CSLLeftMargin{180. }
+\CSLLeftMargin{177. }
 \CSLRightInline{Hughes, R. A., Heron, J., Sterne, J. A. C. \& Tilling, K. Accounting for missing data in statistical analyses: Multiple imputation is not always the answer. \emph{International Journal of Epidemiology} \textbf{48}, 1294--1304 (2019).}
 
-\leavevmode\hypertarget{ref-lamarca1998}{}%
-\CSLLeftMargin{181. }
-\CSLRightInline{Lamarca, R., Alonso, J., Gomez, G. \& Munoz, A. Left-truncated {Data With Age} as {Time Scale}: {An Alternative} for {Survival Analysis} in the {Elderly Population}. \emph{The Journals of Gerontology Series A: Biological Sciences and Medical Sciences} \textbf{53A}, M337--M343 (1998).}
-
-\leavevmode\hypertarget{ref-gail2009}{}%
-\CSLLeftMargin{182. }
-\CSLRightInline{Gail, M. H., Graubard, B., Williamson, D. F. \& Flegal, K. M. Comments on {``{Choice} of time scale and its effect on significance of predictors in longitudinal studies''} by {Michael J}. {Pencina}, {Martin G}. {Larson} and {Ralph B}. {D}'{Agostino}, {\emph{Statistics}}{ \emph{in} }{\emph{Medicine}} 2007; {\textbf{26}} :1343-1359. \emph{Statistics in Medicine} \textbf{28}, 1315--1317 (2009).}
-
-\leavevmode\hypertarget{ref-pencina2007}{}%
-\CSLLeftMargin{183. }
-\CSLRightInline{Pencina, M. J., Larson, M. G. \& D'Agostino, R. B. Choice of time scale and its effect on significance of predictors in longitudinal studies. \emph{Statistics in Medicine} \textbf{26}, 1343--1359 (2007).}
-
 \leavevmode\hypertarget{ref-levesque2010a}{}%
-\CSLLeftMargin{184. }
+\CSLLeftMargin{178. }
 \CSLRightInline{Lévesque, L. E., Hanley, J. A., Kezouh, A. \& Suissa, S. Problem of immortal time bias in cohort studies: Example using statins for preventing progression of diabetes. \emph{BMJ} \textbf{340}, b5087 (2010).}
 
 \leavevmode\hypertarget{ref-levesque2010}{}%
-\CSLLeftMargin{185. }
+\CSLLeftMargin{179. }
 \CSLRightInline{Lévesque, L. E., Hanley, J. A., Kezouh, A. \& Suissa, S. Problem of immortal time bias in cohort studies: Example using statins for preventing progression of diabetes. \emph{BMJ} \textbf{340}, (2010).}
 
-\leavevmode\hypertarget{ref-ancelin2012}{}%
+\leavevmode\hypertarget{ref-lamarca1998}{}%
+\CSLLeftMargin{180. }
+\CSLRightInline{Lamarca, R., Alonso, J., Gomez, G. \& Munoz, A. Left-truncated {Data With Age} as {Time Scale}: {An Alternative} for {Survival Analysis} in the {Elderly Population}. \emph{The Journals of Gerontology Series A: Biological Sciences and Medical Sciences} \textbf{53A}, M337--M343 (1998).}
+
+\leavevmode\hypertarget{ref-gail2009}{}%
+\CSLLeftMargin{181. }
+\CSLRightInline{Gail, M. H., Graubard, B., Williamson, D. F. \& Flegal, K. M. Comments on {``{Choice} of time scale and its effect on significance of predictors in longitudinal studies''} by {Michael J}. {Pencina}, {Martin G}. {Larson} and {Ralph B}. {D}'{Agostino}, {\emph{Statistics}}{ \emph{in} }{\emph{Medicine}} 2007; {\textbf{26}} :1343-1359. \emph{Statistics in Medicine} \textbf{28}, 1315--1317 (2009).}
+
+\leavevmode\hypertarget{ref-pencina2007}{}%
+\CSLLeftMargin{182. }
+\CSLRightInline{Pencina, M. J., Larson, M. G. \& D'Agostino, R. B. Choice of time scale and its effect on significance of predictors in longitudinal studies. \emph{Statistics in Medicine} \textbf{26}, 1343--1359 (2007).}
+
+\leavevmode\hypertarget{ref-lipsitch2010}{}%
+\CSLLeftMargin{183. }
+\CSLRightInline{Lipsitch, M., Tchetgen, E. T. \& Cohen, T. Negative {Controls}: {A Tool} for {Detecting Confounding} and {Bias} in {Observational Studies}. \emph{Epidemiology (Cambridge, Mass.)} \textbf{21}, 383--388 (2010).}
+
+\leavevmode\hypertarget{ref-selva-ocallaghan2018}{}%
+\CSLLeftMargin{184. }
+\CSLRightInline{Selva-O'Callaghan, A. \emph{et al.} Statin-induced myalgia and myositis: An update on pathogenesis and clinical recommendations. \emph{Expert review of clinical immunology} \textbf{14}, 215--224 (2018).}
+
+\leavevmode\hypertarget{ref-collins2016a}{}%
+\CSLLeftMargin{185. }
+\CSLRightInline{Collins, R. \emph{et al.} Interpretation of the evidence for the efficacy and safety of statin therapy. \emph{The Lancet} \textbf{388}, 2532--2561 (2016).}
+
+\leavevmode\hypertarget{ref-herrett2021}{}%
 \CSLLeftMargin{186. }
-\CSLRightInline{Ancelin, M.-L. \emph{et al.} Lipid lowering agents, cognitive decline, and dementia: The three-city study. \emph{Journal of Alzheimer's Disease} \textbf{30}, 629--637 (2012).}
+\CSLRightInline{Herrett, E. \emph{et al.} Statin treatment and muscle symptoms: Series of randomised, placebo controlled n-of-1 trials. \emph{BMJ} \textbf{372}, n135 (2021).}
 
-\leavevmode\hypertarget{ref-heartprotectionstudycollaborativegroup2002}{}%
+\leavevmode\hypertarget{ref-karalis2016}{}%
 \CSLLeftMargin{187. }
-\CSLRightInline{Heart Protection Study Collaborative Group. {MRC}/{BHF Heart Protection Study} of cholesterol lowering with simvastatin in 20 536 high-risk individuals: A randomised placebocontrolled trial. \emph{The Lancet} \textbf{360}, 7--22 (2002).}
+\CSLRightInline{Karalis, D. G., Hill, A. N., Clifton, S. \& Wild, R. A. The risks of statin use in pregnancy: {A} systematic review. \emph{Journal of Clinical Lipidology} \textbf{10}, 1081--1090 (2016 Sep-Oct).}
 
-\leavevmode\hypertarget{ref-poly2020}{}%
+\leavevmode\hypertarget{ref-smeeth2009}{}%
 \CSLLeftMargin{188. }
-\CSLRightInline{Poly, T. N. \emph{et al.} Association between {Use} of {Statin} and {Risk} of {Dementia}: {A Meta}-{Analysis} of {Observational Studies}. \emph{Neuroepidemiology} \textbf{54}, 214--226 (2020).}
+\CSLRightInline{Smeeth, L., Douglas, I., Hall, A. J., Hubbard, R. \& Evans, S. Effect of statins on a wide range of health outcomes: A cohort study validated by comparison with randomized trials. \emph{British Journal of Clinical Pharmacology} \textbf{67}, 99--109 (2009).}
 
-\leavevmode\hypertarget{ref-chao2015}{}%
+\leavevmode\hypertarget{ref-sterne2009b}{}%
 \CSLLeftMargin{189. }
-\CSLRightInline{Chao, T.-F. \emph{et al.} Statins and the risk of dementia in patients with atrial fibrillation: {A} nationwide population-based cohort study. \emph{International Journal of Cardiology} \textbf{196}, 91--97 (2015).}
+\CSLRightInline{Sterne, J. A. C. \emph{et al.} Multiple imputation for missing data in epidemiological and clinical research: Potential and pitfalls. \emph{BMJ} \textbf{338}, b2393 (2009).}
 
-\leavevmode\hypertarget{ref-williams}{}%
+\leavevmode\hypertarget{ref-salas1999}{}%
 \CSLLeftMargin{190. }
-\CSLRightInline{Williams, D. M., Finan, C., Schmidt, A. F., Burgess, S. \& Hingorani, A. D. Lipid lowering and {Alzheimer}'s disease risk: A {Mendelian} randomization study. \emph{Annals of Neurology} \textbf{n/a}, (2019).}
+\CSLRightInline{Salas, M., Hotman, A. \& Stricker, B. H. Confounding by {Indication}: {An Example} of {Variation} in the {Use} of {Epidemiologic Terminology}. \emph{American Journal of Epidemiology} \textbf{149}, 981--983 (1999).}
 
-\leavevmode\hypertarget{ref-chu2018}{}%
+\leavevmode\hypertarget{ref-suttorp2015}{}%
 \CSLLeftMargin{191. }
-\CSLRightInline{Chu, C.-S. \emph{et al.} Use of statins and the risk of dementia and mild cognitive impairment: {A} systematic review and meta-analysis. \emph{Scientific Reports} \textbf{8}, 5804 (2018).}
+\CSLRightInline{Suttorp, M. M., Siegerink, B., Jager, K. J., Zoccali, C. \& Dekker, F. W. Graphical presentation of confounding in directed acyclic graphs. \emph{Nephrology Dialysis Transplantation} \textbf{30}, 1418--1423 (2015).}
 
-\leavevmode\hypertarget{ref-hippisley-cox2010}{}%
+\leavevmode\hypertarget{ref-danaei2013b}{}%
 \CSLLeftMargin{192. }
-\CSLRightInline{Hippisley-Cox, J. \& Coupland, C. Unintended effects of statins in men and women in {England} and {Wales}: Population based cohort study using the {QResearch} database. \emph{BMJ} \textbf{340}, (2010).}
+\CSLRightInline{Danaei, G., García Rodríguez, L. A., Cantero, O. F., Logan, R. \& Hernán, M. A. Observational data for comparative effectiveness research: An emulation of randomised trials to estimate the effect of statins on primary prevention of coronary heart disease. \emph{Statistical methods in medical research} \textbf{22}, 70--96 (2013).}
+
+\leavevmode\hypertarget{ref-korologou-linden2020}{}%
+\CSLLeftMargin{193. }
+\CSLRightInline{Korologou-Linden, R. \emph{et al.} The causes and consequences of {Alzheimer}'s disease: Phenome-wide evidence from {Mendelian} randomization. \emph{medRxiv} 2019.12.18.19013847 (2020). doi:\href{https://doi.org/10.1101/2019.12.18.19013847}{10.1101/2019.12.18.19013847}}
+
+\leavevmode\hypertarget{ref-porta2014dictionary}{}%
+\CSLLeftMargin{194. }
+\CSLRightInline{Porta, M. \emph{A dictionary of epidemiology}. ({Oxford University Press}, 2014).}
 
 \leavevmode\hypertarget{ref-wilkinson2018}{}%
-\CSLLeftMargin{193. }
+\CSLLeftMargin{195. }
 \CSLRightInline{Wilkinson, T. \emph{et al.} Identifying dementia cases with routinely collected health data: {A}~systematic review. \emph{Alzheimer's \& Dementia} \textbf{14}, 1038--1051 (2018).}
 
 \leavevmode\hypertarget{ref-mcguinness2019b}{}%
-\CSLLeftMargin{194. }
-\CSLRightInline{McGuinness, L. A., Warren-Gash, C., Moorhouse, L. R. \& Thomas, S. L. The validity of dementia diagnoses in routinely collected electronic health records in the {United Kingdom}: {A} systematic review. \emph{Pharmacoepidemiology and Drug Safety} \textbf{28}, 244--255 (2019).}
-
-\leavevmode\hypertarget{ref-korologou-linden2020}{}%
-\CSLLeftMargin{195. }
-\CSLRightInline{Korologou-Linden, R. \emph{et al.} The causes and consequences of {Alzheimer}'s disease: Phenome-wide evidence from {Mendelian} randomization. \emph{medRxiv} 2019.12.18.19013847 (2020). doi:\href{https://doi.org/10.1101/2019.12.18.19013847}{10.1101/2019.12.18.19013847}}
-
-\leavevmode\hypertarget{ref-wilkinson2018a}{}%
 \CSLLeftMargin{196. }
-\CSLRightInline{Wilkinson, T. \emph{et al.} Identifying dementia cases with routinely collected health data: {A} systematic review. \emph{Alzheimer's \& Dementia} \textbf{14}, 1038--1051 (2018).}
-
-\leavevmode\hypertarget{ref-mcguinness2019c}{}%
-\CSLLeftMargin{197. }
 \CSLRightInline{McGuinness, L. A., Warren-Gash, C., Moorhouse, L. R. \& Thomas, S. L. The validity of dementia diagnoses in routinely collected electronic health records in the {United Kingdom}: {A} systematic review. \emph{Pharmacoepidemiology and Drug Safety} \textbf{28}, 244--255 (2019).}
+
+\leavevmode\hypertarget{ref-goldacre2019c}{}%
+\CSLLeftMargin{197. }
+\CSLRightInline{Goldacre, B., Morton, C. E. \& DeVito, N. J. Why researchers should share their analytic code. \emph{BMJ} \textbf{367}, l6365 (2019).}
 
 \leavevmode\hypertarget{ref-vandenbroucke2007}{}%
 \CSLLeftMargin{198. }
 \CSLRightInline{Vandenbroucke, J. P. \emph{et al.} Strengthening the {Reporting} of {Observational Studies} in {Epidemiology} ({STROBE}): {Explanation} and {Elaboration}. \emph{PLOS Medicine} \textbf{4}, e297 (2007).}
 
-\leavevmode\hypertarget{ref-danaei2013b}{}%
-\CSLLeftMargin{199. }
-\CSLRightInline{Danaei, G., García Rodríguez, L. A., Cantero, O. F., Logan, R. \& Hernán, M. A. Observational data for comparative effectiveness research: An emulation of randomised trials to estimate the effect of statins on primary prevention of coronary heart disease. \emph{Statistical methods in medical research} \textbf{22}, 70--96 (2013).}
-
 \leavevmode\hypertarget{ref-riboli1997}{}%
-\CSLLeftMargin{200. }
+\CSLLeftMargin{199. }
 \CSLRightInline{Riboli, E. The {EPIC Project}: Rationale and study design. {European Prospective Investigation} into {Cancer} and {Nutrition}. \emph{International Journal of Epidemiology} \textbf{26}, 6S--14 (1997).}
 
 \leavevmode\hypertarget{ref-riboli2002}{}%
-\CSLLeftMargin{201. }
+\CSLLeftMargin{200. }
 \CSLRightInline{Riboli, E. \emph{et al.} European {Prospective Investigation} into {Cancer} and {Nutrition} ({EPIC}): Study populations and data collection. \emph{Public Health Nutrition} \textbf{5}, 1113--1124 (2002).}
 
 \leavevmode\hypertarget{ref-fisher2017}{}%
-\CSLLeftMargin{202. }
+\CSLLeftMargin{201. }
 \CSLRightInline{Fisher, D. J., Carpenter, J. R., Morris, T. P., Freeman, S. C. \& Tierney, J. F. Meta-analytical methods to identify who benefits most from treatments: Daft, deluded, or deft approach? \emph{BMJ} \textbf{356}, j573 (2017).}
 
 \leavevmode\hypertarget{ref-yusuf1984}{}%
-\CSLLeftMargin{203. }
+\CSLLeftMargin{202. }
 \CSLRightInline{Yusuf, S., Collins, R. \& Peto, R. Why do we need some large, simple randomized trials? \emph{Statistics in Medicine} \textbf{3}, 409--420 (1984).}
 
 \leavevmode\hypertarget{ref-base}{}%
-\CSLLeftMargin{204. }
+\CSLLeftMargin{203. }
 \CSLRightInline{R Core Team. \emph{R: {A} language and environment for statistical computing}. ({R Foundation for Statistical Computing}, 2019).}
 
 \leavevmode\hypertarget{ref-cranlogs}{}%
-\CSLLeftMargin{205. }
+\CSLLeftMargin{204. }
 \CSLRightInline{Csárdi, G. \emph{Cranlogs: {Download} logs from the '{RStudio}' '{CRAN}' mirror}. (2019).}
 
 \leavevmode\hypertarget{ref-dplyr}{}%
-\CSLLeftMargin{206. }
+\CSLLeftMargin{205. }
 \CSLRightInline{Wickham, H., François, R., Henry, L. \& Müller, K. \emph{Dplyr: {A} grammar of data manipulation}. (2020).}
 
 \leavevmode\hypertarget{ref-flextable}{}%
-\CSLLeftMargin{207. }
+\CSLLeftMargin{206. }
 \CSLRightInline{Gohel, D. \emph{Flextable: {Functions} for tabular reporting}. (2020).}
 
 \leavevmode\hypertarget{ref-ggplot2}{}%
-\CSLLeftMargin{208. }
+\CSLLeftMargin{207. }
 \CSLRightInline{Wickham, H. \emph{Ggplot2: {Elegant} graphics for data analysis}. ({Springer-Verlag New York}, 2016).}
 
 \leavevmode\hypertarget{ref-glue}{}%
-\CSLLeftMargin{209. }
+\CSLLeftMargin{208. }
 \CSLRightInline{Hester, J. \emph{Glue: {Interpreted} string literals}. (2020).}
 
 \leavevmode\hypertarget{ref-gt}{}%
-\CSLLeftMargin{210. }
+\CSLLeftMargin{209. }
 \CSLRightInline{Iannone, R., Cheng, J. \& Schloerke, B. \emph{Gt: {Easily} create presentation-ready display tables}. (2020).}
 
 \leavevmode\hypertarget{ref-here}{}%
-\CSLLeftMargin{211. }
+\CSLLeftMargin{210. }
 \CSLRightInline{Müller, K. \emph{Here: {A} simpler way to find your files}. (2020).}
 
 \leavevmode\hypertarget{ref-kableExtra}{}%
-\CSLLeftMargin{212. }
+\CSLLeftMargin{211. }
 \CSLRightInline{Zhu, H. \emph{{kableExtra}: {Construct} complex table with 'kable' and pipe syntax}. (2020).}
 
 \leavevmode\hypertarget{ref-knitr}{}%
-\CSLLeftMargin{213. }
+\CSLLeftMargin{212. }
 \CSLRightInline{Xie, Y. \emph{Dynamic documents with {R} and knitr}. ({Chapman and Hall/CRC}, 2015).}
 
 \leavevmode\hypertarget{ref-medrxivr}{}%
-\CSLLeftMargin{214. }
+\CSLLeftMargin{213. }
 \CSLRightInline{McGuinness, L. A. \& Schmidt, L. Medrxivr: {Accessing} and searching {medRxiv} and {bioRxiv} preprint data in {R}. \emph{Journal of Open Source Software} \textbf{5}, 2651 (2020).}
 
 \leavevmode\hypertarget{ref-plyr}{}%
-\CSLLeftMargin{215. }
+\CSLLeftMargin{214. }
 \CSLRightInline{Wickham, H. The split-apply-combine strategy for data analysis. \emph{Journal of Statistical Software} \textbf{40}, 1--29 (2011).}
 
 \leavevmode\hypertarget{ref-robvis}{}%
-\CSLLeftMargin{216. }
+\CSLLeftMargin{215. }
 \CSLRightInline{McGuinness, L. A. \& Higgins, J. P. Risk-of-bias {VISualization} (robvis): {An R} package and {Shiny} web app for visualizing risk-of-bias assessments. \emph{Research Synthesis Methods} (2020). doi:\href{https://doi.org/10.1002/jrsm.1411}{10.1002/jrsm.1411}}
 
 \leavevmode\hypertarget{ref-stringr}{}%
-\CSLLeftMargin{217. }
+\CSLLeftMargin{216. }
 \CSLRightInline{Wickham, H. \emph{Stringr: {Simple}, consistent wrappers for common string operations}. (2019).}
 
 \leavevmode\hypertarget{ref-tidyverse}{}%
-\CSLLeftMargin{218. }
+\CSLLeftMargin{217. }
 \CSLRightInline{Wickham, H. \emph{et al.} Welcome to the {tidyverse}. \emph{Journal of Open Source Software} \textbf{4}, 1686 (2019).}
 
 \leavevmode\hypertarget{ref-wordcountaddin}{}%
-\CSLLeftMargin{219. }
+\CSLLeftMargin{218. }
 \CSLRightInline{Marwick, B. \emph{Wordcountaddin: {Word} counts and readability statistics in {R} markdown documents}. (2020).}
 
 \leavevmode\hypertarget{ref-xfun}{}%
-\CSLLeftMargin{220. }
+\CSLLeftMargin{219. }
 \CSLRightInline{Xie, Y. \emph{Xfun: {Miscellaneous} functions by '{Yihui Xie}'}. (2021).}
 
 \leavevmode\hypertarget{ref-wilson2014}{}%
-\CSLLeftMargin{221. }
+\CSLLeftMargin{220. }
 \CSLRightInline{Wilson, G. \emph{et al.} Best {Practices} for {Scientific Computing}. \emph{PLOS Biology} \textbf{12}, e1001745 (2014).}
 
 \leavevmode\hypertarget{ref-wilson2017}{}%
-\CSLLeftMargin{222. }
+\CSLLeftMargin{221. }
 \CSLRightInline{Wilson, G. \emph{et al.} Good enough practices in scientific computing. \emph{PLOS Computational Biology} \textbf{13}, e1005510 (2017).}
 
 \leavevmode\hypertarget{ref-cochranechpt7}{}%
-\CSLLeftMargin{223. }
+\CSLLeftMargin{222. }
 \CSLRightInline{Boutron, I. \emph{et al.} Chapter 7: {Considering} bias and conflicts of interest among the included studies. in \emph{Cochrane {Handbook} for {Systematic Reviews} of {Interventions} version 6.0 (updated {August} 2019)} (eds. Higgins, J. P. T. et al.) ({Cochrane}, 2019).}
 
 \leavevmode\hypertarget{ref-sterne2019rob}{}%
-\CSLLeftMargin{224. }
+\CSLLeftMargin{223. }
 \CSLRightInline{Sterne, J. A. C. \emph{et al.} {RoB} 2: A revised tool for assessing risk of bias in randomised trials. \emph{BMJ} \textbf{366}, l4898 (2019).}
 
 \leavevmode\hypertarget{ref-sterne2016robins}{}%
-\CSLLeftMargin{225. }
+\CSLLeftMargin{224. }
 \CSLRightInline{Sterne, J. A. C. \emph{et al.} {ROBINS}-{I}: A tool for assessing risk of bias in non-randomised studies of interventions. \emph{BMJ} \textbf{355}, i4919 (2016).}
 
 \leavevmode\hypertarget{ref-whiting2011quadas}{}%
-\CSLLeftMargin{226. }
+\CSLLeftMargin{225. }
 \CSLRightInline{Whiting, P. F. \emph{et al.} {QUADAS}-2: A revised tool for the quality assessment of diagnostic accuracy studies. \emph{Annals of Internal Medicine} \textbf{155}, 529--536 (2011).}
 
 \leavevmode\hypertarget{ref-higgins2008assessing}{}%
-\CSLLeftMargin{227. }
+\CSLLeftMargin{226. }
 \CSLRightInline{Higgins, J. P. T. \& Altman, D. G. Chapter 8: {Assessing} risk of bias in included studies. in \emph{Cochrane {Handbook} for {Systematic Reviews} of {Interventions}} (eds. Higgins, J. P. T. \& Green, S.) 187--241 ({Wiley Online Library}, 2008).}
 
 \leavevmode\hypertarget{ref-cochrane2014review}{}%
-\CSLLeftMargin{228. }
+\CSLLeftMargin{227. }
 \CSLRightInline{Cochrane Collaboration. Review {Manager} ({RevMan}) {[}{Computer} program{]}. (2014).}
 
 \leavevmode\hypertarget{ref-marshall2015systematic}{}%
-\CSLLeftMargin{229. }
+\CSLLeftMargin{228. }
 \CSLRightInline{Marshall, C. \& Brereton, P. Systematic review toolbox: A catalogue of tools to support systematic reviews. in \emph{Proceedings of the 19th international conference on evaluation and assessment in software engineering} Article 23; 1--6 ({Association for Computing Machinery}, 2015). doi:\href{https://doi.org/10.1145/2745802.2745824}{10.1145/2745802.2745824}}
 
 \leavevmode\hypertarget{ref-harrison2020software}{}%
-\CSLLeftMargin{230. }
+\CSLLeftMargin{229. }
 \CSLRightInline{Harrison, H., Griffin, S. J., Kuhn, I. \& Usher-Smith, J. A. Software tools to support title and abstract screening for systematic reviews in healthcare: An evaluation. \emph{BMC Medical Research Methodology} \textbf{20}, 7 (2020).}
 
 \leavevmode\hypertarget{ref-rref}{}%
-\CSLLeftMargin{231. }
+\CSLLeftMargin{230. }
 \CSLRightInline{R Core Team. \emph{R: {A} language and environment for statistical computing}. ({R Foundation for Statistical Computing}, 2019).}
 
 \leavevmode\hypertarget{ref-rstudioref}{}%
-\CSLLeftMargin{232. }
+\CSLLeftMargin{231. }
 \CSLRightInline{RStudio Team. \emph{{RStudio}: {Integrated} development environment for {R}}. ({RStudio, Inc.}, 2015).}
 
 \leavevmode\hypertarget{ref-shinyref}{}%
-\CSLLeftMargin{233. }
+\CSLLeftMargin{232. }
 \CSLRightInline{Chang, W., Cheng, J., Allaire, J., Xie, Y. \& McPherson, J. \emph{Shiny: {Web} application framework for {R}}. (2019).}
 
 \leavevmode\hypertarget{ref-mcguinness2019a}{}%
-\CSLLeftMargin{234. }
+\CSLLeftMargin{233. }
 \CSLRightInline{McGuinness, L. A. Robvis: {An R} package for visualising risk-of-bias assessments. {[}{Computer Software} - v0.3.0{]}. (2019). doi:\href{https://doi.org/10.5281/zenodo.3552342}{10.5281/zenodo.3552342}}
 
 \leavevmode\hypertarget{ref-gibb2019consistent}{}%
-\CSLLeftMargin{235. }
+\CSLLeftMargin{234. }
 \CSLRightInline{Gibb, K. \emph{et al.} The consistent burden in published estimates of delirium occurrence in medical inpatients over four decades: A systematic review and meta-analysis study. \emph{medRxiv} 19005165 (2019). doi:\href{https://doi.org/10.1101/19005165}{10.1101/19005165}}
 
 \leavevmode\hypertarget{ref-habadi2019prevalence}{}%
-\CSLLeftMargin{236. }
+\CSLLeftMargin{235. }
 \CSLRightInline{Habadi, M. I. \emph{et al.} Prevalence of panic disorders in the primary health care setting: {A} systematic review and meta-analysis. \emph{EC Microbiology} \textbf{16}, 01--09 (2019).}
 
 \leavevmode\hypertarget{ref-veloso2020effectiveness}{}%
-\CSLLeftMargin{237. }
+\CSLLeftMargin{236. }
 \CSLRightInline{Veloso, A., Vicente, S. G. \& Filipe, M. G. Effectiveness of cognitive training for school-aged children and adolescents with attention {Deficit}/{Hyperactivity} disorder: {A} systematic review. \emph{Frontiers in Psychology} \textbf{10}, 2983 (2020).}
 
 \leavevmode\hypertarget{ref-simillis2020}{}%
-\CSLLeftMargin{238. }
+\CSLLeftMargin{237. }
 \CSLRightInline{Simillis, C. \emph{et al.} Postoperative chemotherapy improves survival in patients with resected high-risk stage {II} colorectal cancer: Results of a systematic review and meta-analysis. \emph{Colorectal Disease} \textbf{Published online 30th January}, (2020).}
 
 \leavevmode\hypertarget{ref-tanneru2020}{}%
-\CSLLeftMargin{239. }
+\CSLLeftMargin{238. }
 \CSLRightInline{Tanneru, K. \emph{et al.} Meta-analysis and systematic review of intermediate-term follow-up of prostatic urethral lift for benign prostatic hyperplasia. \emph{International Urology and Nephrology} (2020).}
 
 \leavevmode\hypertarget{ref-mathias_harrer_2019_2551803}{}%
-\CSLLeftMargin{240. }
+\CSLLeftMargin{239. }
 \CSLRightInline{Harrer, M., Cuijpers, P. \& Ebert, D. \emph{Doing {Meta}-{Analysis} in {R}: {A Hands}-on {Guide}}. ({Zenodo}, 2019).}
 
 \leavevmode\hypertarget{ref-whiting2016robis}{}%
-\CSLLeftMargin{241. }
+\CSLLeftMargin{240. }
 \CSLRightInline{Whiting, P. \emph{et al.} {ROBIS}: A new tool to assess risk of bias in systematic reviews was developed. \emph{Journal of Clinical Epidemiology} \textbf{69}, 225--234 (2016).}
 
 \end{CSLReferences}
@@ -3456,9 +3605,9 @@ Short section detailing the things I tried to do but which did not work.
 \hypertarget{software-used-to-create-this-thesis}{%
 \section{Software used to create this thesis}\label{software-used-to-create-this-thesis}}
 
-This thesis was written in RMarkdown. Several R packages were used as part of this project.\textsuperscript{\protect\hyperlink{ref-rbiorxiv}{132},\protect\hyperlink{ref-base}{204}--\protect\hyperlink{ref-xfun}{220}}
+This thesis was written in RMarkdown. Several R packages were used as part of this project.\textsuperscript{\protect\hyperlink{ref-rbiorxiv}{132},\protect\hyperlink{ref-base}{203}--\protect\hyperlink{ref-xfun}{219}}
 
-All projects in these thesis attempt to conform to minimal best practices for research computing.\textsuperscript{\protect\hyperlink{ref-wilson2014}{221},\protect\hyperlink{ref-wilson2017}{222}}
+All projects in these thesis attempt to conform to minimal best practices for research computing.\textsuperscript{\protect\hyperlink{ref-wilson2014}{220},\protect\hyperlink{ref-wilson2017}{221}}
 
 \hypertarget{appendix-robvis}{%
 \section{\texorpdfstring{Producing risk-of-bias visualisations with \texttt{robvis}}{Producing risk-of-bias visualisations with robvis}}\label{appendix-robvis}}
@@ -3466,18 +3615,18 @@ All projects in these thesis attempt to conform to minimal best practices for re
 \hypertarget{introduction-2}{%
 \subsection{Introduction}\label{introduction-2}}
 
-Risk of bias assessment - evaluation of the internal validity of studies included in a systematic review - often forms a key part of the evidence synthesis process, particularly in the health sciences.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{223}} A well-developed family of tools is widely used, which have in common the characteristic that they evaluate specific domains of bias rather being constructed as a checklist or a quantitative score.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{223}} These tools include the RoB 2 tool for randomized trials,\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{224}} the ROBINS-I tool for non-randomized studies of interventions,\textsuperscript{\protect\hyperlink{ref-sterne2016robins}{225}} the QUADAS 2 tool for test accuracy and the ROBIS tool for systematic reviews.\textsuperscript{\protect\hyperlink{ref-whiting2011quadas}{226}} Within each bias domains a judgement is reached about the strength of the study in that regard: for example, the first domain in the Cochrane RoB 2 tool deals with bias arising from the randomization process.\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{224}} Accessible graphics summarizing the results of these domain-based risk-of-bias assessments are included in reports of systematic reviews. A convenient plot in many reviews is a ``traffic light'' plot, which tabulates the judgement for each study in each domain. For larger numbers of studies, when such a table become unmanageable, a popular alternative is a weighted bar plot, which show the proportion of information with each judgement for each domain.\textsuperscript{\protect\hyperlink{ref-higgins2008assessing}{227}}
+Risk of bias assessment - evaluation of the internal validity of studies included in a systematic review - often forms a key part of the evidence synthesis process, particularly in the health sciences.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{222}} A well-developed family of tools is widely used, which have in common the characteristic that they evaluate specific domains of bias rather being constructed as a checklist or a quantitative score.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{222}} These tools include the RoB 2 tool for randomized trials,\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{223}} the ROBINS-I tool for non-randomized studies of interventions,\textsuperscript{\protect\hyperlink{ref-sterne2016robins}{224}} the QUADAS 2 tool for test accuracy and the ROBIS tool for systematic reviews.\textsuperscript{\protect\hyperlink{ref-whiting2011quadas}{225}} Within each bias domains a judgement is reached about the strength of the study in that regard: for example, the first domain in the Cochrane RoB 2 tool deals with bias arising from the randomization process.\textsuperscript{\protect\hyperlink{ref-sterne2019rob}{223}} Accessible graphics summarizing the results of these domain-based risk-of-bias assessments are included in reports of systematic reviews. A convenient plot in many reviews is a ``traffic light'' plot, which tabulates the judgement for each study in each domain. For larger numbers of studies, when such a table become unmanageable, a popular alternative is a weighted bar plot, which show the proportion of information with each judgement for each domain.\textsuperscript{\protect\hyperlink{ref-higgins2008assessing}{226}}
 
-Researchers can face a number of barriers in creating these plots. While some evidence synthesis platforms, such as Cochrane's Review Manager,\textsuperscript{\protect\hyperlink{ref-cochrane2014review}{228}} are able to produce these visualizations, not all researchers use these systems to conduct their systematic reviews, and copying the risk-of-bias data into these systems simply to produce the plots is inefficient and error prone. Likewise, creating the figures by hand, through software such as MS PowerPoint or Adobe Illustrator, may lead to unintentional errors and require the plots to be redrawn during an update to the review. Additionally, while the field of evidence synthesis software has grown rapidly in recent years,\textsuperscript{\protect\hyperlink{ref-marshall2015systematic}{229}} this growth has not been equally distributed across the different aspects of the systematic review process. For example, a recent review found several software offerings aimed specifically at the abstract screening stage of the review process,\textsuperscript{\protect\hyperlink{ref-harrison2020software}{230}} but no similar time- and error-reducing tool has been proposed for visualizing the results of risk-of-bias assessments.
+Researchers can face a number of barriers in creating these plots. While some evidence synthesis platforms, such as Cochrane's Review Manager,\textsuperscript{\protect\hyperlink{ref-cochrane2014review}{227}} are able to produce these visualizations, not all researchers use these systems to conduct their systematic reviews, and copying the risk-of-bias data into these systems simply to produce the plots is inefficient and error prone. Likewise, creating the figures by hand, through software such as MS PowerPoint or Adobe Illustrator, may lead to unintentional errors and require the plots to be redrawn during an update to the review. Additionally, while the field of evidence synthesis software has grown rapidly in recent years,\textsuperscript{\protect\hyperlink{ref-marshall2015systematic}{228}} this growth has not been equally distributed across the different aspects of the systematic review process. For example, a recent review found several software offerings aimed specifically at the abstract screening stage of the review process,\textsuperscript{\protect\hyperlink{ref-harrison2020software}{229}} but no similar time- and error-reducing tool has been proposed for visualizing the results of risk-of-bias assessments.
 
-Fortunately, tools such as R, RStudio and \texttt{Shiny} (an R package for building interactive web apps) have made it easier than ever to produce such a tool.\textsuperscript{\protect\hyperlink{ref-rref}{231}--\protect\hyperlink{ref-shinyref}{233}} Here, we present \texttt{robvis} (Risk Of Bias VISualiation),\textsuperscript{\protect\hyperlink{ref-mcguinness2019a}{234}} an R package and \texttt{Shiny} web-app that allows users to create publication-ready risk-of-bias plots quickly and easily. Originally created for use with the major risk-of-bias assessment tools used in health research, the tool allows users to visualize the results from any domain-based risk-of-bias assessment or quality appraisal tool.
+Fortunately, tools such as R, RStudio and \texttt{Shiny} (an R package for building interactive web apps) have made it easier than ever to produce such a tool.\textsuperscript{\protect\hyperlink{ref-rref}{230}--\protect\hyperlink{ref-shinyref}{232}} Here, we present \texttt{robvis} (Risk Of Bias VISualiation),\textsuperscript{\protect\hyperlink{ref-mcguinness2019a}{233}} an R package and \texttt{Shiny} web-app that allows users to create publication-ready risk-of-bias plots quickly and easily. Originally created for use with the major risk-of-bias assessment tools used in health research, the tool allows users to visualize the results from any domain-based risk-of-bias assessment or quality appraisal tool.
 
 The tool is open-source and available to use free of charge. Users can download a stable version of the R package from CRAN (\url{https://cran.r-project.org/package=robvis}); or access and contribute to the development version via GitHub (\url{https://github.com/mcguinlu/robvis}).
 
 \hypertarget{development-1}{%
 \subsection{Development}\label{development-1}}
 
-Development of \texttt{robvis} began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.\textsuperscript{\protect\hyperlink{ref-gibb2019consistent}{235}--\protect\hyperlink{ref-tanneru2020}{239}}
+Development of \texttt{robvis} began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.\textsuperscript{\protect\hyperlink{ref-gibb2019consistent}{234}--\protect\hyperlink{ref-tanneru2020}{238}}
 
 \hypertarget{installation-1}{%
 \subsection{Installation}\label{installation-1}}
@@ -3567,9 +3716,9 @@ psize & X &  & Defines the size of the points in the traffic light plot. Default
 \hypertarget{reception-and-future-plans-1}{%
 \subsection{Reception and Future Plans}\label{reception-and-future-plans-1}}
 
-As of December 2021, \texttt{robvis} has been downloaded more than 12100 times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{240}}
+As of December 2021, \texttt{robvis} has been downloaded more than 12300 times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{239}}
 
-While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{241}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{223}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
+While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{240}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{222}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
 
 %%%%% REFERENCES
 

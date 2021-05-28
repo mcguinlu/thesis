@@ -1,0 +1,11 @@
+var,HR,stderr,pval,ci_lower,ci_upper,N,drug,analysis,covariates,outcome,N_sub,N_fail,age
+"treatment",1.140871,.0194936,1.37e-11,1.098105,1.185304,2133677,"Any","Unadjusted","Age + Sex","Other dementia",1653497,10763,"All"
+"treatment",1.141691,.0194547,9.67e-12,1.098978,1.186065,2133677,"Any","Unadjusted","Age","Other dementia",1653497,10763,"All"
+"treatment",1.798036,.02257,0,1.720231,1.87936,2131180,"Any","Unadjusted","Age + Sex","Vascular dementia",1651200,8466,"All"
+"treatment",1.800471,.0225346,0,1.72268,1.881774,2131180,"Any","Unadjusted","Age","Vascular dementia",1651200,8466,"All"
+"treatment",.9730198,.0203507,.1789562,.9349731,1.012615,2132247,"Any","Unadjusted","Age + Sex","Possible AD",1652688,9954,"All"
+"treatment",.9657371,.0203142,.0861216,.9280416,1.004964,2132247,"Any","Unadjusted","Age","Possible AD",1652688,9954,"All"
+"treatment",.8710157,.0180642,2.09e-14,.8407168,.9024066,2135961,"Any","Unadjusted","Age + Sex","Probable AD",1655381,12647,"All"
+"treatment",.8572158,.0180285,0,.8274548,.8880472,2135961,"Any","Unadjusted","Age","Probable AD",1655381,12647,"All"
+"treatment",1.111539,.0098742,0,1.090234,1.13326,2176791,"Any","Unadjusted","Age + Sex","Any dementia",1684564,41830,"All"
+"treatment",1.105642,.0098558,0,1.084489,1.127207,2176791,"Any","Unadjusted","Age","Any dementia",1684564,41830,"All"

@@ -1,0 +1,9 @@
+var,HR,stderr,pval,ci_lower,ci_upper,N,drug,analysis,covariates,outcome,N_sub,N_fail,age
+"treatment",1.629568,.0078142,0,1.6048,1.654718,1981106,"Statins","ihd","full","ihd",1567399,73723,"All"
+"treatment",4.590879,.1559103,0,3.382087,6.231706,1065346,"Omega-3 Fatty Acid Groups","ihd","full","ihd",1064876,7985,"All"
+"treatment",2.996297,.2788217,.0000829,1.734808,5.175096,1064217,"hc_nag","ihd","full","ihd",1064149,7874,"All"
+"treatment",4.174633,.0568261,0,3.734632,4.666474,1069364,"Fibrates","ihd","full","ihd",1067172,8278,"All"
+"treatment",6.287504,.3799169,1.30e-06,2.986018,13.23927,1064226,"hc_eze_sta","ihd","full","ihd",1064120,7871,"All"
+"treatment",4.864487,.161031,0,3.547866,6.66971,1065271,"Ezetimibe","ihd","full","ihd",1064688,7946,"All"
+"treatment",2.781463,.08111,0,2.372643,3.260725,1071368,"Bile acid sequestrants","ihd","full","ihd",1069220,8042,"All"
+"treatment",1.615834,.0077623,0,1.591437,1.640605,1996916,"Any","ihd","full","ihd",1577642,74553,"All"

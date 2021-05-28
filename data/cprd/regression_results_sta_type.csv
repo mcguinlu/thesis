@@ -1,0 +1,11 @@
+var,HR,stderr,pval,ci_lower,ci_upper,N,drug,analysis,covariates,outcome,N_sub,N_fail,age
+"treatment",1.131934,.0527982,.018915,1.020656,1.255345,1127539,"Statins","Hydrophilic","full","Other dementia",1105765,5260,"All"
+"treatment",1.184262,.0205359,2.22e-16,1.137542,1.2329,2062811,"Statins","Lipophilic","full","Other dementia",1610532,10237,"All"
+"treatment",.832113,.0573347,.0013482,.7436678,.9310771,1127401,"Statins","Hydrophilic","full","Possible AD",1105666,5161,"All"
+"treatment",.9698645,.0213936,.1526362,.9300381,1.011396,2061509,"Statins","Lipophilic","full","Possible AD",1609800,9505,"All"
+"treatment",.8503339,.0554896,.0034808,.7627051,.9480306,1129008,"Statins","Hydrophilic","full","Probable AD",1107257,6752,"All"
+"treatment",.9772704,.0189712,.2255365,.9416001,1.014292,2065157,"Statins","Lipophilic","full","Probable AD",1612469,12174,"All"
+"treatment",1.572745,.0587734,1.31e-14,1.40162,1.764762,1125291,"Statins","Hydrophilic","full","Vascular dementia",1103538,3033,"All"
+"treatment",1.823978,.0235551,0,1.741684,1.910159,2060415,"Statins","Lipophilic","full","Vascular dementia",1608309,8014,"All"
+"treatment",1.024144,.0278564,.3917502,.9697277,1.081615,1143233,"Statins","Hydrophilic","full","Any dementia",1120711,20206,"All"
+"treatment",1.164199,.0103628,0,1.140792,1.188087,2103684,"Statins","Lipophilic","full","Any dementia",1640225,39930,"All"

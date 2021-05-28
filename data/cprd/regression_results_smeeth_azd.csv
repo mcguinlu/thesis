@@ -1,0 +1,9 @@
+var,HR,stderr,pval,ci_lower,ci_upper,N,drug,analysis,covariates,outcome,N_sub,N_fail,age
+"treatment",1.185256,.0518573,.0010476,1.070708,1.312058,565879,"Statins","smeeth_azd","full","smeeth_azd",450278,1671,"All"
+"treatment",2.37374,1.001206,.3879035,.333584,16.89122,331629,"Omega-3 Fatty Acid Groups","smeeth_azd","full","smeeth_azd",331513,911,"All"
+"treatment",4.45e-19,0,,4.45e-19,4.45e-19,331429,"hc_nag","smeeth_azd","full","smeeth_azd",331408,910,"All"
+"treatment",1.516118,.7109035,.5582883,.3763663,6.107381,331984,"Fibrates","smeeth_azd","full","smeeth_azd",331697,912,"All"
+"treatment",3.61e-19,0,,3.61e-19,3.61e-19,331459,"hc_eze_sta","smeeth_azd","full","smeeth_azd",331423,910,"All"
+"treatment",1.432179,1.001038,.7197265,.2013317,10.18784,331705,"Ezetimibe","smeeth_azd","full","smeeth_azd",331547,911,"All"
+"treatment",1.280508,.7090575,.7273058,.3190299,5.139644,332693,"Bile acid sequestrants","smeeth_azd","full","smeeth_azd",332077,912,"All"
+"treatment",1.189385,.0517265,.0007995,1.074714,1.316292,568468,"Any","smeeth_azd","full","smeeth_azd",451633,1677,"All"

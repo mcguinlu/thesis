@@ -349,6 +349,8 @@ An overview of how all research studies in this thesis can be found in Table \@r
 <!----------------------------------------------------------------------------->
 (ref:thesisOverview-caption) Summary of studies included in this thesis, and used as evidence sources in the triangulation exercise performed in Chapter \@ref(discussion-heading). Note, Chapter \@ref(sys-rev-tools-heading) is intentionally not included in this table, as it describes a tool rather than a research study.
 
+(ref:thesisOverview-scaption) Summary of studies included in this thesis
+
 ```{r thesisOverview-table, message=FALSE, results="asis", echo = FALSE}
 ```
 <!----------------------------------------------------------------------------->

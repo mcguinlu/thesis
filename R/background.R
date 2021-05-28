@@ -103,6 +103,7 @@ if(doc_type == "docx"){
     thesisOverview_table,
     format = "latex",
     caption = "(ref:thesisOverview-caption)",
+    caption.short = "(ref:thesisOverview-scaption)",
     booktabs = TRUE
   ) %>%
     column_spec(1, width = paste0(6,"em")) %>%

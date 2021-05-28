@@ -1,0 +1,9 @@
+var,HR,stderr,pval,ci_lower,ci_upper,N,drug,analysis,covariates,outcome,N_sub,N_fail,age
+"treatment",1.03756,.0047533,8.66e-15,1.027938,1.047271,1383827,"Statins","backpain","full","backpain",1095903,240609,"All"
+"treatment",1.120528,.081749,.1639036,.9546357,1.315248,707210,"Omega-3 Fatty Acid Groups","backpain","full","backpain",706881,128778,"All"
+"treatment",1.540976,.1603516,.0070036,1.125393,2.110024,706394,"hc_nag","backpain","full","backpain",706354,128617,"All"
+"treatment",1.082712,.0363333,.0287269,1.008291,1.162625,710523,"Fibrates","backpain","full","backpain",708918,129476,"All"
+"treatment",1.073748,.2425862,.7692789,.6674404,1.727396,706403,"hc_eze_sta","backpain","full","backpain",706332,128595,"All"
+"treatment",.9104912,.1049145,.3714367,.741263,1.118354,707157,"Ezetimibe","backpain","full","backpain",706761,128730,"All"
+"treatment",1.089565,.0404556,.0339796,1.006508,1.179476,710435,"Bile acid sequestrants","backpain","full","backpain",709441,129462,"All"
+"treatment",1.037653,.0047125,4.44e-15,1.028113,1.047282,1394467,"Any","backpain","full","backpain",1103108,242823,"All"

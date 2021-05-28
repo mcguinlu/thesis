@@ -1,0 +1,6 @@
+var,HR,stderr,pval,ci_lower,ci_upper,N,drug,analysis,covariates,outcome,N_sub,N_fail,age
+"treatment",1.280806,.0480096,2.54e-07,1.165783,1.407179,557714,"Any","Complete case","full","Other dementia",444148,2074,"All"
+"treatment",2.198867,.0553764,0,1.972706,2.450956,557147,"Any","Complete case","full","Vascular dementia",443603,1529,"All"
+"treatment",1.08017,.05169,.1357144,.9760982,1.195338,557287,"Any","Complete case","full","Possible AD",443879,1805,"All"
+"treatment",1.036962,.0409387,.3753075,.9570084,1.123595,558547,"Any","Complete case","full","Probable AD",444826,2752,"All"
+"treatment",1.268687,.0241269,0,1.210089,1.330121,566388,"Any","Complete case","full","Any dementia",450234,8160,"All"

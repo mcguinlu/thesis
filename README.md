@@ -18,6 +18,8 @@
 - [ ] Check all codeblocks with `eval = FALSE` to make sure they are still valid
 - [ ] Do search for everything in parentheses "(...)" and make sure all acronyms are in abbreviations list 
 - [ ] Check figure and table titles are appropriately bolded
+- [ ] Check short captions for tables
+- [ ] Check short captions for figures
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice
