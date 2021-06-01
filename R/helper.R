@@ -166,10 +166,13 @@ make <- function(arg = "pdf") {
   system(paste0("make ", arg))
 }
 
+
 covering <- function(){
   rmarkdown::render("front-and-back-matter/_00-introduction.Rmd")
   browseURL("front-and-back-matter/_00-introduction.html")
 }
+
+
 
 end_of_day <- function(words = NULL) {
   
@@ -185,10 +188,18 @@ end_of_day <- function(words = NULL) {
   
 }
 
-
+#' Function that returns some text
+#' @description Used to insert a inline placeholder function when writing a
+#'   paragraph, to be replaced at a later date with results.
 hold <- function(){
   "**PLACEHOLDER**"
 }
+
+
+
+#' Run todor for active document, or specify file path
+#'
+#' @param fp File path (optional)
 
 todo <- function(fp){
   
@@ -200,3 +211,32 @@ todo <- function(fp){
   todor::todor_file(fp)
   
 }
+
+
+
+#' Open all files associated with a given chapter
+#'
+#' @param N Chapter number
+
+chapter_edit <- function(N){
+  
+    # Open Chapter RMarkdown file
+  chapters <- list.files(pattern = ".Rmd")
+  
+  chapter <- chapters[which(data.table::like(chapters, N))]
+  
+  file.edit(chapter)
+
+  # Open associated R file
+  rfiles <- list.files(path = "R", pattern = ".R", full.names = TRUE)
+  
+  file.edit(rfiles[which(data.table::like(rfiles, N))])  
+  
+  # Put focus back on RMarkdown
+  rstudioapi::navigateToFile(chapter)
+  
+}
+
+
+
+

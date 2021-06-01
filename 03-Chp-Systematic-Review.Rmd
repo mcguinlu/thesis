@@ -1,13 +1,19 @@
 ---
+bibliography: bibliography/references.bib
+csl: bibliography/nature.csl
 output:
   bookdown::pdf_document2:
     template: templates/brief_template.tex
-  bookdown::word_document2: default
+  bookdown::word_document2: 
+      toc: false
+      toc_depth: 3
+      reference_docx: templates/word-styles-reference-01.docx
+      number_sections: false 
   bookdown::html_document2: default
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(),quote_author='(ref:sys-rev-quote)', echo = TRUE}
+```{block type='savequote', include=knitr::is_latex_output(),quote_author='(ref:sys-rev-quote)', echo = FALSE}
 "It is surely a great criticism of our profession that we have not organised a critical summary by speciality or sub-speciality, up-dated periodically, of all relevant RCTS."  
 ```
 
@@ -19,14 +25,16 @@ documentclass: book
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source("R/doc_options.R")
-knitr::read_chunk("R/Chp2-Systematic-Review.R")
+source("R/helper.R")
+knitr::read_chunk("R/03-Code-Systematic-Review.R")
+doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
 
 ## To Do
 
 -   Examine how many times a primary study was included in a review\
 -   Look at whether searching preprints made any difference to my results
--   Could apply ROBIS to previous reviews to see how they stack-up?
+-   Could apply ROBIS to previous reviews to see how they stack-up? (This may be done as part of Georgia's summer project)
 
 ## Extra studies to include:
 
@@ -45,7 +53,9 @@ knitr::read_chunk("R/Chp2-Systematic-Review.R")
 
 The aim of this chapter is to systematically review all available literature on the association between blood levels of total cholesterol and it's constituent parts (HDL-c,LDL-c and triglycerides) on the subsequent risk of dementia.
 
-Based on the review of prev, no previous
+Based on the review of prev, no previous evidence synthesis exercise attempted to examine all available literature simultaneously. 
+
+Only by looking across all available evidence can 
 
 Literature con
 
@@ -88,10 +98,13 @@ Excluded studies performing autopsy unless it was done under accepted criteria E
 Harmonization of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorizing lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
 
 
-Following guidance for a dose response meta-analysis, we picked m
+Following guidance for a dose response meta-analysis, we picked midpoint for all studies where bands were provided (extremely common in the case of lipids)
+
+This analysis was unusual, as multiple methods of intergration and analysis were required with data spannign many forms.
+
+
 
 <!-- TODO Cross reference with the data extraction issues here - i.e. not providing qratile cut-off values, not poviding numbers per group, etc. -->
-
 
 ### Risk of bias assessment {#risk-of-bias}
 
@@ -99,18 +112,72 @@ Risk of bias assessment was performed using the domain-based risk-of-bias assess
 
 I opted to use the ROBINS-E tool, despite it still being in development,[@morganr2020] in place of other existing published tools such as the Newcastle-Ottowa scale (NOS).[@wells2000newcastle] There are two primary reasons for this: firstly, current thinking in assessing internal validity has moved away from scales.
 
+<!-- TODO Cite release version of this tool, and just use domain based approach -->
+
 Secondly, using a domain based to assess the risk of bias in studies of exposure allowed for better comparison and consistency across the tool used for different study designs, as they are all domain based.
+
+<!-- TODO This next bit is not true -->
 
 At present, no risk of bias assessment tool for Mendelian randomization studies is available. Bias in these studies was assessed with the help of an expert panel drawn from my supervisors and other external invited researchers.[CITE] The risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation, as identified by a review of risk of bias assessments in systematic reviews of MR studies.[@mamluk2020] A copy of the is available in Appendix \@ref(appendix-mr-rob). Advance results from this review of bias assessment in MR studies were obtained from contact with the authors.
 
 Results from the risk-of-bias assessment will be visualized using a paired forest/risk-of-bias blobbogram, created using the `robvis` tool. This tool was developed as an adjunct to this thesis to aid in creating standard risk-of-bias figures.[@mcguinness2019] A summary of the tool is provided in Appendix \@ref(appendix-robvis).
 
+<!-- TODO Cite MR tool here from malmuk, see info from Francesca -->
 
 Many reviews use reporting guidelines instead - this is bad![@costa2011]
 
+<!----------------------------------------------------------------------------->
+
+## Studification
+
+In the advent of multiple papers reporting results on the same cohort, but say, at different time points, I used a process of studifiction to build out the most comprehensive accounts of the studies and results from as many published articles were applicable. 
+
+<!----------------------------------------------------------------------------->
+
+## Following up with authors
+
+As part of the IPD analysis, relevant cohort studies were identified and approached. In the first instance, the corresponding author on the main man
+
+<!-- TODO move to results, and keep just a short bit here -->
+
+<!----------------------------------------------------------------------------->
+
+
+### Statistical analysis methods
+
+<!----------------------------------------------------------------------------->
+
+Meta-analysis is an important method of . . . 
+
+Need formula here, and description of different methods and quarrels re fixed effect vs random effects meta-analyses.
+
+This anal
+
+Will also need description of dose-response meta-analysis here, with reference to forthcoming book Julian sent on.
+
+### Visualisation of results
+
+Given the importance of visualising the potential biases alongside the results of any given study, a new visualisation tool was designed to allow for "paired" forest plots (as recommended by the ROB2 publication)
+
+A summary of this tool is contained in Appendix \@ref (), . 
+
+### Assessment of added value of including preprint
+
+Preprints are a valuable vidence source (see Introduction) but their inclusion in a systematic reivew
+
+Additionally, I followed preprints up over time to investigate whether all identified preprints included in the review were subsequently published (in which case preprints give you a look into the future, and a systematic review update would capture these reports) or alternatively, if some preprints were not published, then preprints provide a different. 
+
+I also sought to explore the additional evidental value of including preprints in the meta-analysis, assessed using the fixed effect weight from a standard meta-analysis.
+
+<!----------------------------------------------------------------------------->
+
 ### Patient and public involvement
 
+<!----------------------------------------------------------------------------->
+
 ## Results
+
+<!----------------------------------------------------------------------------->
 
 ### Previous reviews
 
@@ -136,12 +203,13 @@ The alternative is to have a barplot showing the total cumulative number of reco
 
 <!--- Take a stand here! --->
 
-
 Of note, this review did not include the commonly cited PROSPER study, which examined the effect of pravastatin on CVD risk and putatively provides no evidence for an effect of the statin on dementia outcomes. While widely cited and included in the Cochrane review on this topic, it has not been included here, for the reason that it only reported the change from cognitive score (as measured using the [CHECK] scale) over a mean follow-up. While this is a useful indicator of general cognitive decline, it is not equivalent to a dementia outcome, as cogntive scales should feed into a broader diagnostic pathway - See section \@ref(diagnostic-criteria)
 
 This does introduce some conflicts with other studies where a change score has been dichotomised in order to have a binary dementia or not dementia outcome.
 
 Does it also cause issues in terms of self-report?
+
+<!----------------------------------------------------------------------------->
 
 ### Screening results
 
@@ -163,17 +231,18 @@ Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet20
 
 How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpretation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:gwet-table).
 
-<!-- ------------------------------------------------------------------------- -->
+&nbsp;
 
-```{r gwet-setup, results="hide", message=FALSE, echo = FALSE}
-```
+<!----------------------------------------------------------------------------->
+(ref:gwet-caption) Suggested ranges to aid in interpretation of Gwet's AC1 inter-rater reliability metric
+
+(ref:gwet-scaption) Ranges for Gwet's AC1
 
 ```{r gwet-table, message=FALSE, results="asis", echo = FALSE}
 ```
+<!----------------------------------------------------------------------------->
 
-<!-- ------------------------------------------------------------------------- -->
-
-<!--- Need example table here, showing relevant cells --->
+&nbsp;
 
 
 In a two-by-two table with cells A, B, C and D, Gwet's AC1 is calculated using the following:
@@ -185,6 +254,8 @@ where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, wh
 $$q = \frac{(A+C)+(A+B)}{2N}$$
 
 -\> Insert formula here. Need to be sure of how to calculate. [@gwet2008; @sim2005]
+
+<!--- TODO Need example table here, showing relevant cells --->
 
 <!-- # ```{r agreementtableinter, echo = FALSE} -->
 
@@ -203,6 +274,8 @@ Those records which were excluded in the initial screening, but were included ei
 <!--- Cross check this with the actual numbers included --->
 
 <!----------------------------------------------------------------------------->
+
+<!-- TODO This needs to use the PRISMA2020 package -->
 
 ```{r prisma-flow-setup, results="hide", message=FALSE}
 ```
@@ -238,11 +311,6 @@ Include here:
 -   Summary of risk of bias
 
 -   Long table, horizontally. Newer version of flextable (GH) allows for PDF output
-
-
-
-
-
 
 
 A common theme across the studies was a lack of data on vascular dementia. This is particularly interesting as lipids and statins are primarily a vascular disease. There is the potential that they studies encountered similar difficulties in address the unexpected results observed in the CPRD analysis in Chapter \@ref(cprd-analysis-heading). For vascular dementia, few studies exmined this outcome, primarily because of the absence (until recently) of
@@ -283,8 +351,8 @@ Detail that some of these are exploratory, in particular the effect of different
 -   Check if there are protocols available for any of the published reports (unlikely for non-randomised controlled trials), and whether there were
 -   Vascular dementia has substantially less published reports. Many (reference Smeeth et al 2010 here) simply group into AD and non-AD making comparison between published studies difficult
 
+One particularly interesting meta-bias potentially applicable in this review is the definition of code lists across
 
-One particularly interesting meta-bias potentially applicable in this review is the definition
 
 
 ### Triangualtion across evidence sources
@@ -351,11 +419,20 @@ Is it a big issue that the studies have the same underlying datasets? <!--- see 
 
 ### Comments on the process
 
+As part of the reflective element of this thesis, 
+
 Systematic reviews should not be performed as part of a thesis, without suitable support and resourcing guaranteed. Assumption that everyone does a systematic review (without risk of bias assessments, inclusion of all literature, searching for other reviews) is foolish.
+
+Average time to complete a s
+
+However, new developments such as automated screening would allow for a reduced need for personnel to work on these things. <!-- TODO CITATION NEEDED - Cite Triccios new paper here -->
+
 
 Great learning experience in terms of managing a team, but due to a rotating schedule of people, much harder to do that expected.
 
 A final point on the progress of the review is that, due to the need for dual screening and data extraction, a number of external researchers became involved in this review. I found the people-management aspect particularly challenging and could definitely have improved the process through better communication of deadlines, but it has provided good experience of leading a review team.
+
+
 
 ### Inclusion of preprints
 
@@ -377,8 +454,6 @@ On further investigation, X of these preprints were subsequently published since
 <!--- How many of the included studies accurately reported the diagnostic criteria for EHR? Cross link with section in CPRD analysis --->
 
 <!--- Comment here on issues involved in extracting data --->
-
-
 
 
 ### Original contribution to research
@@ -429,6 +504,4 @@ Comment on the fact that several of the studies identified through the search of
 
 Test
 
-## Conclusion
-
-Test
+## References

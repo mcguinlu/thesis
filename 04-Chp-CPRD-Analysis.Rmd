@@ -28,7 +28,7 @@ When dealing with human beings controlled experiments frequently prove to be imp
 source("R/doc_options.R")
 source("R/helper.R")
 options(scipen = 99)
-knitr::read_chunk("R/Chp3-CPRD-Analysis.R")
+knitr::read_chunk("R/04-Code-CPRD-Analysis.R")
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
 
@@ -265,6 +265,8 @@ knitr::include_graphics(file.path("figures","cprd-analysis","immortal_time.png")
 <!-- Expand on use of age as the time scale, but describe the problems this introduced -->
 
 As part of a Cox proportional hazard model, there is the option to use either absolute time in cohort or participants age as the time scale of interest.[@lamarca1998; @gail2009; @pencina2007] A model using age as the time axis inherently accounts, or adjusts, for participants age as a potential confounded of the exposure-outcome relationship. The main analyses presented all used age as the time axis.
+
+<!-- TODO Will need to expand on choice of time axis here -->
 
 <!-- IDEA In order to explore whether the choice of time axis affects the results of the analysis,I ran two simple models, one using participants age as the time-scale and a second using absolute time-since-entry and adjusting for participant age. -->
 

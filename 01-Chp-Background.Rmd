@@ -20,7 +20,7 @@ Science knows it doesn't know everything; otherwise, it'd stop.
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source("R/doc_options.R")
 source("R/helper.R")
-knitr::read_chunk("R/background.R")
+knitr::read_chunk("R/01-Code-Background.R")
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
 

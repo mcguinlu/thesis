@@ -10,7 +10,7 @@ output:
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:intro-quote)'}
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:intro-quote)', echo = FALSE}
 Hold
 ```
 (ref:intro-quote) --- Hold

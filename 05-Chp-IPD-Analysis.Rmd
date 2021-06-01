@@ -10,11 +10,17 @@ output:
 documentclass: book
 ---
 
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:intro-quote)', echo = FALSE}
+Hold
+```
+(ref:intro-quote) --- Hold
+
 # Individual participant data meta-analysis {#ipd-heading}
 \minitoc <!-- this will include a mini table of contents-->
 
-
 ## Methods
+
+
 
 ### Data sources
 
