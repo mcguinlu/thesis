@@ -1,13 +1,15 @@
 ## Things to check 
 
-- [ ] Check if the layout of chapters is okay in the fully-rendered document (the by chapter examples don't always reflect the truth!)
+- [ ] Review [Bristol guidelines](http://www.bris.ac.uk/media-library/sites/social-community-medicine/migrated/documents/preparingathesis.pdf)
+- [ ] Check if the layout of chapters is okay in the fully-rendered document (the "by chapter" renders don't always reflect the truth!)
 - [ ] Check if references are duplicated via distinct bibtex keys. || Sort out duplicated citation keys (e.g.[mcguinness2019a] vs [mcguinness2019b])
 - [ ] Check use of "we" vs "I"
 - [ ] Check each chapter has a Lay summary.
 - [ ] Check start of chapter quotes, including references
 - [ ] Quotes are rendering properly.
 - [ ] URLs resolve
-- [ ] Corrections don't overrun, TODO, <!-.
+- [ ] Corrections don't overrun
+- [ ] Confirm TODOs, <!-.
 - [ ] Search for [CITE], XXXX, YYYY
 - [ ] Search for "??" to find broken cross-links.
 - [ ] Fancy headings are in the right place, and are rendering properly.
@@ -23,6 +25,15 @@
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice
+
+## VIVA
+
+
+
+Spend 1hr watching Imperial [videos](http://www3.imperial.ac.uk/graduateschool/currentst
+udents/onlineresources/passingyourviva)
+
+
 
 ## Useful info
 

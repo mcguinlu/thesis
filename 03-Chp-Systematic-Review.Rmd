@@ -30,32 +30,33 @@ knitr::read_chunk("R/03-Code-Systematic-Review.R")
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
 
-## To Do
+<!-- ## To Do -->
 
--   Examine how many times a primary study was included in a review\
--   Look at whether searching preprints made any difference to my results
--   Could apply ROBIS to previous reviews to see how they stack-up? (This may be done as part of Georgia's summer project)
+<!-- -   TODO Examine how many times a primary study was included in a review\ -->
+<!-- -   TODO Look at whether searching preprints made any difference to my results -->
+<!-- -  TODO Could apply ROBIS to previous reviews to see how they stack-up? (This may be done as part of Georgia's summer project) -->
 
-## Extra studies to include:
+<!-- TODO Extra studies to include: -->
 
-* Smeet et al. reference in the CPRD analysis
-* Larsson - 10.1136/bmj.j5375 [@larsson2017b]
-* Statins and the risk of dementia Jick
+<!-- * Smeet et al. reference in the CPRD analysis -->
+<!-- * Larsson - 10.1136/bmj.j5375 [@larsson2017b] -->
+<!-- * Statins and the risk of dementia Jick -->
 
 ## Lay summary
 
-## Additional ideas
+As introduced in previous chapters, 
 
--   Evidence map - show the distribution of the different studies population across the world.
--   Living systematic review approach - update weekly based on medRxiv
+<!-- IDEA Evidence map - show the distribution of the different studies population across the world. Distribution will have to be of participants, not primary authors. Though could use to show how data is being used globally -->
 
-## Aims
+## Introduction {#sys-rev-intro}
 
 The aim of this chapter is to systematically review all available literature on the association between blood levels of total cholesterol and it's constituent parts (HDL-c,LDL-c and triglycerides) on the subsequent risk of dementia.
 
-Based on the review of prev, no previous evidence synthesis exercise attempted to examine all available literature simultaneously. 
+Based on the review of existing literature, no previous evidence synthesis exercise attempted to examine all available literature simultaneously. 
 
-Only by looking across all available evidence can 
+Only by looking across all available evidence can the true, given the often limited use of one type of evidence (RCTs are hard to do, obs studies are biased).
+
+
 
 Literature con
 
@@ -69,9 +70,28 @@ The following databases will be searched from inception onwards: Medline, EMBASE
 
 The abstracts list of relevant conferences (e.g. the proceedings of the Alzheimer's Association International Conference, published in the journal Alzheimer's & Dementia) will be searched. Grey literature will also be searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses will be accessed using the Open Access Theses and Dissertations portal. We will also search bioRxiv and medRxiv, preprint repositories using a tool built as part of this thesis, to identify potentially relevant studies. Finally, the reference lists of included studies will be searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
 
+<!-- TODO Look at citation chaser for this, but have a cut-off publication date of  -->
+
+
 <!-- Include table with overview of search strategy here: summarise topics and how they were combined -->
 
-The full search strategy for the Medline search, which was designed first and subsequently translated into the syntax for other databases is presented in Appendix \@ref(appendix-search-strategy).
+The full search strategy for the Medline search, which was designed first and subsequently translated into the syntax for other databases is presented in Appendix \@ref(appendix-search-strategy). A summary by topic is presented in Table
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:searchOverview-caption) Summary of systematic search by topic. For a full list of search terms, see Appendix \@ref()
+
+(ref:searchOverview-scaption) searchOverview
+
+```{r searchOverview-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
+
+
 
 ### Study selection
 
@@ -93,6 +113,9 @@ Case-control studies, cross-sectional studies, qualitative studies, case reports
 
 Excluded studies performing autopsy unless it was done under accepted criteria Exclude studies using a dietary intervention, for example omega-3 fatty acid enriched diet, as it hard to disentangle the effect of other elements contained within te diet, vs simple tablet based supplements of
 
+<!-- TODO Expand on rationale for exclusion of cross-sectional studies. Dementia is a disease severly at risk of differential recall, leading to misclassification bias. By using prospective studies, the potential for this bias is reduced. -->
+
+
 ### Data extraction
 
 Harmonization of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorizing lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
@@ -100,15 +123,21 @@ Harmonization of cholesterol measures across studies was performed, as different
 
 Following guidance for a dose response meta-analysis, we picked midpoint for all studies where bands were provided (extremely common in the case of lipids)
 
-This analysis was unusual, as multiple methods of intergration and analysis were required with data spannign many forms.
+This analysis was unusual, as multiple methods of integration and analysis were required with data spanning many forms.
 
+
+A piloted data extraction for was used. I extracted the data in the first instance and subset was checked by a colleague for accuracy.
 
 
 <!-- TODO Cross reference with the data extraction issues here - i.e. not providing qratile cut-off values, not poviding numbers per group, etc. -->
 
 ### Risk of bias assessment {#risk-of-bias}
 
+#### Randomised controlled trials
+
 Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomized controlled trials were assessed using the RoB2 tool,[@sterne2019], non-randomized studies of interventions were assessed using the ROBINS-I tool,[@sterne2016] and non-randomized studies of exposures were assessed using the ROBINS-E tool.[CITE]
+
+#### Non-randomised studies of interventions
 
 I opted to use the ROBINS-E tool, despite it still being in development,[@morganr2020] in place of other existing published tools such as the Newcastle-Ottowa scale (NOS).[@wells2000newcastle] There are two primary reasons for this: firstly, current thinking in assessing internal validity has moved away from scales.
 
@@ -116,7 +145,9 @@ I opted to use the ROBINS-E tool, despite it still being in development,[@morgan
 
 Secondly, using a domain based to assess the risk of bias in studies of exposure allowed for better comparison and consistency across the tool used for different study designs, as they are all domain based.
 
-<!-- TODO This next bit is not true -->
+#### Mendelian randomisation studies
+
+<!-- TODO This next bit is not all true -->
 
 At present, no risk of bias assessment tool for Mendelian randomization studies is available. Bias in these studies was assessed with the help of an expert panel drawn from my supervisors and other external invited researchers.[CITE] The risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation, as identified by a review of risk of bias assessments in systematic reviews of MR studies.[@mamluk2020] A copy of the is available in Appendix \@ref(appendix-mr-rob). Advance results from this review of bias assessment in MR studies were obtained from contact with the authors.
 
@@ -128,13 +159,13 @@ Many reviews use reporting guidelines instead - this is bad![@costa2011]
 
 <!----------------------------------------------------------------------------->
 
-## Studification
+### Studification
 
 In the advent of multiple papers reporting results on the same cohort, but say, at different time points, I used a process of studifiction to build out the most comprehensive accounts of the studies and results from as many published articles were applicable. 
 
 <!----------------------------------------------------------------------------->
 
-## Following up with authors
+### Following up with authors
 
 As part of the IPD analysis, relevant cohort studies were identified and approached. In the first instance, the corresponding author on the main man
 
@@ -159,7 +190,13 @@ Will also need description of dose-response meta-analysis here, with reference t
 
 Given the importance of visualising the potential biases alongside the results of any given study, a new visualisation tool was designed to allow for "paired" forest plots (as recommended by the ROB2 publication)
 
-A summary of this tool is contained in Appendix \@ref (), . 
+This tool grew out of a collaboration with other reserachers to design a modular method for creating these plots <!-- Apparently collaboration is a big thing they want to see -->
+
+A summary of this tool is contained in Appendix \@ref(appendix-robvis), and all forest plots presented in this analysis were created using
+
+
+
+. 
 
 ### Assessment of added value of including preprint
 
@@ -275,14 +312,16 @@ Those records which were excluded in the initial screening, but were included ei
 
 <!----------------------------------------------------------------------------->
 
+
+
 <!-- TODO This needs to use the PRISMA2020 package -->
 
-```{r prisma-flow-setup, results="hide", message=FALSE}
+```{r prisma-flow-setup, include = FALSE}
 ```
 
 (ref:prisma-flow-cap) **PRISMA Flowchart:** Overview of how records moved through the systematic review process
 
-(ref:prisma-flow-scap) PRISMA Flowchart
+(ref:prisma-flow-scap) PRISMA Flow Diagram
 
 ```{r prisma-flow-fig, echo = FALSE, results="asis", fig.cap='(ref:prisma-flow-cap)', out.width='100%', fig.scap='(ref:prisma-flow-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
@@ -290,7 +329,7 @@ knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
 
 <!----------------------------------------------------------------------------->
 
-Following de-duplication, the titles and abstracts of 16109 records were assessed for eligibility. 387 were deemed potentially eligible and the full text records for these were requested and screened. \@ref(fig:prisma-flow-fig)
+Following de-duplication, the titles and abstracts of `r hold()` records were assessed for eligibility. `r hold()` were deemed potentially eligible and the full text records for these were requested and screened. \@ref(fig:prisma-flow-fig)
 
 <!----------------------------------------------------------------------------->
 
@@ -298,9 +337,15 @@ Following de-duplication, the titles and abstracts of 16109 records were assesse
 
 XXXX studies met the criteria for inclusion in the review.
 
+
+
+
+As shown in
+
+
 Include here:
 
--   PRISMA Flowchart (use PRISMA2020 from GitHub - depending on level of involvement, could refer to the Appendix here too.)
+-   PRISMA Flowchart
 
 -   Summary of types of study
 
@@ -353,11 +398,16 @@ Detail that some of these are exploratory, in particular the effect of different
 
 One particularly interesting meta-bias potentially applicable in this review is the definition of code lists across
 
+Many studies did not report the codelists used to run the analysis, 
+
 
 
 ### Triangualtion across evidence sources
 
 One key question for which multiple distinct sources of evidence were available were those looking at Laz
+
+<!-- TODO Have a look at this -->
+
 
 A key limitation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia [**Is this true?**] This rules out the use. In addition, there was limited literature available - as discussed in CHapter \@ref(sys-rev)
 
@@ -367,13 +417,16 @@ Without our framework and as part of the risk of bias assessments reported in \@
 
 ### Added evidental value of including preprints {}
 
-<!-- Will to get actual numbers for this section -->
+<!-- TODO Will have to get actual numbers for this section -->
 
 There were several relevant preprints captured by the search run using the tool presented in Chapter \@ref(sys-rev-tools-heading) (see Appendix \@ref(appendix-medrxivr-code)). While many of the preprints included were subsequently published by the time of submission of this thesis, at the time of the search they were only available 
 
+Good example is [https://doi.org/10.1101/168674](https://doi.org/10.1101/168674), which was subsequently published in Nature Comms but in 2020, following peer-review (found no impact of LDL-c on AD following removal of APOE4).
+
+
 Of interest, 
 
-<!-- Triple check whether any of the studies have yet to be published -->
+<!-- TODO Triple check whether any of the studies have yet to be published. Chose a given date and go from there -->
 
 This likely reflects a bias in the type of study that is submitted, but indicates the additional evidential value of include preprints in the search strategy. It also means that searches are current - if the aim of systematic reviews is to
 
@@ -409,13 +462,6 @@ Major limitation is that several included studies used data from electronic heal
 
 In addition, the a
 
-### Searching for/including Mendelian randomisation studies
-
-As a form of analysis that lends itself to multiple comparison, there is a strong
-
-Through snowballing and other measures, we identified at least one Mendelian randomisation studi [@larsson2017b]
-
-Is it a big issue that the studies have the same underlying datasets? <!--- see discussion from Matt Lee thesis, in email --->
 
 ### Comments on the process
 
@@ -441,11 +487,6 @@ As highlighted in Section \@ref(diverse-sources-preprints), this thesis sought t
 The added evidental value of including these preprints was highlighted in Section 
 
 On further investigation, X of these preprints were subsequently published since the search was performed in 2019. While this provides some additional evidence that the quality of the research desribed by included preprints was sufficiently high to pass peer-review, it does not invalidate the approach, as the future publication status was unavaialble at the time the search was conducted.
-
-
-
-
-
 
 
 
@@ -492,16 +533,33 @@ Methods for reviews of Mendelian randomisation studies are not well developed to
 
 ### Strenghts and limitations
 
-Potentially missing other Mendelian randomisation studies, as we identified some through our snowball searching that were not captured by the search strategy. An example is Larsson et al. 2017[@larsson2017a], where the study examined the association between lipid fractions
+#### Inclusion of Mendelian randomisation studies
 
+As a form of analysis that lends itself to multiple comparison, there is a strong
+
+Through snowballing and other measures, we identified at least one Mendelian randomisation studi [@larsson2017b]
+
+Is it a big issue that the studies have the same underlying datasets? <!--- see discussion from Matt Lee thesis, in email --->
+
+
+Potentially missing other Mendelian randomisation studies, as we identified some through our snowball searching that were not captured by the search strategy. An example is Larsson et al. 2017[@larsson2017a], where the study examined the association between lipid fractions with Azlheimer's disease.
+
+Potentially the use of methods such as snowballing (forwards and backwards citation chasing) should attenuate the bias introduced by this method. 
+
+However, in future reviews, a dedicated search for "risk factors" and "dementia" and "
+
+
+#### Inclusion of preprints
 
 Comment on the fact that several of the studies identified through the search of preprints, were subsequently published, but much later than the
-
+cut-off point for the search (e.g. they would not have been captured by the search fot published papers)
 
 <!--- Findings from this chapter are used throughout the later chapters of this thesis. In particular, Chapter 6 uses statistical modelling to exploring the impact of BCG vaccination on TB outcomes in greater detail, Chapter 7 explores the impact of the change in BCG vaccination policy on TB incidence rates using the incidence rate estimates from this chapter, Chapter 8 uses the understanding of the ETS gained from this chapter to parameterise a dynamic TB transmission model, and Chapter 9 uses the insights gained into the date variables in the ETS to fit a dynamic TB transmission model. From Sam abbotts--->
 
+### Use in other chapters
 
+Findings from this review are used though out the subsequent chapters. 
 
-Test
+For example, 
 
 ## References

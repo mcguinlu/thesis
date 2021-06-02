@@ -1,3 +1,18 @@
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- searchOverview-table
+
+searchOverview_table <- mtcars
+
+if(doc_type == "docx"){
+knitr::kable(searchOverview_table,caption = "(ref:searchOverview-caption)")
+}else{
+knitr::kable(searchOverview_table, format = "latex", caption = "(ref:searchOverview-caption)", caption.short = "(ref:searchOverview-scaption)", booktabs = TRUE) %>% 
+row_spec(0, bold = TRUE) %>%
+kable_styling(latex_options = c("HOLD_position"))
+}
+
+
+
 # ---- prisma-flow-setup
 
 
@@ -42,6 +57,7 @@ if(doc_type == "docx") {
     kable_styling(latex_options = c("HOLD_position"))
 }
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- agreementtableinter
 
 agreement.table.1 <- data.frame(group = rep("Second reviewer decision",3),
@@ -59,6 +75,7 @@ knitr::kable(agreement.table.1, booktabs = TRUE, col.names = c("","","Exclude", 
   kableExtra::collapse_rows(columns = 1, valign ="middle") %>%
   kableExtra::row_spec(2,extra_css = "border-bottom: 1px solid")
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- agreementtableintra
 
 agreement.table.2 <- data.frame(group = rep("Same reviewer decision",3),

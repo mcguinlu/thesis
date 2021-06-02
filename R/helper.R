@@ -28,7 +28,7 @@ gen_rmd_citation <- function(filename = "pkg-refs.bib") {
 }
 
 # Place comma at thousand position
-# Taken from https://github.com/thomasbattram/thesis
+# Copied from https://github.com/thomasbattram/thesis
 comma <- function(x){
   
   format(x, digits = 2, big.mark = ",")
@@ -36,7 +36,7 @@ comma <- function(x){
   }
 
 # Apply comma to all values in a table
-# Taken from https://github.com/thomasbattram/thesis
+# Copied from https://github.com/thomasbattram/thesis
 tidy_nums <- function(df) 
 {
   df[] <- lapply(df, comma)
@@ -44,7 +44,7 @@ tidy_nums <- function(df)
 }
 
 # Convert nub
-# Taken from https://github.com/thomasbattram/thesis
+# Copied from https://github.com/thomasbattram/thesis
 num_to_text <- function(x, start_of_sentence = FALSE)
 {
   if (!x%%1 == 0) warning("X is not an integer")
@@ -61,6 +61,8 @@ num_to_text <- function(x, start_of_sentence = FALSE)
   return(out)
 }
 
+
+# Get word count for a given file, and set new target
 check_words <- function(fp, words = 100){
   
   if (!hasArg(fp)) {
@@ -74,52 +76,8 @@ check_words <- function(fp, words = 100){
   message("Start:   ",format(Sys.time(),"%H:%M"),"\nCurrent: ",w,"\nNext:    ", n," <------\n")
 }
 
-pomodoro_bg <- function(){
-  job::job({pomodoro()},import = c(pomodoro))  
-}
 
-pomodoro <- function(fp){
-  
-  # Get file path ----
-    
-  if (!hasArg(fp)) {
-    fp <- rstudioapi::getSourceEditorContext()$path
-    message("File: ",fp)
-  }
-
-  # Fail early if wrong file type
-  sink <- wordcountaddin::word_count(filename = fp)
-  
-  # Add job
-  # job_id <- rstudioapi::jobAdd("Long Pomodoro", progressUnits = 25L)   
-      
-  i <- 0
-  
-  # rstudioapi::jobAddOutput(job_id, paste0("File: ",fp))
-  
-  # Run Long Pomodoro
-  
-  while (i < 26) {
-    
-    w <- wordcountaddin::word_count(filename = fp)
-    
-    # rstudioapi::jobAddOutput(job_id, paste0(i," - Current: ",w,"\n"))
-    
-    message(i," - Current: ",w)
-    
-    i <- i +1
-    
-    Sys.sleep(60)
-    
-    # rstudioapi::jobSetProgress(job_id, i-1)
-  }
-  
-  beepr::beep(sound = "fanfare")
-  
-  rstudioapi::showDialog("Pomodoro done!", paste0("Take a break . . . \n Final count: ", w))
-}
-
-
+# Create nice estimate with consistent handling across thesis
 estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-"){
   
   if (!hasArg(estimate)) {
@@ -161,19 +119,19 @@ estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-"){
   return(z)
 }
 
-
+# Run make commands from the console
 make <- function(arg = "pdf") {
   system(paste0("make ", arg))
 }
 
-
+# Generate word count report
 covering <- function(){
   rmarkdown::render("front-and-back-matter/_00-introduction.Rmd")
   browseURL("front-and-back-matter/_00-introduction.html")
 }
 
 
-
+# Render PDF and Word, then push changes to GitHub
 end_of_day <- function(words = NULL) {
   
   # Make PDF and Word, and clean
@@ -237,6 +195,22 @@ chapter_edit <- function(N){
   
 }
 
+
+# m
+mindmap <- function(fp) {
+  
+  if (!hasArg(fp)) {
+    fp <- R.utils::getRelativePath(rstudioapi::getSourceEditorContext()$path)
+    message("File: ",fp)
+  }
+  
+  input <- mindr::outline(fp, remove_curly_bracket = TRUE, savefile = FALSE)
+  
+  mindr::mm(
+  from = input, type = "text", root = " "
+  )
+  
+}
 
 
 

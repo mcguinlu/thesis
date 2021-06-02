@@ -4,10 +4,13 @@
 
 <!-- If you feel it necessary to include an appendix, it goes here. The first appendix should include the commands above. -->
 
+<!----------------------------------------------------------------------------->
 # By Chapter {#chapter-appendix-heading}
 
+<!----------------------------------------------------------------------------->
 ## Chapter \@ref(intro-heading) {#appendix-into}
 
+<!----------------------------------------------------------------------------->
 ### Publications beyond the scope of this thesis {#appendix-publications}
 
 __Peer reviewed__
@@ -31,7 +34,8 @@ __Under review/Preprints__
   
   *
   
-  
+<!----------------------------------------------------------------------------->
+
 ### Involvement of patients and the public {#appendix-ppi}
 
 Patients were involved at several stages of this research. when designing the PhD programme of work, a Patient and Public Advisory Group (PPAG) provided feedback on the relevance of the question.
@@ -42,11 +46,14 @@ Lay summaries appear at the beginning of each chapter, reviewed by the Patient a
 
 
 
+<!----------------------------------------------------------------------------->
 
-## Chapter \@ref(sys-rev-tools-heading) {#appendix-sys-rev-tools}
+## Chapter \@ref(sys-rev-tools-heading) {#appendix-sys-tools}
+<!----------------------------------------------------------------------------->
 
 ### Search strategy {#appendix-search-strategy}
 
+<!----------------------------------------------------------------------------->
 ### Code to search preprints {#appendix-medrxivr-code}
 
 <!-- Double check this is the final code used -->
@@ -60,15 +67,18 @@ mx_data <- mx_api_content(to_date = "2019-09-01")
 bx_data <- mx_api_content(server = "biorxiv",
                                     to_date = "2019-09-01")
 
-topic1 <- c("statin",
+topic1 <- c(mx_caps("statin"),
             mx_caps("ldl"),
             mx_caps("hdl"),
             mx_caps("TG"),
+            mx_caps("triglycer"),
             paste0("\\b",mx_caps("TC"),"\\b"),
-            "ezetim",
-            "lipoprotein",
-            "lipid",
-            "cholesterol")
+            mx_caps("ezetim"),
+            mx_caps("fibrate"),
+            mx_caps("bile acid"),
+            mx_caps("lipoprotein"),
+            mx_caps("lipid"),
+            mx_caps("cholesterol"))
 
 topic2 <- c(mx_caps("dementia"),
             mx_caps("alzheim"),
@@ -80,35 +90,53 @@ query <- list(
   topic2
 )
 
-test <- mx_search(bx_data, query)
+bx_results <- mx_search(bx_data, query)
 
 
-test2 <- mx_search(mx_data, query)
+mx_results <- mx_search(mx_data, query)
 
 ```
 
 Note
 
+<!----------------------------------------------------------------------------->
 ### MR risk of bias tool {#appendix-mr-rob}
 
-## Chapter \@ref(sys-rev-heading) {#appendix-sys-rev}
 
-
+<!----------------------------------------------------------------------------->
 ## Chapter \@ref(cprd-analysis-heading) {#appendix-cprd-analysis}
-
+<!----------------------------------------------------------------------------->
 ### Amendments to protocol {#appendix-cprd-amendments}
 
+
+
+<!----------------------------------------------------------------------------->
 ### Code lists
 
 
+## Chapter \@ref(ipd-heading) {#appendix-ipd-analysis}
+<!----------------------------------------------------------------------------->
+### Section 1
+
+
+
+<!----------------------------------------------------------------------------->
+### Section 2
+
+
+
+<!----------------------------------------------------------------------------->
 ## Chapter \@ref(discussion-heading)
 
+<!----------------------------------------------------------------------------->
 ### Catalogue of failures
 
 Short section detailing the things I tried to do but which did not work.
 
-<!----------------------------------------------------------------------------->
 
+
+
+<!----------------------------------------------------------------------------->
 # Other Appendix {#other-appendix-heading}
 
 ## Software used to create this thesis
@@ -117,6 +145,7 @@ This thesis was written in RMarkdown. Several R packages were used as part of th
 
 All projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
 
+<!----------------------------------------------------------------------------->
 ## Producing risk-of-bias visualisations with `robvis` {#appendix-robvis}
 
 ### Introduction
@@ -254,3 +283,6 @@ date <- format(as.Date("2021-12-01"),"%B %Y")
 As of `r date`, `robvis` has been downloaded more than `r robvis_downloads` times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the "Doing Meta-Analysis in R" online textbook.[@mathias_harrer_2019_2551803]
 
 While `robvis` is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in `robvis` is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.[@whiting2016robis] Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.[@cochranechpt7] This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the `metafor::reporter()` function, which generates a brief paragraph of text describing the results of a meta-analysis. The future `robvis::reporter()` function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
+
+
+## Creating 
