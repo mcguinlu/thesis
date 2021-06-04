@@ -1,19 +1,34 @@
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- searchOverview-table
 
-searchOverview_table <- mtcars
+searchOverview_table <- read.csv(here::here("data","sys-rev","searchOverview.csv"))
 
-if(doc_type == "docx"){
-knitr::kable(searchOverview_table,caption = "(ref:searchOverview-caption)")
-}else{
-knitr::kable(searchOverview_table, format = "latex", caption = "(ref:searchOverview-caption)", caption.short = "(ref:searchOverview-scaption)", booktabs = TRUE) %>% 
-row_spec(0, bold = TRUE) %>%
-kable_styling(latex_options = c("HOLD_position"))
-}
-
-
+  if(doc_type == "docx") {
+    knitr::kable(searchOverview_table, caption = "(ref:searchOverview-caption)")
+  } else{
+    knitr::kable(
+      searchOverview_table,
+      format = "latex", 
+      caption = "(ref:searchOverview-caption)",
+      caption.short = "(ref:searchOverview-scaption)",
+      booktabs = TRUE,
+      align = "cl"
+    ) %>%
+      row_spec(0, bold = TRUE) %>%
+      row_spec(2:nrow(searchOverview_table)-1, hline_after = TRUE) %>%
+      kableExtra::column_spec(1, bold= FALSE) %>%
+      kable_styling(latex_options = c("HOLD_position"), font_size = 10)  %>%
+      kableExtra::footnote(
+        threeparttable = TRUE,
+        general_title = "",
+        general = paste("For all topics, search queries were comprised",
+                        "of relevant free text & controlled vocabulary terms."
+        )
+      )
+  }
 
 # ---- prisma-flow-setup
+
 
 
 

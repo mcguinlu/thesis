@@ -13,7 +13,7 @@ degreedate: TBC
 abstract: |
   `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
-  `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
+  `r paste(readLines("front-and-back-matter/_acknowledgements.md"), collapse = '\n  ')`
 declaration: |
   `r paste(readLines("front-and-back-matter/_declaration.Rmd"), collapse = '\n  ')`
 dedication: For Brendan McHugh

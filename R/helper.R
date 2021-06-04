@@ -213,4 +213,24 @@ mindmap <- function(fp) {
 }
 
 
+github_thanks <-
+  function(packages = c("mcguinlu/medrxivr", "mcguinlu/robvis")) {
+    
+    authors <-
+      data.frame(authors = unlist(purrr::map(
+        packages, ~ usethis::use_tidy_thanks(.x,to = "2021-12-01")
+      )), stringsAsFactors = FALSE) %>%
+      dplyr::filter(authors != "mcguinlu") %>%
+      dplyr::distinct() %>%
+      dplyr::arrange(authors) %>%
+      dplyr::mutate(authors = glue::glue("[&#x0040;{authors}](https://github.com/{authors})")) 
+    
+    text <-
+      glue::glue_collapse(authors$authors, sep = ", ", last = ", and ") + glue::glue(".")
+    
+    return(text)
+    
+  }
+
+
 

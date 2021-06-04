@@ -1,0 +1,16 @@
+No.,Concept
+1,Dementia 
+2,Mild Cognitive Impairment
+3,Lipids
+4,Lipid-modifying treatments
+5,1 AND 2
+6,1 AND 3
+7,1 AND 4
+8,OR/ 5-7
+9,Animals NOT (Animals AND Humans)
+10,8 NOT 9
+11,Observational filter
+12,Randomised controlled trial (RCT) filter
+13,Mendelian randomisation/Instrumental variable filter
+14,OR/ 11-13
+15,10 AND 14

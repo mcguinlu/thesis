@@ -1,3 +1,5 @@
+# IMport, sort and arragn
+
 abbr <-
   dplyr::arrange(read.csv(
     here::here("data", "abbreviations", "abbreviations.csv"),
@@ -19,3 +21,17 @@ abbr_text <- c(
 )
 
 writeLines(abbr_text, here::here("front-and-back-matter","abbreviations.tex"))
+
+# Render the acknowledgements section from Rmd to Md and paste in the output of
+# github_thanks()
+
+source(here::here("R","helper.R"))
+
+writeLines(glue::glue(
+  paste(c("<!-- do not edit by hand - make changes to _acknowledgements.Rmd instead -->\n",
+          readLines("front-and-back-matter/_acknowledgements.Rmd")),collapse = "\n"),
+  github = github_thanks(),
+  .open = "<<",
+  .close = ">>"
+),
+here::here("front-and-back-matter","_acknowledgements.md"))

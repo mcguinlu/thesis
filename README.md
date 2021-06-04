@@ -22,6 +22,7 @@
 - [ ] Check figure and table titles are appropriately bolded
 - [ ] Check short captions for tables
 - [ ] Check short captions for figures
+- [ ] Randomisation vs randomization
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice

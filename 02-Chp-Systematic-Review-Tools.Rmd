@@ -35,6 +35,8 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 <!----------------------------------------------------------------------------->
 
+<!-- TODO I might need to make it clearer thatthe tool was always intended to search both databases, as medRxiv grew out of bioRxiv categories, and no relevant records identified by the search in medRxiv -->
+
 ## Lay summary
 
 Preprints are copies of academic manuscripts that are posted online in advance of being formally published by an academic journal. They represent an important source of scientific literature. A new software program called `medrxivr` was created to allow researchers to find preprints related to their research in a transparent and reproducible way. Development of this tool was an essential part of this thesis, as preprints represent a key source of information needed for the research reported in future chapters.

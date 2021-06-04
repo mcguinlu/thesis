@@ -62,20 +62,13 @@ Literature con
 
 ## Methods
 
+### Protocol
+
+A pre-specified protocol for this analysis was registered using the Open Science Framework, and is available for inspection.[@mcguinnessluke2020] 
+
 ### Search strategy
 
-We will systematically search electronic bibliographic databases to identify potentially relevant records. The search strategy used in each database will be developed in an iterative manner using a combination of free text and controlled vocabulary (MeSH/EMTREE) terms to identify studies which have examined the relationship between blood lipids levels and dementia, incorporating input from an information specialist. The strategy will include terms related to lipids, lipid modifying treatments, and dementia and its sub-types, and will be designed for MEDLINE before being adapted for use in the other bibliography databases listed. An outline of the general strategy is presented in the Table 3.2 below and the full draft search strategies for each database are attached to this protocol. To ensure that the study design filters are not excluding potentially relevant records, a random sample of 500 records identified by the main search but excluded by the filters (defined as Line 7 NOT Line 13 in Table 3.2) will be screened. If any potentially relevant studies are identified, their titles and abstracts will be searched for key terms that can be incorporated into the filters to improve search sensitivity.
-
-The following databases will be searched from inception onwards: Medline, EMBASE, Psychinfo, Cochrane Central Register of Controlled Trials (CENTRAL), and Web of Science Core Collection. We will also search clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials.
-
-The abstracts list of relevant conferences (e.g. the proceedings of the Alzheimer's Association International Conference, published in the journal Alzheimer's & Dementia) will be searched. Grey literature will also be searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses will be accessed using the Open Access Theses and Dissertations portal. We will also search bioRxiv and medRxiv, preprint repositories using a tool built as part of this thesis, to identify potentially relevant studies. Finally, the reference lists of included studies will be searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
-
-<!-- TODO Look at citation chaser for this, but have a cut-off publication date of  -->
-
-
-<!-- Include table with overview of search strategy here: summarise topics and how they were combined -->
-
-The full search strategy for the Medline search, which was designed first and subsequently translated into the syntax for other databases is presented in Appendix \@ref(appendix-search-strategy). A summary by topic is presented in Table
+I systematically search electronic bibliographic databases to identify potentially relevant records. The search strategy used in each database was developed in an iterative manner using a combination of free text and controlled vocabulary (MeSH/EMTREE)[@lefebvre2019searching] terms to identify studies which have examined the relationship between blood lipids levels and dementia, incorporating input from an information specialist. The strategy will include terms related to lipids, lipid modifying treatments, and dementia and its sub-types, and was designed for MEDLINE before being adapted for use in the other bibliography databases listed. An outline of the general strategy is presented in the Table \@ref(tab:searchOverview-table) below and the full draft search strategies for each database are presented in Appendix \@ref(appendix-search-strategy). <!-- TODO Need to actually attach each search strategy, and detail the specific databases used. See search strategy results. -->
 
 &nbsp;
 
@@ -90,12 +83,27 @@ The full search strategy for the Medline search, which was designed first and su
 
 &nbsp;
 
+To ensure that the study design filters are not excluding potentially relevant records, a random sample of 500 records identified by the main search but excluded by the filters (defined as "8 NOT 14" in Table \@ref(tab:searchOverview-table)) was screened. If any potentially relevant studies are identified, their titles and abstracts were searched for key terms that can be incorporated into the filters to improve search sensitivity.
 
+<!-- TODO need to comment on this feed-back process, or remove -->
+
+The following databases will be searched from inception onwards: Medline, EMBASE, Psychinfo, Cochrane Central Register of Controlled Trials (CENTRAL), and Web of Science Core Collection (for the specific databases available thi via the Univeristy ). We will also search clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials. As the contents of the Web of Science Core COllection can vary by institution, the specific database searched via this platform are listed in Appendix \@ref(appendix-wos-databases).
+
+The abstracts list of relevant conferences (e.g. the proceedings of the Alzheimer's Association International Conference, published in the journal Alzheimer's & Dementia) will be searched. <!-- TODO how were these searched? -->
+ Grey literature will also be searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses will be accessed using the Open Access Theses and Dissertations portal. We will also search bioRxiv and medRxiv, preprint repositories using a tool built as part of this thesis, to identify potentially relevant studies. Finally, the reference lists of included studies will be searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
+
+<!-- TODO Look at citationchaser for this, but have a cut-off publication date of  -->
+
+<!-- Include table with overview of search strategy here: summarise topics and how they were combined -->
 
 
 ### Study selection
 
-Records will be imported into Endnote and deduplicated using the method outlined in Bramer et al. (2016).[@bramer2016] Screening (both title/abstract and full-text) will be performed using a combination of Endnote and Rayyan, a web based screening application.[@ouzzani2016] Title and abstract screening to remove obviously irrelevant records will be performed by the primary author, with a random selection of excluded records being screened in duplicate to ensure consistency with the inclusion criteria. If this demonstrates a significant level of erroneous exclusion by the primary author a larger proportion will be dual-screened. Full-text screening will also be completed in full by the primary author. A second reviewer will screen a random sample of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage will be recorded. Disagreements occurring during either stage of the screening process will be resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.[@zotero-766]
+Records weree imported into Endnote and deduplicated using the method outlined in Bramer et al. (2016).[@bramer2016] In summary, this method uses multiple stages to identify potential duplicates, beginning with automatic deletion of records matching on multiple fields ("Author" + "Year" + "Title" + "Journal"), followed by manual review of less similar articles (e.g. those matched based on the "Title" field alone).
+
+Screening (both title/abstract and full-text) was performed using a combination of Endnote, a citation management tool,[@hupe2019] and Rayyan, a web-based screening application.[@ouzzani2016] Title and abstract screening to remove obviously irrelevant records was performed primarily by the primary author, with a random selection of excluded records being screened in duplicate to ensure consistency with the inclusion criteria.
+
+Full-text screening will also be completed in full by the primary author. A second reviewer will screen a random sample of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage will be recorded. Disagreements occurring during either stage of the screening process will be resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.[@zotero-766]
 
 #### Inclusion criteria
 
@@ -115,6 +123,45 @@ Excluded studies performing autopsy unless it was done under accepted criteria E
 
 <!-- TODO Expand on rationale for exclusion of cross-sectional studies. Dementia is a disease severly at risk of differential recall, leading to misclassification bias. By using prospective studies, the potential for this bias is reduced. -->
 
+<!----------------------------------------------------------------------------->
+&nbsp;
+
+#### Assessment of inter-rater reliability
+
+Inter- and intra-rater reliability was assessed for a 10% sub-sample of records at the title and abstract screening stage. Intra-rater reliability involved a single reviewer applying the inclusion criteria to the same set of records while blinded to their previous decisions, while inter-rater reliability involved two reviewers independently screening the same set of records.
+
+If this approach demonstrates a significant level of erroneous exclusion by the primary author a larger proportion will be dual-screened. 
+
+Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This measure of inter-rater reliability was chosen over other methods of assessing inter-rater reliability such as percent agreement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. [@cohen1960: @gwet2008; @wongpakaran2013]
+
+Gwet's AC1 is defined as
+
+$$AC1 = \frac{observed\;agreement-chance\;agreement}{1-chance\;agreement}$$ 
+
+In reference to a two-by-two table with cells A, B, C and D, it is calculated using the following:
+
+$$AC1 = \frac{\frac{A+D}{N}-e(\gamma)}{1-e(\gamma)}$$ 
+
+where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, where 
+
+$$q = \frac{(A+C)+(A+B)}{2N}$$
+
+<!-- TODO Need to be sure of how to calculate. -->
+
+How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpretation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:gwet-table).
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:gwet-caption) Suggested ranges to aid in interpretation of Gwet's AC1 inter-rater reliability metric
+
+(ref:gwet-scaption) Ranges for Gwet's AC1
+
+```{r gwet-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
 
 ### Data extraction
 
@@ -133,29 +180,47 @@ A piloted data extraction for was used. I extracted the data in the first instan
 
 ### Risk of bias assessment {#risk-of-bias}
 
+Given the focus on triangulating different sources of evidence at risk of a diverse range of bias, a detailed and structured risk of bias assessment formed an important part of this review.
+
+There has been a recent moved from 
+
+Talk about move from checklist tools to more domain based methods
+
+Many reviews use reporting guidelines instead - this is bad![@costa2011]
+
+Described here how tools work and how you get an overall judgement -. algorithm
+
+<!----------------------------------------------------------------------------->
+
 #### Randomised controlled trials
 
-Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomized controlled trials were assessed using the RoB2 tool,[@sterne2019], non-randomized studies of interventions were assessed using the ROBINS-I tool,[@sterne2016] and non-randomized studies of exposures were assessed using the ROBINS-E tool.[CITE]
+Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomized controlled trials were assessed using the RoB2 tool,[@sterne2019], 
+The tool assess the risk of bias across five domains: Bias arising from the randomization process, Bias due to deviations from intended intervention, Bias due to missing outcome data, Bias in measurement of the outcome, Bias in selection of the reported result. 
 
-#### Non-randomised studies of interventions
+<!----------------------------------------------------------------------------->
+#### Non-randomised studies of interventions/exposures
 
+For non-randomised studies of interventions, I used the ROBINS-I (Risk of bias in non-randomised studies - of interventions) <!-- TODO Capitalise appropriately --> tool.[@sterne2016] This tool assess the risk of bias across seven domains: Bias due to confounding, Bias due to selection of participants, Bias in classification of interventions, Bias due to deviations from intended interventions, Bias due to missing data, Bias in measurement of outcomes, and Bias in selection of the reported result. Similar to the RoB 2, it has a number of prompting questions per domain, with judgements includeing. Ideally, obs studies assesed in reference to an idealised randomised controlled trial. Futher, the rare overall judgement of Low should be considered equivalent to a randomised controlled trial.
+
+For non-randomised studies o
 I opted to use the ROBINS-E tool, despite it still being in development,[@morganr2020] in place of other existing published tools such as the Newcastle-Ottowa scale (NOS).[@wells2000newcastle] There are two primary reasons for this: firstly, current thinking in assessing internal validity has moved away from scales.
+
+non-randomized studies of interventions were assessed using the ROBINS-I tool, and non-randomized studies of exposures were assessed using the ROBINS-E tool.[CITE]
 
 <!-- TODO Cite release version of this tool, and just use domain based approach -->
 
-Secondly, using a domain based to assess the risk of bias in studies of exposure allowed for better comparison and consistency across the tool used for different study designs, as they are all domain based.
+Secondly, as mentioned in the introduction to this section, using a domain based to assess the risk of bias in studies of exposure allowed for better comparison and consistency across the tool used for different study designs, as they are all domain based.
+
+<!----------------------------------------------------------------------------->
 
 #### Mendelian randomisation studies
 
 <!-- TODO This next bit is not all true -->
 
-At present, no risk of bias assessment tool for Mendelian randomization studies is available. Bias in these studies was assessed with the help of an expert panel drawn from my supervisors and other external invited researchers.[CITE] The risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation, as identified by a review of risk of bias assessments in systematic reviews of MR studies.[@mamluk2020] A copy of the is available in Appendix \@ref(appendix-mr-rob). Advance results from this review of bias assessment in MR studies were obtained from contact with the authors.
-
-Results from the risk-of-bias assessment will be visualized using a paired forest/risk-of-bias blobbogram, created using the `robvis` tool. This tool was developed as an adjunct to this thesis to aid in creating standard risk-of-bias figures.[@mcguinness2019] A summary of the tool is provided in Appendix \@ref(appendix-robvis).
+At present, no risk of bias assessment tool for Mendelian randomization studies is available. Assessment of the risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation,[@mamluk2020] as identified by a review of risk of bias assessments in systematic reviews of MR studies. A copy of this tool is available in Appendix \@ref(appendix-mr-rob). Advance results from this review of bias assessment in MR studies were obtained from contact with the authors.
 
 <!-- TODO Cite MR tool here from malmuk, see info from Francesca -->
 
-Many reviews use reporting guidelines instead - this is bad![@costa2011]
 
 <!----------------------------------------------------------------------------->
 
@@ -194,13 +259,13 @@ This tool grew out of a collaboration with other reserachers to design a modular
 
 A summary of this tool is contained in Appendix \@ref(appendix-robvis), and all forest plots presented in this analysis were created using
 
-
+Results from the risk-of-bias assessment were visualized using a paired forest/risk-of-bias blobbogram, created using the `robvis` tool. This tool was developed as an adjunct to this thesis to aid in creating standard risk-of-bias figures.[@mcguinness2019] A summary of the tool is provided in Appendix \@ref(appendix-robvis).
 
 . 
 
 ### Assessment of added value of including preprint
 
-Preprints are a valuable vidence source (see Introduction) but their inclusion in a systematic reivew
+Preprints are a valuable evidence source (see Introduction) but their inclusion in a systematic reivew
 
 Additionally, I followed preprints up over time to investigate whether all identified preprints included in the review were subsequently published (in which case preprints give you a look into the future, and a systematic review update would capture these reports) or alternatively, if some preprints were not published, then preprints provide a different. 
 
@@ -216,7 +281,14 @@ I also sought to explore the additional evidental value of including preprints i
 
 <!----------------------------------------------------------------------------->
 
+### Search results
+
+Detail 
+
 ### Previous reviews
+
+<!-- TODO Not sure this is the best place for this -->
+
 
 **Will need to include something in the methods section on this**
 
@@ -250,6 +322,8 @@ Does it also cause issues in terms of self-report?
 
 ### Screening results
 
+
+
 Following screening, XXX studies were included.
 
 The distribution of included studies over time demonstrates that despite the conduct of several previous reviews of different types of literature surrounding this question, primary studies continue to the published as these reviews have yet to provide a definite answer.
@@ -261,36 +335,6 @@ As part of our our forward snowballing exercise (where articles citing an includ
 <!-- For the snowballing exercise - make sure you don't include studies published after review date: ~ June 2019 -->
 
 As a summary of the duplication of work in this area, we looked at how many reviews a single included study had previously been included in.
-
-Inter- and intra-rater reliability was assessed for a 10% sub-sample of records at the title and abstract screening stage. Intra-rater reliability involved a single reviewer applying the inclusion criteria to the same set of records while blinded to their previous decisions, while inter-rater reliability involved two reviewers independently screening the same set of records.
-
-Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This measure of inter-rater reliability was chosen over other methods of assessing inter-rater reliability such as percent agreement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. [@cohen1960: @gwet2008; @wongpakaran2013]
-
-How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpretation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:gwet-table).
-
-&nbsp;
-
-<!----------------------------------------------------------------------------->
-(ref:gwet-caption) Suggested ranges to aid in interpretation of Gwet's AC1 inter-rater reliability metric
-
-(ref:gwet-scaption) Ranges for Gwet's AC1
-
-```{r gwet-table, message=FALSE, results="asis", echo = FALSE}
-```
-<!----------------------------------------------------------------------------->
-
-&nbsp;
-
-
-In a two-by-two table with cells A, B, C and D, Gwet's AC1 is calculated using the following:
-
-$$AC1 = \frac{\frac{A+D}{N}-e(\gamma)}{1-e(\gamma)}$$ 
-
-where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, where 
-
-$$q = \frac{(A+C)+(A+B)}{2N}$$
-
--\> Insert formula here. Need to be sure of how to calculate. [@gwet2008; @sim2005]
 
 <!--- TODO Need example table here, showing relevant cells --->
 
@@ -355,7 +399,7 @@ Include here:
 
 -   Summary of risk of bias
 
--   Long table, horizontally. Newer version of flextable (GH) allows for PDF output
+-   Long table, horizontally. 
 
 
 A common theme across the studies was a lack of data on vascular dementia. This is particularly interesting as lipids and statins are primarily a vascular disease. There is the potential that they studies encountered similar difficulties in address the unexpected results observed in the CPRD analysis in Chapter \@ref(cprd-analysis-heading). For vascular dementia, few studies exmined this outcome, primarily because of the absence (until recently) of
@@ -463,6 +507,8 @@ Major limitation is that several included studies used data from electronic heal
 In addition, the a
 
 
+###
+
 ### Comments on the process
 
 As part of the reflective element of this thesis, 
@@ -552,7 +598,7 @@ However, in future reviews, a dedicated search for "risk factors" and "dementia"
 #### Inclusion of preprints
 
 Comment on the fact that several of the studies identified through the search of preprints, were subsequently published, but much later than the
-cut-off point for the search (e.g. they would not have been captured by the search fot published papers)
+cut-off point for the search (e.g. they would not have been captured by the search for published papers)
 
 <!--- Findings from this chapter are used throughout the later chapters of this thesis. In particular, Chapter 6 uses statistical modelling to exploring the impact of BCG vaccination on TB outcomes in greater detail, Chapter 7 explores the impact of the change in BCG vaccination policy on TB incidence rates using the incidence rate estimates from this chapter, Chapter 8 uses the understanding of the ETS gained from this chapter to parameterise a dynamic TB transmission model, and Chapter 9 uses the insights gained into the date variables in the ETS to fit a dynamic TB transmission model. From Sam abbotts--->
 

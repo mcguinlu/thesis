@@ -27,6 +27,7 @@ see-pdf:
 	Rscript -e 'browseURL(here::here("docs","_main.pdf"))'
 
 word:
+	Rscript -e 'source(here::here("R","abbreviations.R"))'
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::word_document2")'
 
 clean:

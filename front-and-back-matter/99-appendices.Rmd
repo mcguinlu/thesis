@@ -53,6 +53,44 @@ Lay summaries appear at the beginning of each chapter, reviewed by the Patient a
 
 ### Search strategy {#appendix-search-strategy}
 
+
+### Web of Science Databases Searched {#appendix-wos-databases}
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:wosDatabases-caption) Summary of Web of Science databases searched.
+
+(ref:wosDatabases-scaption) Summary of Web of Science databases searched.
+
+```{r wosDatabases-table, message=FALSE, results="asis", echo = FALSE}
+
+wosDatabases_table <- read.csv(here::here("data/sys-rev/wosDatabases.csv"))
+
+if(doc_type == "docx") {
+  knitr::kable(wosDatabases_table, caption = "(ref:wosDatabases-caption)")
+} else{
+  knitr::kable(
+    wosDatabases_table,
+    format = "latex",
+    caption = "(ref:wosDatabases-caption)",
+    caption.short = "(ref:wosDatabases-scaption)",
+    booktabs = TRUE
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(column = 1, width = paste0(18,"em")) %>%
+    column_spec(column = 2, width = paste0(8,"em")) %>%
+    column_spec(column = 3, width = paste0(6,"em")) %>%
+    row_spec(2:nrow(wosDatabases_table)-1, hline_after = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
+}
+
+
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
 <!----------------------------------------------------------------------------->
 ### Code to search preprints {#appendix-medrxivr-code}
 
@@ -101,6 +139,37 @@ Note
 
 <!----------------------------------------------------------------------------->
 ### MR risk of bias tool {#appendix-mr-rob}
+
+<!----------------------------------------------------------------------------->
+(ref:mrTool-caption) Tool used to assess risk of bias in Mendelian randomisation studies, adapted from that developed by Mamluk et al.[@mamluk2020]
+
+(ref:mrTool-scaption) Mendelian randomisation risk-of-bias assessment tool
+
+```{r mrTool-table, message=FALSE, results="asis", echo = FALSE}
+
+mrTool_table <- read.csv(here::here("data/sys-rev/mrRobTool.csv")) %>%
+  select(1:5) %>%
+  rename("Bias domain" = Bias.domain)
+
+if(doc_type == "docx") {
+  knitr::kable(mrTool_table, caption = "(ref:mrTool-caption)")
+} else{
+  knitr::kable(
+    mrTool_table,
+    format = "latex",
+    caption = "(ref:mrTool-caption)",
+    caption.short = "(ref:mrTool-scaption)",
+    longtable = TRUE,
+    booktabs = TRUE
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(column = 1:5, width = paste0(32/5,"em")) %>%
+    row_spec(2:nrow(mrTool_table)-1, hline_after = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position","repeat_header"))
+}
+
+
+```
 
 
 <!----------------------------------------------------------------------------->
