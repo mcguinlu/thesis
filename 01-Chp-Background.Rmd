@@ -131,7 +131,7 @@ This thesis will focus on blood lipids as the primary risk factor of interest. T
 mg/dL to mmol/L--->
 
 
-### Lipid fractions
+### Lipid fractions {#intro-lipid-fractions}
 
 The blood lipid profile contains a range of component parts, or fractions. However, this thesis will only consider the two most important fractions, trigylcerides (TG) and cholesterol, which are either absorbed from food (exogenous lipids) or produced internally (endogenous lipids).[@feingold2000]
 
@@ -290,7 +290,7 @@ One of the major criticisms of using preprints as an evidence source is that the
 In this thesis, preprints are considered an important source of evidence, in contrast to previous reviews on this topic. However, as with many sources of grey literature,[@mahood2014] there are several logistical issues with carrying out systematic searches in preprint repositories. As such, to enable the inclusion of preprints in the systematic review described in Chapter \@ref(sys-rev-heading), a new tool addressing these issues is presented in Chapter \@ref(sys-rev-tools). 
 
 <!----------------------------------------------------------------------------->
-### Triangulating across study designs
+### Triangulating across study designs {#intro-triangulation}
 
 As illustrated in Section \@ref(evidence-association), several diverse epidemiological methods have been used to examine the effect of varying blood lipid levels on dementia risk. However, each method is limited by its own unique biases. Aetiological triangulation is a developing evidence synthesis method that seeks to exploit these inherent differences in study design, and as a result, in biases.[@lawlor2016a] If several sources of evidence are available and point towards identical conclusions about a exposure-outcome relationship, and these sources are at risk of unrelated biases, this strengthens our confidence in the result. The ideal scenario is where predicted sources of bias are likely to be in competing directions, one expected to increased the effect of the exposure and the other to attenuate it.[@lawlor2016a] As such, triangulating these results can provides us a middle-ground between the competing directions of bias. A triangulation approach can also prove useful in a prospective manner, helping to design new studies that are at risk of different sources of bias to that already available from the published literature.
 
@@ -364,17 +364,20 @@ The outputs of this thesis are detailed below, and include peer-reviewed papers,
 
 During the course of this thesis, I have made several contributions to the scientific literature. Those arising from or directly related to the contents of this submission are presented below.
 
+<!-- TODO Ideally the two preprints for the CPRD and systematic review papers will go here -->
+
 &nbsp;
 
-_**McGuinness, L. A.**, and L Schmidt. (2020) medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in R." Journal of Open Source Software 5.54 2651. DOI: [10.21105/joss.02651](https://doi.org/10.21105/joss.02651)_
+_**McGuinness, L. A.**, and L Schmidt. (2020) medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in R. Journal of Open Source Software 5.54 2651. DOI: [10.21105/joss.02651](https://doi.org/10.21105/joss.02651)_
 
-A paper introducing the open-source preprint search tool described in Chapter \@ref(sys-rev-tools-heading). As is common for journal articles describing software, the paper is intentionally short providing only a broad overview of the tool while extensive documentation is available from the project website (see \@ref(sys-rev-tools-intro) for more details).
+A paper introducing the open-source preprint search tool described in Chapter \@ref(sys-rev-tools-heading). As is common for journal articles describing software, the paper is intentionally short providing only a broad overview of the tool while extensive documentation is available from the project website (see Section \@ref(sys-rev-tools-intro) for more details).
 
 &nbsp;
 
 _Hennessy, E. A., Acabchuk, R., Arnold, P. A., Dunn, A. G., Foo, Y. Z., Johnson, B. T., Geange, S. R., Haddaway, N. R., Nakagawa, S., Mapanga, W., Mengersen, K., Page, M., Sánchez-Tójar, A. Welch, V.,  **McGuinness L. A.** (2020). Ensuring Prevention Science Research is Synthesis-Ready for Immediate and Lasting Scientific Impact. MetaArXiv. DOI: [10.31222/osf.io/ptg9j](https://doi.org/10.31222/osf.io/ptg9j)_
 
-The experience of extracting data for the systematic review in Chapter \@ref(sys-rev-heading) inspired a practical guide for researchers. This piece was co-written with Dr. Emily Hennessy (see Author Declarations in the front materials). [Under 2nd round of review at Prevention Science]
+The experience of extracting data for the systematic review in Chapter \@ref(sys-rev-heading) inspired a practical guide for researchers. This piece was co-written with Dr. Emily Hennessy (see Author Declarations in the front materials). <!-- TODO Need to create author declarations section -->
+ [Under 2nd round of review at Prevention Science]
 
 &nbsp; 
 
@@ -384,9 +387,9 @@ The tool used to visualise the risk-of-bias assessments in Chapter \@ref(sys-rev
 
 &nbsp; 
 
-_**McGuinness, L. A.**, and Sheppard A. L. 2020. “A Descriptive Analysis of the Data Availability Statements Accompanying Medrxiv Preprints and a Comparison with Their Published Counterparts.” MetaArXiv. DOI: [10.31222/osf.io/p75xe](https://doi.org/10.31222/osf.io/p75xe)_
+_**McGuinness, L. A.**, and Sheppard A. L. 2020. “A Descriptive Analysis of the Data Availability Statements Accompanying Medrxiv Preprints and a Comparison with Their Published Counterparts.”  PLOS ONE 16(5): e0250887. DOI: [10.1371/journal.pone.0250887](https://doi.org/10.1371/journal.pone.0250887)_
 
-Using the tool described in Chapter \@ref(sys-rev-tools), I lead a "research-on-research" study to assess the concordance between the data availability statements accompanying a sample of medRxiv preprints and their published counterparts. [Accepted to PLOS One - need to update the citation]
+Using the tool described in Chapter \@ref(sys-rev-tools), I lead a "research-on-research" study to assess the concordance between the openness of data availability statements accompanying a sample of medRxiv preprints and their published counterparts.
 
 &nbsp; 
 
@@ -409,7 +412,7 @@ Accepted oral presentation abstract, Cochrane Colloquium 2020 (note: event was c
 
 _"On the shoulders of giants": advantages and challenges to building on established evidence synthesis packages, using the {robvis} package as a case study"_: Oral presentation, Evidence Synthesis and Meta-Analysis in R Conference (ESMARConf) 2021.
 
-
+&nbsp;
 
 _"RoB 2.0: A revised tool to assess risk of bias in randomized trials"_: Webinar, co-presented with Dr. Theresa Moore as part of the Evidence Synthesis Ireland Methods Series.
 

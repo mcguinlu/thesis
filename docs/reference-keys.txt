@@ -46,7 +46,7 @@ public-health-importance
 intro-treatments
 risk-factors
 serum-lipids
-lipid-fractions
+intro-lipid-fractions
 statins
 other-lipid-regulating-agents-lra
 evidence-association
@@ -56,7 +56,7 @@ randomised-controlled-trials
 mendelian-randomisation
 theoretical-framework-evidence-synthesis
 diverse-sources-preprints
-triangulating-across-study-designs
+intro-triangulation
 individual-patient-data-meta-analysis
 thesis-overview
 hypothesis
@@ -106,7 +106,10 @@ non-randomised-studies-of-interventionsexposures
 mendelian-randomisation-studies
 studification
 following-up-with-authors
-statistical-analysis-methods
+analysis-methods
+simple-meta-analysis
+dose-response-analyses
+sensitivity-analyses
 visualisation-of-results
 assessment-of-added-value-of-including-preprint
 patient-and-public-involvement
@@ -118,6 +121,7 @@ characteristics-of-included-studies
 converting-risk-ratios-to-odds-ratios
 hazard-ratios-vs-riskodds-ratios
 risk-of-bias-subheading
+dose-response-meta-analysis
 sources-of-heterogeneity
 sys-rev-pub-bias
 triangualtion-across-evidence-sources
@@ -149,7 +153,7 @@ missing-data
 estimation-methods
 cprd-immortal-time-bias
 time-axis
-sensitivity-analyses
+sensitivity-analyses-1
 control-outcomes
 impact-of-additional-covariates
 sensitivity-cohorts
@@ -159,7 +163,7 @@ results-1
 patient-characteristics
 missing-data-1
 primary-analysis
-sensitivity-analyses-1
+sensitivity-analyses-2
 complete-case-versus-imputed-data
 control-outcomes-1
 impact-of-additional-covariates-1
@@ -184,6 +188,7 @@ discussion-3
 discussion-4
 discussion-heading
 triangulation-across-exisiting-evidence-and-evidence-produced-in-this-thesis
+triangulation-overview
 discussion-of-e-values
 use-of-concensus-panel-to-bring-everything-together
 additional-topics-for-the-discussion
@@ -198,7 +203,7 @@ chapter-appendix-heading
 appendix-into
 appendix-publications
 appendix-ppi
-appendix-sys-tools
+appendix-sys-rev
 appendix-search-strategy
 appendix-wos-databases
 appendix-medrxivr-code

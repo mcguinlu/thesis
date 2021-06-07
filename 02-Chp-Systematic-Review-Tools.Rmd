@@ -55,6 +55,8 @@ This chapter outlines the development and key functionality of `medrxivr` (versi
 
 <!----------------------------------------------------------------------------->
 
+<!-- IDEA Could remake this using Diagrammr? -->  
+
 (ref:medrxivr-sr-cap) **Role of `medrxivr` in a systematic review workflow:** `medrxivr` allows for systematic searching of biomedical preprints as part of the initial literature searching. Following title and abstract screening, reviewers can then programmatically retrieve a copy of the PDF of included records to facilitate the full-text screening stage (similar to Endnote's "Find Full Text" feature).
 
 (ref:medrxivr-sr-scap) Role of `medrxivr` in a systematic review workflow
@@ -66,6 +68,8 @@ knitr::include_graphics(file.path("figures","sys-rev-tools","medrxiv-role.png"))
 <!----------------------------------------------------------------------------->
 
 ## Development
+
+<!-- IDEA Add timeline chart as seen here: https://bookdown.org/alecri/thesis/4-methods.html#sec:dosresmeta -->  
 
 ### Success criteria {#success-criteria}
 

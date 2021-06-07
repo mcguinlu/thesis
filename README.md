@@ -23,21 +23,19 @@
 - [ ] Check short captions for tables
 - [ ] Check short captions for figures
 - [ ] Randomisation vs randomization
+- [ ] Check citations, particularly of handbook
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice
 
 ## VIVA
-
-
-
-Spend 1hr watching Imperial [videos](http://www3.imperial.ac.uk/graduateschool/currentst
+- Spend 1hr watching Imperial [videos](http://www3.imperial.ac.uk/graduateschool/currentst
 udents/onlineresources/passingyourviva)
 
 
 
 ## Useful info
 
-Width of portrait page in em for use with col_spec is __32__
-Width of portrait page in em for use with col_spec is __38.8__ at font size __6__
-Width of landscape page in em for use with col_spec is __52__
+Width of portrait page in em for use with col_spec is __32__  
+Width of portrait page in em for use with col_spec is __38.8__ at font size __6__  
+Width of landscape page in em for use with col_spec is __52__  

@@ -17,7 +17,7 @@ documentclass: book
 "It is surely a great criticism of our profession that we have not organised a critical summary by speciality or sub-speciality, up-dated periodically, of all relevant RCTS."  
 ```
 
-(ref:sys-rev-quote) --- Archie Cochrane, 2000 [@cochrane20001931]
+(ref:sys-rev-quote) --- Archibald Cochrane, 2000 [@cochrane20001931]
 
 # Systematic review of all available evidence {#sys-rev-heading}
 
@@ -175,41 +175,46 @@ This analysis was unusual, as multiple methods of integration and analysis were 
 
 A piloted data extraction for was used. I extracted the data in the first instance and subset was checked by a colleague for accuracy.
 
-
 <!-- TODO Cross reference with the data extraction issues here - i.e. not providing qratile cut-off values, not poviding numbers per group, etc. -->
+
+Where necessary, lipid levels reported in _mmol/L_ were converted in _mg/dL_ using the following formula:
+
+$$
+mg/dL = mmol/L \times{} Z
+$$
+where $Z = 38.67$ for total cholesterol, LDL-c and HDL-c, and $Z = 88.57$ for triglycerides. For widely-used categorises of lipids levels on the _mg/dL_ scale, see Table \@ref(tab:lipidLevels-table) in Section \@ref(intro-lipid-fractions). 
 
 ### Risk of bias assessment {#risk-of-bias}
 
-Given the focus on triangulating different sources of evidence at risk of a diverse range of bias, a detailed and structured risk of bias assessment formed an important part of this review.
+A key use of the review presented in this chapter is to identify different sources of evidence at risk of a diverse range of biases, and to contrast and compare findings across them (see Section \@ref(intro-triangulation) and Section \@ref(triangulation-overview) for an overview of triangulation). To enable this triangulation exercise, a detailed and structured risk of bias assessment formed an important part of this review.
 
-There has been a recent moved from 
+There has been a recent movement within the evidence synthesis community from examining _methodological quality_ to assessing _risk of bias_,[@mcguinness2018a; @sterne2016] and thus directly evaluating the internal validity of a study. Internal validity is defined here as the absence of systematic error (or bias) in a study, which may influence its results.[@campbell1957; @juni2001] 
 
-Talk about move from checklist tools to more domain based methods
+This move was prompted by a unclear definition of "methodological quality" which could include facets such as, and challenges in the comparison of results from different tools.
 
-Many reviews use reporting guidelines instead - this is bad![@costa2011]
+As part of this, the community also moved from checklist or score based tools towards domain-based methods, in which different potential sources of bias in a study are assessed in order.
 
-Described here how tools work and how you get an overall judgement -. algorithm
+Additionally, results should be assessed at the result (defined as a a specific outcome at a specific timepoint) rather than the study level. For example, a study may report on the efficacy of an intervention at 6 months and two years follow-up. missing outcome data that is not an issues at 6 months may introduce bias at 2 year follow-up. In this case, assigning a bias judgement to the study as a whole hides this differential biases for each result.
+
+In this review, domain-based tools were used to assess the risk of bias for each result in each included study. The study design-specific tools are introduced and discussed in more detail in the following sections.
 
 <!----------------------------------------------------------------------------->
 
 #### Randomised controlled trials
 
-Risk of bias assessment was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomized controlled trials were assessed using the RoB2 tool,[@sterne2019], 
-The tool assess the risk of bias across five domains: Bias arising from the randomization process, Bias due to deviations from intended intervention, Bias due to missing outcome data, Bias in measurement of the outcome, Bias in selection of the reported result. 
+Risk of bias assessment in randomised controlled trials was performed using the domain-based risk-of-bias assessment tool appropriate to the study design. Randomized controlled trials were assessed using the RoB2 tool,[@sterne2019], 
+The tool assess the risk of bias across five domains: Bias arising from the randomization process, Bias due to deviations from intended intervention, Bias due to missing outcome data, Bias in measurement of the outcome, Bias in selection of the reported result. Acceptable judgements include: low risk of bias, some concerns, high risk of bias. Each of the 5 domains contains a series of signalling questions or prompts, which guide the user through the tool.
+
+One a domain-level judgement for each domain has been assigned, an overall judgement, using the same three levels of risk of bias, is assigned to 
 
 <!----------------------------------------------------------------------------->
 #### Non-randomised studies of interventions/exposures
 
-For non-randomised studies of interventions, I used the ROBINS-I (Risk of bias in non-randomised studies - of interventions) <!-- TODO Capitalise appropriately --> tool.[@sterne2016] This tool assess the risk of bias across seven domains: Bias due to confounding, Bias due to selection of participants, Bias in classification of interventions, Bias due to deviations from intended interventions, Bias due to missing data, Bias in measurement of outcomes, and Bias in selection of the reported result. Similar to the RoB 2, it has a number of prompting questions per domain, with judgements includeing. Ideally, obs studies assesed in reference to an idealised randomised controlled trial. Futher, the rare overall judgement of Low should be considered equivalent to a randomised controlled trial.
+For non-randomised studies of interventions (NRSI), I used the ROBINS-I (Risk of bias in non-randomised studies - of interventions) <!-- TODO Capitalise appropriately --> tool.[@sterne2016] This tool assess the risk of bias across seven domains: Bias due to confounding, Bias due to selection of participants, Bias in classification of interventions, Bias due to deviations from intended interventions, Bias due to missing data, Bias in measurement of outcomes, and Bias in selection of the reported result. Similar to the RoB 2, it has a number of prompting questions per domain, with judgements including. Ideally, obs studies assessed in reference to an idealised randomised controlled trial. Further, the rare overall judgement of Low should be considered equivalent to a randomised controlled trial.
 
-For non-randomised studies o
-I opted to use the ROBINS-E tool, despite it still being in development,[@morganr2020] in place of other existing published tools such as the Newcastle-Ottowa scale (NOS).[@wells2000newcastle] There are two primary reasons for this: firstly, current thinking in assessing internal validity has moved away from scales.
+For non-randomised studies of exposures (NRSE), I opted to use a preliminary version of the ROBINS-E tool, despite it still being in development.[@morganr2020] While the signalling questions for each domain are yet to be confirmed, the overarching domains have been finalised.
 
-non-randomized studies of interventions were assessed using the ROBINS-I tool, and non-randomized studies of exposures were assessed using the ROBINS-E tool.[CITE]
-
-<!-- TODO Cite release version of this tool, and just use domain based approach -->
-
-Secondly, as mentioned in the introduction to this section, using a domain based to assess the risk of bias in studies of exposure allowed for better comparison and consistency across the tool used for different study designs, as they are all domain based.
+Despite these limitations, I chose this approach in place of other existing published tools such as the Newcastle-Ottowa scale (NOS).[@wells2000newcastle] The motivation for this decision was two-fold. In the first instance, as mentioned in the introduction to this section, using a domain-based tool has distinct advantages over better-developed checklist-type tools such as the NOS. In addition, using a domain-based tool enabled better comparison with risk-of-bias assessments performed for the other study designs.
 
 <!----------------------------------------------------------------------------->
 
@@ -217,7 +222,9 @@ Secondly, as mentioned in the introduction to this section, using a domain based
 
 <!-- TODO This next bit is not all true -->
 
-At present, no risk of bias assessment tool for Mendelian randomization studies is available. Assessment of the risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation,[@mamluk2020] as identified by a review of risk of bias assessments in systematic reviews of MR studies. A copy of this tool is available in Appendix \@ref(appendix-mr-rob). Advance results from this review of bias assessment in MR studies were obtained from contact with the authors.
+At present, no risk-of-bias assessment tool for Mendelian randomization studies is available. Assessment of the risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation,[@mamluk2020] as identified by a review of risk of bias assessments in systematic reviews of MR studies. A copy of this tool is available in Appendix \@ref(appendix-mr-rob). Advance results from this review of bias assessment in MR studies were obtained from contact with the authors.
+
+
 
 <!-- TODO Cite MR tool here from malmuk, see info from Francesca -->
 
@@ -234,22 +241,44 @@ In the advent of multiple papers reporting results on the same cohort, but say, 
 
 As part of the IPD analysis, relevant cohort studies were identified and approached. In the first instance, the corresponding author on the main man
 
+Use the example of getting the cut-off points from the 
+
 <!-- TODO move to results, and keep just a short bit here -->
 
 <!----------------------------------------------------------------------------->
 
 
-### Statistical analysis methods
+### Analysis methods
 
-<!----------------------------------------------------------------------------->
+#### Simple meta-analysis
 
 Meta-analysis is an important method of . . . 
+
+Both a fixed-effect and random-effects meta-analysis model was.
+
+For 
 
 Need formula here, and description of different methods and quarrels re fixed effect vs random effects meta-analyses.
 
 This anal
 
 Will also need description of dose-response meta-analysis here, with reference to forthcoming book Julian sent on.
+
+
+#### Dose-response analyses
+
+<!-- TODO Explore how to map from simple diagnosis of hyperchol to dose response. Seems that does response needs > 3 categories -->
+
+Several of the included studies presented data on multiple categories of lipid levels, but provided an overall effect estimate based on a comparison of only two of these categories (e.g. for example, highest vs lowest quartile). while this allows for easy interpretation of the resulting effect estimate, it ignores any potential non-linear relationships between the exposure and outcome, in addition to discarding useful information contain in the interim groups.
+
+Where possible, data for all exposure groups was extracted, and this. Studies were excluded from this analysis if the number of categories was less than three, if the exposure cut-off points for for each category were not presented (e.g. if the study reports splitting participants into quartiles and comparing the highest vs lowest without giving the quartile bands in mmol/L)
+
+Note that 
+
+#### Sensitivity analyses
+
+&nbsp;
+<!----------------------------------------------------------------------------->
 
 ### Visualisation of results
 
@@ -261,7 +290,8 @@ A summary of this tool is contained in Appendix \@ref(appendix-robvis), and all 
 
 Results from the risk-of-bias assessment were visualized using a paired forest/risk-of-bias blobbogram, created using the `robvis` tool. This tool was developed as an adjunct to this thesis to aid in creating standard risk-of-bias figures.[@mcguinness2019] A summary of the tool is provided in Appendix \@ref(appendix-robvis).
 
-. 
+&nbsp;
+<!----------------------------------------------------------------------------->
 
 ### Assessment of added value of including preprint
 
@@ -431,9 +461,23 @@ Some evidence of manipulation of effect estimates in previous reviews,(e.g. Chou
 
 ### Risk of bias {#risk-of-bias-subheading}
 
+### Dose response meta-analysis
+
+<!-- TODO Cite excluded studies and  -->
+
+
+Several studies were excluded from the dose-response meta-analysis, as the number of cases/controls be
+
+
+<!-- TODO Include image -->
+
+
 ### Sources of heterogeneity
 
 Detail that some of these are exploratory, in particular the effect of different scales on the association between the groups. **[CROSS]**
+
+
+
 
 ### Publication bias {#sys-rev-pub-bias}
 
@@ -446,12 +490,13 @@ Many studies did not report the codelists used to run the analysis,
 
 
 
+
+
 ### Triangualtion across evidence sources
 
+<!-- TODO Have a look at this - potentially move to triangulation chapter -->
+
 One key question for which multiple distinct sources of evidence were available were those looking at Laz
-
-<!-- TODO Have a look at this -->
-
 
 A key limitation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia [**Is this true?**] This rules out the use. In addition, there was limited literature available - as discussed in CHapter \@ref(sys-rev)
 

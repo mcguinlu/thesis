@@ -8,15 +8,13 @@
 # By Chapter {#chapter-appendix-heading}
 
 <!----------------------------------------------------------------------------->
-## Chapter \@ref(intro-heading) {#appendix-into}
+## Chapter \@ref(background-heading) {#appendix-into}
 
 <!----------------------------------------------------------------------------->
 ### Publications beyond the scope of this thesis {#appendix-publications}
 
 __Peer reviewed__
 
-  * McGuinness & Sheppard. Comparison of pairwise
-  
   * PRISMA main paper
   
   * PRISMA E&E
@@ -27,12 +25,14 @@ __Peer reviewed__
   
   * Data extraction tools systematic review
   
-<!-- Essentially, look at the Trello -->
+  
+<!-- TODO update list with proper references and a description of each. Essentially, look at the Trello -->
+
 __Under review/Preprints__
 
   * MSc Paper on systematic reviews of this thesis topic
   
-  *
+  * 
   
 <!----------------------------------------------------------------------------->
 
@@ -44,15 +44,14 @@ Additionally,
 
 Lay summaries appear at the beginning of each chapter, reviewed by the Patient and Public Involvement panel. They provide a plain language summary
 
-
-
 <!----------------------------------------------------------------------------->
 
-## Chapter \@ref(sys-rev-tools-heading) {#appendix-sys-tools}
+## Chapter \@ref(sys-rev-heading) {#appendix-sys-rev}
 <!----------------------------------------------------------------------------->
 
 ### Search strategy {#appendix-search-strategy}
 
+Impor
 
 ### Web of Science Databases Searched {#appendix-wos-databases}
 
@@ -94,7 +93,9 @@ if(doc_type == "docx") {
 <!----------------------------------------------------------------------------->
 ### Code to search preprints {#appendix-medrxivr-code}
 
-<!-- Double check this is the final code used -->
+<!-- TODO Double check this is the final code used -->
+
+
 
 ```{r, eval = FALSE}
 
