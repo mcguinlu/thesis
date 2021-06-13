@@ -56,8 +56,6 @@ Based on the review of existing literature, no previous evidence synthesis exerc
 
 Only by looking across all available evidence can the true, given the often limited use of one type of evidence (RCTs are hard to do, obs studies are biased).
 
-
-
 Literature con
 
 ## Methods
@@ -87,15 +85,15 @@ To ensure that the study design filters are not excluding potentially relevant r
 
 <!-- TODO need to comment on this feed-back process, or remove -->
 
-The following databases will be searched from inception onwards: Medline, EMBASE, Psychinfo, Cochrane Central Register of Controlled Trials (CENTRAL), and Web of Science Core Collection (for the specific databases available thi via the Univeristy ). We will also search clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials. As the contents of the Web of Science Core COllection can vary by institution, the specific database searched via this platform are listed in Appendix \@ref(appendix-wos-databases).
+The following databases will be searched from inception onwards: Medline, EMBASE, Psychinfo, Cochrane Central Register of Controlled Trials (CENTRAL), and Web of Science Core Collection (for the specific databases available thi via the University). We will also search clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials. As the contents of the Web of Science Core COllection can vary by institution, the specific database searched via this platform are listed in Appendix \@ref(appendix-wos-databases).
 
 The abstracts list of relevant conferences (e.g. the proceedings of the Alzheimer's Association International Conference, published in the journal Alzheimer's & Dementia) will be searched. <!-- TODO how were these searched? -->
+
  Grey literature will also be searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses will be accessed using the Open Access Theses and Dissertations portal. We will also search bioRxiv and medRxiv, preprint repositories using a tool built as part of this thesis, to identify potentially relevant studies. Finally, the reference lists of included studies will be searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
 
 <!-- TODO Look at citationchaser for this, but have a cut-off publication date of  -->
 
 <!-- Include table with overview of search strategy here: summarise topics and how they were combined -->
-
 
 ### Study selection
 
@@ -224,10 +222,7 @@ Despite these limitations, I chose this approach in place of other existing publ
 
 At present, no risk-of-bias assessment tool for Mendelian randomization studies is available. Assessment of the risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation,[@mamluk2020] as identified by a review of risk of bias assessments in systematic reviews of MR studies. A copy of this tool is available in Appendix \@ref(appendix-mr-rob). Advance results from this review of bias assessment in MR studies were obtained from contact with the authors.
 
-
-
 <!-- TODO Cite MR tool here from malmuk, see info from Francesca -->
-
 
 <!----------------------------------------------------------------------------->
 
@@ -237,7 +232,7 @@ In the advent of multiple papers reporting results on the same cohort, but say, 
 
 <!----------------------------------------------------------------------------->
 
-### Following up with authors
+### Following up with authors {#contacting-authors}
 
 As part of the IPD analysis, relevant cohort studies were identified and approached. In the first instance, the corresponding author on the main man
 
@@ -250,7 +245,7 @@ Use the example of getting the cut-off points from the
 
 ### Analysis methods
 
-#### Simple meta-analysis
+#### Standard meta-analysis
 
 Meta-analysis is an important method of . . . 
 
@@ -258,24 +253,39 @@ Both a fixed-effect and random-effects meta-analysis model was.
 
 For 
 
-Need formula here, and description of different methods and quarrels re fixed effect vs random effects meta-analyses.
+Need formula here, and description of different methods and quarrels regarding disctinction fixed effect vs random effects meta-analyses.
 
-This anal
+This analytical approach was used for 
 
-Will also need description of dose-response meta-analysis here, with reference to forthcoming book Julian sent on.
+
+
+
 
 
 #### Dose-response analyses
 
-<!-- TODO Explore how to map from simple diagnosis of hyperchol to dose response. Seems that does response needs > 3 categories -->
+<!-- TODO Explore how to map from simple diagnosis of hyperchol to dose response. Seems that does response needs >3 categories -->
+<!-- Will also need description of dose-response meta-analysis here, with reference to forthcoming book Julian sent on.  -->
 
-Several of the included studies presented data on multiple categories of lipid levels, but provided an overall effect estimate based on a comparison of only two of these categories (e.g. for example, highest vs lowest quartile). while this allows for easy interpretation of the resulting effect estimate, it ignores any potential non-linear relationships between the exposure and outcome, in addition to discarding useful information contain in the interim groups.
 
-Where possible, data for all exposure groups was extracted, and this. Studies were excluded from this analysis if the number of categories was less than three, if the exposure cut-off points for for each category were not presented (e.g. if the study reports splitting participants into quartiles and comparing the highest vs lowest without giving the quartile bands in mmol/L)
 
-Note that 
+Several of the included studies presented data on multiple categories of lipid levels, but provided an overall effect estimate based on a comparison of only two of these categories (e.g. for example, highest vs lowest quartile). <!-- TODO Question: if I look at highest vs lowest, and also at top dose vs lowest dose, am I double counting results? -->
+ while this allows for easy interpretation of the resulting effect estimate, it ignores any potential non-linear relationships between the exposure and outcome, in addition to discarding useful information contain in the interim groups.
+
+Where possible, data for all exposure groups was extracted, and this. Studies were excluded from this analysis if the number of categories was less than three, if the exposure cut-off points for for each category were not presented (e.g. if the study reports splitting participants into quartiles and comparing the highest vs lowest without giving the quartile bands in mmol/L).
+
+<!-- TODO Do I initially want to fit a linear relationship across categories and  -->
+A XXXX spline model was fitted to allow for a non-linear relationship, for example a U or J-shaped relationship, where low and high levels of an exposure can have an effect versus the "normal" reference dose. Reference doses were defined _a priori_ as the cut-off of the "Normal"/"Optimal" categories for each fractions, as detailed in Table \@ref(tab:lipidLevels-table). Under this approach, the reference dose was defined as 200 mg/dL for total cholesterol, 100 mg/dL for LDL-c, 40 mg/dL for HDL-c, and 150 mg/dL for triglycerides.
+
+Due to the requirements for the dose response analysis, studies were excluded from this secondary analysis if they did not provide the require information: cut-off points. Where this was not reported in the study, I contacted the corresponding author to attempt to obtain the required information (see \@ref(contacting-authors)). 
 
 #### Sensitivity analyses
+
+I conducted a leave one out analysis in order to explore the impact of any given study on the results. <!-- TODO CITATION NEEDED -->
+
+In addition, 
+
+
 
 &nbsp;
 <!----------------------------------------------------------------------------->
@@ -306,6 +316,11 @@ I also sought to explore the additional evidental value of including preprints i
 ### Patient and public involvement
 
 <!----------------------------------------------------------------------------->
+
+### Deviations from the protocol
+
+A dose response meta-analysis was not planned, marking a departure from the register protocol. <!-- TODO Check this is accurate -->
+
 
 ## Results
 
@@ -386,16 +401,12 @@ Those records which were excluded in the initial screening, but were included ei
 
 <!----------------------------------------------------------------------------->
 
-
-
-<!-- TODO This needs to use the PRISMA2020 package -->
-
 ```{r prisma-flow-setup, include = FALSE}
 ```
 
-(ref:prisma-flow-cap) **PRISMA Flowchart:** Overview of how records moved through the systematic review process
+(ref:prisma-flow-cap) PRISMA Flow diagram illustrating how records moved through the systematic review process. The different contributions of databases and preprint servers to the review are indicated.
 
-(ref:prisma-flow-scap) PRISMA Flow Diagram
+(ref:prisma-flow-scap) PRISMA flow diagram
 
 ```{r prisma-flow-fig, echo = FALSE, results="asis", fig.cap='(ref:prisma-flow-cap)', out.width='100%', fig.scap='(ref:prisma-flow-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
@@ -407,9 +418,16 @@ Following de-duplication, the titles and abstracts of `r hold()` records were as
 
 <!----------------------------------------------------------------------------->
 
+A PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-analyses) flow diagram,[@page2021] shown in Figure \@ref(prisma-flow-fig), shows the movement of articles through the review. To illustrate the contribution of preprint archives to the review, the flow diagram delineates between those records captured through databases searches (presented on the right of the diagram) and those captured by the search tool described in the previous chapter (presented in grey on the left of the diagram).
+
+Of note, preprints and published papers reporting the same study were not considered duplicate records. Instead, they were considered as different reports of the same study. This is due to the potential for the published version to offer some information that the preprint did not, and vice versa.
+
+
 ### Characteristics of included studies
 
 XXXX studies met the criteria for inclusion in the review.
+
+
 
 
 
@@ -423,14 +441,13 @@ Include here:
 
 -   Summary of types of study
 
--   Summary of locations
+-   Summary of locations (use evidence map)
 
 -   Summary of diagnostic criteria used
 
 -   Summary of risk of bias
 
 -   Long table, horizontally. 
-
 
 A common theme across the studies was a lack of data on vascular dementia. This is particularly interesting as lipids and statins are primarily a vascular disease. There is the potential that they studies encountered similar difficulties in address the unexpected results observed in the CPRD analysis in Chapter \@ref(cprd-analysis-heading). For vascular dementia, few studies exmined this outcome, primarily because of the absence (until recently) of
 
@@ -547,7 +564,7 @@ While [__some__] preprint have subsequently been published, this does not cause 
 
 ## Discussion
 
-Major limitation is that several included studies used data from electronic health databases, which come with serious concerns regarding validity [@hsieh2019] __[ALSO CITE WILKINSON AND MCGUINNESS HERE]__.
+Major limitation is that several included studies used data from electronic health databases, which come with serious concerns regarding validity [@hsieh2019] [@mcguinness2019d; @wilkinson2018b]
 
 In addition, the a
 

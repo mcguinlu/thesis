@@ -29,8 +29,22 @@ searchOverview_table <- read.csv(here::here("data","sys-rev","searchOverview.csv
 
 # ---- prisma-flow-setup
 
+prisma_df <- read.csv(here::here("data/sys-rev/PRISMAflow.csv"), stringsAsFactors = F)
 
+prisma_full <- read.csv(system.file("extdata", "PRISMA.csv", package= "PRISMA2020"), stringsAsFactors = F)[,c(1:4,6:7)] %>%
+  dplyr::left_join(prisma_df, by = "description") %>%
+  PRISMA2020::read_PRISMAdata()
 
+attach(prisma_full)
+PRISMA2020::PRISMA_save(plotobj = PRISMA2020::PRISMA_flowdiagram(
+  prisma_full,
+  interactive = F,
+  previous = F,
+  other = T,
+  fontsize = 12
+),
+"figures/sys-rev/prismaflow.png")
+detach("prisma_full")
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
