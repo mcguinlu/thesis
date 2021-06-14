@@ -86,6 +86,44 @@ if(doc_type == "docx"){
   
 }
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- statinsPath
+library(DiagrammeR)
+graph <- grViz(diagram = "digraph flowchart {
+      # define node aesthetics
+      node [fontname = Arial, color = 'grey90',shape = oval, style = filled, fontcolor = black]        
+      tab1 [label = 'Acetyl-CoA']
+      tab5 [label = 'Statins', shape = 'line',fillcolor = 'black',fontcolor = 'white']
+      tabinvis [shape=point, fillcolor = 'black']
+      tab6 [label = 'HMG-CoA reductase']
+      tab2 [label = 'HMG-CoA']
+      tab3 [label = 'Mevalonate']
+      tab4 [label = 'Cholesterol']
+      tab7 [label = 'Several intermediate compounds', color = 'white', fillcolor = 'white']
+      
+      subgraph {
+          rank = same; tab5;tabinvis; tab6
+      }
+      
+# set up node layout
+      tab1 -> tabinvis [arrowhead = 'none']
+      tabinvis -> tab6 [arrowtail = 'curve', dir = back];
+      tab5 -> tabinvis [arrowhead = 'tee']
+      tabinvis -> tab2 
+      tab2 -> tab3;
+      tab3 -> tab7 [arrowhead = 'none', style = 'dashed']
+      tab7 -> tab4 [style = 'dashed']
+      
+}")
+
+
+htmltools::html_print(DiagrammeR::add_mathjax(graph), viewer = NULL) %>%
+  webshot::webshot(file = "figures/background/statinPath.png", delay = 1,
+                   # selector = '.html-widget-static-bound',
+                   vwidth = 600,
+                   vheight = 744,
+                   cliprect = c(5,320, 400, 510),
+                   zoom = 6)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- thesisOverview-table

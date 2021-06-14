@@ -87,37 +87,79 @@ if(doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- agreementtableinter
+# ---- agreeInter-table
 
-agreement.table.1 <- data.frame(group = rep("Second reviewer decision",3),
-                                reviewer = c("Exclude", "Include", "Total"), 
-                                Exclude = c(1244,26,1270), 
-                                Include = c(9,22,31), 
-                                Total = c(1253, 48,1301))
+agreeInter_table <- data.frame(group = rep("Second reviewer decision",3),
+                               reviewer = c("Exclude", "Include", "Total"), 
+                               Exclude = c(1244,26,1270), 
+                               Include = c(9,22,31), 
+                               Total = c(1253, 48,1301))
 
-knitr::kable(agreement.table.1, booktabs = TRUE, col.names = c("","","Exclude", "Include","Total"),  caption = 'Inter-rater reliability') %>%
-  kableExtra::kable_styling("striped") %>%
-  kableExtra::add_header_above(c(" " = 2, "Initial screening descision" = 3)) %>%
-  kableExtra::column_spec(1, bold = T) %>%
-  kableExtra::column_spec(2, bold = T) %>%
-  kableExtra::column_spec(4, border_right = T) %>%
-  kableExtra::collapse_rows(columns = 1, valign ="middle") %>%
-  kableExtra::row_spec(2,extra_css = "border-bottom: 1px solid")
+discrepancy_Inter <- agreeInter_table$Exclude[2]
+
+agreeInter_coeff_table <- agreeInter_table[1:2,2:4]
+rownames(agreeInter_coeff_table) <- agreeInter_coeff_table[,1]
+agreeInter_coeff_table <- agreeInter_coeff_table[-1]
+
+agreeInter_coeff <- unlist(c(comma(irrCAC::gwet.ac1.table(agreeInter_coeff_table)[2]),
+                             comma(irrCAC::kappa2.table(agreeInter_coeff_table)[2])))
+
+if(doc_type == "docx") {
+  knitr::kable(agreeInter_table, caption = "(ref:agreeInter-caption)")
+} else{
+  knitr::kable(
+    agreeInter_table,
+    format = "latex",
+    caption = "(ref:agreeInter-caption)",
+    caption.short = "(ref:agreeInter-scaption)",
+    booktabs = TRUE,
+    col.names = c("", "", "Exclude", "Include", "Total")
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position")) %>%
+    kableExtra::add_header_above(c(" " = 2, "Initial screening decision" = 3)) %>%
+    kableExtra::column_spec(0:2, bold = T) %>%
+    kableExtra::column_spec(4, border_right = T) %>%
+    kableExtra::collapse_rows(columns = 1, valign = "middle") %>%
+    kableExtra::row_spec(2, extra_css = "border-bottom: 1px solid")
+}
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- agreementtableintra
+# ---- agreeIntra-table
 
-agreement.table.2 <- data.frame(group = rep("Same reviewer decision",3),
-                                reviewer = c("Exclude", "Include", "Total"), 
-                                Exclude = c(1266,4,1270), 
-                                Include = c(14,17,31), 
-                                Total = c(1280,21,1301))
+agreeIntra_table <- data.frame(group = rep("Same reviewer decision",3),
+                               reviewer = c("Exclude", "Include", "Total"), 
+                               Exclude = c(1266,4,1270), 
+                               Include = c(14,17,31), 
+                               Total = c(1280,21,1301))
 
-knitr::kable(agreement.table.2, booktabs = TRUE, col.names = c("","","Exclude", "Include","Total"),  caption = 'Intra-rater reliability') %>%
-  kable_styling("striped") %>%
-  add_header_above(c(" " = 2, "Initial screening decision" = 3)) %>%
-  column_spec(1, bold = T) %>%
-  column_spec(2, bold = T, border_right = T) %>%
-  column_spec(4, border_right = T) %>%
-  collapse_rows(columns = 1, valign ="middle") %>%
-  row_spec(2,extra_css = "border-bottom: 1px solid")
+discrepancy_Intra <- agreeIntra_table$Exclude[2]
+
+agreeIntra_coeff_table <- agreeIntra_table[1:2,2:4]
+rownames(agreeIntra_coeff_table) <- agreeIntra_coeff_table[,1]
+agreeIntra_coeff_table <- agreeIntra_coeff_table[-1]
+
+agreeIntra_coeff <- unlist(c(comma(irrCAC::gwet.ac1.table(agreeIntra_coeff_table)[2]),
+                                 comma(irrCAC::kappa2.table(agreeIntra_coeff_table)[2])))
+
+if(doc_type == "docx") {
+  knitr::kable(agreeIntra_table, caption = "(ref:agreeIntra-caption)")
+} else{
+  knitr::kable(
+    agreeIntra_table,
+    format = "latex",
+    caption = "(ref:agreeIntra-caption)",
+    caption.short = "(ref:agreeIntra-scaption)",
+    booktabs = TRUE,
+    col.names = c("", "", "Exclude", "Include", "Total")
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))  %>%
+    kableExtra::add_header_above(c(" " = 2, "Initial screening decision" = 3)) %>%
+    kableExtra::column_spec(0:2, bold = T) %>%
+    kableExtra::column_spec(4, border_right = T) %>%
+    kableExtra::collapse_rows(columns = 1, valign = "middle") %>%
+    kableExtra::row_spec(2, extra_css = "border-bottom: 1px solid")
+}
+
+

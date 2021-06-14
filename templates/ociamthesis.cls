@@ -270,6 +270,21 @@
 }
 {\end{alwayssingle}}
 
+% COVID Statment
+%
+% The COVID statment environment puts a large, bold, centered 
+% "Acknowledgements" label at the top of the page. The acknowledgements
+% themselves appear in a quote environment, i.e. tabbed in at both sides, and
+% on its own page.
+
+\newenvironment{covidStatment}%
+{   \begin{alwayssingle}\chapter*{COVID Impact Statement}
+    \thispagestyle{empty}
+	\pagestyle{empty}
+	\setlength{\baselineskip}{\frontmatterbaselineskip}
+}
+{\end{alwayssingle}}
+
 % ACKNOWLEDGEMENTS
 %
 % The acknowledgements environment puts a large, bold, centered 

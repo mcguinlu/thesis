@@ -24,6 +24,7 @@
 - [ ] Check short captions for figures
 - [ ] Randomisation vs randomization
 - [ ] Check citations, particularly of handbook
+- [ ] Remove chapter reference headings.
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice

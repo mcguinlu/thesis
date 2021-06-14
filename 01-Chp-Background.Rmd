@@ -40,7 +40,7 @@ This introductory chapter provides background information on both dementia and b
 
 ## Introduction
 
-This chapter provides an overview of the broad context of this thesis, introducing the core concepts used throughout and providing some background on each. It briefly discusses the underlying pathologies and diagnosis of dementia, its public health importance, and the current state of treatment and prevention research. It then provides background on blood lipids and lipid-modifying treatments, and summarises the existing evidence on the effect of these exposures on dementia outcomes.
+This chapter provides an overview of the broad context of this thesis, introducing the core concepts used throughout and providing some background on each. It briefly discusses the underlying pathologies and diagnosis of dementia, its public health importance, and the current state of treatment and prevention research. It then provides background on blood lipids and lipid-modifying treatments, and summarises the types of evidence used to examine the effect of these exposures on dementia outcomes.
 
 The chapter introduces evidence synthesis as the key framework used to guide the research presented in the remaining chapters. Finally, it outlines the aims, objectives and structure of this thesis, and briefly summarises the contributions to the scientific literature that arose from this research. 
 
@@ -56,9 +56,9 @@ Defined by the Diagnostic and Statistical Manual of Mental Disorders as a "major
 
 Alzheimer's disease is the most common cause of dementia, accounting for approximately 60-80% of cases. Characterised by substantial cognitive impairment and difficulty with high level executive function to the extent that it interferes with, it is an insidious disease, within initial onset thought to occur up to 15 years prior to symptomatic presentation.[@robinson2015] Much remains unknown about Alzheimer's pathogenesis, despite research implicating the "amyloid hypothesis",[@robinson2015] as a potential mechanism of disease. Under this hypothesis, the build-up of amlyoid plaques (composed mainly of amlyoid-$\beta$ peptide) and neurofibrillary tangles (composed mainly of tau protein) triggers a range of physiological changes, including inflammation and cell death, that result in cognitive impairment.[@robinson2015]
 
-Vascular dementia (VaD) is the second largest underlying pathology of dementia, accounting for ~10% of cases. Vascular dementia is caused by a range of cerebrovascular disorders, and as a result, presentation  of symptoms can vary widely.[@iadecola2013] Similarly, due to the varied underlying  pathophysiology, vascular dementia can either onset quite rapidly following a cerebrovascular event such as a stroke or over a long time-frame due to a series of small infarcts.[@venkat2015] Vascular dementia regularly co-occurs in patients with Alzheimer's disease.[@iadecola2013] This presentation is described as "mixed" dementia,[@custodio2017] and occurs in approximately 25% of cases.[@burns2009]
+Vascular dementia (VaD) is the second largest underlying pathology of dementia, accounting for ~10% of cases. Vascular dementia is caused by a range of cerebrovascular disorders, and as a result, presentation  of symptoms can vary widely.[@iadecola2013] Similarly, due to the varied underlying  pathophysiology, vascular dementia can onset either quite rapidly following a cerebrovascular event such as a stroke or over a long time-frame due to a series of small infarcts.[@venkat2015] Vascular dementia regularly co-occurs in patients with Alzheimer's disease.[@iadecola2013] This presentation is described as "mixed" dementia,[@custodio2017] and occurs in approximately 25% of cases.[@burns2009]
 
-The remaining 10-30% of cases are caused other dementia subtypes (e.g. Lewy Body dementia, frontotemporal dementia) or by progression of other neurological diseases (e.g. Parkinson's disease).[@burns2009]
+The remaining 10-30% of cases are caused by other dementia subtypes (e.g. Lewy body dementia, frontotemporal dementia) or by progression of other neurological diseases (e.g. Parkinson's disease).[@burns2009]
 
 <!----------------------------------------------------------------------------->
 
@@ -83,7 +83,7 @@ One of the most commonly used criteria are those found in the Diagnostic and Sta
 
 Many cognitive assessment tools exist for the purpose of informing a diagnoses of dementia,[@sheehan2012] with two of the best known of these being the Mini Mental State Exam (MMSE) and Montreal Cognitive Assessment (MoCA) scale. The distinction between these memory scales and diagnostic criteria presented above should be noted. For example, the MMSE is used to provide evidence for part A of the criteria presented in \@ref(tab:diagnosticCriteria-table). Taken alone, it does not indicate the absence or presence of dementia, instead merely indicating cognitive impairment which could be due to another cause (for example, temporary delirium as a result of an infection or surgery).
 
-Differentiating between the underlying causes of a dementia diagnosis is challenging but necessary, as whether the patient has Alzheimer's disease or vascular dementia will affect expect progression and potential treatment options available (see Section \@ref(intro-treatments)). Cause-specific criteria exist for the diagnosis of dementia sub-types. For example, the NINCDS-ADRDA criteria are commonly used to assess patients for Alzheimer's disease,[@dubois2007] while vascular dementia is diagnosed using the NINCDS-AIREN criteria.[@roman1993vascular]
+Differentiating between the underlying causes of a dementia diagnosis is challenging but necessary, as whether the patient has Alzheimer's disease or vascular dementia will affect expected progression and potential treatment options available (see Section \@ref(intro-treatments)). Cause-specific criteria exist for the diagnosis of dementia sub-types. For example, the NINCDS-ADRDA criteria are commonly used to assess patients for Alzheimer's disease,[@dubois2007] while vascular dementia is diagnosed using the NINCDS-AIREN criteria.[@roman1993vascular]
 
 <!-- ### Differing risk by sex -->
 
@@ -97,7 +97,7 @@ Differentiating between the underlying causes of a dementia diagnosis is challen
 
 ### Public health importance
 
-Dementia is quickly becoming a critically important public health issue. Despite the age-specific incidence and prevalence of dementia remaining relatively constant over time,[@prince2016] an ageing population is set to create a dementia epidemic, particularly in Westernised countries.[@flier2005] While approximately 525,000 patients have received a dementia diagnosis, the true number of people currently living with dementia in the UK is thought to be closer to 850,000, with this figure expected to double by 2040.[@baker2019] Globally, the prevalence of dementia is expected to reach 75 million by 2030.[@prince2016] Dementia is the leading cause of death in the UK, and the only once without a proven treatment.
+Dementia is quickly becoming a critically important public health issue. Despite the age-specific incidence and prevalence of dementia remaining relatively constant over time,[@prince2016] an ageing population is set to create a dementia epidemic, particularly in Westernised countries.[@flier2005] While approximately 525,000 patients have received a dementia diagnosis, the true number of people currently living with dementia in the UK is thought to be closer to 850,000, with this figure expected to double by 2040.[@baker2019] Globally, the prevalence of dementia is expected to reach 75 million by 2030.[@prince2016] Dementia is the leading cause of death in the UK, and the only one without a proven cure.
 
 Dementia also has a substantial economic impact. In 2015, the estimated total cost of dementia in England was £24.2 billion. Health care costs alone were £3.8 billion,[@wittenberg2019] Globally, the cost of dementia care is expected to rise to $1tr by 2030.[@prince2014dementia]
 
@@ -127,15 +127,11 @@ This thesis will focus on blood lipids as the primary risk factor of interest. T
 
 <!----------------------------------------------------------------------------->
 
-<!--- May need small bit here on converting from one measurement to the other i.e.
-mg/dL to mmol/L--->
-
-
 ### Lipid fractions {#intro-lipid-fractions}
 
 The blood lipid profile contains a range of component parts, or fractions. However, this thesis will only consider the two most important fractions, trigylcerides (TG) and cholesterol, which are either absorbed from food (exogenous lipids) or produced internally (endogenous lipids).[@feingold2000]
 
-Triglycerides are the simplest and most common type of lipids found across the body. They are used to store unused calories from food, and to move energy around the body.[@laufs2020] In contrast, cholesterol is primarily used to create cell walls and certain sex hormones.[@zampelas2019] As lipids are not water soluble, within the blood stream, cholesterol is transported in lipoprotein structures of varying densities. Low-Density-Lipoprotein-cholesterol (LDL-c), commonly know as the "bad" cholesterol, transports fat to cells, acting as an energy conveyor. In contrast, High Density-Lipoprotein-cholestel (HDL-c), transports cholesterol to the liver to be broken down and excreted.[@feingold2000]
+Triglycerides are the simplest and most common type of lipids found across the body. They are used to store unused calories from food, and to move energy around the body.[@laufs2020] In contrast, cholesterol is primarily used to create cell walls and certain sex hormones.[@zampelas2019] As lipids are not water soluble, within the blood stream, cholesterol is transported in lipoprotein structures of varying densities. Low-density-lipoprotein cholesterol (LDL-c), commonly know as the "bad" cholesterol, transports fat to cells, acting as an energy conveyor. In contrast, High density-lipoprotein cholesterol (HDL-c), transports cholesterol to the liver to be broken down and excreted.[@feingold2000]
 
 In addition to the individual fractions, total serum cholesterol (TC) is a commonly-used summary measure to estimate the total amount of lipid present in the blood. The measure is derived from measurements of the individual HDL-c, LDL-c and TG levels using the Friedwald formula:[@friedewald1972]
 
@@ -158,13 +154,17 @@ Widely-used ranges for the acceptable levels of different types of lipids are ba
 
 &nbsp;
 
-Elevated LDL-c in the bloodstream, a condition also known as hypercholesterolaemia or hyperlipidaemia,[@nelson2013] can lead to atherosclerosis,[@libby2019] the build-up of fatty deposits in the blood vessels. These deposits constrict blood flow and can lead to vascular complications. Alternatively, part of the deposit can detach from the artery walls, forming a clot that can lead to a heart attach or stroke.[@libby2019] Globally, the prevalence of elevated cholesterol was estimated by the World Health Organisation to be approximately 40%.
+Elevated LDL-c in the bloodstream, a condition also known as hypercholesterolaemia or hyperlipidaemia,[@nelson2013] can lead to atherosclerosis,[@libby2019] the build-up of fatty deposits in the blood vessels. These deposits constrict blood flow and can lead to vascular complications. Alternatively, part of the deposit can detach from the artery walls, forming a clot that can lead to a heart attach or stroke.[@libby2019] Globally, the prevalence of elevated cholesterol was estimated by the World Health Organization to be approximately 40%.
 
 <!----------------------------------------------------------------------------->
 
 ### Statins
 
-Statins are a commonly prescribed method of lipid regulation.[@collins2016] Statins inhibit the conversion of 3-Hydroxy-3-Methylglutaryl-Coenzyme-A (HMG-CoA) into mevalonic acid, by competitively binding with HMG-CoA Reductase (HMG-CoA-R). This conversion limits the rate at which cholesterol can be produced, enabling statins to effectively reduce the production of LDL cholesterol.
+<!-- TODO Need more on this: maybe a diagram of the pathway -->
+
+<!-- REVIEW [JH] This section seems very short for such a key entity in your thesis. I don’t know exactly what else there is to say about statins, but I recommend expanding it a bit, The second sentence is gobbledygook to me. -->
+
+Statins are a commonly prescribed method of lipid regulation.[@collins2016] Statins inhibit the conversion of 3-hydroxy-3-methylglutaryl-coenzyme-A (HMG-CoA) into mevalonic acid, by competitively binding with HMG-CoA reductase (HMG-CoA-R). This conversion limits the rate at which cholesterol can be produced, enabling statins to reduce effectively the production of LDL cholesterol.
 
 <!----------------------------------------------------------------------------->
 
@@ -172,21 +172,21 @@ Statins are a commonly prescribed method of lipid regulation.[@collins2016] Stat
 
 (ref:statin-mechanisam-scap) Statin mechanism of action
 
-```{r eval = FALSE, statin-mechanisam, echo = FALSE, results="asis", fig.cap='(ref:statin-mechanisam-cap)', out.width='100%', fig.scap='(ref:statin-mechanisam-scap)'}
-knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
+```{r statin-mechanisam, echo = FALSE, results="asis", fig.cap='(ref:statin-mechanisam-cap)', out.width='100%', fig.scap='(ref:statin-mechanisam-scap)'}
+knitr::include_graphics(file.path("figures/background/statinPath.png"))
 ```
 
 <!----------------------------------------------------------------------------->
 
 ### Other lipid regulating agents (LRA)
 
-There are a range of other interventions that can be used to modify a persons lipid profile, which each acting in slightly different ways (Table \@ref(tab)). However, in general, these treatments are either used as adjunct (additional) treatments with statins therapy or are used in situations where statins are contra-indicated or not tolerated. 
+There are several other interventions that can be used to modify a persons lipid profile, which each acting in slightly different ways (Table \@ref(tab)). However, in general, these treatments are either used as adjunct (additional) treatments with statins therapy or are used in situations where statins are contra-indicated or not tolerated. 
 
 <!-- see https://www.heart.org/en/health-topics/cholesterol/prevention-and-treatment-of-high-cholesterol-hyperlipidemia/cholesterol-medications for information on the indications for treatment - could present as a table -->
 
 The most commonly used non-statin therapeutic is ezetimibe,[@kosoglou2005] which prevents intestinal absorption of cholesterol. However, when used alone, it has a limited LDL-c lowering effect, leading to the creation of combined statin/ezetimibe therapies (both compounds contained in a single pill, as opposed to complimentary treatments).[@genest2006]
 
-A second example are fibrates, used to treat hypertriglyceridaemia by reducing production of triglyceride carrying compounds in the liver. They are commonly used in patients with mixed hyperlipidaemia if treatment with statins has failed to sufficiently control cholesterol levels. 
+Fibrates provide a second example of non-statin therapy. They are used to treat hypertriglyceridaemia by reducing production of triglyceride carrying compounds in the liver. They are commonly used in patients with mixed hyperlipidaemia if treatment with statins has failed to sufficiently control cholesterol levels. 
 
 Finally, PCSK9 inhibitors (or PCSK9i) are a relatively new treatment with strong lipid lowering effects, lauded as a potential alternative to statins.[@chaudhary2017] Their mechanism of action is to bind to and inhibit PCSK9, which breaks down LDL-c receptors on the surface of the liver, thus allowing more LDL-c to be internalised and broken down.
 
@@ -258,20 +258,18 @@ Despite the increasing number of MR studies examining this topic, no systematic 
 
 In summary, multiple sources of evidence exist on the relationship between statins and dementia. In the next section, I introduce the synthesis of diverse sources of evidence as the theoretical framework used in this thesis.
 
-Multiples forms of evidenc
-
 <!----------------------------------------------------------------------------->
 
 ## Theoretical framework: Evidence synthesis 
 
 Evidence synthesis is the process of finding and integrating information from several sources to examine a research question.[@donnelly2018a] A common tyoe of evidence synthesis is a systematic review, either with or without a meta-analysis.[@chandler2019chapter]
 
-The results of an evidence synthesis exercise can be used to provide a more definitive answer to that question or, failing that, to highlight gaps in the existing evidence base. The ability to identify these gaps is particularly useful in guiding future research to address questions that have yet to be answered, or to provide an additional source of evidence for an existing question.
+The results of an evidence synthesis exercise can be used to provide a more definitive answer to that question or, failing that, to highlight gaps in the existing evidence base. The ability to identify these gaps is particularly useful in guiding future research to address questions that have yet to be answered.
 
 This thesis seeks to use an evidence synthesis framework to assess the effect of lipids, and treatments that influence lipid levels, on dementia outcomes. 
-Specifically, this thesis considers three methodologies within the umbrella term of evidence synthesis:
+Specifically, this thesis considers three concepts within the umbrella term of evidence synthesis:
 
-* Inclusion of grey literature
+* Inclusion of preprints
 * Triangulation across evidence sources
 * Individual patient data meta-analysis
 
@@ -279,7 +277,15 @@ These three elements are expanded on below and are used to frame the research pr
 
 <!----------------------------------------------------------------------------->
 
-### Inclusion of grey literature {#diverse-sources-preprints}
+### Inclusion of preprints  {#diverse-sources-preprints}
+
+<!-- TODO Incorporate Julian's comments below -->
+
+
+<!-- REVIEW [JH] I think, on general reflection, that portraying this as an issue around “grey literature” may not be particularly useful. Preprints are arguably some of the least “grey” of the very ambiguously defined family of grey sources, such that some definitions of “grey” might not include them.
+It seems to me that preprints are such a big and important part of the landscape now that you can just portray the methodology as dealing with preprints rather than including grey literature.
+Interesting debate as to whether preprints are grey literature, given that many of them are increasingly becoming findable in electronic bibliographic databases. We have no clear and widely used definition of grey literature.  -->
+
 
 The importance of including grey (or gray) literature in systematic reviews is widely acknowledged. Meta-research studies have demonstrated that systematic reviews excluding grey literature sources overestimate the effect of interventions.[@conn2003; @mcauley2000; @hopewell2007] Common, well-accepted forms of grey literature include conference abstracts and theses.[@lefebvre2019searching]
 
@@ -292,7 +298,7 @@ In this thesis, preprints are considered an important source of evidence, in con
 <!----------------------------------------------------------------------------->
 ### Triangulating across study designs {#intro-triangulation}
 
-As illustrated in Section \@ref(evidence-association), several diverse epidemiological methods have been used to examine the effect of varying blood lipid levels on dementia risk. However, each method is limited by its own unique biases. Aetiological triangulation is a developing evidence synthesis method that seeks to exploit these inherent differences in study design, and as a result, in biases.[@lawlor2016a] If several sources of evidence are available and point towards identical conclusions about a exposure-outcome relationship, and these sources are at risk of unrelated biases, this strengthens our confidence in the result. The ideal scenario is where predicted sources of bias are likely to be in competing directions, one expected to increased the effect of the exposure and the other to attenuate it.[@lawlor2016a] As such, triangulating these results can provides us a middle-ground between the competing directions of bias. A triangulation approach can also prove useful in a prospective manner, helping to design new studies that are at risk of different sources of bias to that already available from the published literature.
+As illustrated in Section \@ref(evidence-association), several diverse epidemiological methods have been used to examine the effect of varying blood lipid levels on dementia risk. However, each method is limited by its own biases. Aetiological triangulation is a developing evidence synthesis method that seeks to exploit these inherent differences in study design, and as a result, in biases.[@lawlor2016a] If several sources of evidence are available and point towards identical conclusions about an exposure-outcome relationship, and these sources are at risk of unrelated biases, this strengthens our confidence in the result. The ideal scenario is where predicted sources of bias are likely to be in competing directions, strengthen the effect of the exposure and the other to attenuate it.[@lawlor2016a] As such, triangulating these results can provides us a middle-ground between the competing directions of bias. A triangulation approach can also prove useful in a prospective manner, helping to design new studies that are at risk of different sources of bias to that already available from the published literature.[@munafo2018]
 
 This thesis seeks to apply a triangulation approach to provide the best available evidence on the effect of lipids, and lipid regulating agents, on dementia outcomes. 
 
@@ -306,24 +312,22 @@ Finally all evidence, both pre-existing and produced as part of this thesis (Cha
 
 Individual patient data meta-analyses are commonly held to represent the gold standard in evidence synthesis methodology.[@riley2010; @stewart1993] IPD methods seek to obtain the raw data from each study identified in a systematic review, rather than basing the meta-analysis on summary results extracted from the literature.[@riley2010]
 
-In the context of this thesis, if lipids are found to have a causal role in development of dementia, evidence-based preventative strategies would be best informed by identifying the types of individuals who are most likely to receive benefit from treatment with lipid-modifying agents.[@arain2009; @clayton2018; @mccartney2016] However, if primary studies do not presenting results stratified by covariates of interests, meta-analyses of summary-level data on this topic often have limited ability to examine research questions related to exposure-covariate interactions.[@riley2010] In terms of this thesis, patient sex is considered to be of particular interest.[@arain2009; @letenneur1999]
+In the context of this thesis, if lipids are found to have a causal role in development of dementia, evidence-based preventative strategies would be best informed by identifying the types of individuals who are most likely to receive benefit from treatment with lipid-modifying agents.[@arain2009; @clayton2018; @mccartney2016] However, if primary studies do not present results stratified by covariates of interest, meta-analyses of summary-level data on this topic often have limited ability to examine research questions related to exposure-covariate interactions.[@riley2010] In terms of this thesis, patient sex is considered to be of particular interest.[@arain2009; @letenneur1999]
 
-An IPD meta-analysis of lipid levels on dementia outcomes would overcome this limitation of summary-level data, as access to the raw data allows for an analysis that investigates these interactions.[@riley2020] This approach has the added benefit of allowing a common set of inclusion criteria and statistical model to be applied across all dataset, potentially eliminating some important sources of heterogeneity.[@stewart2002]
+An IPD meta-analysis of lipid levels on dementia outcomes would overcome this limitation of summary-level data, as access to the raw data allows for an analysis that investigates these interactions.[@riley2020] This approach has the added benefit of allowing a common set of inclusion criteria and statistical model to be applied across all datasets, potentially eliminating some important sources of heterogeneity.[@stewart2002]
 
-Despite their advantages, IPD meta-analysis are rarely performed.[@tugwell2010] Factors limiting their uptake include the increased time and effort they require when compared to a summary-level analysis, and the low success rate associated with obtaining the raw data.[@nevitt2017a; @ventresca2020] The data underlying primary studies is frequently not publicly available,[@alsheikh-ali2011; @federer2018a] and the availability of data "available on request from authors" declines rapidly over time.[@vines2014] Several systematic barriers to open data sharing have been identified[@vanpanhuis2014a]. Of particular concern for biomedical IPD analyses are legal issues surrounding the sharing of medical data, motivated by concerns around patient privacy.[@wartenberg2010]
+Despite their advantages, IPD meta-analysis are rarely performed.[@tugwell2010] Factors limiting their uptake include the increased time and effort they require when compared to a summary-level analysis, and the low success rate associated with obtaining the raw data.[@nevitt2017a; @ventresca2020] The data underlying primary studies are frequently not publicly available,[@alsheikh-ali2011; @federer2018a] and the availability of data "available on request from authors" declines rapidly over time.[@vines2014] Several systematic barriers to open data sharing have been identified[@vanpanhuis2014a]. Of particular concern for biomedical IPD analyses are legal issues surrounding the sharing of medical data, motivated by concerns around patient privacy.[@wartenberg2010]
 
 In response to these limitations, new collaborative initiatives have developed to enable rapid access to relevant data in a secure supported workshop. The most import in relation to this thesis is the Dementia Platform UK (DPUK),[@bauermeister2020] which aims to provide access to several dementia-related datasets via a single simplified application process.
 
-This thesis will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapter \@ref(sys-rev-heading). Any data obtained will be combined with that available from the DPUK portal as part of an individual participant data meta-analysis in Chapter \@ref(ipd-analysis-heading), enabling the assessment of the effect of lipids on dementia stratified by key variables such as sex.
+I will will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapter \@ref(sys-rev-heading). Any data obtained will be combined with that available from the DPUK portal as part of an individual participant data meta-analysis in Chapter \@ref(ipd-analysis-heading), enabling the assessment of the effect of lipids on dementia stratified by key variables such as sex.
 <!----------------------------------------------------------------------------->
 
 ## Thesis overview
 
-### Hypothesis
-
-Circulating blood lipid levels, and by extension treatments that modify blood lipid levels such as statins, affect the subsequent risk of dementia and related outcomes.
-
 ### Aims and objectives
+
+The over-arching aim of this thesis is to explore the relationship between blood lipid levels, and by extension treatments that modify blood lipid levels such as statins, and the subsequent risk of dementia and related outcomes
 
 The specific research objectives that this thesis seeks to address are:
 

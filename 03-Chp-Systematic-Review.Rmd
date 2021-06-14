@@ -130,9 +130,9 @@ Inter- and intra-rater reliability was assessed for a 10% sub-sample of records 
 
 If this approach demonstrates a significant level of erroneous exclusion by the primary author a larger proportion will be dual-screened. 
 
-Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This measure of inter-rater reliability was chosen over other methods of assessing inter-rater reliability such as percent agreement (number of agreements divided by total number of assessments) as i account for chance agreement between reviewers but does not suffer from severely imbalanced marginal totals in the same way that Cohen's kappa value does. [@cohen1960: @gwet2008; @wongpakaran2013]
+Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This measure of inter-rater reliability was chosen over other methods of assessing inter-rater reliability such as percent agreement (number of agreements divided by total number of assessments), as it accounts for chance agreement between reviewers but does not suffer from bias due to severely imbalanced marginal totals in the same way that Cohen's $kappa$ value does. [@cohen1960: @gwet2008; @wongpakaran2013] Given the small number of included studies in this review, this is an important characteristic.
 
-Gwet's AC1 is defined as
+Gwet's AC1 is defined as:
 
 $$AC1 = \frac{observed\;agreement-chance\;agreement}{1-chance\;agreement}$$ 
 
@@ -146,7 +146,7 @@ $$q = \frac{(A+C)+(A+B)}{2N}$$
 
 <!-- TODO Need to be sure of how to calculate. -->
 
-How to interpret agreement co-efficients is widely debated. Here we use guidelines based on a stricter interpretation of the Cohen's Kappa coefficient,[@mchugh2012] presented in Table \@ref(tab:gwet-table).
+How to interpret agreement co-efficients is widely debated, and while arbitary cut-off values may mislead,[@brennan1992] they provide a useful rubric by which to assess inter-rater agreement. Here, I used guidelines based on a stricter interpretation of the Cohen's $kappa$ coefficient,[@mchugh2012] presented in Table \@ref(tab:gwet-table).
 
 &nbsp;
 
@@ -234,14 +234,16 @@ In the advent of multiple papers reporting results on the same cohort, but say, 
 
 ### Following up with authors {#contacting-authors}
 
-As part of the IPD analysis, relevant cohort studies were identified and approached. In the first instance, the corresponding author on the main man
+Where data points required either for the analysis or risk-of-bias assessment but were not reported, the primary authors of the study were contacted. This approach was taken due to the potentially large impact of following up with authors on the results of the review,[@reynders2019] 
+
+This was particular important for the dose response meta-analysis, we
+
 
 Use the example of getting the cut-off points from the 
 
 <!-- TODO move to results, and keep just a short bit here -->
 
 <!----------------------------------------------------------------------------->
-
 
 ### Analysis methods
 
@@ -258,26 +260,32 @@ Need formula here, and description of different methods and quarrels regarding d
 This analytical approach was used for 
 
 
-
-
-
-
 #### Dose-response analyses
 
 <!-- TODO Explore how to map from simple diagnosis of hyperchol to dose response. Seems that does response needs >3 categories -->
 <!-- Will also need description of dose-response meta-analysis here, with reference to forthcoming book Julian sent on.  -->
-
-
 
 Several of the included studies presented data on multiple categories of lipid levels, but provided an overall effect estimate based on a comparison of only two of these categories (e.g. for example, highest vs lowest quartile). <!-- TODO Question: if I look at highest vs lowest, and also at top dose vs lowest dose, am I double counting results? -->
  while this allows for easy interpretation of the resulting effect estimate, it ignores any potential non-linear relationships between the exposure and outcome, in addition to discarding useful information contain in the interim groups.
 
 Where possible, data for all exposure groups was extracted, and this. Studies were excluded from this analysis if the number of categories was less than three, if the exposure cut-off points for for each category were not presented (e.g. if the study reports splitting participants into quartiles and comparing the highest vs lowest without giving the quartile bands in mmol/L).
 
+
+
+<!-- Taken from another paper: "A potential non-linear association was evaluated using a restricted cubic spline model with three knots at the 10th, 50th and 90th percentile of frequency of the exposure [@orsini2012meta]" -->
+
+
 <!-- TODO Do I initially want to fit a linear relationship across categories and  -->
 A XXXX spline model was fitted to allow for a non-linear relationship, for example a U or J-shaped relationship, where low and high levels of an exposure can have an effect versus the "normal" reference dose. Reference doses were defined _a priori_ as the cut-off of the "Normal"/"Optimal" categories for each fractions, as detailed in Table \@ref(tab:lipidLevels-table). Under this approach, the reference dose was defined as 200 mg/dL for total cholesterol, 100 mg/dL for LDL-c, 40 mg/dL for HDL-c, and 150 mg/dL for triglycerides.
 
 Due to the requirements for the dose response analysis, studies were excluded from this secondary analysis if they did not provide the require information: cut-off points. Where this was not reported in the study, I contacted the corresponding author to attempt to obtain the required information (see \@ref(contacting-authors)). 
+
+
+When the highest category was open ended (e.g LDL-c $\geqslant$ 200 mg/dL), I calculated category midpoint by assuming the widht of the higest category was the same as the one immediately below it. Similarly, when, the lowest category was open-ended (e.g LDL-c $\leqslant$ 100 mg/dL), I set the lower boundary for this category to zero (though this is unlikely to occur natually, it was difficult to define).
+
+
+we assumed the width of the category to be the same as the adjacent category.
+When the lowest category was open ended, we set the lower boundary to zero.
 
 #### Sensitivity analyses
 
@@ -383,19 +391,39 @@ As a summary of the duplication of work in this area, we looked at how many revi
 
 <!--- TODO Need example table here, showing relevant cells --->
 
-<!-- # ```{r agreementtableinter, echo = FALSE} -->
+&nbsp;
 
-<!-- # ``` -->
+<!----------------------------------------------------------------------------->
+(ref:agreeInter-caption) Inter-rater agreement on a subset of ~10% of records, illustrating high accuracy. 
 
-<!-- # ```{r agreementtableintra, echo = FALSE} -->
+<!-- TODO Include AC1 result in caption above -->
 
-<!-- # ``` -->
+(ref:agreeInter-scaption) Inter-rater agreement
 
-For the inter-rater reliability, percentage agreement was 97.3% (AC1 = XXXX, Table \@ref(tab:agreement-table-intra)), while for the intra-rater reliability, agreement was 98.6% (AC1 = XXXX, Table \@ref(tab:agreement-table-intra)).
+```{r agreeInter-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
 
-The discrepancy between the percent agreement and the associated value of AC is expected, due to the heavy imbalance in this sample towards exclusion.[@feinstein1990]
+&nbsp;
 
-Those records which were excluded in the initial screening, but were included either by the same reviewer on their second viewing (n=4), or by the second reviewer (n=29), were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline versus mild cognitive impairment, and the definition of eligible lipids fractions.
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:agreeIntra-caption) Intra-rater agreement on subset of records, indicating high consistency.
+
+(ref:agreeIntra-scaption) Inter-rater agreement
+
+```{r agreeIntra-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
+For the inter-rater reliability, agreement was very high ($AC1$ = `r agreeInter_coeff[1]`, $kappa$ = `r agreeInter_coeff[2]`, Table \@ref(tab:agreeInter-table)). Agreement was similary high for intra-rater reliability ($AC1$ = `r agreeInter_coeff[1]`, $kappa$ = `r agreeInter_coeff[2]`, Table \@ref(tab:agreeIntra-table)). The discrepancy between the $AC1$ and $kappa$ coefficients illustrates the sensitivity of $kappa$ to imbalanced marginals, caused in this sample by a heavy imbalance  towards exclusion.[@feinstein1990]
+
+Those records which were excluded in the initial screening, but were included by the second reviewer (n=`r discrepancy_Inter`) were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline versus mild cognitive impairment, and the definition of eligible lipids fractions. 
+
+Additionally, records I excluded on my second viewing (n=`r discrepancy_Intra`) were investigated. All were . . . 
 
 <!--- Cross check this with the actual numbers included --->
 
@@ -521,7 +549,7 @@ Consideration of the potential impact of the magnitude and direct of residual co
 
 Without our framework and as part of the risk of bias assessments reported in \@ref(risk-of-bias-subheading), we test test
 
-### Added evidental value of including preprints {}
+### Added evidental value of including preprints {sys-rev-including-preprints}
 
 <!-- TODO Will have to get actual numbers for this section -->
 
@@ -615,6 +643,9 @@ I believe there are three aspects where this review is distinct from those revie
 
 ### Comparison with other reviews
 
+<!-- TODO This section will be informed by the review published as a preprint -->
+
+
 Of note, as part of the review, we identified several previous systematic reviews of this topic.[CITE] However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)[@sterne2019] to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels.
 
 Some previous reviews did assess risk of bias, but used non-domain based assessment tools. Newcastle-Ottowa scale,
@@ -622,8 +653,6 @@ Some previous reviews did assess risk of bias, but used non-domain based assessm
 **The duplication of work across reviews (including, ironically, by this review) is substantial. In Section XXXX, I demonstrated that the each primary study included in this review was also included in other review so this topic, but that not all studies were included in all reviews. However, by creating a comprehensive review that attempted to draw together all available evidence from across the full range of study types.**
 
 __Exclusion of the PROSPER trial__ Will need to have a good bit here on the exclusion of this RCT, particularly as it is included in the Cochrane review on the topic. Cross-reference with the meta-bias section in the early section, on the impact of only included studies that sought to make a definitive diagnosis, rather than using change in cognitive assessment scales.
-
-
 
 <!-- Will hopefully be able to cite MSc review here to give details of other reviews -->
 
