@@ -12,7 +12,6 @@ output:
   bookdown::html_document2: default
 documentclass: book
 ---
-
 ```{block type='savequote', include=knitr::is_latex_output(),quote_author='(ref:sys-rev-quote)', echo = FALSE}
 "It is surely a great criticism of our profession that we have not organised a critical summary by speciality or sub-speciality, up-dated periodically, of all relevant RCTS."  
 ```
@@ -44,10 +43,13 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 ## Lay summary
 
-As introduced in previous chapters, 
+The importance of
 
-<!-- IDEA Evidence map - show the distribution of the different studies population across the world. Distribution will have to be of participants, not primary authors. Though could use to show how data is being used globally -->
+I found that
 
+The results of this review are used to guide the primary analysis presented in Chapter \@ref(cprd-analysis-heading), in addition to forming a key evidence source used in the triangulation exercise presented in Chapter \@ref(discussion-heading).
+
+<!----------------------------------------------------------------------------->
 ## Introduction {#sys-rev-intro}
 
 The aim of this chapter is to systematically review all available literature on the association between blood levels of total cholesterol and it's constituent parts (HDL-c,LDL-c and triglycerides) on the subsequent risk of dementia.
@@ -66,12 +68,12 @@ A pre-specified protocol for this analysis was registered using the Open Science
 
 ### Search strategy
 
-I systematically search electronic bibliographic databases to identify potentially relevant records. The search strategy used in each database was developed in an iterative manner using a combination of free text and controlled vocabulary (MeSH/EMTREE)[@lefebvre2019searching] terms to identify studies which have examined the relationship between blood lipids levels and dementia, incorporating input from an information specialist. The strategy will include terms related to lipids, lipid modifying treatments, and dementia and its sub-types, and was designed for MEDLINE before being adapted for use in the other bibliography databases listed. An outline of the general strategy is presented in the Table \@ref(tab:searchOverview-table) below and the full draft search strategies for each database are presented in Appendix \@ref(appendix-search-strategy). <!-- TODO Need to actually attach each search strategy, and detail the specific databases used. See search strategy results. -->
+I systematically search electronic bibliographic databases to identify potentially relevant records. The search strategy used in each database was developed in an iterative manner using a combination of free text and controlled vocabulary (MeSH/EMTREE)[@lefebvre2019searching] terms to identify studies which have examined the relationship between blood lipids levels and dementia, incorporating input from an information specialist. The strategy will include terms related to lipids, lipid modifying treatments, and dementia and its sub-types, and was designed for MEDLINE before being adapted for use in the other bibliography databases listed. An outline of the general strategy is presented in the Table \@ref(tab:searchOverview-table) below and the full draft search strategies for each database are presented in Appendix \@ref(appendix-search-strategy). <!-- TODO Need to actually attach each search strategy. See search strategy results. -->
 
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:searchOverview-caption) Summary of systematic search by topic. For a full list of search terms, see Appendix \@ref()
+(ref:searchOverview-caption) Summary of systematic search by topic. The full search strategy including all terms and the number of hits per term is included in Appendix \@ref(appendix-search-strategy).
 
 (ref:searchOverview-scaption) searchOverview
 
@@ -85,33 +87,34 @@ To ensure that the study design filters are not excluding potentially relevant r
 
 <!-- TODO need to comment on this feed-back process, or remove -->
 
-The following databases will be searched from inception onwards: Medline, EMBASE, Psychinfo, Cochrane Central Register of Controlled Trials (CENTRAL), and Web of Science Core Collection (for the specific databases available thi via the University). We will also search clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials. As the contents of the Web of Science Core COllection can vary by institution, the specific database searched via this platform are listed in Appendix \@ref(appendix-wos-databases).
+The following databases were searched from inception onwards: Medline, EMBASE, Psychinfo, Cochrane Central Register of Controlled Trials (CENTRAL), and Web of Science Core Collection (for the specific databases available thi via the University). We will also search clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials. As the contents of the Web of Science Core COllection can vary by institution, the specific database searched via this platform are listed in Appendix \@ref(appendix-wos-databases).
 
-The abstracts list of relevant conferences (e.g. the proceedings of the Alzheimer's Association International Conference, published in the journal Alzheimer's & Dementia) will be searched. <!-- TODO how were these searched? -->
+The abstracts list of relevant conferences (e.g. the proceedings of the Alzheimer's Association International Conference, published in the journal Alzheimer's & Dementia) were searched by hand. <!-- TODO how were these searched? Date and other range -->
 
- Grey literature will also be searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses will be accessed using the Open Access Theses and Dissertations portal. We will also search bioRxiv and medRxiv, preprint repositories using a tool built as part of this thesis, to identify potentially relevant studies. Finally, the reference lists of included studies will be searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
+ Grey literature will also be searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses were accessed using the Open Access Theses and Dissertations portal. We will also search bioRxiv and medRxiv, preprint repositories using a tool built as part of this thesis, to identify potentially relevant studies. Finally, the reference lists of included studies were searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
 
-<!-- TODO Look at citationchaser for this, but have a cut-off publication date of  -->
+<!-- TODO Look at citationchaser for this, but have a cut-off publication date of July 2019 - better than searching by hand/Google Scholar -->
 
 <!-- Include table with overview of search strategy here: summarise topics and how they were combined -->
 
 ### Study selection
 
-Records weree imported into Endnote and deduplicated using the method outlined in Bramer et al. (2016).[@bramer2016] In summary, this method uses multiple stages to identify potential duplicates, beginning with automatic deletion of records matching on multiple fields ("Author" + "Year" + "Title" + "Journal"), followed by manual review of less similar articles (e.g. those matched based on the "Title" field alone).
+Records were imported into Endnote and deduplicated using the method outlined in Bramer et al. (2016).[@bramer2016] In summary, this method uses multiple stages to identify potential duplicates, beginning with automatic deletion of records matching on multiple fields ("Author" + "Year" + "Title" + "Journal"), followed by manual review of less similar articles (e.g. those matched based on the "Title" field alone).
 
 Screening (both title/abstract and full-text) was performed using a combination of Endnote, a citation management tool,[@hupe2019] and Rayyan, a web-based screening application.[@ouzzani2016] Title and abstract screening to remove obviously irrelevant records was performed primarily by the primary author, with a random selection of excluded records being screened in duplicate to ensure consistency with the inclusion criteria.
 
-Full-text screening will also be completed in full by the primary author. A second reviewer will screen a random sample of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage will be recorded. Disagreements occurring during either stage of the screening process will be resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.[@zotero-766]
+Full-text screening will also be completed in full by the primary author. A second reviewer screened a random sample (approx 10%) of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage were recorded. Disagreements occurring during either stage of the screening process were resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.[@zotero-766]
 
 #### Inclusion criteria
 
 We will seek studies that examine the relationship between blood lipid levels (or any specific lipid fraction, including total cholesterol, HDL, LDL, and triglycerides) and risk of incident dementia/MCI. Eligible study designs include randomized controlled trials and non-randomized observational studies of lipid modifying treatments, longitudinal studies examining the effect of increased/decreased blood lipid levels, and genetic instrumental variable (Mendelian randomization) studies examining the effect of genetically increased/decreased blood lipid levels.
 
-Participants will be free (or assumed to be free) of dementia/MCI at baseline. Studies of any duration will be included to allow for exploration of the effect of length of follow-up on the effect estimate using meta-regression. No limits will be placed on the sample size of included studies.
+Participants were free (or assumed to be free) of dementia/MCI at baseline. Studies of any duration were included to allow for exploration of the effect of length of follow-up on the effect estimate using meta-regression. No limits will be placed on the sample size of included studies.
 
-Eligible studies will define dementia according to recognised criteria, for example the National Institute of Neurological Disorders and Stroke Association-Internationale pour la Recherche en l'Enseignement en Neurosciences (NINDS-AIREN), International Classification of Diseases (ICD), or Diagnostic and Statistical Manual of Mental Disorders (DSM) criteria. For MCI, eligible studies are those that attempted state a definition for diagnoses of MCI (e.g. an adapted version of the Petersen criteria [@petersen1999]) and create ordinal groups of patients (e.g. no dementia or dementia/MCI/dementia) based on this definition.
+Eligible studies defined dementia according to recognised criteria, for example the National Institute of Neurological Disorders and Stroke Association-Internationale pour la Recherche en l'Enseignement en Neurosciences (NINDS-AIREN), International Classification of Diseases (ICD), or Diagnostic and Statistical Manual of Mental Disorders (DSM) criteria. <!-- TODO do i actually want to include MCI? -->
+ For MCI, eligible studies are those that attempted state a definition for diagnoses of MCI (e.g. an adapted version of the Petersen criteria [@petersen1999]) and create ordinal groups of patients (e.g. no dementia or dementia/MCI/dementia) based on this definition.
 
-No limitations will be imposed on publication status, publication date, venue or language, although we will require sufficiently detailed reports of the studies to be able to examine their methods. Preprints and unpublished reports will be eligible for inclusion if relevant. Multiple publications resulting from the analysis of the same data will be included and grouped.
+No limitations will be imposed on publication status, publication date, venue or language, although sufficiently detailed reports of the studies to be able to examine their methods were required for inclusion.
 
 #### Exclusion criteria
 
@@ -166,7 +169,7 @@ How to interpret agreement co-efficients is widely debated, and while arbitary c
 Harmonization of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorizing lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable.
 
 
-Following guidance for a dose response meta-analysis, we picked midpoint for all studies where bands were provided (extremely common in the case of lipids)
+Following guidance for a dose response meta-analysis, I picked midpoint for all studies where bands were provided (extremely common in the case of lipids)
 
 This analysis was unusual, as multiple methods of integration and analysis were required with data spanning many forms.
 
@@ -228,6 +231,8 @@ At present, no risk-of-bias assessment tool for Mendelian randomization studies 
 
 ### Studification
 
+Multiple publications resulting from the analysis of the same data will be included and grouped ().
+
 In the advent of multiple papers reporting results on the same cohort, but say, at different time points, I used a process of studifiction to build out the most comprehensive accounts of the studies and results from as many published articles were applicable. 
 
 <!----------------------------------------------------------------------------->
@@ -284,8 +289,8 @@ Due to the requirements for the dose response analysis, studies were excluded fr
 When the highest category was open ended (e.g LDL-c $\geqslant$ 200 mg/dL), I calculated category midpoint by assuming the widht of the higest category was the same as the one immediately below it. Similarly, when, the lowest category was open-ended (e.g LDL-c $\leqslant$ 100 mg/dL), I set the lower boundary for this category to zero (though this is unlikely to occur natually, it was difficult to define).
 
 
-we assumed the width of the category to be the same as the adjacent category.
-When the lowest category was open ended, we set the lower boundary to zero.
+I assumed the width of the category to be the same as the adjacent category.
+When the lowest category was open ended, I set the lower boundary to zero.
 
 #### Sensitivity analyses
 
@@ -334,48 +339,32 @@ A dose response meta-analysis was not planned, marking a departure from the regi
 
 <!----------------------------------------------------------------------------->
 
-### Search results
+### Search and screening results
 
-Detail 
+`r num_to_text(23447,T)` records were identified through database searches. Following depulication, `r num_to_text(16109)` unique records remained. 
 
-### Previous reviews
-
-<!-- TODO Not sure this is the best place for this -->
-
-
-**Will need to include something in the methods section on this**
-
-As part of this analysis, we examined the overlap between different published reviews on this topic.
-
-Several primary studies were captured in multiple systematic reviews. However, some studies were not captured by any previous review,
-
-Put upSet plot here.
-
-An upset plot shows the total size of each set (in this case, the set of included studies in each review) in the bottom left hand bar plot. For example, the XXXX review includes XXXX studies.
-
-Where a line joins two points in the matrix, the main barchart shows the number of records shared by these reviews. So for example, XXXX records were captured both by the XXXX review and the XXXX review.
-
-Where the matrix has just a single point highlighted, this shows the records unique to that review.
-
-The reviews are ordered by date, to attempt to show the increasing overlap and total number of studies
-
-Our review is presented as the last point on this plot, and captured XXXX records
-
-The alternative is to have a barplot showing the total cumulative number of records over the years, using our set as the master, with the bars coloured by the number of records included in 1/2/3/4 reviews. The information below the bar axis could then show the number of reviews published in that year, or alternative, you could have an upsidedown bar to show cumulative number of reviews on this topic.
-
-<!--- Take a stand here! --->
-
-Of note, this review did not include the commonly cited PROSPER study, which examined the effect of pravastatin on CVD risk and putatively provides no evidence for an effect of the statin on dementia outcomes. While widely cited and included in the Cochrane review on this topic, it has not been included here, for the reason that it only reported the change from cognitive score (as measured using the [CHECK] scale) over a mean follow-up. While this is a useful indicator of general cognitive decline, it is not equivalent to a dementia outcome, as cogntive scales should feed into a broader diagnostic pathway - See section \@ref(diagnostic-criteria)
-
-This does introduce some conflicts with other studies where a change score has been dichotomised in order to have a binary dementia or not dementia outcome.
-
-Does it also cause issues in terms of self-report?
+<!--- Cross check this with the actual numbers included --->
 
 <!----------------------------------------------------------------------------->
 
-### Screening results
+```{r prisma-flow-setup, include = FALSE}
+```
 
+(ref:prisma-flow-cap) PRISMA Flow diagram illustrating how records moved through the systematic review process. The different contributions of databases and preprint servers to the review are indicated.
 
+(ref:prisma-flow-scap) PRISMA flow diagram
+
+```{r prisma-flow-fig, echo = FALSE, results="asis", fig.pos="H", fig.cap='(ref:prisma-flow-cap)', out.width='100%', fig.scap='(ref:prisma-flow-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
+```
+
+<!----------------------------------------------------------------------------->
+
+Following de-duplication, the titles and abstracts of `r num_to_text(16109)` records were assessed for eligibility. `r num_to_text(387)` were deemed potentially eligible and the full text records for these were requested and screened. \@ref(fig:prisma-flow-fig)
+
+<!----------------------------------------------------------------------------->
+
+A PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-analyses) flow diagram,[@page2021] shown in Figure \@ref(prisma-flow-fig), shows the movement of articles through the review. To illustrate the contribution of preprint archives to the review, the flow diagram delineates between those records captured through databases searches (presented on the right of the diagram) and those captured by the search tool described in the previous chapter (presented in grey on the left of the diagram).
 
 Following screening, XXX studies were included.
 
@@ -383,11 +372,14 @@ The distribution of included studies over time demonstrates that despite the con
 
 Table \@ref(tab:incl-studies-character) shows the characteristics [**Include column here that says whether it was included in a systematic review - see below**]
 
-As part of our our forward snowballing exercise (where articles citing an included study are cited), we recorded whether a study included in our review had been included in any previous evidence synthesis attempt in an attempt to qualify the added value of this analysis. Additionally, if an included article was subsequently cited by a review, all studies in that review were screened for inclusion for the sake of completeness. This analysis was performed by extracting the citing articles from Google Scholar on [DATE] and screening them manually. The DOI of articles extracted from this analysis are included in the appendix, as the Google Scholar search functionality is not readily reproducible.*
+As part of our our forward snowballing exercise (where articles citing an included study are cited), Irecorded whether a study included in our review had been included in any previous evidence synthesis attempt in an attempt to qualify the added value of this analysis. Additionally, if an included article was subsequently cited by a review, all studies in that review were screened for inclusion for the sake of completeness. This analysis was performed by extracting the citing articles from Google Scholar on [DATE] and screening them manually. The DOI of articles extracted from this analysis are included in the appendix, as the Google Scholar search functionality is not readily reproducible.*
+
+<!-- TODO Actually do this! -->
+
 
 <!-- For the snowballing exercise - make sure you don't include studies published after review date: ~ June 2019 -->
 
-As a summary of the duplication of work in this area, we looked at how many reviews a single included study had previously been included in.
+As a summary of the duplication of work in this area, Ilooked at how many reviews a single included study had previously been included in.
 
 <!--- TODO Need example table here, showing relevant cells --->
 
@@ -404,10 +396,6 @@ As a summary of the duplication of work in this area, we looked at how many revi
 ```
 <!----------------------------------------------------------------------------->
 
-&nbsp;
-
-&nbsp;
-
 <!----------------------------------------------------------------------------->
 (ref:agreeIntra-caption) Intra-rater agreement on subset of records, indicating high consistency.
 
@@ -419,34 +407,13 @@ As a summary of the duplication of work in this area, we looked at how many revi
 
 &nbsp;
 
-For the inter-rater reliability, agreement was very high ($AC1$ = `r agreeInter_coeff[1]`, $kappa$ = `r agreeInter_coeff[2]`, Table \@ref(tab:agreeInter-table)). Agreement was similary high for intra-rater reliability ($AC1$ = `r agreeInter_coeff[1]`, $kappa$ = `r agreeInter_coeff[2]`, Table \@ref(tab:agreeIntra-table)). The discrepancy between the $AC1$ and $kappa$ coefficients illustrates the sensitivity of $kappa$ to imbalanced marginals, caused in this sample by a heavy imbalance  towards exclusion.[@feinstein1990]
+For the inter-rater reliability, agreement was very high ($AC1$ = `r agreeInter_coeff[1]`, $kappa$ = `r agreeInter_coeff[2]`, Table \@ref(tab:agreeInter-table)). Agreement was similary high for intra-rater reliability ($AC1$ = `r agreeIntra_coeff[1]`, $kappa$ = `r agreeIntra_coeff[2]`, Table \@ref(tab:agreeIntra-table)). The discrepancy between the $AC1$ and $kappa$ coefficients illustrates the sensitivity of $kappa$ to imbalanced marginals, caused in this sample by a heavy imbalance  towards exclusion.[@feinstein1990]
 
 Those records which were excluded in the initial screening, but were included by the second reviewer (n=`r discrepancy_Inter`) were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, specifically around the definition of cognitive decline versus mild cognitive impairment, and the definition of eligible lipids fractions. 
 
 Additionally, records I excluded on my second viewing (n=`r discrepancy_Intra`) were investigated. All were . . . 
 
-<!--- Cross check this with the actual numbers included --->
 
-<!----------------------------------------------------------------------------->
-
-```{r prisma-flow-setup, include = FALSE}
-```
-
-(ref:prisma-flow-cap) PRISMA Flow diagram illustrating how records moved through the systematic review process. The different contributions of databases and preprint servers to the review are indicated.
-
-(ref:prisma-flow-scap) PRISMA flow diagram
-
-```{r prisma-flow-fig, echo = FALSE, results="asis", fig.cap='(ref:prisma-flow-cap)', out.width='100%', fig.scap='(ref:prisma-flow-scap)'}
-knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
-```
-
-<!----------------------------------------------------------------------------->
-
-Following de-duplication, the titles and abstracts of `r hold()` records were assessed for eligibility. `r hold()` were deemed potentially eligible and the full text records for these were requested and screened. \@ref(fig:prisma-flow-fig)
-
-<!----------------------------------------------------------------------------->
-
-A PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-analyses) flow diagram,[@page2021] shown in Figure \@ref(prisma-flow-fig), shows the movement of articles through the review. To illustrate the contribution of preprint archives to the review, the flow diagram delineates between those records captured through databases searches (presented on the right of the diagram) and those captured by the search tool described in the previous chapter (presented in grey on the left of the diagram).
 
 Of note, preprints and published papers reporting the same study were not considered duplicate records. Instead, they were considered as different reports of the same study. This is due to the potential for the published version to offer some information that the preprint did not, and vice versa.
 
@@ -533,10 +500,6 @@ One particularly interesting meta-bias potentially applicable in this review is 
 
 Many studies did not report the codelists used to run the analysis, 
 
-
-
-
-
 ### Triangualtion across evidence sources
 
 <!-- TODO Have a look at this - potentially move to triangulation chapter -->
@@ -547,7 +510,7 @@ A key limitation for other types of dementia, in particularly vascular, is that 
 
 Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated. [@guyatt2011]
 
-Without our framework and as part of the risk of bias assessments reported in \@ref(risk-of-bias-subheading), we test test
+Without our framework and as part of the risk of bias assessments reported in \@ref(risk-of-bias-subheading), Itest test
 
 ### Added evidental value of including preprints {sys-rev-including-preprints}
 
@@ -597,7 +560,39 @@ Major limitation is that several included studies used data from electronic heal
 In addition, the a
 
 
-###
+### Previous reviews
+
+<!-- TODO Not sure this is the best place for this -->
+
+**Will need to include something in the methods section on this**
+
+As part of this analysis, Iexamined the overlap between different published reviews on this topic.
+
+Several primary studies were captured in multiple systematic reviews. However, some studies were not captured by any previous review,
+
+<!-- IDEA Put upSet plot here - though this will likely now be in Georgia's dissertation -->
+
+An upset plot shows the total size of each set (in this case, the set of included studies in each review) in the bottom left hand bar plot. For example, the XXXX review includes XXXX studies.
+
+Where a line joins two points in the matrix, the main barchart shows the number of records shared by these reviews. So for example, XXXX records were captured both by the XXXX review and the XXXX review.
+
+Where the matrix has just a single point highlighted, this shows the records unique to that review.
+
+The reviews are ordered by date, to attempt to show the increasing overlap and total number of studies
+
+Our review is presented as the last point on this plot, and captured XXXX records
+
+The alternative is to have a barplot showing the total cumulative number of records over the years, using our set as the master, with the bars coloured by the number of records included in 1/2/3/4 reviews. The information below the bar axis could then show the number of reviews published in that year, or alternative, you could have an upsidedown bar to show cumulative number of reviews on this topic.
+
+<!--- Take a stand here! --->
+
+Of note, this review did not include the commonly cited PROSPER study, which examined the effect of pravastatin on CVD risk and putatively provides no evidence for an effect of the statin on dementia outcomes. While widely cited and included in the Cochrane review on this topic, it has not been included here, for the reason that it only reported the change from cognitive score (as measured using the [CHECK] scale) over a mean follow-up. While this is a useful indicator of general cognitive decline, it is not equivalent to a dementia outcome, as cogntive scales should feed into a broader diagnostic pathway - See section \@ref(diagnostic-criteria)
+
+This does introduce some conflicts with other studies where a change score has been dichotomised in order to have a binary dementia or not dementia outcome.
+
+Does it also cause issues in terms of self-report?
+
+<!----------------------------------------------------------------------------->
 
 ### Comments on the process
 
@@ -616,6 +611,7 @@ A final point on the progress of the review is that, due to the need for dual sc
 
 
 
+<!----------------------------------------------------------------------------->
 ### Inclusion of preprints
 
 As highlighted in Section \@ref(diverse-sources-preprints), this thesis sought to syntheze evidence across different publication statuses, predominantly preprinted. Using the tool described in Chapter \@ref(), two preprint serves related to health and biomedical sciences were search as part of this review. 
@@ -626,6 +622,7 @@ On further investigation, X of these preprints were subsequently published since
 
 
 
+<!----------------------------------------------------------------------------->
 ### Open data sharing {#sys-rev-open-data}
 
 <!--- How many of the included studies accurately reported the diagnostic criteria for EHR? Cross link with section in CPRD analysis --->
@@ -633,6 +630,7 @@ On further investigation, X of these preprints were subsequently published since
 <!--- Comment here on issues involved in extracting data --->
 
 
+<!----------------------------------------------------------------------------->
 ### Original contribution to research
 
 I believe there are three aspects where this review is distinct from those reviews already available in the published literature (as identified by __[CITATION NEEDED]__):
@@ -641,12 +639,13 @@ I believe there are three aspects where this review is distinct from those revie
 -   *Structured risk of bias assessment:* The majority of the highly cited reviews on this topic either do not formally consider the risk of bias in the observational studies they include or do not use an appropriate domain-based assessment tool (e.g. ROBINS-I/E). This is important area in which this thesis can add value, as based on the risk-of-bias assessments I have performed to date, several primary studies are at high risk of bias and this should be reflected in the findings of any review on this topic.
 -   *Inclusion of preprints:* Unlike other available reviews and enabled by the tool described in Chapter 3, this review systematically searched preprinted health-related manuscripts as a source of grey literature. As part of this chapter, I plan to examine the extent of the additional information provided to the review by the inclusion of preprints.
 
+<!----------------------------------------------------------------------------->
 ### Comparison with other reviews
 
 <!-- TODO This section will be informed by the review published as a preprint -->
 
 
-Of note, as part of the review, we identified several previous systematic reviews of this topic.[CITE] However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)[@sterne2019] to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels.
+Of note, as part of the review, Iidentified several previous systematic reviews of this topic.[CITE] However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)[@sterne2019] to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels.
 
 Some previous reviews did assess risk of bias, but used non-domain based assessment tools. Newcastle-Ottowa scale,
 
@@ -654,8 +653,9 @@ Some previous reviews did assess risk of bias, but used non-domain based assessm
 
 __Exclusion of the PROSPER trial__ Will need to have a good bit here on the exclusion of this RCT, particularly as it is included in the Cochrane review on the topic. Cross-reference with the meta-bias section in the early section, on the impact of only included studies that sought to make a definitive diagnosis, rather than using change in cognitive assessment scales.
 
-<!-- Will hopefully be able to cite MSc review here to give details of other reviews -->
+<!-- TODO Will hopefully be able to cite MSc review here to give details of other reviews -->
 
+<!----------------------------------------------------------------------------->
 ### Reviewing Mendelian randomisations studies
 
 While
@@ -664,27 +664,30 @@ This may be because Mendelian randomisation studies have yet to reach a critical
 
 Recent updates, such as a guide to reading and interpreting. However, this guide includes reporting items in their quality checklist - reporting quality while important, is unrelated to internal validity.
 
-Problems with overlapping samples in reviews of Mendelian randomisation studies in that we may be double counting participants - for
+Problems with overlapping samples in reviews of Mendelian randomisation studies in that Imay be double counting participants - for
 
 Methods for reviews of Mendelian randomisation studies are not well developed to account for the consideration above.
 
+<!----------------------------------------------------------------------------->
 ### Strenghts and limitations
 
 #### Inclusion of Mendelian randomisation studies
 
+<!-- TODO Maybe need to integrate with the section immediately above. Best option probably to move the section above to the end of this section, highlighting that while these studies were included, it was not easy given a lack of resources for MR studies -->
+
+
 As a form of analysis that lends itself to multiple comparison, there is a strong
 
-Through snowballing and other measures, we identified at least one Mendelian randomisation studi [@larsson2017b]
+Through snowballing and other measures, I identified at least one Mendelian randomisation study that had not been identified by the search strategy. [@larsson2017b] On review of this paper, the search would not have been expected to find it, given the absence of any lipid-related keywords in the title and abstract.
+The study examined the association between lipid fractions with Azlheimer's disease, as one of many risk factors for AzD. Studies such as this can introduce bias, as it is commonly only those risk factors that show a statistically significant result that are reported in the abstract and so are captured by systematic reviews of the topic. This may bias reviews as the analysising multiple risk factors at a time becomes more common. 
 
-Is it a big issue that the studies have the same underlying datasets? <!--- see discussion from Matt Lee thesis, in email --->
+<!-- TODO Ask Matt Page whether he has done any work on this? Studies looking at many risk factors don't report null results in abstract and so do no -->
 
 
-Potentially missing other Mendelian randomisation studies, as we identified some through our snowball searching that were not captured by the search strategy. An example is Larsson et al. 2017[@larsson2017a], where the study examined the association between lipid fractions with Azlheimer's disease.
+Is it a big issue that the studies have the same underlying datasets? <!--- TODO check discussion from Matt Lee thesis, in email --->
 
-Potentially the use of methods such as snowballing (forwards and backwards citation chasing) should attenuate the bias introduced by this method. 
-
-However, in future reviews, a dedicated search for "risk factors" and "dementia" and "
-
+Potentially the use of methods such as snowballing (forwards and backwards citation chasing) and communication with relevant topic experts should cpature similar studies. 
+However, in future better-resourced reviews, a dedicated search for "risk factors" and "dementia" and "Mendelian randomisation", followed by manual review of studies that look across multiple risk factors, would be advisable.
 
 #### Inclusion of preprints
 

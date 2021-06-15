@@ -1,15 +1,16 @@
 tab:diagnosticCriteria-table
 tab:lipidLevels-table
 fig:statin-mechanisam
+tab:statinOverview-table
 tab:lipidTreatments-table
 tab:thesisOverview-table
 fig:medrxivr-sr
 fig:medrxivr-data-sources
 tab:searchOverview-table
 tab:gwet-table
+fig:prisma-flow-fig
 tab:agreeInter-table
 tab:agreeIntra-table
-fig:prisma-flow-fig
 tab:readExample-table
 fig:decisionTreeFig
 fig:immortalTimeBias
@@ -50,7 +51,7 @@ intro-treatments
 risk-factors
 serum-lipids
 intro-lipid-fractions
-statins
+intro-statins
 other-lipid-regulating-agents-lra
 evidence-association
 basic-science
@@ -117,9 +118,7 @@ assessment-of-added-value-of-including-preprint
 patient-and-public-involvement
 deviations-from-the-protocol
 results
-search-results
-previous-reviews
-screening-results
+search-and-screening-results
 characteristics-of-included-studies
 converting-risk-ratios-to-odds-ratios
 hazard-ratios-vs-riskodds-ratios
@@ -130,7 +129,7 @@ sys-rev-pub-bias
 triangualtion-across-evidence-sources
 added-evidental-value-of-including-preprints-sys-rev-including-preprints
 discussion-1
-section-1
+previous-reviews
 comments-on-the-process
 inclusion-of-preprints
 sys-rev-open-data
@@ -218,7 +217,7 @@ appendix-cprd-analysis
 appendix-cprd-amendments
 code-lists
 appendix-ipd-analysis
-section-1-1
+section-1
 section-2
 chapter-refdiscussion-heading
 catalogue-of-failures

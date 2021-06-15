@@ -89,28 +89,33 @@ if(doc_type == "docx"){
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- statinsPath
 library(DiagrammeR)
+
 graph <- grViz(diagram = "digraph flowchart {
       # define node aesthetics
       node [fontname = Arial, color = 'grey90',shape = oval, style = filled, fontcolor = black]        
-      tab1 [label = 'Acetyl-CoA']
-      tab5 [label = 'Statins', shape = 'line',fillcolor = 'black',fontcolor = 'white']
-      tabinvis [shape=point, fillcolor = 'black']
-      tab6 [label = 'HMG-CoA reductase']
-      tab2 [label = 'HMG-CoA']
+      tab0 [label = 'Acetly-CoA']
+      tab1 [label = 'HMG-CoA']
+      tab5 [label = 'Statins',shape = 'line', fillcolor = 'black',fontcolor = 'white']
+      tabinvis [style = 'invis',shape=point, width = 0]
+      tab6 [label = 'HMG-CoA reductase', shape = 'line',fillcolor = 'white']
       tab3 [label = 'Mevalonate']
       tab4 [label = 'Cholesterol']
       tab7 [label = 'Several intermediate compounds', color = 'white', fillcolor = 'white']
       
+      
       subgraph {
-          rank = same; tab5;tabinvis; tab6
+          rank = same; tab5;tab1
+      }
+      subgraph {
+          rank = same; tabinvis; tab6
       }
       
 # set up node layout
+      tab0 -> tab1
       tab1 -> tabinvis [arrowhead = 'none']
-      tabinvis -> tab6 [arrowtail = 'curve', dir = back];
-      tab5 -> tabinvis [arrowhead = 'tee']
-      tabinvis -> tab2 
-      tab2 -> tab3;
+      tabinvis -> tab6 [arrowtail = 'curve', dir = back, minlen = 2];
+      tab5 -> tab6 [arrowhead = 'tee']
+      tabinvis -> tab3
       tab3 -> tab7 [arrowhead = 'none', style = 'dashed']
       tab7 -> tab4 [style = 'dashed']
       
@@ -122,7 +127,7 @@ htmltools::html_print(DiagrammeR::add_mathjax(graph), viewer = NULL) %>%
                    # selector = '.html-widget-static-bound',
                    vwidth = 600,
                    vheight = 744,
-                   cliprect = c(5,320, 400, 510),
+                   cliprect = c(5,275, 420, 510),
                    zoom = 6)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
@@ -154,4 +159,35 @@ if(doc_type == "docx"){
   table <- gsub("textbackslash\\{\\}newline","\\newline",table)
   
   table
+}
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- statinOverview-table
+
+statinOverview_table <-
+  read.csv("data/background/statinOverview.csv") %>%
+  mutate(Year = as.character(Year)) %>%
+  rename(
+    "Brand name" = Brand,
+    "Lipid-lowering effect" = Effect,
+    "Year approved" = Year
+  )
+
+if(doc_type == "docx") {
+  knitr::kable(statinOverview_table, caption = "(ref:statinOverview-caption)")
+} else{
+  knitr::kable(
+    statinOverview_table,
+    format = "latex",
+    caption = "(ref:statinOverview-caption)",
+    caption.short = "(ref:statinOverview-scaption)",
+    booktabs = TRUE, 
+    align = "ccccc"
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(1, width = paste0(6,"em"), bold= TRUE) %>%
+    column_spec(2:4, width = paste0(6,"em")) %>%
+    column_spec(5, width = paste0(7.6,"em")) %>%
+    row_spec(2:nrow(statinOverview_table)-1, hline_after = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
 }

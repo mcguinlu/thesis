@@ -2,11 +2,11 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::word_document2:
     reference_docx: templates/word-styles-reference-01.docx
     number_sections: false 
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -158,23 +158,40 @@ Elevated LDL-c in the bloodstream, a condition also known as hypercholesterolaem
 
 <!----------------------------------------------------------------------------->
 
-### Statins
+### Statins {#intro-statins}
 
-<!-- TODO Need more on this: maybe a diagram of the pathway -->
+Statins are a commonly prescribed method of lipid regulation.[@collins2016] Statins inhibit the conversion of 3-hydroxy-3-methylglutaryl-coenzyme-A (HMG-CoA) into mevalonate, by competitively binding with HMG-CoA reductase (HMG-CoA-R). This conversion is a key rate-limiting step in the cholesterol biosynthesis pathway (see Figure \@ref(statin-mechanisam)), enabling statins to reduce effectively the production of LDL cholesterol.
 
-<!-- REVIEW [JH] This section seems very short for such a key entity in your thesis. I don’t know exactly what else there is to say about statins, but I recommend expanding it a bit, The second sentence is gobbledygook to me. -->
-
-Statins are a commonly prescribed method of lipid regulation.[@collins2016] Statins inhibit the conversion of 3-hydroxy-3-methylglutaryl-coenzyme-A (HMG-CoA) into mevalonic acid, by competitively binding with HMG-CoA reductase (HMG-CoA-R). This conversion limits the rate at which cholesterol can be produced, enabling statins to reduce effectively the production of LDL cholesterol.
+&nbsp;
 
 <!----------------------------------------------------------------------------->
 
-(ref:statin-mechanisam-cap) **Statin mechanism of action:** Overview of the 
+(ref:statin-mechanisam-cap) Overivew of statins mechanism of action, inhibiting HMG-CoA reductase which controls the conversion of HMG-CoA to mevalonate, the rate-limiting step in cholesterol biosynthesis. 
 
 (ref:statin-mechanisam-scap) Statin mechanism of action
 
-```{r statin-mechanisam, echo = FALSE, results="asis", fig.cap='(ref:statin-mechanisam-cap)', out.width='100%', fig.scap='(ref:statin-mechanisam-scap)'}
+```{r statin-mechanisam, echo = FALSE, results="asis",fig.pos = "H", fig.align = 'center', fig.cap='(ref:statin-mechanisam-cap)', out.width='50%', fig.scap='(ref:statin-mechanisam-scap)'}
 knitr::include_graphics(file.path("figures/background/statinPath.png"))
 ```
+
+&nbsp;
+
+Several statin treatments have been widely available for some time (see Table \@ref(tab:statinOverview-table)). Depending on the statin and dosage prescribed, the average reduction in LDL-c concentrations ranges from 15% with low-intensity regimen (e.g. ravastatin 5 mg/day) up to 60% with a high-intensity regimen (e.g. rosuvastatin 80 mg/day).[@collins2016a; @law2003] Statins also vary with regard to their lipophilicity (the extent to which they are lipid soluble), affecting their localisation within the body, with hydophilic statins being concentrated in the liver and lipophilic statins circualting more widely.[@schachter2005] This may create a divide in the pleiotropic affects of statins with differing lipophilicity, particularly given the ability of lipophilic statins to permeate the blood brain barrier.[@sierra2011]
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+<!-- TODO Review the look and feel of this table -->
+
+(ref:statinOverview-caption) Overview of commonly-prescribed statins, summarising their approval date (US), properties and lipid-lowering effect.
+
+(ref:statinOverview-scaption) Overview of common statins
+
+```{r statinOverview-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
 
 <!----------------------------------------------------------------------------->
 
@@ -201,7 +218,6 @@ Other therapies targeting triglycerides exist, including nicotinic acids[@mckenn
 ```
 <!----------------------------------------------------------------------------->
 
-&nbsp;
 &nbsp;
 
 <!----------------------------------------------------------------------------->

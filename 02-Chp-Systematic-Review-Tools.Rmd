@@ -61,7 +61,7 @@ This chapter outlines the development and key functionality of `medrxivr` (versi
 
 (ref:medrxivr-sr-scap) Role of `medrxivr` in a systematic review workflow
 
-```{r medrxivr-sr, echo = FALSE, results="asis", fig.cap='(ref:medrxivr-sr-cap)', out.width='100%', fig.scap='(ref:medrxivr-sr-scap)'}
+```{r medrxivr-sr, echo = FALSE, fig.align='center',results="asis", fig.cap='(ref:medrxivr-sr-cap)', out.width='65%', fig.scap='(ref:medrxivr-sr-scap)'}
 knitr::include_graphics(file.path("figures","sys-rev-tools","medrxiv-role.png"))
 ```
 

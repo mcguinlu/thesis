@@ -55,7 +55,7 @@ num_to_text <- function(x, start_of_sentence = FALSE)
     if (x < 11 & x > -1) {
       out <- xfun::numbers_to_words(x)
     } else {
-      out <- x
+      out <- comma(x)
     }
   }
   return(out)
