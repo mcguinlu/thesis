@@ -8,7 +8,7 @@ diagnosticCriteria_table <- read.csv("data/background/dementiaCriteria.csv") %>%
 col_widths <- 32/ncol(diagnosticCriteria_table)
 
 if(doc_type == "docx") {
-  knitr::kable(diagnosticCriteria_table, caption = "(ref:diagnosticCriteria-caption)")
+  apply_flextable(diagnosticCriteria_table, caption = "(ref:diagnosticCriteria-caption)")
 } else{
   table <- knitr::kable(
     diagnosticCriteria_table,

@@ -5,6 +5,7 @@ library(medrxivr)
 library(kableExtra)
 library(dplyr)
 library(flextable)
+library(ggplot2)
 
 doc.type <- knitr::opts_knit$get('rmarkdown.pandoc.to')
 

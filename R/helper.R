@@ -233,4 +233,29 @@ github_thanks <-
   }
 
 
-
+apply_flextable <- function(data, caption = NULL) {
+  
+  replace_newline <- function(x){
+    x<- gsub(pattern = "\\\\newline",replacement = "", x = x)
+    
+    return(x)
+  }
+  
+  data[] <- lapply(data, replace_newline)
+  
+  ft <- flextable::flextable(data)  %>%
+    flextable::bg(bg = "#A6A6A6", part = "header") %>%
+    bold(part = "header") %>%
+    bold(j=1, part = "body") %>%
+    align(align = "center", part = "all" ) %>%
+    align(j = 1, align = "left") %>%
+    bg(i = ~ seq(from = 1, to = nrow(data)) %% 2 == 0, bg = "#DDDDDD", part = "body") %>%
+    fontsize(size = 9, part = "all") %>%
+    set_table_properties(layout = "autofit")
+  
+  if (!is.null(caption)) {
+    ft <- flextable::set_caption(ft, caption)
+  }
+  
+  return(ft)
+}

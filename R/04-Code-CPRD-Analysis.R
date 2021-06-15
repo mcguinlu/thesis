@@ -4,7 +4,7 @@
 smeethComparison_table <- mtcars[1:4,1:3]
 
 if(doc_type == "docx"){
-knitr::kable(smeethComparison_table,caption = "(ref:smeethComparison-caption)")
+apply_flextable(smeethComparison_table,caption = "(ref:smeethComparison-caption)")
 }else{
 knitr::kable(smeethComparison_table, format = "latex", caption = "(ref:smeethComparison-caption)", caption.short = "(ref:smeethComparison-scaption)", booktabs = TRUE) %>% 
 row_spec(0, bold = TRUE) %>%
@@ -32,7 +32,7 @@ readExample_table <- read.csv(here::here("data","cprd","read_code_example.csv"))
   dplyr::select("Level","Read code","Term")
 
 if (doc_type == "docx") {
-  knitr::kable(readExample_table, caption = "(ref:readExample-caption)")
+  apply_flextable(readExample_table, caption = "(ref:readExample-caption)")
 } else{
   knitr::kable(
     readExample_table,
@@ -52,7 +52,6 @@ if (doc_type == "docx") {
 table1 <- read.csv(here::here("data","cprd","table1.csv"),header=FALSE)
 table1 <- data.table::transpose(table1)
 colnames(table1) <- as.character(unlist(table1[1,]))
-colnames(table1)[5] <- "Bile acid sequestrants"
 table1 = table1[-1, ]
 
 colnames(table1)[1] <- " "
@@ -99,7 +98,7 @@ if(t[1]-sum(t[2:9]) != 0){
 cprdCharacteristics_table <- table1_disp
 
 if(doc_type == "docx") {
-  knitr::kable(cprdCharacteristics_table, caption = "(ref:cprdCharacteristics-caption)")
+  apply_flextable(cprdCharacteristics_table, caption = "(ref:cprdCharacteristics-caption)")
 } else{
   table <- knitr::kable(
     cprdCharacteristics_table,
@@ -144,7 +143,7 @@ if(doc_type == "docx") {
 cprdSSA_table <- table1[19:21,-3]
 
 if(doc_type == "docx") {
-  knitr::kable(cprdSSA_table, caption = "(ref:cprdSSA-caption)")
+  apply_flextable(cprdSSA_table, caption = "(ref:cprdSSA-caption)")
 } else{
   knitr::kable(
     cprdSSA_table,
@@ -247,33 +246,6 @@ t1$V2 <- as.numeric(t1$V2)
 percentage.statins <-
   paste0(round((t1$V2[which(t1$V1 == "Statins")] / sum(t1$V2[which(t1$V1 != "None")]) *
                   100), 2), "%")
-
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- sas
-
-table2 <- table1.copy
-table2 <- table2[,c(1,10,7,9,2:6,8)] %>%
-  select(-'No LRA')
-table2 <- table2[c(1,19:22),]
-
-ft <- flextable::flextable(table2)
-ft <- flextable::bg(ft, bg = "#A6A6A6", part = "header")
-ft <- bold(ft, part = "header")
-ft <- bold(ft, j=1, part = "body")
-ft <- align(ft, align = "center", part = "all" )
-ft <- align(ft, j = 1, align = "left")
-ft <- bg(ft, i = ~ seq(from = 1, to = nrow(table2)) %% 2 == 0, bg = "#DDDDDD", part = "body")
-ft <- fontsize(ft, size = 7, part = "all")
-ft <- set_table_properties(ft, layout = "autofit")
-ft <- flextable::footnote(ft, i = 2:4, j = 1,
-                          value = as_paragraph(
-                            c("Stopped - greater than 6 months between last prescription and end of follow-up",
-                              "Added - second drug prescribed before last prescription for the index drug",
-                              "Switched - second drug prescribed after last prescription for the index drug."
-                            )
-                          ),ref_symbols = c("a","b","c"),
-                          part = "body", inline = TRUE)
-ft.table2 <- ft
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- azd-text
@@ -634,7 +606,7 @@ S13 [width = 7]
 # Save 
 
 htmltools::html_print(DiagrammeR::add_mathjax(graph), viewer = NULL) %>%
-webshot::webshot(file = "figures/cprd-analysis/cohort_attrition_test.png", delay = 1,
+webshot::webshot(file = "figures/cprd-analysis/cohort_attrition.png", delay = 1,
                    # selector = '.html-widget-static-bound',
                    vwidth = 600,
                    vheight = 744,
@@ -1097,7 +1069,7 @@ ggsave(
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- statinTypeTable-table
 
-statinTypeTable_table <- rio::import("data/cprd/sta_type_table.tsv")[c(-1:-3, -8),-7] %>%
+statinTypeTable_table <- rio::import(here::here("data/cprd/sta_type_table.tsv"))[c(-1:-3, -8),-7] %>%
   mutate(V2 = as.numeric(gsub(pattern = ",","",V2)),
          V4 = as.numeric(gsub(pattern = ",","",V4)),
          V6 = as.numeric(gsub(pattern = ",","",V6))) %>%
@@ -1109,7 +1081,7 @@ statinTypeTable_table <- rio::import("data/cprd/sta_type_table.tsv")[c(-1:-3, -8
   rename("Prescription Year Group" = V1)
 
 if (doc_type == "docx") {
-  knitr::kable(statinTypeTable_table, caption = "(ref:statinTypeTable-caption)")
+  apply_flextable(statinTypeTable_table, caption = "(ref:statinTypeTable-caption)")
 } else{
   knitr::kable(
     statinTypeTable_table,
@@ -1541,7 +1513,7 @@ diagnosisType_table <- rio::import("data/cprd/dementia_types.tsv")[c(-1:-3),c(-1
   rename("Year of cohort entry" = V1)
 
 if (doc_type == "docx") {
-  knitr::kable(diagnosisType_table, caption = "(ref:diagnosisType-caption)")
+  apply_flextable(diagnosisType_table, caption = "(ref:diagnosisType-caption)")
 } else{
   knitr::kable(
     diagnosisType_table,
@@ -1778,3 +1750,32 @@ results_smeeth_oth <-
 smeeth_azd_text <- estimate(results_smeeth_azd$HR,results_smeeth_azd$ci_lower,results_smeeth_azd$ci_upper, type = "HR", sep=")")
 
 smeeth_oth_text <- estimate(results_smeeth_oth$HR,results_smeeth_oth$ci_lower,results_smeeth_oth$ci_upper, type = "HR", sep=")")
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- covariate-def
+
+# ---- covariate-def
+
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- covariateDef-table
+
+covar <- read.csv(here::here("data", "cprd", "covariate_definitions.csv"),
+                  header = FALSE,
+                  stringsAsFactors = FALSE)
+
+colnames(covar) <- covar[1,]
+covar <- covar[-1,]
+
+covariateDef_table <- covar
+
+if(doc_type == "docx"){
+apply_flextable(covariateDef_table,caption = "(ref:covariateDef-caption)")
+}else{
+knitr::kable(covariateDef_table, format = "latex", caption = "(ref:covariateDef-caption)", caption.short = "(ref:covariateDef-scaption)", booktabs = TRUE) %>% 
+row_spec(0, bold = TRUE) %>%
+kable_styling(latex_options = c("HOLD_position"))
+}
+
+

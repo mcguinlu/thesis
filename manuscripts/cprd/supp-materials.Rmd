@@ -1,0 +1,157 @@
+---
+title: 
+date: "Supplementary Files updated: `r format(Sys.time(), '%d %B, %Y')`"
+bibliography: references.bib
+csl: vancouver.csl
+pandoc_args: [       "-F", "./pandoc-word-pagebreak"     ]
+output:
+  bookdown::word_document2:
+      toc: true
+      number_sections: false
+      toc_depth: 2
+      reference_docx: "../../templates/word-styles-reference-01-no_line_num.docx"
+---
+
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = TRUE) # Remove to knit with plots/data
+options(scipen = 999)
+source(here::here("R/doc_options.R"))
+source(here::here("R/helper.R"))
+
+#Load relevant libraries and datasets from the 'outputs' folder
+
+knitr::read_chunk(here::here("R/04-Code-CPRD-Analysis.R"))
+doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to')
+```
+
+\newpage
+
+# Supplementary Materials {#supp-mat}
+
+## Supplementary Material 1: Changes to protocol {#supp-mat-protocol}
+
+Main changes include:
+  
+  * Use of a time-varying treatment indicator, to correctly classify time-at-risk.
+  * Inclusion of additional covariates that are adjusted for in the main model.
+  
+\newpage
+
+# Supplementary tables {#supp-tab}
+
+## Supplementary Table 1: Definition of exposures and covariates
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:covariateDef-caption) Definition of covariates
+
+```{r covariateDef-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
+
+\newpage
+
+## Supplementary Table 2: Adherence and switching by drug class
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:cprdSSA-caption) cprdSSA
+
+```{r cprdCharacteristics-table, message=FALSE, results="asis", include = FALSE}
+```
+
+```{r cprdSSA-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
+\newpage
+
+
+## Supplementary Table 3: STROBE Reporting Guidelines {#supp-tab-strobe}
+
+```{r child = 'supplementary_files/STROBE-Checklist.Rmd', eval = FALSE}
+```
+
+__To be completed__
+
+\newpage
+
+
+## Supplementary Table 4: Statin type prescribing by year {#supp-tab-sta-type}  
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:statinTypeTable-caption) Statin prescription by year
+
+```{r statinTypeTable-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
+\newpage
+
+# Supplementary figures {#supp-fig}
+## Supplementary Figure 1 {#supp-fig-outcome-decision}
+
+```{r supp-fig-decision-tree,echo = FALSE, fig.cap="The algorithm used to choose between two diagnosis. This decision tree is adapted with permission from Walker _et al_ (2019).[@walker2019a]"}
+knitr::include_graphics(here::here("figures/cprd-analysis/decision_tree.png"))
+```
+
+\newpage
+
+
+## Supplementary Figure 2 {#supp-fig-attrition}
+```{r supp-fig-attrition,echo = FALSE, fig.cap="Attrition of participants as the eligibility criteria were applied.", fig.width="60%"}
+knitr::include_graphics(here::here("figures/cprd-analysis/cohort_attrition.png"))
+```
+
+\newpage
+
+
+## Supplementary Figure 3 {#supp-fig-unadjusted}
+```{r supp-fig-comparison,echo = FALSE, fig.cap="Association of any lipid regulating agent with a dementia or related outcome, adjusted only for age."}
+knitr::include_graphics(here::here("figures/cprd-analysis/fp_unadjusted.jpeg"))
+```
+
+\newpage
+
+
+## Supplementary Figure 4 {#supp-fig-entry}
+```{r supp-fig-entry,echo = FALSE, fig.cap="Association of any lipid regulating agent with a dementia or related outcome, stratified by year of entry into the cohort. {Note: Venexia reccomend including some info on average length of follow-up for each group beside the HR - will be done before submission.}"}
+knitr::include_graphics(here::here("figures/cprd-analysis/fp_cohort_entry.jpeg"))
+```
+
+\newpage
+
+## Supplementary Figure 5 {#supp-fig-pregnancy}
+```{r supp-fig-pregnancy,echo = FALSE, fig.cap="Association of any lipid regulating agent with a dementia or related outcome, removing women who were less than 55 years of age at index."}
+knitr::include_graphics(here::here("figures/cprd-analysis/fp_pregnancy.jpeg"))
+```
+
+\newpage
+
+
+## Supplementary Figure 6 {#supp-fig-sta-type}
+```{r supp-fig-sta-type, echo = FALSE, fig.cap="Association of statins with a dementia or related outcome, stratified by statin lipophilic/hydrophilic properties."}
+knitr::include_graphics(here::here("figures/cprd-analysis/fp_sta_type.jpeg"))
+```
+
+\newpage
+
+## Supplementary Figure 7 {#supp-fig-backpain}
+```{r supp-fig-backpain,echo = FALSE, fig.cap="Association of any lipid regulating agent with backpain and ischemic heart disease (IHD)."}
+knitr::include_graphics(here::here("figures/cprd-analysis/fp_control_outcomes.jpeg"))
+```
+
+\newpage
+
+# References for supplementary materials
