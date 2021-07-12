@@ -98,7 +98,17 @@ if(t[1]-sum(t[2:9]) != 0){
 cprdCharacteristics_table <- table1_disp
 
 if(doc_type == "docx") {
-  apply_flextable(cprdCharacteristics_table, caption = "(ref:cprdCharacteristics-caption)")
+  apply_flextable(cprdCharacteristics_table, caption = "(ref:cprdCharacteristics-caption)") %>%
+    flextable::add_footer_row(colwidths = 10,
+                          values = paste("LRA - Lipid regulating agent;",
+                                              "IMD - Index of Multiple Deprivation;",
+                                              "BMI - Body Mass Index;",
+                                              "CAD - Coronary Arterial Disease;",
+                                              "CBS - Coronary Bypass Surgery;",
+                                              "CVD - Cardiovascular disease;",
+                                              "PAD - Peripheral arterial disease;",
+                                              "CKD - Chronic Kidney Disease;",
+                                         "SD - Standard deviation."))
 } else{
   table <- knitr::kable(
     cprdCharacteristics_table,
@@ -125,7 +135,8 @@ if(doc_type == "docx") {
         "CBS - Coronary Bypass Surgery;",
         "CVD - Cardiovascular disease;",
         "PAD - Peripheral arterial disease;",
-        "CKD - Chronic Kidney Disease"
+        "CKD - Chronic Kidney Disease;",
+        "SD - Standard deviation."
       )
     )
     
@@ -227,7 +238,7 @@ fu_ab_text <- paste0(round(characteristics$c1[1],1),
 
 # Median and IQR for age at index
 age_text <- paste0(characteristics$c1[4],
-                   " years (IQR:",
+                   " years (Inter quartile range (IQR):",
                    characteristics$c1[5],
                    "-",
                    characteristics$c1[6],
@@ -246,6 +257,26 @@ t1$V2 <- as.numeric(t1$V2)
 percentage.statins <-
   paste0(round((t1$V2[which(t1$V1 == "Statins")] / sum(t1$V2[which(t1$V1 != "None")]) *
                   100), 2), "%")
+
+index_event <- rio::import(here::here("data/cprd/index_event.tsv"))[-12] %>%
+  mutate(number = as.numeric(gsub(",","",No.))) %>%
+  mutate(group = case_when(
+    index_event %in% c("hc_risk", "hc_cond") ~ "code for hypercholesterolemia",
+    index_event %in% c("ldl_all", "tc_all") ~ "elevated cholesterol test result",
+    index_event == "Total" ~ "total",
+    
+    TRUE ~ "prescription of LRA"
+  )) %>%
+  group_by(group) %>%
+  summarise(N = sum(number)) %>%
+  filter(group != "total") %>%
+  mutate(percentage = N/sum(N)*100) %>%
+  arrange(desc(N))
+
+
+index_event_text <- paste0(index_event$group[1],": ",comma(index_event$percentage[1]),"%, ",
+                           index_event$group[2],": ",comma(index_event$percentage[2]),"%, ",
+                           index_event$group[3],": ",comma(index_event$percentage[3]),"%")
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- azd-text
@@ -414,7 +445,7 @@ main[9,3] <- paste0("Patients with an index date prior to the last collection da
 main[10,3] <- paste0("Patients with an index date prior to their transferral out of practice\n(n=", main[10,2],")")
 main[11,3] <- paste0("Patients recorded as male or female\n(n=", main[11,2],")")
 main[12,3] <- paste0("Patients initally prescribed a single class of lipid regulating agents \n(n=", main[12,2],")")
-main[13,3] <- paste0("Patients whose follow-up ends on/after their index date\n(n=", main[13,2],")")
+main[13,3] <- paste0("Patients whose follow-up ends after their index date\n(n=", main[13,2],")")
 main[14,3] <- paste0("Patients with an index date after 1/1/1996\n(n=", main[14,2],")")
 
 main[15,3] <- paste0("Patients without an index event of interest\n(n=", main[15,2],")")
@@ -428,7 +459,7 @@ main[22,3] <- paste0("Patients with an index date after the last collection date
 main[23,3] <- paste0("Patients with an index date after their transferral out of practice\n(n=", main[23,2],")")
 main[24,3] <- paste0("Patients of an unknown gender\n(n=", main[24,2],")")
 main[25,3] <- paste0("Patients initally receiving >1 class of lipid regulating agents\n(n=", main[25,2],")")
-main[26,3] <- paste0("Patients whose follow-up ends prior to their index date\n(n=", main[26,2],")")
+main[26,3] <- paste0("Patients whose follow-up ends on/prior to their index date\n(n=", main[26,2],")")
 main[27,3] <- paste0("Patients with an index date prior to 1/1/1996\n(n=", main[27,2],")")
 
 colnames(main)[3] <- "Label"  
@@ -1386,7 +1417,7 @@ ggsave(
 )
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- controlOutcomes
+# ---- controlOutcomesText
 
 results_ihd <-
   read.csv(here::here("data","cprd", "regression_results_ihd.csv"),
@@ -1400,16 +1431,30 @@ results_bp <-
            stringsAsFactors = FALSE) %>%
   mutate(outcome = "Back pain")
 
-results_co<- results_ihd %>%
+results_dm <-
+  read.csv(here::here("data","cprd", "regression_results_dm_type2.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE) %>%
+  mutate(outcome = "Type 2 Diabetes")
+
+results_co <- results_ihd %>%
   rbind(results_bp) %>%
-  filter((drug %in% c("Statins"))) %>%
+  rbind(results_dm) %>%
+  filter((drug %in% c("Any"))) %>%
   mutate(grouping = ifelse(drug=="Any", "All classes", "Single class"))
 
 ihd_text <- estimate(results_co$HR[1], results_co$ci_lower[1],results_co$ci_upper[1], type = "HR")
 
 backpain_text <- estimate(results_co$HR[2], results_co$ci_lower[2],results_co$ci_upper[2], type = "HR")
 
-results_co$outcome <- factor(results_co$outcome, levels = c("Back pain", "IHD"))
+dm_type2_text <- estimate(results_co$HR[3], results_co$ci_lower[3],results_co$ci_upper[3], type = "HR")
+
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- controlOutcomes
+
+results_co$outcome <- factor(results_co$outcome, levels = c("Back pain", "IHD", "Type 2 Diabetes"))
 results_co<- results_co[order(results_co$outcome ),]
 
 results_co$drug <- forcats::fct_rev(factor(results_co$drug, levels = c("Any","Statins", "Omega-3 Fatty Acid Groups", "Fibrates", "Ezetimibe","Bile acid sequestrants")))
@@ -1485,7 +1530,7 @@ gt2 <- g1 + gt
 ggsave(
   "figures/cprd-analysis/fp_control_outcomes.jpeg",
   gt2,
-  height = 4,
+  height = 6.2,
   width = 18,
   unit = "cm",
   dpi = 600,
@@ -1626,6 +1671,27 @@ ggsave(
   dpi = 600,
   scale = 1.75
 )
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- fuByCohortEntry
+
+results_fu_by_ce <-
+  read.csv(here::here("data","cprd", "fu_by_cohort_entry.csv"),
+           header = TRUE, 
+           stringsAsFactors = FALSE) %>%
+  mutate(c1 = case_when(c1 == "1" ~ ">=1996",
+                              c1 == "2" ~ ">=2001",
+                              c1 == "3" ~ ">=2006",
+                              c1 == "4" ~ ">=2011")) %>%
+  tidy_nums()
+
+
+text_fu_by_ce <- paste0("Median follow-up for each cohort entry group was as follows: ",
+                       results_fu_by_ce$c1[1],": ",results_fu_by_ce$c2[1]," years; ",
+                       results_fu_by_ce$c1[2],": ",results_fu_by_ce$c2[2]," years; ",
+                       results_fu_by_ce$c1[3],": ",results_fu_by_ce$c2[3]," years; and ",
+                       results_fu_by_ce$c1[4],": ",results_fu_by_ce$c2[4]," years.")
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- pregnancy
@@ -1771,11 +1837,17 @@ covar <- covar[-1,]
 covariateDef_table <- covar
 
 if(doc_type == "docx"){
-apply_flextable(covariateDef_table,caption = "(ref:covariateDef-caption)")
+  apply_flextable(covariateDef_table, caption = "(ref:covariateDef-caption)")
 }else{
-knitr::kable(covariateDef_table, format = "latex", caption = "(ref:covariateDef-caption)", caption.short = "(ref:covariateDef-scaption)", booktabs = TRUE) %>% 
-row_spec(0, bold = TRUE) %>%
-kable_styling(latex_options = c("HOLD_position"))
+  knitr::kable(
+    covariateDef_table,
+    format = "latex",
+    caption = "(ref:covariateDef-caption)",
+    caption.short = "(ref:covariateDef-scaption)",
+    booktabs = TRUE
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
 }
 
 

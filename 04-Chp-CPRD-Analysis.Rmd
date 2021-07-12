@@ -37,6 +37,9 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 <!-- ## Additional ideas -->
 
+<!-- TODO Need to add some information on the generation and use of propensity scores -->
+
+
 <!-- One of the problems I'll point out with the trials in the systematic review chapter (Chapter \@ref(sys-rev-heading)) is that they only included people with a high cardiovascular risk - we are kind of doing the same by using elevated test cholesterol results as the index event. -->
 
 <!-- Might be able to get around this by pointing out that you need some index event to be able to do this analysis (?) -->
@@ -509,6 +512,9 @@ knitr::include_graphics(file.path("figures","cprd-analysis","fp_complete_case.jp
 &nbsp;
 
 #### Control outcomes
+
+```{r controlOutcomesText, echo = FALSE, message = FALSE}
+```
 
 ```{r controlOutcomes, echo = FALSE, message = FALSE}
 ```

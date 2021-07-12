@@ -49,6 +49,8 @@ I found that
 
 The results of this review are used to guide the primary analysis presented in Chapter \@ref(cprd-analysis-heading), in addition to forming a key evidence source used in the triangulation exercise presented in Chapter \@ref(discussion-heading).
 
+&nbsp;
+
 <!----------------------------------------------------------------------------->
 ## Introduction {#sys-rev-intro}
 
@@ -60,6 +62,12 @@ Only by looking across all available evidence can the true, given the often limi
 
 Literature con
 
+Systematic reviews aim to transparently and reproducibly identift
+
+<!-- TODO Need to seriously improve this -->
+
+&nbsp;
+
 ## Methods
 
 ### Protocol
@@ -68,7 +76,7 @@ A pre-specified protocol for this analysis was registered using the Open Science
 
 ### Search strategy
 
-I systematically search electronic bibliographic databases to identify potentially relevant records. The search strategy used in each database was developed in an iterative manner using a combination of free text and controlled vocabulary (MeSH/EMTREE)[@lefebvre2019searching] terms to identify studies which have examined the relationship between blood lipids levels and dementia, incorporating input from an information specialist. The strategy will include terms related to lipids, lipid modifying treatments, and dementia and its sub-types, and was designed for MEDLINE before being adapted for use in the other bibliography databases listed. An outline of the general strategy is presented in the Table \@ref(tab:searchOverview-table) below and the full draft search strategies for each database are presented in Appendix \@ref(appendix-search-strategy). <!-- TODO Need to actually attach each search strategy. See search strategy results. -->
+I systematically search electronic bibliographic databases to identify potentially relevant records. The search strategy used in each database was developed in an iterative manner using a combination of free text and controlled vocabulary (MeSH/EMTREE)[@lefebvre2019searching] terms to identify studies which have examined the relationship between blood lipids levels and dementia, incorporating input from an information specialist. The strategy will include terms related to lipids, lipid modifying treatments, and dementia and its sub-types, and was designed for MEDLINE before being adapted for use in the other bibliography databases listed. An outline of the general strategy is presented in the Table \@ref(tab:searchOverview-table) below and the full draft search strategies for each database are presented in Appendix \@ref(appendix-search-strategy). <!-- TODO Need to actually attach each search strategy. Should be able to loop through search strategy results. -->
 
 &nbsp;
 
@@ -180,10 +188,14 @@ A piloted data extraction for was used. I extracted the data in the first instan
 
 Where necessary, lipid levels reported in _mmol/L_ were converted in _mg/dL_ using the following formula:
 
-$$
-mg/dL = mmol/L \times{} Z
-$$
+\begin{equation} 
+  mg/dL = mmol/L \times{} Z
+  (\#eq:lipidConversion)
+\end{equation} 
+
 where $Z = 38.67$ for total cholesterol, LDL-c and HDL-c, and $Z = 88.57$ for triglycerides. For widely-used categorises of lipids levels on the _mg/dL_ scale, see Table \@ref(tab:lipidLevels-table) in Section \@ref(intro-lipid-fractions). 
+
+<!----------------------------------------------------------------------------->
 
 ### Risk of bias assessment {#risk-of-bias}
 
@@ -225,15 +237,22 @@ Despite these limitations, I chose this approach in place of other existing publ
 
 At present, no risk-of-bias assessment tool for Mendelian randomization studies is available. Assessment of the risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation,[@mamluk2020] as identified by a review of risk of bias assessments in systematic reviews of MR studies. A copy of this tool is available in Appendix \@ref(appendix-mr-rob). Advance results from this review of bias assessment in MR studies were obtained from contact with the authors.
 
-<!-- TODO Cite MR tool here from malmuk, see info from Francesca -->
+#### Risk of bias due to missing evidence
+
+A recent shift towards the assessment of missing evidence due to selective non-reporting (as distinct from the selective reporting of a single result from multiple planned - handled in Domain 5 of the RoB 2 tool for example).
+
+As part of this review, I piloted the RoB-ME (Risk of Bias due to Missing Evidence in a synthesis) tool. <!-- TODO CITATION NEEDED --> Results were visualise
+
 
 <!----------------------------------------------------------------------------->
 
 ### Studification
 
-Multiple publications resulting from the analysis of the same data will be included and grouped ().
+Multiple publications resulting from the analysis of the same data were included and grouped ().
 
 In the advent of multiple papers reporting results on the same cohort, but say, at different time points, I used a process of studifiction to build out the most comprehensive accounts of the studies and results from as many published articles were applicable. 
+
+This was particularly relevant to preprints and published papers reporting the same study, which were not considered duplicate records. Instead, they were considered as different reports of the same study. This is due to the potential for the published version to offer some information that the preprint did not, and vice versa.
 
 <!----------------------------------------------------------------------------->
 
@@ -273,7 +292,8 @@ This analytical approach was used for
 Several of the included studies presented data on multiple categories of lipid levels, but provided an overall effect estimate based on a comparison of only two of these categories (e.g. for example, highest vs lowest quartile). <!-- TODO Question: if I look at highest vs lowest, and also at top dose vs lowest dose, am I double counting results? -->
  while this allows for easy interpretation of the resulting effect estimate, it ignores any potential non-linear relationships between the exposure and outcome, in addition to discarding useful information contain in the interim groups.
 
-Where possible, data for all exposure groups was extracted, and this. Studies were excluded from this analysis if the number of categories was less than three, if the exposure cut-off points for for each category were not presented (e.g. if the study reports splitting participants into quartiles and comparing the highest vs lowest without giving the quartile bands in mmol/L).
+Where possible, data for all exposure groups was extracted, and this <!-- TODO ??? -->
+. Studies were excluded from this analysis if the number of categories was less than three, if the exposure cut-off points for for each category were not presented (e.g. if the study reports splitting participants into quartiles and comparing the highest vs lowest without giving the quartile bands in mmol/L).
 
 
 
@@ -319,7 +339,7 @@ Results from the risk-of-bias assessment were visualized using a paired forest/r
 ### Assessment of added value of including preprint
 
 Preprints are a valuable evidence source (see Introduction) but their inclusion in a systematic reivew
-
+s
 Additionally, I followed preprints up over time to investigate whether all identified preprints included in the review were subsequently published (in which case preprints give you a look into the future, and a systematic review update would capture these reports) or alternatively, if some preprints were not published, then preprints provide a different. 
 
 I also sought to explore the additional evidental value of including preprints in the meta-analysis, assessed using the fixed effect weight from a standard meta-analysis.
@@ -328,11 +348,13 @@ I also sought to explore the additional evidental value of including preprints i
 
 ### Patient and public involvement
 
+Patient and
+
 <!----------------------------------------------------------------------------->
 
 ### Deviations from the protocol
 
-A dose response meta-analysis was not planned, marking a departure from the register protocol. <!-- TODO Check this is accurate -->
+A dose response meta-analysis was not planned, marking a departure from the registered protocol. <!-- TODO Check this is accurate -->
 
 
 ## Results
@@ -350,6 +372,10 @@ A dose response meta-analysis was not planned, marking a departure from the regi
 ```{r prisma-flow-setup, include = FALSE}
 ```
 
+\blandscape{}
+
+&nbsp;
+
 (ref:prisma-flow-cap) PRISMA Flow diagram illustrating how records moved through the systematic review process. The different contributions of databases and preprint servers to the review are indicated.
 
 (ref:prisma-flow-scap) PRISMA flow diagram
@@ -358,13 +384,16 @@ A dose response meta-analysis was not planned, marking a departure from the regi
 knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
 ```
 
-<!----------------------------------------------------------------------------->
-
-Following de-duplication, the titles and abstracts of `r num_to_text(16109)` records were assessed for eligibility. `r num_to_text(387)` were deemed potentially eligible and the full text records for these were requested and screened. \@ref(fig:prisma-flow-fig)
+\elandscape{}
 
 <!----------------------------------------------------------------------------->
 
-A PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-analyses) flow diagram,[@page2021] shown in Figure \@ref(prisma-flow-fig), shows the movement of articles through the review. To illustrate the contribution of preprint archives to the review, the flow diagram delineates between those records captured through databases searches (presented on the right of the diagram) and those captured by the search tool described in the previous chapter (presented in grey on the left of the diagram).
+Following de-duplication, the titles and abstracts of `r num_to_text(16109)` records were assessed for eligibility. `r num_to_text(387)` were deemed potentially eligible and the full text records for these were requested and screened. \@ref(fig:prisma-flow-fig) <!-- TODO Check these figures -->
+
+
+<!----------------------------------------------------------------------------->
+
+A PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-analyses) flow diagram,[@page2021] <!-- TODO CITATION NEEDED - cite PRIMSA flow paper here, if published --> shown in Figure \@ref(prisma-flow-fig), illustrates the movement of articles through the review. To highlight the contribution of preprint archives to the review, the flow diagram delineates between those records captured through databases searches (presented on the right of the diagram) and those captured by the search tool described in the previous chapter (presented in grey on the left of the diagram).
 
 Following screening, XXX studies were included.
 
@@ -375,7 +404,6 @@ Table \@ref(tab:incl-studies-character) shows the characteristics [**Include col
 As part of our our forward snowballing exercise (where articles citing an included study are cited), Irecorded whether a study included in our review had been included in any previous evidence synthesis attempt in an attempt to qualify the added value of this analysis. Additionally, if an included article was subsequently cited by a review, all studies in that review were screened for inclusion for the sake of completeness. This analysis was performed by extracting the citing articles from Google Scholar on [DATE] and screening them manually. The DOI of articles extracted from this analysis are included in the appendix, as the Google Scholar search functionality is not readily reproducible.*
 
 <!-- TODO Actually do this! -->
-
 
 <!-- For the snowballing exercise - make sure you don't include studies published after review date: ~ June 2019 -->
 
@@ -415,7 +443,7 @@ Additionally, records I excluded on my second viewing (n=`r discrepancy_Intra`) 
 
 
 
-Of note, preprints and published papers reporting the same study were not considered duplicate records. Instead, they were considered as different reports of the same study. This is due to the potential for the published version to offer some information that the preprint did not, and vice versa.
+
 
 
 ### Characteristics of included studies
@@ -475,7 +503,7 @@ Some evidence of manipulation of effect estimates in previous reviews,(e.g. Chou
 
 ### Dose response meta-analysis
 
-<!-- TODO Cite excluded studies and  -->
+<!-- TODO Cite excluded studies and list exclusion reasons  -->
 
 
 Several studies were excluded from the dose-response meta-analysis, as the number of cases/controls be
@@ -596,7 +624,7 @@ Does it also cause issues in terms of self-report?
 
 ### Comments on the process
 
-As part of the reflective element of this thesis, 
+As part of the reflective element of this thesis, I collated my experiences on performing a systematic review.
 
 Systematic reviews should not be performed as part of a thesis, without suitable support and resourcing guaranteed. Assumption that everyone does a systematic review (without risk of bias assessments, inclusion of all literature, searching for other reviews) is foolish.
 
@@ -609,41 +637,46 @@ Great learning experience in terms of managing a team, but due to a rotating sch
 
 A final point on the progress of the review is that, due to the need for dual screening and data extraction, a number of external researchers became involved in this review. I found the people-management aspect particularly challenging and could definitely have improved the process through better communication of deadlines, but it has provided good experience of leading a review team.
 
-
-
 <!----------------------------------------------------------------------------->
 ### Inclusion of preprints
 
-As highlighted in Section \@ref(diverse-sources-preprints), this thesis sought to syntheze evidence across different publication statuses, predominantly preprinted. Using the tool described in Chapter \@ref(), two preprint serves related to health and biomedical sciences were search as part of this review. 
+As highlighted in Section \@ref(diverse-sources-preprints), this thesis explicitly sought to synthesize evidence across different publication statuses, predominantly preprinted vs published. Using the tool described in Chapter \@ref(sys-rev-tools-intro), two preprint serves related to health and biomedical sciences were search as part of this review. 
 
-The added evidental value of including these preprints was highlighted in Section 
+The added evidential value of including these preprints was highlighted in Section \ref()
 
-On further investigation, X of these preprints were subsequently published since the search was performed in 2019. While this provides some additional evidence that the quality of the research desribed by included preprints was sufficiently high to pass peer-review, it does not invalidate the approach, as the future publication status was unavaialble at the time the search was conducted.
-
-
+On further investigation, X of these preprints were subsequently published since the search was performed in 2019. While this provides some additional evidence that the quality of the research described by included preprints was sufficiently high to pass peer-review, it does not invalidate the approach, as the future publication status was unavailable at the time the search was conducted.
 
 <!----------------------------------------------------------------------------->
 ### Open data sharing {#sys-rev-open-data}
+
+As evidenced by the issues involved in obtaining 
+
+
+Building in part on the research, I co-wrote an guidance piece for pre
+
+Similarly, a substanital amount of time and effort has gone into making the data obtained by this review openly available to 
 
 <!--- How many of the included studies accurately reported the diagnostic criteria for EHR? Cross link with section in CPRD analysis --->
 
 <!--- Comment here on issues involved in extracting data --->
 
-
 <!----------------------------------------------------------------------------->
 ### Original contribution to research
 
-I believe there are three aspects where this review is distinct from those reviews already available in the published literature (as identified by __[CITATION NEEDED]__):
+I believe there are four aspects where this review is distinct from those reviews already available in the published literature (as identified by <!-- TODO CITATION NEEDED -->):
 
 -   *Comprehensiveness:* While several reviews of this research topic exist,[@chu2018b; @yang2020; @muangpaisan2010; @poly2020b] the overlap between the list of studies included in each is not 100%. As part of this review, I have not only performed a original search of primary literature databases, but have also screened the reference lists of comparable reviews to ensure no study has been omitted.
+
 -   *Structured risk of bias assessment:* The majority of the highly cited reviews on this topic either do not formally consider the risk of bias in the observational studies they include or do not use an appropriate domain-based assessment tool (e.g. ROBINS-I/E). This is important area in which this thesis can add value, as based on the risk-of-bias assessments I have performed to date, several primary studies are at high risk of bias and this should be reflected in the findings of any review on this topic.
+
 -   *Inclusion of preprints:* Unlike other available reviews and enabled by the tool described in Chapter 3, this review systematically searched preprinted health-related manuscripts as a source of grey literature. As part of this chapter, I plan to examine the extent of the additional information provided to the review by the inclusion of preprints.
+
+- *Contribution to methods work:* A large part of this review was the associated work on improving research synthesis methods. This work is detailed as relevant throughout the Chapter, often referring to additional work detailed in the . IN addition this review was used to pilot an upcoming risk of bias tool
 
 <!----------------------------------------------------------------------------->
 ### Comparison with other reviews
 
 <!-- TODO This section will be informed by the review published as a preprint -->
-
 
 Of note, as part of the review, Iidentified several previous systematic reviews of this topic.[CITE] However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)[@sterne2019] to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels.
 
@@ -658,43 +691,63 @@ __Exclusion of the PROSPER trial__ Will need to have a good bit here on the excl
 <!----------------------------------------------------------------------------->
 ### Reviewing Mendelian randomisations studies
 
+<!-- Three things to cover: No good tools for dealing with MR studies yet (particularly search filters, as terminology is hard + no risk of bias tool); Is double counting of studies an issue (maybe speak to George, particularly if you can find an example)  -->
+
+<!-- TODO Email George with query on dual counting, following review of email with Julian -->
+
 While
 
 This may be because Mendelian randomisation studies have yet to reach a critical mass in terms of requiring a systematic review. 
 
-Recent updates, such as a guide to reading and interpreting. However, this guide includes reporting items in their quality checklist - reporting quality while important, is unrelated to internal validity.
+Recent updates, such as a guide to reading and interpreting Mendelian .
 
-Problems with overlapping samples in reviews of Mendelian randomisation studies in that Imay be double counting participants - for
+However, this guide includes reporting items in their quality checklist - reporting quality while important, is unrelated to internal validity.
+
+Problems with overlapping samples in reviews of Mendelian randomisation studies in that may be double counting participants
+
+Double-counting of other -
 
 Methods for reviews of Mendelian randomisation studies are not well developed to account for the consideration above.
+
+In short, given the recent developments in the production of studies and results from Mendelian randomisation 
+
+This is particularly relevant to missing evidence, as new methods in MR studies allow for the anlysis of many exposures/outcomes concurrently. In this scenario, missing evidence is likely to be an issue as onyl those of particular interest to the authors/those reaching statistical significance will be reported in the paper 
+
+This is highlighted by the identification of studies relevant to the review though coincidental reading and citation searhcing, that were not identified by the search as they reported many results and only the statistically significant ones were included in searchable fields
+
+This is particularly troubling given the comprehensiveness of the search (~17,000 records screened). In retrospect, a mitigating approach may have been to have an additional search for topics related to risk factors, dementia and MR studies, and screened t
+
+<!-- TODO Best option probably to highlight that while these studies were included, it was not easy given a lack of resources for MR studies -->
+
+As a form of analysis that lends itself to multiple comparison, there is a strong
+
+Through snowballing and other measures, I identified at least one Mendelian randomisation study that had not been identified by the search strategy. [@larsson2017b] On review of this paper, the search would not have been expected to find it, given the absence of any lipid-related keywords in the title and abstract.
+
+The study examined the association between lipid fractions with Azlheimer's disease, as one of many risk factors for AzD. Studies such as this can introduce bias, as it is commonly only those risk factors that show a statistically significant result that are reported in the abstract and so are captured by systematic reviews of the topic. This may bias reviews as the analysising multiple risk factors at a time becomes more common. 
+
+These studies are described as "unknown unknown's" in the context of the RoB-ME tool, and are particularly challenging (as opposed to an analysis that was insufficiently reported to be included in the statistical analysis, or the "known unknown's"),
+
+<!-- TODO Ask Matt Page whether he has done any work on this? Studies looking at many risk factors don't report null results in abstract and so do no -->
+
+
+Is it a big issue that the studies have the same underlying datasets? <!-- TODO Check discussion on this point from Matt Lee thesis, in email -->
+
+Potentially the use of methods such as snowballing (forwards and backwards citation chasing) and communication with relevant topic experts should cpature similar studies. 
+However, in future better-resourced reviews, a dedicated search for "risk factors" and "dementia" and "Mendelian randomisation", followed by manual review of studies that look across multiple risk factors, would be advisable.
+
 
 <!----------------------------------------------------------------------------->
 ### Strenghts and limitations
 
 #### Inclusion of Mendelian randomisation studies
 
-<!-- TODO Maybe need to integrate with the section immediately above. Best option probably to move the section above to the end of this section, highlighting that while these studies were included, it was not easy given a lack of resources for MR studies -->
-
-
-As a form of analysis that lends itself to multiple comparison, there is a strong
-
-Through snowballing and other measures, I identified at least one Mendelian randomisation study that had not been identified by the search strategy. [@larsson2017b] On review of this paper, the search would not have been expected to find it, given the absence of any lipid-related keywords in the title and abstract.
-The study examined the association between lipid fractions with Azlheimer's disease, as one of many risk factors for AzD. Studies such as this can introduce bias, as it is commonly only those risk factors that show a statistically significant result that are reported in the abstract and so are captured by systematic reviews of the topic. This may bias reviews as the analysising multiple risk factors at a time becomes more common. 
-
-<!-- TODO Ask Matt Page whether he has done any work on this? Studies looking at many risk factors don't report null results in abstract and so do no -->
-
-
-Is it a big issue that the studies have the same underlying datasets? <!--- TODO check discussion from Matt Lee thesis, in email --->
-
-Potentially the use of methods such as snowballing (forwards and backwards citation chasing) and communication with relevant topic experts should cpature similar studies. 
-However, in future better-resourced reviews, a dedicated search for "risk factors" and "dementia" and "Mendelian randomisation", followed by manual review of studies that look across multiple risk factors, would be advisable.
 
 #### Inclusion of preprints
 
 Comment on the fact that several of the studies identified through the search of preprints, were subsequently published, but much later than the
 cut-off point for the search (e.g. they would not have been captured by the search for published papers)
 
-<!--- Findings from this chapter are used throughout the later chapters of this thesis. In particular, Chapter 6 uses statistical modelling to exploring the impact of BCG vaccination on TB outcomes in greater detail, Chapter 7 explores the impact of the change in BCG vaccination policy on TB incidence rates using the incidence rate estimates from this chapter, Chapter 8 uses the understanding of the ETS gained from this chapter to parameterise a dynamic TB transmission model, and Chapter 9 uses the insights gained into the date variables in the ETS to fit a dynamic TB transmission model. From Sam abbotts--->
+<!--- IDEA Findings from this chapter are used throughout the later chapters of this thesis. In particular, Chapter 6 uses statistical modelling to exploring the impact of BCG vaccination on TB outcomes in greater detail, Chapter 7 explores the impact of the change in BCG vaccination policy on TB incidence rates using the incidence rate estimates from this chapter, Chapter 8 uses the understanding of the ETS gained from this chapter to parameterise a dynamic TB transmission model, and Chapter 9 uses the insights gained into the date variables in the ETS to fit a dynamic TB transmission model. From Sam abbotts--->
 
 ### Use in other chapters
 
@@ -702,4 +755,6 @@ Findings from this review are used though out the subsequent chapters.
 
 For example, 
 
+
 ## References
+

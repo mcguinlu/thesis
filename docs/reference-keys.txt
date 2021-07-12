@@ -8,6 +8,7 @@ fig:medrxivr-sr
 fig:medrxivr-data-sources
 tab:searchOverview-table
 tab:gwet-table
+eq:lipidConversion
 fig:prisma-flow-fig
 tab:agreeInter-table
 tab:agreeIntra-table
@@ -107,6 +108,7 @@ risk-of-bias
 randomised-controlled-trials-1
 non-randomised-studies-of-interventionsexposures
 mendelian-randomisation-studies
+risk-of-bias-due-to-missing-evidence
 studification
 contacting-authors
 analysis-methods
@@ -230,3 +232,4 @@ installation-1
 usage-1
 reception-and-future-plans-1
 creating
+copies-of-papers-arising-from-this-thesis

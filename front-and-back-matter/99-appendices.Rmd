@@ -34,6 +34,8 @@ __Under review/Preprints__
   
   * 
   
+  
+  
 <!----------------------------------------------------------------------------->
 
 ### Involvement of patients and the public {#appendix-ppi}
@@ -356,3 +358,9 @@ While `robvis` is a stable package, a range of additional functionality could be
 
 
 ## Creating 
+
+## Copies of papers arising from this thesis
+
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf}

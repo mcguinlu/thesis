@@ -95,6 +95,8 @@
 \usepackage[table]{xcolor}
 \usepackage{graphicx} 
 
+\usepackage{pdfpages}
+
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}
 \fancyhf{} % clear the header and footers
