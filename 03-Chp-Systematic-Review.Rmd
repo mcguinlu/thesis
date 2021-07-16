@@ -16,7 +16,7 @@ documentclass: book
 "It is surely a great criticism of our profession that we have not organised a critical summary by speciality or sub-speciality, up-dated periodically, of all relevant RCTS."  
 ```
 
-(ref:sys-rev-quote) --- Archibald Cochrane, 2000 [@cochrane20001931]
+(ref:sys-rev-quote) --- Archibald Cochrane, 2000 [@cochrane1979]
 
 # Systematic review of all available evidence {#sys-rev-heading}
 
@@ -111,7 +111,7 @@ Records were imported into Endnote and deduplicated using the method outlined in
 
 Screening (both title/abstract and full-text) was performed using a combination of Endnote, a citation management tool,[@hupe2019] and Rayyan, a web-based screening application.[@ouzzani2016] Title and abstract screening to remove obviously irrelevant records was performed primarily by the primary author, with a random selection of excluded records being screened in duplicate to ensure consistency with the inclusion criteria.
 
-Full-text screening will also be completed in full by the primary author. A second reviewer screened a random sample (approx 10%) of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage were recorded. Disagreements occurring during either stage of the screening process were resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.[@zotero-766]
+Full-text screening will also be completed in full by the primary author. A second reviewer screened a random sample (approx 10%) of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage were recorded. Disagreements occurring during either stage of the screening process were resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.[@page2021]
 
 #### Inclusion criteria
 
@@ -201,7 +201,7 @@ where $Z = 38.67$ for total cholesterol, LDL-c and HDL-c, and $Z = 88.57$ for tr
 
 A key use of the review presented in this chapter is to identify different sources of evidence at risk of a diverse range of biases, and to contrast and compare findings across them (see Section \@ref(intro-triangulation) and Section \@ref(triangulation-overview) for an overview of triangulation). To enable this triangulation exercise, a detailed and structured risk of bias assessment formed an important part of this review.
 
-There has been a recent movement within the evidence synthesis community from examining _methodological quality_ to assessing _risk of bias_,[@mcguinness2018a; @sterne2016] and thus directly evaluating the internal validity of a study. Internal validity is defined here as the absence of systematic error (or bias) in a study, which may influence its results.[@campbell1957; @juni2001] 
+There has been a recent movement within the evidence synthesis community from examining _methodological quality_ to assessing _risk of bias_,[@mcguinness2018; @sterne2016] and thus directly evaluating the internal validity of a study. Internal validity is defined here as the absence of systematic error (or bias) in a study, which may influence its results.[@campbell1957; @juni2001] 
 
 This move was prompted by a unclear definition of "methodological quality" which could include facets such as, and challenges in the comparison of results from different tools.
 
@@ -227,7 +227,7 @@ For non-randomised studies of interventions (NRSI), I used the ROBINS-I (Risk of
 
 For non-randomised studies of exposures (NRSE), I opted to use a preliminary version of the ROBINS-E tool, despite it still being in development.[@morganr2020] While the signalling questions for each domain are yet to be confirmed, the overarching domains have been finalised.
 
-Despite these limitations, I chose this approach in place of other existing published tools such as the Newcastle-Ottowa scale (NOS).[@wells2000newcastle] The motivation for this decision was two-fold. In the first instance, as mentioned in the introduction to this section, using a domain-based tool has distinct advantages over better-developed checklist-type tools such as the NOS. In addition, using a domain-based tool enabled better comparison with risk-of-bias assessments performed for the other study designs.
+Despite these limitations, I chose this approach in place of other existing published tools such as the Newcastle-Ottowa scale (NOS).[@wells2000] The motivation for this decision was two-fold. In the first instance, as mentioned in the introduction to this section, using a domain-based tool has distinct advantages over better-developed checklist-type tools such as the NOS. In addition, using a domain-based tool enabled better comparison with risk-of-bias assessments performed for the other study designs.
 
 <!----------------------------------------------------------------------------->
 
@@ -331,7 +331,7 @@ This tool grew out of a collaboration with other reserachers to design a modular
 
 A summary of this tool is contained in Appendix \@ref(appendix-robvis), and all forest plots presented in this analysis were created using
 
-Results from the risk-of-bias assessment were visualized using a paired forest/risk-of-bias blobbogram, created using the `robvis` tool. This tool was developed as an adjunct to this thesis to aid in creating standard risk-of-bias figures.[@mcguinness2019] A summary of the tool is provided in Appendix \@ref(appendix-robvis).
+Results from the risk-of-bias assessment were visualized using a paired forest/risk-of-bias blobbogram, created using the `robvis` tool. This tool was developed as an adjunct to this thesis to aid in creating standard risk-of-bias figures.[@mcguinness2020robvisPaper] A summary of the tool is provided in Appendix \@ref(appendix-robvis).
 
 &nbsp;
 <!----------------------------------------------------------------------------->
@@ -348,13 +348,14 @@ I also sought to explore the additional evidental value of including preprints i
 
 ### Patient and public involvement
 
-Patient and
+Patient and public memebers were intended to be involved at this poit
 
 <!----------------------------------------------------------------------------->
 
 ### Deviations from the protocol
 
 A dose response meta-analysis was not planned, marking a departure from the registered protocol. <!-- TODO Check this is accurate -->
+
 
 
 ## Results
@@ -583,7 +584,7 @@ While [__some__] preprint have subsequently been published, this does not cause 
 
 ## Discussion
 
-Major limitation is that several included studies used data from electronic health databases, which come with serious concerns regarding validity [@hsieh2019] [@mcguinness2019d; @wilkinson2018b]
+Major limitation is that several included studies used data from electronic health databases, which come with serious concerns regarding validity [@hsieh2019] [@mcguinness2019validity; @wilkinson2018]
 
 In addition, the a
 
@@ -665,7 +666,7 @@ Similarly, a substanital amount of time and effort has gone into making the data
 
 I believe there are four aspects where this review is distinct from those reviews already available in the published literature (as identified by <!-- TODO CITATION NEEDED -->):
 
--   *Comprehensiveness:* While several reviews of this research topic exist,[@chu2018b; @yang2020; @muangpaisan2010; @poly2020b] the overlap between the list of studies included in each is not 100%. As part of this review, I have not only performed a original search of primary literature databases, but have also screened the reference lists of comparable reviews to ensure no study has been omitted.
+-   *Comprehensiveness:* While several reviews of this research topic exist,[@chu2018; @yang2020; @muangpaisan2010; @poly2020] the overlap between the list of studies included in each is not 100%. As part of this review, I have not only performed a original search of primary literature databases, but have also screened the reference lists of comparable reviews to ensure no study has been omitted.
 
 -   *Structured risk of bias assessment:* The majority of the highly cited reviews on this topic either do not formally consider the risk of bias in the observational studies they include or do not use an appropriate domain-based assessment tool (e.g. ROBINS-I/E). This is important area in which this thesis can add value, as based on the risk-of-bias assessments I have performed to date, several primary studies are at high risk of bias and this should be reflected in the findings of any review on this topic.
 

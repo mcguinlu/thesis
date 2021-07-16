@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -292,6 +292,9 @@ Additionally, incident ischemic heart disease was included as a positive control
 
 <!-- QUESTION - should those with baseline cardiovascular conditions be excluded from the IHD/MI analysis? -->
 
+<!-- TODO Need to add bit to this section and to results on outcome for Type 2 Diabetes outcome -->
+
+
 <!----------------------------------------------------------------------------->
 (ref:negativeOutcome-cap) Causal diagram showing relationship between exposure $X$, outcome $Y$, confounders (measured $C$ and unmeasured $U$) and an ideal negative outcome $N$. Note the absence of any arrow between $X$ and $N$. In this scenario, any association observed between $X$ and $N$ is due to the presence of uncontrolled confounders $U$ (assuming $C$ has been adjusted for).
 
@@ -460,7 +463,7 @@ For each outcome, the overall "Any drug" estimate was driven by the statin subgr
 ```
 
 ```{r cprdPrimary, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:cprdPrimary-cap)', out.width='100%', fig.scap='(ref:cprdPrimary-scap)'}
-knitr::include_graphics(file.path("figures","cprd-analysis","fp_p1.jpeg"))
+knitr::include_graphics(file.path("figures","cprd-analysis","forester_p1.png"))
 ```
 <!--------------------------------------------------------------------------->
 
@@ -505,7 +508,7 @@ In almost all cases, the use of imputed data resulted in a marginal attenuation 
 ```
 
 ```{r completeCaseFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:completeCaseFig-cap)', out.width='100%', fig.scap='(ref:completeCaseFig-scap)'}
-knitr::include_graphics(file.path("figures","cprd-analysis","fp_complete_case.jpeg"))
+knitr::include_graphics(file.path("figures","cprd-analysis","forester_complete_case.png"))
 ```
 <!----------------------------------------------------------------------------->
 
@@ -531,7 +534,7 @@ For the negative control, there was some evidence that treatment with a statin w
 (ref:controlOutcomeFig-scap) Results of control outcome analysis
 
 ```{r controlOutcomeFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:controlOutcomeFig-cap)', out.width='100%', fig.scap='(ref:controlOutcomeFig-scap)'}
-knitr::include_graphics(file.path("figures","cprd-analysis","fp_control_outcomes.jpeg"))
+knitr::include_graphics(file.path("figures","cprd-analysis","forester_control_outcomes.png"))
 ```
 <!----------------------------------------------------------------------------->
 
@@ -556,7 +559,7 @@ Adjustment for additional covariates beyond age and sex had a limited impact on 
 ```
 
 ```{r unadjustedComparisonFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:unadjustedComparisonFig-cap)', out.width='100%', fig.scap='(ref:unadjustedComparisonFig-scap)'}
-knitr::include_graphics(file.path("figures","cprd-analysis","fp_unadjusted.jpeg"))
+knitr::include_graphics(file.path("figures","cprd-analysis","forester_unadjusted.png"))
 ```
 <!----------------------------------------------------------------------------->
 
@@ -566,13 +569,16 @@ When stratifying based on year of entry to the cohort, I observed no variation i
 
 &nbsp;
 
+```{r cohortEntry, include=FALSE}
+```
+
 <!----------------------------------------------------------------------------->
 (ref:diagnosisTypeFig-cap) Analysis of any lipid regulating agent on Probable AD outcome, stratified by grouped year of cohort entry.
 
 (ref:diagnosisTypeFig-scap) Sensitivty analus
 
 ```{r diagnosisTypeFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:diagnosisTypeFig-cap)', out.width='100%', fig.scap='(ref:diagnosisTypeFig-scap)'}
-knitr::include_graphics(file.path("figures/cprd-analysis/fp_cohort_entry.jpeg"))
+knitr::include_graphics(file.path("figures/cprd-analysis/forester_cohort_entry.png"))
 ```
 <!----------------------------------------------------------------------------->
 
@@ -595,7 +601,7 @@ On the assumption that this variation could be caused by changes in the frequenc
 
 #### Sensitivity cohorts: Pregnancy
 
-In the second sensitivity cohort, removing participants coded as female and aged 55 and under at index from the analysis had minimal effect on the effect estimates (Figure \@ref(fig:pregnancyFig)).
+In the second sensitivity cohort, removing participants aged 55 and under at index from the analysis had minimal effect on the effect estimates (Figure \@ref(fig:pregnancyFig)).
 
 
 <!----------------------------------------------------------------------------->
@@ -607,7 +613,7 @@ In the second sensitivity cohort, removing participants coded as female and aged
 ```
 
 ```{r pregnancyFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:pregnancyFig-cap)', out.width='100%', fig.scap='(ref:pregnancyFig-scap)'}
-knitr::include_graphics(file.path("figures","cprd-analysis","fp_pregnancy.jpeg"))
+knitr::include_graphics(file.path("figures","cprd-analysis","forester_pregnancy.png"))
 ```
 <!----------------------------------------------------------------------------->
 
@@ -645,7 +651,7 @@ When stratifying by statin properties, hydrophilic statins were less harmful in 
 ```
 
 ```{r statinTypeFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:statinTypeFig-cap)', out.width='100%', fig.scap='(ref:statinTypeFig-scap)'}
-knitr::include_graphics(file.path("figures","cprd-analysis","fp_sta_type.jpeg"))
+knitr::include_graphics(file.path("figures","cprd-analysis","forester_sta_type.png"))
 ```
 <!----------------------------------------------------------------------------->
 

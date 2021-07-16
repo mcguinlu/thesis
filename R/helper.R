@@ -1,4 +1,5 @@
 library(magrittr)
+source(here::here("R/forester.R"))
 
 # Generates an line pandoc citation string for all packages used in the 
 
@@ -178,7 +179,7 @@ todo <- function(fp){
 
 chapter_edit <- function(N){
   
-    # Open Chapter RMarkdown file
+  # Open Chapter RMarkdown file
   chapters <- list.files(pattern = ".Rmd")
   
   chapter <- chapters[which(data.table::like(chapters, N))]
@@ -245,13 +246,13 @@ apply_flextable <- function(data, caption = NULL) {
   
   ft <- flextable::flextable(data)  %>%
     flextable::bg(bg = "#A6A6A6", part = "header") %>%
-    bold(part = "header") %>%
-    bold(j=1, part = "body") %>%
-    align(align = "center", part = "all" ) %>%
-    align(j = 1, align = "left") %>%
-    bg(i = ~ seq(from = 1, to = nrow(data)) %% 2 == 0, bg = "#DDDDDD", part = "body") %>%
-    fontsize(size = 9, part = "all") %>%
-    set_table_properties(layout = "autofit")
+    flextable::bold(part = "header") %>%
+    flextable::bold(j=1, part = "body") %>%
+    flextable::align(align = "center", part = "all" ) %>%
+    flextable::align(j = 1, align = "left") %>%
+    flextable::bg(i = ~ seq(from = 1, to = nrow(data)) %% 2 == 0, bg = "#DDDDDD", part = "body") %>%
+    flextable::fontsize(size = 9, part = "all") %>%
+    flextable::set_table_properties(layout = "autofit")
   
   if (!is.null(caption)) {
     ft <- flextable::set_caption(ft, caption)
@@ -259,3 +260,177 @@ apply_flextable <- function(data, caption = NULL) {
   
   return(ft)
 }
+
+
+create_title_row <- function(top_title = "Any dementia", first_col, title) {
+  if (title == top_title) {
+    temp <- data.frame(
+      tmp = title,
+      HR = NA,
+      ci_lower = NA,
+      ci_upper = NA,
+      N_sub = NA,
+      N_fail = NA
+    )
+  } else{
+    temp <- data.frame(
+      tmp = c(" ", title),
+      HR = c(NA, NA),
+      ci_lower = c(NA, NA),
+      ci_upper = c(NA, NA),
+      N_sub = c(NA, NA),
+      N_fail = c(NA, NA)
+    )
+  }
+  
+  colnames(temp)[1] <- first_col
+  
+  return(temp)
+  
+}
+
+generate_forester_plot <-
+  function(results,
+           filepath,
+           top_title = "Any dementia", 
+           first_col = "drug",
+           outcome_levels = c(
+             "Any dementia",
+             "Probable AD",
+             "Possible AD",
+             "Vascular dementia",
+             "Other dementia"
+           ),
+           xlimits = c(0.3,3),
+           display = FALSE) {
+    
+    results$outcome <-
+      factor(
+        results$outcome,
+        levels = outcome_levels
+      )
+    
+    results$drug <-
+      forcats::fct_rev(factor(
+        results$drug,
+        levels = c(
+          "Any",
+          "Statins",
+          "Omega-3 Fatty Acid Groups",
+          "Fibrates",
+          "Ezetimibe",
+          "Bile acid sequestrants"
+        )
+      ))
+    
+    results <- results[order(results$outcome, results[first_col]), ]
+    
+    #> Registering fonts with R
+    
+    extrafont::loadfonts(device = "win")
+    grDevices::windowsFonts("Fira Sans" = grDevices::windowsFont("Fira Sans"))
+    
+    results <- results %>%
+      group_by(outcome) %>%
+      arrange(desc(drug), .by_group = T) %>%
+      select(all_of(first_col), drug, HR, ci_lower, ci_upper, N_sub, N_fail, outcome) %>%
+      ungroup()
+    
+    if (first_col == "drug") {
+      results <- mutate(results,drug = ifelse(drug == "Any", "Any drug class", as.character(drug)))
+    }
+    
+    levels <- levels(results$outcome)
+    
+    subset <-
+      lapply(levels, function(level) {
+        dplyr::filter(results,!!as.symbol("outcome") == level)
+      })
+    names(subset) <- levels
+    
+    subset_tables <-
+      lapply(levels, function(level) {
+        rbind(
+          create_title_row(top_title,first_col,as.character(level)),
+          dplyr::select(
+            subset[[level]],
+            all_of(first_col),
+            .data$HR,
+            .data$ci_lower,
+            .data$ci_upper,
+            .data$N_sub,
+            .data$N_fail
+          )
+        )
+      })
+    
+    
+    subset_table <-
+      do.call("rbind", lapply(subset_tables, function(x)
+        x))
+    
+    colnames(subset_table)[1] <- "analysis"
+    
+    subset_table$analysis <- as.character(subset_table$analysis)
+    
+    subset_table$analysis <-
+      ifelse(
+        !(subset_table$analysis %in% levels),
+        paste0("   ", subset_table$analysis),
+        subset_table$analysis
+      )
+    
+    colnames(subset_table)[1] <- "Analysis"
+    colnames(subset_table)[5] <- " Participants"
+    colnames(subset_table)[6] <- " Events"
+    
+    bold_vec <-
+      ifelse(stringr::str_trim(as.vector(subset_table$Analysis)) %in% c(levels),
+             "bold.italic",
+             "plain")
+    
+    subset_table$` Participants` <-
+      ifelse(
+        !is.na(subset_table$` Participants`),
+        paste0(" ", comma(subset_table$` Participants`)),
+        subset_table$` Participants`
+      )
+    
+    subset_table$` Events` <- ifelse(
+      !is.na(subset_table$` Events`),
+      paste0(" ", comma(subset_table$` Events`),"   "),
+      subset_table$` Events`
+    )
+    
+    subset_table$point_shape <-
+      ifelse(subset_table$Analysis == "   Any drug class",
+             9,
+             16)
+    
+    xbreaks <- c(xlimits[1],1,xlimits[2])
+    
+    forester(
+      left_side_data = subset_table[, c(1, 5, 6)],
+      estimate = subset_table$HR,
+      ci_low = subset_table$ci_lower,
+      ci_high = subset_table$ci_upper,
+      display = display,
+      nudge_y = -0.3,
+      estimate_precision = 2,
+      estimate_col_name = "Hazard ratio",
+      x_scale_linear = FALSE,
+      xlim = xlimits,
+      xbreaks = xbreaks,
+      file_path = here::here(filepath),
+      point_sizes = rep(1.5, times = nrow(subset_table)),
+      stripe_colour = "white",
+      font_family = "Fira Sans",
+      null_line_at = 1,
+      arrows = TRUE,
+      ggplot_width = ,
+      point_shapes = subset_table$point_shape,
+      arrow_labels = c("Protective", "Harmful"),
+      bold_vec = bold_vec
+    )
+    
+  }
