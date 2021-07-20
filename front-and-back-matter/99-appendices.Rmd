@@ -4,6 +4,11 @@
 
 <!-- If you feel it necessary to include an appendix, it goes here. The first appendix should include the commands above. -->
 
+```{r, echo = FALSE, warning=FALSE, message=FALSE}
+knitr::read_chunk(here::here("R/appendix.R"))
+doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
+```
+
 <!----------------------------------------------------------------------------->
 # By Chapter {#chapter-appendix-heading}
 
@@ -53,7 +58,19 @@ Lay summaries appear at the beginning of each chapter, reviewed by the Patient a
 
 ### Search strategy {#appendix-search-strategy}
 
-Impor
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:searchHits-caption) Overview of the full Medline search strategy.
+
+(ref:searchHits-scaption) searchHits
+
+```{r searchHits-table, message=FALSE, results="asis", echo = FALSE}
+```
+
+<!----------------------------------------------------------------------------->
+
+&nbsp;
 
 ### Web of Science Databases Searched {#appendix-wos-databases}
 
@@ -66,27 +83,6 @@ Impor
 
 ```{r wosDatabases-table, message=FALSE, results="asis", echo = FALSE}
 
-wosDatabases_table <- read.csv(here::here("data/sys-rev/wosDatabases.csv"))
-
-if(doc_type == "docx") {
-  knitr::kable(wosDatabases_table, caption = "(ref:wosDatabases-caption)")
-} else{
-  knitr::kable(
-    wosDatabases_table,
-    format = "latex",
-    caption = "(ref:wosDatabases-caption)",
-    caption.short = "(ref:wosDatabases-scaption)",
-    booktabs = TRUE
-  ) %>%
-    row_spec(0, bold = TRUE) %>%
-    column_spec(column = 1, width = paste0(18,"em")) %>%
-    column_spec(column = 2, width = paste0(8,"em")) %>%
-    column_spec(column = 3, width = paste0(6,"em")) %>%
-    row_spec(2:nrow(wosDatabases_table)-1, hline_after = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"))
-}
-
-
 ```
 <!----------------------------------------------------------------------------->
 
@@ -96,8 +92,6 @@ if(doc_type == "docx") {
 ### Code to search preprints {#appendix-medrxivr-code}
 
 <!-- TODO Double check this is the final code used -->
-
-
 
 ```{r, eval = FALSE}
 

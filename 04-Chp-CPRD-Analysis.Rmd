@@ -27,6 +27,7 @@ When dealing with human beings controlled experiments frequently prove to be imp
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source("R/doc_options.R")
 source("R/helper.R")
+library(dplyr)
 options(scipen = 99)
 knitr::read_chunk("R/04-Code-CPRD-Analysis.R")
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
@@ -214,7 +215,11 @@ Using multiple imputation to handle missing data is an alternative to a "complet
 
 A Cox proportional hazards (PR) model was used to estimate the effect of statins on dementia outcomes. Cox PR models are defined, in general terms, as:
 
-$$h(t) = h_o(t) \times exp(b_1x_1 + b_2x_2 + ... +b_px_p)$$
+
+\begin{equation}
+  h(t) = h_o(t) \times exp(b_1x_1 + b_2x_2 + ... +b_px_p)
+  (\#eq:cox-model)
+\end{equation}
 
 where:
 

@@ -4,6 +4,7 @@ library(robvis)
 library(medrxivr)
 library(kableExtra)
 library(dplyr)
+library(data.table)
 library(flextable)
 library(ggplot2)
 

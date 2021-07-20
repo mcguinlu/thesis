@@ -2,11 +2,11 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2:
     reference_docx: templates/word-styles-reference-01.docx
     number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -135,7 +135,11 @@ Triglycerides are the simplest and most common type of lipids found across the b
 
 In addition to the individual fractions, total serum cholesterol (TC) is a commonly-used summary measure to estimate the total amount of lipid present in the blood. The measure is derived from measurements of the individual HDL-c, LDL-c and TG levels using the Friedwald formula:[@friedewald1972]
 
-$$TC \approx LDLc + HDLc + kTG$$
+\begin{equation}
+  TC \approx LDLc + HDLc + kTG
+  (\#eq:total-cholesterol-formula)
+\end{equation}
+
 where $k$ is 0.20 if measurements are in milligrams per decilitre (_mg/dl_) and 0.45 if measured in millimole per litre (_mmol/l_).
 
 Widely-used ranges for the acceptable levels of different types of lipids are based on the National Cholesterol Education Program (NCEP)[@national2002third], and are outlined in Table \@ref(tab:lipidLevels-table).

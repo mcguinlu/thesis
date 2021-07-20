@@ -374,13 +374,13 @@ An investigation of their relationship}
 
 \adjustmtc
 
-Word count: 22889
+Word count: 23060
 
-Days: 234
+Days: 237
 
-Words behind: -5389
+Words behind: -5509
 
-Words today: -4
+Words today: 171
 
 ~
 
@@ -539,7 +539,11 @@ Triglycerides are the simplest and most common type of lipids found across the b
 
 In addition to the individual fractions, total serum cholesterol (TC) is a commonly-used summary measure to estimate the total amount of lipid present in the blood. The measure is derived from measurements of the individual HDL-c, LDL-c and TG levels using the Friedwald formula:\textsuperscript{\protect\hyperlink{ref-friedewald1972}{25}}
 
-\[TC \approx LDLc + HDLc + kTG\]
+\begin{equation}
+  TC \approx LDLc + HDLc + kTG
+  \label{eq:total-cholesterol-formula}
+\end{equation}
+
 where \(k\) is 0.20 if measurements are in milligrams per decilitre (\emph{mg/dl}) and 0.45 if measured in millimole per litre (\emph{mmol/l}).
 
 Widely-used ranges for the acceptable levels of different types of lipids are based on the National Cholesterol Education Program (NCEP)\textsuperscript{\protect\hyperlink{ref-national2002third}{26}}, and are outlined in Table \ref{tab:lipidLevels-table}.
@@ -1339,6 +1343,11 @@ Systematic reviews aim to transparently and reproducibly identift
 
 A pre-specified protocol for this analysis was registered using the Open Science Framework, and is available for inspection.\textsuperscript{\protect\hyperlink{ref-mcguinnessluke2020}{113}}
 
+\hypertarget{contributions}{%
+\subsection{Contributions}\label{contributions}}
+
+This systematic review was performed in conjunction with a team of secondary reviewer, all of whom . These included Alexandra MacAleenana, Athena Sheppard, Matthew Lee and Lena Schmidt.
+
 \hypertarget{search-strategy}{%
 \subsection{Search strategy}\label{search-strategy}}
 
@@ -1450,11 +1459,17 @@ Gwet's AC1 is defined as:
 
 In reference to a two-by-two table with cells A, B, C and D, it is calculated using the following:
 
-\[AC1 = \frac{\frac{A+D}{N}-e(\gamma)}{1-e(\gamma)}\]
+\begin{equation}
+  AC1 = \frac{\frac{A+D}{N}-e(\gamma)}{1-e(\gamma)}
+  \label{eq:AC1-main}
+\end{equation}
 
 where \(e(\gamma)\) is the chance agreement between raters, given as \(2q(1-q)\), where
 
-\[q = \frac{(A+C)+(A+B)}{2N}\]
+\begin{equation}
+  q = \frac{(A+C)+(A+B)}{2N}
+  \label{eq:AC1-supp}
+\end{equation}
 
 How to interpret agreement co-efficients is widely debated, and while arbitary cut-off values may mislead,\textsuperscript{\protect\hyperlink{ref-brennan1992}{121}} they provide a useful rubric by which to assess inter-rater agreement. Here, I used guidelines based on a stricter interpretation of the Cohen's \(kappa\) coefficient,\textsuperscript{\protect\hyperlink{ref-mchugh2012}{122}} presented in Table \ref{tab:gwet-table}.
 
@@ -1525,6 +1540,24 @@ Additionally, results should be assessed at the result (defined as a a specific 
 
 In this review, domain-based tools were used to assess the risk of bias for each result in each included study. The study design-specific tools are introduced and discussed in more detail in the following sections.
 
+In addition, the tool also aim to capture the potential direction of bias for each given domain. An optional question at the end of each domain, e.g.~for Domain 1 of the RoB2 tool: ``What is the predicted direction of bias arising from the randomization process?'', possible responses included
+
+\begin{itemize}
+\tightlist
+\item
+  Not applicable
+\item
+  Favours experimental
+\item
+  Favours comparator
+\item
+  Towards null
+\item
+  Away from null
+\item
+  Unpredictable
+\end{itemize}
+
 \hypertarget{randomised-controlled-trials-1}{%
 \subsubsection{Randomised controlled trials}\label{randomised-controlled-trials-1}}
 
@@ -1584,9 +1617,16 @@ Both a fixed-effect and random-effects meta-analysis model was.
 
 For
 
-Need formula here, and description of different methods and quarrels regarding disctinction fixed effect vs random effects meta-analyses.
+Need formula here, and description of different methods and quarrels regarding distinction fixed effect vs random effects meta-analyses.
 
 This analytical approach was used for
+
+\begin{equation}
+  weighted\ average = \frac{\sum Y_i (1/SE_i^2)}{\sum(1/SE_i^2)}
+  \label{eq:meta-analysis-fixed}
+\end{equation}
+
+where \ldots{}
 
 \hypertarget{dose-response-analyses}{%
 \subsubsection{Dose-response analyses}\label{dose-response-analyses}}
@@ -1653,7 +1693,11 @@ A dose response meta-analysis was not planned, marking a departure from the regi
 \hypertarget{search-and-screening-results}{%
 \subsection{Search and screening results}\label{search-and-screening-results}}
 
+Following the search
+
 Twenty-three thousand, four hundred forty-seven records were identified through database searches. Following depulication, 16,109 unique records remained.
+
+No eligible records were identified in the screening of the 500 records excluded by the search. Many of these were basic science studies
 
 \blandscape{}
 
@@ -1677,9 +1721,9 @@ Following screening, XXX studies were included.
 
 The distribution of included studies over time demonstrates that despite the conduct of several previous reviews of different types of literature surrounding this question, primary studies continue to the published as these reviews have yet to provide a definite answer.
 
-Table \ref{tab:incl-studies-character} shows the characteristics {[}\textbf{Include column here that says whether it was included in a systematic review - see below}{]}
+~
 
-As part of our our forward snowballing exercise (where articles citing an included study are cited), Irecorded whether a study included in our review had been included in any previous evidence synthesis attempt in an attempt to qualify the added value of this analysis. Additionally, if an included article was subsequently cited by a review, all studies in that review were screened for inclusion for the sake of completeness. This analysis was performed by extracting the citing articles from Google Scholar on {[}DATE{]} and screening them manually. The DOI of articles extracted from this analysis are included in the appendix, as the Google Scholar search functionality is not readily reproducible.*
+As part of our our forward snowballing exercise (where articles citing an included study are cited), I recorded whether a study included in our review had been included in any previous evidence synthesis attempt in an attempt to qualify the added value of this analysis. Additionally, if an included article was subsequently cited by a review, all studies in that review were screened for inclusion for the sake of completeness. This analysis was performed by extracting the citing articles from Google Scholar on {[}DATE{]} and screening them manually. The DOI of articles extracted from this analysis are included in the appendix, as the Google Scholar search functionality is not readily reproducible.*
 
 As a summary of the duplication of work in this area, Ilooked at how many reviews a single included study had previously been included in.
 
@@ -1739,10 +1783,20 @@ Those records which were excluded in the initial screening, but were included by
 
 Additionally, records I excluded on my second viewing (n=4) were investigated. All were . . .
 
+~
+
 \hypertarget{characteristics-of-included-studies}{%
 \subsection{Characteristics of included studies}\label{characteristics-of-included-studies}}
 
 XXXX studies met the criteria for inclusion in the review.
+
+Table \ref{tab:incl-studies-character} shows the characteristics
+
+~
+
+
+
+
 
 As shown in
 
@@ -1789,18 +1843,31 @@ Best practice methods for dealing with disparate effect measures in included stu
 
 Some evidence of manipulation of effect estimates in previous reviews,(e.g.~Chou, Sci Reports - at least one study disagrees with) but not documented in review text.
 
+~
+
 \hypertarget{risk-of-bias-subheading}{%
 \subsection{Risk of bias}\label{risk-of-bias-subheading}}
+
+~
+
+\hypertarget{meta-n}{%
+\subsection{Meta-n}\label{meta-n}}
+
+~
 
 \hypertarget{dose-response-meta-analysis}{%
 \subsection{Dose response meta-analysis}\label{dose-response-meta-analysis}}
 
 Several studies were excluded from the dose-response meta-analysis, as the number of cases/controls be
 
+~
+
 \hypertarget{sources-of-heterogeneity}{%
 \subsection{Sources of heterogeneity}\label{sources-of-heterogeneity}}
 
 Detail that some of these are exploratory, in particular the effect of different scales on the association between the groups. \textbf{{[}CROSS{]}}
+
+~
 
 \hypertarget{sys-rev-pub-bias}{%
 \subsection{Publication bias}\label{sys-rev-pub-bias}}
@@ -1817,6 +1884,8 @@ One particularly interesting meta-bias potentially applicable in this review is 
 
 Many studies did not report the codelists used to run the analysis,
 
+~
+
 \hypertarget{triangualtion-across-evidence-sources}{%
 \subsection{Triangualtion across evidence sources}\label{triangualtion-across-evidence-sources}}
 
@@ -1827,6 +1896,8 @@ A key limitation for other types of dementia, in particularly vascular, is that 
 Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated.\textsuperscript{\protect\hyperlink{ref-guyatt2011}{133}}
 
 Without our framework and as part of the risk of bias assessments reported in \ref{risk-of-bias-subheading}, Itest test
+
+~
 
 \hypertarget{added-evidental-value-of-including-preprints-sys-rev-including-preprints}{%
 \subsection{Added evidental value of including preprints \{sys-rev-including-preprints\}}\label{added-evidental-value-of-including-preprints-sys-rev-including-preprints}}
@@ -1870,6 +1941,8 @@ Major limitation is that several included studies used data from electronic heal
 
 In addition, the a
 
+~
+
 \hypertarget{previous-reviews}{%
 \subsection{Previous reviews}\label{previous-reviews}}
 
@@ -1897,6 +1970,8 @@ This does introduce some conflicts with other studies where a change score has b
 
 Does it also cause issues in terms of self-report?
 
+~
+
 \hypertarget{comments-on-the-process}{%
 \subsection{Comments on the process}\label{comments-on-the-process}}
 
@@ -1912,6 +1987,8 @@ Great learning experience in terms of managing a team, but due to a rotating sch
 
 A final point on the progress of the review is that, due to the need for dual screening and data extraction, a number of external researchers became involved in this review. I found the people-management aspect particularly challenging and could definitely have improved the process through better communication of deadlines, but it has provided good experience of leading a review team.
 
+~
+
 \hypertarget{inclusion-of-preprints}{%
 \subsection{Inclusion of preprints}\label{inclusion-of-preprints}}
 
@@ -1921,6 +1998,8 @@ The added evidential value of including these preprints was highlighted in Secti
 
 On further investigation, X of these preprints were subsequently published since the search was performed in 2019. While this provides some additional evidence that the quality of the research described by included preprints was sufficiently high to pass peer-review, it does not invalidate the approach, as the future publication status was unavailable at the time the search was conducted.
 
+~
+
 \hypertarget{sys-rev-open-data}{%
 \subsection{Open data sharing}\label{sys-rev-open-data}}
 
@@ -1929,6 +2008,8 @@ As evidenced by the issues involved in obtaining
 Building in part on the research, I co-wrote an guidance piece for pre
 
 Similarly, a substanital amount of time and effort has gone into making the data obtained by this review openly available to
+
+~
 
 \hypertarget{original-contribution-to-research}{%
 \subsection{Original contribution to research}\label{original-contribution-to-research}}
@@ -1946,6 +2027,8 @@ I believe there are four aspects where this review is distinct from those review
   \emph{Contribution to methods work:} A large part of this review was the associated work on improving research synthesis methods. This work is detailed as relevant throughout the Chapter, often referring to additional work detailed in the . IN addition this review was used to pilot an upcoming risk of bias tool
 \end{itemize}
 
+~
+
 \hypertarget{comparison-with-other-reviews}{%
 \subsection{Comparison with other reviews}\label{comparison-with-other-reviews}}
 
@@ -1956,6 +2039,8 @@ Some previous reviews did assess risk of bias, but used non-domain based assessm
 \textbf{The duplication of work across reviews (including, ironically, by this review) is substantial. In Section XXXX, I demonstrated that the each primary study included in this review was also included in other review so this topic, but that not all studies were included in all reviews. However, by creating a comprehensive review that attempted to draw together all available evidence from across the full range of study types.}
 
 \textbf{Exclusion of the PROSPER trial} Will need to have a good bit here on the exclusion of this RCT, particularly as it is included in the Cochrane review on the topic. Cross-reference with the meta-bias section in the early section, on the impact of only included studies that sought to make a definitive diagnosis, rather than using change in cognitive assessment scales.
+
+~
 
 \hypertarget{reviewing-mendelian-randomisations-studies}{%
 \subsection{Reviewing Mendelian randomisations studies}\label{reviewing-mendelian-randomisations-studies}}
@@ -1995,17 +2080,24 @@ Is it a big issue that the studies have the same underlying datasets?
 Potentially the use of methods such as snowballing (forwards and backwards citation chasing) and communication with relevant topic experts should cpature similar studies.
 However, in future better-resourced reviews, a dedicated search for ``risk factors'' and ``dementia'' and ``Mendelian randomisation'', followed by manual review of studies that look across multiple risk factors, would be advisable.
 
+~
+
 \hypertarget{strenghts-and-limitations}{%
 \subsection{Strenghts and limitations}\label{strenghts-and-limitations}}
+
+~
 
 \hypertarget{inclusion-of-mendelian-randomisation-studies}{%
 \subsubsection{Inclusion of Mendelian randomisation studies}\label{inclusion-of-mendelian-randomisation-studies}}
 
+~
+
 \hypertarget{inclusion-of-preprints-1}{%
 \subsubsection{Inclusion of preprints}\label{inclusion-of-preprints-1}}
 
-Comment on the fact that several of the studies identified through the search of preprints, were subsequently published, but much later than the
-cut-off point for the search (e.g.~they would not have been captured by the search for published papers)
+Comment on the fact that several of the studies identified through the search of preprints, were subsequently published, but much later than the cut-off point for the search (e.g.~they would not have been captured by the search for published papers)
+
+~
 
 \hypertarget{use-in-other-chapters}{%
 \subsection{Use in other chapters}\label{use-in-other-chapters}}
@@ -2013,6 +2105,11 @@ cut-off point for the search (e.g.~they would not have been captured by the sear
 Findings from this review are used though out the subsequent chapters.
 
 For example,
+
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
+
+\newpage
 
 \hypertarget{references-2}{%
 \section{References}\label{references-2}}
@@ -2178,7 +2275,10 @@ Using multiple imputation to handle missing data is an alternative to a ``comple
 
 A Cox proportional hazards (PR) model was used to estimate the effect of statins on dementia outcomes. Cox PR models are defined, in general terms, as:
 
-\[h(t) = h_o(t) \times exp(b_1x_1 + b_2x_2 + ... +b_px_p)\]
+\begin{equation}
+  h(t) = h_o(t) \times exp(b_1x_1 + b_2x_2 + ... +b_px_p)
+  \label{eq:cox-model}
+\end{equation}
 
 where:
 
@@ -2721,8 +2821,8 @@ This open approach will enable easy inclusion of this analysis in future evidenc
 
 ~
 
-\hypertarget{conclusions}{%
-\subsection{Conclusions}\label{conclusions}}
+\hypertarget{conclusions-1}{%
+\subsection{Conclusions}\label{conclusions-1}}
 
 This chapter has provided new evidence on the potential repurposing of lipid-regulating agents for the prevention of all-cause dementia, Alzheimer's disease, vascular dementia, and other dementia. It made use of a large scale electronic health record database, the CPRD, and employed a time-varying Cox proportional hazards model to account for the potential immortal time bias.
 
@@ -2761,6 +2861,8 @@ Talk about how different covariates were managed across cohorts,
 
 Talk about missing data was handled
 
+~
+
 \hypertarget{data-sources}{%
 \subsection{Data sources}\label{data-sources}}
 
@@ -2781,8 +2883,10 @@ Each should have:
 \item
 \end{itemize}
 
+~
+
 \hypertarget{epic-norfolk}{%
-\subsection{Epic Norfolk}\label{epic-norfolk}}
+\subsubsection{Epic Norfolk}\label{epic-norfolk}}
 
 The European Prospective Investigation of Cancer - Norfolk is a\textsuperscript{\protect\hyperlink{ref-riboli1997}{174},\protect\hyperlink{ref-riboli2002}{175}}
 
@@ -2792,13 +2896,19 @@ Several DPUK cohorts were excluded on the basis of a lack of exposure variables,
 
 See
 
+~
+
 \hypertarget{risk-of-bias-assessment}{%
 \subsection{Risk of bias assessment}\label{risk-of-bias-assessment}}
 
 Risk of bias assessment was performed for each of the included cohorts using the relevant tool described in Section \ref{risk-of-bias}.
 
+~
+
 \hypertarget{data-cleaning}{%
 \subsection{Data cleaning}\label{data-cleaning}}
+
+~
 
 \hypertarget{discussion-3}{%
 \section{Discussion}\label{discussion-3}}
@@ -3703,7 +3813,153 @@ Lay summaries appear at the beginning of each chapter, reviewed by the Patient a
 \hypertarget{appendix-search-strategy}{%
 \subsection{Search strategy}\label{appendix-search-strategy}}
 
-Impor
+~
+
+
+
+
+
+\begin{longtable}[t]{>{\raggedright\arraybackslash}p{2em}>{\raggedright\arraybackslash}p{26em}>{\raggedright\arraybackslash}p{4em}}
+\caption[searchHits]{\label{tab:searchHits-table}Overview of the full Medline search strategy.}\\
+\toprule
+\textbf{\#} & \textbf{Search term} & \textbf{Hits}\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:searchHits-table}Overview of the full Medline search strategy. \textit{(continued)}}\\
+\toprule
+\textbf{\#} & \textbf{Search term} & \textbf{Hits}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+1 & dement*.ti,ab. & 103404\\
+2 & alzheimer*.ti,ab. & 132832\\
+3 & exp Dementia/ & 154234\\
+4 & exp Alzheimer Disease/ & 87346\\
+5 & Pick* disease.ti,ab & 2794\\
+6 & globular glial tauopathy.ti,ab & 24\\
+7 & primary progressive aphasia.ti,ab & 1051\\
+8 & logopaenic aphasia.ti,ab & 0\\
+9 & posterior cortical atrophy.ti,ab & 381\\
+10 & (age-associated) adj2 (memory decline).ti,ab & 11\\
+11 & ((mild or slight) adj2 (cognitive or cognition) adj2 (disorder* or defect* or deficit* or disabilit* or dysfunction or impair*)).ti,ab. & 14883\\
+12 & ((cognit\$ or memory or cerebr\$ or mental\$) adj3 (declin\$ or impair\$ or los\$ or deteriorat\$ or degenerat\$ or complain\$ or disturb\$ or disorder\$)).ti,ab. & 182141\\
+13 & (MCI or aMCI or CIND or non-aMCI).ti,ab & 16893\\
+14 & (cognitive impair*).ti,ab & 56411\\
+15 & Cognition Disorders/ & 62602\\
+16 & Cognitive Dysfunction/ & 11999\\
+17 & Mild Cognitive Impairment/ & 11999\\
+\em{\textbf{18}} & \em{\textbf{or/1-17}} & \em{\textbf{407352}}\\
+19 & lipid*.ti,ab. & 462968\\
+20 & lipoprotein*.ti,ab. & 140438\\
+21 & cholesterol.ti,ab. & 227679\\
+22 & hypercholesterol*.ti,ab. & 33093\\
+23 & hypocholesterol*.ti,ab. & 3347\\
+24 & triacylglycerol.ti,ab. & 11077\\
+25 & lipemia*.ti,ab. & 1836\\
+26 & dyslipid?emia.ti,ab. & 29128\\
+27 & hyperlipid?emia*.ti,ab. & 25134\\
+28 & hypolipid?emia.ti,ab. & 271\\
+29 & HDL.ti,ab. & 61231\\
+30 & LDL.ti,ab. & 71176\\
+31 & VLDL.ti,ab. & 12485\\
+32 & triglyceride*.ti,ab. & 104904\\
+33 & exp Dyslipidemias/ & 76480\\
+34 & exp Cholesterol/ & 155339\\
+35 & exp Lipoproteins/ & 141558\\
+\em{\textbf{36}} & \em{\textbf{or/19-35}} & \em{\textbf{777210}}\\
+37 & statin*.ti,ab. & 39998\\
+38 & atorvastatin.ti,ab. & 7994\\
+39 & cerivastatin.ti,ab & 646\\
+40 & fluvastatin.ti,ab. & 1795\\
+41 & pravastatin.ti,ab. & 3940\\
+42 & rosuvastatin.ti,ab. & 3175\\
+43 & simvastatin.ti,ab. & 8933\\
+44 & pitavastatin.ti,ab & 816\\
+45 & lovastatin.ti,ab. & 3667\\
+46 & fibrat*.ti,ab. & 3135\\
+47 & ("fibric acid" adj3 derivat*).ti,ab. & 341\\
+48 & bezafibrate.ti,ab & 1523\\
+49 & fenofibrate.ti,ab & 3109\\
+50 & gemfibrozil.ti,ab & 1802\\
+51 & clofenapate.ti,ab & 39\\
+52 & clofibrate.ti,ab & 3035\\
+53 & ciprofibrate.ti,ab & 481\\
+54 & (bile adj3 sequest*).ti,ab. & 816\\
+55 & colestyramine.ti,ab & 60\\
+56 & colestipol hydrochloride.ti,ab & 52\\
+57 & colesevelam hydrochloride.ti,ab & 71\\
+58 & nicotinic acid*.ti,ab. & 5854\\
+59 & inositol nicotinate.ti,ab & 30\\
+60 & niacin.ti,ab & 4631\\
+61 & ezetimibe.ti,ab. & 2766\\
+62 & acipimox.ti,ab & 292\\
+63 & evolocumab.ti,ab & 394\\
+64 & alirocumab.ti,ab & 350\\
+65 & lomitapide.ti,ab & 150\\
+66 & (omega-3-acid adj2 ethyl ester*).ti,ab & 85\\
+67 & meglutol.ti,ab & 2\\
+68 & Meglutol/ & 134\\
+69 & exp Anticholesteremic Agents/ & 71609\\
+70 & exp Fibric Acids/ & 9523\\
+71 & exp Ezetimibe/ & 1954\\
+72 & exp Nicotinic Acids/ & 36409\\
+\em{\textbf{73}} & \em{\textbf{or/37-72}} & \em{\textbf{138108}}\\
+\em{\textbf{74}} & \em{\textbf{18 and 36}} & \em{\textbf{19659}}\\
+\em{\textbf{75}} & \em{\textbf{18 and 73}} & \em{\textbf{2287}}\\
+\em{\textbf{76}} & \em{\textbf{74 or 75}} & \em{\textbf{21029}}\\
+77 & Animals/ not (Animals/ and Humans/) & 4552498\\
+\em{\textbf{78}} & \em{\textbf{76 not 77}} & \em{\textbf{18226}}\\
+79 & epidemiologic studies/ or case-control studies/ or cross-sectional studies/ or cohort studies/ or follow-up studies/ or longitudinal studies/ or prospective studies/ or retrospective studies/ & 2299133\\
+80 & ((epidemiologic or prospective or retrospective or cross-sectional or case control* or cohort or longitudinal or followup or follow-up) adj3 (study or studies)).ti,ab,kf. & 1043484\\
+81 & (case control* or cross-sectional or cohort? or follow-up or followup or longitudinal or prospective or retrospective or observational or population).ti. & 656500\\
+82 & (cohort? adj2 (analys* or compar* or data or study or studies)).ab. & 184866\\
+83 & (population adj2 (based or data* or study or studies or register? or survey? or surveillance)).ab. & 200506\\
+\em{\textbf{84}} & \em{\textbf{or/79-83}} & \em{\textbf{2933516}}\\
+85 & controlled clinical trial.pt. & 93095\\
+86 & randomized controlled trial.pt. & 483099\\
+87 & clinical trials as topic/ & 187183\\
+88 & (randomi\#ed or randomi\#ation or randomi\#ing).ti,ab,kf. & 585795\\
+89 & (RCT or "at random" or (random* adj3 (administ* or allocat* or assign* or class* or cluster or crossover or cross-over or control* or determine* or divide* or division or distribut* or expose* or fashion or number* or place* or pragmatic or quasi or recruit* or split or subsitut* or treat*))).ti,ab,kf. & 512675\\
+90 & placebo.ab,ti,kf. & 203773\\
+91 & trial.ti. & 199586\\
+92 & (control* adj3 group*).ab. & 498141\\
+93 & (control* and (trial or study or group*) and (waitlist* or wait* list* or ((treatment or care) adj2 usual))).ti,ab,kf. & 19035\\
+94 & ((single or double or triple or treble) adj2 (blind* or mask* or dummy)).ti,ab,kf. & 165010\\
+95 & double-blind method/ or random allocation/ or single-blind method/ & 266392\\
+\em{\textbf{96}} & \em{\textbf{or/85-95}} & \em{\textbf{1616814}}\\
+\em{\textbf{97}} & \em{\textbf{84 or 96}} & \em{\textbf{4175140}}\\
+98 & MENDELIAN RANDOMIZATION ANALYSIS/ & 736\\
+99 & Mendelian randomi*.ti,ab,kf. & 1647\\
+\em{\textbf{100}} & \em{\textbf{98 or 99}} & \em{\textbf{1738}}\\
+101 & RANDOMIZED CONTROLLED TRIALS AS TOPIC/ & 124147\\
+102 & (RCT? or (randomi\#ed adj2 (control* or intervention* or experiment* or trial* or study or studies))).ti,ab,kf. & 405207\\
+103 & ((random* or comparative or intervention? or treatment?) adj3 (efficacy or effect*)).ti,ab,kf. & 435773\\
+104 & (clinical adj (intervention? or trial?)).ti,ab,kf. & 346211\\
+105 & CLINICAL TRIALS AS TOPIC/ or CONTROLLED CLINICAL TRIALS AS TOPIC/ & 192430\\
+106 & TREATMENT EFFECT/ & 904484\\
+\em{\textbf{107}} & \em{\textbf{or/101-106}} & \em{\textbf{1894420}}\\
+\em{\textbf{108}} & \em{\textbf{100 AND 107}} & \em{\textbf{313}}\\
+109 & instrument* variab*.ti,ab,kf. & 2380\\
+110 & ((causal* or causative) adj3 (associat* or infer* or implicat* or effect* or predict* or factor? or risk? or relat*)).ti,ab,kf. & 54710\\
+111 & ((gene* adj2 (associat* or risk? or varia* or determinant?)) or risk variant?).ti,ab,kf. & 234808\\
+112 & (disease* adj3 (expos* or associat* or etiolog* or pathogenesis or risk?)).ti,ab,kf. & 304605\\
+113 & risk factor?.mp. & 1045594\\
+114 & exp CAUSALITY/ & 782487\\
+115 & "confounding factors (epidemiology)"/ & 9873\\
+116 & (confound* or nonconfound* or non-confound*).ti,ab,kf. & 113902\\
+117 & (statistics or epidemiolog* or ((genetic* or molecular) and medicine)).jw. & 205082\\
+\em{\textbf{118}} & \em{\textbf{or/109 -117}} & \em{\textbf{1768577}}\\
+\em{\textbf{119}} & \em{\textbf{108 and 118}} & \em{\textbf{273}}\\
+\em{\textbf{120}} & \em{\textbf{98 and 101}} & \em{\textbf{27}}\\
+\em{\textbf{121}} & \em{\textbf{119 or 120}} & \em{\textbf{277}}\\
+\em{\textbf{122}} & \em{\textbf{97 or 121}} & \em{\textbf{4175143}}\\
+\em{\textbf{123}} & \em{\textbf{78 and 122}} & \em{\textbf{6045}}\\*
+\end{longtable}
+
+~
 
 \hypertarget{appendix-wos-databases}{%
 \subsection{Web of Science Databases Searched}\label{appendix-wos-databases}}

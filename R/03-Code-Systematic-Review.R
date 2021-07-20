@@ -162,4 +162,78 @@ if(doc_type == "docx") {
     kableExtra::row_spec(2, extra_css = "border-bottom: 1px solid")
 }
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- chunkname-table
 
+chunkname_table <- mtcars
+
+if(doc_type == "docx"){
+apply_flextable(chunkname_table,caption = "(ref:chunkname-caption)")
+}else{
+knitr::kable(chunkname_table, format = "latex", caption = "(ref:chunkname-caption)", caption.short = "(ref:chunkname-scaption)", booktabs = TRUE) %>% 
+row_spec(0, bold = TRUE) %>%
+kable_styling(latex_options = c("HOLD_position"))
+}
+
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# primaryFigures----
+
+test <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx") %>%
+  janitor::clean_names() %>%
+  dplyr::filter(done == "Y",
+         !is.na(point_estimate), 
+         measure == "HR", 
+         outcome == "Dementia", 
+         exposure %like% "[Ss]tatin", 
+         !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
+  mutate(point = log(point_estimate), 
+         SE = (log(lower_95_percent) - log(upper_95_percent))/3.92) %>%
+  arrange(author, year)
+
+t <- metafor::rma.uni(data = test,
+                      yi = point,
+                      sei = SE)
+
+png(file = 'forestplot_acd.png') 
+metafor::forest(t, transf=exp, slab = paste(test$author, test$year), refline =1, xlab = "HR for any dementia")
+dev.off() 
+
+
+
+test <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx") %>%
+  janitor::clean_names() %>%
+  filter(done == "Y",
+         !is.na(point_estimate), 
+         measure == "HR", 
+         outcome %like% "VaD", 
+         exposure %like% "[Ss]tatin", 
+         !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
+  mutate(point = log(point_estimate), 
+         SE = (log(lower_95_percent) - log(upper_95_percent))/3.92)
+
+t <- metafor::rma.uni(data = test,
+                      yi = point,
+                      sei = SE)
+
+png(file = 'forestplot_vad.png') 
+metafor::forest(t, transf=exp, slab = paste(test$author, test$year), order ="obs", refline =1, xlab = "HR for VaD")
+dev.off() 
+
+
+
+test <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx") %>%
+  janitor::clean_names() %>%
+  filter(done == "Y",
+         !is.na(point_estimate), 
+         measure == "HR", 
+         outcome %like% "AD", 
+         exposure %like% "[Ss]tatin", 
+         !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
+  mutate(point = log(point_estimate), 
+         SE = (log(lower_95_percent) - log(upper_95_percent))/3.92)
+
+t <- metafor::rma.uni(data = test,
+                      yi = point,
+                      sei = SE)

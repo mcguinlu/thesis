@@ -31,7 +31,7 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 <!-- ## To Do -->
 
-<!-- -   TODO Examine how many times a primary study was included in a review\ -->
+<!-- -   TODO Examine how many times a primary study was included in a review -->
 <!-- -   TODO Look at whether searching preprints made any difference to my results -->
 <!-- -  TODO Could apply ROBIS to previous reviews to see how they stack-up? (This may be done as part of Georgia's summer project) -->
 
@@ -73,6 +73,12 @@ Systematic reviews aim to transparently and reproducibly identift
 ### Protocol
 
 A pre-specified protocol for this analysis was registered using the Open Science Framework, and is available for inspection.[@mcguinnessluke2020] 
+
+### Contributions
+
+This systematic review was performed in conjunction with a team of secondary reviewer, all of whom . These included Alexandra MacAleenana, Athena Sheppard, Matthew Lee and Lena Schmidt.
+
+<!-- TODO Double check this list at the end of the project. -->
 
 ### Search strategy
 
@@ -149,11 +155,18 @@ $$AC1 = \frac{observed\;agreement-chance\;agreement}{1-chance\;agreement}$$
 
 In reference to a two-by-two table with cells A, B, C and D, it is calculated using the following:
 
-$$AC1 = \frac{\frac{A+D}{N}-e(\gamma)}{1-e(\gamma)}$$ 
+
+\begin{equation}
+  AC1 = \frac{\frac{A+D}{N}-e(\gamma)}{1-e(\gamma)}
+  (\#eq:AC1-main)
+\end{equation}
 
 where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, where 
 
-$$q = \frac{(A+C)+(A+B)}{2N}$$
+\begin{equation}
+  q = \frac{(A+C)+(A+B)}{2N}
+  (\#eq:AC1-supp)
+\end{equation}
 
 <!-- TODO Need to be sure of how to calculate. -->
 
@@ -210,6 +223,17 @@ As part of this, the community also moved from checklist or score based tools to
 Additionally, results should be assessed at the result (defined as a a specific outcome at a specific timepoint) rather than the study level. For example, a study may report on the efficacy of an intervention at 6 months and two years follow-up. missing outcome data that is not an issues at 6 months may introduce bias at 2 year follow-up. In this case, assigning a bias judgement to the study as a whole hides this differential biases for each result.
 
 In this review, domain-based tools were used to assess the risk of bias for each result in each included study. The study design-specific tools are introduced and discussed in more detail in the following sections.
+
+In addition, the tool also aim to capture the potential direction of bias for each given domain. An optional question at the end of each domain, e.g. for Domain 1 of the RoB2 tool: "What is the predicted direction of bias arising from the randomization process?", possible responses included
+
+* Not applicable 
+* Favours experimental 
+* Favours comparator
+* Towards null 
+* Away from null 
+* Unpredictable
+
+
 
 <!----------------------------------------------------------------------------->
 
@@ -279,9 +303,18 @@ Both a fixed-effect and random-effects meta-analysis model was.
 
 For 
 
-Need formula here, and description of different methods and quarrels regarding disctinction fixed effect vs random effects meta-analyses.
+Need formula here, and description of different methods and quarrels regarding distinction fixed effect vs random effects meta-analyses.
 
 This analytical approach was used for 
+
+\begin{equation}
+  weighted\ average = \frac{\sum Y_i (1/SE_i^2)}{\sum(1/SE_i^2)}
+  (\#eq:meta-analysis-fixed)
+\end{equation}
+
+where ...
+
+<!-- TODO Need equation for random effects too -->
 
 
 #### Dose-response analyses
@@ -364,9 +397,16 @@ A dose response meta-analysis was not planned, marking a departure from the regi
 
 ### Search and screening results
 
+Following the search
+
+
 `r num_to_text(23447,T)` records were identified through database searches. Following depulication, `r num_to_text(16109)` unique records remained. 
 
 <!--- Cross check this with the actual numbers included --->
+
+No eligible records were identified in the screening of the 500 records excluded by the search. Many of these were basic science studies <!-- TODO text -->
+
+
 
 <!----------------------------------------------------------------------------->
 
@@ -391,7 +431,6 @@ knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
 
 Following de-duplication, the titles and abstracts of `r num_to_text(16109)` records were assessed for eligibility. `r num_to_text(387)` were deemed potentially eligible and the full text records for these were requested and screened. \@ref(fig:prisma-flow-fig) <!-- TODO Check these figures -->
 
-
 <!----------------------------------------------------------------------------->
 
 A PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-analyses) flow diagram,[@page2021] <!-- TODO CITATION NEEDED - cite PRIMSA flow paper here, if published --> shown in Figure \@ref(prisma-flow-fig), illustrates the movement of articles through the review. To highlight the contribution of preprint archives to the review, the flow diagram delineates between those records captured through databases searches (presented on the right of the diagram) and those captured by the search tool described in the previous chapter (presented in grey on the left of the diagram).
@@ -400,9 +439,9 @@ Following screening, XXX studies were included.
 
 The distribution of included studies over time demonstrates that despite the conduct of several previous reviews of different types of literature surrounding this question, primary studies continue to the published as these reviews have yet to provide a definite answer.
 
-Table \@ref(tab:incl-studies-character) shows the characteristics [**Include column here that says whether it was included in a systematic review - see below**]
+&nbsp;       
 
-As part of our our forward snowballing exercise (where articles citing an included study are cited), Irecorded whether a study included in our review had been included in any previous evidence synthesis attempt in an attempt to qualify the added value of this analysis. Additionally, if an included article was subsequently cited by a review, all studies in that review were screened for inclusion for the sake of completeness. This analysis was performed by extracting the citing articles from Google Scholar on [DATE] and screening them manually. The DOI of articles extracted from this analysis are included in the appendix, as the Google Scholar search functionality is not readily reproducible.*
+As part of our our forward snowballing exercise (where articles citing an included study are cited), I recorded whether a study included in our review had been included in any previous evidence synthesis attempt in an attempt to qualify the added value of this analysis. Additionally, if an included article was subsequently cited by a review, all studies in that review were screened for inclusion for the sake of completeness. This analysis was performed by extracting the citing articles from Google Scholar on [DATE] and screening them manually. The DOI of articles extracted from this analysis are included in the appendix, as the Google Scholar search functionality is not readily reproducible.*
 
 <!-- TODO Actually do this! -->
 
@@ -442,19 +481,28 @@ Those records which were excluded in the initial screening, but were included by
 
 Additionally, records I excluded on my second viewing (n=`r discrepancy_Intra`) were investigated. All were . . . 
 
+&nbsp;
 
-
-
-
+<!----------------------------------------------------------------------------->
 
 ### Characteristics of included studies
 
 XXXX studies met the criteria for inclusion in the review.
 
 
+Table \@ref(tab:incl-studies-character) shows the characteristics 
 
 
+&nbsp;
 
+<!----------------------------------------------------------------------------->
+(ref:studyCharacteristics-caption) studyCharacteristics
+
+(ref:studyCharacteristics-scaption) studyCharacteristics
+
+```{r studyCharacteristics-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
 
 As shown in
 
@@ -500,7 +548,24 @@ Best practice methods for dealing with disparate effect measures in included stu
 
 Some evidence of manipulation of effect estimates in previous reviews,(e.g. Chou, Sci Reports - at least one study disagrees with) but not documented in review text.
 
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+
+
 ### Risk of bias {#risk-of-bias-subheading}
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+
+### Meta-n
+
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+
 
 ### Dose response meta-analysis
 
@@ -513,11 +578,19 @@ Several studies were excluded from the dose-response meta-analysis, as the numbe
 <!-- TODO Include image -->
 
 
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+
 ### Sources of heterogeneity
 
 Detail that some of these are exploratory, in particular the effect of different scales on the association between the groups. **[CROSS]**
 
 
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
 
 
 ### Publication bias {#sys-rev-pub-bias}
@@ -528,6 +601,10 @@ Detail that some of these are exploratory, in particular the effect of different
 One particularly interesting meta-bias potentially applicable in this review is the definition of code lists across
 
 Many studies did not report the codelists used to run the analysis, 
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
 
 ### Triangualtion across evidence sources
 
@@ -540,6 +617,11 @@ A key limitation for other types of dementia, in particularly vascular, is that 
 Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated. [@guyatt2011]
 
 Without our framework and as part of the risk of bias assessments reported in \@ref(risk-of-bias-subheading), Itest test
+
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
 
 ### Added evidental value of including preprints {sys-rev-including-preprints}
 
@@ -589,6 +671,11 @@ Major limitation is that several included studies used data from electronic heal
 In addition, the a
 
 
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+
 ### Previous reviews
 
 <!-- TODO Not sure this is the best place for this -->
@@ -621,6 +708,8 @@ This does introduce some conflicts with other studies where a change score has b
 
 Does it also cause issues in terms of self-report?
 
+&nbsp;
+
 <!----------------------------------------------------------------------------->
 
 ### Comments on the process
@@ -638,7 +727,11 @@ Great learning experience in terms of managing a team, but due to a rotating sch
 
 A final point on the progress of the review is that, due to the need for dual screening and data extraction, a number of external researchers became involved in this review. I found the people-management aspect particularly challenging and could definitely have improved the process through better communication of deadlines, but it has provided good experience of leading a review team.
 
+
+&nbsp;
+
 <!----------------------------------------------------------------------------->
+
 ### Inclusion of preprints
 
 As highlighted in Section \@ref(diverse-sources-preprints), this thesis explicitly sought to synthesize evidence across different publication statuses, predominantly preprinted vs published. Using the tool described in Chapter \@ref(sys-rev-tools-intro), two preprint serves related to health and biomedical sciences were search as part of this review. 
@@ -647,7 +740,11 @@ The added evidential value of including these preprints was highlighted in Secti
 
 On further investigation, X of these preprints were subsequently published since the search was performed in 2019. While this provides some additional evidence that the quality of the research described by included preprints was sufficiently high to pass peer-review, it does not invalidate the approach, as the future publication status was unavailable at the time the search was conducted.
 
+
+&nbsp;
+
 <!----------------------------------------------------------------------------->
+
 ### Open data sharing {#sys-rev-open-data}
 
 As evidenced by the issues involved in obtaining 
@@ -661,7 +758,11 @@ Similarly, a substanital amount of time and effort has gone into making the data
 
 <!--- Comment here on issues involved in extracting data --->
 
+
+&nbsp;
+
 <!----------------------------------------------------------------------------->
+
 ### Original contribution to research
 
 I believe there are four aspects where this review is distinct from those reviews already available in the published literature (as identified by <!-- TODO CITATION NEEDED -->):
@@ -674,7 +775,11 @@ I believe there are four aspects where this review is distinct from those review
 
 - *Contribution to methods work:* A large part of this review was the associated work on improving research synthesis methods. This work is detailed as relevant throughout the Chapter, often referring to additional work detailed in the . IN addition this review was used to pilot an upcoming risk of bias tool
 
+
+&nbsp;
+
 <!----------------------------------------------------------------------------->
+
 ### Comparison with other reviews
 
 <!-- TODO This section will be informed by the review published as a preprint -->
@@ -689,7 +794,11 @@ __Exclusion of the PROSPER trial__ Will need to have a good bit here on the excl
 
 <!-- TODO Will hopefully be able to cite MSc review here to give details of other reviews -->
 
+
+&nbsp;
+
 <!----------------------------------------------------------------------------->
+
 ### Reviewing Mendelian randomisations studies
 
 <!-- Three things to cover: No good tools for dealing with MR studies yet (particularly search filters, as terminology is hard + no risk of bias tool); Is double counting of studies an issue (maybe speak to George, particularly if you can find an example)  -->
@@ -737,25 +846,47 @@ Potentially the use of methods such as snowballing (forwards and backwards citat
 However, in future better-resourced reviews, a dedicated search for "risk factors" and "dementia" and "Mendelian randomisation", followed by manual review of studies that look across multiple risk factors, would be advisable.
 
 
+
+&nbsp;
+
 <!----------------------------------------------------------------------------->
+
 ### Strenghts and limitations
+
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+
 
 #### Inclusion of Mendelian randomisation studies
 
 
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+
 #### Inclusion of preprints
 
-Comment on the fact that several of the studies identified through the search of preprints, were subsequently published, but much later than the
-cut-off point for the search (e.g. they would not have been captured by the search for published papers)
+Comment on the fact that several of the studies identified through the search of preprints, were subsequently published, but much later than the cut-off point for the search (e.g. they would not have been captured by the search for published papers)
 
-<!--- IDEA Findings from this chapter are used throughout the later chapters of this thesis. In particular, Chapter 6 uses statistical modelling to exploring the impact of BCG vaccination on TB outcomes in greater detail, Chapter 7 explores the impact of the change in BCG vaccination policy on TB incidence rates using the incidence rate estimates from this chapter, Chapter 8 uses the understanding of the ETS gained from this chapter to parameterise a dynamic TB transmission model, and Chapter 9 uses the insights gained into the date variables in the ETS to fit a dynamic TB transmission model. From Sam abbotts--->
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
 
 ### Use in other chapters
+
+<!--- IDEA Findings from this chapter are used throughout the later chapters of this thesis. In particular, Chapter 6 uses statistical modelling to exploring the impact of BCG vaccination on TB outcomes in greater detail, Chapter 7 explores the impact of the change in BCG vaccination policy on TB incidence rates using the incidence rate estimates from this chapter, Chapter 8 uses the understanding of the ETS gained from this chapter to parameterise a dynamic TB transmission model, and Chapter 9 uses the insights gained into the date variables in the ETS to fit a dynamic TB transmission model. From Sam abbotts--->
 
 Findings from this review are used though out the subsequent chapters. 
 
 For example, 
 
+
+## Conclusions
+
+\newpage 
 
 ## References
 

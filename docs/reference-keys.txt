@@ -1,4 +1,5 @@
 tab:diagnosticCriteria-table
+eq:total-cholesterol-formula
 tab:lipidLevels-table
 fig:statin-mechanisam
 tab:statinOverview-table
@@ -7,13 +8,17 @@ tab:thesisOverview-table
 fig:medrxivr-sr
 fig:medrxivr-data-sources
 tab:searchOverview-table
+eq:AC1-main
+eq:AC1-supp
 tab:gwet-table
 eq:lipidConversion
+eq:meta-analysis-fixed
 fig:prisma-flow-fig
 tab:agreeInter-table
 tab:agreeIntra-table
 tab:readExample-table
 fig:decisionTreeFig
+eq:cox-model
 fig:immortalTimeBias
 fig:negativeOutcome
 fig:cprdFlowchart
@@ -30,6 +35,7 @@ tab:statinTypeTable-table
 fig:statinTypeFig
 fig:smeethComparison
 fig:indicationBias
+tab:searchHits-table
 tab:wosDatabases-table
 tab:mrTool-table
 fig:trafficplot
@@ -98,6 +104,7 @@ lay-summary-2
 sys-rev-intro
 methods
 protocol
+contributions
 search-strategy
 study-selection
 inclusion-criteria
@@ -125,6 +132,7 @@ characteristics-of-included-studies
 converting-risk-ratios-to-odds-ratios
 hazard-ratios-vs-riskodds-ratios
 risk-of-bias-subheading
+meta-n
 dose-response-meta-analysis
 sources-of-heterogeneity
 sys-rev-pub-bias
@@ -142,6 +150,7 @@ strenghts-and-limitations
 inclusion-of-mendelian-randomisation-studies
 inclusion-of-preprints-1
 use-in-other-chapters
+conclusions
 references-2
 cprd-analysis-heading
 lay-summary-3
@@ -180,7 +189,7 @@ summary-of-findings
 interpretation-of-results
 strengths-and-limitations
 cprd-data-avail
-conclusions
+conclusions-1
 references-3
 ipd-heading
 lay-summary-4
