@@ -235,6 +235,8 @@ In addition, the tool also aim to capture the potential direction of bias for ea
 
 
 
+
+
 <!----------------------------------------------------------------------------->
 
 #### Randomised controlled trials
@@ -489,11 +491,13 @@ Additionally, records I excluded on my second viewing (n=`r discrepancy_Intra`) 
 
 XXXX studies met the criteria for inclusion in the review.
 
-
-Table \@ref(tab:incl-studies-character) shows the characteristics 
+Table \@ref(tab:studyCharacteristics-table) shows the characteristics 
 
 
 &nbsp;
+
+
+\blandscape{}
 
 <!----------------------------------------------------------------------------->
 (ref:studyCharacteristics-caption) studyCharacteristics
@@ -504,35 +508,61 @@ Table \@ref(tab:incl-studies-character) shows the characteristics
 ```
 <!----------------------------------------------------------------------------->
 
+\elandscape{}
+
 As shown in
 
 
-Include here:
+<!--- TODO Figures and tables to include here: 
 
--   PRISMA Flowchart
+-   PRISMA Flowchart (done)
 
--   Summary of types of study
+-   Summary of types of study (half done)
 
--   Summary of locations (use evidence map)
+-   Summary of locations (half done)
 
--   Summary of diagnostic criteria used
+-   Summary of diagnostic criteria used (done)
 
--   Summary of risk of bias
+-   Summary of risk of bias (not done)
 
--   Long table, horizontally. 
+--->
 
-A common theme across the studies was a lack of data on vascular dementia. This is particularly interesting as lipids and statins are primarily a vascular disease. There is the potential that they studies encountered similar difficulties in address the unexpected results observed in the CPRD analysis in Chapter \@ref(cprd-analysis-heading). For vascular dementia, few studies exmined this outcome, primarily because of the absence (until recently) of
+<!----------------------------------------------------------------------------->
+
+```{r cohortLocationsSetup, include = FALSE}
+
+```
+
+(ref:cohortLocations-cap) Geographical distribution of study cohorts
+
+(ref:cohortLocations-scap) Geographical distribution of study cohorts
+
+```{r cohortLocations, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:cohortLocations-cap)', out.width='100%', fig.scap='(ref:cohortLocations-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/cohortLocations.png"))
+```
+<!----------------------------------------------------------------------------->
+
+Many of the included studies were conducted in European countries (Figure \@ref(fig:cohortLocations).
+
+
+
+
+A common theme across the studies was a lack of data on vascular dementia. This is particularly interesting as lipids and statins are primarily a vascular disease. There is the potential that they studies encountered similar difficulties in address the unexpected results observed in the CPRD analysis in Chapter \@ref(cprd-analysis-heading). For vascular dementia, few studies examined this outcome, primarily because of the absence (until recently) of
 
 One item of particular interest in the absence of studies examining Mendelian randomisation studies is the absence of any effect following the adjustment for Apoe4. As covered in the discussion, ApoE4 genotype is the mjor risk factor for Alzheimer's disease.
 
+<!-- TODO Could extract before and after adjusted for ApoE4 to illustrate -->
+
+
 In addition, there was quite a spread in terms fo the effect estimates used to th. Previous systematic review
+
+
+
+<!----------------------------------------------------------------------------->
 
 ### Converting risk ratios to odds ratios
 
 Include formulae and informed assumptions 
-
-
-### Hazard ratios vs risk/odds ratios
 
 Not interchangeable in the context of systematic review. If outcome is rare, odds and risk ratios approximate each other, but the hazard ratio is measuring something completely different, by taking into account time-to-event in each treatment group. 
 
@@ -552,25 +582,40 @@ Some evidence of manipulation of effect estimates in previous reviews,(e.g. Chou
 
 <!----------------------------------------------------------------------------->
 
-
 ### Risk of bias {#risk-of-bias-subheading}
 
 &nbsp;
 
 <!----------------------------------------------------------------------------->
 
-### Meta-n
+### Meta-analysis of statin use and hypercholesteroleamia
 
+Straight-forward random effects meta-analysis of 
+
+
+```{r primaryFigures, include = FALSE}
+
+```
+
+
+<!----------------------------------------------------------------------------->
+(ref:fpStatins-cap) __Forest plot showing effect of statins:__
+
+(ref:fpStatins-scap) Forest plot showing effect of statins
+
+```{r fpStatins, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:fpStatins-cap)', out.width='100%', fig.scap='(ref:fpStatins-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/forester_statins_any.png"))
+```
+<!----------------------------------------------------------------------------->
 
 &nbsp;
 
 <!----------------------------------------------------------------------------->
 
 
-### Dose response meta-analysis
+### Dose response meta-analysis of lipid levels
 
 <!-- TODO Cite excluded studies and list exclusion reasons  -->
-
 
 Several studies were excluded from the dose-response meta-analysis, as the number of cases/controls be
 

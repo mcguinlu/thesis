@@ -98,7 +98,7 @@ Secondly, and in a similar vein, the analysis intentionally takes a different an
 
 ### Study protocol
 
-An *a priori* protocol for this study was published, [@walker2016a] and amendments to this are recorded in Appendix \@ref(appendix-cprd-amendments).[@vonelm2008]
+An *a priori* protocol for this study was published, [@walker2016] and amendments to this are recorded in Appendix \@ref(appendix-cprd-amendments).[@vonelm2008]
 
 <!-- QUESTION If protocol was written by Venexia, how do I reference this? -->
 
@@ -202,11 +202,11 @@ Missing data are a recognised issue in electronic health records databases,[@wel
 
 <!-- IDEA Add more detail here on the missing data approach -->
 
-In this analysis, missing data were handled using a multiple imputation approach. Variables with missing observations were identified, and 20 imputed datasets were created.[@sterne2009a] Nominal variables with missing values were modelled using multinomial logistic regression, while continuous variables were modelled using linear regression. As per best practice, all variables used in the analytic model, including the outcome, were included in the imputation model.[@moons2006using] Imputation was performed using the MICE (Multiple Imputation by Chained Equations) command in STATA16.
+In this analysis, missing data were handled using a multiple imputation approach. Variables with missing observations were identified, and 20 imputed datasets were created.[@sterne2009] Nominal variables with missing values were modelled using multinomial logistic regression, while continuous variables were modelled using linear regression. As per best practice, all variables used in the analytic model, including the outcome, were included in the imputation model.[@moons2006using] Imputation was performed using the MICE (Multiple Imputation by Chained Equations) command in STATA16.
 
 Missing data was only considered an issue for variables where a numerical test result was expected (e.g. BMI), or where a code existed for the absence of the condition (e.g. categorical smoking status). This approach was necessary, as absence of a code for other treatments or conditions (e.g. statin use or dementia) was assumed to indicate absence of the treatment/condition, rather than being considered missing.[@wells2013strategies]
 
-Using multiple imputation to handle missing data is an alternative to a "complete case" approach,[@pigott2001review] where participants missing any covariate are dropped from the dataset. As a sensitivity analysis, I preformed and compared the results of both methods,[@hughes2019a] to investigate the impact of multiple imputation on the results.
+Using multiple imputation to handle missing data is an alternative to a "complete case" approach,[@pigott2001review] where participants missing any covariate are dropped from the dataset. As a sensitivity analysis, I preformed and compared the results of both methods,[@hughes2019] to investigate the impact of multiple imputation on the results.
 
 &nbsp;
 <!--------------------------------------------------------------------------->
@@ -241,7 +241,7 @@ A Cox PR model was chosen for this analysis as it inherently accounts for the le
 
 ### Immortal time bias and time-varying treatment indicators {#cprd-immortal-time-bias}
 
-Immortal time bias covers two distinct but related types of bias. The first presentation, the selection bias aspect (Panel A, Figure \@ref(fig:immortalTimeBias)), occurs when time prior to the exposure is excluded leading to the exposed and control groups being followed up from different time points.[@levesque2010a] For example, if the unexposed group are followed from a cholesterol test result, while the exposed group is followed from date of LRA prescription, any events that occur in the exposed group prior to the exposure event will be inappropriately excluded from the analysis.
+Immortal time bias covers two distinct but related types of bias. The first presentation, the selection bias aspect (Panel A, Figure \@ref(fig:immortalTimeBias)), occurs when time prior to the exposure is excluded leading to the exposed and control groups being followed up from different time points.[@levesque2010] For example, if the unexposed group are followed from a cholesterol test result, while the exposed group is followed from date of LRA prescription, any events that occur in the exposed group prior to the exposure event will be inappropriately excluded from the analysis.
 
 The second presentation of immortal time bias is as a type of misclassification bias (Panel B, Figure \@ref(fig:immortalTimeBias)). It occurs when the exposure time prior to the exposure date, and any events occurring within it, is inappropriately assigned to the exposed group. This second presentation appears to be common in the existing literature, as several of the studies included in the systematic review presented in Chapter \@ref(sys-rev-heading) were identified as being at risk of immortal time bias following formal risk of bias assessment using the ROBINS-I tool (see Section \@ref(risk-of-bias-subheading)).
 
@@ -500,7 +500,7 @@ The results of the series of sensitivity analyses performed are described in the
 
 #### Complete case versus imputed data
 
-In almost all cases, the use of imputed data resulted in a marginal attenuation of the effects observed when using a complete cases analysis. It should be noted that due to the large amount of missing data (e.g. `r ldltext` were missing a baseline LDL cholesterol measure), the number of participants included in the complete case analysis was substantially smaller than that included when using imputed data. In this case, though the overall position of the effect estimates does not change substantially when using the imputed dataset, there is a noticeable gain in power.[@sterne2009b] 
+In almost all cases, the use of imputed data resulted in a marginal attenuation of the effects observed when using a complete cases analysis. It should be noted that due to the large amount of missing data (e.g. `r ldltext` were missing a baseline LDL cholesterol measure), the number of participants included in the complete case analysis was substantially smaller than that included when using imputed data. In this case, though the overall position of the effect estimates does not change substantially when using the imputed dataset, there is a noticeable gain in power.[@sterne2009] 
 
 &nbsp;
 
@@ -816,7 +816,7 @@ In summary, despite best efforts to account for strong confounding, participants
 
 The primary strength of this analysis compared to others available in the literature is the relative size of the CPRD and length of follow-up. Having reviewed the other studies identified by the systematic review in Chapter \@ref(sys-rev-heading), this analysis of `r comma(attrition[14,1])` participants is one of the largest available studies of this research question. Additionally, this analysis followed LRA users and non-users from a common index date, using a time-updating treatment indicator to correctly assign time-at-risk to the exposed and unexposed groups. This approach has been less commonly used in the literature and allows for the mitigation of potential immortal time bias.
 
-However, the findings of this analysis are subject to several limitations. There is a strong possibility of differential misclassification[@porta2014dictionary] of dementia-related conditions based on the exposure. As an illustrative example, those with memory complaints may be more likely to be classified as vascular dementia than Alzheimer's disease if their medical records contains prescriptions for lipid-regulating agents. Further, there is a potential for general non-differential misclassification of the outcome based on varying positive predictive value of electronic health record code lists to identify dementia cases.[@wilkinson2018; @mcguinness2019b]
+However, the findings of this analysis are subject to several limitations. There is a strong possibility of differential misclassification[@porta2014dictionary] of dementia-related conditions based on the exposure. As an illustrative example, those with memory complaints may be more likely to be classified as vascular dementia than Alzheimer's disease if their medical records contains prescriptions for lipid-regulating agents. Further, there is a potential for general non-differential misclassification of the outcome based on varying positive predictive value of electronic health record code lists to identify dementia cases.[@wilkinson2018; @mcguinness2019validity]
 
 Misclassification of outcomes is not the only issue introduced by the use of EHR codes to define outcomes. Comparing and contrasting between different studies is particularly difficult because of the impact that the use of different code list can have on the analysis. This is a particular challenge in comparing research across different time-periods and coding systems, as illustrated by the discrepancy between the results when using the codes lists defined for this study and those used by Smeeth _et al_.
 

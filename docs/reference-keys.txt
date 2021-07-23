@@ -16,6 +16,9 @@ eq:meta-analysis-fixed
 fig:prisma-flow-fig
 tab:agreeInter-table
 tab:agreeIntra-table
+tab:studyCharacteristics-table
+fig:cohortLocations
+fig:fpStatins
 tab:readExample-table
 fig:decisionTreeFig
 eq:cox-model
@@ -130,10 +133,9 @@ results
 search-and-screening-results
 characteristics-of-included-studies
 converting-risk-ratios-to-odds-ratios
-hazard-ratios-vs-riskodds-ratios
 risk-of-bias-subheading
-meta-n
-dose-response-meta-analysis
+meta-analysis-of-statin-use-and-hypercholesteroleamia
+dose-response-meta-analysis-of-lipid-levels
 sources-of-heterogeneity
 sys-rev-pub-bias
 triangualtion-across-evidence-sources

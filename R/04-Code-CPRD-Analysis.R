@@ -1382,7 +1382,8 @@ generate_forester_plot(
   here::here("figures/cprd-analysis/forester_control_outcomes.png"),
   first_col = "drug",
   top_title = "Back pain",
-  outcome_levels = c("Back pain", "IHD", "Type 2 Diabetes")
+  outcome_levels = c("Back pain", "IHD", "Type 2 Diabetes"),
+  adjustment = 0.4, height_expansion= 0.1
 )
 
 results_co$outcome <-
@@ -1569,7 +1570,8 @@ generate_forester_plot(
   here::here("figures/cprd-analysis/forester_cohort_entry.png"),
   first_col = "analysis",
   top_title = "Probable AD",
-  outcome_levels = c("Probable AD")
+  outcome_levels = c("Probable AD"),
+  height_expansion= 0.1, adjustment = 0.35
 )
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-

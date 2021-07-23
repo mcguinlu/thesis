@@ -163,77 +163,217 @@ if(doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- chunkname-table
+# ---- studyCharacteristics-table
 
-chunkname_table <- mtcars
+toc_df <- rio::import("data/sys-rev/Book1.xlsx",which = 1) %>%
+  janitor::clean_names() %>%
+  select(study_id, author, year, location, data_source) %>%
+  dplyr::filter(study_id == "9429")
 
-if(doc_type == "docx"){
-apply_flextable(chunkname_table,caption = "(ref:chunkname-caption)")
-}else{
-knitr::kable(chunkname_table, format = "latex", caption = "(ref:chunkname-caption)", caption.short = "(ref:chunkname-scaption)", booktabs = TRUE) %>% 
-row_spec(0, bold = TRUE) %>%
-kable_styling(latex_options = c("HOLD_position"))
+toc_df2 <- rio::import("data/sys-rev/Book1.xlsx",which = 2) %>%
+  janitor::clean_names() %>%
+  group_by(study_id) %>% 
+  summarize(Criteria = paste0(unique(diagnostic_criteria), collapse = "; "),
+            Exposures = paste0(unique(exposure), collapse = "; "), 
+            Outcomes = paste0(unique(outcome), collapse = "; ")) %>%
+  ungroup()
+
+studyCharacteristics_table <- left_join(toc_df, toc_df2) %>%
+  mutate(Study = paste(author, year)) %>%
+  select(Study, location, data_source, Exposures, Outcomes, Criteria, -c(study_id,author, year)) %>%
+  rename("Location" = location,
+         "Data source" = data_source, 
+         "Diagnostic criteria" = Criteria)
+
+if(doc_type == "docx") {
+  apply_flextable(studyCharacteristics_table, caption = "(ref:studyCharacteristics-caption)")
+} else{
+  knitr::kable(
+    studyCharacteristics_table,
+    format = "latex",
+    caption = "(ref:studyCharacteristics-caption)",
+    caption.short = "(ref:studyCharacteristics-scaption)",
+    booktabs = TRUE
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
 }
 
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# cohortLocationsSetup ----
+
+world <- toc_df %>%
+  count(location) %>%
+  right_join(
+    rnaturalearth::ne_countries(scale = "medium", returnclass = "sf"),
+    by = c("location" = "name")
+  ) %>%
+  tidyr::replace_na(list(n = 0))
+
+p1 <- ggplot(data = world) +
+  geom_sf(aes(fill = n, geometry = geometry), legend = "none") +
+  scale_fill_gradient(low = "grey95",
+                      high = "grey10") +
+  geom_rect(
+    xmax = 36,
+    xmin = -10,
+    ymax = 70,
+    ymin = 35,
+    fill = "transparent",
+    color = "black",
+    size = 1
+  ) +
+  xlab("Longitude") + ylab("Latitude") +
+  coord_sf(ylim = c(-60, 85),
+           expand = FALSE) +
+  geom_rect(
+    xmax = Inf,
+    xmin = Inf,
+    ymax = -80,
+    ymin = -60,
+    fill = "black",
+    color = "black",
+    size = 1
+  ) +
+  theme_void() +
+  theme(panel.border = element_rect(colour = "black", fill = "transparent"))
+
+
+
+p2 <- ggplot(data = world) +
+  geom_sf(aes(fill = n, geometry = geometry)) +
+  scale_fill_gradient(low = "grey95",
+                      high = "grey10") +
+  xlab("Longitude") + ylab("Latitude") +
+  coord_sf(xlim = c(36,-12),
+           ylim = c(70, 35),
+           expand = FALSE) +
+  theme_void() +
+  theme(panel.border = element_rect(colour = "black", fill = "transparent"))
+
+plot_space <- ggplot() +
+  coord_sf(
+    xlim = c(36,-12),
+    ylim = c(70, 35),
+    expand = FALSE,
+    clip = "off"
+  ) +
+  annotate(
+    "segment",
+    x = -110,
+    xend = -1180,
+    y = -1040,
+    yend = 71,
+    colour = "black",
+  ) +
+  annotate(
+    "segment",
+    x = 440,
+    xend = 1210,
+    y = -1040,
+    yend = 71,
+    colour = "black",
+  ) +
+  theme_void()
+
+p3 <- p2 + plot_space + p1 + plot_layout(
+  ncol = 1,nrow = 3,
+  guides = 'collect',
+  widths = c(1, 1, 1),
+  heights = c(5, 0.1, 10)
+)  & labs(fill="No. of\ncohorts") &
+  theme(legend.position = "left", 
+        legend.box.margin=margin(0,20,0,0))
+
+ggsave(
+  here::here("figures/sys-rev/cohortLocations.png"),
+  p3,
+  height = 10,
+  width = 9
+)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # primaryFigures----
 
-test <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx") %>%
+results_statins <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx", which = 1) %>%
   janitor::clean_names() %>%
   dplyr::filter(done == "Y",
-         !is.na(point_estimate), 
-         measure == "HR", 
-         outcome == "Dementia", 
-         exposure %like% "[Ss]tatin", 
+         !is.na(point_estimate),
+         measure == "HR",
+         outcome == "Dementia",
+         exposure %like% "[Ss]tatin",
          !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
-  mutate(point = log(point_estimate), 
+  mutate(point = log(point_estimate),
          SE = (log(lower_95_percent) - log(upper_95_percent))/3.92) %>%
   arrange(author, year)
 
-t <- metafor::rma.uni(data = test,
+t <- metafor::rma.uni(data = results_statins,
                       yi = point,
-                      sei = SE)
+                      sei = SE,
+                      slab = paste(author, year)) %>%
+  broom_ma()
+  
+point_colour <-
+  ifelse(t$type == "summary",
+         "black",
+         "grey50")
 
-png(file = 'forestplot_acd.png') 
-metafor::forest(t, transf=exp, slab = paste(test$author, test$year), refline =1, xlab = "HR for any dementia")
-dev.off() 
-
-
-
-test <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx") %>%
-  janitor::clean_names() %>%
-  filter(done == "Y",
-         !is.na(point_estimate), 
-         measure == "HR", 
-         outcome %like% "VaD", 
-         exposure %like% "[Ss]tatin", 
-         !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
-  mutate(point = log(point_estimate), 
-         SE = (log(lower_95_percent) - log(upper_95_percent))/3.92)
-
-t <- metafor::rma.uni(data = test,
-                      yi = point,
-                      sei = SE)
-
-png(file = 'forestplot_vad.png') 
-metafor::forest(t, transf=exp, slab = paste(test$author, test$year), order ="obs", refline =1, xlab = "HR for VaD")
-dev.off() 
+forester_thesis(
+  t[,1],
+  t$estimate,
+  t$conf.low,
+  t$conf.high,
+  font_family = "Fira Sans",
+  file_path = here::here("figures/sys-rev/forester_statins_any.png"),
+  arrows = TRUE, display = FALSE,
+  x_scale_linear = F,stripe_colour = "white",
+  null_line_at = 1,
+  xlim = c(0.3,3), 
+  adjustment = 0.35,
+  colour_vec = point_colour
+)
 
 
-
-test <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx") %>%
-  janitor::clean_names() %>%
-  filter(done == "Y",
-         !is.na(point_estimate), 
-         measure == "HR", 
-         outcome %like% "AD", 
-         exposure %like% "[Ss]tatin", 
-         !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
-  mutate(point = log(point_estimate), 
-         SE = (log(lower_95_percent) - log(upper_95_percent))/3.92)
-
-t <- metafor::rma.uni(data = test,
-                      yi = point,
-                      sei = SE)
+# 
+# png(file = 'forestplot_acd.png') 
+# metafor::forest(t, transf=exp, slab = paste(test$author, test$year), refline =1, xlab = "HR for any dementia")
+# dev.off() 
+# 
+# 
+# 
+# test <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx") %>%
+#   janitor::clean_names() %>%
+#   filter(done == "Y",
+#          !is.na(point_estimate), 
+#          measure == "HR", 
+#          outcome %like% "VaD", 
+#          exposure %like% "[Ss]tatin", 
+#          !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
+#   mutate(point = log(point_estimate), 
+#          SE = (log(lower_95_percent) - log(upper_95_percent))/3.92)
+# 
+# t <- metafor::rma.uni(data = test,
+#                       yi = point,
+#                       sei = SE)
+# 
+# png(file = 'forestplot_vad.png') 
+# metafor::forest(t, transf=exp, slab = paste(test$author, test$year), order ="obs", refline =1, xlab = "HR for VaD")
+# dev.off() 
+# 
+# 
+# 
+# test <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx") %>%
+#   janitor::clean_names() %>%
+#   filter(done == "Y",
+#          !is.na(point_estimate), 
+#          measure == "HR", 
+#          outcome %like% "AD", 
+#          exposure %like% "[Ss]tatin", 
+#          !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
+#   mutate(point = log(point_estimate), 
+#          SE = (log(lower_95_percent) - log(upper_95_percent))/3.92)
+# 
+# t <- metafor::rma.uni(data = test,
+#                       yi = point,
+#                       sei = SE)

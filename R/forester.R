@@ -37,7 +37,7 @@
 #' @export
 #'
 #' @examples
-forester <- function(left_side_data,
+forester_thesis <- function(left_side_data,
                      estimate,
                      ci_low,
                      ci_high,
@@ -65,12 +65,19 @@ forester <- function(left_side_data,
                      point_sizes = 3,
                      point_shapes = 16,
                      center_ggplot = NULL, 
-                     bold_vec){
+                     adjustment = 0.6,
+                     bold_vec,
+                     colour_vec, 
+                     height_expansion = 0){
   
   if (!hasArg(bold_vec)) {
     bold_vec <- rep("plain",nrow(left_side_data))
   }
   
+  if (!hasArg(colour_vec)) {
+    colour_vec <- rep("black",nrow(left_side_data))
+  }
+
   theme <- gridExtra::ttheme_minimal(core=list(
     fg_params = list(hjust = 0, x = 0.05, fontfamily = font_family, fontface = bold_vec),
     bg_params = list(fill=c(rep(c(stripe_colour, "white"), length.out=nrow(left_side_data)), "white", "white", "white"))
@@ -248,14 +255,17 @@ forester <- function(left_side_data,
     oob_arrows$x_low <- xlim[1]
     oob_arrows$x_high <- xlim[2]
     
+    oob_arrows <- cbind(oob_arrows, colour_vec)
+      
+    
     ra <- sum(oob_arrows$ci_high > oob_arrows$x_high, na.rm = T) > 0
     la <- sum(oob_arrows$ci_low < oob_arrows$x_low, na.rm = T) > 0
     
     if(ra){
-      right_arrows <- dplyr::select(dplyr::filter(oob_arrows, ci_high > x_high), start = estimate, end = x_high, y = row_num)
+      right_arrows <- dplyr::select(dplyr::filter(oob_arrows, ci_high > x_high), start = estimate, end = x_high, y = row_num, colour_vec)
     }
     if(la){
-      left_arrows <- dplyr::select(dplyr::filter(oob_arrows, ci_low < x_low), start = estimate, end = x_low, y = row_num)
+      left_arrows <- dplyr::select(dplyr::filter(oob_arrows, ci_low < x_low), start = estimate, end = x_low, y = row_num, colour_vec)
     }
     
     if(ra && !la){
@@ -265,15 +275,22 @@ forester <- function(left_side_data,
     }else if(ra && la){
       g_oob <- rbind.data.frame(right_arrows, left_arrows)
     }
+    
+    
+    if (any(ra,la)==TRUE) {
+      oob_colour_vec <- g_oob %>% dplyr::pull(colour_vec) %>% as.character()
+    }
+    
   }
   
   ########## the main figure - this will be overlaid on the table ##############
   
   center <- ggplot2::ggplot() +
-    ggplot2::geom_point(data = gdata, ggplot2::aes(y = row_num, x = estimate, size = sizes, shape = shape), na.rm = TRUE) +
+    ggplot2::geom_point(data = gdata, ggplot2::aes(y = row_num, x = estimate, size = sizes, shape = shape, color = colour_vec), na.rm = TRUE) +
     ggplot2::geom_errorbarh(data = gdata, ggplot2::aes(y = row_num,
                                                        xmin = ci_low,
-                                                       xmax = ci_high),
+                                                       xmax = ci_high,
+                                                       color = colour_vec),
                             height = .25,
                             na.rm = TRUE) +
     ggplot2::theme_classic() + # base theme
@@ -284,6 +301,7 @@ forester <- function(left_side_data,
                    axis.ticks.length.x = grid::unit(.07, "in"),
                    text = ggplot2::element_text(family = font_family, size = 12),
                    panel.background = ggplot2::element_rect(fill = "transparent"),
+                   plot.margin=ggplot2::unit(c(5.5,11,5.5,16.5),"pt"),
                    plot.background = ggplot2::element_rect(fill = "transparent", color = NA),
                    panel.grid.major = ggplot2::element_blank(),
                    panel.grid.minor = ggplot2::element_blank(),
@@ -293,6 +311,7 @@ forester <- function(left_side_data,
     ggplot2::scale_y_continuous(expand = c(0,0)) +
     ggplot2::scale_shape_identity() +
     ggplot2::scale_size_identity() +
+    ggplot2::scale_colour_identity() +
     ggplot2::xlab("")
   
   ### add oob arrows if required ###
@@ -303,10 +322,11 @@ forester <- function(left_side_data,
                             ggplot2::aes(x = start,
                                          xend = end,
                                          y = y,
-                                         yend = y),
+                                         yend = y, color = oob_colour_vec),
                             arrow = ggplot2::arrow(angle = 15,
                                                    type = "closed",
-                                                   length = grid::unit(0.1, "in")))
+                                                   length = grid::unit(0.1, "in"))) +
+    ggplot2::scale_colour_identity()
   }
   
   ####### fix plot zoom ######
@@ -401,7 +421,7 @@ forester <- function(left_side_data,
   ######### using patchwork, overlay the ggplot on the table ###################
   
   png_width <- total_width/10 + nudge_x
-  png_height <- (nrow(gdata) + 4)/3.8
+  png_height <- (nrow(gdata) + 3)/3.8 + height_expansion
   
   if(is.null(add_plot)){
     
@@ -417,7 +437,7 @@ forester <- function(left_side_data,
                                left = (left_width/total_width),
                                right = ((ggplot_width + left_width)/total_width),
                                top = 1,
-                               bottom = 0.35/nrow(gdata))
+                               bottom = adjustment/nrow(gdata))
     
     if(arrows == TRUE){
       final <- final + patchwork::inset_element(arrows_plot,
@@ -489,13 +509,13 @@ forester <- function(left_side_data,
                                left = (left_width/new_full_width),
                                right = ((ggplot_width + left_width)/new_full_width),
                                top = 1,
-                               bottom = 0.35/nrow(gdata)) +
+                               bottom = adjustment/nrow(gdata)) +
       patchwork::inset_element(add_plot,
                                align_to = "full",
                                left = total_width/new_full_width,
                                right = 1,
                                top = 1,
-                               bottom = 0.35/nrow(gdata))
+                               bottom = adjustment/nrow(gdata))
     
     if(arrows == TRUE){
       final <- final + patchwork::inset_element(arrows_plot,
@@ -508,8 +528,8 @@ forester <- function(left_side_data,
   }
   
   ######### save the plot as a png, then display it with magick ################
-  
-  ggplot2::ggsave(dpi = dpi,
+
+    ggplot2::ggsave(dpi = dpi,
                   height = png_height,
                   width = png_width, units = "in",
                   filename = file_path)

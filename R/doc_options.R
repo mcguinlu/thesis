@@ -7,6 +7,8 @@ library(dplyr)
 library(data.table)
 library(flextable)
 library(ggplot2)
+library(patchwork)
+library(sf)
 
 doc.type <- knitr::opts_knit$get('rmarkdown.pandoc.to')
 

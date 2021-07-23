@@ -1,9 +1,30 @@
 library(magrittr)
 
+# Register fonts with R
+library(grDevices)
+
+extrafont::loadfonts(device = "win")
+grDevices::windowsFonts("Fira Sans" = grDevices::windowsFont("Fira Sans"))
+
 # Load forester function
 source(here::here("R/forester.R"))
 
-# Generates an line pandoc citation string for all packages used in the 
+
+# Clean output of metafor using sensible defaults
+broom_ma <- function(metafor_obj) {
+  return(broom::tidy(
+    metafor_obj,
+    conf.int = TRUE,
+    include_studies = TRUE,
+    exponentiate = TRUE
+  ) %>%
+    rename("Study" = term) %>%
+    mutate(Study = ifelse(Study == "overall", "Overall",Study),
+           Study = stringr::str_replace(Study,c(".1$",".2$",".3$"),c("a","b","c"))))
+}
+
+
+# Generates an line pandoc citation string for all packages used in the thesis
 
 gen_rmd_citation <- function(filename = "pkg-refs.bib") {
   
@@ -264,6 +285,10 @@ apply_flextable <- function(data, caption = NULL) {
 }
 
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+
+# The next two functions are for use with the CPRD analysis
+
 create_title_row <- function(top_title = "Any dementia", first_col, title) {
   if (title == top_title) {
     temp <- data.frame(
@@ -304,7 +329,8 @@ generate_forester_plot <-
              "Other dementia"
            ),
            xlimits = c(0.3,3),
-           display = FALSE) {
+           display = FALSE,
+           ...) {
     
     results$outcome <-
       factor(
@@ -326,11 +352,6 @@ generate_forester_plot <-
       ))
     
     results <- results[order(results$outcome, results[first_col]), ]
-    
-    #> Registering fonts with R
-    
-    extrafont::loadfonts(device = "win")
-    grDevices::windowsFonts("Fira Sans" = grDevices::windowsFont("Fira Sans"))
     
     results <- results %>%
       group_by(outcome) %>%
@@ -406,18 +427,28 @@ generate_forester_plot <-
     
     subset_table$point_shape <-
       ifelse(subset_table$Analysis == "   Any drug class",
-             9,
+             16,
              16)
+    
+    if ("   Any drug class" %in% subset_table$Analysis) {
+    point_colour <-
+      ifelse(subset_table$Analysis == "   Any drug class",
+             "black",
+             "grey50")
+    } else {
+      point_colour <- rep("black",nrow(subset_table))
+    }
+    
     
     xbreaks <- c(xlimits[1],1,xlimits[2])
     
-    forester(
+    suppressMessages(
+    forester_thesis(
       left_side_data = subset_table[, c(1, 5, 6)],
       estimate = subset_table$HR,
       ci_low = subset_table$ci_lower,
       ci_high = subset_table$ci_upper,
       display = display,
-      nudge_y = -0.3,
       estimate_precision = 2,
       estimate_col_name = "Hazard ratio",
       x_scale_linear = FALSE,
@@ -429,13 +460,17 @@ generate_forester_plot <-
       font_family = "Fira Sans",
       null_line_at = 1,
       arrows = TRUE,
-      ggplot_width = ,
       point_shapes = subset_table$point_shape,
-      arrow_labels = c("Protective", "Harmful"),
-      bold_vec = bold_vec
+      bold_vec = bold_vec, 
+      colour_vec = point_colour,
+      ...
+    )
     )
     
   }
+
+
+
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 
