@@ -101,10 +101,11 @@ table1[20, 1] <- "Added"
 table1[21, 1] <- "Switched"
 table1[22, 1] <- "LDL cholesterol (mean/SD)"
 table1[23, 1] <- "Type 2 Diabetes"
+table1[24, 1] <- "Follow up \\newline(years; median)"
 table1.copy <- table1
 
 table1 <- table1[, c(1, 10, 7, 9, 2:6, 8)]
-table1_disp <- table1[c(1:16, 22, 17:18, 23), ]
+table1_disp <- table1[c(1:16, 22, 17:18, 23, 24), ]
 
 # Quick check to ensure data quality
 t <- table1_disp[1, 2:10]
@@ -1385,124 +1386,6 @@ generate_forester_plot(
   outcome_levels = c("Back pain", "IHD", "Type 2 Diabetes"),
   adjustment = 0.4, height_expansion= 0.1
 )
-
-results_co$outcome <-
-  factor(results_co$outcome,
-         levels = c("Back pain", "IHD", "Type 2 Diabetes"))
-results_co <- results_co[order(results_co$outcome), ]
-
-results_co$drug <-
-  forcats::fct_rev(factor(
-    results_co$drug,
-    levels = c(
-      "Any",
-      "Statins",
-      "Omega-3 Fatty Acid Groups",
-      "Fibrates",
-      "Ezetimibe",
-      "Bile acid sequestrants"
-    )
-  ))
-results_co <-
-  results_co[order(results_co$outcome, results_co$drug), ]
-
-results_co$label <- paste0(
-  results_co$source,
-  " - HR: ",
-  ifelse(
-    sprintf("%.2f", results_co$HR) < 0.0051,
-    format(results_co$HR, scientific = TRUE, digits =
-             3),
-    sprintf("%.2f", results_co$HR)
-  ),
-  " (95% CI: ",
-  ifelse(
-    sprintf("%.2f", results_co$ci_lower) < 0.0051,
-    format(
-      results_co$ci_lower,
-      scientific = TRUE,
-      digits = 3
-    ),
-    sprintf("%.2f", results_co$ci_lower)
-  ),
-  " to ",
-  ifelse(
-    sprintf("%.2f", results_co$ci_upper) < 0.0051,
-    format(
-      results_co$ci_upper,
-      scientific = TRUE,
-      digits = 3
-    ),
-    sprintf("%.2f", results_co$ci_upper)
-  ),
-  "), N: ",
-  results_co$N_sub,
-  ", Fail: ",
-  results_co$N_fail
-)
-
-results_co$label <-
-  factor(results_co$label,
-         levels = unique(results_co$label[order(results_co$drug)]),
-         ordered = TRUE)
-
-g1 <-
-  ggplot(results_co, aes(y = HR, x = drug, colour = grouping)) +
-  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper), size = .8) +
-  geom_point(size = 2) +
-  facet_grid(outcome ~ ., switch = "both") +
-  coord_flip() +
-  scale_color_manual(values = c("black", "#999999")) +
-  geom_hline(yintercept = 1, linetype = 2) +
-  scale_x_discrete(name = "", position = "top") +
-  scale_y_log10(
-    limits = c(0.3, 3),
-    breaks = c(0.3, 1, 3),
-    name = paste0(
-      "HR and 95% CI comparing those treated with any \n",
-      "lipid regulating drug class to those not treated."
-    )
-  ) +
-  theme(
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor = element_blank(),
-    axis.text.x = element_text(size = 10, colour = "black"),
-    axis.text.y = element_text(size = 11, colour = "black"),
-    axis.title.x = element_text(size = 11),
-    strip.text.y.left = element_text(
-      size = 10,
-      angle = 90,
-      hjust = 0.5
-    ),
-    panel.border = element_rect(color = "black", fill = NA, size = 1),
-    panel.spacing = unit(0.5, "lines"),
-    legend.position = "none",
-    legend.text = element_text(size = 10),
-    legend.title = element_blank()
-  ) +
-  NULL
-
-gt <- ggplot(results_co, aes(y = 1, x = drug, label = label)) +
-  geom_text(hjust = 0,) +
-  facet_grid(outcome ~ ., switch = "both") +
-  theme_void() +
-  coord_flip() +
-  scale_y_continuous(limits = c(1, 1.125)) +
-  theme(strip.text = element_blank(),
-        panel.spacing = unit(0.5, "lines"))
-
-gt2 <- g1 + gt
-
-ggsave(
-  "figures/cprd-analysis/fp_control_outcomes.jpeg",
-  gt2,
-  height = 6.2,
-  width = 18,
-  unit = "cm",
-  dpi = 600,
-  scale = 1.75
-)
-
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- diagnosisType-table

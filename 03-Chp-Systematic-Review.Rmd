@@ -66,6 +66,8 @@ Systematic reviews aim to transparently and reproducibly identift
 
 <!-- TODO Need to seriously improve this -->
 
+<!----------------------------------------------------------------------------->
+
 &nbsp;
 
 ## Methods
@@ -80,7 +82,7 @@ This systematic review was performed in conjunction with a team of secondary rev
 
 <!-- TODO Double check this list at the end of the project. -->
 
-### Search strategy
+### Search strategy and and study selection
 
 I systematically search electronic bibliographic databases to identify potentially relevant records. The search strategy used in each database was developed in an iterative manner using a combination of free text and controlled vocabulary (MeSH/EMTREE)[@lefebvre2019searching] terms to identify studies which have examined the relationship between blood lipids levels and dementia, incorporating input from an information specialist. The strategy will include terms related to lipids, lipid modifying treatments, and dementia and its sub-types, and was designed for MEDLINE before being adapted for use in the other bibliography databases listed. An outline of the general strategy is presented in the Table \@ref(tab:searchOverview-table) below and the full draft search strategies for each database are presented in Appendix \@ref(appendix-search-strategy). <!-- TODO Need to actually attach each search strategy. Should be able to loop through search strategy results. -->
 
@@ -111,7 +113,7 @@ The abstracts list of relevant conferences (e.g. the proceedings of the Alzheime
 
 <!-- Include table with overview of search strategy here: summarise topics and how they were combined -->
 
-### Study selection
+#### Study selection
 
 Records were imported into Endnote and deduplicated using the method outlined in Bramer et al. (2016).[@bramer2016] In summary, this method uses multiple stages to identify potential duplicates, beginning with automatic deletion of records matching on multiple fields ("Author" + "Year" + "Title" + "Journal"), followed by manual review of less similar articles (e.g. those matched based on the "Title" field alone).
 
@@ -210,6 +212,54 @@ where $Z = 38.67$ for total cholesterol, LDL-c and HDL-c, and $Z = 88.57$ for tr
 
 <!----------------------------------------------------------------------------->
 
+#### Studification
+
+Multiple publications resulting from the analysis of the same data were included and grouped ().
+
+In the advent of multiple papers reporting results on the same cohort, but say, at different time points, I used a process of studifiction to build out the most comprehensive accounts of the studies and results from as many published articles were applicable. 
+
+This was particularly relevant to preprints and published papers reporting the same study, which were not considered duplicate records. Instead, they were considered as different reports of the same study. This is due to the potential for the published version to offer some information that the preprint did not, and vice versa.
+
+<!----------------------------------------------------------------------------->
+
+#### Following up with authors {#contacting-authors}
+
+Where data points required either for the analysis or risk-of-bias assessment but were not reported, the primary authors of the study were contacted. This approach was taken due to the potentially large impact of following up with authors on the results of the review,[@reynders2019] 
+
+This was particular important for the dose response meta-analysis, we
+
+
+Use the example of getting the cut-off points from the 
+
+<!-- TODO move to results, and keep just a short bit here -->
+
+<!----------------------------------------------------------------------------->
+&nbsp;
+
+#### Converting between different
+
+Include formulae and informed assumptions 
+
+Not interchangeable in the context of systematic review. If outcome is rare, odds and risk ratios approximate each other, but the hazard ratio is measuring something completely different, by taking into account time-to-event in each treatment group. 
+
+Several existing reviews do not distinguish between the two types of effect measures and include all existing studies in a single meta-analysis to produce an overall effect. 
+
+The likely effect of this is that the overall effect measures are biased towards . . . . ?
+
+Can you predict the direction of effect from a 
+
+Best practice methods for dealing with disparate effect measures in included studies is to not perform a meta-analysis 
+
+<!-- See the third row of the table here; https://training.cochrane.org/handbook/current/chapter-12#section-12-1 -->
+
+Some evidence of manipulation of effect estimates in previous reviews,(e.g. Chou, Sci Reports - at least one study disagrees with) but not documented in review text.
+
+WHile the analysis of change scores is feasible, as they were explicityl
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+
 ### Risk of bias assessment {#risk-of-bias}
 
 A key use of the review presented in this chapter is to identify different sources of evidence at risk of a diverse range of biases, and to contrast and compare findings across them (see Section \@ref(intro-triangulation) and Section \@ref(triangulation-overview) for an overview of triangulation). To enable this triangulation exercise, a detailed and structured risk of bias assessment formed an important part of this review.
@@ -233,11 +283,8 @@ In addition, the tool also aim to capture the potential direction of bias for ea
 * Away from null 
 * Unpredictable
 
-
-
-
-
 <!----------------------------------------------------------------------------->
+&nbsp;
 
 #### Randomised controlled trials
 
@@ -247,6 +294,8 @@ The tool assess the risk of bias across five domains: Bias arising from the rand
 One a domain-level judgement for each domain has been assigned, an overall judgement, using the same three levels of risk of bias, is assigned to 
 
 <!----------------------------------------------------------------------------->
+&nbsp;
+
 #### Non-randomised studies of interventions/exposures
 
 For non-randomised studies of interventions (NRSI), I used the ROBINS-I (Risk of bias in non-randomised studies - of interventions) <!-- TODO Capitalise appropriately --> tool.[@sterne2016] This tool assess the risk of bias across seven domains: Bias due to confounding, Bias due to selection of participants, Bias in classification of interventions, Bias due to deviations from intended interventions, Bias due to missing data, Bias in measurement of outcomes, and Bias in selection of the reported result. Similar to the RoB 2, it has a number of prompting questions per domain, with judgements including. Ideally, obs studies assessed in reference to an idealised randomised controlled trial. Further, the rare overall judgement of Low should be considered equivalent to a randomised controlled trial.
@@ -257,45 +306,28 @@ Despite these limitations, I chose this approach in place of other existing publ
 
 <!----------------------------------------------------------------------------->
 
+&nbsp;
+
 #### Mendelian randomisation studies
 
 <!-- TODO This next bit is not all true -->
 
 At present, no risk-of-bias assessment tool for Mendelian randomization studies is available. Assessment of the risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation,[@mamluk2020] as identified by a review of risk of bias assessments in systematic reviews of MR studies. A copy of this tool is available in Appendix \@ref(appendix-mr-rob). Advance results from this review of bias assessment in MR studies were obtained from contact with the authors.
 
+&nbsp;
+
 #### Risk of bias due to missing evidence
 
 A recent shift towards the assessment of missing evidence due to selective non-reporting (as distinct from the selective reporting of a single result from multiple planned - handled in Domain 5 of the RoB 2 tool for example).
 
-As part of this review, I piloted the RoB-ME (Risk of Bias due to Missing Evidence in a synthesis) tool. <!-- TODO CITATION NEEDED --> Results were visualise
+As part of this review, I piloted the RoB-ME (Risk of Bias due to Missing Evidence in a synthesis) tool. <!-- TODO CITATION NEEDED --> Results were visualised
 
-
-<!----------------------------------------------------------------------------->
-
-### Studification
-
-Multiple publications resulting from the analysis of the same data were included and grouped ().
-
-In the advent of multiple papers reporting results on the same cohort, but say, at different time points, I used a process of studifiction to build out the most comprehensive accounts of the studies and results from as many published articles were applicable. 
-
-This was particularly relevant to preprints and published papers reporting the same study, which were not considered duplicate records. Instead, they were considered as different reports of the same study. This is due to the potential for the published version to offer some information that the preprint did not, and vice versa.
-
-<!----------------------------------------------------------------------------->
-
-### Following up with authors {#contacting-authors}
-
-Where data points required either for the analysis or risk-of-bias assessment but were not reported, the primary authors of the study were contacted. This approach was taken due to the potentially large impact of following up with authors on the results of the review,[@reynders2019] 
-
-This was particular important for the dose response meta-analysis, we
-
-
-Use the example of getting the cut-off points from the 
-
-<!-- TODO move to results, and keep just a short bit here -->
 
 <!----------------------------------------------------------------------------->
 
 ### Analysis methods
+
+Studies were not combined across different study designs (i.e. RCTs were not combined in a meta-analysis with results from observational studies). 
 
 #### Standard meta-analysis
 
@@ -309,6 +341,13 @@ Need formula here, and description of different methods and quarrels regarding d
 
 This analytical approach was used for 
 
+$u$
+
+\begin{equation}
+  \theta_i = \mu + u_i
+  (\#eq:meta-analysis-random)
+\end{equation}
+
 \begin{equation}
   weighted\ average = \frac{\sum Y_i (1/SE_i^2)}{\sum(1/SE_i^2)}
   (\#eq:meta-analysis-fixed)
@@ -316,8 +355,9 @@ This analytical approach was used for
 
 where ...
 
-<!-- TODO Need equation for random effects too -->
+<!-- TODO Need equation for random effects too. See Sean's thesis here. -->
 
+This analytical approach was used for cases where the exposure was dichotomous (e.g. statin use or not, hypercholesterolemia or not).
 
 #### Dose-response analyses
 
@@ -329,8 +369,6 @@ Several of the included studies presented data on multiple categories of lipid l
 
 Where possible, data for all exposure groups was extracted, and this <!-- TODO ??? -->
 . Studies were excluded from this analysis if the number of categories was less than three, if the exposure cut-off points for for each category were not presented (e.g. if the study reports splitting participants into quartiles and comparing the highest vs lowest without giving the quartile bands in mmol/L).
-
-
 
 <!-- Taken from another paper: "A potential non-linear association was evaluated using a restricted cubic spline model with three knots at the 10th, 50th and 90th percentile of frequency of the exposure [@orsini2012meta]" -->
 
@@ -358,7 +396,7 @@ In addition,
 &nbsp;
 <!----------------------------------------------------------------------------->
 
-### Visualisation of results
+#### Visualisation of results
 
 Given the importance of visualising the potential biases alongside the results of any given study, a new visualisation tool was designed to allow for "paired" forest plots (as recommended by the ROB2 publication)
 
@@ -367,6 +405,14 @@ This tool grew out of a collaboration with other reserachers to design a modular
 A summary of this tool is contained in Appendix \@ref(appendix-robvis), and all forest plots presented in this analysis were created using
 
 Results from the risk-of-bias assessment were visualized using a paired forest/risk-of-bias blobbogram, created using the `robvis` tool. This tool was developed as an adjunct to this thesis to aid in creating standard risk-of-bias figures.[@mcguinness2020robvisPaper] A summary of the tool is provided in Appendix \@ref(appendix-robvis).
+
+
+
+Also, the use of evidence maps is becoming increasingly common to explore the distibution of research cohorts included in a 
+
+As such, each individual cohort contibuting to the evidence base was quantified and visualised on a world map.
+
+
 
 &nbsp;
 <!----------------------------------------------------------------------------->
@@ -379,11 +425,16 @@ Additionally, I followed preprints up over time to investigate whether all ident
 
 I also sought to explore the additional evidental value of including preprints in the meta-analysis, assessed using the fixed effect weight from a standard meta-analysis.
 
+<!-- TODO List here that one of the key reasons for building the tool was to . Reference back to  -->
+
+
 <!----------------------------------------------------------------------------->
 
 ### Patient and public involvement
 
-Patient and public memebers were intended to be involved at this poit
+Patient and public members were intended to be involved at this poit
+
+
 
 <!----------------------------------------------------------------------------->
 
@@ -391,6 +442,7 @@ Patient and public memebers were intended to be involved at this poit
 
 A dose response meta-analysis was not planned, marking a departure from the registered protocol. <!-- TODO Check this is accurate -->
 
+Similarly, there was initially no intention to try and examine the risk of bias due to missing evidence.
 
 
 ## Results
@@ -401,13 +453,11 @@ A dose response meta-analysis was not planned, marking a departure from the regi
 
 Following the search
 
-
 `r num_to_text(23447,T)` records were identified through database searches. Following depulication, `r num_to_text(16109)` unique records remained. 
 
 <!--- Cross check this with the actual numbers included --->
 
 No eligible records were identified in the screening of the 500 records excluded by the search. Many of these were basic science studies <!-- TODO text -->
-
 
 
 <!----------------------------------------------------------------------------->
@@ -547,7 +597,10 @@ Many of the included studies were conducted in European countries (Figure \@ref(
 
 
 
+
 A common theme across the studies was a lack of data on vascular dementia. This is particularly interesting as lipids and statins are primarily a vascular disease. There is the potential that they studies encountered similar difficulties in address the unexpected results observed in the CPRD analysis in Chapter \@ref(cprd-analysis-heading). For vascular dementia, few studies examined this outcome, primarily because of the absence (until recently) of
+
+<!-- IDEA Could include a second evidence synthesis map here to summarise Table 1, highlighting the lack of vascular dementia outcomes and the massive amount of observational data -->  
 
 One item of particular interest in the absence of studies examining Mendelian randomisation studies is the absence of any effect following the adjustment for Apoe4. As covered in the discussion, ApoE4 genotype is the mjor risk factor for Alzheimer's disease.
 
@@ -559,28 +612,8 @@ In addition, there was quite a spread in terms fo the effect estimates used to t
 
 
 <!----------------------------------------------------------------------------->
-
-### Converting risk ratios to odds ratios
-
-Include formulae and informed assumptions 
-
-Not interchangeable in the context of systematic review. If outcome is rare, odds and risk ratios approximate each other, but the hazard ratio is measuring something completely different, by taking into account time-to-event in each treatment group. 
-
-Several existing reviews do not distinguish between the two types of effect measures and include all existing studies in a single meta-analysis to produce an overall effect. 
-
-The likely effect of this is that the overall effect measures are biased towards . . . . ?
-
-Can you predict the direction of effect from a 
-
-Best practice methods for dealing with disparate effect measures in included studies is to not perform a meta-analysis 
-
-<!-- See the third row of the table here; https://training.cochrane.org/handbook/current/chapter-12#section-12-1 -->
-
-Some evidence of manipulation of effect estimates in previous reviews,(e.g. Chou, Sci Reports - at least one study disagrees with) but not documented in review text.
-
 &nbsp;
 
-<!----------------------------------------------------------------------------->
 
 ### Risk of bias {#risk-of-bias-subheading}
 
@@ -590,7 +623,7 @@ Some evidence of manipulation of effect estimates in previous reviews,(e.g. Chou
 
 ### Meta-analysis of statin use and hypercholesteroleamia
 
-Straight-forward random effects meta-analysis of 
+Straight-forward random effects meta-analysis of binary exposures
 
 
 ```{r primaryFigures, include = FALSE}
@@ -631,6 +664,15 @@ Several studies were excluded from the dose-response meta-analysis, as the numbe
 
 Detail that some of these are exploratory, in particular the effect of different scales on the association between the groups. **[CROSS]**
 
+
+Important here to examine effect of risk of bias (due to immortal time in observational studies).
+
+Also important to examine the effect of:
+
+* age at baseline
+* sex (percentage)
+* education
+* baseline cognitive scores (how to group)
 
 
 &nbsp;
@@ -699,7 +741,8 @@ While concerns have been raised that
 
 Previous meta-studies have found high concordance between the main interpretations and other study design details in preprint-journal article pairs,[@shi2021] though quality of reporting was slightly better in formally published articles.[@carneiro2020]
 
-A common criticism of preprinted articles is that they have not formally been peer-reviewed. __[CITATION NEEDED]__ However, I believe this criticism is less warranted in the context of inclusion of preprints in a systematic review, given a formal assessment of risk of bias, which provides a structured approach to assessing the internal validity of a study. 
+A common criticism of preprinted articles is that they have not formally been peer-reviewed. __[CITATION NEEDED]__ <!-- TODO See Chapter 1 for reference for this quote. -->
+ However, I believe this criticism is less warranted in the context of inclusion of preprints in a systematic review, given a formal assessment of risk of bias, which provides a structured approach to assessing the internal validity of a study. 
 
 > Anyone who can't assess a study to the level of peer review shouldn't do a systematic review
 
@@ -707,7 +750,14 @@ References included in the review were also searched for on PubPeer, a platform 
 
 The added value of peer-review to papers that is questionable and difficult to quantify for a number of reasons, including the fact that most peer reviews are closed
 
-While [__some__] preprint have subsequently been published, this does not cause any major issues. 
+While `r hold()` preprint have subsequently been published, this does not cause any major issues.
+
+
+### Risk of bias due to missing evidence
+
+
+<!----------------------------------------------------------------------------->
+&nbsp;
 
 ## Discussion
 
@@ -715,11 +765,15 @@ Major limitation is that several included studies used data from electronic heal
 
 In addition, the a
 
-
-
 &nbsp;
 
 <!----------------------------------------------------------------------------->
+
+### Summary of findings
+
+<!----------------------------------------------------------------------------->
+&nbsp;
+
 
 ### Previous reviews
 
@@ -753,6 +807,24 @@ This does introduce some conflicts with other studies where a change score has b
 
 Does it also cause issues in terms of self-report?
 
+
+<!-- TODO This section will be informed by the review published as a preprint -->
+
+Of note, as part of the review, Iidentified several previous systematic reviews of this topic.[CITE] However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)[@sterne2019] to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels.
+
+Some previous reviews did assess risk of bias, but used non-domain based assessment tools. Newcastle-Ottowa scale,
+
+**The duplication of work across reviews (including, ironically, by this review) is substantial. In Section XXXX, I demonstrated that the each primary study included in this review was also included in other review so this topic, but that not all studies were included in all reviews. However, by creating a comprehensive review that attempted to draw together all available evidence from across the full range of study types.**
+
+__Exclusion of the PROSPER trial__ Will need to have a good bit here on the exclusion of this RCT, particularly as it is included in the Cochrane review on the topic. Cross-reference with the meta-bias section in the early section, on the impact of only included studies that sought to make a definitive diagnosis, rather than using change in cognitive assessment scales.
+
+<!-- TODO Will hopefully be able to cite MSc review here to give details of other reviews -->
+
+In retrospective, an alternative approach to the one taken could have been employed, performing an review of reviews, also known as an umbrella review. In these studies, the unit of analysis are systematic reviews rather than the 
+
+However, a comparative analysis between indicates 
+
+
 &nbsp;
 
 <!----------------------------------------------------------------------------->
@@ -771,7 +843,6 @@ However, new developments such as automated screening would allow for a reduced 
 Great learning experience in terms of managing a team, but due to a rotating schedule of people, much harder to do that expected.
 
 A final point on the progress of the review is that, due to the need for dual screening and data extraction, a number of external researchers became involved in this review. I found the people-management aspect particularly challenging and could definitely have improved the process through better communication of deadlines, but it has provided good experience of leading a review team.
-
 
 &nbsp;
 
@@ -808,7 +879,7 @@ Similarly, a substanital amount of time and effort has gone into making the data
 
 <!----------------------------------------------------------------------------->
 
-### Original contribution to research
+### Strenghts and limitations
 
 I believe there are four aspects where this review is distinct from those reviews already available in the published literature (as identified by <!-- TODO CITATION NEEDED -->):
 
@@ -820,24 +891,11 @@ I believe there are four aspects where this review is distinct from those review
 
 - *Contribution to methods work:* A large part of this review was the associated work on improving research synthesis methods. This work is detailed as relevant throughout the Chapter, often referring to additional work detailed in the . IN addition this review was used to pilot an upcoming risk of bias tool
 
-
 &nbsp;
 
-<!----------------------------------------------------------------------------->
+#### Limitations
 
-### Comparison with other reviews
 
-<!-- TODO This section will be informed by the review published as a preprint -->
-
-Of note, as part of the review, Iidentified several previous systematic reviews of this topic.[CITE] However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)[@sterne2019] to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels.
-
-Some previous reviews did assess risk of bias, but used non-domain based assessment tools. Newcastle-Ottowa scale,
-
-**The duplication of work across reviews (including, ironically, by this review) is substantial. In Section XXXX, I demonstrated that the each primary study included in this review was also included in other review so this topic, but that not all studies were included in all reviews. However, by creating a comprehensive review that attempted to draw together all available evidence from across the full range of study types.**
-
-__Exclusion of the PROSPER trial__ Will need to have a good bit here on the exclusion of this RCT, particularly as it is included in the Cochrane review on the topic. Cross-reference with the meta-bias section in the early section, on the impact of only included studies that sought to make a definitive diagnosis, rather than using change in cognitive assessment scales.
-
-<!-- TODO Will hopefully be able to cite MSc review here to give details of other reviews -->
 
 
 &nbsp;
@@ -896,7 +954,7 @@ However, in future better-resourced reviews, a dedicated search for "risk factor
 
 <!----------------------------------------------------------------------------->
 
-### Strenghts and limitations
+### Strengths and limitations
 
 
 &nbsp;
@@ -904,12 +962,7 @@ However, in future better-resourced reviews, a dedicated search for "risk factor
 <!----------------------------------------------------------------------------->
 
 
-#### Inclusion of Mendelian randomisation studies
 
-
-&nbsp;
-
-<!----------------------------------------------------------------------------->
 
 #### Inclusion of preprints
 
@@ -930,6 +983,20 @@ For example,
 
 
 ## Conclusions
+
+In this chapter I have 
+
+This work built on the tool introduced in the preceeding chapter, and the results from the systematic review are used in further chapters. 
+
+In Chapter \@ref(cprd-analysis-heading), 
+A summary of the evidence guided the 
+
+In Chapter \@ref(ipd-heading), 
+
+<!-- IDEA Link here to IPD, talking about how the meta-regression on key variables suggested the use of -->
+
+
+A
 
 \newpage 
 

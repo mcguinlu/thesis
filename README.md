@@ -25,6 +25,7 @@
 - [ ] Randomisation vs randomization
 - [ ] Check citations, particularly of handbook
 - [ ] Remove chapter reference headings.
+- [ ] Ensure all equations are in equation blocks
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice

@@ -107,9 +107,9 @@ This analysis used the CPRD-GOLD primary care dataset March 2016 snapshot (ISAC 
 
 __Background:__ There is some evidence that circulating blood lipids play a role in the development of Alzheimer's disease (AD) and dementia. As a result, these modifiable risk factors could be targeted by existing lipid-regulating agents, including statins, for the prevention of dementia. Here, we test the association between lipid-regulating agents and subsequent risk of dementia and related conditions in the Clinical Practice Research Datalink (CPRD), a large-scale electronic health record database.
 
-__Methods:__ A cohort study design using data from the CPRD, routinely collected between January 1995 and March 2016, was performed. Cox proportional hazard models, allowing for a time-varying treatment indicator, were used to estimate the association between seven lipid-regulating drug classes and five dementia outcomes (all-cause, vascular and other dementia, and probable and possible AD).
+__Methods:__ A cohort study design using data from the CPRD, routinely collected between January 1995 and March 2016, was performed. Cox proportional hazard models, allowing for a time-varying treatment indicator, were used to estimate the association between seven lipid-regulating drug classes (vs. no drug) and five dementia outcomes (all-cause, vascular and other dementia, and probable and possible Alzheimer's disease).
 
-__Results:__ We analyzed `r totaltext` with a total follow-up of `r comma(total_followup)` participant-years (median: `r fu_text`). We found little evidence that lipid-regulating agents were associated with risk of AD (probable AD `r probad_text`; possible AD `r possad_text`), but there was evidence of an increased risk of all-cause (`r anydem_text`), vascular (`r vasdem_text`) and other dementia (`r othdem_text`). Evidence from a number of control outcomes (ischeamic heart disease `r ihd_text`; backpain `r backpain_text` and diabetes `r dm_type2_text`) indicated the presence of substantial residual confounding related to vascular factors. 
+__Results:__ We analyzed `r totaltext` with a total follow-up of `r comma(total_followup)` participant-years (median: `r fu_text`). We found little evidence that lipid-regulating agents were associated with risk of Alzheimer's disease (probable `r probad_text`; possible `r possad_text`), but there was evidence of an increased risk of all-cause (`r anydem_text`), vascular (`r vasdem_text`) and other dementia (`r othdem_text`). Evidence from a number of control outcomes (ischaemic heart disease `r ihd_text`; backpain `r backpain_text` and diabetes `r dm_type2_text`) indicated the presence of substantial residual confounding related to vascular factors. 
 
 __Conclusion:__ We found little evidence that lipid-regulating agents were associated with reduced on Alzheimer’s disease risk. There was some evidence of an increased the risk of all-cause, vascular and other dementia, likely the result of residual confounding by indication. 
 
@@ -121,7 +121,7 @@ __Keywords:__ Dementia; Alzheimer's disease; Lipids; Statins; Cohort study; Obse
 
 * A large cohort of patients from the Clinical Practice Research Datalink electronic health record database was assembled to examine the effect of lipid-regulating agents, such as statins, on dementia outcomes.
 
-* Little evidence that lipid-regulating agents were associated with Alzheimer’s disease, but there was some evidence for a harmful effect on all-cause, vascular and other dementia. In all cases, the estimated associations were driven by the statin subgroup, which comprised most participants in our cohort.
+* Little evidence that lipid-regulating agents were associated with Alzheimer’s disease, but there was some evidence for a harmful effect on all-cause, vascular and other dementia. In all cases, the estimated associations were driven by the any statin subgroup, which comprised most participants in our cohort.
 
 * Evidence from the control outcome analyses indicated strong residual confounding by indication, mostly likely related to vascular factors. 
 
@@ -129,13 +129,13 @@ __Keywords:__ Dementia; Alzheimer's disease; Lipids; Statins; Cohort study; Obse
 
 # Introduction
 
-Dementia is a major neurocognitive disorder, the most common types of which are Alzheimer’s disease (AD) and vascular dementia (VaD).[@prince2016] Despite an increasing number of cases globally and decades of research, there remains much unknown about the pathogenesis and progression of the disease, and, at present, no effective treatment exists to arrest or reverse the cognitive decline associated with the condition.[@jobke2018] Drug repurposing, the identification of new applications for previously approved drugs, may provide an efficient mechanism to discover effective preventative and therapeutic treatments for dementia.[@ashburn2004; @pushpakom2019] 
+Dementia is a major progressive neurocognitive disorder, the most common types of which are Alzheimer’s disease, vascular dementia and Lewy Body dementia.[@prince2016] Despite an increasing number of cases globally and decades of research, there remains much unknown about the pathogenesis and progression of the disease, and, at present, no effective treatment exists to arrest, slow or reverse the cognitive decline associated with the condition.[@jobke2018] Drug repurposing, the identification of new applications for previously approved drugs, may provide an efficient mechanism to discover new effective preventative and therapeutic treatments for dementia.[@ashburn2004; @pushpakom2019] 
 
 Several cardiovascular factors have been identified as potential risk factors for dementia,[@walker2020] and of these, circulating lipid levels represent a promising target for intervention due to the ready availability of lipid-modifying treatments. In this context, determining whether lipid-regulating agents (LRA) could be repurposed for the prevention of dementia and related diseases would be helpful in the development of evidence-based prevention policy. Several existing prospective studies have examined the association of LRA use with dementia.[@chu2018; @larsson2018; @ancelin2012; @bettermann2012;@rea2005] However, many of these studies are small, record few outcomes, and have limited follow-up.
 
 The use of electronic health data for epidemiological research has several advantages.[@casey2016] As the data are collected through the routine care of a large cohort, they allow for nested cohort studies using sample sizes and time-scales which would be infeasible using traditional methods. In addition, data are collected for care provision and without a specific research question in mind,  providing a holistic picture of a patient and their health experience. This provides vital data on a range of potential confounders which can be incorporated into an analysis. 
 
-We therefore aim to examine the association between several major classes of LRA and all-cause dementia, Alzheimer's disease, vascular dementia and other dementia, in the Clinical Practice Research Datalink (CPRD), a large, population-based electronic health record (EHR) database.[@herrett2015]
+We therefore aimed to test the association between several major classes of LRA and all-cause dementia, Alzheimer's disease, vascular dementia and other dementia, in the Clinical Practice Research Datalink (CPRD), a large, population-based electronic health record (EHR) database.[@herrett2015]
 
 \newpage
 
@@ -143,7 +143,7 @@ We therefore aim to examine the association between several major classes of LRA
 
 ## Study design and protocol
 
-We performed a cohort study using data from the CPRD. Our initial sample included all participants registered at a participating practice between 1 January 1995 and 29 February 2016 who had a flag for "research quality" data. Records pre-dating the 1995 cutoff were excluded from the analysis as data quality and reliability is thought to be higher after this date.[@wolf2019] All events of interest were identified using predetermined code lists, which are available for inspection (see [Data/code availability](#data-code-avail)).
+We performed a cohort study using data from the CPRD. Our initial sample included all participants registered at a participating practice between 1 January 1995 and 29 February 2016 who had a flag for "research quality" data. Records pre-dating the 1995 cut-off were excluded from the analysis as data quality and reliability is thought to be higher after this date.[@wolf2019] All events of interest were identified using predetermined code lists, which are available for inspection (see [Data/code availability](#data-code-avail)).
 
 An *a priori* protocol for this study was published,[@walker2016] and amendments to this are recorded in Supplementary Materials 1. This study was reported in line with the RECORD guidelines (Supplementary Table 1).[@nicholls2016record]
 
@@ -151,11 +151,11 @@ An *a priori* protocol for this study was published,[@walker2016] and amendments
 
 ## Study Cohort
 
-Participants were included in our study cohort if their record contained any of the following index events: a Read code for a diagnosis of hypercholesterolemia or related condition; a Read code for prescription of a LRA (such as statins); a total cholesterol test result of >4mmol/L; or an low density lipoprotein cholesterol (LDL-c) test result of >2mmol/L. 
+Participants were included in our study cohort if their record contained any of the following index events: a Read code for a diagnosis of hypercholesterolemia or related condition; a Read code for prescription of a LRA (such as statins); a total cholesterol test result of >4mmol/L; or a low density lipoprotein cholesterol (LDL-c) test result of >2mmol/L. 
 
-These index events allowed us to define a population of participants who were either at risk of hypercholesterolemia, as indicated by the elevated total or LDL-c test results, or had already been diagnosed with it, as indicated by a diagnostic code or related prescription. This approach, conditioning entry into the study on being either “at-risk” or already diagnosed with hypercholesterolemia, was employed in an attempt to reduce confounding by indication that we would expect to observe in a general population cohort.
+These index events allowed us to define a population of participants who were either at risk of hypercholesterolemia, as indicated by the elevated total or LDL-c test results, or had already been diagnosed with it, as indicated by a diagnostic code or related prescription. This approach, conditioning entry into the study on being either “at-risk” or already diagnosed with hypercholesterolemia, was employed to reduce confounding by indication that we would expect to observe in a general population cohort.
 
-The index date for a participant was defined as the date where the first relevant code or test result (as detailed above) was recorded on their clinical record. Participants were followed up until the earliest of: an outcome of interest; death; end of follow-up (29 February 2016); or last registration date with their GP practice. Participants were removed from our sample if they were less than 40 years of age, had less than 12 months of "research quality" data, were simultaneously prescribed more than one LRA (due to the difficulty of assigning these patients to a single exposure group), or were diagnosed with dementia before or on the date of the index event. 
+The index date for a participant was defined as the date where the first relevant code or test result (as detailed above) was recorded on their clinical record. Participants were followed up until the earliest of: an outcome of interest; death; end of follow-up (29 February 2016); last registration date with their GP practice; last CPRD collection date for their practice. Participants were removed from our sample if they were less than 40 years of age, had less than 12 months of "research quality" data prior to their index date, were simultaneously prescribed more than one LRA (due to the difficulty of assigning these patients to a single exposure group), or were diagnosed with dementia before or on the date of the index event. 
 
 &nbsp;
 
@@ -163,7 +163,9 @@ The index date for a participant was defined as the date where the first relevan
 
 We considered seven lipid-regulating drug classes based on groupings in the British National Formulary (BNF)[@wishart2017], namely: statins, fibrates, bile acid sequestrants, ezetimibe, nicotinic acid groups, ezetimibe and statin (representing one treatment containing both drugs, rather than the two classes being prescribed concurrently), and omega-3 fatty acid groups.  
  
-A participant’s drug class was assigned based on their first recorded prescription, and any drug switching was ignored in an effort to mimic an intention-to-treat approach. We did however tabulate how often the initial drug class was stopped (defined as last prescription of the primary class being followed by at least six months of observation), added to (defined as a second drug class being prescribed before the last prescription of the initial class), or switched (defined as a second drug class being prescribed after the last prescription of the initial class).
+To address the potential for immortal time bias, we employed a time-varying indicator of treatment status to correctly allocate time-at-risk to the exposed and unexposed groups.[@levesque2010] Under this model, all participants entered the unexposed group on their index date and were moved into the exposed group on the date they were first prescribed an eligible LRA. Participants whose index event was a LRA prescription entered the study and the exposed group on the same day, and so contributed no time-at-risk to the unexposed group.
+
+A participant’s drug class was assigned based on their first recorded prescription, and any drug switching was ignored to mimic an intention-to-treat approach. We did however tabulate how often the initial drug class was stopped (defined as last prescription of the primary class being followed by at least six months of observation), added to (defined as a second drug class being prescribed before the last prescription of the initial class), or switched (defined as a second drug class being prescribed after the last prescription of the initial class).
 
 &nbsp;
 
@@ -181,15 +183,15 @@ The analysis was adjusted for a range of baseline covariates including sex, grou
 
 ## Analysis plan
 
-All analyses were performed in STATA 15. Cox proportional hazard models were used to estimate the hazard ratio and corresponding 95% confidence intervals, allowing for the potential for clustering by practice. Participant's age was used as the time axis for all models.[@lamarca1998; @gail2009; @pencina2007] To address the potential for immortal time bias, we employed a time-varying indicator of treatment status to correctly allocate time-at-risk to the exposed and unexposed groups.[@levesque2010] To observe the effect of adjusting for additional covariates, we compared models adjusted for age only and age and sex to the fully adjusted model. Additional analyses stratified by outcome and drug class were also performed.
+All analyses were performed in STATA 15. Cox proportional hazard models with a time-varying treatment indicator were used to estimate the hazard ratio and corresponding 95% confidence intervals, allowing for potential clustering of outcomes by practice. Participant's age was used as the time axis for all models.[@lamarca1998; @gail2009; @pencina2007] To observe the effect of adjusting for additional covariates, we compared models adjusted for age only and age and sex to the fully adjusted model. Additional analyses stratified by outcome and drug class were also performed.
 
 In the case of missing data, we used multiple imputation by chained equations (MICE) in STATA to create 20 imputed datasets.[@sterne2009] All covariates included in the analytic model were also included in the imputation model.[@moons2006using] The full imputation model is available for inspection (See [Data/Code availability](#data-code-avail) section).
 
 &nbsp;
 
-## Additional analyses
+## Sensitivity analyses
 
-We performed a number of sensitivity analysis. As statins are contraindicated in pregnancy,[@nationalinstituteforhealthandcareexcellence]  we ran the models described above but excluding participants below the age of 55. We also further stratified the statin exposure group into lipophilic (Atorvastatin, Lovastatin, Simvastatin, Cerivastatin) and hydrophilic (Pravastatin, Rosuvastatin, Fluvastatin) statins. Finally, we included three control outcomes with known associations with statin use.[@collins2016a; @herrett2021] Using the fully adjusted model, we investigated the association between LRA and back pain (negative control), ischemic heart disease (positive protective control), and Type 2 diabetes (positive harmful control).
+We performed several sensitivity analyses. As statins are contraindicated in pregnancy,[@nationalinstituteforhealthandcareexcellence]  we ran the models described above but excluding participants below the age of 55. Given the different ability of lipophilic statins to cross the blood-brain barrier,[@sierra2011] we further stratified the statin exposure group into lipophilic (Atorvastatin, Lovastatin, Simvastatin, Cerivastatin) and hydrophilic (Pravastatin, Rosuvastatin, Fluvastatin) statins. Finally, we included three control outcomes with known associations with statin use.[@collins2016a; @herrett2021] Using the fully adjusted model, we investigated the association between LRA and back pain (negative control), ischaemic heart disease (positive protective control), and Type 2 diabetes (positive harmful control).
 
 &nbsp;
 
@@ -199,9 +201,9 @@ We performed a number of sensitivity analysis. As statins are contraindicated in
 
 ## Patient characteristics
 
-A total of `r format(attrition[14,1], big.mark = ",")` participants met the inclusion criteria for our cohort (See Supplementary Figure 2 for the attrition flowchart), with a total follow-up of `r comma(total_followup)` patient years at risk. The majority of participants were included in the cohort on the basis of an elevated test result (`r index_event_text`). The median age at index was `r age_text` and participants were followed up for a median of `r fu_text`. During follow-up, an all-cause dementia diagnosis was recorded for `r format(p1[1,2], big.mark = ",")` patients  (`r format(p1[2,2], big.mark = ",")` probable AD, `r format(p1[3,2], big.mark = ",")` possible AD, `r format(p1[4,2], big.mark = ",")` vascular dementia, `r format(p1[5,2], big.mark = ",")` other dementia). The distribution of baseline characteristics across the drug classes can be seen in Table \@ref(tab:cprdCharacteristics-table).
+A total of `r format(attrition[14,1], big.mark = ",")` participants met the inclusion criteria for our cohort (See Supplementary Figure 2 for the attrition flowchart), with a total follow-up of `r comma(total_followup)` patient years at risk. Most participants were included in the cohort due to an elevated test result (`r index_event_text`). The median age at index was `r age_text` and participants were followed up for a median of `r fu_text`. During follow-up, an all-cause dementia diagnosis was recorded for `r format(p1[1,2], big.mark = ",")` patients  (`r format(p1[2,2], big.mark = ",")` probable Alzheimer's disease, `r format(p1[3,2], big.mark = ",")` possible Alzheimer's disease, `r format(p1[4,2], big.mark = ",")` vascular dementia, `r format(p1[5,2], big.mark = ",")` other dementia). The distribution of baseline characteristics across the drug classes can be seen in Table \@ref(tab:cprdCharacteristics-table).
 
-A substantial majority (`r percentage.statins`) of participants prescribed a lipid-regulating agent were prescribed a statin. We excluded the "Ezetimibe and statins" and "Nicotinic acid groups" classes from subsequent analysis based on the extremely small number of participants in these groups (Table \@ref(tab:cprdCharacteristics-table)). The stopping, addition and switching of drug classes was common across all exposure groups (Supplementary Table 3).
+Most participants (`r percentage.statins`) prescribed a lipid-regulating agent were prescribed a statin. We excluded the "Ezetimibe and statins" and "Nicotinic acid groups" classes from subsequent analysis based on the extremely small number of participants in these groups (Table \@ref(tab:cprdCharacteristics-table)). The stopping, addition and switching of drug classes was common across all exposure groups (Supplementary Table 3).
 
 &nbsp;
 
@@ -215,13 +217,13 @@ Full covariate information was available for `r missingtext`. Five key variables
 
 __Alzheimer's disease__
 
-As shown in Figure \@ref(fig:cprdPrimary), our results show little evidence of an effect of lipid-regulating agents on probable (`r probad_text`) and possible (`r possad_text`) Alzheimer's disease when compared with no treatment, with the exception of fibrates on probable Alzheimer's disease (`r probad_fib_text`). 
+As shown in Figure \@ref(fig:cprdPrimary), our results show little evidence of an effect of lipid-regulating agents on probable (`r probad_text`) and possible (`r possad_text`) Alzheimer's disease when compared with no treatment, except for fibrates on probable Alzheimer's disease (`r probad_fib_text`). 
 
 &nbsp;
 
 __Non-Alzheimer's disease dementias__
 
-In contrast to the findings for Alzheimer's disease outcomes, lipid-regulating agents were associated with an increased risk of a subsequent diagnosis of vascular dementia (`r vasdem_text`) or other dementia (`r othdem_text`). Again this effect was driven mainly by the statin subgroup, but there was some evidence that ezetimibe was associated with an increased risk of vascular (`r vasdem_eze_text`) and other (`r othdem_eze_text`) dementia. 
+In contrast to the findings for Alzheimer's disease outcomes, lipid-regulating agents were associated with an increased risk of a subsequent diagnosis of vascular dementia (`r vasdem_text`) or other dementia (`r othdem_text`). Again, this effect was driven mainly by the any statin subgroup, but there was some evidence that ezetimibe was associated with an increased risk of vascular (`r vasdem_eze_text`) and other (`r othdem_eze_text`) dementia. 
 
 &nbsp;
 
@@ -236,11 +238,11 @@ For the composite all-cause dementia outcome, we found treatment with a lipid-re
 ```{r sens-text, echo = FALSE}
 ```
 
-Adjustment for additional covariates beyond age and sex had a limited impact (Supplementary Figure 3), with the exception of the Probable AD outcome, where the full adjustment attenuated to the null the protective effect observed when adjusting only for age and sex.
+Adjustment for additional covariates beyond age and sex had a limited impact (Supplementary Figure 3), except for the Probable Alzheimer's disease outcome, where the full adjustment attenuated to the null the protective effect observed when adjusting only for age and sex.
 
 Removing participants aged 55 and under at index from our analysis had minimal effect on our estimates (Supplementary Figure 4). When stratifying by statin properties, hydrophilic statins were less harmful in the any, vascular and other dementia outcomes compared to lipophilic statins (Supplementary Figure 5). Additionally, in the Alzheimer's disease outcomes, hydrophilic statins had a small protective effect, compared to the absence of evidence for an effect for lipophilic statins.
 
-For our control outcomes (Supplementary Figure 6), there was some evidence that treatment with a lipid-regulating agent was associated with an increased risk of back pain (`r backpain_text`). However, LRA prescription was also associated with an increased risk of ischemic heart disease (`r ihd_text`) and Type 2 diabetes (`r dm_type2_text`).
+For our control outcomes (Supplementary Figure 6), there was some evidence that patients prescribed a lipid-regulating agent had increased risks of back pain (`r backpain_text`), ischaemic heart disease (`r ihd_text`) and Type 2 diabetes (`r dm_type2_text`).
 
 \newpage
 
@@ -248,7 +250,7 @@ For our control outcomes (Supplementary Figure 6), there was some evidence that 
 
 ## Main findings
 
-There was little evidence that lipid-regulating agents had any observed effect on probable and possible Alzheimer's when compared with no treatment, but some evidence they were associated with an increased risk of an all-cause dementia, vascular dementia and other dementia diagnosis. The effect observed in each case was driven by the statin subgroup, which included a substantial majority of participants. For the other drug classes, there was limited evidence of an association with any outcome, with two exceptions. Ezetimibe was associated with increased risk of vascular and other dementia, while fibrates were associated with increased risk of all-cause dementia and probable Alzheimer's disease.
+There was little evidence that lipid-regulating agents had any observed effect on probable and possible Alzheimer's when compared with no treatment, but some evidence they were associated with an increased risk of an all-cause dementia, vascular dementia and other dementia diagnosis. The effect observed in each case was driven by the any statin subgroup, which included a substantial majority of participants. For the other drug classes, there was limited evidence of an association with any outcome, with two exceptions. Ezetimibe was associated with increased risk of vascular and other dementia, while fibrates were associated with increased risk of all-cause dementia and probable Alzheimer's disease. 
 
 &nbsp;
 
@@ -265,41 +267,44 @@ __Statins and all-cause dementia__
 
 A recent Cochrane Review identified two randomized trials comparing treatment with statins versus non-treatment for the prevention of dementia, only one of which presented information on the incidence of dementia.[@mcguinness2016] This study (Heart Protection Study) showed no effect of treatment with simvastatin on all-cause dementia risk (OR: 1.00,  95%CI:0.61-1.65),[@heartprotectionstudycollaborativegroup2002] but concerns were raised over the diagnostic criteria used. A meta-analysis of 30 observational studies found a reduced risk of all-cause dementia was associated with statin treatment (RR 0.83, 95%CI: 0.79–0.87).[@poly2020]
 
-These sources of evidence conflict with the findings of our analysis, where statin use was associated with an increased risk of all-cause dementia (`r anydem_text`). However, some of the included studies in the meta-analysis specifically exclude vascular dementia from the definition of all-cause dementia,[@chao2015] which may lead to an artificial protective effect of statins on all-cause dementia.
+These sources of evidence conflict with the findings of our analysis, where statin use was associated with an increased risk of all-cause dementia (`r anydem_text`). However, some of the included studies in the meta-analysis specifically exclude vascular dementia from the definition of all-cause dementia,[@chao2015] which may lead to an artificial protective effect of statins on all-cause dementia and limit the ability for comparison between studies.
 
 &nbsp;
 
 __Statins and Alzheimer's disease__
 
-Our results are broadly in line with the findings of two distinct approaches examining the effect of statin treatment on subsequent Alzheimer's disease. No randomized trials of statins for the prevention of Alzheimer's disease have been reported, but a recent meta-analysis of 20 observational studies found statins were associated with a reduced risk of Alzheimer's disease (RR 0.69, 95% CI 0.60–0.80) with stronger evidence than observed in our analysis.[@poly2020] In addition, a recent Mendelian randomization study examining the effect of genetic inhibition of HMGCR on Alzheimer’s disease found a small reduction in risk of Alzheimer's disease, comparable in magnitude to our findings (OR: 0.91, 95%CI: 0.63-1.31).[@williams2020]
+Our results are broadly in line with the findings of two distinct approaches examining the effect of statin treatment on subsequent Alzheimer's disease. No randomized trials of statins for the prevention of Alzheimer's disease have been reported, but a recent meta-analysis of 20 observational studies found statins were associated with a reduced risk of Alzheimer's disease (RR 0.69, 95% CI 0.60–0.80) with stronger evidence than observed in our analysis.[@poly2020] Additionally, a recent Mendelian randomization study examining the effect of genetic inhibition of HMGCR on Alzheimer’s disease (a genetic proxy for statin treatment) provided equivocal evidence (OR: 0.91, 95%CI: 0.63-1.31) but was not inconsistent with our results.[@williams2020]
 
-An additional analysis found no difference in effect between lipophilic and hydrophilic statins for the prevention of Alzheimer's disease, consistent with a recent meta-analysis.[@chu2018]
+Our additional analysis found no difference in effect between lipophilic and hydrophilic statins for the prevention of Alzheimer's disease, consistent with a recent meta-analysis of observational studies.[@chu2018]
 
 
 &nbsp;
 
 __Statins and non-Alzheimer's disease dementia__
 
-Much less literature is available on the association between lipid-regulating agents and vascular dementia or other dementia. A recent review found four observational studies examining the association of statins and vascular dementia found limited evidence for an effect (RR:0.93, 95% CI 0.74–1.16).[@poly2020] This contrasts with the increased effect found in our analysis (`r vasdem_text`). An additional analysis found that lipophilic statins were more harmful than hydrophilic statins in vascular dementia, potentially due to their ability to cross the blood brain barrier.
+Far fewer studies have tested the association between lipid-regulating agents and vascular dementia or other dementia. A recent review found four observational studies examining the association of statins and vascular dementia found limited evidence for an effect (RR:0.93, 95% CI 0.74–1.16).[@poly2020] This contrasts with the increased effect found in our analysis (`r vasdem_text`). An additional analysis found that lipophilic statins were more harmful than hydrophilic statins in vascular dementia, potentially due to their ability to cross the blood brain barrier.
 
 
 &nbsp;
 
 __Other drug classes__
 
-Apart from statins, few studies examining a lipid-regulating agent have been reported. One of the few classes for which data was available were fibrates, for minimal evidence of an effect on all-cause dementia was identified, [@ancelin2012] inconsistent with our finding of a small increase in all-cause dementia risk in those prescribed a fibrate. 
+Apart from statins, few studies examining a lipid-regulating agent have been reported. One of the few classes for which data was available were fibrates, minimal evidence of an effect on all-cause dementia was identified,[@ancelin2012] inconsistent with our finding of a small increase in all-cause dementia risk in those prescribed a fibrate. 
 
-To our knowledge, there is no previous study of the effect of preventative treatment with ezetimibe on any dementia outcome, and so we cannot compare our unexpected finding for that treatment.
+A previous Mendelian randomization study provided an estimate of the effect of ezetimibe on Alzheimer's disease (OR: 1.17, 95%CI: 0.73-1.87),[@williams2020] consistent with the finding from our analyses. To our knowledge, there is no previous study of the effect of preventative treatment with ezetimibe on risk of vascular dementia, and so we cannot compare our unexpected finding for that comparison.
 
+<!----------------------------------------------------------------------------->
 &nbsp;
 
 ## Strengths and Limitations
 
 A major strength of our analysis is the size of the included cohort and the length of follow-up that the use of electronic health records allowed. In addition, we followed users and non-users from a common index date, using a time-updating treatment indicator to correctly assign time-at-risk to the exposed and unexposed groups.
 
-However, the findings of our analysis are subject to several limitations. There is a strong possibility of differential misclassification of dementia-related condition based on the exposure, as those with memory complaints are more likely to be classified as vascular dementia than Alzheimer's disease if their medical records contained prescriptions for lipid-regulating agents. Further, there is a potential for non-differential misclassification of the outcome based on the use of electronic health records to identify dementia cases.[@wilkinson2018; @mcguinness2019validity]
+However, the findings of our analysis are subject to several limitations. There was a  possibility of differential outcome misclassification based on the exposure, as we cannot exclude the possibility that for people with memory complaints, a diagnosis of vascular dementia might be made more frequently than Alzheimer’s disease if their medical records contain prescriptions for lipid-regulating agents. 
 
-Our study is likely to be subject to confounding by indication, which could provide a potential explanation for the observed increased risk of vascular and other dementia with lipid regulating agent use. Supporting evidence for this interpretation comes from a variety of sources, including the results of the control outcome analyses. The slight harmful effect for the backpain outcome is substantially smaller than that observed for the ischemic heart disease outcome, indicating that the majority of the uncontrolled confounding is likely related to vascular factors. Additionally, we obtained the expected harmful result for Type 2 diabetes, where statins' mechanism of action on this outcome is not know to be vascular.[@collins2016a; @macedo2014] Further supporting evidence comes from the increasingly harmful effect when moving from the Probable/Possible AD to other dementia to vascular dementia outcomes, indicating that confounding by indication likely increases as the proportion of vascular cases in the outcome definition increases. A review of other available literature suggests that this observation (a harmful effect of lipid regulating agents on vascular-related outcome due to confounding by indication) is not unusual. Using a conventional epidemiological technique, a previous analysis also found an increased risk of coronary heart disease (analogous to the ischemic heart disease outcome used in our analysis) in those taking statins (`r estimate(1.31,1.04, 1.66, type = "HR")`).[@danaei2013b]  
+Further, there is a potential for non-differential misclassification of the outcome based on the use of electronic health records to identify dementia cases.[@wilkinson2018; @mcguinness2019validity]
+
+Our study is likely to be subject to confounding by indication, which could provide a potential explanation for the observed increased risk of vascular and other dementia with lipid regulating agent use. Supporting evidence for this interpretation comes from a variety of sources, including the results of the control outcome analyses. The slight harmful effect for the backpain outcome is substantially smaller than that observed for the ischaemic heart disease outcome, indicating that the majority of the uncontrolled confounding is likely related to vascular factors. Additionally, we obtained the expected harmful result for Type 2 diabetes, where statins' mechanism of action on this outcome is unlikely to be vascular.[@collins2016a; @macedo2014] Further supporting evidence comes from the increasingly harmful effect when moving from the Probable/Possible Alzheimer's disease to other dementia to vascular dementia outcomes, indicating that confounding by indication likely increases as the proportion of cases with a vascular component increases. A review of other available literature suggests that this observation (a harmful effect of lipid regulating agents on vascular-related outcome due to confounding by indication) is not unusual. Using a conventional epidemiological technique, a previous analysis also found an increased risk of coronary heart disease (analogous to the ischaemic heart disease outcome used in our analysis) in those taking statins (`r estimate(1.31,1.04, 1.66, type = "HR")`).[@danaei2013b]  
 
 Finally, there is also the potential for reverse causation in this analysis. Dementia and associated conditions have a long prodromal period, during which preclinical disease could cause indications for the prescription of a lipid-regulating agent.
 
@@ -307,9 +312,11 @@ Finally, there is also the potential for reverse causation in this analysis. Dem
 
 # Conclusions {#conclusion}
 
-We have provided new evidence on the potential repurposing of lipid-regulating agents for the prevention of all-cause dementia, Alzheimer’s disease, vascular dementia, and other dementia. We found limited evidence to support the use of lipid-regulating agents for the prevention of  probable or possible Alzheimer’s disease, but they were associated with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations were driven by those observed in the statin subgroup, which comprised the majority of participants in our cohort.
+We have provided new evidence on the association of lipid-regulating agent prescription with all-cause dementia, Alzheimer’s disease, vascular dementia, and other dementia. We found limited evidence to support the use of lipid-regulating agents for the prevention of  probable or possible Alzheimer’s disease, but they were associated with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations were driven by those observed in the any statin subgroup, which comprised the majority of participants in our cohort.
 
 We have attempted to account for important sources of bias in our analysis and provide a comparison with other available literature. However, there is a strong potential for unmeasured confounding, misclassification and reverse causation, which may relate to the unexpected increase in risk of vascular dementia associated with statin use. Future research should aim to address these potential biases and, while it may be costly in terms of time and resources, a large scale, long-term randomized controlled trial would provide useful additional information on the effect of lipid-regulating agents on the risk of dementia and related outcomes.
+
+
 
 \newpage
 
@@ -326,6 +333,9 @@ We have attempted to account for important sources of bias in our analysis and p
 \newpage
 
 # Main figure
+
+<!-- TODO 11,119 participants removed because their endate was . This explains the discrepancy between the total number in this figure and the table above. -->
+
 
 <!--------------------------------------------------------------------------->
 ```{r cprdPrimary, echo = FALSE, fig.cap="Test"}

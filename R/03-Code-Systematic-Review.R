@@ -167,11 +167,11 @@ if(doc_type == "docx") {
 
 toc_df <- rio::import("data/sys-rev/Book1.xlsx",which = 1) %>%
   janitor::clean_names() %>%
-  select(study_id, author, year, location, data_source) %>%
-  dplyr::filter(study_id == "9429")
+  select(study_id, author, year, location, data_source)
 
 toc_df2 <- rio::import("data/sys-rev/Book1.xlsx",which = 2) %>%
   janitor::clean_names() %>%
+  filter(!is.na(study_id)) %>%
   group_by(study_id) %>% 
   summarize(Criteria = paste0(unique(diagnostic_criteria), collapse = "; "),
             Exposures = paste0(unique(exposure), collapse = "; "), 
@@ -183,7 +183,9 @@ studyCharacteristics_table <- left_join(toc_df, toc_df2) %>%
   select(Study, location, data_source, Exposures, Outcomes, Criteria, -c(study_id,author, year)) %>%
   rename("Location" = location,
          "Data source" = data_source, 
-         "Diagnostic criteria" = Criteria)
+         "Diagnostic criteria" = Criteria) %>%
+  arrange(Study) %>%
+  filter(!is.na(Location))
 
 if(doc_type == "docx") {
   apply_flextable(studyCharacteristics_table, caption = "(ref:studyCharacteristics-caption)")
@@ -213,8 +215,6 @@ world <- toc_df %>%
 
 p1 <- ggplot(data = world) +
   geom_sf(aes(fill = n, geometry = geometry), legend = "none") +
-  scale_fill_gradient(low = "grey95",
-                      high = "grey10") +
   geom_rect(
     xmax = 36,
     xmin = -10,
@@ -239,12 +239,8 @@ p1 <- ggplot(data = world) +
   theme_void() +
   theme(panel.border = element_rect(colour = "black", fill = "transparent"))
 
-
-
 p2 <- ggplot(data = world) +
   geom_sf(aes(fill = n, geometry = geometry)) +
-  scale_fill_gradient(low = "grey95",
-                      high = "grey10") +
   xlab("Longitude") + ylab("Latitude") +
   coord_sf(xlim = c(36,-12),
            ylim = c(70, 35),
@@ -283,6 +279,8 @@ p3 <- p2 + plot_space + p1 + plot_layout(
   widths = c(1, 1, 1),
   heights = c(5, 0.1, 10)
 )  & labs(fill="No. of\ncohorts") &
+  scale_fill_gradient(low = "grey95",
+                      high = "grey10") &
   theme(legend.position = "left", 
         legend.box.margin=margin(0,20,0,0))
 
@@ -319,6 +317,19 @@ point_colour <-
          "black",
          "grey50")
 
+
+test2 <- data.frame(x = c(1, 1.25, 1, 0.75),
+                    y = c(
+                      last(t$conf.low),
+                      last(t$estimate),
+                      last(t$conf.high),
+                      last(t$estimate)
+                    ))
+
+ggplot() +
+  geom_polygon(aes(x=x,y=y))
+
+
 forester_thesis(
   t[,1],
   t$estimate,
@@ -326,8 +337,10 @@ forester_thesis(
   t$conf.high,
   font_family = "Fira Sans",
   file_path = here::here("figures/sys-rev/forester_statins_any.png"),
-  arrows = TRUE, display = FALSE,
-  x_scale_linear = F,stripe_colour = "white",
+  arrows = TRUE,
+  display = TRUE,
+  x_scale_linear = F,
+  stripe_colour = "white",
   null_line_at = 1,
   xlim = c(0.3,3), 
   adjustment = 0.35,

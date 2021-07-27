@@ -12,6 +12,10 @@ Sharen O'Keffe
 Neal Haddaway
 Martin Westgate
 
+Emily Hennessy
+
+
+
 robvis contributors: (there are at least 3)
 
 Annual reviewers: Rupert Payne and Emma Anderson
@@ -30,6 +34,8 @@ Statistical support: check emails!
 All authors who volunteered time and effort to provided
 
 A special thanks goes out to Mark Newbury of the 
+
+My student, Georgia Gourlay
 
 __Personal__
 
