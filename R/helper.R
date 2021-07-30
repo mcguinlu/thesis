@@ -139,7 +139,7 @@ estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-"){
   estimate <- stringr::str_trim(sprintf("%7.2f", estimate))
   lci <- stringr::str_trim(sprintf("%7.2f", lci))
   uci <- stringr::str_trim(sprintf("%7.2f", uci))
-  z <- paste0(type, estimate, start, "95% CI: ", lci, to, uci, end)
+  z <- paste0(type, estimate, start, "95%CI: ", lci, to, uci, end)
   return(z)
 }
 
@@ -460,6 +460,7 @@ generate_forester_plot <-
       font_family = "Fira Sans",
       null_line_at = 1,
       arrows = TRUE,
+      arrow_labels = c("Lower risk on drug","Higher risk on drug"),
       point_shapes = subset_table$point_shape,
       bold_vec = bold_vec, 
       colour_vec = point_colour,
