@@ -77,15 +77,15 @@ table1 = table1[-1,]
 colnames(table1)[1] <- " "
 
 table1[1, 1] <- "Sample size (N)"
-table1[2, 1] <- "Index year \\newline(median)"
+table1[2, 1] <- "Year of \\newline cohort entry \\newline (median)"
 table1[3, 1] <- "Female"
-table1[4, 1] <- "Age"
+table1[4, 1] <- "Age at \\newline cohort entry \\newline (median)"
 table1[5, 1] <- "CAD"
 table1[6, 1] <- "CBS"
 table1[7, 1] <- "CVD"
 table1[8, 1] <- "Charlson (ever > 0)"
 table1[9, 1] <- "IMD-2010 (median)"
-table1[10, 1] <- "Consulation rate (mean/SD)"
+table1[10, 1] <- "Consultation rate (mean/SD)"
 table1[11, 1] <- "Alcohol (ever)"
 table1[12, 1] <- "Smoking (ever)"
 table1[13, 1] <- "BMI (mean/SD)"
@@ -105,18 +105,21 @@ table1[24, 1] <- "Follow up \\newline(years; median)"
 table1.copy <- table1
 
 table1 <- table1[, c(1, 10, 7, 9, 2:6, 8)]
-table1_disp <- table1[c(1:16, 22, 17:18, 23, 24), ]
+table1_disp <- table1[c(1:16, 22, 17:18, 23), ]
 
 # Quick check to ensure data quality
 t <- table1_disp[1, 2:10]
 t <- as.numeric(table1_disp[1, 2:10])
 
+
 if (t[1] - sum(t[2:9]) != 0) {
   stop("cprdCharacteristics-table: Sum of subgroups != Total sample size")
 }
 
+table1_disp[1,2:9] <- stringr::str_trim(comma(as.numeric(table1_disp[1,2:9])))
+
 # Create display table using kable
-cprdCharacteristics_table <- table1_disp
+cprdCharacteristics_table <- comma(table1_disp)
 
 if (doc_type == "docx") {
   apply_flextable(cprdCharacteristics_table, caption = "(ref:cprdCharacteristics-caption)") %>%
@@ -370,9 +373,9 @@ probad <- results %>%
   filter(outcome == "Probable AD" & drug == "Any")
 
 probad_text <- paste0(
-  "HR: ",
+  "HR:",
   round(probad$HR, 2),
-  ", 95%CI: ",
+  ", 95%CI:",
   round(probad$ci_lower, 2),
   "-",
   round(probad$ci_upper, 2)
@@ -382,9 +385,9 @@ probad_fib <- results %>%
   filter(outcome == "Any dementia" & drug == "Fibrates")
 
 probad_fib_text <- paste0(
-  "HR: ",
+  "HR:",
   round(probad_fib$HR, 2),
-  ", 95%CI: ",
+  ", 95%CI:",
   round(probad_fib$ci_lower, 2),
   "-",
   round(probad_fib$ci_upper, 2)
@@ -394,9 +397,9 @@ possad <- results %>%
   filter(outcome == "Possible AD" & drug == "Any")
 
 possad_text <- paste0(
-  "HR: ",
+  "HR:",
   round(possad$HR, 2),
-  ", 95%CI: ",
+  ", 95%CI:",
   round(possad$ci_lower, 2),
   "-",
   round(possad$ci_upper, 2)
@@ -406,9 +409,9 @@ vasdem <- results %>%
   filter(outcome == "Vascular dementia" & drug == "Any")
 
 vasdem_text <- paste0(
-  "HR: ",
+  "HR:",
   round(vasdem$HR, 2),
-  ", 95%CI: ",
+  ", 95%CI:",
   round(vasdem$ci_lower, 2),
   "-",
   round(vasdem$ci_upper, 2)
@@ -418,9 +421,9 @@ vasdem_eze <- results %>%
   filter(outcome == "Vascular dementia" & drug == "Ezetimibe")
 
 vasdem_eze_text <- paste0(
-  "HR: ",
+  "HR:",
   round(vasdem_eze$HR, 2),
-  ", 95%CI: ",
+  ", 95%CI:",
   round(vasdem_eze$ci_lower, 2),
   "-",
   round(vasdem_eze$ci_upper, 2)
@@ -430,9 +433,9 @@ othdem <- results %>%
   filter(outcome == "Other dementia" & drug == "Any")
 
 othdem_text <- paste0(
-  "HR: ",
+  "HR:",
   round(othdem$HR, 2),
-  ", 95%CI: ",
+  ", 95%CI:",
   round(othdem$ci_lower, 2),
   "-",
   round(othdem$ci_upper, 2)
@@ -442,9 +445,9 @@ othdem_eze <- results %>%
   filter(outcome == "Other dementia" & drug == "Ezetimibe")
 
 othdem_eze_text <- paste0(
-  "HR: ",
+  "HR:",
   round(othdem_eze$HR, 2),
-  ", 95%CI: ",
+  ", 95%CI:",
   round(othdem_eze$ci_lower, 2),
   "-",
   round(othdem_eze$ci_upper, 2)
@@ -454,9 +457,9 @@ anydem <- results %>%
   filter(outcome == "Any dementia" & drug == "Any")
 
 anydem_text <- paste0(
-  "HR: ",
+  "HR:",
   round(anydem$HR, 2),
-  ", 95%CI: ",
+  ", 95%CI:",
   round(anydem$ci_lower, 2),
   "-",
   round(anydem$ci_upper, 2)
@@ -466,9 +469,9 @@ anydem_fib <- results %>%
   filter(outcome == "Any dementia" & drug == "Fibrates")
 
 anydem_fib_text <- paste0(
-  "HR: ",
+  "HR:",
   round(anydem_fib$HR, 2),
-  ", 95%CI: ",
+  ", 95%CI:",
   round(anydem_fib$ci_lower, 2),
   "-",
   round(anydem_fib$ci_upper, 2)
@@ -1595,3 +1598,107 @@ if (doc_type == "docx") {
     row_spec(0, bold = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position"))
 }
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- followUp-table
+
+clean_stata_output <- function(data){
+  
+  stringr::str_split(data,"  *") %>%
+    as.data.frame() %>%
+    janitor::clean_names() %>%
+    data.table::transpose() %>%
+    mutate(V4 = comma(as.numeric(V4)/365.25)) %>%
+    select(V2,V4,V5) %>%
+    filter(!V2 %in% c("hc_eze_~a", "hc_nag")) %>%
+    arrange(match(V2, c("None","hc_sta","hc_om3", "hc_fib","hc_eze","hc_bas"))) %>%
+    mutate(V2 = case_when(V2 == "None" ~ "No LRA (unexposed)",
+                          V2 == "hc_bas" ~ "  Bile acid sequestrants",
+                          V2 == "hc_sta" ~ "  Statins",
+                          V2 == "hc_fib" ~ "  Fibrates",
+                          V2 == "hc_om3" ~ "  Omega-3 Fatty Acid Groups",
+                          V2 == "hc_eze" ~ "  Ezetimibe",
+                          T ~ "Total"))
+}
+
+main <- readLines(here::here("data/cprd/mylog.txt"))[c(19:26,28)] %>%
+  clean_stata_output()
+
+main[,4] <- readLines(here::here("data/cprd/mylog_adprob.txt"))[c(15:22,24)] %>%
+  clean_stata_output() %>%
+  pull(V5)
+
+main[,5] <- readLines(here::here("data/cprd/mylog_adposs.txt"))[c(15:22,24)] %>%
+  clean_stata_output() %>%
+  pull(V5)
+
+main[,6] <- readLines(here::here("data/cprd/mylog_vasdem.txt"))[c(15:22,24)] %>%
+  clean_stata_output() %>%
+  pull(V5)
+
+main[,7] <- readLines(here::here("data/cprd/mylog_othdem.txt"))[c(15:22,24)] %>%
+  clean_stata_output() %>%
+  pull(V5)
+
+main <- main %>%
+  janitor::clean_names() %>%
+  add_row(v2 = "By drug class", .after = 1)
+
+
+colnames(main) <-
+  c(
+    "Exposure group",
+    "Person-years\n at risk",
+    "Any dementia",
+    "Possible AD",
+    "Probable AD",
+    "Vascular dementia",
+    "Other dementia"
+  )
+
+
+if(doc_type == "docx"){
+  
+  flextable::flextable(main) %>%
+    flextable::add_header(
+      "Exposure group" = "Exposure group",
+      "Person-years\n at risk" = "Person-years\n at risk",
+      "Any dementia" = "Events",
+      "Possible AD" = "Events",
+      "Probable AD" = "Events",
+      "Vascular dementia" = "Events",
+      "Other dementia" = "Events",
+      top = TRUE
+    ) %>%
+    flextable::merge_h(part = "header") %>%
+    flextable::merge_v(part = "header") %>%
+    flextable::align(
+      i = 1,
+      j = 3:7,
+      align = "center",
+      part = "header"
+    ) %>%
+    flextable::align(i = 2,
+                     j = 1,
+                     align = "left",
+                     part = "header") %>%
+    flextable::bg(bg = "#A6A6A6", part = "header") %>%
+    flextable::bold(part = "header") %>%
+    flextable::bold(j=1,i=1:2, part = "body") %>%
+    flextable::fontsize(size = 9, part = "all") %>%
+    flextable::hline(part = "header") %>%
+    flextable::hline(i=7,part = "body") %>%
+    flextable::padding(i=3:7, j=1, padding.left=20) %>%
+    flextable::align(align = "center", part = "all" ) %>%
+    flextable::align(j = 1:2, align = "left", part = "all") %>%
+    flextable::set_table_properties(layout = "autofit") %>%
+    flextable::set_caption("(ref:followUp-caption)")
+  
+  
+  }else{
+knitr::kable(main, format = "latex", caption = "(ref:follow-up-caption)", caption.short = "(ref:follow-up-scaption)", booktabs = TRUE) %>% 
+row_spec(0, bold = TRUE) %>%
+kable_styling(latex_options = c("HOLD_position"))
+}
+
+

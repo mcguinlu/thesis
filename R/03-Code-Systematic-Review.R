@@ -317,19 +317,6 @@ point_colour <-
          "black",
          "grey50")
 
-
-test2 <- data.frame(x = c(1, 1.25, 1, 0.75),
-                    y = c(
-                      last(t$conf.low),
-                      last(t$estimate),
-                      last(t$conf.high),
-                      last(t$estimate)
-                    ))
-
-ggplot() +
-  geom_polygon(aes(x=x,y=y))
-
-
 forester_thesis(
   t[,1],
   t$estimate,

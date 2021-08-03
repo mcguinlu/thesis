@@ -1,0 +1,31 @@
+                                                       ___  ____  ____  ____  ____(R)
+                                                      /__    /   ____/   /   ____/   
+                                                     ___/   /   /___/   /   /___/    
+                                                       Statistics/Data analysis      
+      
+      
+     1 . 
+     2 . * Get HR, adjusted for full confounders
+     3 . stptime, by(first_drug) per(1000)
+      
+               failure _d:  diagnosis_any_dementia
+         analysis time _t:  (diagnosis_dem_end-origin)
+                   origin:  time dob
+        enter on or after:  time index_date
+                       id:  patid
+      
+       first_d~g |  Person-time   Failures        Rate   [95% Conf. Interval]
+      -----------+-----------------------------------------------------------
+            None |    2.145e+09      18608   .00867502   .0085513    .0088006
+          hc_bas |     13284135        106   .00797944   .0065962    .0096527
+          hc_eze |      2412112         32   .01326638   .0093817    .0187597
+       hc_eze_~a |       360160          0           0          .           .
+          hc_fib |     13880502        141   .01015813   .0086125    .0119811
+          hc_nag |       512614          4   .00780314   .0029287    .0207908
+          hc_om3 |      2934455         19    .0064748     .00413    .0101509
+          hc_sta |    1.779e+09      22920   .01288118   .0127155     .013049
+      -----------+-----------------------------------------------------------
+           Total |    3.958e+09      41830   .01056918   .0104684     .010671
+      
+     4 . 
+     5 . translate @Results mylog.txt, replace
