@@ -207,8 +207,11 @@ Short section detailing the things I tried to do but which did not work.
 
 ## Software used to create this thesis
 
-This thesis was written in RMarkdown. Several R packages were used as part of this project.[@base; @cranlogs; @dplyr; @flextable; @ggplot2; @glue; @gt; @here; @kableExtra; @knitr; @medrxivr; @plyr; @robvis; @stringr; @tidyverse; @wordcountaddin; @xfun; @rbiorxiv]
+```{r, include = FALSE}
+knitr::write_bib(c(.packages(), "bookdown", "knitr"), here::here("bibliography/packages.bib"))
+```
 
+This thesis was written in RMarkdown. Several R packages were used as part of this project.`r gen_rmd_citation("packages.bib")`
 All projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
 
 <!----------------------------------------------------------------------------->

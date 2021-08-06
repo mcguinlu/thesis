@@ -198,7 +198,10 @@ if(doc_type == "docx") {
     booktabs = TRUE
   ) %>%
     row_spec(0, bold = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"))
+    kable_styling(latex_options = c("HOLD_position")) %>%
+    kableExtra::column_spec(0:1, width = "5em") %>%
+    kableExtra::column_spec(2:6, width = "10em")
+    
 }
 
 
@@ -214,7 +217,7 @@ world <- toc_df %>%
   tidyr::replace_na(list(n = 0))
 
 p1 <- ggplot(data = world) +
-  geom_sf(aes(fill = n, geometry = geometry), legend = "none") +
+  geom_sf(aes(fill = n, geometry = geometry), size = 0.1, legend = "none") +
   geom_rect(
     xmax = 36,
     xmin = -10,
@@ -222,7 +225,7 @@ p1 <- ggplot(data = world) +
     ymin = 35,
     fill = "transparent",
     color = "black",
-    size = 1
+    size = 0.5
   ) +
   xlab("Longitude") + ylab("Latitude") +
   coord_sf(ylim = c(-60, 85),
@@ -240,7 +243,7 @@ p1 <- ggplot(data = world) +
   theme(panel.border = element_rect(colour = "black", fill = "transparent"))
 
 p2 <- ggplot(data = world) +
-  geom_sf(aes(fill = n, geometry = geometry)) +
+  geom_sf(aes(fill = n, geometry = geometry), size = 0.1) +
   xlab("Longitude") + ylab("Latitude") +
   coord_sf(xlim = c(36,-12),
            ylim = c(70, 35),
@@ -257,17 +260,17 @@ plot_space <- ggplot() +
   ) +
   annotate(
     "segment",
-    x = -110,
+    x = -160,
     xend = -1180,
-    y = -1040,
+    y = -720,
     yend = 71,
     colour = "black",
   ) +
   annotate(
     "segment",
-    x = 440,
+    x = 625,
     xend = 1210,
-    y = -1040,
+    y = -720,
     yend = 71,
     colour = "black",
   ) +
@@ -287,8 +290,8 @@ p3 <- p2 + plot_space + p1 + plot_layout(
 ggsave(
   here::here("figures/sys-rev/cohortLocations.png"),
   p3,
-  height = 10,
-  width = 9
+  height = 6,
+  width = 8
 )
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
@@ -309,36 +312,37 @@ results_statins <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx", wh
 t <- metafor::rma.uni(data = results_statins,
                       yi = point,
                       sei = SE,
-                      slab = paste(author, year)) %>%
-  broom_ma()
-  
-point_colour <-
-  ifelse(t$type == "summary",
+                      slab = paste(author, year))
+
+statins <- broom_ma(t) %>%
+  mutate(point_colour = ifelse(type == "summary",
          "black",
-         "grey50")
+         "grey50"))
 
 forester_thesis(
-  t[,1],
-  t$estimate,
-  t$conf.low,
-  t$conf.high,
+  statins[,1],
+  statins$estimate,
+  statins$conf.low,
+  statins$conf.high,
+  estimate_precision = 2,
   font_family = "Fira Sans",
   file_path = here::here("figures/sys-rev/forester_statins_any.png"),
   arrows = TRUE,
-  display = TRUE,
+  display = FALSE,
   x_scale_linear = F,
   stripe_colour = "white",
   null_line_at = 1,
   xlim = c(0.3,3), 
+  xbreaks = c(0.3,1,3),
   adjustment = 0.35,
-  colour_vec = point_colour
+  colour_vec = statins$point_colour,
+  arrow_labels = c("Favours control","Favours intervention")
 )
 
-
 # 
-# png(file = 'forestplot_acd.png') 
-# metafor::forest(t, transf=exp, slab = paste(test$author, test$year), refline =1, xlab = "HR for any dementia")
-# dev.off() 
+png(file = here::here("figures/sys-rev/funnel_statins_any.png"))
+metafor::funnel(t)
+dev.off()
 # 
 # 
 # 

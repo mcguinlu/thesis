@@ -145,7 +145,6 @@
 % Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
 \addbibresource{bibliography/references.bib}
 
-
 % Add definition of CSLReferences section to allow for compatibility with new pan
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
@@ -189,7 +188,8 @@ An investigation of their relationship}
 % Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
 \degree{Doctor of Philosophy in Population Health Sciences}
 % Term and year of submission, or date if your board requires (eg most masters)
-\degreedate{TBC}
+\degreedate{2022}
+\wordcount{23389}
 
 
 %%%%% YOUR OWN PERSONAL MACROS
@@ -378,13 +378,13 @@ An investigation of their relationship}
 
 \adjustmtc
 
-Word count: 23348
+Word count: 23389
 
-Days: 252
+Days: 253
 
-Words behind: -6676
+Words behind: -6732
 
-Words today: 15
+Words today: 41
 
 ~
 
@@ -1264,7 +1264,7 @@ For example, the results of our simple search above can be exported to the \text
 \hypertarget{reception-and-future-plans}{%
 \subsection{Reception and future plans}\label{reception-and-future-plans}}
 
-The tool has been well received by the community (as of December 2021, \texttt{medrxivr} has been downloaded more than 4200 times), and several use cases have been reported. It has been used to investigate the role of preprints in the response to the 2019 coronavirus outbreak,\textsuperscript{\protect\hyperlink{ref-kodvanj2020}{105}} perform searches of preprints as part of a systematic review,\textsuperscript{\protect\hyperlink{ref-noone2020}{106},\protect\hyperlink{ref-grassly2020}{107}} and examine how data-sharing behaviour is affected by journal policies (see \ref{thesis-output}).\textsuperscript{\protect\hyperlink{ref-mcguinness2020c}{\textbf{mcguinness2020c?}}}
+The tool has been well received by the community (as of December 2021, \texttt{medrxivr} has been downloaded more than 4300 times), and several use cases have been reported. It has been used to investigate the role of preprints in the response to the 2019 coronavirus outbreak,\textsuperscript{\protect\hyperlink{ref-kodvanj2020}{105}} perform searches of preprints as part of a systematic review,\textsuperscript{\protect\hyperlink{ref-noone2020}{106},\protect\hyperlink{ref-grassly2020}{107}} and examine how data-sharing behaviour is affected by journal policies (see \ref{thesis-output}).\textsuperscript{\protect\hyperlink{ref-mcguinness2020c}{\textbf{mcguinness2020c?}}}
 
 The package was been onboarded into the rOpenSci suite of packages, a collection of ``carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web''.\textsuperscript{\protect\hyperlink{ref-boettiger2015}{108}} As part of this process, following rigorous peer-review, an associated article introducing the tool was published by the Journal of Open Source Software.\textsuperscript{\protect\hyperlink{ref-mcguinness2020a}{\textbf{mcguinness2020a?}}} The entire review discussion is publicly available and can be viewed online.\footnote{\url{https://github.com/ropensci/software-review/issues/380}} The tool has also been well received by the open-source community, demonstrated by the engagement of other developers in contributing to important new functionality and suggesting bug-fixes.
 
@@ -1344,10 +1344,14 @@ Systematic reviews aim to transparently and reproducibly identift
 
 A pre-specified protocol for this analysis was registered using the Open Science Framework, and is available for inspection.\textsuperscript{\protect\hyperlink{ref-mcguinnessluke2020}{113}}
 
+~
+
 \hypertarget{contributions}{%
 \subsection{Contributions}\label{contributions}}
 
-This systematic review was performed in conjunction with a team of secondary reviewer, all of whom . These included Alexandra MacAleenana, Athena Sheppard, Matthew Lee and Lena Schmidt.
+This systematic review was performed in conjunction with a team of secondary reviewer, all of whom . These included Alexandra MacAleenan, Athena Sheppard, Matthew Lee and Lena Schmidt.
+
+~
 
 \hypertarget{search-strategy-and-and-study-selection}{%
 \subsection{Search strategy and and study selection}\label{search-strategy-and-and-study-selection}}
@@ -1409,20 +1413,24 @@ I systematically search electronic bibliographic databases to identify potential
 
 To ensure that the study design filters are not excluding potentially relevant records, a random sample of 500 records identified by the main search but excluded by the filters (defined as ``8 NOT 14'' in Table \ref{tab:searchOverview-table}) was screened. If any potentially relevant studies are identified, their titles and abstracts were searched for key terms that can be incorporated into the filters to improve search sensitivity.
 
-The following databases were searched from inception onwards: Medline, EMBASE, Psychinfo, Cochrane Central Register of Controlled Trials (CENTRAL), and Web of Science Core Collection (for the specific databases available thi via the University). We will also search clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials. As the contents of the Web of Science Core COllection can vary by institution, the specific database searched via this platform are listed in Appendix \ref{appendix-wos-databases}.
+The following databases were searched from inception onwards: Medline, EMBASE, Psychinfo, Cochrane Central Register of Controlled Trials (CENTRAL), and Web of Science Core Collection (for the specific databases available thi via the University). I also search clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials. As the contents of the Web of Science Core COllection can vary by institution, the specific database searched via this platform are listed in Appendix \ref{appendix-wos-databases}.
 
 The abstracts list of relevant conferences (e.g.~the proceedings of the Alzheimer's Association International Conference, published in the journal Alzheimer's \& Dementia) were searched by hand.
 
-Grey literature will also be searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses were accessed using the Open Access Theses and Dissertations portal. We will also search bioRxiv and medRxiv, preprint repositories using a tool built as part of this thesis, to identify potentially relevant studies. Finally, the reference lists of included studies were searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
+Grey literature was also searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses were accessed using the Open Access Theses and Dissertations portal. I also searched bioRxiv and medRxiv, preprint repositories using a tool built as part of this thesis, to identify potentially relevant studies. Finally, the reference lists of included studies were searched by hand while studies citing included studies will be examined using Google Scholar (forward and reverse citation searching).
+
+~
 
 \hypertarget{study-selection}{%
 \subsubsection{Study selection}\label{study-selection}}
 
-Records were imported into Endnote and deduplicated using the method outlined in Bramer et al.~(2016).\textsuperscript{\protect\hyperlink{ref-bramer2016}{114}} In summary, this method uses multiple stages to identify potential duplicates, beginning with automatic deletion of records matching on multiple fields (``Author'' + ``Year'' + ``Title'' + ``Journal''), followed by manual review of less similar articles (e.g.~those matched based on the ``Title'' field alone).
+Records were imported into Endnote and de-duplicated using the method outlined in Bramer et al.~(2016).\textsuperscript{\protect\hyperlink{ref-bramer2016}{114}} In summary, this method uses multiple stages to identify potential duplicates, beginning with automatic deletion of records matching on multiple fields (``Author'' + ``Year'' + ``Title'' + ``Journal''), followed by manual review of less similar articles (e.g.~those matched based on the ``Title'' field alone).
 
 Screening (both title/abstract and full-text) was performed using a combination of Endnote, a citation management tool,\textsuperscript{\protect\hyperlink{ref-hupe2019}{115}} and Rayyan, a web-based screening application.\textsuperscript{\protect\hyperlink{ref-ouzzani2016}{116}} Title and abstract screening to remove obviously irrelevant records was performed primarily by the primary author, with a random selection of excluded records being screened in duplicate to ensure consistency with the inclusion criteria.
 
 Full-text screening will also be completed in full by the primary author. A second reviewer screened a random sample (approx 10\%) of included and excluded records, in addition to any records identified by the first reviewer as being difficult to assess against the inclusion criteria. Reasons for exclusion at this stage were recorded. Disagreements occurring during either stage of the screening process were resolved through discussion with a senior colleague. A PRIMSA flow diagram will be produced to document how records moved through the review.\textsuperscript{\protect\hyperlink{ref-page2021}{78}}
+
+~
 
 \hypertarget{inclusion-criteria}{%
 \subsubsection{Inclusion criteria}\label{inclusion-criteria}}
@@ -1435,6 +1443,8 @@ Eligible studies defined dementia according to recognised criteria, for example 
 For MCI, eligible studies are those that attempted state a definition for diagnoses of MCI (e.g.~an adapted version of the Petersen criteria)\textsuperscript{\protect\hyperlink{ref-petersen1999}{117}} and create ordinal groups of patients (e.g.~no dementia or dementia/MCI/dementia) based on this definition.
 
 No limitations will be imposed on publication status, publication date, venue or language, although sufficiently detailed reports of the studies to be able to examine their methods were required for inclusion.
+
+~
 
 \hypertarget{exclusion-criteria}{%
 \subsubsection{Exclusion criteria}\label{exclusion-criteria}}
@@ -1526,6 +1536,8 @@ Where necessary, lipid levels reported in \emph{mmol/L} were converted in \emph{
 
 where \(Z = 38.67\) for total cholesterol, LDL-c and HDL-c, and \(Z = 88.57\) for triglycerides. For widely-used categorises of lipids levels on the \emph{mg/dL} scale, see Table \ref{tab:lipidLevels-table} in Section \ref{intro-lipid-fractions}.
 
+~
+
 \hypertarget{studification}{%
 \subsubsection{Studification}\label{studification}}
 
@@ -1534,6 +1546,8 @@ Multiple publications resulting from the analysis of the same data were included
 In the advent of multiple papers reporting results on the same cohort, but say, at different time points, I used a process of studifiction to build out the most comprehensive accounts of the studies and results from as many published articles were applicable.
 
 This was particularly relevant to preprints and published papers reporting the same study, which were not considered duplicate records. Instead, they were considered as different reports of the same study. This is due to the potential for the published version to offer some information that the preprint did not, and vice versa.
+
+~
 
 \hypertarget{contacting-authors}{%
 \subsubsection{Following up with authors}\label{contacting-authors}}
@@ -1546,10 +1560,8 @@ Use the example of getting the cut-off points from the
 
 ~
 
-\hypertarget{converting-between-different}{%
-\subsubsection{Converting between different}\label{converting-between-different}}
-
-Include formulae and informed assumptions
+\hypertarget{converting-between-different-exposure-measures}{%
+\subsubsection{Converting between different exposure measures}\label{converting-between-different-exposure-measures}}
 
 Not interchangeable in the context of systematic review. If outcome is rare, odds and risk ratios approximate each other, but the hazard ratio is measuring something completely different, by taking into account time-to-event in each treatment group.
 
@@ -1563,7 +1575,7 @@ Best practice methods for dealing with disparate effect measures in included stu
 
 Some evidence of manipulation of effect estimates in previous reviews,(e.g.~Chou, Sci Reports - at least one study disagrees with) but not documented in review text.
 
-WHile the analysis of change scores is feasible, as they were explicityl
+While the analysis of change scores is feasible, as they were explicityl
 
 ~
 
@@ -1715,8 +1727,8 @@ As such, each individual cohort contibuting to the evidence base was quantified 
 
 ~
 
-\hypertarget{assessment-of-added-value-of-including-preprint}{%
-\subsection{Assessment of added value of including preprint}\label{assessment-of-added-value-of-including-preprint}}
+\hypertarget{assessment-of-added-value-of-including-preprints}{%
+\subsection{Assessment of added value of including preprints}\label{assessment-of-added-value-of-including-preprints}}
 
 Preprints are a valuable evidence source (see Introduction) but their inclusion in a systematic reivew
 s
@@ -1853,7 +1865,7 @@ Table \ref{tab:studyCharacteristics-table} shows the characteristics
 
 \caption[studyCharacteristics]{\label{tab:studyCharacteristics-table}studyCharacteristics}
 \centering
-\begin{tabular}[t]{llllll}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
 \toprule
 \textbf{Study} & \textbf{Location} & \textbf{Data source} & \textbf{Exposures} & \textbf{Outcomes} & \textbf{Diagnostic criteria}\\
 \midrule
@@ -1867,8 +1879,6 @@ Tynkkynen 2016 & Finland & FINRISK & NA & NA & ICD\\
 \bottomrule
 \end{tabular}
 \end{table}
-
-\includegraphics[width=4.56in]{_main_files/figure-latex/studyCharacteristics-table-1}
 
 \elandscape{}
 
@@ -1900,7 +1910,7 @@ In addition, there was quite a spread in terms fo the effect estimates used to t
 \hypertarget{meta-analysis-of-statin-use-and-hypercholesteroleamia}{%
 \subsection{Meta-analysis of statin use and hypercholesteroleamia}\label{meta-analysis-of-statin-use-and-hypercholesteroleamia}}
 
-Straight-forward random effects meta-analysis of binary exposures
+Straight-forward random effects meta-analysis of binary exposures, using study defined meaures of each.
 
 
 
@@ -1959,21 +1969,18 @@ Many studies did not report the codelists used to run the analysis,
 
 ~
 
-\hypertarget{triangualtion-across-evidence-sources}{%
-\subsection{Triangualtion across evidence sources}\label{triangualtion-across-evidence-sources}}
-
-One key question for which multiple distinct sources of evidence were available were those looking at Laz
-
-A key limitation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia {[}\textbf{Is this true?}{]} This rules out the use. In addition, there was limited literature available - as discussed in CHapter \ref{sys-rev}
-
-Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated.\textsuperscript{\protect\hyperlink{ref-guyatt2011}{133}}
-
-Without our framework and as part of the risk of bias assessments reported in \ref{risk-of-bias-subheading}, I attempted to records the direction of the bias, so that it could feed into the triangulation.
-
-~
-
 \hypertarget{added-evidental-value-of-including-preprints-sys-rev-including-preprints}{%
 \subsection{Added evidental value of including preprints \{sys-rev-including-preprints\}}\label{added-evidental-value-of-including-preprints-sys-rev-including-preprints}}
+
+As show in Figure \ref{fig}, the number of results returned by the preprint searching, was not substantial (bioRxiv = , medRxiv = ) .
+
+However, this is largely due to the timing of the preprint searches
+
+Include figure here showing growth of preprint database size, and cite studies detailing increasing acceptance as a valid form of evidence.
+
+This does speak to the over-representation of certain study designs in the preprint literature
+
+Regardless, some studies were identified
 
 There were several relevant preprints captured by the search run using the tool presented in Chapter \ref{sys-rev-tools-heading} (see Appendix \ref{appendix-medrxivr-code}). While many of the preprints included were subsequently published by the time of submission of this thesis, at the time of the search they were only available
 
@@ -1993,7 +2000,7 @@ However, if the aim is to find the current state of the art in the topic area at
 
 While concerns have been raised that
 
-Previous meta-studies have found high concordance between the main interpretations and other study design details in preprint-journal article pairs,\textsuperscript{\protect\hyperlink{ref-shi2021}{134}} though quality of reporting was slightly better in formally published articles.\textsuperscript{\protect\hyperlink{ref-carneiro2020}{135}}
+Previous meta-studies have found high concordance between the main interpretations and other study design details in preprint-journal article pairs,\textsuperscript{\protect\hyperlink{ref-shi2021}{133}} though quality of reporting was slightly better in formally published articles.\textsuperscript{\protect\hyperlink{ref-carneiro2020}{134}}
 
 A common criticism of preprinted articles is that they have not formally been peer-reviewed. \textbf{{[}CITATION NEEDED{]}}
 However, I believe this criticism is less warranted in the context of inclusion of preprints in a systematic review, given a formal assessment of risk of bias, which provides a structured approach to assessing the internal validity of a study.
@@ -2002,7 +2009,7 @@ However, I believe this criticism is less warranted in the context of inclusion 
 Anyone who can't assess a study to the level of peer review shouldn't do a systematic review
 \end{quote}
 
-References included in the review were also searched for on PubPeer, a platform which enables post-publication peer review of published journal articles.\textsuperscript{\protect\hyperlink{ref-hunter2012}{136}}
+References included in the review were also searched for on PubPeer, a platform which enables post-publication peer review of published journal articles.\textsuperscript{\protect\hyperlink{ref-hunter2012}{135}}
 
 The added value of peer-review to papers that is questionable and difficult to quantify for a number of reasons, including the fact that most peer reviews are closed
 
@@ -2016,7 +2023,7 @@ While \textbf{PLACEHOLDER} preprint have subsequently been published, this does 
 \hypertarget{discussion-1}{%
 \section{Discussion}\label{discussion-1}}
 
-Major limitation is that several included studies used data from electronic health databases, which come with serious concerns regarding validity\textsuperscript{\protect\hyperlink{ref-hsieh2019}{137}} \textsuperscript{\protect\hyperlink{ref-mcguinness2019validity}{138},\protect\hyperlink{ref-wilkinson2018}{139}}
+Major limitation is that several included studies used data from electronic health databases, which come with serious concerns regarding validity\textsuperscript{\protect\hyperlink{ref-hsieh2019}{136}} \textsuperscript{\protect\hyperlink{ref-mcguinness2019validity}{137},\protect\hyperlink{ref-wilkinson2018}{138}}
 
 In addition, the a
 
@@ -2068,6 +2075,21 @@ However, a comparative analysis between indicates
 
 ~
 
+~
+
+\hypertarget{triangualtion-across-evidence-sources}{%
+\subsection{Triangualtion across evidence sources}\label{triangualtion-across-evidence-sources}}
+
+One key question for which multiple distinct sources of evidence were available were those looking at Laz
+
+A key limitation for other types of dementia, in particularly vascular, is that there has yet to be a GWAS identifying relevant SNPS that could then be used in a MR study with SNPS for lipids to estimates the causal effect of lipids on vascular dementia {[}\textbf{Is this true?}{]} This rules out the use. In addition, there was limited literature available - as discussed in CHapter \ref{sys-rev}
+
+Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated.\textsuperscript{\protect\hyperlink{ref-guyatt2011}{139}}
+
+Without our framework and as part of the risk of bias assessments reported in \ref{risk-of-bias-subheading}, I attempted to records the direction of the bias, so that it could feed into the triangulation.
+
+~
+
 \hypertarget{comments-on-the-process}{%
 \subsection{Comments on the process}\label{comments-on-the-process}}
 
@@ -2107,8 +2129,11 @@ Similarly, a substanital amount of time and effort has gone into making the data
 
 ~
 
-\hypertarget{strenghts-and-limitations}{%
-\subsection{Strenghts and limitations}\label{strenghts-and-limitations}}
+\hypertarget{strengths-and-limitations}{%
+\subsection{Strengths and limitations}\label{strengths-and-limitations}}
+
+\hypertarget{strengths}{%
+\subsubsection{Strengths}\label{strengths}}
 
 I believe there are four aspects where this review is distinct from those reviews already available in the published literature (as identified by ):
 
@@ -2119,6 +2144,10 @@ I believe there are four aspects where this review is distinct from those review
   \emph{Structured risk of bias assessment:} The majority of the highly cited reviews on this topic either do not formally consider the risk of bias in the observational studies they include or do not use an appropriate domain-based assessment tool (e.g.~ROBINS-I/E). This is important area in which this thesis can add value, as based on the risk-of-bias assessments I have performed to date, several primary studies are at high risk of bias and this should be reflected in the findings of any review on this topic.
 \item
   \emph{Inclusion of preprints:} Unlike other available reviews and enabled by the tool described in Chapter 3, this review systematically searched preprinted health-related manuscripts as a source of grey literature. As part of this chapter, I plan to examine the extent of the additional information provided to the review by the inclusion of preprints.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   \emph{Contribution to methods work:} A large part of this review was the associated work on improving research synthesis methods. This work is detailed as relevant throughout the Chapter, often referring to additional work detailed in the . IN addition this review was used to pilot an upcoming risk of bias tool
 \end{itemize}
@@ -2127,6 +2156,8 @@ I believe there are four aspects where this review is distinct from those review
 
 \hypertarget{limitations}{%
 \subsubsection{Limitations}\label{limitations}}
+
+However, this review also has several limitations.
 
 ~
 
@@ -2167,18 +2198,6 @@ Is it a big issue that the studies have the same underlying datasets?
 
 Potentially the use of methods such as snowballing (forwards and backwards citation chasing) and communication with relevant topic experts should cpature similar studies.
 However, in future better-resourced reviews, a dedicated search for ``risk factors'' and ``dementia'' and ``Mendelian randomisation'', followed by manual review of studies that look across multiple risk factors, would be advisable.
-
-~
-
-\hypertarget{strengths-and-limitations}{%
-\subsection{Strengths and limitations}\label{strengths-and-limitations}}
-
-~
-
-\hypertarget{inclusion-of-preprints-1}{%
-\subsubsection{Inclusion of preprints}\label{inclusion-of-preprints-1}}
-
-Comment on the fact that several of the studies identified through the search of preprints, were subsequently published, but much later than the cut-off point for the search (e.g.~they would not have been captured by the search for published papers)
 
 ~
 
@@ -2889,7 +2908,7 @@ In summary, despite best efforts to account for strong confounding, participants
 
 The primary strength of this analysis compared to others available in the literature is the relative size of the CPRD and length of follow-up. Having reviewed the other studies identified by the systematic review in Chapter \ref{sys-rev-heading}, this analysis of 1,684,564 participants is one of the largest available studies of this research question. Additionally, this analysis followed LRA users and non-users from a common index date, using a time-updating treatment indicator to correctly assign time-at-risk to the exposed and unexposed groups. This approach has been less commonly used in the literature and allows for the mitigation of potential immortal time bias.
 
-However, the findings of this analysis are subject to several limitations. There is a strong possibility of differential misclassification\textsuperscript{\protect\hyperlink{ref-porta2014dictionary}{174}} of dementia-related conditions based on the exposure. As an illustrative example, those with memory complaints may be more likely to be classified as vascular dementia than Alzheimer's disease if their medical records contains prescriptions for lipid-regulating agents. Further, there is a potential for general non-differential misclassification of the outcome based on varying positive predictive value of electronic health record code lists to identify dementia cases.\textsuperscript{\protect\hyperlink{ref-mcguinness2019validity}{138},\protect\hyperlink{ref-wilkinson2018}{139}}
+However, the findings of this analysis are subject to several limitations. There is a strong possibility of differential misclassification\textsuperscript{\protect\hyperlink{ref-porta2014dictionary}{174}} of dementia-related conditions based on the exposure. As an illustrative example, those with memory complaints may be more likely to be classified as vascular dementia than Alzheimer's disease if their medical records contains prescriptions for lipid-regulating agents. Further, there is a potential for general non-differential misclassification of the outcome based on varying positive predictive value of electronic health record code lists to identify dementia cases.\textsuperscript{\protect\hyperlink{ref-mcguinness2019validity}{137},\protect\hyperlink{ref-wilkinson2018}{138}}
 
 Misclassification of outcomes is not the only issue introduced by the use of EHR codes to define outcomes. Comparing and contrasting between different studies is particularly difficult because of the impact that the use of different code list can have on the analysis. This is a particular challenge in comparing research across different time-periods and coding systems, as illustrated by the discrepancy between the results when using the codes lists defined for this study and those used by Smeeth \emph{et al}.
 
@@ -3655,33 +3674,33 @@ Lasciate ogne speranza, voi ch'intrate. . .
 \CSLLeftMargin{132. }
 \CSLRightInline{Feinstein, A. R. \& Cicchetti, D. V. High agreement but low kappa: {I}. {The} problems of two paradoxes. \emph{Journal of Clinical Epidemiology} \textbf{43}, 543--549 (1990).}
 
-\leavevmode\hypertarget{ref-guyatt2011}{}%
-\CSLLeftMargin{133. }
-\CSLRightInline{Guyatt, G. H. \emph{et al.} {GRADE} guidelines: 9. {Rating} up the quality of evidence. \emph{Journal of Clinical Epidemiology} \textbf{64}, 1311--1316 (2011).}
-
 \leavevmode\hypertarget{ref-shi2021}{}%
-\CSLLeftMargin{134. }
+\CSLLeftMargin{133. }
 \CSLRightInline{Shi, X. \emph{et al.} Assessment of {Concordance} and {Discordance Among Clinical Studies Posted} as {Preprints} and {Subsequently Published} in {High}-{Impact Journals}. \emph{JAMA Network Open} \textbf{4}, e212110 (2021).}
 
 \leavevmode\hypertarget{ref-carneiro2020}{}%
-\CSLLeftMargin{135. }
+\CSLLeftMargin{134. }
 \CSLRightInline{Carneiro, C. F. D. \emph{et al.} Comparing quality of reporting between preprints and peer-reviewed articles in the biomedical literature. \emph{Research Integrity and Peer Review} \textbf{5}, 16 (2020).}
 
 \leavevmode\hypertarget{ref-hunter2012}{}%
-\CSLLeftMargin{136. }
+\CSLLeftMargin{135. }
 \CSLRightInline{Hunter, J. Post-{Publication Peer Review}: {Opening Up Scientific Conversation}. \emph{Frontiers in Computational Neuroscience} \textbf{6}, (2012).}
 
 \leavevmode\hypertarget{ref-hsieh2019}{}%
-\CSLLeftMargin{137. }
+\CSLLeftMargin{136. }
 \CSLRightInline{Hsieh, C.-Y. \emph{et al.} Taiwan's {National Health Insurance Research Database}: Past and future. \emph{Clinical Epidemiology} \textbf{11}, 349--358 (2019).}
 
 \leavevmode\hypertarget{ref-mcguinness2019validity}{}%
-\CSLLeftMargin{138. }
+\CSLLeftMargin{137. }
 \CSLRightInline{McGuinness, L. A., Warren-Gash, C., Moorhouse, L. R. \& Thomas, S. L. The validity of dementia diagnoses in routinely collected electronic health records in the {United Kingdom}: {A} systematic review. \emph{Pharmacoepidemiology and Drug Safety} \textbf{28}, 244--255 (2019).}
 
 \leavevmode\hypertarget{ref-wilkinson2018}{}%
-\CSLLeftMargin{139. }
+\CSLLeftMargin{138. }
 \CSLRightInline{Wilkinson, T. \emph{et al.} Identifying dementia cases with routinely collected health data: {A}~systematic review. \emph{Alzheimer's \& Dementia} \textbf{14}, 1038--1051 (2018).}
+
+\leavevmode\hypertarget{ref-guyatt2011}{}%
+\CSLLeftMargin{139. }
+\CSLRightInline{Guyatt, G. H. \emph{et al.} {GRADE} guidelines: 9. {Rating} up the quality of evidence. \emph{Journal of Clinical Epidemiology} \textbf{64}, 1311--1316 (2011).}
 
 \leavevmode\hypertarget{ref-chu2018}{}%
 \CSLLeftMargin{140. }
@@ -4208,8 +4227,7 @@ Short section detailing the things I tried to do but which did not work.
 \hypertarget{software-used-to-create-this-thesis}{%
 \section{Software used to create this thesis}\label{software-used-to-create-this-thesis}}
 
-This thesis was written in RMarkdown. Several R packages were used as part of this project.\textsuperscript{\protect\hyperlink{ref-base}{\textbf{base?}},\protect\hyperlink{ref-cranlogs}{\textbf{cranlogs?}},\protect\hyperlink{ref-dplyr}{\textbf{dplyr?}},\protect\hyperlink{ref-flextable}{\textbf{flextable?}},\protect\hyperlink{ref-ggplot2}{\textbf{ggplot2?}},\protect\hyperlink{ref-glue}{\textbf{glue?}},\protect\hyperlink{ref-gt}{\textbf{gt?}},\protect\hyperlink{ref-here}{\textbf{here?}},\protect\hyperlink{ref-kableExtra}{\textbf{kableExtra?}},\protect\hyperlink{ref-knitr}{\textbf{knitr?}},\protect\hyperlink{ref-medrxivr}{\textbf{medrxivr?}},\protect\hyperlink{ref-plyr}{\textbf{plyr?}},\protect\hyperlink{ref-robvis}{\textbf{robvis?}},\protect\hyperlink{ref-stringr}{\textbf{stringr?}},\protect\hyperlink{ref-tidyverse}{\textbf{tidyverse?}},\protect\hyperlink{ref-wordcountaddin}{\textbf{wordcountaddin?}},\protect\hyperlink{ref-xfun}{\textbf{xfun?}},\protect\hyperlink{ref-rbiorxiv}{\textbf{rbiorxiv?}}}
-
+This thesis was written in RMarkdown. Several R packages were used as part of this project.\textsuperscript{\protect\hyperlink{ref-R-base}{\textbf{R-base?}},\protect\hyperlink{ref-R-bookdown}{\textbf{R-bookdown?}},\protect\hyperlink{ref-R-dagitty}{\textbf{R-dagitty?}},\protect\hyperlink{ref-R-data.table}{\textbf{R-data.table?}},\protect\hyperlink{ref-R-dplyr}{\textbf{R-dplyr?}},\protect\hyperlink{ref-R-flextable}{\textbf{R-flextable?}},\protect\hyperlink{ref-R-ggdag}{\textbf{R-ggdag?}},\protect\hyperlink{ref-R-ggplot2}{\textbf{R-ggplot2?}},\protect\hyperlink{ref-R-kableExtra}{\textbf{R-kableExtra?}},\protect\hyperlink{ref-R-knitr}{\textbf{R-knitr?}},\protect\hyperlink{ref-R-koRpus}{\textbf{R-koRpus?}},\protect\hyperlink{ref-R-koRpus.lang.en}{\textbf{R-koRpus.lang.en?}},\protect\hyperlink{ref-R-magrittr}{\textbf{R-magrittr?}},\protect\hyperlink{ref-R-medrxivr}{\textbf{R-medrxivr?}},\protect\hyperlink{ref-R-networkD3}{\textbf{R-networkD3?}},\protect\hyperlink{ref-R-patchwork}{\textbf{R-patchwork?}},\protect\hyperlink{ref-R-readxl}{\textbf{R-readxl?}},\protect\hyperlink{ref-R-robvis}{\textbf{R-robvis?}},\protect\hyperlink{ref-R-sf}{\textbf{R-sf?}},\protect\hyperlink{ref-R-sylly}{\textbf{R-sylly?}},\protect\hyperlink{ref-bookdown2016}{\textbf{bookdown2016?}},\protect\hyperlink{ref-dagitty2016}{\textbf{dagitty2016?}},\protect\hyperlink{ref-ggplot22016}{\textbf{ggplot22016?}},\protect\hyperlink{ref-knitr2015}{\textbf{knitr2015?}},\protect\hyperlink{ref-knitr2014}{\textbf{knitr2014?}},\protect\hyperlink{ref-koRpus2018}{\textbf{koRpus2018?}},\protect\hyperlink{ref-koRpus.lang.en2019}{\textbf{koRpus.lang.en2019?}},\protect\hyperlink{ref-medrxivr2020}{\textbf{medrxivr2020?}},\protect\hyperlink{ref-robvis2020}{\textbf{robvis2020?}},\protect\hyperlink{ref-sf2018}{\textbf{sf2018?}},\protect\hyperlink{ref-sylly2018}{\textbf{sylly2018?}}}
 All projects in these thesis attempt to conform to minimal best practices for research computing.\textsuperscript{\protect\hyperlink{ref-wilson2014}{181},\protect\hyperlink{ref-wilson2017}{182}}
 
 \hypertarget{appendix-robvis}{%
@@ -4319,7 +4337,7 @@ psize & X &  & Defines the size of the points in the traffic light plot. Default
 \hypertarget{reception-and-future-plans-1}{%
 \subsection{Reception and Future Plans}\label{reception-and-future-plans-1}}
 
-As of December 2021, \texttt{robvis} has been downloaded more than 13300 times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{\textbf{mathias\_harrer\_2019\_2551803?}}}
+As of December 2021, \texttt{robvis} has been downloaded more than 13400 times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{\textbf{mathias\_harrer\_2019\_2551803?}}}
 
 While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{\textbf{whiting2016robis?}}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{\textbf{cochranechpt7?}}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
 

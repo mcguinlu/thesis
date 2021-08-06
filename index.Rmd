@@ -8,8 +8,10 @@ title: |
    
 author: Luke A McGuinness
 college: 
-degree: Doctor of Philosophy in Population Health Sciences
-degreedate: TBC
+degree: Doctor of Philosophy
+degreedate: 2022
+word-count: |
+  `r read.csv("data/words/words.csv") %>% dplyr::pull(1) %>% dplyr::last()`
 abstract: |
   `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
@@ -24,8 +26,7 @@ abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with ab
 #######################
 ## bibliography path ##
 #######################
-bibliography: 
-    - "bibliography/references.bib"
+bibliography: [bibliography/references.bib, bibliography/packages.bib]
 csl: bibliography/nature.csl
 bibliography-heading-in-pdf: Bibliography
 

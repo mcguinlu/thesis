@@ -116,8 +116,9 @@ $else$
 $endif$
 
 % Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
+$for(bibliography)$
 \addbibresource{$bibliography$}
-
+$endfor$
 
 % Add definition of CSLReferences section to allow for compatibility with new pan
 \newlength{\cslhangindent}
@@ -162,6 +163,7 @@ $endif$
 \degree{$degree$}
 % Term and year of submission, or date if your board requires (eg most masters)
 \degreedate{$degreedate$}
+\wordcount{$word-count$}
 
 
 %%%%% YOUR OWN PERSONAL MACROS
