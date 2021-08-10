@@ -665,7 +665,7 @@ knitr::include_graphics(file.path("figures","cprd-analysis","forester_sta_type.p
 &nbsp;
 
 
-#### Comparing codelists
+#### Comparing codelists {#comparing-codelists}
 
 ```{r smeethText, include = FALSE}
 ```
@@ -714,6 +714,8 @@ The effect estimates were robust to the exclusion of potentially pregnant partic
 <!--------------------------------------------------------------------------->
 
 ### Interpretation of results
+
+<!-- IDEA Could include some text here about how you are more likely to get an accurate result when looking at off-target effects -->  
 
 This section will expand on a potential explanation for the observed results detailed above. However, as the comparison of evidence across different sources is the aim of the triangulation exercise presented in later chapters, the section will not provide a detailed comparison with other published literature, except where needed to illustrate a methodological point. For a comparison of the result presented above with those from the systematic review (Chapter \@ref(sys-rev-heading)) and the individual patient data analysis (Chapter \@ref(ipd-heading)), see Section \@ref(discussion-heading).
 

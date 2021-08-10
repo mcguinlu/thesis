@@ -87,8 +87,9 @@ if(doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- agreeInter-table
+# ---- agree-setup
 
+# Inter
 agreeInter_table <- data.frame(group = rep("Second reviewer decision",3),
                                reviewer = c("Exclude", "Include", "Total"), 
                                Exclude = c(1244,26,1270), 
@@ -103,6 +104,25 @@ agreeInter_coeff_table <- agreeInter_coeff_table[-1]
 
 agreeInter_coeff <- unlist(c(comma(irrCAC::gwet.ac1.table(agreeInter_coeff_table)[2]),
                              comma(irrCAC::kappa2.table(agreeInter_coeff_table)[2])))
+
+# Intra
+agreeIntra_table <- data.frame(group = rep("Same reviewer decision",3),
+                               reviewer = c("Exclude", "Include", "Total"), 
+                               Exclude = c(1266,4,1270), 
+                               Include = c(14,17,31), 
+                               Total = c(1280,21,1301))
+
+discrepancy_Intra <- agreeIntra_table$Exclude[2]
+
+agreeIntra_coeff_table <- agreeIntra_table[1:2,2:4]
+rownames(agreeIntra_coeff_table) <- agreeIntra_coeff_table[,1]
+agreeIntra_coeff_table <- agreeIntra_coeff_table[-1]
+
+agreeIntra_coeff <- unlist(c(comma(irrCAC::gwet.ac1.table(agreeIntra_coeff_table)[2]),
+                             comma(irrCAC::kappa2.table(agreeIntra_coeff_table)[2])))
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- agreeInter-table
 
 if(doc_type == "docx") {
   knitr::kable(agreeInter_table, caption = "(ref:agreeInter-caption)")
@@ -126,21 +146,6 @@ if(doc_type == "docx") {
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- agreeIntra-table
-
-agreeIntra_table <- data.frame(group = rep("Same reviewer decision",3),
-                               reviewer = c("Exclude", "Include", "Total"), 
-                               Exclude = c(1266,4,1270), 
-                               Include = c(14,17,31), 
-                               Total = c(1280,21,1301))
-
-discrepancy_Intra <- agreeIntra_table$Exclude[2]
-
-agreeIntra_coeff_table <- agreeIntra_table[1:2,2:4]
-rownames(agreeIntra_coeff_table) <- agreeIntra_coeff_table[,1]
-agreeIntra_coeff_table <- agreeIntra_coeff_table[-1]
-
-agreeIntra_coeff <- unlist(c(comma(irrCAC::gwet.ac1.table(agreeIntra_coeff_table)[2]),
-                                 comma(irrCAC::kappa2.table(agreeIntra_coeff_table)[2])))
 
 if(doc_type == "docx") {
   knitr::kable(agreeIntra_table, caption = "(ref:agreeIntra-caption)")

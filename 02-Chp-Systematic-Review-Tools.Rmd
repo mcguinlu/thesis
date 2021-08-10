@@ -315,13 +315,19 @@ date <- format(as.Date("2021-12-01"),"%B %Y")
 
 The tool has been well received by the community (as of `r date`, `medrxivr` has been downloaded more than `r medrxivr_downloads` times), and several use cases have been reported. It has been used to investigate the role of preprints in the response to the 2019 coronavirus outbreak,[@kodvanj2020] perform searches of preprints as part of a systematic review,[@noone2020; @grassly2020] and examine how data-sharing behaviour is affected by journal policies (see \@ref(thesis-output)).[@mcguinness2020c]
 
-The package was been onboarded into the rOpenSci suite of packages, a collection of "carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web".[@boettiger2015] As part of this process, following rigorous peer-review, an associated article introducing the tool was published by the Journal of Open Source Software.[@mcguinness2020a] The entire review discussion is publicly available and can be viewed online. [^chp-systematic-review-tools-4] The tool has also been well received by the open-source community, demonstrated by the engagement of other developers in contributing to important new functionality and suggesting bug-fixes.
-
-[^chp-systematic-review-tools-4]: <https://github.com/ropensci/software-review/issues/380>
+The package was been onboarded into the rOpenSci suite of packages, a collection of "carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web".[@boettiger2015] As part of this process, following rigorous peer-review, an associated article introducing the tool was published by the Journal of Open Source Software.[@mcguinness2020a] The entire review discussion is publicly available and can be viewed online.[@zotero-15016] The tool has also been well received by the open-source community, demonstrated by the engagement of other developers in contributing to important new functionality and suggesting bug-fixes.
 
 Lobbying of the Cold Springs Harbor Laboratory to develop the API to allow for direct searching of the database has been ongoing. This would negate the current need to download a local copy of the relevant preprint database before searching it, which is currently the rate limiting step for performing searches. For example, as of January 2021, downloading a copy of the bioRxiv database takes approximately an hour.
 
 &nbsp;
+
+### Use case
+
+In addition to being used to search systematically search health-related preprint servers, as illustrated in the systematic review presented in Chapter \@ref(sys-rev-heading), `medrxivr` has other uses. For example, I led a descriptive analysis of the change data availability statements between preprinted and published versions of the same manuscript, stratified by journal data sharing policy access, underpinned by preprint meta-data provided by `medrixvr`.
+
+We found <!-- TODO complete --> 
+
+This study has since been published in PLOS One, and a copy is included in Appendix \@ref() .
 
 <!----------------------------------------------------------------------------->
 

@@ -87,7 +87,7 @@ num_to_text <- function(x, start_of_sentence = FALSE)
 
 
 # Get word count for a given file, and set new target
-check_words <- function(fp, words = 100){
+word_check <- function(fp, words = 100){
   
   if (!hasArg(fp)) {
     fp <- rstudioapi::getSourceEditorContext()$path
