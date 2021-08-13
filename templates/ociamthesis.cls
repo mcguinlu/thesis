@@ -79,7 +79,7 @@
 % CRESTS
 %
 
-\def\crest{{\includegraphics{figures/UoBcrest.pdf}}}
+\def\crest{{\includegraphics{figures/misc/UoBcrest.pdf}}}
 
 
 %

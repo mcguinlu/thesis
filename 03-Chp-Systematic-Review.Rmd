@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -467,7 +467,8 @@ Those records which were excluded in the initial screening, but were included by
 
 ### Characteristics of included studies
 
-Following ful-text screening, 127 studies met the criteria for inclusion in the review. Table \@ref(tab:studyCharacteristics-table) presents a summary of the characteristics of each study.
+Following full-text screening, __XXXX__ studies met the criteria for inclusion in the review. Table \@ref(tab:studyCharacteristics-table) presents a summary of the characteristics of each study.
+
 
 &nbsp;
 
@@ -482,9 +483,18 @@ Following ful-text screening, 127 studies met the criteria for inclusion in the 
 <!----------------------------------------------------------------------------->
 \elandscape{}
 
+The majority of studies were non-randomised, with only one included randomised controlled trials (the Heart Protection Study) and a relative small number of Mendelian randomisation studies. Of the non-randomised studies, many were assessments of the relationship with statis use.
 
+Of the studies examining lipid levels, by far the most common fraction assessed was total cholesterol. The association with triglycerides levels was not consider in many papers.
+<!-- TODO Check this is actually true-->
 
-<!-- IDEA Could include a second evidence synthesis map here to summarise Table 1, highlighting the lack of vascular dementia outcomes and the massive amount of observational data -->  
+The vast majority of studies examined either all-cause dementia or Alzheimer's disease, with only a small proportion examining vascular dementia.
+
+Many studies using electronic health records as their data source did not accurately report the diagnostic criteria used to identify cases, and of those that did, none sought to validate the accuracy of their defined code lists.
+
+<!-- TODO Check this, and do I actually want to say this, as I don't validate my codelist in the CPRD analysis? -->
+
+Many of the studies were conducted in electronic health record databases, which have a number of advantages over smaller more traditional cohort studies.
 
 <!-- TODO Could extract before and after adjusted for ApoE4 to illustrate -->
 
@@ -501,6 +511,9 @@ Following ful-text screening, 127 studies met the criteria for inclusion in the 
 -   Summary of risk of bias (not done)
 
 --->
+
+<!-- TODO Also need to extract the codes used in each study -->
+
 
 As shown in Figure \@ref(fig:cohortLocations), the majority of study cohorts were based in the developed world.
 
@@ -524,11 +537,13 @@ knitr::include_graphics(file.path("figures/sys-rev/cohortLocations.png"))
 <!----------------------------------------------------------------------------->
 &nbsp;
 
+### Risk of bias {#risk-of-bias-subheading}
 
-<!-- TODO ### Risk of bias {#risk-of-bias-subheading} -->
+Many of the included studies were at high-risk of bias. 
 
-<!-- &nbsp; -->
+The one randomised controllled trial was deemed to be a low risk of bias, 
 
+&nbsp;
 <!----------------------------------------------------------------------------->
 
 ### Meta-analysis of statin use and hypercholesteroleamia
@@ -627,6 +642,18 @@ A key issue identified relating to bias due to missing data was the potential fo
 
 This review has presented a summary of the available evidence on the association between lipids, and treatments that modify lipids such as statins, and the subsequent risk of dementia.
 
+The distribution of evidence between analytical designs is to be expected. Randomised controlled trials of dementia are particularly challenging, as the long follow-up, necessary due to the long latent period of the condition, makes trials logistically challenging and financial expensive. Similarly, Mendelian randomisation is a relatively new study design, and so only appears in the literature in recent years, driven by the growth of dementia GWASs (Figure \@ref(fig:typeByYear)).
+
+<!----------------------------------------------------------------------------->
+(ref:typeByYear-cap) __Study designs by year of publication__ - 
+
+(ref:typeByYear-scap) Study designs by year of publication
+
+```{r typeByYear, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:typeByYear-cap)', out.width='100%', fig.scap='(ref:typeByYear-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/type_by_year.png"))
+```
+<!----------------------------------------------------------------------------->
+
 A common theme across the evidence base was a lack of data on the association of vascular dementia. This is particularly interesting given that lipids and statins are primarily related to vascular disease. There is the potential that studies encountered similar difficulties in address the unexpected results observed in the CPRD analysis in Chapter \@ref(cprd-analysis-heading), likely due to confounding by indication, and so may suffer from the "file-drawer effect". <!-- TODO CITATION NEEDED --> For vascular dementia, few Mendelian randomisation studies examined this outcome, primarily because of the absence (until recently) of genome wide association studies, which are used in two sample summary Mendelian randomisation studies.
 
 One item of particular interest is the attenuation of any effects observed by Mendelian randomisation studies following the adjustment for/exclusion of genetic variation in the Apoe4 gene region. As covered in the discussion, ApoE4 genotype is the major risk factor for Alzheimer's disease, but is also involved in cholesterol transport.
@@ -684,6 +711,19 @@ While none of the preprints contributed uniquely to the review, this is again. C
 
 Of note, since the start of my review, inclusion of preprints in systematic reviews has now become widespread due to the role of preprint servers, in particular medRxiv, as a key evidence dissemination venue during the early stages of the COVID-19 pandemic. However, how well this adoption of preprints will transfer to other topics, where the speed of research does not put the same focus on preprinted articles, is currently unknown.
 
+
+<!----------------------------------------------------------------------------->
+```{r preprintGrowthSetup, include=FALSE}
+```
+
+(ref:preprintGrowth-cap) __Growth of preprint repositories over time__ - Given the relative sizes of the preprint repositories at the time the searches for this review were conducted (bioRxiv n= `r n_at_search["bio"]`, medRxiv n = `r n_at_search["med"]`), the relative number of hits returned by each is expected.
+
+(ref:preprintGrowth-scap) Growth of preprint repositories over time
+
+```{r preprintGrowth, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:preprintGrowth-cap)', out.width='100%', fig.scap='(ref:preprintGrowth-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/preprint_growth.png"))
+```
+<!----------------------------------------------------------------------------->
 <!-- TODO Include figure here showing growth of preprint database size, and cite studies detailing increasing acceptance as a valid form of evidence.  -->
 
 <!-- This does speak to the over-representation of certain study designs in the preprint literature  -->
@@ -802,6 +842,10 @@ I believe there are four aspects where this review is distinct from those review
 The primary limitation of this review is that several included studies used data from EHR databases, which come with serious concerns regarding validity [@hsieh2019] [@mcguinness2019validity; @wilkinson2018] Relatedly, several  studies which made use of electronic health record database did not report the specific code lists used, potentially introducing substantial heterogeneity between effect estimates. An empirical example of the effect of differing EHR code list is presented as part of the analysis in Chapter 4 (see Section \@ref(comparing-codelists)).
 
 In addition, the fact that only a sample of records were dual screened at the title/abstract and full-text stages is a potential limitation, as there is a chance that some eligible records could have been excluded. However,  evidence from assessments of inter- and intra-rater reliability indicate that is is not a major concern.
+
+One particular limitiation with regards to the risk of bias assessment is the fact that the ROBINS-E assessments were performed without the tool being finalised. This meant that there were no signalling questions to guide the domain-level risk of bias assessment, which may have influenced the accuracy with which domain-level judgements were assigned. However, there is no published empirical evidence supporting the need for signalling questions, and assessment of inter-rater reliability across the different tools did not indicate a specific problem with the ROBINS-E assessments. In fact, low agreement was common across the tools, though this is expected based on the available literature. <!-- TODO CITATION NEEDED -->
+
+One further limitation is the fact that the risk of bias due to missing evidence assessment, combined with some empirical evidence that some studies were missed by the search but contained relevant studies is a definite limitation of this review (see Section \@Ref(rev-discussion-MR) above for a fuller discussion of this issue with respect to Mendelian randomisations studies). Unfortunately, this is probably a common limitation across all reviews, based on the way in which increased sensitivity must be balanced with a reasonable workload.
 
 <!----------------------------------------------------------------------------->
 &nbsp;

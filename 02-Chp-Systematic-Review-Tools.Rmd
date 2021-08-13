@@ -323,11 +323,13 @@ Lobbying of the Cold Springs Harbor Laboratory to develop the API to allow for d
 
 ### Use case
 
-In addition to being used to search systematically search health-related preprint servers, as illustrated in the systematic review presented in Chapter \@ref(sys-rev-heading), `medrxivr` has other uses. For example, I led a descriptive analysis of the change data availability statements between preprinted and published versions of the same manuscript, stratified by journal data sharing policy access, underpinned by preprint meta-data provided by `medrixvr`.
+In addition to being used to search systematically search health-related preprint servers, as illustrated in the systematic review presented in Chapter \@ref(sys-rev-heading), `medrxivr` has other uses. For example, I led a descriptive analysis of the change in data availability statements between preprinted and published versions of the same manuscript, stratified by journal data sharing policy access, underpinned by preprint meta-data provided by `medrixvr`.
 
-We found <!-- TODO complete --> 
+medRxiv requires that authors complete a data availability statement, but do not police
 
-This study has since been published in PLOS One, and a copy is included in Appendix \@ref() .
+We found some evidence that data availability statements more frequently described open data on publication when the journal mandated data sharing compared to when the journal did not mandate data sharing. 
+
+This study has since been published in PLOS One, and a copy is included in Appendix \@ref(published-papers).
 
 <!----------------------------------------------------------------------------->
 

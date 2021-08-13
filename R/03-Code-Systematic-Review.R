@@ -172,7 +172,7 @@ if(doc_type == "docx") {
 
 toc_df <- rio::import("data/sys-rev/Book1.xlsx",which = 1) %>%
   janitor::clean_names() %>%
-  select(study_id, author, year, location, data_source)
+  select(study_id, author, year, type, location, data_source)
 
 toc_df2 <- rio::import("data/sys-rev/Book1.xlsx",which = 2) %>%
   janitor::clean_names() %>%
@@ -182,6 +182,14 @@ toc_df2 <- rio::import("data/sys-rev/Book1.xlsx",which = 2) %>%
             Exposures = paste0(unique(exposure), collapse = "; "), 
             Outcomes = paste0(unique(outcome), collapse = "; ")) %>%
   ungroup()
+
+p_type <- toc_df %>%
+  group_by(year) %>%
+  count(type) %>%
+  ggplot(aes(x = year, y = n, fill = type)) +
+  geom_bar(stat = "identity")
+
+ggsave(here::here("figures/sys-rev/type_by_year.png"), p_type)
 
 studyCharacteristics_table <- left_join(toc_df, toc_df2) %>%
   mutate(Study = paste(author, year)) %>%
@@ -216,7 +224,7 @@ if(doc_type == "docx") {
 world <- toc_df %>%
   count(location) %>%
   right_join(
-    rnaturalearth::ne_countries(scale = "medium", returnclass = "sf"),
+    rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") %>% filter(type != "Dependency"),
     by = c("location" = "name")
   ) %>%
   tidyr::replace_na(list(n = 0))
@@ -286,10 +294,10 @@ p3 <- p2 + plot_space + p1 + plot_layout(
   guides = 'collect',
   widths = c(1, 1, 1),
   heights = c(5, 0.1, 10)
-)  & labs(fill="No. of\ncohorts") &
-  scale_fill_gradient(low = "grey95",
-                      high = "grey10") &
-  theme(legend.position = "left", 
+)  & labs(fill="No. of\nstudies") &
+  scale_fill_gradient(low = "#ffffff",
+                      high = "#000000", guide = guide_legend(reverse = TRUE)) &
+  theme(legend.position = "left",
         legend.box.margin=margin(0,20,0,0))
 
 ggsave(
@@ -386,3 +394,82 @@ dev.off()
 # t <- metafor::rma.uni(data = test,
 #                       yi = point,
 #                       sei = SE)
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# preprintGrowthSetup ----
+
+# medrxivr::mx_snapshot() %>% 
+#   # Keep first version of each record
+#   group_by(doi) %>%
+#   slice(which.min(version)) %>%
+#   # Generate grouping variables
+#   mutate(month = paste0(lubridate::year(date),"-",lubridate::month(date))) %>%
+#   group_by(month) %>%
+#   count() %>%
+#   ungroup() %>%
+#   mutate(month = as.Date(paste0(month, "-01"), format = "%Y-%m-%d")) %>%
+#   arrange(month) %>%
+#   mutate(new_papers_cumulative = cumsum(n)) %>%
+#   filter(month != as.Date("2021-08-01"))
+
+n_at_search <- c(med = read.csv(here::here("data/sys-rev/medrxiv_growth.csv")) %>%
+  mutate(month = as.Date(month, format = "%Y-%m-%d")) %>%
+  filter(month < as.Date("2019-07-19")) %>%
+  pull(new_papers_cumulative) %>%
+  last() %>%
+    comma())
+
+n_at_search["bio"] <- rbiorxiv::biorxiv_summary(interval = "m", format = "df") %>%
+  mutate(month = as.Date(paste0(month, "-01"), format = "%Y-%m-%d")) %>%
+  filter(month < as.Date("2019-07-19")) %>%
+  pull(new_papers_cumulative) %>%
+  last() %>%
+  comma()
+
+p_med <- read.csv(here::here("data/sys-rev/medrxiv_growth.csv"), stringsAsFactors = F) %>%
+  mutate(month = as.Date(month, format = "%Y-%m-%d")) %>%
+  ggplot() +
+  geom_bar(aes(x = month, y = new_papers_cumulative),
+           fill = "#989898",
+           stat = "identity") +
+  labs(x = "",
+       y= "medRxiv") +
+  scale_x_date(date_breaks = "6 months",
+               date_labels = "%b-%y",
+               expand = c(0,0), 
+               limits = as.Date(c("2014-01-01","2021-08-01"))) +
+  scale_y_continuous(labels = scales::comma, limits = c(0,135000), expand = c(0,0)) +
+  geom_vline(xintercept = as.Date("2019-07-20")) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5),
+    axis.title.y.left = element_text(angle = 0, vjust = 0.5),
+    plot.title = element_text(face = "bold"),
+    plot.margin = unit(c(0.1,0,0,0), "cm")
+  )
+
+p_bio <- rbiorxiv::biorxiv_summary(interval = "m", format = "df") %>%
+  mutate(month = as.Date(paste0(month, "-01"), format = "%Y-%m-%d")) %>%
+  ggplot() +
+  geom_bar(aes(x = month, y = new_papers_cumulative),
+           fill = "#989898",
+           stat = "identity") +
+  labs(x = "",
+       y = "bioRxiv") +
+  geom_vline(xintercept = as.Date("2019-07-20")) +
+  scale_x_date(date_breaks = "6 months",
+               date_labels = c(rep(" ",11),"\nDate of searches\nfor this review",rep(" ",4)),
+               expand = c(0,0), 
+               limits = as.Date(c("2014-01-01","2021-08-01"))) +
+  scale_y_continuous(labels = scales::comma, limits = c(0,135000), expand = c(0,0)) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(vjust = 0.5, colour = "black"),
+    axis.title.y.left = element_text(angle = 0, vjust = 0.5),
+    plot.title = element_text(face = "bold"),
+    plot.margin = unit(c(0,0,0,0), "npc")
+  )
+
+ggsave("figures/sys-rev/preprint_growth.png", p_bio/p_med, height = 7, width = 6)
+

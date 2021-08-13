@@ -1,5 +1,6 @@
 ## Things to check 
 
+- [ ] Review abstract text, and all text in front/back materials
 - [ ] Review [Bristol guidelines](http://www.bris.ac.uk/media-library/sites/social-community-medicine/migrated/documents/preparingathesis.pdf)
 - [ ] Check if the layout of chapters is okay in the fully-rendered document (the "by chapter" renders don't always reflect the truth!)
 - [ ] Check if references are duplicated via distinct bibtex keys. || Sort out duplicated citation keys (e.g.[mcguinness2019a] vs [mcguinness2019b])

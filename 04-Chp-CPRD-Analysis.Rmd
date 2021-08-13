@@ -455,6 +455,12 @@ Full covariate information was available for `r missingtext`. Six key variables 
 
 ### Primary analysis
 
+<!-- TODO The rates shown are per days at risk not years-->
+
+
+Crude rate ratios were calculated for each outcome and class of interest and are presented in Table \@ref(tab: )
+
+
 The results of the primary analysis using the fully adjusted Cox proportional hazards model with participant age as the time scale are presented for each drug/outcome combination in Figure \@ref(fig:cprdPrimary).
 
 For each outcome, the overall "Any drug" estimate was driven by the statin subgroup, based on it's large size relative to the other drug classes.
@@ -704,6 +710,9 @@ Lipid-regulating agents showed no evidence of an effect on probable and possible
 The effect estimates were robust to the exclusion of potentially pregnant participants, and for all outcomes except Probable AD, no variation across grouped year of entry was observed. When looking at the statin subgroup alone, statin properties appeared to have a modifying effect, with hydrophilic statins being less harmful in the any, vascular and other dementia outcomes compared to lipophilic statins.
 
 <!-- QUESTION Why are fibrates different? -->
+
+<!-- TODO Check comments from co-authors have been addressed for this chapter?  -->
+
 
 <!-- QUESTION How much should I be cross-referencing with the systematic review at this stage? Or should I keep it self-contained -->
 

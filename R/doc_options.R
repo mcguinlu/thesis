@@ -1,4 +1,4 @@
-options(kableExtra.auto_format = FALSE)
+options(kableExtra.auto_format = FALSE, scipen = 999)
 
 library(robvis)
 library(medrxivr)

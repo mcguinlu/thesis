@@ -1609,7 +1609,7 @@ clean_stata_output <- function(data){
     janitor::clean_names() %>%
     data.table::transpose() %>%
     mutate(V4 = comma(as.numeric(V4)/365.25)) %>%
-    select(V2,V4,V5) %>%
+    select(V2,V4,V6,V5) %>%
     filter(!V2 %in% c("hc_eze_~a", "hc_nag")) %>%
     arrange(match(V2, c("None","hc_sta","hc_om3", "hc_fib","hc_eze","hc_bas"))) %>%
     mutate(V2 = case_when(V2 == "None" ~ "No LRA (unexposed)",
@@ -1621,60 +1621,66 @@ clean_stata_output <- function(data){
                           T ~ "Total"))
 }
 
-main <- readLines(here::here("data/cprd/mylog.txt"))[c(19:26,28)] %>%
-  clean_stata_output()
+options(scipen=999)
 
-main[,4] <- readLines(here::here("data/cprd/mylog_adprob.txt"))[c(15:22,24)] %>%
+main <- readLines(here::here("data/cprd/rate_table.txt"))[c(19:26,28)] %>%
   clean_stata_output() %>%
-  pull(V5)
+  select(V2,V5,V4,V6)
 
-main[,5] <- readLines(here::here("data/cprd/mylog_adposs.txt"))[c(15:22,24)] %>%
+main <- cbind(main,readLines(here::here("data/cprd/rate_table_adprob.txt"))[c(15:22,24)] %>%
   clean_stata_output() %>%
-  pull(V5)
+  select(V5,V4,V6))
 
-main[,6] <- readLines(here::here("data/cprd/mylog_vasdem.txt"))[c(15:22,24)] %>%
+main <- cbind(main,readLines(here::here("data/cprd/rate_table_adposs.txt"))[c(15:22,24)] %>%
   clean_stata_output() %>%
-  pull(V5)
+  select(V5,V4,V6))
 
-main[,7] <- readLines(here::here("data/cprd/mylog_othdem.txt"))[c(15:22,24)] %>%
+main <- cbind(main,readLines(here::here("data/cprd/rate_table_vasdem.txt"))[c(15:22,24)] %>%
   clean_stata_output() %>%
-  pull(V5)
+  select(V5,V4,V6))
+
+main <- cbind(main,readLines(here::here("data/cprd/rate_table_othdem.txt"))[c(15:22,24)] %>%
+  clean_stata_output() %>%
+  select(V5,V4,V6))
 
 main <- main %>%
   janitor::clean_names() %>%
+  comma() %>%
   add_row(v2 = "By drug class", .after = 1)
 
 
-colnames(main) <-
-  c(
-    "Exposure group",
-    "Person-years\n at risk",
-    "Any dementia",
-    "Possible AD",
-    "Probable AD",
-    "Vascular dementia",
-    "Other dementia"
-  )
+labels <- c("Exposure group", rep(c("Events","Time-at-risk","Rate"),5))
 
+names(labels) <- colnames(main)
 
 if(doc_type == "docx"){
   
   flextable::flextable(main) %>%
+    set_header_labels(values = labels) %>%
     flextable::add_header(
-      "Exposure group" = "Exposure group",
-      "Person-years\n at risk" = "Person-years\n at risk",
-      "Any dementia" = "Events",
-      "Possible AD" = "Events",
-      "Probable AD" = "Events",
-      "Vascular dementia" = "Events",
-      "Other dementia" = "Events",
+      "v2" = "Exposure group",
+      "v5" = "Any dementia",
+      "v4" ="Any dementia",
+      "v6" = "Any dementia",
+      "v5_2" = "Probable AD",
+      "v4_2" ="Probable AD",
+      "v6_2" = "Probable AD",
+      "v5_3" = "Possible AD",
+      "v4_3" ="Possible AD",
+      "v6_3" = "Possible AD",
+      "v5_4" = "Vascular dementia",
+      "v4_4" ="Vascular dementia",
+      "v6_4" = "Vascular dementia",
+      "v5_5" = "Other dementia",
+      "v4_5" ="Other dementia",
+      "v6_5" = "Other dementia",
       top = TRUE
     ) %>%
     flextable::merge_h(part = "header") %>%
     flextable::merge_v(part = "header") %>%
     flextable::align(
       i = 1,
-      j = 3:7,
+      j = 3:11,
       align = "center",
       part = "header"
     ) %>%
@@ -1691,14 +1697,33 @@ if(doc_type == "docx"){
     flextable::padding(i=3:7, j=1, padding.left=20) %>%
     flextable::align(align = "center", part = "all" ) %>%
     flextable::align(j = 1:2, align = "left", part = "all") %>%
+    flextable::align(i = 1, align = "center", part = "header") %>%
     flextable::set_table_properties(layout = "autofit") %>%
     flextable::set_caption("(ref:followUp-caption)")
   
   
-  }else{
-knitr::kable(main, format = "latex", caption = "(ref:follow-up-caption)", caption.short = "(ref:follow-up-scaption)", booktabs = TRUE) %>% 
-row_spec(0, bold = TRUE) %>%
-kable_styling(latex_options = c("HOLD_position"))
+} else{
+  knitr::kable(
+    main,
+    format = "latex",
+    caption = "(ref:follow-up-caption)",
+    caption.short = "(ref:follow-up-scaption)",
+    booktabs = TRUE, 
+    col.names = c("Exposure Group",
+                  rep(c("Events","Time-at-risk","Events"),4))
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))  %>%
+    add_header_above(
+      c(
+        " ",
+        "Any dementia" = 2,
+        "Possible AD" = 2,
+        "Probable AD" = 2,
+        "Vascular dementia" = 2,
+        "Other dementia" = 2
+      )
+    )
 }
 
 

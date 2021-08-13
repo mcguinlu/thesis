@@ -37,7 +37,7 @@ gen_rmd_citation <- function(filename = "pkg-refs.bib") {
   pkg_names <- unique(gsub(
     "\\{|,", "", stringr::str_extract(pkg_names, "\\{.+")
   ))
-
+  
   # Read in list of packages that I need to have a citation for, but shouldn't
   # go in here, and exclude these from the vector
   extra_packages <- readLines(file.path("data","extra_packages.txt"))
@@ -57,7 +57,7 @@ comma <- function(x){
   
   format(x, digits = 2, big.mark = ",")
   
-  }
+}
 
 # Apply comma to all values in a table
 # Copied from https://github.com/thomasbattram/thesis
@@ -208,7 +208,7 @@ chapter_edit <- function(N){
   chapter <- chapters[which(data.table::like(chapters, N))]
   
   file.edit(chapter)
-
+  
   # Open associated R file
   rfiles <- list.files(path = "R", pattern = ".R", full.names = TRUE)
   
@@ -231,7 +231,7 @@ mindmap <- function(fp) {
   input <- mindr::outline(fp, remove_curly_bracket = TRUE, savefile = FALSE)
   
   mindr::mm(
-  from = input, type = "text", root = " "
+    from = input, type = "text", root = " "
   )
   
 }
@@ -431,10 +431,10 @@ generate_forester_plot <-
              16)
     
     if ("   Any drug class" %in% subset_table$Analysis) {
-    point_colour <-
-      ifelse(subset_table$Analysis == "   Any drug class",
-             "black",
-             "grey50")
+      point_colour <-
+        ifelse(subset_table$Analysis == "   Any drug class",
+               "black",
+               "grey50")
     } else {
       point_colour <- rep("black",nrow(subset_table))
     }
@@ -443,29 +443,29 @@ generate_forester_plot <-
     xbreaks <- c(xlimits[1],1,xlimits[2])
     
     suppressMessages(
-    forester_thesis(
-      left_side_data = subset_table[, c(1, 5, 6)],
-      estimate = subset_table$HR,
-      ci_low = subset_table$ci_lower,
-      ci_high = subset_table$ci_upper,
-      display = display,
-      estimate_precision = 2,
-      estimate_col_name = "Hazard ratio",
-      x_scale_linear = FALSE,
-      xlim = xlimits,
-      xbreaks = xbreaks,
-      file_path = here::here(filepath),
-      point_sizes = rep(1.5, times = nrow(subset_table)),
-      stripe_colour = "white",
-      font_family = "Fira Sans",
-      null_line_at = 1,
-      arrows = TRUE,
-      arrow_labels = c("Lower risk on drug","Higher risk on drug"),
-      point_shapes = subset_table$point_shape,
-      bold_vec = bold_vec, 
-      colour_vec = point_colour,
-      ...
-    )
+      forester_thesis(
+        left_side_data = subset_table[, c(1, 5, 6)],
+        estimate = subset_table$HR,
+        ci_low = subset_table$ci_lower,
+        ci_high = subset_table$ci_upper,
+        display = display,
+        estimate_precision = 2,
+        estimate_col_name = "Hazard ratio",
+        x_scale_linear = FALSE,
+        xlim = xlimits,
+        xbreaks = xbreaks,
+        file_path = here::here(filepath),
+        point_sizes = rep(1.5, times = nrow(subset_table)),
+        stripe_colour = "white",
+        font_family = "Fira Sans",
+        null_line_at = 1,
+        arrows = TRUE,
+        arrow_labels = c("Lower risk on drug","Higher risk on drug"),
+        point_shapes = subset_table$point_shape,
+        bold_vec = bold_vec, 
+        colour_vec = point_colour,
+        ...
+      )
     )
     
   }

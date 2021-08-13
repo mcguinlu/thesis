@@ -253,7 +253,7 @@ A worked example using these functions is outlined below, showing the ease with 
 
 Using the example data set (`data_rob2`) which is built into the package and is presented in Table \@ref(tab:robdata) for reference, the traffic light plot shown in Figure \@ref(fig:trafficplot) is created using:
 
-__NEED TO ADD DATA HERE!__
+<!-- TODO __NEED TO ADD DATA HERE!__ -->
 
 
 ```{r, eval = FALSE}
@@ -356,7 +356,7 @@ While `robvis` is a stable package, a range of additional functionality could be
 
 ## Creating 
 
-## Copies of papers arising from this thesis
+## Copies of papers arising from this thesis {#published-papers}
 
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf}
