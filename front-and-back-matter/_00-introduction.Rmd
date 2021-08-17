@@ -7,6 +7,8 @@
 library(dplyr)
 library(ggplot2)
 
+options(scipen=999)
+
 get_words_short <- function(){
 
 files <- list.files(path = here::here(), pattern = "\\.Rmd$")
@@ -39,7 +41,10 @@ for (file in 1:length(files)) {
   words_v <- c(words_v, tmp)
 }
 
-words <- sum(words_v)
+
+# TODO Work out what an appropriate number of words for tables is
+# Sum words and add number of words in tables
+words <- sum(words_v) + 250
 
 date <- as.character(format(Sys.time(),"%Y%m%d"))
 time <- as.character(format(Sys.time(),"%H%M"))

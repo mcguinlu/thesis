@@ -31,6 +31,7 @@ fig:negativeOutcome
 fig:cprdFlowchart
 tab:cprdCharacteristics-table
 tab:cprdSSA-table
+tab:followUp-table
 fig:cprdPrimary
 fig:completeCaseFig
 fig:controlOutcomeFig
@@ -97,7 +98,7 @@ usage
 installation
 importing-preprint-metadata
 performing-a-search
-refining-your-search
+refining-a-search
 exporting-to-a-bibliography-file
 downloading-the-pdfs-of-relevant-records
 discussion
@@ -205,6 +206,7 @@ data-sources
 epic-norfolk
 brace
 caps
+cprd
 elsa
 epic-norfolk-1
 generation-scotland
@@ -212,11 +214,20 @@ memento
 nicola
 track-hd
 whitehall-ii
-risk-of-bias-assessment
+cohorts-provided-data-but-ultimately-excluded
+cohorts-identified-the-systematic-review-but-excluded-from-the-ipd-analysis
+cohorts-approach-but-received-no-answer
 data-cleaning
+missing-data-2
+risk-of-bias-assessment
+analysis
+results-2
 discussion-3
+limitations-1
+low-response-rate-to-request-for-data
 reflections-on-data-access
 study-within-a-review
+references-4
 discussion-heading
 triangulation-across-exisiting-evidence-and-evidence-produced-in-this-thesis
 triangulation-overview

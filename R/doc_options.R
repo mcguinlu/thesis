@@ -1,4 +1,5 @@
-options(kableExtra.auto_format = FALSE, scipen = 999)
+options(kableExtra.auto_format = FALSE, scipen = 999,
+        knitr.kable.NA = '')
 
 library(robvis)
 library(medrxivr)

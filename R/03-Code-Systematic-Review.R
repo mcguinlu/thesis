@@ -191,6 +191,7 @@ p_type <- toc_df %>%
 
 ggsave(here::here("figures/sys-rev/type_by_year.png"), p_type)
 
+
 studyCharacteristics_table <- left_join(toc_df, toc_df2) %>%
   mutate(Study = paste(author, year)) %>%
   select(Study, location, data_source, Exposures, Outcomes, Criteria, -c(study_id,author, year)) %>%
@@ -332,6 +333,7 @@ statins <- broom_ma(t) %>%
          "black",
          "grey50"))
 
+
 forester_thesis(
   statins[,1],
   statins$estimate,
@@ -352,7 +354,6 @@ forester_thesis(
   arrow_labels = c("Favours control","Favours intervention")
 )
 
-# 
 png(file = here::here("figures/sys-rev/funnel_statins_any.png"))
 metafor::funnel(t)
 dev.off()

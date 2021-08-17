@@ -1608,7 +1608,11 @@ clean_stata_output <- function(data){
     as.data.frame() %>%
     janitor::clean_names() %>%
     data.table::transpose() %>%
-    mutate(V4 = comma(as.numeric(V4)/365.25)) %>%
+    mutate(V4 = comma(as.numeric(V4)/365.25),
+           # Calculate rate per 100000 years
+           # Currently in rate per 1000 days-at-risk
+           V6 = comma(as.numeric(V6)*365.25*100), 
+           V5 = comma(as.numeric(V5))) %>%
     select(V2,V4,V6,V5) %>%
     filter(!V2 %in% c("hc_eze_~a", "hc_nag")) %>%
     arrange(match(V2, c("None","hc_sta","hc_om3", "hc_fib","hc_eze","hc_bas"))) %>%
@@ -1649,11 +1653,13 @@ main <- main %>%
   add_row(v2 = "By drug class", .after = 1)
 
 
-labels <- c("Exposure group", rep(c("Events","Time-at-risk","Rate"),5))
 
-names(labels) <- colnames(main)
 
 if(doc_type == "docx"){
+  
+  labels <- c("Exposure group", rep(c("Events","Time-at-risk","Rate"),5))
+  
+  names(labels) <- colnames(main)
   
   flextable::flextable(main) %>%
     set_header_labels(values = labels) %>%
@@ -1690,11 +1696,13 @@ if(doc_type == "docx"){
                      part = "header") %>%
     flextable::bg(bg = "#A6A6A6", part = "header") %>%
     flextable::bold(part = "header") %>%
-    flextable::bold(j=1,i=1:2, part = "body") %>%
+    flextable::bold(j=1,i=c(1:2,8), part = "body") %>%
+    flextable::bold(i=8, part = "body") %>%
     flextable::fontsize(size = 9, part = "all") %>%
     flextable::hline(part = "header") %>%
     flextable::hline(i=7,part = "body") %>%
     flextable::padding(i=3:7, j=1, padding.left=20) %>%
+    flextable::border(j=c(1,4,7,10,13), part = "all", border.right = officer::fp_border(color = "black")) %>%
     flextable::align(align = "center", part = "all" ) %>%
     flextable::align(j = 1:2, align = "left", part = "all") %>%
     flextable::align(i = 1, align = "center", part = "header") %>%
@@ -1703,27 +1711,53 @@ if(doc_type == "docx"){
   
   
 } else{
+  
+  main %>%
+    mutate(v2 = as.character(v2)) %>%
+    mutate(v2 = case_when(v2 == "  Omega-3 Fatty Acid Groups" ~ "Omega-3 FGs",
+                          v2 == "  Bile acid sequestrants" ~ "BAS",
+                          T ~ v2)) %>%
+    mutate(v2 = cell_spec(v2, bold  = c(T,T,rep(F,5),T), format = "latex")) %>%
   knitr::kable(
-    main,
     format = "latex",
-    caption = "(ref:follow-up-caption)",
-    caption.short = "(ref:follow-up-scaption)",
+    caption = "(ref:followUp-caption)",
+    caption.short = "(ref:followUp-scaption)",
     booktabs = TRUE, 
+    linesep = "", 
+    align = "lccccccccccccccc",
+    row.names = FALSE,
     col.names = c("Exposure Group",
-                  rep(c("Events","Time-at-risk","Events"),4))
+                  rep(c("Events","PYAR","Rate*"),5)), escape = F
   ) %>%
     row_spec(0, bold = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"))  %>%
+    kable_styling(position = "center",
+                  font_size = 8)  %>%
     add_header_above(
       c(
         " ",
-        "Any dementia" = 2,
-        "Possible AD" = 2,
-        "Probable AD" = 2,
-        "Vascular dementia" = 2,
-        "Other dementia" = 2
-      )
+        "Any dementia" = 3,
+        "Possible AD" = 3,
+        "Probable AD" = 3,
+        "Vascular dementia" = 3,
+        "Other dementia" = 3
+      ),bold = TRUE
+    ) %>%
+    add_indent(c(3:7), level_of_indent = 1) %>%
+    row_spec(nrow(main) - 1, hline_after = TRUE) %>%
+    column_spec(1, width = paste0(9, "em")) %>%
+    column_spec(2:16, width = paste0(3.5, "em")) %>%
+    column_spec(c(1,4,7,10,13),border_right = T) %>%
+    kableExtra::footnote(
+      threeparttable = TRUE,
+      general_title = "*Crude rate per 100,000 participant-years-at-risk",
+      general = paste("\\\\textbf{Abbreviations:}",
+        "PYAR - Participant-years-at-risk;",
+        "Omega-3 FGs - Omega-3 Fatty acid groups;",
+        "BAS - Bile acid sequestrants."
+      ), escape = F
     )
+    
+  
 }
 
 

@@ -18,7 +18,7 @@ documentclass: book
 
 (ref:sys-rev-quote) --- Archibald Cochrane, 2000 [@cochrane1979]
 
-# Systematic review of all available evidence {#sys-rev-heading}
+# Systematic review of all evidence available on the association between blood lipids (and treatment) and dementia outcomes {#sys-rev-heading}
 
 \minitoc <!-- this will include a mini table of contents-->
 
@@ -406,7 +406,7 @@ To highlight the contribution of preprint archives to the review, the flow diagr
 
 <!----------------------------------------------------------------------------->
 
-<!-- TODO PRISMA must include reasons for exclusion - extract from  -->
+<!-- TODO PRISMA must include reasons for exclusion - extract from Rayyan -->
 
 ```{r prisma-flow-setup, include = FALSE}
 ```
@@ -640,6 +640,8 @@ A key issue identified relating to bias due to missing data was the potential fo
 
 ### Summary of findings
 
+some evidence that age has impact on observed lipid-dementia relationship - use to link 
+
 This review has presented a summary of the available evidence on the association between lipids, and treatments that modify lipids such as statins, and the subsequent risk of dementia.
 
 The distribution of evidence between analytical designs is to be expected. Randomised controlled trials of dementia are particularly challenging, as the long follow-up, necessary due to the long latent period of the condition, makes trials logistically challenging and financial expensive. Similarly, Mendelian randomisation is a relatively new study design, and so only appears in the literature in recent years, driven by the growth of dementia GWASs (Figure \@ref(fig:typeByYear)).
@@ -704,6 +706,9 @@ However, despite these differences in methodology, the duplication of work acros
 ### Inclusion of preprints
 
 As highlighted in Section \@ref(diverse-sources-preprints), this review explicitly sought to synthesize evidence across different publication statuses (preprinted vs. published). Using the tool described in Chapter \@ref(sys-rev-tools-intro), two preprint serves related to health and biomedical sciences were search as part of this review (see Appendix \@ref(appendix-medrxivr-code) for the code used to search the repositories). There were several relevant preprints captured by the search. The added evidential value of including these preprints was highlighted in Section \ref(sys-rev-including-preprints). 
+
+medRxiv grew out of the Epidemiology and Clinical Trials categories of the 
+<!-- TODO Complete above paragraph -->
 
 The small number of studies return by the searches (or the absence of any hits in the medRxiv database - see Figure \@ref(fig:test)) is due to the timing of the preprint searches. The searches for this review were performed in mid-July 2019, but the first medRxiv preprint was registered on 25th June 2019. As such, at the point it was searched, the medRxiv database contained only a small number of records.
 

@@ -3,10 +3,10 @@
 # options for knitting a single chapter #
 #########################################
 output:
-  bookdown::html_document2: default
-  bookdown::word_document2: default
   bookdown::pdf_document2:
     template: templates/brief_template.tex
+  bookdown::word_document2: default
+  bookdown::html_document2: default
 documentclass: book
 ---
 
@@ -41,7 +41,8 @@ As part of the IPD analysis, relevant cohort studies were identified from the st
 
 Talk about how different covariates were managed across cohorts, 
 
-Talk about missing data was handled <!-- IDEA See Sean's thesis for some additional detail on this -->  
+<!-- TODO Read this[@riley2020] -->
+
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -54,7 +55,9 @@ Several cohort studies were approach
 
 As part of this Chapter, I will use individual patient data from a range of sources. These sources are described here in detail for reference.
 
-Should also include a list of reasons why specific additional cohorts were not included - some like the EHR might be too big to get
+These data source
+
+
 
 Each should have: 
 
@@ -74,11 +77,15 @@ The European Prospective Investigation of Cancer - Norfolk is a  [@riboli1997; @
 
 ```
 
-
-
 #### BRACE
 
 #### CaPS
+
+#### CPRD
+
+The Clinical Practice Research Datalink (CPRD) is a large population-based, electronic health record (EHR) database.[@herrett2015] containing the primary care records for more than 10 million primary care patients in England, and is broadly representative of the UK population in terms of age, sex and ethnicity.[@herrett2015; @mathur2014]
+
+The CPRD is introduced more fully in . Briefly, a similar approach to the cohort definition as used in Chapter
 
 #### ELSA
 
@@ -96,14 +103,64 @@ The European Prospective Investigation of Cancer - Norfolk is a  [@riboli1997; @
 
 _The Whitehall II study is a prospective cohort study of 10 308 participants (70% men), aged 35–55 years and recruited between 1985 and 1989 from 20 London-based Civil service departments (https://www.ucl.ac.uk/whitehallII). Clinical examinations have been performed in 1991-1994, 1997-1999, 2002-2004, 2007-2009, 2012-2013, 2015-2016 with the data from circulating metabolomic traits and cognitive testing for the present study obtained from the 1997-1999 clinic phase._ - taken from EN ID: 2140
 
+
+
 included in previous IPD meta-analysis (Endnote ID: 2140)
 
 Different approaches to combining subgroups. [@fisher2017]
 
+<!-- Be clear on the different types of databases, e.g. those where users are followed up regularly vs those where participants are captured via EHR -->
 
-Several DPUK cohorts were excluded on the basis of a lack of exposure variables, including Cam-CAN (had cardiovascular category, but only contained blood pressure).
+<!----------------------------------------------------------------------------->
+&nbsp;
 
-See 
+### Cohorts provided data but ultimately excluded
+
+Several cohorts were excluded on the basis of a lack of exposure variables, including Cam-CAN (had cardiovascular category, but only contained blood pressure).
+
+<!----------------------------------------------------------------------------->
+&nbsp;
+
+
+### Cohorts identified the systematic review but excluded from the IPD analysis
+
+<!-- Should also include a list of reasons why specific additional cohorts were not included - some like the EHR might be too big to get -->
+
+Electronic health record co
+
+<!----------------------------------------------------------------------------->
+&nbsp;
+
+### Cohorts approach but received no answer
+
+Maybe discuss here t
+
+
+
+This was particularly frustrating in the case of cohorts which had a dedicated data access panel, for example, the Three City Study. Despite multiple attempts to contact the team, there was no response received.
+
+
+
+<!----------------------------------------------------------------------------->
+&nbsp;
+
+### Data cleaning
+
+Across all cohorts, data cle
+
+For all cohorts, the first lipid measurement was used for the exposure method, 
+
+For heterogeneity across the cohorts, the total time at risk was investigated.
+
+<!-- TODO Create similar crude rate table as for CPRD analysis chapter -->
+
+
+<!----------------------------------------------------------------------------->
+&nbsp;
+
+### Missing data
+
+Talk about missing data was handled <!-- IDEA See Sean's thesis for some additional detail on this -->  
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -117,32 +174,86 @@ Risk of bias assessment was performed for each of the included cohorts using the
 <!----------------------------------------------------------------------------->
 &nbsp;
 
-### Data cleaning
+### Analysis
+
+All analysis were standardised by changes in 1-SD of the exposure variable. 
+
+
+This was done to 
+
+
+CLustering within studies was accounted for, given the evidence that ...[@abo-zaid2013]
+
+
+Stratified by age-at-entry and sex, and ethnicity where possible.
+
+
+## Results
+
+
 
 <!----------------------------------------------------------------------------->
 &nbsp;
 
 ## Discussion
 
-Letters sent to all cohorts identified through the systematic review - will need quite a bit here on the numbers approached and how they responded if at all. Will also need to comment on the additional tactics used. 
+
+### Limitations
+
+#### Low response rate to request for data
+
+This review had a low response rate to requests for data access.
+
+While this is not unexpected, given that a review of IPD studies published between 1987 and 2015 found that fewer than half managed to obtained data from greater than 80% of studies, and that in many cases, the exact percentage of studies for which data was obtained was not accurately reported.
+
+There are likely several reasons for this. 
+
+* Individual participant data meta-analysis including studies other than randomised controlled trials have less success in obtaining individual participant data from studies.[@nevitt2017a] 
+
+* While there is no
+
+For many other reasons also - if 
+
+A potential further reason was highlighted during my attendance at the 
+
+Letters sent to all cohorts identified through the systematic review <!-- TODO will need quite a bit here on the numbers approached and how they responded if at all. Will also need to comment on the additional tactics used.  -->
+
+
 
 This is likely due to my junior position as a early career research combined with the impact 
-
-
 
 Range of reasons why data is not readily available. Privacy concerns, concerns around scoping or "parasitic" behaviour, and a lack of trust (i.e. primary researchers do not trust secondary researchers).<!-- TODO CITATION NEEDED: paper on trust as a big issue + paper on systematic review of barriers to data sharing -->
  
 Unfortunately, 
 
-As part of this, an analysis of 
+
+The low response rate and the
+
+
+Whether or not to press ahead with an IPD analysis in the absence of all (or even most) data is a personal decision, and some have highlighted where they decided not to pursue an IPD study.[@jaspers2014] 
+
+
+
+
+<!-- However, fewer than half of systematic reviews with IPDMA, published between 1987 and 2015, retrieved data from at least 80% of relevant studies and from at least 80% of relevant participants [16]. The number of IPDMAs increased over this period [17], but data retrieval rates remained unchanged [16, 18]. Inability to include eligible studies compromises the systematic review’s purpose, decreases study power, and leads to healthcare decisions based on an incomplete, potentially biased data sample (studies with available data may differ from those whose data are not available) [10, 19, 20]. However, analysis combining individual and study level data may mitigate these effects [3, 21]. from [@ventresca2020a] -->
+
+
+&nbsp;
+<!----------------------------------------------------------------------------->
 
 ### Reflections on data access
 
 Describe your experience of trying to access the DPUK - while a great resources, frustrating at times. The portal would benefit from a centralised management system and 
 
+Even with the guaranteed data access afforded by the DPUK, accessing sufficient data was
+
+<!----------------------------------------------------------------------------->
+&nbsp;
 
 ### Study within a review
 
-In future, it could have been worth running a "study within a review", such as that used to examine whe
+In future, it could have been worth running a "study within a review", such as that used to examine the best method [@godolphin2019a]
 
-https://bmjopen.bmj.com/content/9/1/e025273
+\newpage
+
+## References

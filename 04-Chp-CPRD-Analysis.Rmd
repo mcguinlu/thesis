@@ -4,6 +4,7 @@ csl: bibliography/nature.csl
 output:
   bookdown::pdf_document2:
     template: templates/brief_template.tex
+    pandoc_args: !expr rmdfiltr::add_wordcount_filter()  
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
@@ -402,7 +403,7 @@ knitr::include_graphics(file.path("figures","cprd-analysis","cohort_attrition.pn
 
 &nbsp;
 
-The median participant age at index was `r age_text` and participants were followed up for a median of `r fu_text`. During follow-up, an all-cause dementia diagnosis was recorded for `r comma(p1[1,2])` patients  (`r comma(p1[2,2])` probable AD, `r comma(p1[3,2])` possible AD, `r comma(p1[4,2])` vascular dementia, `r comma(p1[5,2])` other dementia). The distribution of baseline characteristics across the seven drug classes can be seen in Table \@ref(tab:cprdCharacteristics-table).
+The median participant age at index was `r age_text` and participants were followed up for a median of `r fu_text`. During follow-up, an all-cause dementia diagnosis was recorded for `r comma(p1[1,2])` patients  (`r comma(p1[2,2])` probable AD, `r comma(p1[3,2])` possible AD, `r comma(p1[4,2])` vascular dementia, `r comma(p1[5,2])` other dementia: Table \@ref(tab:followUp-table)). The distribution of baseline characteristics across the seven drug classes can be seen in Table \@ref(tab:cprdCharacteristics-table).
 
 
 \blandscape
@@ -455,10 +456,20 @@ Full covariate information was available for `r missingtext`. Six key variables 
 
 ### Primary analysis
 
-<!-- TODO The rates shown are per days at risk not years-->
+Crude rate ratios per 100,000 participant-years-at-risk were calculated for each outcome and class of interest and are presented in Table \@ref(tab:followUp-table).
 
+\blandscape
 
-Crude rate ratios were calculated for each outcome and class of interest and are presented in Table \@ref(tab: )
+<!----------------------------------------------------------------------------->
+(ref:followUp-caption) Summary
+
+(ref:followUp-scaption) followUp
+
+```{r followUp-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+\elandscape
 
 
 The results of the primary analysis using the fully adjusted Cox proportional hazards model with participant age as the time scale are presented for each drug/outcome combination in Figure \@ref(fig:cprdPrimary).
@@ -698,6 +709,12 @@ knitr::include_graphics(file.path("figures/cprd-analysis/sankey_diagram.png"))
 This analysis serves to illustrative the importance of the code lists chosen to define the outcomes of interest, particularly if they are competing (e.g. AD vs non-AD dementia).
 
 &nbsp;
+
+
+<!-- TODO Could include part here on the propensity score analysis trimming, and the fact that trimmming using the co-variates that we had access to  -->
+
+<!-- TODO Can also discuss the fact that off-target effects are much easier to get an accurate answer from as they are not as suceptible to confounding by indication -->
+
 
 ## Discussion
 

@@ -27,6 +27,7 @@
 - [ ] Check citations, particularly of handbook
 - [ ] Remove chapter reference headings.
 - [ ] Ensure all equations are in equation blocks
+- [ ] Ensure that figure table captions follow same style (bold short caption - description)
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice
