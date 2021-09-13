@@ -200,6 +200,31 @@ If this assessment demonstrated issues with the screening process, a larger prop
 
 Data extraction was performed using a piloted data extraction form. Extracted items included: article metadata (year of publication, author list, journal), study characteristics (location, cohort name, exposure, outcomes, outcome criteria used), patient characteristics (age, sex, baseline cognition scores, baseline education scores), and results (exposure-outcome pairing, effect measure, effect estimate, error estimate, p-value). All data was extracted the data in the first instance and was checked for accuracy by a second member of the review team.
 
+#### Combining across groups
+
+Following best practice, where summary data was presented across two groups (e.g. age at baseline stratified by hypercholesterolemai status), the following approach was used to combine the groups <!-- TODO Cite cochrane handbook here -->
+
+<!-- TODO Insert equations here -->
+
+\begin{equation}
+N = N_1 + N_2
+  (\#eq:combiningGroups1)
+\end{equation}
+
+
+\begin{equation}
+Mean = \frac{(N_1M_1 + N_2N_2)}{(N_1 + N_2)}
+  (\#eq:combiningGroups2)
+\end{equation}
+
+
+\begin{equation}
+SD = \sqrt{\frac{(N_1-1)SD_1^2 + (N_2-1)SD_2^2 + \frac{N_1N_2}{N_1 + N_2}(M_1^2 + M_2^2 - 2M_1M_2)}{N1 + N2 -1}}
+  (\#eq:combiningGroups3)
+\end{equation}
+
+This was implemented in a systematic manner, with the raw group data being extracted and a cleaning script written to combine the groups for analysis. where more than one group
+
 #### Harmonisation of cholesterol measures
 
 Harmonization of cholesterol measures across studies was performed, as different studies used different methods to quantify exposure, including comparing differing risks in the highest vs lowest quartiles of a lipid, using a binary classification of patients into a hypercholesterolaemia or not, categorizing lipid levels into high, middle, and low groups according to study-defined criteria, and simply treating the exposure as a continuous variable. <!-- TODO This might not be as accurate now given the focus on dose response --> <!-- TODO Cross reference with the data extraction issues here - i.e. not providing qratile cut-off values, not poviding numbers per group, etc. --> Where necessary, lipid levels reported in _mmol/L_ were converted in _mg/dL_ using the following formula:
@@ -322,6 +347,9 @@ Of note, studies were not combined across different study designs (i.e. RCTs wer
 
 Both a fixed-effect and random-effects meta-analysis model was employed to combine the different included studies. <!-- TODO Need more information on the difference between the two approaches, and their formula here, and description of different methods and quarrels regarding distinction fixed effect vs random effects meta-analyses. --> The fixed-effect method was implemented as:
 
+<!-- TODO Check these against those in Ben's thesis paper -->
+
+
 \begin{equation}
   \theta_i = \mu + u_i
   (\#eq:meta-analysis-random)
@@ -347,7 +375,8 @@ Where possible, data for all exposure groups was extracted. <!-- TODO ??? --> St
 
 <!-- Taken from another paper: "A potential non-linear association was evaluated using a restricted cubic spline model with three knots at the 10th, 50th and 90th percentile of frequency of the exposure [@orsini2012meta]" -->
 <!-- TODO Do I initially want to fit a linear relationship across categories and  -->
-A <!-- TODO confirm type of spline --> spline model was fitted to allow for a non-linear relationship, for example a U or J-shaped relationship, where low and high levels of an exposure can have an effect versus the "normal" reference dose. Reference doses were defined _a priori_ as the cut-off of the "Normal"/"Optimal" categories for each fractions, as detailed in Table \@ref(tab:lipidLevels-table). Under this approach, the reference dose was defined as 200 mg/dL for total cholesterol, 100 mg/dL for LDL-c, 40 mg/dL for HDL-c, and 150 mg/dL for triglycerides.
+A <!-- TODO confirm type of spline --> spline model was fitted to allow for a non-linear relationship, for example a U or J-shaped relationship, where low and high levels of an exposure can have an effect versus the "normal" reference dose. Reference doses were defined _a priori_ as the cut-off of the "Normal"/"Optimal" categories for each fractions, as detailed in Table \@ref(tab:lipidLevels-table). Under this approach, the reference dose was defined as 200 mg/dL for total cholesterol, 100 mg/dL for LDL-c, 40 mg/dL for HDL-c, and 150 mg/dL for triglycerides. <!-- TODO Each bracket should have an upper and lower end -->
+
 
 Due to the requirements for the dose response analysis, studies were excluded from this secondary analysis if they did not provide the require information: cut-off points. Where this was not reported in the study, I contacted the corresponding author to attempt to obtain the required information (see \@ref(contacting-authors)). 
 
@@ -369,21 +398,28 @@ I conducted a leave-one-out analysis in order to explore the impact of any given
 
 The use of evidence maps is becoming increasingly common to explore the distibution of research cohorts included in a systematic review.<!-- TODO CITATION NEEDED --> As such, each individual cohort contibuting to the evidence base was quantified and visualised on a world map.
 
-Further, given the importance of visualising the potential biases of a result alongside the result itself, a new visualisation tool was designed to allow for "paired" forest plots (as recommended by the ROB2 publication). <!-- TODO CITATION NEEDED --> This tool was developed as an adjunct to this thesis to aid in creating standard risk-of-bias figures,[@mcguinness2020robvisPaper] and the "paired" forest plot functionality grew out of a collaboration with other reserachers to design a modular method for creating these plots.[@zotero-14999] <!-- Apparently collaboration is a big thing they want to see --> A summary of this tool is contained in Appendix \@ref(appendix-robvis), and all forest plots presented in this analysis were created using this tool.
+Further, given the importance of visualising the potential biases of a result alongside the result itself, a new visualisation tool was designed to allow for "paired" forest plots (as recommended by the ROB2 publication).[@sterne2019] This tool was developed as an adjunct to this thesis to aid in creating standard risk-of-bias figures,[@mcguinness2020robvisPaper] and the "paired" forest plot functionality grew out of a collaboration with other reserachers to design a modular method for creating these plots.[@zotero-14999] <!-- Apparently collaboration is a big thing they want to see --> A summary of this tool is contained in Appendix \@ref(appendix-robvis), and all forest plots presented in this analysis were created using this tool.
 
 &nbsp;
 <!----------------------------------------------------------------------------->
 
 #### Assessment of added value of including preprints
 
-Preprints are a valuable evidence source (see Introduction, Section \@ref()) but their inclusion in a systematic reivew. As part of a study within this larger review, I also to explore the additional evidental value of including preprints in the meta-analysis, assessed using the fixed effect weight from a standard meta-analysis.
+Preprints are a valuable evidence source (see Introduction, Section \@ref(diverse-sources-preprints)) but their inclusion in a systematic review. 
+
+As part of a study within this larger review, I also to explore the additional evidental value of including preprints in the meta-analysis, assessed using the fixed effect weight from a standard meta-analysis.
 
 Additionally, I followed preprints up over time to investigate whether all identified preprints included in the review were subsequently published (in which case preprints provide a snapshot into the future, and a systematic review update would capture these reports) or alternatively, if some preprints were not published, then preprints provide a distinct evidence source. 
 
 &nbsp;
 <!----------------------------------------------------------------------------->
 
+
+
 ## Results 
+
+<!-- TODO Compare findings for two papers from Rantanen -->
+
 
 ### Initial search and validation of search filters
 
@@ -401,6 +437,8 @@ Of the 500 random records screened to ensure the accuracy of the study design fi
 Following de-duplication, the titles and abstracts of `r num_to_text(16109)` records were assessed for eligibility. `r num_to_text(387)` were deemed potentially eligible, and the full text records for these were accessed and screened. \@ref(fig:prisma-flow-fig) <!-- TODO Check these figures -->
 
 The PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-analyses) flow diagram[@page2021] <!-- TODO CITATION NEEDED - cite PRIMSA flow paper here, if published --> presented in Figure \@ref(fig:prisma-flow-fig), illustrates the movement of articles through the review. 
+
+<!-- TODO Finish PRISMA -->
 
 To highlight the contribution of preprint archives to the review, the flow diagram delineates between those records captured through databases searches (presented on the right of the diagram) and those captured by the search tool described in the previous chapter (presented in grey on the left of the diagram).
 
@@ -470,13 +508,15 @@ Those records which were excluded in the initial screening, but were included by
 Following full-text screening, __XXXX__ studies met the criteria for inclusion in the review. Table \@ref(tab:studyCharacteristics-table) presents a summary of the characteristics of each study.
 
 
+Of note, several studies provided evidence on a lipid fraction as part of a wider study on Mets. Raffatin/Ng
+
 &nbsp;
 
 \blandscape{}
 <!----------------------------------------------------------------------------->
-(ref:studyCharacteristics-caption) studyCharacteristics
+(ref:studyCharacteristics-caption) Characteristics of included studies, stratified by study design.
 
-(ref:studyCharacteristics-scaption) studyCharacteristics
+(ref:studyCharacteristics-scaption) Characteristics of included studies
 
 ```{r studyCharacteristics-table, message=FALSE, results="asis", echo = FALSE}
 ```
@@ -539,46 +579,117 @@ knitr::include_graphics(file.path("figures/sys-rev/cohortLocations.png"))
 
 ### Risk of bias {#risk-of-bias-subheading}
 
-Many of the included studies were at high-risk of bias. 
+Many of the included results were assessed to be at high risk of bias. 
 
-The one randomised controllled trial was deemed to be a low risk of bias, 
+The one randomised controlled trial was deemed to be a low risk of bias, 
+
+Several synthesis were also assessed to be at risk of bias due to missing evidence. 
+
+A key issue identified relating to bias due to missing data was the potential for the search to miss relevant Mendelian randomisation studies which had examined the association between Alzhiemer's disease and multiple risk factors. This is discussed further in Section \@ref(rev-discussion-MR).
 
 &nbsp;
 <!----------------------------------------------------------------------------->
 
-### Meta-analysis of statin use and hypercholesteroleamia
+### Statins
+
+```{r primaryFigures, include = FALSE, message=FALSE,warning=FALSE}
+```
 
 <!-- Straight-forward random effects meta-analysis of binary exposures, using study defined measures of each. -->
 
-Statin use was associated with a reduce risk of all-cause dementia (`r estimate(0.76,0.66,0.88)`, Figure \@ref(fig:fpStatins)).
+In the two included RCTs, statin use was not associated with dementia outcomes
+
+<!----------------------------------------------------------------------------->
+(ref:statinsRCT-cap) __Random effects meta-analysis of statins on all-cause dementia:__
+
+(ref:statinsRCT-scap) Random effects meta-analysis of statins on all-cause dementia
+
+```{r statinsRCT, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:statinsRCT-cap)', out.width='100%', fig.scap='(ref:statinsRCT-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/forest_statins_rct.png"))
+```
+<!----------------------------------------------------------------------------->
+
+In NRSI, statin use was associated with a reduce risk of all-cause dementia (`r estimate(0.76,0.66,0.88)`, Figure \@ref(fig:statinsNRSI)).
 
 &nbsp;
 <!----------------------------------------------------------------------------->
-```{r primaryFigures, include = FALSE}
-```
 
-(ref:fpStatins-cap) __Forest plot showing effect of statins:__
+(ref:statinsNRSI-cap) __Forest plot showing effect of statins:__
 
-(ref:fpStatins-scap) Forest plot showing effect of statins
+(ref:statinsNRSI-scap) Forest plot showing effect of statins
 
-```{r fpStatins, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:fpStatins-cap)', out.width='100%', fig.scap='(ref:fpStatins-scap)'}
+```{r statinsNRSI, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:statinsNRSI-cap)', out.width='100%', fig.scap='(ref:statinsNRSI-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/forester_statins_any.png"))
 ```
 <!----------------------------------------------------------------------------->
+
+In Mendelian randomisation studies, a similar blah blah blah
+
+<!----------------------------------------------------------------------------->
+
+(ref:statinsMR-cap) __Forest plot showing effect of statins:__
+
+(ref:statinsMR-scap) Forest plot showing effect of statins
+
+```{r statinsMR, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:statinsMR-cap)', out.width='100%', fig.scap='(ref:statinsMR-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/forester_statins_any.png"))
+```
+<!----------------------------------------------------------------------------->
+
+### Hypercholesterolemia and lipid levels
+
+<!----------------------------------------------------------------------------->
+
+(ref:hypercholNRSE-cap) __Forest plot showing effect of statins:__
+
+(ref:hypercholNRSE-scap) Forest plot showing effect of statins
+
+```{r hypercholNRSE, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:hypercholNRSE-cap)', out.width='100%', fig.scap='(ref:hypercholNRSE-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/forester_statins_any.png"))
+```
+<!----------------------------------------------------------------------------->
+
+Several studies presented results per SD change in a lipid fraction.
+
+<!----------------------------------------------------------------------------->
+
+(ref:lipidsNRSE-cap) __Forest plot showing effect of statins:__
+
+(ref:lipidsNRSE-scap) Forest plot showing effect of statins
+
+```{r lipidsNRSE, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:lipidsNRSE-cap)', out.width='100%', fig.scap='(ref:lipidsNRSE-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/forester_statins_any.png"))
+```
+<!----------------------------------------------------------------------------->
+
 &nbsp;
 
 ### Dose response meta-analysis of lipid levels {#dose-response-results}
 
 <!-- TODO Cite excluded studies and list exclusion reasons  -->
 
-Several studies were excluded from the dose-response meta-analysis, as the number of cases/controls per dose group could not be calculated and the corresponding author for the study did not respond to clarification requests. The results from the dose response analysis can be seen in Figure \@ref(fig:dose-response).
+Several studies were excluded from the dose-response meta-analysis, as the number of cases/controls per dose group could not be calculated and the corresponding author for the study did not respond to clarification requests. The results from the dose response analysis can be seen in Figure \@ref(fig:lipidsDoseResponse).
 
-<!-- TODO Include image -->
+
+<!----------------------------------------------------------------------------->
+
+(ref:lipidsDoseResponse-cap) __Forest plot showing effect of statins:__
+
+(ref:lipidsDoseResponse-scap) Forest plot showing effect of statins
+
+```{r lipidsDoseResponse, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:lipidsDoseResponse-cap)', out.width='100%', fig.scap='(ref:lipidsDoseResponse-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/forester_statins_any.png"))
+```
+<!----------------------------------------------------------------------------->
 
 &nbsp;
 <!----------------------------------------------------------------------------->
 
 <!-- ### Sources of heterogeneity -->
+
+Planned to investigate effect of sex and age at baseline.
+
+Plus other such as education level and baseline cognitive scores, but data were either not reported for most studies or when reported, were too diverse to synthesize.
 
 <!-- Detail that some of these are exploratory, in particular the effect of different scales on the association between the groups. **[CROSS]** -->
 
@@ -622,25 +733,26 @@ knitr::include_graphics(file.path("figures/sys-rev/funnel_statins_any.png"))
 
 <!-- TODO Will have to get actual numbers for this section -->
 
-As show in Figure \@ref(prisma-flow-fig), the number of results returned by the preprint searching, was not substantial (bioRxiv = 256, medRxiv = 0). <!-- TODO check -->
+I had intended to assess the added evidental value of including preprints as a literautre source.
+
+As show in Figure \@ref(prisma-flow-fig), the number of results returned by the preprint searching was not substantial (bioRxiv = 256, medRxiv = 0). <!-- TODO check numbers -->
+
+No unique preprints were identified as part of this review, with the published version of the few/sole <!-- TODO check which --> relevant preprint(s) being captured by the main search.
 
 <!-- QUESTION Can I explore the amount of information added by the preprints quantiatively using the weights in the meta-analysis -->
 
 &nbsp;
 <!----------------------------------------------------------------------------->
 
-### Risk of bias due to missing evidence
-
-A key issue identified relating to bias due to missing data was the potential for the search to miss relevant Mendelian randomisation studies which had examined the association between Alzhiemer's disease and multiple risk factors. This is discussed further in Section \@ref(rev-discussion-MR).
-
-<!----------------------------------------------------------------------------->
-&nbsp;
-
 ## Discussion
 
 ### Summary of findings
 
-some evidence that age has impact on observed lipid-dementia relationship - use to link 
+There was some evidence of protective effect of statins on all-cause and Alzheimer's disease dementia when looking at solely at observational studies. This finding was not supported by evidence from the single available RCT, or by studies that emulated statin treatment using a genetic proxy, suggesting that these findings are a
+
+In addition,  there were some concerns over the potential for estimates to be missing from the meta-analysis of observational studies not at random, given the preferential reporting of 
+
+Some evidence that age has impact on observed lipid-dementia relationship - use to link 
 
 This review has presented a summary of the available evidence on the association between lipids, and treatments that modify lipids such as statins, and the subsequent risk of dementia.
 
@@ -668,6 +780,11 @@ This does introduce some conflicts with other studies where a change score has b
 <!-- __Exclusion of the PROSPER trial__ Will need to have a good bit here on the exclusion of this RCT, particularly as it is included in the Cochrane review on the topic. Cross-reference with the meta-bias section in the early section, on the impact of only included studies that sought to make a definitive diagnosis, rather than using change in cognitive assessment scales. -->
 
 This review did not include the commonly cited PROSPER study, which examined the effect of pravastatin on CVD risk and is regularly held up as  providing no evidence for an effect of the statin on dementia outcomes. While widely cited and included in the Cochrane review on this topic,[@mcguinness2016] only reported the mean change in a range of cognitive measures (MMSE, Stroop test, Picture-Word Learning test, etc.) over follow-up rather than incident. While this is a useful indicator of general cognitive decline, it is not equivalent to a dementia diagnosis using a , as cognitive tests should feed into a broader diagnostic pathway (see section \@ref(diagnostic-criteria)). As such, this trial did not met the inclusion criteria for this review.
+
+
+<!-- The findings on high TC in midlife being associated with increased risk of late-life AD are still limited to the few studies that report relevant data from Scandinavia and the United States. The wider literature shows that level of TC in populations varies according to diet, urbanization, ethnicity, and income [56, 57]. from Anstey 2017 -->
+
+Questions over missing results - evidence from one of the conference abstract analysis pairs that a non-significant results are being suppressed.[@yamada2009; @yamada2009a] Tie this in with 
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -716,6 +833,9 @@ While none of the preprints contributed uniquely to the review, this is again. C
 
 Of note, since the start of my review, inclusion of preprints in systematic reviews has now become widespread due to the role of preprint servers, in particular medRxiv, as a key evidence dissemination venue during the early stages of the COVID-19 pandemic. However, how well this adoption of preprints will transfer to other topics, where the speed of research does not put the same focus on preprinted articles, is currently unknown.
 
+<!-- TODO Discuss information here that I responded to Julian with re: % of preprints that published -->
+
+
 
 <!----------------------------------------------------------------------------->
 ```{r preprintGrowthSetup, include=FALSE}
@@ -740,9 +860,13 @@ knitr::include_graphics(file.path("figures/sys-rev/preprint_growth.png"))
 
 ### Reviewing Mendelian randomisations studies {#rev-discussion-MR}
 
+Additionally many of the studies suggested a link between, but then in the sensitivity analyses or in the Discussion disclaim that when adjusted for ApoE4, any association was attenuated to the null. This point is important given one of the core assumptions of 
+
+<!-- TODO Diagram showing three assumptions of MR, comparing it to a graph showing the invalidation of no pleiotopy assumption -->
+
 Mendelian randomisation is a powerful analytical technique, using natural variation in participants genomes to (assuming the assumptions of the method are valid), though it's inclusion as an acceptable study design in this review was complicated by a number of factors. 
 
-Firstly, as this study design is relatively new, particularly when compared to randomised trials or cohort studies, the process and tools for systematically assessing them are not as well developed. A key example of this is in the absence of validated search filters for Mendelian randomisations studies. This limitation is further complicated by the varying terminology used to describe the method, particularly in the early years of it's application.
+Firstly, this study design is relatively new, particularly when compared to randomised trials or cohort studies. Figure \@ref(fig:typeByYear) demonstrates that MR studies only begin to appear in the evidence base much later than NRSE/NRSI. As such, the process and tools for systematically assessing them are not as well developed, likely due to the limited availabilt of large scale GWAS datasets needed for two sample MR. A key example of this is in the absence of validated search filters for Mendelian randomisations studies. This limitation is further complicated by the varying terminology used to describe the method, particularly in the early years of it's application.
 
 Additionally, there is currently no widely used risk-of-bias assessment tool for Mendelian randomisation studies. A recent commentary provided a checklist  interpreting Mendelian randomisation studies, this guide includes reporting items in their quality checklist. While reporting quality is important, it is a separate consideration to internal validity, as discussed in Section \@ref(). Similarly, a previous review of Mendelian randomisation studies used the Q-Genie tool, which was validated to assess the quality of genetic association studies in meta-analysis.[@sohani2015] While this tool addresses the studies used, it does not access the additional methodological considerations of the analysis of the Mendelian randomisation analysis itself. <!-- TODO Read this tool. --> For this review, I utilised the best available author-devised tool, sourced on a recent review of systematic reviews of Mendelian randomisation studies. 
 

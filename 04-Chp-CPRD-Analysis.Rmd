@@ -72,7 +72,7 @@ Electronic health record (EHR) databases are large collections of patients data,
 
 This analysis makes use of the Clinical Practice Research Datalink (CPRD), which contains the electronic medical records of more than 3 million people from general practices across the UK. Using this data, the analysis presented in this chapter examined the effect of treatment which lower cholesterol levels, such as statins, on the risk of dementia and related outcomes.
 
-No evidence for an effect of lipid regulating agents effect on the risk of Alzheimer's disease was found, with the exception of a slightly increased risk in those prescribed a certain type of drugs called fibrates. In contrast, I found an increased risk of vascular and other (i.e. non-Alzheimer's) dementia with lipid regulating agent use. 
+Little evidence for an effect of lipid regulating agents effect on the risk of Alzheimer's disease was found, with the exception of a slightly increased risk in those prescribed a certain type of drugs called fibrates. In contrast, I found an increased risk of vascular and other (i.e. non-Alzheimer's) dementia with lipid regulating agent use. 
 
 This increased risk is unexpected, and is very likely to be due to the presence of bias in the analysis. This bias, called "confounding by indication", is caused when those who are prescribed a statin are more at risk of vascular dementia for a range of reasons, and so it appears as if statins are harmful. However, despite this limitation, the analysis presented provides an important source of information which will be used in later chapters.
 
@@ -273,7 +273,7 @@ knitr::include_graphics(file.path("figures","cprd-analysis","immortal_time.png")
 
 <!-- Expand on use of age as the time scale, but describe the problems this introduced -->
 
-As part of a Cox proportional hazard model, there is the option to use either absolute time in cohort or participants age as the time scale of interest.[@lamarca1998; @gail2009; @pencina2007] A model using age as the time axis inherently accounts, or adjusts, for participants age as a potential confounded of the exposure-outcome relationship. The main analyses presented all used age as the time axis.
+As part of a Cox proportional hazard model, there is the option to use either absolute time in cohort or participants age as the time scale of interest.[@lamarca1998; @gail2009; @pencina2007] A model using age as the time axis inherently accounts, or adjusts, for participants age as a potential confounder of the exposure-outcome relationship. As such, the main analyses presented all used age as the time axis.
 
 <!-- TODO Will need to expand on choice of time axis here -->
 
@@ -292,7 +292,7 @@ In addition to the primary outcomes of interest (described in Section \@ref(cprd
 
 Conversely, positive control outcomes are those with a known causal association with the exposure of interest, ideally sourced from large well conducted randomised controlled trials. Positive control outcomes are useful in observational epidemiology, as if the analysis can reproduce a known result for the control outcome, confidence in the result for the outcome of interest is increased.
 
-Due to the wealth of data available on statins as a lipid regulating agent, control outcomes were chosen in reference to this drug class. Muscular backpain was chosen as a negative control outcome in this analysis. Despite observational analyses suggesting a link between statins and muscle pain (as opposed to more serious complications such as myopathy),[@selva-ocallaghan2018] systematic reviews of the adverse events of statin use[@collins2016a] and N-of-1 trials explicitly exploring the effect of statin use on muscle pain[@herrett2021] have found no evidence of an effect. As such, if no evidence of an effect of statins on backpain is found in the analysis, then confidence in the results for the dementia outcomes is increased.
+Due to the wealth of data available on statins as a lipid regulating agent, control outcomes were chosen in reference to this drug class. Muscular backpain was chosen as a negative control outcome in this analysis. Despite observational analyses suggesting a link between statins and muscle pain (as opposed to more serious complications such as myopathy),[@selva-ocallaghan2018] systematic reviews of the adverse events of statin use[@collins2016a] and N-of-1 trials explicitly exploring the association of statin use with muscle pain[@herrett2021] have found little evidence supporting an effect. As such, if statins are not associated with backpain in this analysis, then confidence in the results for the dementia outcomes is increased.
 
 Additionally, incident ischemic heart disease was included as a positive control outcome, given the well-established protective effect of lipid-lowering treatment, via statins, on the risk of this condition.[@collins2016a] Similar to the backpain outcome, if the analysis strategy can reproduce this known protective association, this will provide evidence that potential confounders have been sufficiently adjusted for.
 
@@ -358,7 +358,7 @@ Two sensitivity cohorts were also created. The first stratified by year of entry
 
 As detailed in the introduction, the properties of statins may be important in their effect, based on the ability of lipophilic statins to cross the blood brain barrier (see Section \@ref(intro-statins) in the Introductory Chapter).
 
-To explore whether any observed effect for the statin analysis varied by statin property, a sensitivity analysis was performed, stratifying by statin lipophilicity.
+To explore whether any observed associations in the statin analysis varied by statin property, a sensitivity analysis was performed, stratifying by statin lipophilicity.
 
 <!-- TODO Previous review of the evidence have recommended that future studies take account of statins varying ability to cross the BBB [@shepardson2011] -->
 
@@ -369,7 +369,7 @@ To explore whether any observed effect for the statin analysis varied by statin 
 
 As part of an exploratory analysis of the effect of the choice of code lists on the analysis, I created an alternative Alzheimer's disease and non-Alzheimer's dementia outcome using code lists from a previous study published in 2009 by Smeeth _et al_.[@smeeth2009]
 
-This previous study used a propensity matching approach to estimate the effect of statins on a range of outcomes, and a protective effect of statin use on all-cause dementia (`r estimate(0.81, 0.69,0.96,type = "HR")`) and non-AD dementia (`r estimate(0.82,0.69, 0.97,type = "HR")`), but no evidence of an effect on AD (`r estimate(0.81,0.49, 1.35, type="HR")`).
+This previous study used a propensity matching approach to estimate the association of statins with a range of outcomes, and found evidence for a protective effect of statin use on all-cause dementia (`r estimate(0.81, 0.69,0.96,type = "HR")`) and non-AD dementia (`r estimate(0.82,0.69, 0.97,type = "HR")`), but little evidence of an effect on AD (`r estimate(0.81,0.49, 1.35, type="HR")`).
 
 The code lists used were obtained through correspondence with the authors of that study, and are available for inspection (see Section \@ref(cprd-data-avail)).
 
@@ -497,7 +497,7 @@ knitr::include_graphics(file.path("figures","cprd-analysis","forester_p1.png"))
 
 __Alzheimer's disease__
 
-No evidence was found for an effect of lipid-regulating agents on probable (`r probad_text`) and possible (`r possad_text`) Alzheimer's disease when compared with no treatment, with the sole exception of fibrates on probable Alzheimer's disease (`r probad_fib_text`). 
+My results show litte evidence was found for an effect of lipid-regulating agents on probable (`r probad_text`) and possible (`r possad_text`) Alzheimer's disease when compared with no treatment, with the sole exception of fibrates on probable Alzheimer's disease (`r probad_fib_text`). 
 
 &nbsp;
 
@@ -660,7 +660,7 @@ In the cohort, statins with lipophilic properties were much more frequently pres
 
 &nbsp;
 
-When stratifying by statin properties, hydrophilic statins were less harmful in the any, vascular and other dementia outcomes compared to lipophilic statins (Figure \@ref(fig:statinTypeFig)). Additionally, in the AD outcomes, hydrophilic statins had a small protective effect, compared to the absence of evidence for an effect for lipophilic statins.
+When stratifying by statin properties, hydrophilic statins were less harmful in the any, vascular and other dementia outcomes compared to lipophilic statins (Figure \@ref(fig:statinTypeFig)). Additionally, in the AD outcomes, hydrophilic statins were associated with a small reduction in risk, compared to the weak evidence for an effect for lipophilic statins.
 
 &nbsp;
 
@@ -722,7 +722,7 @@ This analysis serves to illustrative the importance of the code lists chosen to 
 
 ### Summary of findings
 
-Lipid-regulating agents showed no evidence of an effect on probable and possible Alzheimer's disease when compared with no treatment, but were associated with increased risk of an all-cause dementia, vascular dementia and other dementia diagnosis. The effect observed in each case was driven by the statin subgroup, which included a substantial majority of participants. For the other drug classes, no association was found with any outcome, with two exceptions being that ezetimibe was associated with increased risk of vascular and other dementia, while fibrates were associated with increase risk of all-cause dementia and probable Alzheimer's disease.
+Lipid-regulating agents showed little evidence of an effect on probable and possible Alzheimer's disease when compared with no treatment, but were associated with increased risk of an all-cause dementia, vascular dementia and other dementia diagnosis. The effect observed in each case was driven by the statin subgroup, which included a substantial majority of participants. For the other drug classes, no association was found with any outcome, with two exceptions being that ezetimibe was associated with increased risk of vascular and other dementia, while fibrates were associated with increase risk of all-cause dementia and probable Alzheimer's disease.
 
 The effect estimates were robust to the exclusion of potentially pregnant participants, and for all outcomes except Probable AD, no variation across grouped year of entry was observed. When looking at the statin subgroup alone, statin properties appeared to have a modifying effect, with hydrophilic statins being less harmful in the any, vascular and other dementia outcomes compared to lipophilic statins.
 
@@ -907,7 +907,7 @@ This open approach will enable easy inclusion of this analysis in future evidenc
 
 This chapter has provided new evidence on the potential repurposing of lipid-regulating agents for the prevention of all-cause dementia, Alzheimer’s disease, vascular dementia, and other dementia. It made use of a large scale electronic health record database, the CPRD, and employed a time-varying Cox proportional hazards model to account for the potential immortal time bias.
 
-It found no evidence for an effect of lipid-regulating agents on probable or possible Alzheimer’s disease. However, lipid regulating agent use was associated with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations were driven by those observed in the statin subgroup, which comprised the majority of exposed participants in this cohort.
+It found little evidence for an effect of lipid-regulating agents on probable or possible Alzheimer’s disease. However, lipid regulating agent use was associated with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations were driven by those observed in the statin subgroup, which comprised the majority of exposed participants in this cohort.
 
 This chapter attempted to account for important sources of bias and provide a comparison with other available literature, as identified in the systematic review presented in Chapter \@ref(sys-rev-heading). However, there is a strong potential for uncontrolled confounding by indication and differential misclassification of the outcome on the basis of exposure, which raises questions about the findings, in particular the unexpected increase in risk of vascular dementia associated with statin use. This is supported by our findings for the negative and positive control outcomes used, which provide some evidence of uncontrolled vascular confounders that may both prompt LRA prescription and increase risk of vascular dementia. Future research using large scale electronic health records should aim to address these limitations, potentially by using a analytical design that more closely emulates a trial.[@danaei2013b]
 

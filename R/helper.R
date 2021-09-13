@@ -1,4 +1,10 @@
 library(magrittr)
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+
+conflicted::conflict_prefer("filter", "dplyr")
+conflicted::conflict_prefer("last", "data.table")
 
 # Register fonts with R
 library(grDevices)
@@ -11,12 +17,12 @@ source(here::here("R/forester.R"))
 
 
 # Clean output of metafor using sensible defaults
-broom_ma <- function(metafor_obj) {
+broom_ma <- function(metafor_obj, exp = TRUE) {
   return(broom::tidy(
     metafor_obj,
     conf.int = TRUE,
     include_studies = TRUE,
-    exponentiate = TRUE
+    exponentiate = exp
   ) %>%
     rename("Study" = term) %>%
     mutate(Study = ifelse(Study == "overall", "Overall",Study),
@@ -488,4 +494,57 @@ read_excel_allsheets <- function(filename, tibble = FALSE, col_names = FALSE) {
   if(!tibble) x <- lapply(x, as.data.frame)
   names(x) <- sheets
   x
+}
+
+
+combine_age <- function(age, group_size) {
+  
+  age <- stringr::str_remove_all(age, " ")
+  age <- stringr::str_remove_all(group_size, " ")
+  
+  # Find parentheses
+  re <- "\\(([^()]+)\\)"
+  
+  # Extract sd
+  sd <- c(stringr::str_extract_all(age,re, simplify = T))
+  sd <- as.numeric(substring(sd, 2, nchar(sd)-1))
+  
+  mean <- c(stringr::str_split(age,"\\|", simplify = T))
+  mean <- as.numeric(stringr::str_remove_all(mean,re))
+  
+  n <- as.numeric(stringr::str_split(group_size,"\\|", simplify = T))
+  
+  t <- utilities::sample.decomp(
+    n = n,
+    sample.mean = mean,
+    sample.sd = sd,
+    include.sd = TRUE
+  ) %>%
+    slice_tail() %>%
+    tidy_nums()
+  
+  return(paste0(t$sample.mean," (",t$sample.sd,")"))
+  
+}
+
+
+combine_female <- function(female, group_size) {
+  
+  age <- stringr::str_remove_all(female, " ")
+  age <- stringr::str_remove_all(group_size, " ")
+  
+  percentages <- as.numeric(stringr::str_split(female,"\\|", simplify = T))
+  
+  n <- as.numeric(stringr::str_split(group_size,"\\|", simplify = T))
+  
+  t <- data.frame(percentages,n) %>%
+    mutate(proportion = percentages/100,
+           n_female = n*proportion) %>%
+    summarise(female = sum(n_female), 
+              percentage = female/sum(n)*100) %>%
+    slice_tail() %>%
+    tidy_nums()
+  
+  return(t$percentage)
+  
 }

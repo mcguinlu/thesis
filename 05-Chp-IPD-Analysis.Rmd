@@ -23,12 +23,18 @@ Hold
 <!----------------------------------------------------------------------------->
 &nbsp;
 
+
+
 <!----------------------------------------------------------------------------->
 &nbsp;
 
 ## Introduction
 
 Is there a good way to visualise input of cohorts into an IPD analysis?
+
+Justify analysis based on findings of systematic review - suggestion of variation of effect by age, specifically 
+
+
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -40,7 +46,7 @@ As part
 As part of the IPD analysis, relevant cohort studies were identified from the sty and approached. In the first instance, the corresponding author on the main man
 
 Talk about how different covariates were managed across cohorts, 
-
+c
 <!-- TODO Read this[@riley2020] -->
 
 
@@ -62,7 +68,6 @@ These data source
 Each should have: 
 
 * Description (including observation period, numbers, numbers with outcome, etc)
-* Whether they are a known genetically at-risk cohort
 *
 
 <!----------------------------------------------------------------------------->
@@ -73,11 +78,11 @@ Each should have:
 The European Prospective Investigation of Cancer - Norfolk is a  [@riboli1997; @riboli2002]
 
 
+Has only 8 events
+
 ```{r tests, }
 
 ```
-
-#### BRACE
 
 #### CaPS
 
@@ -87,17 +92,26 @@ The Clinical Practice Research Datalink (CPRD) is a large population-based, elec
 
 The CPRD is introduced more fully in . Briefly, a similar approach to the cohort definition as used in Chapter
 
-#### ELSA
+Participants were included from the first date of lipid measurement, so no issues with immortal time bias as discussed in Chapter ...
+
+Additionally, ther number of participants is larger in this analysis as there is no restriction on the level which lipids should be in order to be included in the analysis.
+
+the
+
 
 #### EPIC Norfolk
 
 #### Generation Scotland
 
-#### Memento
+
 
 #### NICOLA
 
+
+
 #### TRACK HD
+
+
 
 #### Whitehall II
 
@@ -118,6 +132,25 @@ Different approaches to combining subgroups. [@fisher2017]
 
 Several cohorts were excluded on the basis of a lack of exposure variables, including Cam-CAN (had cardiovascular category, but only contained blood pressure).
 
+#### BRACE
+
+Likley had dementia at baseline
+
+#### Memento
+Excluded as criteria for entry was outpatients from memory clinic (unlikely to be dementia free at baseline)
+
+#### Generation Scotland
+
+Cross-sectional data only
+
+#### NICOLA
+
+NICOLA study - only had cross-sectional data
+
+#### ELSA
+
+Data provided but only had ever high cholesterol as a binary variable. Not compatible with 
+
 <!----------------------------------------------------------------------------->
 &nbsp;
 
@@ -128,6 +161,10 @@ Several cohorts were excluded on the basis of a lack of exposure variables, incl
 
 Electronic health record co
 
+LBC - 1936
+
+Taiwan etc,
+
 <!----------------------------------------------------------------------------->
 &nbsp;
 
@@ -135,10 +172,11 @@ Electronic health record co
 
 Maybe discuss here t
 
-
-
 This was particularly frustrating in the case of cohorts which had a dedicated data access panel, for example, the Three City Study. Despite multiple attempts to contact the team, there was no response received.
 
+
+
+<!-- TODO Will need some method to define how/from where the different cohorts were obtained. -->
 
 
 <!----------------------------------------------------------------------------->
@@ -146,11 +184,17 @@ This was particularly frustrating in the case of cohorts which had a dedicated d
 
 ### Data cleaning
 
-Across all cohorts, data cle
+Across all cohorts, data cleaning was performed in a similary manner, using commonly named variables, so that a single model could be applied using functional programming. 
+
+The one exception to this is the CPRD data, which was held in a different system to the rest.
+
+The advantage of this approach is that it reduces the liklihood of errors in model mis-speciication if needing to change variables names from cohort to cohort.
+
+
 
 For all cohorts, the first lipid measurement was used for the exposure method, 
 
-For heterogeneity across the cohorts, the total time at risk was investigated.
+For heterogeneity across the cohorts, the total time-at-risk was investigated.
 
 <!-- TODO Create similar crude rate table as for CPRD analysis chapter -->
 
@@ -169,6 +213,8 @@ Talk about missing data was handled <!-- IDEA See Sean's thesis for some additio
 
 Risk of bias assessment was performed for each of the included cohorts using the relevant tool described in Section \@ref(risk-of-bias).
 
+There is some concerns about performing risk of bias assessments on your own analysis, and so 
+
 <!--- Inlcude CPRD analysis here, but dou --->
 
 <!----------------------------------------------------------------------------->
@@ -176,20 +222,36 @@ Risk of bias assessment was performed for each of the included cohorts using the
 
 ### Analysis
 
+<!-- TODO talk about different methods - see here: https://onlinelibrary.wiley.com/doi/10.1002/sim.8516 -->
+
 All analysis were standardised by changes in 1-SD of the exposure variable. 
 
+This was done to aid interpretability of the outcome. 
 
-This was done to 
+Similary, 
 
-
-CLustering within studies was accounted for, given the evidence that ...[@abo-zaid2013]
-
+Clustering within studies was accounted for, given the evidence that ...[@abo-zaid2013]
 
 Stratified by age-at-entry and sex, and ethnicity where possible.
 
 
+Hazard ratios were utilised to 
+
+
+In order to investigate the interaction of sex with 
+
+A two-stage model was used out of necessity, with the one-stage model being recluded by the different datasets being in protected data silos. 
+
+A discrete proportional hazards model was employed to account for the interval censoring introduced by design o fthe longitudinal cohort studies.[@wang2017]
+
+<!-- TODO Figure showing the outline of interval censored studies. -->
+
+<!----------------------------------------------------------------------------->
+&nbsp;
+
 ## Results
 
+Data
 
 
 <!----------------------------------------------------------------------------->
@@ -197,15 +259,24 @@ Stratified by age-at-entry and sex, and ethnicity where possible.
 
 ## Discussion
 
+Useful citation for discussion[@levis2021]
 
 ### Limitations
 
 #### Low response rate to request for data
 
+<!-- TODO Plot showing when datasets requested were published and comparing this with the -->
+
+
+<!-- TODO text -->
+
+
+
+
 This review had a low response rate to requests for data access.
 
 While this is not unexpected, given that a review of IPD studies published between 1987 and 2015 found that fewer than half managed to obtained data from greater than 80% of studies, and that in many cases, the exact percentage of studies for which data was obtained was not accurately reported.
-
+test
 There are likely several reasons for this. 
 
 * Individual participant data meta-analysis including studies other than randomised controlled trials have less success in obtaining individual participant data from studies.[@nevitt2017a] 
@@ -252,7 +323,9 @@ Even with the guaranteed data access afforded by the DPUK, accessing sufficient 
 
 ### Study within a review
 
-In future, it could have been worth running a "study within a review", such as that used to examine the best method [@godolphin2019a]
+In future, it could have been worth running a "study within a review", such as that used to examine the best method [@godolphin2019a] to identify and access study data.
+
+Previous SWARs have 
 
 \newpage
 
