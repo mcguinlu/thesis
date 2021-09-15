@@ -548,3 +548,25 @@ combine_female <- function(female, group_size) {
   return(t$percentage)
   
 }
+
+
+
+get_confidence_from_p<- function(est, p) {
+  
+  # From https://www.bmj.com/content/343/bmj.d2090
+  
+  z = -0.862 + sqrt(0.743 - 2.404 * log(p))
+  
+  log_est = log(est)
+  
+  log_SE = abs(log_est / z)
+  
+  list(
+    lower = exp(log_est - 1.96 * log_SE),
+    upper = exp(log_est + 1.96 * log_SE)
+  ) %>%
+    tidy_nums() %>%
+  return()
+  
+
+}

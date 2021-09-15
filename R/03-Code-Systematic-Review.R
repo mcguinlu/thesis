@@ -200,6 +200,13 @@ toc_df2 <- rio::import("data/sys-rev/data_extraction_main.xlsx",which = 2) %>%
             Outcomes = paste0(unique(outcome), collapse = "; ")) %>%
   ungroup()
 
+toc_df2 %>%
+  filter(exclude != "Y") %>%
+  filter(type == "NRSI") %>%
+  filter(measure == "RR")
+  group_by(measure) %>%
+  count()
+
 p_type <- 
   toc_df %>%
   group_by(year) %>%
@@ -366,6 +373,7 @@ library(metafor)
 
 results_statins_rct <- rio::import("data/sys-rev/data_extraction_main.xlsx", which = 2) %>%
   janitor::clean_names() %>%
+  # Extract two trials
   filter(study_id %in% c("10562","90003")) %>%
   mutate(log_point = log(point_estimate),
          log_SE = (log(lower_95_percent) - log(upper_95_percent))/3.92) %>%
@@ -383,13 +391,13 @@ res <- metafor::rma.uni(data = dat,
                       yi, vi, 
                       slab = paste(author, year))
 
+# Update with proper ROB assessments
 dat_rob <- robvis::data_rob2[1:2,]
 dat_rob[,1] <- res$slab
 dat_rob[2,2:7] <- "No information"
 
-
 try(dev.off(),silent = T)
-png(here::here("figures/sys-rev/forest_statins_rct.png"), height = 300, width = 800)
+png(here::here("figures/sys-rev/fp_statins_any_rct.png"), height = 300, width = 800)
 
 robvis::rob_append_to_forest(
   res,
@@ -423,17 +431,20 @@ dev.off()
 
 # Obs statins
 
-results_statins <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx", which = 1) %>%
+results_statins <- rio::import("data/sys-rev/data_extraction_main.xlsx", which = 2) %>%
   janitor::clean_names() %>%
-  dplyr::filter(done == "Y",
-         !is.na(point_estimate),
+  filter(exposure_category == "Drug",
          measure == "HR",
-         outcome == "Dementia",
-         exposure %like% "[Ss]tatin",
-         !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
+         # is.na(sex), is.na(age),
+         # outcome == "Dementia",
+         exposure == "Fibrate") %>%
   mutate(point = log(point_estimate),
          SE = (log(lower_95_percent) - log(upper_95_percent))/3.92) %>%
   arrange(author, year)
+
+results_statins <- rio::import("data/sys-rev/data_extraction_main.xlsx", which = 2) %>%
+  janitor::clean_names() %>%
+  filter(outcome == "VaD")
 
 t <- metafor::rma.uni(data = results_statins,
                       yi = point,

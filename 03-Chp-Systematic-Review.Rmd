@@ -133,7 +133,14 @@ I sought to include studies that examine the relationship between blood lipid le
 
 Participants were free (or assumed to be free) of dementia/MCI <!-- TODO Do I actually want to include MCI? -->  at baseline. Studies of any duration were included to allow for exploration of the effect of length of follow-up on the effect estimate using meta-regression. No limits were placed on the sample size of included studies.
 
-Eligible studies defined dementia according to recognised criteria, for example the National Institute of Neurological Disorders and Stroke Association-Internationale pour la Recherche en l'Enseignement en Neurosciences (NINDS-AIREN), International Classification of Diseases (ICD), or Diagnostic and Statistical Manual of Mental Disorders (DSM) criteria. <!-- TODO CITATION NEEDED --> <!-- TODO do i actually want to include MCI? --> For MCI, eligible studies are those that attempted state a definition for diagnoses of MCI (e.g. an adapted version of the Petersen criteria [@petersen1999]) and create ordinal groups of patients (e.g. no dementia or dementia/MCI/dementia) based on this definition.
+Eligible studies defined dementia according to recognised criteria, for example the National Institute of Neurological Disorders and Stroke Association-Internationale pour la Recherche en l'Enseignement en Neurosciences (NINDS-AIREN), International Classification of Diseases (ICD), or Diagnostic and Statistical Manual of Mental Disorders (DSM) criteria. <!-- TODO CITATION NEEDED --> <!-- TODO do i actually want to include MCI? -->
+
+__Bit on inclusion of EHR, where it is unclear how dementia diagnosed.__
+
+<!-- TODO Any study using EHR - go back and extract codelists -->
+
+
+For MCI, eligible studies are those that attempted state a definition for diagnoses of MCI (e.g. an adapted version of the Petersen criteria [@petersen1999]) and create ordinal groups of patients (e.g. no dementia or dementia/MCI/dementia) based on this definition.
 
 No limitations were imposed on publication status, publication date, venue or language, although sufficiently detailed reports of the studies to be able to examine their methods were required for inclusion.
 
@@ -224,6 +231,15 @@ SD = \sqrt{\frac{(N_1-1)SD_1^2 + (N_2-1)SD_2^2 + \frac{N_1N_2}{N_1 + N_2}(M_1^2 
 \end{equation}
 
 This was implemented in a systematic manner, with the raw group data being extracted and a cleaning script written to combine the groups for analysis. where more than one group
+
+##
+
+\begin{equation}
+N = N_1 + N_2
+  (\#eq:combiningGroups1)
+\end{equation}
+
+
 
 #### Harmonisation of cholesterol measures
 
@@ -587,6 +603,12 @@ Several synthesis were also assessed to be at risk of bias due to missing eviden
 
 A key issue identified relating to bias due to missing data was the potential for the search to miss relevant Mendelian randomisation studies which had examined the association between Alzhiemer's disease and multiple risk factors. This is discussed further in Section \@ref(rev-discussion-MR).
 
+
+<!-- TODO Discuss Taiwan health database as good evidence on non-Caucasian idenitiies -->
+
+
+Haag is a good example of potentially missing results - number of cases of other outcoems reported, but no analysis performed.
+
 &nbsp;
 <!----------------------------------------------------------------------------->
 
@@ -746,6 +768,9 @@ No unique preprints were identified as part of this review, with the published v
 
 ## Discussion
 
+<!-- TODO Check inclusion of Rockwood 2002:  -->
+
+
 ### Summary of findings
 
 There was some evidence of protective effect of statins on all-cause and Alzheimer's disease dementia when looking at solely at observational studies. This finding was not supported by evidence from the single available RCT, or by studies that emulated statin treatment using a genetic proxy, suggesting that these findings are a
@@ -860,9 +885,7 @@ knitr::include_graphics(file.path("figures/sys-rev/preprint_growth.png"))
 
 ### Reviewing Mendelian randomisations studies {#rev-discussion-MR}
 
-Additionally many of the studies suggested a link between, but then in the sensitivity analyses or in the Discussion disclaim that when adjusted for ApoE4, any association was attenuated to the null. This point is important given one of the core assumptions of 
-
-<!-- TODO Diagram showing three assumptions of MR, comparing it to a graph showing the invalidation of no pleiotopy assumption -->
+One of the strenghts of this review is it's inclusion of MR studies as a source of evidence.
 
 Mendelian randomisation is a powerful analytical technique, using natural variation in participants genomes to (assuming the assumptions of the method are valid), though it's inclusion as an acceptable study design in this review was complicated by a number of factors. 
 
@@ -878,9 +901,22 @@ Additionally, there is currently no widely used risk-of-bias assessment tool for
 
 As a further stumbling block, Mendelian randomisation, particularly when using a two-sample summary data design, is a form of analysis that lends itself to multiple exposure-outcome comparisons. This is particularly relevant to the consideration of bias due to missing evidence. As an example, through snowballing and other measures, I identified at least one relevant Mendelian randomisation study that had not been identified by the search strategy.[@larsson2017b] On review of this paper, the search would not have been expected to find it given the absence of any lipid-related keywords in the title and abstract. The study examined the association between lipid fractions with Alzheimer's disease as one of many risk factors for the condition. Studies such as this can introduce bias into a systematic review, as it is commonly only those risk factors that show a statistically significant result that are reported in the abstract and so are captured by the search. This may bias systematic reviews, including this one, as the analysis of multiple risk factors against a single outcome within a single publication becomes more common. These studies are described as "unknown unknown's" in the context of the RoB-ME tool, and are particularly challenging (as opposed to an analysis that was insufficiently reported to be included in the statistical analysis, or the "known unknown's").
 
-Useful future work to improve the methodology for inclusion of Mendelian randomisation studies in systematic reviews should involve the development of a validated search filter for this study design.[@waffenschmidt2020; @wagner2020] Alternatively, in better-resourced reviews, a dedicated search for "risk factors" and "dementia" and "Mendelian randomisation", followed by manual review of studies that look across multiple risk factors, would be advisable. This was not feasible in the context of this review, given the large number of records to be screened, even when using study design filters (n=`r comma(16109)`). Additionally, the value of methods that supporting the traditional bibliographic database search, such as snowballing (forwards and backwards citation chasing) and communication with relevant topic experts should not be underestimated. Finally, development of a risk-of-bias assessment tool by a panel of methodologists and analysts would be of substanital benefit. 
+Useful future work to improve the methodology for inclusion of Mendelian randomisation studies in systematic reviews should involve the development of a validated search filter for this study design.[@waffenschmidt2020; @wagner2020] Alternatively, in better-resourced reviews, a dedicated search for "risk factors" and "dementia" and "Mendelian randomisation", followed by manual review of studies that look across multiple risk factors, would be advisable. This was not feasible in the context of this review, given the large number of records to be screened, even when using study design filters (n=`r comma(16109)`). Additionally, the value of methods that supporting the traditional bibliographic database search, such as snowballing (forwards and backwards citation chasing) and communication with relevant topic experts should not be underestimated. Finally, development of a risk-of-bias assessment tool by a panel of methodologists and analysts would be of substantial benefit. 
 
 <!-- TODO Ask Matt Page whether he has done any work on this? Studies looking at many risk factors don't report null results in abstract and so do no -->
+
+Talk about problem with studies sharing underlying datasets in two sample MR frameworks - c.f. EHR databases, which contain the same underlying sample but use different sub-samples on account of the distinct codes/conditions and timepoints used to defined the study cohorts, MR analysis can be multiple studies using the exact same summary statistics from the same cohorts
+
+Introduce assumptions underlying MR (with image). Higlight that most if not all included analysis initially describing a protective effect of LDL-c, which attenuates to the NULL once ApoE4 gene regions are removed. Note the region must be quite wide - talk about controversy surrounding Benn paper
+
+Additionally many of the studies suggested a link between, but then in the sensitivity analyses or in the Discussion disclaim that when adjusted for ApoE4, any association was attenuated to the null. This point is important given one of the core assumptions of 
+
+<!-- TODO Diagram showing three assumptions of MR, comparing it to a graph showing the invalidation of no pleiotopy assumption -->
+
+MR are limited by the need for SNP to be present in both datasets (for TSMR).
+
+Recommend future large scale GWAS of other dementia outcomes, notably vascular dementia, or the use of exisitng GWASes to  <!-- TODO At least on vascular dementia GWAS exists - find it and cite it here. -->
+
 
 &nbsp;
 <!----------------------------------------------------------------------------->
