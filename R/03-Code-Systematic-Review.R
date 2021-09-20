@@ -195,6 +195,10 @@ toc_df <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which
          age_combo = case_when(age_combo=="74.900000000000006"~"74.9", T ~ age_combo))
 
 
+# toc_df %>%
+#   filter(is.na(exclude)) %>%
+#   distinct(study_id,.keep_all = T) %>%
+#   count()
 
 toc_df2 <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which = 2) %>%
   janitor::clean_names() %>%
@@ -277,7 +281,7 @@ if(doc_type == "docx") {
     kableExtra::group_rows(
       group_label = "MR",
       start_row = 75,
-      end_row = 79,
+      end_row = 81,
       hline_after = T,
       extra_latex_after = "\\addlinespace"
     )
@@ -493,10 +497,10 @@ rct_tri_res <- data.frame(
   predict.rma(res, transf = exp)
 )
 
-# Update with proper ROB assessments
+# TODO Update with proper ROB assessments
 dat_rob <- robvis::data_rob2[1:2,]
 dat_rob[,1] <- res$slab
-dat_rob[2,2:7] <- "No information"
+dat_rob[2,2:7] <- "Low"
 
 try(dev.off(),silent = T)
 png(here::here("figures/sys-rev/fp_statins_any_rct.png"), height = 300, width = 800)

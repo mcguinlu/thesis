@@ -53,6 +53,29 @@ Lay summaries appear at the beginning of each chapter, reviewed by the Patient a
 
 <!----------------------------------------------------------------------------->
 
+## Chapter \@ref(sys-rev-tools-heading) {#appendix-sys-rev-tools}
+<!----------------------------------------------------------------------------->
+
+### Code for publication rate analysis
+
+```{r, eval=FALSE}
+med_res <-
+  # Use snapshot of published status from July 2021
+  medrxivr::mx_search(
+    medrxivr::mx_snapshot("ccedfb8a44304b9fba4e3ba518a8ce4ed2294770"),
+    query = "*",
+    from_date = "2019-07-01",
+    to_date = "2019-08-01"
+  ) %>%
+  # Create indicator to show which records have been published
+  mutate(pub_ind = ifelse(published == "NA", 0, 1)) %>%
+  # Group by indicator variable and count
+  group_by(pub_ind) %>%
+  count() 
+
+```
+
+
 ## Chapter \@ref(sys-rev-heading) {#appendix-sys-rev}
 <!----------------------------------------------------------------------------->
 

@@ -34,7 +34,6 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 <!-- -   TODO Look at whether searching preprints made any difference to my results -->
 
 <!-- TODO Extra studies to include: -->
-<!-- * Smeet et al. reference in the CPRD analysis -->
 <!-- * Larsson - 10.1136/bmj.j5375 [@larsson2017b] -->
 <!-- * Statins and the risk of dementia Jick -->
 
@@ -47,6 +46,8 @@ This chapter presents a systematic review of primary studies that have examined 
 There were 127 primary studies <!-- TODO check this -->that contained information on this relationship. I found that statins reduce the risk of Alzheimer's disease, but had no effect of vascular dementia. Lipids were not associated with any outcome. The methods used in some of the primary studies meant that I was less confident in the accuracy of their results.
 
 The use of the results of this review in subsequent chapters is dicussed.
+
+<!-- TODO Search for MCI -->
 
 &nbsp;
 
@@ -133,12 +134,11 @@ I sought to include studies that examine the relationship between blood lipid le
 
 Participants were free (or assumed to be free) of dementia/MCI <!-- TODO Do I actually want to include MCI? -->  at baseline. Studies of any duration were included to allow for exploration of the effect of length of follow-up on the effect estimate using meta-regression. No limits were placed on the sample size of included studies.
 
-Eligible studies defined dementia according to recognised criteria, for example the National Institute of Neurological Disorders and Stroke Association-Internationale pour la Recherche en l'Enseignement en Neurosciences (NINDS-AIREN), International Classification of Diseases (ICD), or Diagnostic and Statistical Manual of Mental Disorders (DSM) criteria. <!-- TODO CITATION NEEDED --> <!-- TODO do i actually want to include MCI? -->
+Eligible studies defined dementia according to recognised criteria, for example the International Classification of Diseases (ICD), National Institute of Neurological Disorders and Stroke Association-Internationale pour la Recherche en l'Enseignement en Neurosciences (NINDS-AIREN), or Diagnostic and Statistical Manual of Mental Disorders (DSM) criteria. <!-- TODO CITATION NEEDED -->
 
 __Bit on inclusion of EHR, where it is unclear how dementia diagnosed.__
 
 <!-- TODO Any study using EHR - go back and extract codelists -->
-
 
 For MCI, eligible studies are those that attempted state a definition for diagnoses of MCI (e.g. an adapted version of the Petersen criteria [@petersen1999]) and create ordinal groups of patients (e.g. no dementia or dementia/MCI/dementia) based on this definition.
 
@@ -412,7 +412,7 @@ I conducted a leave-one-out analysis in order to explore the impact of any given
 
 #### Visualisation of results
 
-The use of evidence maps is becoming increasingly common to explore the distibution of research cohorts included in a systematic review.<!-- TODO CITATION NEEDED --> As such, each individual cohort contibuting to the evidence base was quantified and visualised on a world map.
+Evidence maps are useful way to explore the distribution of research cohorts included in a systematic review.[@saran2018] As such, the location of each individual study contributing to the evidence base was quantified and visualised on a world map.
 
 Further, given the importance of visualising the potential biases of a result alongside the result itself, a new visualisation tool was designed to allow for "paired" forest plots (as recommended by the ROB2 publication).[@sterne2019] This tool was developed as an adjunct to this thesis to aid in creating standard risk-of-bias figures,[@mcguinness2020robvisPaper] and the "paired" forest plot functionality grew out of a collaboration with other reserachers to design a modular method for creating these plots.[@zotero-14999] <!-- Apparently collaboration is a big thing they want to see --> A summary of this tool is contained in Appendix \@ref(appendix-robvis), and all forest plots presented in this analysis were created using this tool.
 
@@ -436,14 +436,13 @@ Additionally, I followed preprints up over time to investigate whether all ident
 
 <!-- TODO Compare findings for two papers from Rantanen -->
 
-
 ### Initial search and validation of search filters
 
 `r num_to_text(23447,T)` records were identified through database searches.
 
 <!--- TODO Cross check this with the actual numbers included --->
 
-Of the 500 random records screened to ensure the accuracy of the study design filters, no eligible records were identified. Many of those excluded by the filters were basic science studies, commentaries or educational articles. <!-- TODO CITATION NEEDED -->
+Of the 500 random records screened to ensure the accuracy of the study design filters, no eligible records were identified. Many of those excluded by the filters were basic science studies, commentaries or educational articles.
 
 &nbsp;
 <!----------------------------------------------------------------------------->
@@ -658,6 +657,11 @@ knitr::include_graphics(file.path("figures/sys-rev/forester_statins_any.png"))
 ```
 <!----------------------------------------------------------------------------->
 
+
+<!----------------------------------------------------------------------------->
+&nbsp;
+
+
 ### Hypercholesterolemia and lipid levels
 
 <!----------------------------------------------------------------------------->
@@ -793,7 +797,7 @@ knitr::include_graphics(file.path("figures/sys-rev/type_by_year.png"))
 ```
 <!----------------------------------------------------------------------------->
 
-A common theme across the evidence base was a lack of data on the association of vascular dementia. This is particularly interesting given that lipids and statins are primarily related to vascular disease. There is the potential that studies encountered similar difficulties in address the unexpected results observed in the CPRD analysis in Chapter \@ref(cprd-analysis-heading), likely due to confounding by indication, and so may suffer from the "file-drawer effect". <!-- TODO CITATION NEEDED --> For vascular dementia, few Mendelian randomisation studies examined this outcome, primarily because of the absence (until recently) of genome wide association studies, which are used in two sample summary Mendelian randomisation studies.
+A common theme across the evidence base was a lack of data on the association of vascular dementia. This is particularly interesting given that lipids and statins are primarily related to vascular disease. There is the potential that studies encountered similar difficulties in address the unexpected results observed in the CPRD analysis in Chapter \@ref(cprd-analysis-heading), likely due to confounding by indication, and so may suffer from the "file-drawer effect".[@rosenthal1979] For vascular dementia, few Mendelian randomisation studies examined this outcome, primarily because of the absence (until recently) of genome wide association studies, which are used in two sample summary Mendelian randomisation studies.
 
 One item of particular interest is the attenuation of any effects observed by Mendelian randomisation studies following the adjustment for/exclusion of genetic variation in the Apoe4 gene region. As covered in the discussion, ApoE4 genotype is the major risk factor for Alzheimer's disease, but is also involved in cholesterol transport.
 
@@ -820,13 +824,9 @@ Questions over missing results - evidence from one of the conference abstract an
 
 __This section will be completed once Georgia has completed her analysis, and can also be cross-references with the meta-meta analysis published is Brain Sciences recently.__
 
-While conducting this review, I identified several previous systematic reviews of this topic.[@chu2018; @yang2020; @muangpaisan2010; @poly2020;@kuzma2018a] However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)[@sterne2019] to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels. Some previous reviews did assess risk of bias, but used non-domain based assessment tools, such as the Newcastle-Ottowa scale. <!-- TODO CITATION NEEDED -->
+While conducting this review, I identified several previous systematic reviews of this topic.[@chu2018; @yang2020; @muangpaisan2010; @poly2020;@kuzma2018a] However, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomized controlled trials)[@sterne2019] to assess the risk of bias in included studies, and explore the heterogeneity of results across different levels of risk of bias levels. Some previous reviews did assess risk of bias, but used non-domain based assessment tools, such as the Newcastle-Ottowa scale.[@anstey2015; @poly2020] 
 
 However, despite these differences in methodology, the duplication of work across reviews (including this review) is substantial. In retrospect, an alternative approach to conducting a further systematic review from scratch could have been employed. Known as an umbrella review, or review-of-reviews, these studies use other systematic reviews rather than primary studies as the unit of analysis. This approach would have enable more efficient identification of relevant primary studies, to which the methods which sets this review apart from other published reviews could have been applied.
-
-<!-- IDEA Put upSet plot here - though this will likely now be in Georgia's dissertation -->
-
-<!-- An upset plot shows the total size of each set (in this case, the set of included studies in each review) in the bottom left hand bar plot. For example, the XXXX review includes XXXX studies. The alternative is to have a barplot showing the total cumulative number of records over the years, using our set as the master, with the bars coloured by the number of records included in 1/2/3/4 reviews. The information below the bar axis could then show the number of reviews published in that year, or alternative, you could have an upsidedown bar to show cumulative number of reviews on this topic. -->
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -841,18 +841,21 @@ However, despite these differences in methodology, the duplication of work acros
 
 <!-- Without our framework and as part of the risk of bias assessments reported in \@ref(risk-of-bias-subheading), I attempted to records the direction of the bias, so that it could feed into the triangulation. -->
 
-
 <!----------------------------------------------------------------------------->
 &nbsp;
 
 ### Inclusion of preprints
 
+```{r preprintGrowthSetup, include=FALSE}
+```
+
 As highlighted in Section \@ref(diverse-sources-preprints), this review explicitly sought to synthesize evidence across different publication statuses (preprinted vs. published). Using the tool described in Chapter \@ref(sys-rev-tools-intro), two preprint serves related to health and biomedical sciences were search as part of this review (see Appendix \@ref(appendix-medrxivr-code) for the code used to search the repositories). There were several relevant preprints captured by the search. The added evidential value of including these preprints was highlighted in Section \ref(sys-rev-including-preprints). 
 
-medRxiv grew out of the Epidemiology and Clinical Trials categories of the 
-<!-- TODO Complete above paragraph -->
+Three relevant preprints were identified 
 
-The small number of studies return by the searches (or the absence of any hits in the medRxiv database - see Figure \@ref(fig:test)) is due to the timing of the preprint searches. The searches for this review were performed in mid-July 2019, but the first medRxiv preprint was registered on 25th June 2019. As such, at the point it was searched, the medRxiv database contained only a small number of records.
+medRxiv grew out of the Epidemiology and Clinical Trials categories of the bioRxiv preprint server. The small number of studies return by the searches (or the absence of any hits in the medRxiv database - see Figure \@ref(fig:prisma-flow-fig)) is due to the timing of the preprint searches. The searches for this review were performed in mid-July 2019, but the first medRxiv preprint was registered on 25th June 2019. As such, at the point it was searched, the medRxiv database contained only a small number of records (n=`r n_at_search["med"]`).
+
+Of the three identified preprints, two were subsequently published as of September 2020. This fits well with the analysis presented in Section \@ref(medrxivr-limitations) that, allowing for a two-year lag, approximately two-thirds of preprints are published.
 
 While none of the preprints contributed uniquely to the review, this is again. Consider the example of one of the Mendelian randomisation analyses of the effect of LDl-c on Alzheimer's disease, which found no impact of LDL-c on AD following removal of APOE4. The manuscript was initially published in bioRxiv in July 2017[@zhu2017] which was subsequently published in Nature Communications in January 2018, following peer-review.[@zhu2018] While this study was captured by both the preprint and published searches in this review, had the searches been run within this window, the preprint would have contributed unique data to the review. This illustrates that while it may not have aided this review, if the aim is to find the current state of the art in the topic area at the time of searching, inclusion of preprints is a necessity.
 
@@ -860,12 +863,7 @@ Of note, since the start of my review, inclusion of preprints in systematic revi
 
 <!-- TODO Discuss information here that I responded to Julian with re: % of preprints that published -->
 
-
-
 <!----------------------------------------------------------------------------->
-```{r preprintGrowthSetup, include=FALSE}
-```
-
 (ref:preprintGrowth-cap) __Growth of preprint repositories over time__ - Given the relative sizes of the preprint repositories at the time the searches for this review were conducted (bioRxiv n= `r n_at_search["bio"]`, medRxiv n = `r n_at_search["med"]`), the relative number of hits returned by each is expected.
 
 (ref:preprintGrowth-scap) Growth of preprint repositories over time
@@ -874,7 +872,7 @@ Of note, since the start of my review, inclusion of preprints in systematic revi
 knitr::include_graphics(file.path("figures/sys-rev/preprint_growth.png"))
 ```
 <!----------------------------------------------------------------------------->
-<!-- TODO Include figure here showing growth of preprint database size, and cite studies detailing increasing acceptance as a valid form of evidence.  -->
+<!-- TODO Cite studies detailing increasing acceptance as a valid form of evidence.  -->
 
 <!-- This does speak to the over-representation of certain study designs in the preprint literature  -->
 
@@ -885,7 +883,7 @@ knitr::include_graphics(file.path("figures/sys-rev/preprint_growth.png"))
 
 ### Reviewing Mendelian randomisations studies {#rev-discussion-MR}
 
-One of the strenghts of this review is it's inclusion of MR studies as a source of evidence.
+One of the strengths of this review is it's inclusion of MR studies as a source of evidence.
 
 Mendelian randomisation is a powerful analytical technique, using natural variation in participants genomes to (assuming the assumptions of the method are valid), though it's inclusion as an acceptable study design in this review was complicated by a number of factors. 
 
@@ -939,7 +937,7 @@ While the protocol was registered on the Open Science Framework largely to allow
 
 <!-- Average time to complete a s -->
 
-<!-- However, new developments such as automated screening would allow for a reduced need for personnel to work on these things. <!-- TODO CITATION NEEDED - Cite Triccios new paper here -->
+<!-- However, new developments such as automated screening would allow for a reduced need for personnel to work on these things. [@pham2021] -->
 
 &nbsp;
 
@@ -1008,7 +1006,7 @@ The primary limitation of this review is that several included studies used data
 
 In addition, the fact that only a sample of records were dual screened at the title/abstract and full-text stages is a potential limitation, as there is a chance that some eligible records could have been excluded. However,  evidence from assessments of inter- and intra-rater reliability indicate that is is not a major concern.
 
-One particular limitiation with regards to the risk of bias assessment is the fact that the ROBINS-E assessments were performed without the tool being finalised. This meant that there were no signalling questions to guide the domain-level risk of bias assessment, which may have influenced the accuracy with which domain-level judgements were assigned. However, there is no published empirical evidence supporting the need for signalling questions, and assessment of inter-rater reliability across the different tools did not indicate a specific problem with the ROBINS-E assessments. In fact, low agreement was common across the tools, though this is expected based on the available literature. <!-- TODO CITATION NEEDED -->
+One particular limitiation with regards to the risk of bias assessment is the fact that the ROBINS-E assessments were performed without the tool being finalised. This meant that there were no signalling questions to guide the domain-level risk of bias assessment, which may have influenced the accuracy with which domain-level judgements were assigned. However, there is no published empirical evidence supporting the need for signalling questions, and assessment of inter-rater reliability across the different tools did not indicate a specific problem with the ROBINS-E assessments. In fact, low agreement was common across the tools, though this is expected based on the available literature.[@jeyaraman2020]
 
 One further limitation is the fact that the risk of bias due to missing evidence assessment, combined with some empirical evidence that some studies were missed by the search but contained relevant studies is a definite limitation of this review (see Section \@Ref(rev-discussion-MR) above for a fuller discussion of this issue with respect to Mendelian randomisations studies). Unfortunately, this is probably a common limitation across all reviews, based on the way in which increased sensitivity must be balanced with a reasonable workload.
 

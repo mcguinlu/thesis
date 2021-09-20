@@ -346,7 +346,7 @@ In short, this use case illustrates that easy access to medRxiv/bioRxiv metadata
 
 <!----------------------------------------------------------------------------->
 
-### Limitations of `medrxivr`
+### Limitations of `medrxivr` {#medrxivr-limitations}
 
 While searching of the medRxiv and bioRxiv databases was crucial for the systematic review element of my thesis presented in Chapter \@ref(sys-rev-heading), there are some important limitations to note here. A key example is that the tool only searches the available metadata of preprint records (the title, abstract and keywords), rather than the full text of preprints, meaning some relevant records might be missed. However, this approach echoes that used by other search platforms such as OvidSP, and while some relevant records may be missed (reduced sensitivity), limiting the search to the metadata fields prevents non-relevant records from being returned (high specificity). A key example of the reduced specificity when searching the full text, identified during development of `medrxivr`, is that a search for "dementia" would return a record where the only occurrence of this term is in the title of one of the references.[@bong2019]
 
@@ -356,7 +356,25 @@ There is also the potential that the cross-section of literature posted on medrx
 
 <!-- REVIEW I don’t think anyone would assume that preprints would help much here… I’d have thought the main argument is getting hold of evidence in a more timely manner.-->
 
-Allowing for a two year lag, previous work has found that two-thirds of bioRxiv preprints were published in a peer-reviewed journal,[@abdill2019b] indicating that s not-insignificant number of preprints are never publishe but are accessible as preprints.
+```{r, include=FALSE}
+med_res <-
+  # Use snapshot from July 2021
+  medrxivr::mx_search(medrxivr::mx_snapshot("ccedfb8a44304b9fba4e3ba518a8ce4ed2294770"),
+                      "*",
+                      from_date = "2019-07-01",
+                      to_date = "2019-08-01") %>%
+mutate(pub_ind = ifelse(published == "NA", 0, 1)) %>%
+  group_by(pub_ind) %>%
+  count() 
+
+published <- med_res$n[2]
+publication_n <- sum(med_res$n)
+publish <- paste0(num_to_text(published,T)," (", round(published/publication_n*100,1),"%)")
+```
+
+Using `medrxivr` an analysis of the publication rate for medRxiv preprints was performed (see Appendix \@ref(appendix-sys-rev-tools)). `r publish` of the `r publication_n` records posted on medRxiv in July 2019 were published by 30th July 2021 (i.e. allowing for a two-year lag between preprint posting and publication). This finding agrees with previous work demonstrating that two-thirds of bioRxiv preprints are published in a peer-reviewed journal within two years of posting,[@abdill2019b] indicating that a non-insignificant number of preprints are never formally published but remain accessible as preprints.
+
+<!-- TODO replicate this analysis -->
 
 It is likely too early (and likely too methodologically difficult) to tell whether the increased popularity and acceptance of preprint repositories will have any effect of the availability of research that was not considered "publishable" at other venues.
 
