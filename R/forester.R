@@ -68,10 +68,19 @@ forester_thesis <- function(left_side_data,
                      adjustment = 0.6,
                      bold_vec,
                      colour_vec, 
-                     height_expansion = 0){
+                     height_expansion = 0, 
+                     pi_low,
+                     pi_high){
   
   if (!hasArg(bold_vec)) {
     bold_vec <- rep("plain",nrow(left_side_data))
+  }
+  
+  if (!hasArg(pi_low)) {
+    pi_low <- rep(NA,nrow(left_side_data))
+  }
+  if (!hasArg(pi_high)) {
+    pi_high <- rep(NA,nrow(left_side_data))
   }
   
   if (!hasArg(colour_vec)) {
@@ -89,7 +98,10 @@ forester_thesis <- function(left_side_data,
   
   gdata <- data.frame(estimate = estimate,
                       ci_low = ci_low,
-                      ci_high = ci_high)
+                      ci_high = ci_high, 
+                      pi_low = pi_low,
+                      pi_high = pi_high
+                      )
   
   if(is.null(right_side_data)){
     tdata <- gdata
@@ -286,6 +298,14 @@ forester_thesis <- function(left_side_data,
   ########## the main figure - this will be overlaid on the table ##############
   
   center <- ggplot2::ggplot() +
+    ggplot2::geom_errorbarh(data = gdata, ggplot2::aes(y = row_num,
+                                                       xmin = pi_low,
+                                                       xmax = pi_high),
+                            
+                            colour = "grey50",
+                            linetype = "dashed",
+                            height = .25,
+                            na.rm = TRUE) +
     ggplot2::geom_point(data = gdata, ggplot2::aes(y = row_num, x = estimate, size = sizes, shape = shape, color = colour_vec), na.rm = TRUE) +
     ggplot2::geom_errorbarh(data = gdata, ggplot2::aes(y = row_num,
                                                        xmin = ci_low,

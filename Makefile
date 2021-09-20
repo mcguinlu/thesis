@@ -34,7 +34,7 @@ clean:
 	rm -f *.log *.mtc* *.maf *.aux
 	
 clean-knits:
-	rm -f *.docx *.tex *.html *.pdf *.log *.maf *.mtc*
+	rm -f *.docx *.tex *.html *.pdf *.log *.maf *.mtc* *run.xml *.out
 	rm -R *_files
 	rm -R *_cache
 

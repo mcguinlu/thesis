@@ -2,7 +2,9 @@ library(magrittr)
 library(dplyr)
 library(ggplot2)
 library(patchwork)
+library(metafor)
 
+conflicted::conflict_prefer("summarize", "dplyr")
 conflicted::conflict_prefer("filter", "dplyr")
 conflicted::conflict_prefer("last", "data.table")
 
@@ -500,7 +502,7 @@ read_excel_allsheets <- function(filename, tibble = FALSE, col_names = FALSE) {
 combine_age <- function(age, group_size) {
   
   age <- stringr::str_remove_all(age, " ")
-  age <- stringr::str_remove_all(group_size, " ")
+  group_size <- stringr::str_remove_all(group_size, " ")
   
   # Find parentheses
   re <- "\\(([^()]+)\\)"
@@ -569,4 +571,55 @@ get_confidence_from_p<- function(est, p) {
   return()
   
 
+}
+
+save_fp <- function(data) {
+  
+  # Don't perform meta-analysis if only one result
+  
+  if (nrow(data)==1) {
+    return()
+  }
+  
+  fp <- paste0("fp_", data$exposure_category[1],"_",data$exposure[1],"_", data$outcome[1],".png")
+  
+  png(here::here("figures","sys-rev",fp), height = 300, width = 800)
+  
+  metafor::rma(data = data,
+               yi = point,
+               sei = SE,
+               slab = paste(study_id, author,year)) %>%
+    metafor::forest(transf = exp,
+                    refline = 1,
+                    xlab = "Hazard ratio",
+                    header = "Author(s) and Year",
+                    annotate = TRUE)
+  
+  dev.off()
+}
+
+
+meta_grouped <- function(data) {
+  
+  # Don't perform meta-analysis if only one result
+  
+  t <- metafor::rma(data = data,
+               yi = point,
+               sei = SE,
+               slab = paste(study_id, author,year)) 
+  
+ 
+  details <- data.frame(stringsAsFactors = FALSE,
+                        exposure = data$exposure[1],
+                        outcome = data$outcome[1],
+                        studies = length(unique(data$study_id)),
+                        bias = data$bias[1], 
+                        I2 = t$I2
+  )
+  
+  results <- predict.rma(t,transf=exp)
+
+  return(cbind(details,results))
+  
+  
 }

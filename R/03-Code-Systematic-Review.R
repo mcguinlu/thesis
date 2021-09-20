@@ -179,33 +179,40 @@ if(doc_type == "docx") {
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- studyCharacteristics-table
 
-toc_df <- rio::import("data/sys-rev/data_extraction_main.xlsx",which = 1) %>%
+toc_df <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which = 1) %>%
   janitor::clean_names() %>%
   filter(is.na(exclude)) %>%
-  select(study_id, author, year, number_participants, type, age_at_baseline, female_percent, location, data_source, group_sizes_if_applicable) %>%
+  select(study_id, author, year, number_participants, subtype, age_at_baseline, female_percent, location, data_source, group_sizes_if_applicable) %>%
+  mutate(type = subtype) %>%
   mutate(author = ifelse(grepl("Heart Protection",author),"HPS",author)) %>%
   mutate(age_at_baseline = stringr::str_remove_all(age_at_baseline," "),
          female_percent = stringr::str_remove_all(female_percent," "),
-         group_sizes_if_applicable = stringr::str_remove_all(group_sizes_if_applicable," "))
-  # filter(study_id==10182) %>%
-  # mutate(age_combo = ifelse(grepl("\\|",age),combine_age(.$age,.$group_sizes_if_applicable), age)) %>%
-  # mutate(female_combo = ifelse(grepl("\\|",female),combine_female(.$female,.$group_sizes_if_applicable), female)) %>%
+         group_sizes_if_applicable = stringr::str_remove_all(group_sizes_if_applicable," ")) %>%
+  rowwise() %>%
+  mutate(age_combo = ifelse(grepl("\\|",age_at_baseline),combine_age(age_at_baseline,group_sizes_if_applicable), age_at_baseline)) %>%
+  mutate(female_combo = ifelse(grepl("\\|",female_percent),combine_female(female_percent,group_sizes_if_applicable), female_percent)) %>%
+  mutate(female_combo = case_when(female_combo=="64.400000000000006"~"64.4", T ~ female_combo),
+         age_combo = case_when(age_combo=="74.900000000000006"~"74.9", T ~ age_combo))
 
-toc_df2 <- rio::import("data/sys-rev/data_extraction_main.xlsx",which = 2) %>%
+
+
+toc_df2 <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which = 2) %>%
   janitor::clean_names() %>%
   filter(!is.na(study_id)) %>%
+  mutate(exposure = ifelse(stringr::str_detect(exposure,"Statin -"),"Statin",stringr::str_remove(exposure,"- .*$"))) %>%
+  mutate(exposure = ifelse(exposure_category == "Hypercholesterolemia","Hypercholesterolemia",exposure)) %>%
   group_by(study_id) %>% 
   summarize(Criteria = paste0(unique(diagnostic_criteria), collapse = "; "),
             Exposures = paste0(unique(exposure), collapse = "; "), 
             Outcomes = paste0(unique(outcome), collapse = "; ")) %>%
   ungroup()
 
-toc_df2 %>%
-  filter(exclude != "Y") %>%
-  filter(type == "NRSI") %>%
-  filter(measure == "RR")
-  group_by(measure) %>%
-  count()
+# toc_df2 %>%
+#   filter(exclude != "Y") %>%
+#   filter(type == "NRSI") %>%
+#   filter(measure == "RR")
+#   group_by(measure) %>%
+#   count()
 
 p_type <- 
   toc_df %>%
@@ -226,18 +233,22 @@ ggsave(here::here("figures/sys-rev/type_by_year.png"), p_type, height = 3)
 
 studyCharacteristics_table <- left_join(toc_df, toc_df2, by =c("study_id"="study_id")) %>%
   mutate(Study = paste(author, year)) %>%
-  mutate(type = factor(type,levels = c("RCT","NRSI","NRSE","NRSE/NRSI","MR"))) %>%
+  mutate(type = factor(type,levels = c("RCT","NRSI","NRSE","MR")),) %>%
+  
   # mutate(location = paste0(data_source," (",location,")")) %>%
-  select(Study, type, location, number_participants, age_at_baseline, female_percent, Exposures, Outcomes, Criteria, -c(study_id,author, year)) %>%
+  select(Study, type, location, number_participants, age_combo, female_combo, Exposures, Outcomes, Criteria, -c(study_id,author, year)) %>%
   rename("Location" = location,
          "Type" = type,
          "N" = number_participants,
-         "Female (%)" = female_percent,
-         "Age at baseline" = age_at_baseline,
+         "Female (%)" = female_combo,
+         "Age at baseline" = age_combo,
          "Diagnostic criteria" = Criteria,
          ) %>%
-  arrange(Type,Study) %>%
+  tidy_nums() %>%
+  arrange(desc(Type),Study) %>%
   select(-Type)
+
+
 
 if(doc_type == "docx") {
   apply_flextable(studyCharacteristics_table, caption = "(ref:studyCharacteristics-caption)")
@@ -261,14 +272,12 @@ if(doc_type == "docx") {
                            extra_latex_after = "\\addlinespace") %>%
     kableExtra::group_rows(group_label = "NRSI", start_row = 3, end_row = 33, hline_after = T,
                            extra_latex_after = "\\addlinespace") %>%
-    kableExtra::group_rows(group_label = "NRSE", start_row = 34, end_row = 82, hline_after = T,
-                           extra_latex_after = "\\addlinespace") %>%
-    kableExtra::group_rows(group_label = "NRSE/NRSI", start_row = 83, end_row = 84, hline_after = T,
+    kableExtra::group_rows(group_label = "NRSE", start_row = 34, end_row = 74, hline_after = T,
                            extra_latex_after = "\\addlinespace") %>%
     kableExtra::group_rows(
       group_label = "MR",
-      start_row = 85,
-      end_row = 90,
+      start_row = 75,
+      end_row = 79,
       hline_after = T,
       extra_latex_after = "\\addlinespace"
     )
@@ -366,161 +375,6 @@ ggsave(
 )
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# primaryFigures----
-
-library(metafor)
-# RCTs
-
-results_statins_rct <- rio::import("data/sys-rev/data_extraction_main.xlsx", which = 2) %>%
-  janitor::clean_names() %>%
-  # Extract two trials
-  filter(study_id %in% c("10562","90003")) %>%
-  mutate(log_point = log(point_estimate),
-         log_SE = (log(lower_95_percent) - log(upper_95_percent))/3.92) %>%
-  mutate(author = ifelse(grepl("Heart",author),"HPS",author),
-         author = ifelse(grepl("FDA",author),"JUPITER",author)) %>%
-  mutate(number_exposed = as.numeric(number_exposed)) %>%
-  mutate(tpos = cases_exposed,
-         tneg = number_exposed - cases_exposed,
-         cpos = cases_unexposed,
-         cneg = number_unexposed - cases_unexposed)
-
-dat <- escalc(measure="OR", ai=tpos, bi=tneg, ci=cpos, di=cneg, data=results_statins_rct)
-
-res <- metafor::rma.uni(data = dat,
-                      yi, vi, 
-                      slab = paste(author, year))
-
-# Update with proper ROB assessments
-dat_rob <- robvis::data_rob2[1:2,]
-dat_rob[,1] <- res$slab
-dat_rob[2,2:7] <- "No information"
-
-try(dev.off(),silent = T)
-png(here::here("figures/sys-rev/fp_statins_any_rct.png"), height = 300, width = 800)
-
-robvis::rob_append_to_forest(
-  res,
-  rob_data = dat_rob,
-  rob_caption = F,
-  transf = exp,
-  refline = 1,
-  alim = c(0.5, 2),
-  ilab = cbind(
-    results_statins_rct$exposure_category,
-    results_statins_rct$tpos,
-    results_statins_rct$tneg,
-    results_statins_rct$cpos,
-    results_statins_rct$cneg
-  ),
-  xlab = "Odds Ratio",
-  ilab.xpos = c(-10, -6.5, -5, -3, -1.5),
-  at = c(.5, 1, 2),
-  xlim = c(-16, 7),
-  header = "Author(s) and Year"
-)
-
-text(c(-6.5,-5,-3,-1.5), 3.5, c("D+", "D-", "D+", "D-"), font=2)
-text(c(-5.75,-2.25),     4.5, c("Statin", "Placebo"),   font=2)
-text(-10, 4, "Type",  font =2)
-# text(-15, -1, pos=4,  bquote(paste("RE Model (Q = ",
-#                                             .(formatC(res$QE, digits=2, format="f")), ", df = ", .(res$k - res$p),
-#                                             ", p = ", .(formatC(res$QEp, digits=2, format="f")), "; ", I^2, " = ",
-#                                             .(formatC(res$I2, digits=1, format="f")), "%)")))
-dev.off()
-
-# Obs statins
-
-results_statins <- rio::import("data/sys-rev/data_extraction_main.xlsx", which = 2) %>%
-  janitor::clean_names() %>%
-  filter(exposure_category == "Drug",
-         measure == "HR",
-         # is.na(sex), is.na(age),
-         # outcome == "Dementia",
-         exposure == "Fibrate") %>%
-  mutate(point = log(point_estimate),
-         SE = (log(lower_95_percent) - log(upper_95_percent))/3.92) %>%
-  arrange(author, year)
-
-results_statins <- rio::import("data/sys-rev/data_extraction_main.xlsx", which = 2) %>%
-  janitor::clean_names() %>%
-  filter(outcome == "VaD")
-
-t <- metafor::rma.uni(data = results_statins,
-                      yi = point,
-                      sei = SE,
-                      slab = paste(author, year))
-
-statins <- broom_ma(t) %>%
-  mutate(point_colour = ifelse(type == "summary",
-         "black",
-         "grey50"))
-
-
-forester_thesis(
-  statins[,1],
-  statins$estimate,
-  statins$conf.low,
-  statins$conf.high,
-  estimate_precision = 2,
-  font_family = "Fira Sans",
-  file_path = here::here("figures/sys-rev/forester_statins_any.png"),
-  arrows = TRUE,
-  display = FALSE,
-  x_scale_linear = F,
-  stripe_colour = "white",
-  null_line_at = 1,
-  xlim = c(0.3,3), 
-  xbreaks = c(0.3,1,3),
-  adjustment = 0.35,
-  colour_vec = statins$point_colour,
-  arrow_labels = c("Favours control","Favours intervention")
-)
-
-png(file = here::here("figures/sys-rev/funnel_statins_any.png"))
-metafor::funnel(t)
-dev.off()
-# 
-# 
-# 
-# test <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx") %>%
-#   janitor::clean_names() %>%
-#   filter(done == "Y",
-#          !is.na(point_estimate), 
-#          measure == "HR", 
-#          outcome %like% "VaD", 
-#          exposure %like% "[Ss]tatin", 
-#          !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
-#   mutate(point = log(point_estimate), 
-#          SE = (log(lower_95_percent) - log(upper_95_percent))/3.92)
-# 
-# t <- metafor::rma.uni(data = test,
-#                       yi = point,
-#                       sei = SE)
-# 
-# png(file = 'forestplot_vad.png') 
-# metafor::forest(t, transf=exp, slab = paste(test$author, test$year), order ="obs", refline =1, xlab = "HR for VaD")
-# dev.off() 
-# 
-# 
-# 
-# test <- rio::import("data/sys-rev/data_extraction_reviewer1.xlsx") %>%
-#   janitor::clean_names() %>%
-#   filter(done == "Y",
-#          !is.na(point_estimate), 
-#          measure == "HR", 
-#          outcome %like% "AD", 
-#          exposure %like% "[Ss]tatin", 
-#          !grepl(pattern = "[Ll]ipo|[Hh]ydro", x = .$exposure)) %>%
-#   mutate(point = log(point_estimate), 
-#          SE = (log(lower_95_percent) - log(upper_95_percent))/3.92)
-# 
-# t <- metafor::rma.uni(data = test,
-#                       yi = point,
-#                       sei = SE)
-
-
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # preprintGrowthSetup ----
 
 # medrxivr::mx_snapshot() %>% 
@@ -598,3 +452,295 @@ p_bio <- rbiorxiv::biorxiv_summary(interval = "m", format = "df") %>%
   )
 
 ggsave("figures/sys-rev/preprint_growth.png", p_bio/p_med, height = 7, width = 6)
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# primaryFigures ----
+
+library(metafor)
+# RCTs
+
+results_statins_rct <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"), which = 2) %>%
+  janitor::clean_names() %>%
+  # Extract two trials
+  filter(study_id %in% c("10562","90003")) %>%
+  rename("lower_CI" = upper_95_percent, 
+         "upper_CI" = lower_95_percent) %>%
+  mutate(across(c(point_estimate,starts_with(c("number_","cases_")), ends_with("_CI")),as.numeric)) %>%
+  mutate(point = log(point_estimate),
+         SE = (log(upper_CI) - log(lower_CI))/3.92) %>%
+  mutate(author = ifelse(grepl("Heart",author),"HPS",author),
+         author = ifelse(grepl("FDA",author),"JUPITER",author)) %>%
+  mutate(number_exposed = as.numeric(number_exposed)) %>%
+  mutate(tpos = cases_exposed,
+         tneg = number_exposed - cases_exposed,
+         cpos = cases_unexposed,
+         cneg = number_unexposed - cases_unexposed)
+
+dat <- escalc(measure="OR", ai=tpos, bi=tneg, ci=cpos, di=cneg, data=results_statins_rct)
+
+res <- metafor::rma.uni(data = dat,
+                        yi, vi, 
+                        slab = paste(author, year))
+
+rct_tri_res <- data.frame(
+  stringsAsFactors = FALSE,
+  Type = "RCT",
+  exposure = "Statin",
+  outcome = "Dementia",
+  studies = 2,
+  bias = "Low",
+  I2 = res$I2,
+  predict.rma(res, transf = exp)
+)
+
+# Update with proper ROB assessments
+dat_rob <- robvis::data_rob2[1:2,]
+dat_rob[,1] <- res$slab
+dat_rob[2,2:7] <- "No information"
+
+try(dev.off(),silent = T)
+png(here::here("figures/sys-rev/fp_statins_any_rct.png"), height = 300, width = 800)
+
+robvis::rob_append_to_forest(
+  res,
+  rob_data = dat_rob,
+  rob_caption = F,
+  transf = exp,
+  refline = 1,
+  alim = c(0.5, 2),
+  ilab = cbind(
+    results_statins_rct$exposure_category,
+    results_statins_rct$tpos,
+    results_statins_rct$tneg,
+    results_statins_rct$cpos,
+    results_statins_rct$cneg
+  ),
+  xlab = "Odds Ratio",
+  ilab.xpos = c(-10, -6.5, -5, -3, -1.5),
+  at = c(.5, 1, 2),
+  xlim = c(-16, 7),
+  header = "Author(s) and Year"
+)
+
+text(c(-6.5,-5,-3,-1.5), 3.5, c("D+", "D-", "D+", "D-"), font=2)
+text(c(-5.75,-2.25),     4.5, c("Statin", "Placebo"),   font=2)
+text(-10, 4, "Type",  font =2)
+# text(-15, -1, pos=4,  bquote(paste("RE Model (Q = ",
+#                                             .(formatC(res$QE, digits=2, format="f")), ", df = ", .(res$k - res$p),
+#                                             ", p = ", .(formatC(res$QEp, digits=2, format="f")), "; ", I^2, " = ",
+#                                             .(formatC(res$I2, digits=1, format="f")), "%)")))
+dev.off()
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# doseResponse----
+
+results_tc_dr <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"), which = 2) %>%
+  janitor::clean_names() %>%
+  filter(exclude != "Y", 
+         exposure_category == "Lipids - DR", 
+         author != "Beydoun",
+         !is.na(number_exposed),
+         !grepl("Quartile",dose_range),
+         !is.na(cases), 
+         cases != "NR") %>% 
+  rename("lower_CI" = upper_95_percent, 
+         "upper_CI" = lower_95_percent, 
+         "n" = number_exposed) %>%
+  select(study_id, author, year,exposure, outcome, dose_range, n, cases,point_estimate,ends_with("_CI")) %>%
+  # Deal with finding SE
+  mutate(point_estimate = ifelse(point_estimate == "Ref",1,point_estimate),
+        lower_CI = ifelse(lower_CI == "Ref",1,lower_CI),
+         upper_CI = ifelse(upper_CI == "Ref",1,upper_CI)) %>%
+  mutate(across(c(cases, n, point_estimate, ends_with("_CI")),as.numeric)) %>%
+  mutate(se = (upper_CI-lower_CI)/3.92) %>%
+  select(-ends_with("_CI")) %>%
+  # Deal with doses
+  mutate(dose_range = ifelse(stringr::str_detect(dose_range,"^>"), paste0(dose_range,"<"), dose_range)) %>%
+  mutate(dose_range = stringr::str_replace(dose_range,"^>","")) %>%
+  tidyr::separate(dose_range, c("dose_lower", "dose_upper"), sep = ">|<|-") %>%
+  mutate(across(starts_with("dose"),as.numeric)) %>%
+  mutate(dose_width = dose_upper - dose_lower) %>%
+  group_by(study_id) %>%
+  mutate(dose_width_av = mean(dose_width, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(dose_lower = ifelse(is.na(dose_lower),dose_upper -  dose_width_av, dose_lower),
+         dose_upper = ifelse(is.na(dose_upper),dose_lower +  dose_width_av, dose_upper)) %>%
+  select(-contains("width")) %>%
+  mutate(dose = dose_lower + dose_upper/2) %>%
+  select(-starts_with("dose_")) %>%
+  mutate(dose = ifelse(dose<20,dose*38.67,dose)) %>%
+  mutate(loghr = log(point_estimate)) %>%
+  mutate(type = as.factor("ir")) %>%
+  select(study_id, author,year,exposure,outcome, type, dose, cases,n, loghr, se)
+
+
+t<- results_tc_dr %>%
+  group_by(exposure, outcome) %>%
+  group_split()
+
+ggplot(t[[4]], aes(dose, loghr, group = study_id, shape = author)) + 
+  geom_line() + geom_point() + theme_classic() + ylab("LnRR") +
+  xlab("Alcohol intake (mL/day)")
+
+lin <-
+  dosresmeta::dosresmeta(
+    formula = loghr~dose,
+    id = study_id,
+    se = se,
+    type = type,
+    cases = cases,
+    n = n,
+    data = t[[4]]
+  )
+
+pred <- predict(lin,data.frame(dose = seq(100,250,10)))
+round(pred, 2)
+
+with(predict(lin, xref = 100,data.frame(dose = seq(0,300,10))), {
+  plot(dose, pred, type = "l", ylab = "Relative risk", las = 1,
+       xlab = "Body Mass Index (BMI)", bty = "l")
+  lines(dose, ci.lb, lty = "dashed")
+  lines(dose, ci.ub, lty = "dashed")
+})
+
+
+
+knots <- round(with(t[[4]], quantile(dose, probs = c(.25, .5, .75) )), 2)
+
+spl <-
+  dosresmeta::dosresmeta(
+    formula = loghr~rms::rcs(dose, knots),
+    id = study_id,
+    se = se,
+    type = type,
+    cases = cases,
+    n = n,
+    data = t[[4]]
+  )
+
+
+pred <- predict(spl,data.frame(dose = seq(100,250,10)))
+round(pred, 2)
+
+newdata = data.frame(dose = seq(0,250, 10))
+with(predict(spl, newdata, xref = 100), {
+  plot(
+    get("rms::rcs(dose, knots)dose"),
+    pred,
+    type = "l",
+    ylab = "Relative risk",
+    ylog = F,
+    ylim = c(-1,1),
+    las = 1,
+    xlab = "Alcohol intake, grams/day",
+    bty = "l"
+  )
+  lines(get("rms::rcs(dose, knots)dose"), ci.lb, lty = "dashed")
+  lines(get("rms::rcs(dose, knots)dose"), ci.ub, lty = "dashed")
+  lines(y=c(0,0),x=c(-10,250), lty = 8)
+})
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Hypercholesterolemia ----
+
+res <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"), which = 2) %>%
+  janitor::clean_names() %>%
+  filter(exclude != "Y", 
+         is.na(age),
+         is.na(sex),
+         is.na(direction),
+         !grepl("Critical", comments),
+         grepl("Hyperch",exposure_category), 
+         !grepl("<", dose_range),
+         point_estimate != "Missing") %>%
+  rename("lower_CI" = upper_95_percent, 
+         "upper_CI" = lower_95_percent, 
+         "n" = number_exposed) %>%
+  select(study_id, author, year, sex,exposure_category,dose_range, age, n, exposure, outcome, cases,point_estimate,ends_with("_CI")) %>%
+  mutate(across(c(n, point_estimate, ends_with("_CI")),as.numeric)) %>%
+  mutate(point = log(point_estimate),
+       SE = (log(upper_CI) - log(lower_CI))/3.92) %>%
+  arrange(author, year) %>%
+  mutate(study_name = paste(author, year, "-", sex, "/", age))
+
+t<- res %>%
+  group_by(exposure, outcome) %>%
+  group_split()
+
+# purrr::map(t,save_fp)
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# LipidsSD ----
+
+res <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"), which = 2) %>%
+  janitor::clean_names() %>%
+  mutate(exposure_category = ifelse(exposure_category=="Lipid","Lipids",exposure_category)) %>%
+  mutate(author = ifelse(author=="Tynkkynen",paste(author,"-",cohort),author)) %>%
+  filter(exclude != "Y", 
+         is.na(mr_type),
+         is.na(age),
+         is.na(sex),
+         is.na(direction),
+         !grepl("Critical", comments),
+        exposure_category %in% c("Lipids","Lipid"),
+         point_estimate != "Missing"
+         ) %>%
+  rename("lower_CI" = upper_95_percent, 
+         "upper_CI" = lower_95_percent, 
+         "n" = number_exposed) %>%
+  select(study_id, author, year, sex,exposure_category,dose_range, age, n, exposure, outcome, cases,point_estimate,ends_with("_CI")) %>%
+  mutate(across(c(n, point_estimate, ends_with("_CI")),as.numeric)) %>%
+  mutate(point = log(point_estimate),
+         SE = (log(upper_CI) - log(lower_CI))/3.92) %>%
+  arrange(author, year) %>%
+  mutate(study_name = paste(author, year, "-", sex, "/", age))
+
+t <- res %>%
+  group_by(exposure, outcome) %>%
+  group_split()
+
+# purrr::map(t,save_fp)
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# obsStatins ----
+
+res <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"), which = 2) %>%
+  janitor::clean_names() %>%
+  filter(exclude !="Y") %>%
+  filter(exposure_category == "Drug",
+         measure == "HR",
+         is.na(sex),
+         is.na(age)
+  ) %>%
+  rename("lower_CI" = upper_95_percent, 
+         "upper_CI" = lower_95_percent, 
+         "n" = number_exposed) %>%
+  select(study_id, author, year, sex,exposure_category,dose_range, age, n, exposure, outcome, cases,point_estimate,ends_with("_CI")) %>%
+  mutate(across(c(n, point_estimate, ends_with("_CI")),as.numeric)) %>%
+  mutate(point = log(point_estimate),
+         SE = (log(upper_CI) - log(lower_CI))/3.92) %>%
+  arrange(author, year)
+
+set.seed(0)
+t <- res %>%
+  mutate(bias = sample(
+    c("Serious", "Moderate"),
+    size = n(),
+    replace = T,
+    prob = c(.68, .32)
+  )) %>%
+  group_by(exposure, outcome, bias) %>%
+  group_split()
+
+obs_tri_res_statins <- purrr::map_df(t, meta_grouped) %>%
+  mutate(Type = "Observational Study") %>%
+  filter(exposure == "Statin - Ever",
+         outcome %in% c("Dementia", "AD", "VaD")) %>%
+  mutate(exposure = "Statin") %>%
+  select(Type, everything())
+
+# purrr::map(t,save_fp)
+
