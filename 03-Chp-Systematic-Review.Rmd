@@ -928,9 +928,7 @@ knitr::include_graphics(file.path("figures","sys-rev","mrDuplication.png"))
 
 Recommend future large scale GWAS of other dementia outcomes, notably vascular dementia, or the use of exisitng GWASes to  <!-- TODO At least on vascular dementia GWAS exists - find it and cite it here. -->
 
-A key example of the importance of pleiotropy in Mendelian randomisations studies is ill. In almost all cases, MR studies examine. A clear exampe of this is Ben et al, 2017, where the ApoE variants were not sufficient identified and excluded, and the published paper detailed evidence for a protective effect of LDL-c was identified (`estimate(0.83, .75,.92,"RR")`).[@benn2017] Following several rapid responses, the data was re-analysed excluding a larger area around ApoE4 which attenuated this finding towards the null.[@benn2017a]
-
-
+A key example of the importance of . In almost all cases, MR studies examine. A clear exampe of this is Ben et al, 2017, where the ApoE variants were not sufficient identified and excluded, and the published paper detailed evidence for a protective effect of LDL-c was identified (`estimate(0.83, .75,.92,"RR")`).[@benn2017] Following several rapid responses, the data was re-analysed excluding a larger area around ApoE4 which attenuated this finding towards the null.[@benn2017a]
 
 &nbsp;
 <!----------------------------------------------------------------------------->
