@@ -1,0 +1,71 @@
+---
+#########################################
+# options for knitting a single chapter #
+#########################################
+output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+  bookdown::word_document2: default
+  bookdown::html_document2: default
+documentclass: book
+---
+
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:intro-quote)', echo = FALSE}
+Hold
+```
+(ref:intro-quote) --- Hold
+
+<!-- TODO Add this to the Chapter summary in the introduction and  -->
+
+# Triangulation {#tri-heading}
+
+## Lay Summary
+
+<!----------------------------------------------------------------------------->
+&nbsp;
+
+## Introduction
+
+This chapter will attempt to triangulate the evidence identified by the systematic review in Chapter \ref(sys-rev-heading)
+
+### Definition of the causal question
+
+<!-- TODO See ROBINS-E for this, as to how to think about exposures -->
+
+### Summary of triangulation
+
+Need to check how much I talk about this in the introduction
+
+Describe in detail
+
+<!----------------------------------------------------------------------------->
+ 
+## Graphical representation
+
+For the graphs, the direction of bias is important.
+
+Where the direction of bias was unclear/could not be determined from the 
+
+A different approach was taken for the confounding versus other domains, as confounding will either pull to the left or right, regardless of where the effect estimate is, while other domains will pull towards/away from the null (e.g. non-differential misclassification). In this case, the program accounted for the position of the effect estimate when assigning a directional arrow to the
+
+These graphs were built using the risk of bias tool described in Appendix \ref()
+
+<!----------------------------------------------------------------------------->
+
+## Results
+
+Compare bias-adjusted and
+
+See what happens if using additive (l=1,m=2,s=3,c=4) vs multiplicative/log scale (l=1,m=2,s=4,c=8). Present adjusted results and meta-analysis of adjusted results.
+
+
+<!----------------------------------------------------------------------------->
+
+## Discussion
+
+I hope this presents step forward in how researchers think about and visualise triangulation at the result level, rather than simply saying that certain 
+
+Compare and contrast with the nice example presented in the triangulation paper - realities of non-exemplars is that it is very hard to get this right.
+
+
+
