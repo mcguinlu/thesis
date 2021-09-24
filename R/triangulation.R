@@ -20,6 +20,16 @@ results_statins_rct <- rio::import("data/sys-rev/data_extraction_main.xlsx", whi
 
 dat <- escalc(measure="OR", ai=tpos, bi=tneg, ci=cpos, di=cneg, data=results_statins_rct)
 
+rob_dat <- robvis::data_rob2[1:2,]
+rob_dat$studyid <- c(10562,90003)
+
+png("test.png", width = 800, height = 500)
+forest_strata_rob(dat, rob_dat)
+dev.off()
+
+
+
+
 res <- metafor::rma.uni(data = dat,
                         yi, vi, 
                         slab = paste(author, year))
@@ -93,19 +103,18 @@ res <- rio::import("data/sys-rev/data_extraction_main.xlsx", which = 2) %>%
          "n" = number_exposed) %>%
   select(study_id, author, year, sex,exposure_category,dose_range, age, n, exposure, outcome, cases,point_estimate,ends_with("_CI")) %>%
   mutate(across(c(n, point_estimate, ends_with("_CI")),as.numeric)) %>%
-  mutate(point = log(point_estimate),
-         SE = (log(upper_CI) - log(lower_CI))/3.92) %>%
+  mutate(yi = log(point_estimate),
+         sei = (log(upper_CI) - log(lower_CI))/3.92, 
+         result_id = 1:n()) %>%
   arrange(author, year)
 
-set.seed(0)
+
+dat_rob <- rbind(robvis::data_robins,
+                 robvis::data_robins[1:5,])
+dat_rob$study_id <- res$study_id
+
 t <- res %>%
-  mutate(bias = sample(
-    c("Serious", "Moderate"),
-    size = n(),
-    replace = T,
-    prob = c(.68, .32)
-  )) %>%
-  group_by(exposure, outcome, bias) %>%
+  group_by(exposure, outcome) %>%
   group_split()
 
 obs_tri_res_hyper <- purrr::map_df(t, meta_grouped) %>%
@@ -120,18 +129,21 @@ obs_tri_res_hyper <- purrr::map_df(t, meta_grouped) %>%
 res <- rio::import("data/sys-rev/data_extraction_main.xlsx", which = 2) %>%
   janitor::clean_names() %>%
   filter(exclude !="Y") %>%
-  filter(study_id %in% c(9740,10068),
+  filter(
+    study_id %in% c(9740,10068),
          type == "MR") %>%
   mutate(exposure = ifelse(exposure == "TC","LDL-c",exposure)) %>%
   filter(exposure %in% c("LDL-c","HMGCR")) %>%
   rename("lower_CI" = upper_95_percent, 
          "upper_CI" = lower_95_percent, 
          "n" = number_exposed) %>%
-  select(study_id, author, year, sex,exposure_category,dose_range, age, n, exposure, outcome, cases,point_estimate,ends_with("_CI")) %>%
+  select(study_id, author, year, sex,exposure_category,dose_range, age, n, exposure, outcome, cases, measure,se, point_estimate,ends_with("_CI")) %>%
   mutate(across(c(n, point_estimate, ends_with("_CI")),as.numeric)) %>%
-  mutate(point = log(point_estimate),
-         SE = (log(upper_CI) - log(lower_CI))/3.92) %>%
-  arrange(author, year)
+  rowwise() %>%
+  clean_effects()
+
+
+
 
 set.seed(0)
 t <- res %>%
@@ -305,3 +317,6 @@ forester_thesis(
   xlim = c(.3,3),bold_vec = tmp$bold_vec,
   point_shapes = tmp$shape, nudge_y = 0.3, height_expansion = 0.01
 )
+
+
+

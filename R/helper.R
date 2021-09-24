@@ -17,6 +17,7 @@ grDevices::windowsFonts("Fira Sans" = grDevices::windowsFont("Fira Sans"))
 # Load forester function
 source(here::here("R/forester.R"))
 
+try(dev.off())
 
 # Clean output of metafor using sensible defaults
 broom_ma <- function(metafor_obj, exp = TRUE) {
@@ -620,6 +621,34 @@ meta_grouped <- function(data) {
   results <- predict.rma(t,transf=exp)
 
   return(cbind(details,results))
-  
-  
+
 }
+
+clean_effects <- function(data){
+  
+  if (!is.na(data$se)) {
+    data <- data %>%
+      mutate(yi = point_estimate,
+             sei = se)
+  } else{
+    data <- data %>%
+      mutate(yi = log(point_estimate),
+             sei = (log(upper_ci) - log(lower_ci))/3.92)
+  }
+  
+  return(data)
+}
+
+
+general_filters <- function(data){
+  
+  data %>%
+  janitor::clean_names() %>%
+  filter(exclude !="Y",
+         point_estimate != "Missing",
+         !is.na(point_estimate)) %>%
+  return()  
+}  
+
+
+
