@@ -372,6 +372,8 @@ publication_n <- sum(med_res$n)
 publish <- paste0(num_to_text(published,T)," (", round(published/publication_n*100,1),"%)")
 ```
 
+<!-- TODO Need to finish this bit and move it to the use-case section! -->
+
 Using `medrxivr` an analysis of the publication rate for medRxiv preprints was performed (see Appendix \@ref(appendix-sys-rev-tools)). `r publish` of the `r publication_n` records posted on medRxiv in July 2019 were published by 30th July 2021 (i.e. allowing for a two-year lag between preprint posting and publication). This finding agrees with previous work demonstrating that two-thirds of bioRxiv preprints are published in a peer-reviewed journal within two years of posting,[@abdill2019b] indicating that a non-insignificant number of preprints are never formally published but remain accessible as preprints.
 
 <!-- TODO replicate this analysis -->
