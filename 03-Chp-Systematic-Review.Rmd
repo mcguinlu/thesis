@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -30,8 +30,6 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ```
 
 <!-- ## To Do -->
-
-<!-- -   TODO Look at whether searching preprints made any difference to my results -->
 
 <!-- TODO Extra studies to include: -->
 <!-- * Larsson - 10.1136/bmj.j5375 [@larsson2017b] -->
@@ -504,7 +502,10 @@ Those records which were excluded in the initial screening, but were included by
 
 ### Characteristics of included studies
 
-Following full-text screening, 87 reports describing 78 unique studies met the criteria for inclusion in the review.[@ancelin2012a; @ancelin2013; @andrews2019a; @arvanitakis2008; @batty2014; @benn2017b; @bettermann2012a; @beydoun2011; @bruce2017; @burgess2017; @chao2015a; @chen2014; @chiang2007; @chitnis2015; @chou2014a; @chuang2015; @cramer2008; @dodge2011; @forti2010; @gnjidic2016; @gottesman2017; @gustafson2012; @haag2009; @hayden2006; @heartprotectionstudycollaborativegroup2002; @hendrie2015; @hippisley-cox2010a; @jick2000; @kimm2011; @kivipelto2001; @kivipelto2005a; @kuo2015; @li2004; @li2005a; @li2010; @liao2013; @liu2019a; @mainousa.g.2005; @mielke2005a; @mielke2010a; @mielke2011; @mukherjee2013; @muller2007; @noale2013; @notkola1998; @ostergaard2017; @pan2018; @parikh2011; @peters2009; @raffaitin2009; @rantanen2017; @rea2005a; @redelmeier2019; @reitz2004a; @reitz2010; @ridker2008; @ronnemaa2011; @schilling2017a; @smeeth2009a; @so2017; @solomon2007; @solomon2009a; @solomon2010; @sparks2008; @strand2013; @svensson2019; @szwast2007; @tan2003a; @tynkkynen2016; @tynkkynen2018; @wang2012; @whitmer2005a; @yang2015; @yoshitake1995; @zamrini2004; @zandi2005; @zhu2018a; @zimetbaum1992] Table \@ref(tab:studyCharacteristics-table) presents a summary of the characteristics of each study.
+```{r characteristicsSetup, message=FALSE, results="asis", echo = FALSE}
+```
+
+Following full-text screening, 87 reports describing `r n_included` unique studies met the criteria for inclusion in the review.[@ancelin2012a; @ancelin2013; @andrews2019a; @arvanitakis2008; @batty2014; @benn2017b; @bettermann2012a; @beydoun2011; @bruce2017; @burgess2017; @chao2015a; @chen2014; @chiang2007; @chitnis2015; @chou2014a; @chuang2015; @cramer2008; @dodge2011; @forti2010; @gnjidic2016; @gottesman2017; @gustafson2012; @haag2009; @hayden2006; @heartprotectionstudycollaborativegroup2002; @hendrie2015; @hippisley-cox2010a; @jick2000; @kimm2011; @kivipelto2001; @kivipelto2005a; @kuo2015; @li2004; @li2005a; @li2010; @liao2013; @liu2019a; @mainousa.g.2005; @mielke2005a; @mielke2010a; @mielke2011; @mukherjee2013; @muller2007; @noale2013; @notkola1998; @ostergaard2017; @pan2018; @parikh2011; @peters2009; @raffaitin2009; @rantanen2017; @rea2005a; @redelmeier2019; @reitz2004a; @reitz2010; @ridker2008; @ronnemaa2011; @schilling2017a; @smeeth2009a; @so2017; @solomon2007; @solomon2009a; @solomon2010; @sparks2008; @strand2013; @svensson2019; @szwast2007; @tan2003a; @tynkkynen2016; @tynkkynen2018; @wang2012; @whitmer2005a; @yang2015; @yoshitake1995; @zamrini2004; @zandi2005; @zhu2018a; @zimetbaum1992] Table \@ref(tab:studyCharacteristics-table) presents a summary of the characteristics of each study.
 
 The majority of studies were non-randomised studies with the sole two included randomised controlled trials both examining all-cause dementia. Similarly, a relatively small number of Mendelian randomisation studies were identified, and several performed a two-sample MR analysis using the same summary statistics from published GWAS, leading to complications in synthesis (see Section\@ref()). 
 
@@ -517,7 +518,6 @@ Of note, several studies provided evidence on a lipid fraction as part of a wide
 Many studies using electronic health records as their data source did not accurately report the diagnostic codes used to identify cases.
 
 Midlife cholesterol levels were of particular interest, with several studies examining this age-range. <!-- TODO Talk a little bit more about age here -->
-
 
 Three included reports were preprints (denoted in the Table \@ref(tab:studyCharacteristics-table) using an asterisk), one of which had subsequently been published and was captured by the primary literature search. All three included preprints were obtained from the bioRxiv preprint server and described Mendelian randomisation analyses.
 
@@ -559,6 +559,9 @@ knitr::include_graphics(file.path("figures/sys-rev/cohortLocations.png"))
 ```
 <!----------------------------------------------------------------------------->
 &nbsp;
+
+of interest, many of the included studies were peformed in Taiwan (`r n_taiwan`), all but one of which made use of the Taiwan National Health Insurance.
+
 
 ### Risk of bias {#risk-of-bias-res}
 
@@ -698,6 +701,8 @@ __Lipids__
 <!-- TODO Cite excluded studies and list exclusion reasons -->
 
 Several studies were excluded from the dose-response meta-analysis, as the number of cases/controls per dose group could not be calculated and the corresponding author for the study did not respond to clarification requests. The results from the dose response analysis can be seen in Figure \@ref(fig:lipidsDoseResponse).
+
+&nbsp;
 
 ### Sources of heterogeneity 
 
@@ -904,7 +909,7 @@ Of note, since the start of my review, inclusion of preprints in systematic revi
 <!-- TODO Discuss information here that I responded to Julian with re: % of preprints that published -->
 
 <!----------------------------------------------------------------------------->
-(ref:preprintGrowth-cap) __Growth of preprint repositories over time__ - Given the relative sizes of the preprint repositories at the time the searches for this review were conducted (bioRxiv n= `r n_at_search["bio"]`, medRxiv n = `r n_at_search["med"]`), the relative number of hits returned by each is expected.
+(ref:preprintGrowth-cap) __Growth of preprint repositories over time__ - Given the relative sizes of the preprint repositories at the time the searches for this review were conducted (bioRxiv n= `r n_at_search["bio"]`, medRxiv n = `r n_at_search["med"]`), the number of hits returned by each is expected.
 
 (ref:preprintGrowth-scap) Growth of preprint repositories over time
 

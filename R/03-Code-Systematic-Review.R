@@ -177,7 +177,7 @@ if(doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- studyCharacteristics-table
+# ---- characteristicsSetup
 
 toc_df <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which = 1) %>%
   janitor::clean_names() %>%
@@ -185,20 +185,16 @@ toc_df <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which
   select(study_id, author, year, number_participants, subtype, age_at_baseline, female_percent, location, data_source, group_sizes_if_applicable) %>%
   mutate(type = subtype) %>%
   mutate(author = ifelse(grepl("Heart Protection",author),"HPS",author)) %>%
-  mutate(age_at_baseline = stringr::str_remove_all(age_at_baseline," "),
-         female_percent = stringr::str_remove_all(female_percent," "),
-         group_sizes_if_applicable = stringr::str_remove_all(group_sizes_if_applicable," ")) %>%
+  mutate(group_sizes_if_applicable = stringr::str_remove_all(group_sizes_if_applicable," ")) %>%
   rowwise() %>%
   mutate(age_combo = ifelse(grepl("\\|",age_at_baseline),combine_age(age_at_baseline,group_sizes_if_applicable), age_at_baseline)) %>%
   mutate(female_combo = ifelse(grepl("\\|",female_percent),combine_female(female_percent,group_sizes_if_applicable), female_percent)) %>%
   mutate(female_combo = case_when(female_combo=="64.400000000000006"~"64.4", T ~ female_combo),
          age_combo = case_when(age_combo=="74.900000000000006"~"74.9", T ~ age_combo))
 
-
-# toc_df %>%
-#   filter(is.na(exclude)) %>%
-#   distinct(study_id,.keep_all = T) %>%
-#   count()
+n_included <- toc_df %>%
+ distinct(study_id,.keep_all = T) %>%
+  n_distinct()
 
 toc_df2 <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which = 2) %>%
   janitor::clean_names() %>%
@@ -218,6 +214,7 @@ toc_df2 <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),whic
 #   group_by(measure) %>%
 #   count()
 
+# Generate count of study designs by year
 p_type <- 
   toc_df %>%
   group_by(year) %>%
@@ -235,11 +232,15 @@ p_type <-
 
 ggsave(here::here("figures/sys-rev/type_by_year.png"), p_type, height = 3)
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- studyCharacteristics-table
+
 study_details <- left_join(toc_df, toc_df2, by =c("study_id"="study_id")) %>%
   mutate(Study = paste(author, year)) %>%
   mutate(type = factor(type,levels = c("RCT","NRSI","NRSE","MR")),)
-  
+
 studyCharacteristics_table <- study_details %>%
+  # Add asterisk to preprinted studies
   mutate(Study = ifelse(study_id %in% c(90004,90005,3232), paste0(Study, "*"),Study)) %>%
   select(Study, type, location, number_participants, age_combo, female_combo, Exposures, Outcomes, Criteria, -c(study_id,author, year)) %>%
   rename("Location" = location,
@@ -270,28 +271,54 @@ if(doc_type == "docx") {
     row_spec(0, bold = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position","repeat_header"), font_size = 7) %>%
     kableExtra::column_spec(0, width = "20em") %>%
-    kableExtra::column_spec(c(1,3:8), width = "9em") %>%
+    kableExtra::column_spec(c(1,3:8), width = "9.5em") %>%
     kableExtra::column_spec(2, width = "5em") %>%
-    kableExtra::group_rows(group_label = "RCTS", start_row = 1, end_row = 2, hline_after = T,
+    kableExtra::group_rows(group_label = "Randomised controlled trials", start_row = 1, end_row = 2, hline_after = T,
                            extra_latex_after = "\\addlinespace") %>%
-    kableExtra::group_rows(group_label = "NRSI", start_row = 3, end_row = 33, hline_after = T,
+    kableExtra::group_rows(group_label = "Non-randomised studies of interventions", start_row = 3, end_row = 33, hline_after = T,
                            extra_latex_after = "\\addlinespace") %>%
-    kableExtra::group_rows(group_label = "NRSE", start_row = 34, end_row = 74, hline_after = T,
+    kableExtra::group_rows(group_label = "Non-randomised studies of exposures", start_row = 34, end_row = 74, hline_after = T,
                            extra_latex_after = "\\addlinespace") %>%
     kableExtra::group_rows(
-      group_label = "MR",
+      group_label = "Mendelian randomisation studies",
       start_row = 75,
       end_row = 81,
       hline_after = T,
       extra_latex_after = "\\addlinespace"
     ) %>%
-    kableExtra::footnote(symbol = "Denotes preprinted study.",
-             general = "_Abbreviations:_ AD - Alzheimer's disease; VaD - vascular dementia: NRSI - non-randomised studies of interventions; NRSE - non-randomised studies of exposures: LDL-c - low density lipoprotein cholesterol; HDL-c - high density lipoprotein cholesterol; TC - total cholesterol; TG - triglycerides")
+    kableExtra::footnote(
+      symbol = "Denotes preprinted study.",
+      threeparttable = T,
+      escape = F,
+      general_title = "",
+      footnote_order = c("symbol", "general"),
+      general = paste("\\\\textit{Abbreviations:}",
+                      "AD - Alzheimer's disease;",
+                      "DSM - Diagnostic and Statistical Manual (Roman numerals indicate edition);",
+                      "EHR - Electronic code list;",
+                      "ICD - International Classification of Diseease (numbers indicate edition);",
+                      "HDL-c - high density lipoprotein cholesterol;",
+                      "LDL-c - low density lipoprotein cholesterol;",
+                      "NINCDS-ADRDA - National Institute of Neurological and Communicative Disorders and Stroke and the Alzheimer's Disease and Related Disorders Association;",
+                      "NINCDS-AIREN - National Institute of Neurological Disorders and Stroke and Association Internationale pour la Recherché et l'Enseignement en Neurosciences;",
+                      "NR - Not reported;",
+                      "TC - total cholesterol;",
+                      "TG - triglycerides;",
+                      "VaD - vascular dementia."))
 }
-
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- cohortLocationsSetup
+
+n_taiwan <- toc_df %>%
+  count(location) %>%
+  filter(location == "Taiwan") %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_included)*100,2),"%")) %>%
+  pull(label)
+  
+
+n_taiwan <- toc_df %>%
+  filter(location == "Taiwan")
 
 world <- toc_df %>%
   count(location) %>%

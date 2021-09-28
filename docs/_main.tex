@@ -33,7 +33,9 @@
 \usepackage{float}
 
 % Allows for kableExtra to keep table footnotes/etc same width as table
+\usepackage{booktabs}
 \usepackage{threeparttable}
+\usepackage{threeparttablex}
 
 % Enable use of landscape for tables
 \usepackage{lscape}
@@ -189,7 +191,7 @@ An investigation of their relationship}
 \degree{Doctor of Philosophy}
 % Term and year of submission, or date if your board requires (eg most masters)
 \degreedate{2022}
-\wordcount{27705}
+\wordcount{28508}
 
 
 %%%%% YOUR OWN PERSONAL MACROS
@@ -378,13 +380,13 @@ An investigation of their relationship}
 
 \adjustmtc
 
-Word count: 27705
+Word count: 28508
 
 Days: 308
 
-Words behind: -7751
+Words behind: -6948
 
-Words today: 294
+Words today: 1097
 
 ~
 
@@ -1852,7 +1854,12 @@ Several Mendelian random studies made use of summary level data from the same pu
 
 \begingroup\fontsize{7}{9}\selectfont
 
-\begin{longtable}[t]{>{\raggedright\arraybackslash}p{9em}>{\raggedright\arraybackslash}p{5em}>{\centering\arraybackslash}p{9em}>{\centering\arraybackslash}p{9em}>{\centering\arraybackslash}p{9em}>{\raggedright\arraybackslash}p{9em}>{\raggedright\arraybackslash}p{9em}>{\raggedright\arraybackslash}p{9em}}
+\begin{ThreePartTable}
+\begin{TableNotes}
+\item[*] Denotes preprinted study.
+\item \textit{Abbreviations:} AD - Alzheimer's disease; DSM - Diagnostic and Statistical Manual (Roman numerals indicate edition); EHR - Electronic code list; ICD - International Classification of Diseease (numbers indicate edition); HDL-c - high density lipoprotein cholesterol; LDL-c - low density lipoprotein cholesterol; NINCDS-ADRDA - National Institute of Neurological and Communicative Disorders and Stroke and the Alzheimer's Disease and Related Disorders Association; NINCDS-AIREN - National Institute of Neurological Disorders and Stroke and Association Internationale pour la Recherché et l'Enseignement en Neurosciences; NR - Not reported; TC - total cholesterol; TG - triglycerides; VaD - vascular dementia.
+\end{TableNotes}
+\begin{longtable}[t]{>{\raggedright\arraybackslash}p{9.5em}>{\raggedright\arraybackslash}p{5em}>{\centering\arraybackslash}p{9.5em}>{\centering\arraybackslash}p{9.5em}>{\centering\arraybackslash}p{9.5em}>{\raggedright\arraybackslash}p{9.5em}>{\raggedright\arraybackslash}p{9.5em}>{\raggedright\arraybackslash}p{9.5em}}
 \caption[Characteristics of included studies]{\label{tab:studyCharacteristics-table}Characteristics of included studies, stratified by study design. Note that three studies reported on multiple study designs, and these have been duplicated across the relevant sub-sections.}\\
 \toprule
 \textbf{Study} & \textbf{Location} & \textbf{N} & \textbf{Age at baseline} & \textbf{Female (\%)} & \textbf{Exposures} & \textbf{Outcomes} & \textbf{Diagnostic criteria}\\
@@ -1866,95 +1873,93 @@ Several Mendelian random studies made use of summary level data from the same pu
 
 \endfoot
 \bottomrule
-\multicolumn{8}{l}{\rule{0pt}{1em}\textit{Note: }}\\
-\multicolumn{8}{l}{\rule{0pt}{1em}\_Abbreviations:\_ AD - Alzheimer's disease; VaD - vascular dementia: NRSI - non-randomised studies of interventions; NRSE - non-randomised studies of exposures: LDL-c - low density lipoprotein cholesterol; HDL-c - high density lipoprotein cholesterol; TC - total cholesterol; TG - triglycerides}\\
-\multicolumn{8}{l}{\rule{0pt}{1em}\textsuperscript{*} Denotes preprinted study.}\\
+\insertTableNotes
 \endlastfoot
 \addlinespace[0.3em]
-\multicolumn{8}{l}{\textbf{RCTS}}\\
+\multicolumn{8}{l}{\textbf{Randomised controlled trials}}\\
 \hline
 \addlinespace\hspace{1em}HPS 2002 & United Kingdom & 20536 & >70 & 24.8 & Simvastatin & Dementia & NR\\
-\addlinespace\hspace{1em}JUPITER 2009 & Multiple & 17902 & 66(median)60-71(IQR) & 38 & Rosuvastatin & Dementia & NR\\
+\addlinespace\hspace{1em}JUPITER 2009 & Multiple & 17902 & 66 (median) 60-71 (range) & 38 & Rosuvastatin & Dementia & NR\\
 \addlinespace\addlinespace[0.3em]
-\multicolumn{8}{l}{\textbf{NRSI}}\\
+\multicolumn{8}{l}{\textbf{Non-randomised studies of interventions}}\\
 \hline
 \addlinespace\hspace{1em}Ancelin 2012 & France & 7056 & NR & 67 & Fibrate; Statin & Dementia; AD & DSM-IV; NINCDS-ADRDA\\
-\addlinespace\hspace{1em}Arvanitakis 2008 & United States & 929 & 74.9 & 68.7 & Statin & AD & Consortium to Establish a Registry for Alzheimer’s Disease (CERAD)\\
-\addlinespace\hspace{1em}Bettermann 2012 & United States & 3069 & 78.6(3.3) & 46.2 & Statin; Non-statin LRA & Dementia; AD; Vascular component & Consensus panel - criteria not reported\\
-\addlinespace\hspace{1em}Beydoun 2011 & United States & 1604 & 57.6(18.4) & 38.5 & Statin; TC & Dementia & \vphantom{1} DSM-III-R\\
-\addlinespace\hspace{1em}Chao 2015 & Taiwan & 256265 & 73.2(7.4) & 50.3 & Statin & Non-vascular dementia & ICD-9\\
+\addlinespace\hspace{1em}Arvanitakis 2008 & United States & 929 & 74.9 (NR) & 68.7 & Statin & AD & Consortium to Establish a Registry for Alzheimer’s Disease (CERAD)\\
+\addlinespace\hspace{1em}Bettermann 2012 & United States & 3069 & 78.6 (3.3) & 46.2 & Statin; Non-statin LRA & Dementia; AD; Vascular component & Consensus panel - criteria not reported\\
+\addlinespace\hspace{1em}Beydoun 2011 & United States & 1604 & 57.6 (18.4) & 38.5 & Statin; TC & Dementia & \vphantom{1} DSM-III-R\\
+\addlinespace\hspace{1em}Chao 2015 & Taiwan & 256265 & 73.2 (7.4) & 50.3 & Statin & Non-vascular dementia & ICD-9\\
 \addlinespace\hspace{1em}Chen 2014 & Taiwan & 18100 & 67 (8.6) & 47.9 & Statin & Dementia; AD; Non-AD & ICD-9\\
-\addlinespace\hspace{1em}Chitnis 2015 & United States & 8062 & 74.47(9.21) & 53.04 & Statin & Dementia & ICD-9\\
+\addlinespace\hspace{1em}Chitnis 2015 & United States & 8062 & 74.47 (9.21) & 53.04 & Statin & Dementia & ICD-9\\
 \addlinespace\hspace{1em}Chou 2014 & Taiwan & 33398 & >60 & 53.9 & Statin & Dementia; AD; VaD; Non-vascular dementia & ICD-9\\
 \addlinespace\hspace{1em}Chuang 2015 & Taiwan & 123300 & 54 (13) & 49.1 & Statin & Dementia & ICD-9\\
 \addlinespace\hspace{1em}Cramer 2008 & United States & 1674 & 70 (6.8) & 58 & Statin & Dementia/CIND & DSM-IV\\
 \addlinespace\hspace{1em}Gnjidic 2016 & Sweden & 2056 & >60 & NR & Statin & Dementia & DSM-IV\\
-\addlinespace\hspace{1em}Haag 2009 & Netherlands & 6992 & 69.4(9.1) & 60 & Statin; Non-statin LRA & AD & NINCDS-ADRDA\\
-\addlinespace\hspace{1em}Hendrie 2015 & United States & 974 & 76.6(4.9) & 69.7 & Statin & Dementia; AD & DSM-IV; Consortium to Establish a Registry for Alzheimer’s Disease (CERAD)\\
+\addlinespace\hspace{1em}Haag 2009 & Netherlands & 6992 & 69.4 (9.1) & 60 & Statin; Non-statin LRA & AD & NINCDS-ADRDA\\
+\addlinespace\hspace{1em}Hendrie 2015 & United States & 974 & 76.6 (4.9) & 69.7 & Statin & Dementia; AD & DSM-IV; Consortium to Establish a Registry for Alzheimer’s Disease (CERAD)\\
 \addlinespace\hspace{1em}Hippisley-Cox 2010 & United Kingdom & 2004692 & 46 (14) & 51 & Statin & Dementia & EHR codelist\\
 \addlinespace\hspace{1em}Jick 2000 & United Kingdom & 1364 & 50-89 & 61 & Statin; Non-statin LRA & Dementia & EHR codelist\\
-\addlinespace\hspace{1em}Li 2004 & United States & 2356 & 75.1(6.1) & 59.8 & Statin; Non-statin LRA & Dementia; AD & DSM-IV; NINCDS-ADRDA\\
+\addlinespace\hspace{1em}Li 2004 & United States & 2356 & 75.1 (6.1) & 59.8 & Statin; Non-statin LRA & Dementia; AD & DSM-IV; NINCDS-ADRDA\\
 \addlinespace\hspace{1em}Li 2010 & United States & 3392 & 75 (6.2) & 59 & Statin & AD & NINCDS-ADRDA\\
 \addlinespace\hspace{1em}Liao 2013 & NR & 5221 & NR & NR & Statin & Dementia & NR\\
 \addlinespace\hspace{1em}Liu 2019 & Taiwan & 2012 & 74 (7.5) & NR & Statin & Dementia & ICD\\
 \addlinespace\hspace{1em}Pan 2018 & Taiwan & 14807 & 65 (13) & 43 & Statin & Dementia & ICD-9\\
-\addlinespace\hspace{1em}Parikh 2011 & United States & 377838 & 75.53(6.07) & 2 & Statin & Dementia & ICD-9\\
+\addlinespace\hspace{1em}Parikh 2011 & United States & 377838 & 75.53 (6.07) & 2 & Statin & Dementia & ICD-9\\
 \addlinespace\hspace{1em}Rea 2005 & United States & 2798 & NR & NR & Statin; Non-statin LRA & Dementia; AD; Mixed; VaD & NINCDS; NINCDS-ADRDA; Combination; State of California Alzheimer’s Disease Diagnostic and Treatment Centers\\
-\addlinespace\hspace{1em}Redelmeier 2019 & Canada & 28815 & 76 & 61.3 & Statin & Dementia & ICD-9\\
-\addlinespace\hspace{1em}Reitz 2004 & United States & 1168 & 78.4(6.2) & 68.3 & Statin; TC; Non-HDL-c; HDL-c; TG; LDL-c & VaD; AD & Cohort criteria; \vphantom{1} NINCDS-ADRDA\\
-\addlinespace\hspace{1em}Smeeth 2009 & United Kingdom & 729529 & 50 & 40-81 & Statin & Dementia; AD; Non-AD & EHR codelist\\
+\addlinespace\hspace{1em}Redelmeier 2019 & Canada & 28815 & 76 (NR) & 61.3 & Statin & Dementia & ICD-9\\
+\addlinespace\hspace{1em}Reitz 2004 & United States & 1168 & 78.4 (6.2) & 68.3 & Statin; TC; Non-HDL-c; HDL-c; TG; LDL-c & VaD; AD & Cohort criteria; \vphantom{1} NINCDS-ADRDA\\
+\addlinespace\hspace{1em}Smeeth 2009 & United Kingdom & 729529 & 50 (NR) & 40-81 & Statin & Dementia; AD; Non-AD & EHR codelist\\
 \addlinespace\hspace{1em}Solomon 2010 & Finland & 17597 & 68 (5.8) & 57 & Statin & Dementia & EHR codelist\\
 \addlinespace\hspace{1em}Sparks 2008 & United States & 2068 & 75 (3.8) & 54 & Statin & AD & NINCDS-ADRDA\\
-\addlinespace\hspace{1em}Szwast 2007 & United States & 1416 & 77.3(5.3) & 69.3 & Statin & Dementia & DSM-IV\\
+\addlinespace\hspace{1em}Szwast 2007 & United States & 1416 & 77.3 (5.3) & 69.3 & Statin & Dementia & DSM-IV\\
 \addlinespace\hspace{1em}Yang 2015 & Taiwan & 45973 & 82 (5.3) & 48 & Statin; Fibrate; LRA (exlc. statin + fibrates) & Dementia & ICD-9\\
-\addlinespace\hspace{1em}Zamrini 2004 & United States & 3397 & 73 & 0 & Statin & AD & ICD-9\\
+\addlinespace\hspace{1em}Zamrini 2004 & United States & 3397 & 73 (NR) & 0 & Statin & AD & ICD-9\\
 \addlinespace\hspace{1em}Zandi 2005 & United States & 3308 & NR & NR & Statin; Non-statin LRA & Dementia; AD & DSM-III-R; NINCDS-ADRDA\\
 \addlinespace\addlinespace[0.3em]
-\multicolumn{8}{l}{\textbf{NRSE}}\\
+\multicolumn{8}{l}{\textbf{Non-randomised studies of exposures}}\\
 \hline
 \addlinespace\hspace{1em}Ancelin 2013 & France & 7053 & 74 (5.3) & 61.1 & Hypercholesterolemia & Dementia; AD & DSM-IV; NINCDS-ADRDA\\
-\addlinespace\hspace{1em}Batty 2014 & United Kingdom & 103764 & 47.3(18.1) & 55 & Hypercholesterolemia; Non-HDL-c & Dementia & ICD\\
-\addlinespace\hspace{1em}Benn 2017 & NR & 111194 & 56(median)46-66(range) & 55 & LDL-c; PCSK-9; HMGCR & AD; VaD; Dementia & ICD; ICD-10; NR\\
-\addlinespace\hspace{1em}Beydoun 2011 & United States & 1604 & 57.6(18.4) & 38.5 & Statin; TC & Dementia & DSM-III-R\\
-\addlinespace\hspace{1em}Bruce 2017 & Australia & 217 & 63.6(8.4) & 45.6 & TC; HDL-c; TG & Dementia & NR\\
+\addlinespace\hspace{1em}Batty 2014 & United Kingdom & 103764 & 47.3 (18.1) & 55 & Hypercholesterolemia; Non-HDL-c & Dementia & ICD\\
+\addlinespace\hspace{1em}Benn 2017 & NR & 111194 & 56 (median) 46-66 (range) & 55 & LDL-c; PCSK-9; HMGCR & AD; VaD; Dementia & ICD; ICD-10; NR\\
+\addlinespace\hspace{1em}Beydoun 2011 & United States & 1604 & 57.6 (18.4) & 38.5 & Statin; TC & Dementia & DSM-III-R\\
+\addlinespace\hspace{1em}Bruce 2017 & Australia & 217 & 63.6 (8.4) & 45.6 & TC; HDL-c; TG & Dementia & NR\\
 \addlinespace\hspace{1em}Chiang 2007 & Taiwan & 785 & 58 (7.4) & 41.4 & TC; TG & Dementia; AD; VaD & ICD-9; NR\\
-\addlinespace\hspace{1em}Dodge 2011 & United States & 822 & 71.6(4.7) & 64.4 & Hypercholesterolemia & Dementia; AD & DSM-III-R; Consortium to Establish a Registry for Alzheimer’s Disease (CERAD)\\
+\addlinespace\hspace{1em}Dodge 2011 & United States & 822 & 71.6 (4.7) & 64.4 & Hypercholesterolemia & Dementia; AD & DSM-III-R; Consortium to Establish a Registry for Alzheimer’s Disease (CERAD)\\
 \addlinespace\hspace{1em}Forti 2010 & Italy & 749 & 73 (6.1) & 53 & TG; Hypercholesterolemia & Dementia; AD; VaD & DSM-IV; NINCDS-ADRDA; NINCDS-AIREN\\
-\addlinespace\hspace{1em}Gottesman 2017 & United States & 15407 & 54.2(5.8) & 55 & TC & Dementia & Combination\\
+\addlinespace\hspace{1em}Gottesman 2017 & United States & 15407 & 54.2 (5.8) & 55 & TC & Dementia & Combination\\
 \addlinespace\hspace{1em}Gustafson 2012 & Sweden & NR & NR & 100 & TC & AD & NR\\
-\addlinespace\hspace{1em}Hayden 2006 & United States & 3308 & 74.0(6.4) & 58.2 & Hypercholesterolemia & Dementia; AD; VaD & DSM-III-R; NINCDS-ADRDA; NINCDS-AIREN\\
+\addlinespace\hspace{1em}Hayden 2006 & United States & 3308 & 74.0 (6.4) & 58.2 & Hypercholesterolemia & Dementia; AD; VaD & DSM-III-R; NINCDS-ADRDA; NINCDS-AIREN\\
 \addlinespace\hspace{1em}Kimm 2011 & South Korea & 848505 & 53 (9.3) & 42.2 & TC & AD; VaD; Dementia & ICD-10\\
-\addlinespace\hspace{1em}Kivipelto 2001 & Finland & 1499 & 50.4(6.0) & 62 & Hypercholesterolemia & AD & NINCDS-ADRDA\\
-\addlinespace\hspace{1em}Kivipelto 2005 & Finland & 1449 & 50.6(6.0) & 62 & Hypercholesterolemia & Dementia & DSM-IV\\
+\addlinespace\hspace{1em}Kivipelto 2001 & Finland & 1499 & 50.4 (6.0) & 62 & Hypercholesterolemia & AD & NINCDS-ADRDA\\
+\addlinespace\hspace{1em}Kivipelto 2005 & Finland & 1449 & 50.6 (6.0) & 62 & Hypercholesterolemia & Dementia & DSM-IV\\
 \addlinespace\hspace{1em}Kuo 2015 & Taiwan & 67066 & 62.1(11.4) & 48.4 & Hypercholesterolemia & Dementia & ICD-9\\
-\addlinespace\hspace{1em}Li 2005 & United States & 2141 & 74.9(5.9) & 60.5 & TC; HDL-c & Dementia; AD & DSM-IV; NINCDS-ADRDA\\
+\addlinespace\hspace{1em}Li 2005 & United States & 2141 & 74.9 (5.9) & 60.5 & TC; HDL-c & Dementia; AD & DSM-IV; NINCDS-ADRDA\\
 \addlinespace\hspace{1em}Mainous 2005 & United States & 6558 & NR & NR & Hypercholesterolemia & Dementia; AD & ICD-9\\
 \addlinespace\hspace{1em}Mielke 2005 & Sweden & 382 & NR & 70 & TC; TG & Dementia & DSM-III-R\\
-\addlinespace\hspace{1em}Mielke 2010 & France & 1460 & 38-60 & 100 & Hypercholesterolemia; TC & Dementia; AD & DSM-III-R; NINCDS-ADRDA\\
+\addlinespace\hspace{1em}Mielke 2010 & France & 1460 & 38-60 (range) & 100 & Hypercholesterolemia; TC & Dementia; AD & DSM-III-R; NINCDS-ADRDA\\
 \addlinespace\hspace{1em}Mielke 2012 & United States & 99 & 74 (2.5) & 100 & TC; HDL-c; TG & Dementia; AD & DSM-IV; NINCDS-ADRDA\\
 \addlinespace\hspace{1em}Muller 2007 & United States & 542 & NR & NR & TG; HDL-c & AD; Dementia & NINCDS-ADRDA; DSM-IV\\
 \addlinespace\hspace{1em}Noale 2013 & Italy & 5632 & 71.3(5.3) & 56.3 & TG; Hypercholesterolemia & Dementia & DSM-III-R\\
-\addlinespace\hspace{1em}Notkola 1998 & Finland & 444 & 40-59 & 0 & Hypercholesterolemia & AD & Combination\\
+\addlinespace\hspace{1em}Notkola 1998 & Finland & 444 & 40-59 (range) & 0 & Hypercholesterolemia & AD & Combination\\
 \addlinespace\hspace{1em}Peters 2009 & Mutliple & 3336 & >80 & 60.4 & TC; HDL-c & Dementia & DSM-IV\\
-\addlinespace\hspace{1em}Raffaitin 2009 & France & 7087 & 73.4(4.9) & 61 & TG; Hypercholesterolemia & Dementia; AD; VaD & DSM-IV; NINCDS-ADRDA; Combination\\
-\addlinespace\hspace{1em}Rantanen 2017 & Finland & 3309 & 42(39–46) & 0 & TC; Hypercholesterolemia & Dementia; AD; VaD & NR\\
-\addlinespace\hspace{1em}Reitz 2004 & United States & 1168 & 78.4(6.2) & 68.3 & Statin; TC; Non-HDL-c; HDL-c; TG; LDL-c & VaD; AD & Cohort criteria; NINCDS-ADRDA\\
+\addlinespace\hspace{1em}Raffaitin 2009 & France & 7087 & 73.4 (4.9) & 61 & TG; Hypercholesterolemia & Dementia; AD; VaD & DSM-IV; NINCDS-ADRDA; Combination\\
+\addlinespace\hspace{1em}Rantanen 2017 & Finland & 3309 & 42 (median) 39–46 (range) & 0 & TC; Hypercholesterolemia & Dementia; AD; VaD & NR\\
+\addlinespace\hspace{1em}Reitz 2004 & United States & 1168 & 78.4 (6.2) & 68.3 & Statin; TC; Non-HDL-c; HDL-c; TG; LDL-c & VaD; AD & Cohort criteria; NINCDS-ADRDA\\
 \addlinespace\hspace{1em}Reitz 2010 & United States & 1130 & 75.7(6.3) & 65.7 & TC; HDL-c; LDL-c & AD & NINCDS-ADRDA\\
-\addlinespace\hspace{1em}Ronnemaa 2011 & United States & 2268 & 49.6(0.6) & 0 & Hypercholesterolemia & AD; VaD; Dementia & NINCDS-ADRDA; ADDTC; DSM-IV\\
-\addlinespace\hspace{1em}Schilling 2017 & France & 9294 & 73.8(5.3) & 61 & TG; HDL-c; LDL-c; TC & Dementia; AD; Mixed & DSM-IV; NINCDS-ADRDA; NINCDS-AIREN\\
-\addlinespace\hspace{1em}Solomon 2007 & Finland & 1449 & 50.4(6.0) & 621 & Hypercholesterolemia & Dementia & NR\\
+\addlinespace\hspace{1em}Ronnemaa 2011 & United States & 2268 & 49.6 (0.6) & 0 & Hypercholesterolemia & AD; VaD; Dementia & NINCDS-ADRDA; ADDTC; DSM-IV\\
+\addlinespace\hspace{1em}Schilling 2017 & France & 9294 & 73.8 (5.3) & 61 & TG; HDL-c; LDL-c; TC & Dementia; AD; Mixed & DSM-IV; NINCDS-ADRDA; NINCDS-AIREN\\
+\addlinespace\hspace{1em}Solomon 2007 & Finland & 1449 & 50.4 (6.0) & 62.1 & Hypercholesterolemia & Dementia & NR\\
 \addlinespace\hspace{1em}Solomon 2009 & United States & 9844 & 43 (1.7) & 54 & TC & AD; VaD & ICD-9\\
-\addlinespace\hspace{1em}Strand 2013 & Norway & 48793 & 42.6(4.3) & 49 & TC & Dementia; AD & ICD\\
-\addlinespace\hspace{1em}Svensson 2019 & Japan & 781 & 54.1(5.6) & NR & HDL-c; Hypercholesterolemia & Dementia & DSM-IV\\
-\addlinespace\hspace{1em}Tan 2003 & United States & 1026 & 76.1(5.3) & 63 & TC; HDL-C & AD & NINCDS-ADRDA\\
-\addlinespace\hspace{1em}Tynkkynen 2016 & Finland & 13725 & 48.4(13.3) & 51.6 & HDL-c & Dementia; AD & ICD-10\\
+\addlinespace\hspace{1em}Strand 2013 & Norway & 48793 & 42.6 (4.3) & 49 & TC & Dementia; AD & ICD\\
+\addlinespace\hspace{1em}Svensson 2019 & Japan & 781 & 54.1 (5.6) & NR & HDL-c; Hypercholesterolemia & Dementia & DSM-IV\\
+\addlinespace\hspace{1em}Tan 2003 & United States & 1026 & 76.1 (5.3) & 63 & TC; HDL-C & AD & NINCDS-ADRDA\\
+\addlinespace\hspace{1em}Tynkkynen 2016 & Finland & 13725 & 48.4 (13.3) & 51.6 & HDL-c & Dementia; AD & ICD-10\\
 \addlinespace\hspace{1em}Tynkkynen 2018 & Multiple & 22623 & 57 (9.2) & 47 & TC; HDL-c; LDL-c; TG & Dementia; AD & ICD-10\\
 \addlinespace\hspace{1em}Wang 2012 & Taiwan & 1230400 & 60 (13) & 52 & Hypercholesterolemia & AD & ICD-9\\
 \addlinespace\hspace{1em}Whitmer 2005 & United States & 8845 & 68 (2.6) & 53.7 & Hypercholesterolemia & Dementia & ICD-9\\
 \addlinespace\hspace{1em}Yoshitake 1995 & Japan & 828 & 74 (5.9) & 59.5 & TC; TG; HDL-c; LDL-c & VaD; AD & NINCDS-AIREN; NINCDS-ADRDA\\
-\addlinespace\hspace{1em}Zimetbaum 1992 & United States & 350 & 79(75-85) & 64.5 & TC; HDL-c; LDL-c; TG & Dementia & DSM-III-R\\
+\addlinespace\hspace{1em}Zimetbaum 1992 & United States & 350 & 79 (median) 75-85 (range) & 64.5 & TC; HDL-c; LDL-c; TG & Dementia & DSM-III-R\\
 \addlinespace\addlinespace[0.3em]
-\multicolumn{8}{l}{\textbf{MR}}\\
+\multicolumn{8}{l}{\textbf{Mendelian randomisation studies}}\\
 \hline
 \addlinespace\hspace{1em}Andrews 2019* & NR & NR & NR & NR & HMGCR & AD & NR\\
 \addlinespace\hspace{1em}Benn 2017 & NR & 111194; 54162 & NR & NR & LDL-c; PCSK-9; HMGCR & AD; VaD; Dementia & ICD; ICD-10; NR\\
@@ -1964,6 +1969,7 @@ Several Mendelian random studies made use of summary level data from the same pu
 \addlinespace\hspace{1em}So 2017* & NR & NR & NR & NR & NR & NR & NR\\
 \addlinespace\hspace{1em}Zhu 2018* & NR & 54162 & NR & NR & HDL-c; LDL-c; TG & AD & NR\\*
 \end{longtable}
+\end{ThreePartTable}
 \endgroup{}
 
 \elandscape{}
@@ -1979,6 +1985,8 @@ As illustrated in Figure \ref{fig:cohortLocations}, the majority of reports desc
 \end{figure}
 
 ~
+
+of interest, many of the included studies were peformed in Taiwan (c(1883, 4799, 6297, 10312, 14621, 14658, 14664, 14715, 14755, 90001), c(``Kuo'', ``Chuang'', ``Chen'', ``Chiang'', ``Liu'', ``Chou'', ``Pan'', ``Chao'', ``Yang'', ``Wang''), c(2015, 2015, 2014, 2007, 2019, 2014, 2018, 2015, 2015, 2012), c(``67066'', ``123300'', ``18100'', ``785'', ``2012'', ``33398'', ``14807'', ``256265'', ``45973'', ``1230400''), c(``NRSE'', ``NRSI'', ``NRSI'', ``NRSE'', ``NRSI'', ``NRSI'', ``NRSI'', ``NRSI'', ``NRSI'', ``NRSE''), c(``62.1(11.4)'', ``54.6 (12.4)\textbar54.1(12.8)'', ``67.0 (8.8) \textbar{} 65.8 (7.4)'', ``57.9 (7.4)\textbar57.8 (7.4)'', ``74.2(7.4)\textbar74.3(7.6)'', ``\textgreater60'', ``61.8 (11.4)\textbar66.5 (14.1)'', ``73.2 (7.4)'', ``82.85(4.91)\textbar78.10(6.14)'', ``60(12.8)\textbar60.1(12.7)''), c(``48.4'', ``49.1'', ``47.9'', ``41.4'', ``NA'', ``53.9'', ``47\textbar40'', ``50.3'', ``46.5\textbar57.3'', ``51.9\textbar51.9''), c(``Taiwan'', ``Taiwan'', ``Taiwan'', ``Taiwan'', ``Taiwan'', ``Taiwan'', ``Taiwan'', ``Taiwan'', ``Taiwan'', ``Taiwan''), c(``Taiwan National Health Insurance'', ``Taiwan National Health Insurance'', ``Taiwan National Health Insurance'', ``MMRD/CSP'', ``Taiwan National Health Insurance'', ``Taiwan National Health Insurance'', ``Taiwan National Health Insurance'', ``Taiwan National Health Insurance'', ``Taiwan National Health Insurance'', ``Taiwan National Health Insurance''), c(NA, ``61650\textbar61650'', ``15770\textbar2400'', ``157\textbar628'', ``1006\textbar1006'', NA, ``5527\textbar9280'', NA, ``40021\textbar5952'', ``615529\textbar614871''), c(``NRSE'', ``NRSI'', ``NRSI'', ``NRSE'', ``NRSI'', ``NRSI'', ``NRSI'', ``NRSI'', ``NRSI'', ``NRSE''), c(``62.1(11.4)'', ``54 (13)'', ``67 (8.6)'', ``58 (7.4)'', ``74 (7.5)'', ``\textgreater60'', ``65 (13)'', ``73.2 (7.4)'', ``82 (5.3)'', ``60 (13)''), c(``48.4'', ``49.1'', ``47.9'', ``41.4'', ``NA'', ``53.9'', ``43'', ``50.3'', ``48'', ``52'')), all but one of which made use of the Taiwan National Health Insurance.
 
 \hypertarget{risk-of-bias-res}{%
 \subsection{Risk of bias}\label{risk-of-bias-res}}
@@ -2092,6 +2100,8 @@ Two Mendelian randomisation studies looked at specifically as a result of by HMG
 \subsection{Dose response meta-analysis of lipid levels}\label{dose-response-results}}
 
 Several studies were excluded from the dose-response meta-analysis, as the number of cases/controls per dose group could not be calculated and the corresponding author for the study did not respond to clarification requests. The results from the dose response analysis can be seen in Figure \ref{fig:lipidsDoseResponse}.
+
+~
 
 \hypertarget{sources-of-heterogeneity}{%
 \subsection{Sources of heterogeneity}\label{sources-of-heterogeneity}}
@@ -2240,7 +2250,7 @@ Of note, since the start of my review, inclusion of preprints in systematic revi
 
 
 \begin{figure}[H]
-\includegraphics[width=1\linewidth]{figures/sys-rev/preprint_growth} \caption[Growth of preprint repositories over time]{\textbf{Growth of preprint repositories over time} - Given the relative sizes of the preprint repositories at the time the searches for this review were conducted (bioRxiv n= 56,007, medRxiv n = 148), the relative number of hits returned by each is expected.}\label{fig:preprintGrowth}
+\includegraphics[width=1\linewidth]{figures/sys-rev/preprint_growth} \caption[Growth of preprint repositories over time]{\textbf{Growth of preprint repositories over time} - Given the relative sizes of the preprint repositories at the time the searches for this review were conducted (bioRxiv n= 56,007, medRxiv n = 148), the number of hits returned by each is expected.}\label{fig:preprintGrowth}
 \end{figure}
 
 ~
@@ -3078,6 +3088,8 @@ Regardless, this analysis has provided an additional source of evidence for the 
 \hypertarget{lay-summary-4}{%
 \section{Lay Summary}\label{lay-summary-4}}
 
+As part of a broader investigation into the relationship between lipid levels and dementia risk, I sought to
+
 ~
 
 ~
@@ -3094,51 +3106,152 @@ Justify analysis based on findings of systematic review - suggestion of variatio
 \hypertarget{methods-2}{%
 \section{Methods}\label{methods-2}}
 
+\hypertarget{applying-for-data-access}{%
+\subsection{Applying for data access}\label{applying-for-data-access}}
+
+\textbf{Systematic review}
+
 As part
 
-As part of the IPD analysis, relevant cohort studies were identified from the sty and approached. In the first instance, the corresponding author on the main man
+As part of the IPD analysis, relevant cohort studies identified through the systematic review detailed in Chapters \ref{sys-rev-heading} were. In the first instance, the corresponding author on the main man
+
+\textbf{Dementia platform UK}
+
+In addition, to assess the results for the Dementia Platform UK common-access procedure was utilised. In short, this approach is intended to make it easier to access data from exisiting dementia cohorts through a centralised application process.
 
 Talk about how different covariates were managed across cohorts,
-c
+
+\hypertarget{eligibility-criteria}{%
+\subsection{Eligibility criteria}\label{eligibility-criteria}}
+
+Lipids reported/available as a continuous measure, and were not cross-sectional.
+
+Due to the limited time-frame, studies making use of population-level electronic health records, which often require an entire project proposal, were ineligible due to the time and cost involved in applying. The one exception to this was data from the CPRD, which we already had access to via the study reported in Chapter 'ref(cprd-heading).
+
+\hypertarget{missing-data-2}{%
+\subsection{Missing data}\label{missing-data-2}}
+
+Talk about missing data were handled
 
 ~
 
-\hypertarget{data-sources}{%
-\subsection{Data sources}\label{data-sources}}
+\hypertarget{risk-of-bias-assessment}{%
+\subsection{Risk of bias assessment}\label{risk-of-bias-assessment}}
 
-Several cohort studies were approach
+Risk of bias assessment was performed for each of the included cohorts using the relevant tool described in Section \ref{risk-of-bias}.
 
-As part of this Chapter, I will use individual patient data from a range of sources. These sources are described here in detail for reference.
-
-These data source
-
-Each should have:
-
-\begin{itemize}
-\tightlist
-\item
-  Description (including observation period, numbers, numbers with outcome, etc)
-\item
-\end{itemize}
+There is some concerns about performing risk of bias assessments on your own analysis, and so
 
 ~
 
-\hypertarget{epic-norfolk}{%
-\subsubsection{Epic Norfolk}\label{epic-norfolk}}
+\hypertarget{analysis}{%
+\subsection{Analysis}\label{analysis}}
 
-The European Prospective Investigation of Cancer - Norfolk is a\textsuperscript{\protect\hyperlink{ref-riboli1997}{286},\protect\hyperlink{ref-riboli2002}{287}}
+~
 
-Has only 8 events
+All analysis were standardised by changes in 1-SD of the exposure variable. This was done to aid interpretability of the outcome.
 
-\hypertarget{caps}{%
-\subsubsection{CaPS}\label{caps}}
+Similary,
+
+Clustering within studies was accounted for, given the evidence that \ldots{}\textsuperscript{\protect\hyperlink{ref-abo-zaid2013}{286}}
+
+Stratified by age-at-entry and sex, and ethnicity where possible.
+
+Hazard ratios were utilised to
+
+In order to investigate the interaction of sex with
+
+A two-stage model was used out of necessity, with the one-stage model being precluded by the different datasets being in protected data silos.
+
+A discrete proportional hazards model was employed to account for the interval censoring introduced by design o fthe longitudinal cohort studies.\textsuperscript{\protect\hyperlink{ref-wang2017}{287}}
+
+In order to investigate the interaction of patient-level characteristics with lipid levels, interaction terms for lipid-covariate terms were included in the model above. These were extracted and synthesised using a random effects meta-analysis.
+
+Where results were comparably to previously published estimates, these were compared and reasons for any discrepancies discussed.
+
+The analysis were carried out in R (Version\ldots) using the following packages: \texttt{survival}\textsuperscript{\protect\hyperlink{ref-survival-book}{288}}, \texttt{metafor}\textsuperscript{\protect\hyperlink{ref-viechtbauer2010a}{289}}
+
+\textbf{Replicating published findings}
+
+Where any included data source had previously been analysed and results for the association between lipid levels and dementia reported, these were compared to the results of this analysis.
+
+~
+
+\hypertarget{results-2}{%
+\section{Results}\label{results-2}}
+
+\hypertarget{data-access}{%
+\subsection{Data access}\label{data-access}}
+
+Of the XXX studies to which I applied for data access, only three were eventually included in the analysis. Figure \ref{fig:cohortFlowchart} details whether the cohorts eventually included in the review were identified by the systematic review or via DPUK portal.
+
+In addition, the reasons for cohorts not being included in the analysis are presented. In summary, the requests for data from cohorts identified by the systematic review was characterised by a very low response rate. For the minority who did respond, common reasons given by corresponding authors for not sharing the data included that they no longer worked in the lab, had access to the data, or that they were currently or intended to perform a similar analysis as the one proposed.
+
+For the streamlined DPUK process, where a dedicated project manager liases with cohort owners, the overall response rate was higher, result in access to three cohorts. However, even using th
+
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/ipd/cohortFlowchart} \caption[Flowchart]{Flowchart of included cohorts, stratified by identification method (systematic review vs DPUK).}\label{fig:cohortFlowchart}
+\end{figure}
+
+Few cohorts were included in both the DPUK and the systematic review sets of cohorts indicating that the DPUK.
+
+I did not request data from several DPUK cohorts due to the information on the online system indicating that the study was relatively new (and so was yet to collect \textgreater1 wave of data, as in the case of the XXXX cohort) or the online data dictionary indicating that the exposure variables of interest were not recorded.
+
+As highlighted in the
+
+\hypertarget{included-data-sources}{%
+\subsection{Included data sources}\label{included-data-sources}}
+
+The three datasets included are described in detail in the following section, and are summarised in Table \ref{tab:cohortOverview-table}.
+
+Of note, all data sources included in the analysis were based in the United Kingdom. This is likely due to the majority of included datasets coming from the Dementia Platform UK route \ref{fig:cohortFlowchart}, which as implied by the name, has a geographical focus on studies performed in Great Britain United Kingdom.
+
+~
+
+
+
+
+
+\begin{table}[H]
+
+\caption[Summary of included cohorts]{\label{tab:cohortOverview-table}Summary of cohorts for which data were available}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{7em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}>{\centering\arraybackslash}p{6em}}
+\toprule
+\textbf{Cohort} & \textbf{N} & \textbf{Dementia events (all-cause)} & \textbf{Age (mean)} & \textbf{Male (\%)}\\
+\midrule
+CaPS & 2512 & 1034 & 52 & 100\\
+CPRD & X & X & X & X\\
+EPIC & 1001 & 5 & 52 & 45\\
+Whitehall II & 8022 & 181 & 50 & 69\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+~
+
+~
+
+\hypertarget{caerphilly-prospective-study}{%
+\subsubsection{Caerphilly Prospective Study}\label{caerphilly-prospective-study}}
+
+The Caerphilly Prospective Study is a longitudinal study of men in the
+
+Cholesterol measures (total, LDL-c, HDL-c and triglycerides) were measured at baseline in 1979-1983.
+As the study population has aged, additional outomes. Of particular relevance to this analysis, from Phase III (1989-1993) onwards, a battery of congnitive tests were introduced.
+
+~
 
 \hypertarget{cprd}{%
 \subsubsection{CPRD}\label{cprd}}
 
 The Clinical Practice Research Datalink (CPRD) is a large population-based, electronic health record (EHR) database.\textsuperscript{\protect\hyperlink{ref-herrett2015}{257}} containing the primary care records for more than 10 million primary care patients in England, and is broadly representative of the UK population in terms of age, sex and ethnicity.\textsuperscript{\protect\hyperlink{ref-herrett2015}{257},\protect\hyperlink{ref-mathur2014}{260}}
 
-The CPRD is introduced more fully in . Briefly, a similar approach to the cohort definition as used in Chapter
+The CPRD is introduced more fully in Chapter @ref(). Briefly, a similar approach to the cohort definition as used in Chapter
 
 Participants were included from the first date of lipid measurement, so no issues with immortal time bias as discussed in Chapter \ldots{}
 
@@ -3146,58 +3259,76 @@ Additionally, ther number of participants is larger in this analysis as there is
 
 the
 
-\hypertarget{epic-norfolk-1}{%
-\subsubsection{EPIC Norfolk}\label{epic-norfolk-1}}
+~
 
-\hypertarget{generation-scotland}{%
-\subsubsection{Generation Scotland}\label{generation-scotland}}
+\hypertarget{epic-norfolk}{%
+\subsubsection{Epic Norfolk}\label{epic-norfolk}}
 
-\hypertarget{nicola}{%
-\subsubsection{NICOLA}\label{nicola}}
+The European Prospective Investigation of Cancer - Norfolk is a\textsuperscript{\protect\hyperlink{ref-riboli1997}{290},\protect\hyperlink{ref-riboli2002}{291}}
 
-\hypertarget{track-hd}{%
-\subsubsection{TRACK HD}\label{track-hd}}
+Has only 8 events
+
+~
 
 \hypertarget{whitehall-ii}{%
 \subsubsection{Whitehall II}\label{whitehall-ii}}
 
 \emph{The Whitehall II study is a prospective cohort study of 10 308 participants (70\% men), aged 35--55 years and recruited between 1985 and 1989 from 20 London-based Civil service departments (\url{https://www.ucl.ac.uk/whitehallII}). Clinical examinations have been performed in 1991-1994, 1997-1999, 2002-2004, 2007-2009, 2012-2013, 2015-2016 with the data from circulating metabolomic traits and cognitive testing for the present study obtained from the 1997-1999 clinic phase.} - taken from EN ID: 2140
 
-included in previous IPD meta-analysis (Endnote ID: 2140)
+This data source was analysed in one of the included studies identified by the systematic review presented in Chapter \ref{sys-rev-heading}.\textsuperscript{\protect\hyperlink{ref-tynkkynen2018}{220}}
 
-Different approaches to combining subgroups.\textsuperscript{\protect\hyperlink{ref-fisher2017}{288}}
+This gave
 
 ~
 
 \hypertarget{cohorts-provided-data-but-ultimately-excluded}{%
 \subsection{Cohorts provided data but ultimately excluded}\label{cohorts-provided-data-but-ultimately-excluded}}
 
+As highlighted in Figure \ref{fig:cohortFlowchart}, several cohorts from the DPUK responding positively but on inspection of data provided these cohorts were excluded.
+
 Several cohorts were excluded on the basis of a lack of exposure variables, including Cam-CAN (had cardiovascular category, but only contained blood pressure).
 
-\hypertarget{brace}{%
-\subsubsection{BRACE}\label{brace}}
+The reasons for exclusion of these cohorts for which data were provided is illustrated in Table \ref{tab:dataExcluded-table}.
+
+\textbf{BRACE}
 
 Likley had dementia at baseline
 
-\hypertarget{memento}{%
-\subsubsection{Memento}\label{memento}}
+\textbf{Memento}
 
 Excluded as criteria for entry was outpatients from memory clinic (unlikely to be dementia free at baseline)
 
-\hypertarget{generation-scotland-1}{%
-\subsubsection{Generation Scotland}\label{generation-scotland-1}}
+\textbf{Generation Scotland}
 
 Cross-sectional data only
 
-\hypertarget{nicola-1}{%
-\subsubsection{NICOLA}\label{nicola-1}}
+\textbf{NICOLA}
 
 NICOLA study - only had cross-sectional data
 
-\hypertarget{elsa}{%
-\subsubsection{ELSA}\label{elsa}}
+\textbf{ELSA}
 
 Data provided but only had ever high cholesterol as a binary variable. Not compatible with
+
+~
+
+
+
+
+
+\begin{table}[H]
+
+\caption[dataExcluded]{\label{tab:dataExcluded-table}dataExcluded}
+\centering
+\begin{tabular}[t]{ll}
+\toprule
+\textbf{Cohort} & \textbf{Reason}\\
+\midrule
+NICOLA & Cross-sectional - only one wave of data available\\
+TRACK HD & Participants carried HTT gene (i.e. premanifest Huntington's Disease). Cohort owners indicated that this is likely to overshadw\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 ~
 
@@ -3215,16 +3346,14 @@ Taiwan etc,
 \hypertarget{cohorts-approach-but-received-no-answer}{%
 \subsection{Cohorts approach but received no answer}\label{cohorts-approach-but-received-no-answer}}
 
-Maybe discuss here t
-
-This was particularly frustrating in the case of cohorts which had a dedicated data access panel, for example, the Three City Study. Despite multiple attempts to contact the team, there was no response received.
+A particularly frustrating in the case of cohorts which had a dedicated data access panel, for example, the Three City Study. Despite multiple attempts to contact the team, there was no response received.
 
 ~
 
-\hypertarget{data-cleaning}{%
-\subsection{Data cleaning}\label{data-cleaning}}
+\hypertarget{data-cleaning-and-harmonisation}{%
+\subsection{Data cleaning and harmonisation}\label{data-cleaning-and-harmonisation}}
 
-Across all cohorts, data cleaning was performed in a similary manner, using commonly named variables, so that a single model could be applied using functional programming.
+Across all cohorts, data cleaning was performed in a similar manner, using commonly named variables, so that a single model could be applied using functional programming.
 
 The one exception to this is the CPRD data, which was held in a different system to the rest.
 
@@ -3236,56 +3365,10 @@ For heterogeneity across the cohorts, the total time-at-risk was investigated.
 
 ~
 
-\hypertarget{missing-data-2}{%
-\subsection{Missing data}\label{missing-data-2}}
-
-Talk about missing data was handled
-
-~
-
-\hypertarget{risk-of-bias-assessment}{%
-\subsection{Risk of bias assessment}\label{risk-of-bias-assessment}}
-
-Risk of bias assessment was performed for each of the included cohorts using the relevant tool described in Section \ref{risk-of-bias}.
-
-There is some concerns about performing risk of bias assessments on your own analysis, and so
-
-~
-
-\hypertarget{analysis}{%
-\subsection{Analysis}\label{analysis}}
-
-All analysis were standardised by changes in 1-SD of the exposure variable.
-
-This was done to aid interpretability of the outcome.
-
-Similary,
-
-Clustering within studies was accounted for, given the evidence that \ldots{}\textsuperscript{\protect\hyperlink{ref-abo-zaid2013}{289}}
-
-Stratified by age-at-entry and sex, and ethnicity where possible.
-
-Hazard ratios were utilised to
-
-In order to investigate the interaction of sex with
-
-A two-stage model was used out of necessity, with the one-stage model being recluded by the different datasets being in protected data silos.
-
-A discrete proportional hazards model was employed to account for the interval censoring introduced by design o fthe longitudinal cohort studies.\textsuperscript{\protect\hyperlink{ref-wang2017}{290}}
-
-~
-
-\hypertarget{results-2}{%
-\section{Results}\label{results-2}}
-
-Data
-
-~
-
 \hypertarget{discussion-3}{%
 \section{Discussion}\label{discussion-3}}
 
-Useful citation for discussion\textsuperscript{\protect\hyperlink{ref-levis2021}{291}}
+Useful citation for discussion\textsuperscript{\protect\hyperlink{ref-levis2021}{292}}
 
 \hypertarget{limitations-1}{%
 \subsection{Limitations}\label{limitations-1}}
@@ -3295,7 +3378,7 @@ Useful citation for discussion\textsuperscript{\protect\hyperlink{ref-levis2021}
 
 This review had a low response rate to requests for data access.
 
-While this is not unexpected, given that a review of IPD studies published between 1987 and 2015 found that fewer than half managed to obtained data from greater than 80\% of studies, and that in many cases, the exact percentage of studies for which data was obtained was not accurately reported.
+While this is not unexpected, given that a review of IPD studies published between 1987 and 2015 found that fewer than half managed to obtained data from greater than 80\% of studies, and that in many cases, the exact percentage of studies for which data were obtained was not accurately reported.
 test
 There are likely several reasons for this.
 
@@ -3320,31 +3403,64 @@ Unfortunately,
 
 The low response rate and the
 
-Whether or not to press ahead with an IPD analysis in the absence of all (or even most) data is a personal decision, and some have highlighted where they decided not to pursue an IPD study.\textsuperscript{\protect\hyperlink{ref-jaspers2014}{292}}
+Whether or not to press ahead with an IPD analysis in the absence of all (or even most) data is a personal decision, and some have highlighted where they decided not to pursue an IPD study.\textsuperscript{\protect\hyperlink{ref-jaspers2014}{293}}
+
+For the purposes of this thesis, conducting the IPD was useful as it afforded me the opportunity to experience the methodology.
+
+On a personal level, given the
+
+In addition, it allowed me to analysed two addition previously unanalysed cohort studies which were then utilised in the triangulation study detailed in Chapter \ref{tri-heading}.
 
 ~
 
-\hypertarget{reflections-on-data-access}{%
-\subsection{Reflections on data access}\label{reflections-on-data-access}}
+\hypertarget{resources}{%
+\subsection{Resources}\label{resources}}
+
+While it was disappointing that such a small proportion of the available data were obtained for analysis, in terms of project completion, it is probably a good thing.
+
+Given the resource intensity of data cleaning and harmonisation,
+
+~
+
+\hypertarget{data-access-1}{%
+\subsection{Data access}\label{data-access-1}}
+
+Couple of sections
+
+\begin{itemize}
+\tightlist
+\item
+  Problems with getting data from studies
+\item
+\end{itemize}
+
+Sharing data has several legal, ethical and logistical challenges, and can often
+
+This is in theory what the DPUK was built to address. However, despite claims to a streamlined process, the response rate amond cohorts participating
 
 Describe your experience of trying to access the DPUK - while a great resources, frustrating at times. The portal would benefit from a centralised management system and
 
-Even with the guaranteed data access afforded by the DPUK, accessing sufficient data was
+Even with the guaranteed data access afforded by the DPUK, accessing sufficient data were
 
-Of teh XXX cohorts requested from the DPUK, a response was recieved from only XXX, while of those responding XXX
-
-Talk about all the normal stuff of data not being available as.
+Of the XXX cohorts requested from the DPUK, allowing for a year lag since application, a response was received from only XXX (XXX\%), while of those responding a minority
 
 ~
 
 \hypertarget{study-within-a-review}{%
 \subsection{Study within a review}\label{study-within-a-review}}
 
-In future, it could have been worth running a ``study within a review'', such as that used to examine the best method\textsuperscript{\protect\hyperlink{ref-godolphin2019a}{293}} to identify and access study data.
+In future, it could have been worth running a ``study within a review'', such as that used to examine the best method\textsuperscript{\protect\hyperlink{ref-godolphin2019a}{294}} to identify and access study data.
 
 Options could include
 
 Previous SWARs have been registered as protocols, but have not yet reported!
+
+~
+
+\hypertarget{reflections-on-the-process}{%
+\subsection{Reflections on the process}\label{reflections-on-the-process}}
+
+May have been overly ambitious
 
 \newpage
 
@@ -3368,8 +3484,8 @@ Previous SWARs have been registered as protocols, but have not yet reported!
 
 This chapter will attempt to triangulate the evidence identified by the systematic review in Chapter \ref(sys-rev-heading)
 
-\hypertarget{data-sources-1}{%
-\subsection{Data sources}\label{data-sources-1}}
+\hypertarget{data-sources}{%
+\subsection{Data sources}\label{data-sources}}
 
 This chapter builds on the comprehensive systematic review presented in CHapter @re(sys-rev-heading), and incorporates the results of the analyses presented in Chapters \ref{cprd-heading} \& \ref{ipd-heading}.
 
@@ -3428,7 +3544,7 @@ Fixing directions of effect - get everything pointing the same way
 \hypertarget{analyses}{%
 \subsection{Analyses}\label{analyses}}
 
-Bias-adjusted meta-analysis\textsuperscript{\protect\hyperlink{ref-higgins2008a}{294}}
+Bias-adjusted meta-analysis\textsuperscript{\protect\hyperlink{ref-higgins2008a}{295}}
 
 \hypertarget{results-3}{%
 \section{Results}\label{results-3}}
@@ -3523,7 +3639,7 @@ There are several addition topics I would like to cover:
 
 There are several strengths and limitations to the work presented in this thesis. One particularly strength is the lengths gone to find all available published and unpublished evidence around the question, and to integrate this evidence in a coherent framework, taking into account the limitations of ach source and how these limitations may be used to provide
 
-Need for large simple trials for common disease where small treatment effect can have large effect -\textsuperscript{\protect\hyperlink{ref-yusuf1984}{295}}
+Need for large simple trials for common disease where small treatment effect can have large effect -\textsuperscript{\protect\hyperlink{ref-yusuf1984}{296}}
 
 ~
 
@@ -4710,60 +4826,64 @@ Lasciate ogne speranza, voi ch'intrate. . .
 \CSLLeftMargin{285. }
 \CSLRightInline{Vandenbroucke, J. P. \emph{et al.} Strengthening the {Reporting} of {Observational Studies} in {Epidemiology} ({STROBE}): {Explanation} and {Elaboration}. \emph{PLOS Medicine} \textbf{4}, e297 (2007).}
 
-\leavevmode\hypertarget{ref-riboli1997}{}%
-\CSLLeftMargin{286. }
-\CSLRightInline{Riboli, E. The {EPIC Project}: Rationale and study design. {European Prospective Investigation} into {Cancer} and {Nutrition}. \emph{International Journal of Epidemiology} \textbf{26}, 6S--14 (1997).}
-
-\leavevmode\hypertarget{ref-riboli2002}{}%
-\CSLLeftMargin{287. }
-\CSLRightInline{Riboli, E. \emph{et al.} European {Prospective Investigation} into {Cancer} and {Nutrition} ({EPIC}): Study populations and data collection. \emph{Public Health Nutrition} \textbf{5}, 1113--1124 (2002).}
-
-\leavevmode\hypertarget{ref-fisher2017}{}%
-\CSLLeftMargin{288. }
-\CSLRightInline{Fisher, D. J., Carpenter, J. R., Morris, T. P., Freeman, S. C. \& Tierney, J. F. Meta-analytical methods to identify who benefits most from treatments: Daft, deluded, or deft approach? \emph{BMJ} \textbf{356}, j573 (2017).}
-
 \leavevmode\hypertarget{ref-abo-zaid2013}{}%
-\CSLLeftMargin{289. }
+\CSLLeftMargin{286. }
 \CSLRightInline{Abo-Zaid, G. \emph{et al.} Individual participant data meta-analyses should not ignore clustering. \emph{Journal of Clinical Epidemiology} \textbf{66}, 865--873.e4 (2013).}
 
 \leavevmode\hypertarget{ref-wang2017}{}%
-\CSLLeftMargin{290. }
+\CSLLeftMargin{287. }
 \CSLRightInline{Wang, L. \emph{et al.} Assessing robustness of hazard ratio estimates to outcome misclassification in longitudinal panel studies with application to {Alzheimer}'s disease. \emph{PLOS ONE} \textbf{12}, e0190107 (2017).}
 
-\leavevmode\hypertarget{ref-levis2021}{}%
+\leavevmode\hypertarget{ref-survival-book}{}%
+\CSLLeftMargin{288. }
+\CSLRightInline{Terry M. Therneau \& Patricia M. Grambsch. \emph{Modeling survival data: {Extending} the {Cox} model}. ({Springer}, 2000).}
+
+\leavevmode\hypertarget{ref-viechtbauer2010a}{}%
+\CSLLeftMargin{289. }
+\CSLRightInline{Viechtbauer, W. Conducting meta-analyses in {R} with the metafor package. \emph{Journal of Statistical Software} \textbf{36}, 1--48 (2010).}
+
+\leavevmode\hypertarget{ref-riboli1997}{}%
+\CSLLeftMargin{290. }
+\CSLRightInline{Riboli, E. The {EPIC Project}: Rationale and study design. {European Prospective Investigation} into {Cancer} and {Nutrition}. \emph{International Journal of Epidemiology} \textbf{26}, 6S--14 (1997).}
+
+\leavevmode\hypertarget{ref-riboli2002}{}%
 \CSLLeftMargin{291. }
+\CSLRightInline{Riboli, E. \emph{et al.} European {Prospective Investigation} into {Cancer} and {Nutrition} ({EPIC}): Study populations and data collection. \emph{Public Health Nutrition} \textbf{5}, 1113--1124 (2002).}
+
+\leavevmode\hypertarget{ref-levis2021}{}%
+\CSLLeftMargin{292. }
 \CSLRightInline{Levis, B., Hattle, M. \& Riley, R. D. {PRIME}-{IPD SERIES Part} 2. {Retrieving}, checking, and harmonizing data are underappreciated challenges in individual participant data meta-analyses. \emph{Journal of Clinical Epidemiology} \textbf{136}, 221--223 (2021).}
 
 \leavevmode\hypertarget{ref-jaspers2014}{}%
-\CSLLeftMargin{292. }
+\CSLLeftMargin{293. }
 \CSLRightInline{Jaspers, G. J. \& Degraeuwe, P. L. A failed attempt to conduct an individual patient data meta-analysis. \emph{Systematic Reviews} \textbf{3}, 97 (2014).}
 
 \leavevmode\hypertarget{ref-godolphin2019a}{}%
-\CSLLeftMargin{293. }
+\CSLLeftMargin{294. }
 \CSLRightInline{Godolphin, P. J., Bath, P. M. \& Montgomery, A. A. Short email with attachment versus long email without attachment when contacting authors to request unpublished data for a systematic review: A nested randomised trial. \emph{BMJ Open} \textbf{9}, e025273 (2019).}
 
 \leavevmode\hypertarget{ref-higgins2008a}{}%
-\CSLLeftMargin{294. }
+\CSLLeftMargin{295. }
 \CSLRightInline{Higgins, J. P. T., White, I. R. \& Anzures-Cabrera, J. Meta-analysis of skewed data: {Combining} results reported on log-transformed or raw scales. \emph{Statistics in Medicine} \textbf{27}, 6072--6092 (2008).}
 
 \leavevmode\hypertarget{ref-yusuf1984}{}%
-\CSLLeftMargin{295. }
+\CSLLeftMargin{296. }
 \CSLRightInline{Yusuf, S., Collins, R. \& Peto, R. Why do we need some large, simple randomized trials? \emph{Statistics in Medicine} \textbf{3}, 409--420 (1984).}
 
 \leavevmode\hypertarget{ref-wilson2014}{}%
-\CSLLeftMargin{296. }
+\CSLLeftMargin{297. }
 \CSLRightInline{Wilson, G. \emph{et al.} Best {Practices} for {Scientific Computing}. \emph{PLOS Biology} \textbf{12}, e1001745 (2014).}
 
 \leavevmode\hypertarget{ref-wilson2017}{}%
-\CSLLeftMargin{297. }
+\CSLLeftMargin{298. }
 \CSLRightInline{Wilson, G. \emph{et al.} Good enough practices in scientific computing. \emph{PLOS Computational Biology} \textbf{13}, e1005510 (2017).}
 
 \leavevmode\hypertarget{ref-simillis2020}{}%
-\CSLLeftMargin{298. }
+\CSLLeftMargin{299. }
 \CSLRightInline{Simillis, C. \emph{et al.} Postoperative chemotherapy improves survival in patients with resected high-risk stage {II} colorectal cancer: Results of a systematic review and meta-analysis. \emph{Colorectal Disease} \textbf{Published online 30th January}, (2020).}
 
 \leavevmode\hypertarget{ref-tanneru2020}{}%
-\CSLLeftMargin{299. }
+\CSLLeftMargin{300. }
 \CSLRightInline{Tanneru, K. \emph{et al.} Meta-analysis and systematic review of intermediate-term follow-up of prostatic urethral lift for benign prostatic hyperplasia. \emph{International Urology and Nephrology} (2020).}
 
 \end{CSLReferences}
@@ -5135,8 +5255,8 @@ Short section detailing the things I tried to do but which did not work.
 \hypertarget{software-used-to-create-this-thesis}{%
 \section{Software used to create this thesis}\label{software-used-to-create-this-thesis}}
 
-This thesis was written in RMarkdown. Several R packages were used as part of this project.\textsuperscript{\protect\hyperlink{ref-R-base}{\textbf{R-base?}},\protect\hyperlink{ref-R-bookdown}{\textbf{R-bookdown?}},\protect\hyperlink{ref-R-dagitty}{\textbf{R-dagitty?}},\protect\hyperlink{ref-R-data.table}{\textbf{R-data.table?}},\protect\hyperlink{ref-R-dplyr}{\textbf{R-dplyr?}},\protect\hyperlink{ref-R-flextable}{\textbf{R-flextable?}},\protect\hyperlink{ref-R-ggdag}{\textbf{R-ggdag?}},\protect\hyperlink{ref-R-ggplot2}{\textbf{R-ggplot2?}},\protect\hyperlink{ref-R-kableExtra}{\textbf{R-kableExtra?}},\protect\hyperlink{ref-R-knitr}{\textbf{R-knitr?}},\protect\hyperlink{ref-R-koRpus}{\textbf{R-koRpus?}},\protect\hyperlink{ref-R-koRpus.lang.en}{\textbf{R-koRpus.lang.en?}},\protect\hyperlink{ref-R-magrittr}{\textbf{R-magrittr?}},\protect\hyperlink{ref-R-Matrix}{\textbf{R-Matrix?}},\protect\hyperlink{ref-R-medrxivr}{\textbf{R-medrxivr?}},\protect\hyperlink{ref-R-metafor}{\textbf{R-metafor?}},\protect\hyperlink{ref-R-networkD3}{\textbf{R-networkD3?}},\protect\hyperlink{ref-R-patchwork}{\textbf{R-patchwork?}},\protect\hyperlink{ref-R-readxl}{\textbf{R-readxl?}},\protect\hyperlink{ref-R-robvis}{\textbf{R-robvis?}},\protect\hyperlink{ref-R-sf}{\textbf{R-sf?}},\protect\hyperlink{ref-R-sylly}{\textbf{R-sylly?}},\protect\hyperlink{ref-bookdown2016}{\textbf{bookdown2016?}},\protect\hyperlink{ref-dagitty2016}{\textbf{dagitty2016?}},\protect\hyperlink{ref-ggplot22016}{\textbf{ggplot22016?}},\protect\hyperlink{ref-knitr2015}{\textbf{knitr2015?}},\protect\hyperlink{ref-knitr2014}{\textbf{knitr2014?}},\protect\hyperlink{ref-koRpus2018}{\textbf{koRpus2018?}},\protect\hyperlink{ref-koRpus.lang.en2019}{\textbf{koRpus.lang.en2019?}},\protect\hyperlink{ref-medrxivr2020}{\textbf{medrxivr2020?}},\protect\hyperlink{ref-metafor2010}{\textbf{metafor2010?}},\protect\hyperlink{ref-robvis2020}{\textbf{robvis2020?}},\protect\hyperlink{ref-sf2018}{\textbf{sf2018?}},\protect\hyperlink{ref-sylly2018}{\textbf{sylly2018?}}}
-All projects in these thesis attempt to conform to minimal best practices for research computing.\textsuperscript{\protect\hyperlink{ref-wilson2014}{296},\protect\hyperlink{ref-wilson2017}{297}}
+This thesis was written in RMarkdown. Several R packages were used as part of this project.\textsuperscript{\protect\hyperlink{ref-R-base}{\textbf{R-base?}},\protect\hyperlink{ref-R-bookdown}{\textbf{R-bookdown?}},\protect\hyperlink{ref-R-dagitty}{\textbf{R-dagitty?}},\protect\hyperlink{ref-R-data.table}{\textbf{R-data.table?}},\protect\hyperlink{ref-R-DiagrammeR}{\textbf{R-DiagrammeR?}},\protect\hyperlink{ref-R-dplyr}{\textbf{R-dplyr?}},\protect\hyperlink{ref-R-flextable}{\textbf{R-flextable?}},\protect\hyperlink{ref-R-ggdag}{\textbf{R-ggdag?}},\protect\hyperlink{ref-R-ggplot2}{\textbf{R-ggplot2?}},\protect\hyperlink{ref-R-kableExtra}{\textbf{R-kableExtra?}},\protect\hyperlink{ref-R-knitr}{\textbf{R-knitr?}},\protect\hyperlink{ref-R-koRpus}{\textbf{R-koRpus?}},\protect\hyperlink{ref-R-koRpus.lang.en}{\textbf{R-koRpus.lang.en?}},\protect\hyperlink{ref-R-magrittr}{\textbf{R-magrittr?}},\protect\hyperlink{ref-R-Matrix}{\textbf{R-Matrix?}},\protect\hyperlink{ref-R-medrxivr}{\textbf{R-medrxivr?}},\protect\hyperlink{ref-R-metafor}{\textbf{R-metafor?}},\protect\hyperlink{ref-R-networkD3}{\textbf{R-networkD3?}},\protect\hyperlink{ref-R-patchwork}{\textbf{R-patchwork?}},\protect\hyperlink{ref-R-readxl}{\textbf{R-readxl?}},\protect\hyperlink{ref-R-robvis}{\textbf{R-robvis?}},\protect\hyperlink{ref-R-sf}{\textbf{R-sf?}},\protect\hyperlink{ref-R-sylly}{\textbf{R-sylly?}},\protect\hyperlink{ref-bookdown2016}{\textbf{bookdown2016?}},\protect\hyperlink{ref-dagitty2016}{\textbf{dagitty2016?}},\protect\hyperlink{ref-ggplot22016}{\textbf{ggplot22016?}},\protect\hyperlink{ref-knitr2015}{\textbf{knitr2015?}},\protect\hyperlink{ref-knitr2014}{\textbf{knitr2014?}},\protect\hyperlink{ref-koRpus2018}{\textbf{koRpus2018?}},\protect\hyperlink{ref-koRpus.lang.en2019}{\textbf{koRpus.lang.en2019?}},\protect\hyperlink{ref-medrxivr2020}{\textbf{medrxivr2020?}},\protect\hyperlink{ref-metafor2010}{\textbf{metafor2010?}},\protect\hyperlink{ref-robvis2020}{\textbf{robvis2020?}},\protect\hyperlink{ref-sf2018}{\textbf{sf2018?}},\protect\hyperlink{ref-sylly2018}{\textbf{sylly2018?}}}
+All projects in these thesis attempt to conform to minimal best practices for research computing.\textsuperscript{\protect\hyperlink{ref-wilson2014}{297},\protect\hyperlink{ref-wilson2017}{298}}
 
 \hypertarget{appendix-robvis}{%
 \section{\texorpdfstring{Producing risk-of-bias visualisations with \texttt{robvis}}{Producing risk-of-bias visualisations with robvis}}\label{appendix-robvis}}
@@ -5155,7 +5275,7 @@ The tool is open-source and available to use free of charge. Users can download 
 \hypertarget{development-1}{%
 \subsection{Development}\label{development-1}}
 
-Development of \texttt{robvis} began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.\textsuperscript{\protect\hyperlink{ref-simillis2020}{298},\protect\hyperlink{ref-tanneru2020}{299},\protect\hyperlink{ref-gibb2019consistent}{\textbf{gibb2019consistent?}},\protect\hyperlink{ref-habadi2019prevalence}{\textbf{habadi2019prevalence?}},\protect\hyperlink{ref-veloso2020effectiveness}{\textbf{veloso2020effectiveness?}}}
+Development of \texttt{robvis} began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.\textsuperscript{\protect\hyperlink{ref-simillis2020}{299},\protect\hyperlink{ref-tanneru2020}{300},\protect\hyperlink{ref-gibb2019consistent}{\textbf{gibb2019consistent?}},\protect\hyperlink{ref-habadi2019prevalence}{\textbf{habadi2019prevalence?}},\protect\hyperlink{ref-veloso2020effectiveness}{\textbf{veloso2020effectiveness?}}}
 
 \hypertarget{installation-1}{%
 \subsection{Installation}\label{installation-1}}

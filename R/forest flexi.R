@@ -145,9 +145,9 @@ tsize <- rob_psize * 0.3
 
 ### fit random-effects model
 if (!hasArg(sei)) {
-  res <- rma(yi, vi, data=dat, slab = paste0(author, ",", year))
+  res <- rma(yi, vi, data=dat, slab = paste0(author, ", ", year))
 } else {
-  res <- rma(yi, sei = sei, data=dat, slab = paste0(author, ",", year))
+  res <- rma(yi, sei = sei, data=dat, slab = paste0(author, ", ", year))
 }
 
 ### indent study names
