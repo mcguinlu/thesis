@@ -17,6 +17,20 @@ Hold
 
 <!-- TODO Add this to the Chapter summary in the introduction and  -->
 
+<!----------------------------------------------------------------------------->
+&nbsp;
+
+<!-- ### Triangulation across evidence sources -->
+
+<!-- TODO Have a look at this - potentially move to triangulation chapter -->
+
+<!-- One key question for which multiple distinct sources of evidence were available were those looking at Laz -->
+
+<!-- Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated. [@guyatt2011] -->
+
+<!-- Without our framework and as part of the risk-of-bias assessments reported in \@ref(risk-of-bias-subheading), I attempted to records the direction of the bias, so that it could feed into the triangulation. -->
+
+
 # Triangulation {#tri-heading}
 
 ## Lay Summary
@@ -28,6 +42,22 @@ Hold
 
 This chapter will attempt to triangulate the evidence identified by the systematic review in Chapter \ref(sys-rev-heading)
 
+### Data sources
+
+This chapter builds on the comprehensive systematic review presented in CHapter \@re(sys-rev-heading), and incorporates the results of the analyses presented in Chapters \@ref(cprd-heading) & \@ref(ipd-heading).
+
+<!----------------------------------------------------------------------------->
+
+### Background to the causal question
+
+Following best practice guidance, three 
+
+Table with columns describing exposure, outcome, timepoint, other aspects (cumulative), and
+
+This was also guideded by the forthcoming ROBINS-E tool, which has
+
+<!----------------------------------------------------------------------------->
+
 ### Definition of the causal question
 
 <!-- TODO See ROBINS-E for this, as to how to think about exposures -->
@@ -38,33 +68,60 @@ Need to check how much I talk about this in the introduction
 
 Describe in detail
 
-### risk of bias tool
+### Risk of bias tool
 
-In addition, the tool also aim to capture the potential direction of bias for each result. Possible responses included: "Favours experimental", "Favours comparator", "Towards null", "Away from null", and "Unpredictable".
+In addition, the tool also aim to capture the potential direction of bias for each result. Possible responses included: "Favours experimental", "Favours comparator", "Towards null", "Away from null", and "Unpredictable". Highlight that this is slightly different for the confounding domain in non-randomised studies.
 
-these levels only apply to existing tools, not the MR tool. However, a similar approach was employed.
-
+These levels only apply to existing tools, not the MR tool. However, a similar approach was employed.
 
 <!----------------------------------------------------------------------------->
- 
-## Graphical representation
+&nbsp;
+
+### Graphical representation
 
 For the graphs, the direction of bias is important.
 
-Where the direction of bias was unclear/could not be determined from the 
+Where the direction of bias was unclear/could not be determined from the report, this is indicated
 
-A different approach was taken for the confounding versus other domains, as confounding will either pull to the left or right, regardless of where the effect estimate is, while other domains will pull towards/away from the null (e.g. non-differential misclassification). In this case, the program accounted for the position of the effect estimate when assigning a directional arrow to the
+In order to aid with the triangulation exercise, a new method of presentation of these results was developed to enable detailed comparison across different studies contributing to the causal question.
+The level of bias in each study is reported using coloured blocks, while the predicted direction of bias in that domain, categorised as towards or away from the null, is indicated using an arrow
+
+Of note, a different approach was required for the confounding domains in the assesment tools used for non-randomised studies. Confounding in a study will either pull to the left or right, regardless of where the effect estimate is, while other domains will pull towards/away from the null (e.g. non-differential misclassification). In this case, the program accounted for the position of the effect estimate when assigning a directional arrow in relation to the positon of the effect estimate. 
+For example, see Figure \@ref(), which shows an example study under the same confounding structure (protective), but with protective and harmful effect estimates. In this case, when the estimated effect is protective (Study 1), the arrow for the confounding domain indicates that the bias is pulling it away from the null. If the estimated effect is harmful, the arrow indicates that the results is being biased towards the null.
 
 These graphs were built using the risk of bias tool described in Appendix \ref()
+
+<!-- TODO Does immortal time bias not also have a consistent effect -->
+
+<!----------------------------------------------------------------------------->
+
+### Standardisation across study designs
+
+Standardising across different measures of ex
+
+Want best information across lipids, and so standardised across differnt measures
+
+Fixing directions of effect - get everything pointing the same way
+
+<!----------------------------------------------------------------------------->
+### Analyses
+
+Bias-adjusted meta-analysis [@higgins2008a]
 
 <!----------------------------------------------------------------------------->
 
 ## Results
 
+Summary of risk-of-bias/triangulation results
+
+Percentage of domains for which a direction of bias could be assigned?
+
 Compare bias-adjusted and
 
 See what happens if using additive (l=1,m=2,s=3,c=4) vs multiplicative/log scale (l=1,m=2,s=4,c=8). Present adjusted results and meta-analysis of adjusted results.
 
+Applicability/indirectness as an issue 
+Compare with GRADE and cite George's example of 40% of effect predicted by MR seen when using statins for 5 years
 
 <!----------------------------------------------------------------------------->
 
@@ -72,7 +129,17 @@ See what happens if using additive (l=1,m=2,s=3,c=4) vs multiplicative/log scale
 
 I hope this presents step forward in how researchers think about and visualise triangulation at the result level, rather than simply saying that certain 
 
-Compare and contrast with the nice example presented in the triangulation paper - realities of non-exemplars is that it is very hard to get this right.
+### Challenges of real-life data
+
+Compare and contrast with the nice example presented in the triangulation paper - realities of non-exemplars is that it is very hard to get this right. ALso highlight the issue with assigning a direct of bias in many studies
+
+### Need for new methods 
+
+Can I suggest any empirical studies that need to be performed? Average strength of immortal time bias/etc?
+
+
+
+
 
 
 

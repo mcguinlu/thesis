@@ -16,6 +16,7 @@ grDevices::windowsFonts("Fira Sans" = grDevices::windowsFont("Fira Sans"))
 
 # Load forester function
 source(here::here("R/forester.R"))
+source(here::here("R/forest flexi.R"))
 
 try(dev.off())
 
@@ -111,7 +112,7 @@ word_check <- function(fp, words = 100){
 
 
 # Create nice estimate with consistent handling across thesis
-estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-"){
+estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-", exp = F){
   
   if (!hasArg(estimate)) {
     stop("Estimate missing")
@@ -123,6 +124,12 @@ estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-"){
   
   if (!hasArg(uci)) {
     stop("UCI missing")
+  }
+  
+  if (exp == TRUE) {
+    estimate <- exp(estimate)
+    lci <- exp(lci)
+    uci <- exp(uci)
   }
   
   if (type != "") {
@@ -574,27 +581,34 @@ get_confidence_from_p<- function(est, p) {
 
 }
 
-save_fp <- function(data) {
+save_fp <- function(dat, design = "obs",...) {
   
   # Don't perform meta-analysis if only one result
   
-  if (nrow(data)==1) {
+  if (nrow(dat)==1) {
     return()
   }
   
-  fp <- paste0("fp_", data$exposure_category[1],"_",data$exposure[1],"_", data$outcome[1],".png")
+  height <- max(nrow(dat)*70,500)
   
-  png(here::here("figures","sys-rev",fp), height = 300, width = 800)
+  dat_rob <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"), which = 3) %>%
+    janitor::clean_names() %>%
+    filter(result_id %in% dat$result_id)
+    
+    if (design == "obs") {
+      tool <- "ROBINS-I"
+      dat_rob <- select(dat_rob, -c(result,summary_of_biases, comments))
+    } else {
+      tool <- "ROB2"
+      dat_rob <- select(dat_rob, -c(d6,d7,result,summary_of_biases, comments))
+      
+    }  
+    
+  fp <- stringr::str_remove_all(paste0("fp_", design,"_",dat$exposure[1],"_", dat$outcome[1],".png")," ")
   
-  metafor::rma(data = data,
-               yi = point,
-               sei = SE,
-               slab = paste(study_id, author,year)) %>%
-    metafor::forest(transf = exp,
-                    refline = 1,
-                    xlab = "Hazard ratio",
-                    header = "Author(s) and Year",
-                    annotate = TRUE)
+  png(here::here("figures","sys-rev",fp), width = 1000, height = height, res=100)
+  
+  forest_strata_rob(dat,dat_rob,rob_tool = tool, sei=sei,...)
   
   dev.off()
 }
@@ -604,12 +618,18 @@ meta_grouped <- function(data) {
   
   # Don't perform meta-analysis if only one result
   
+  if (nrow(data)==1) {
+    return()
+  }
+  
   t <- metafor::rma(data = data,
-               yi = point,
-               sei = SE,
+               yi = yi,
+               sei = sei,
                slab = paste(study_id, author,year)) 
   
  
+  estimate(res$beta, res$ci.lb, res$ci.ub, exp = T)
+  
   details <- data.frame(stringsAsFactors = FALSE,
                         exposure = data$exposure[1],
                         outcome = data$outcome[1],
@@ -624,18 +644,25 @@ meta_grouped <- function(data) {
 
 }
 
+
+meta_estimate <- function(dat, ...){
+
+  t <- metafor::rma(data = dat,
+                    yi = yi,
+                    sei = sei) 
+  
+  return(estimate(t$beta, t$ci.lb, t$ci.ub, exp = T,...))
+}
+
+
 clean_effects <- function(data){
   
-  if (!is.na(data$se)) {
-    data <- data %>%
-      mutate(yi = point_estimate,
-             sei = se)
-  } else{
-    data <- data %>%
-      mutate(yi = log(point_estimate),
-             sei = (log(upper_ci) - log(lower_ci))/3.92)
-  }
-  
+  data <- data %>%
+      mutate(yi = case_when(measure == "beta" ~ point_estimate,
+                            T ~ log(point_estimate)),
+             sei = case_when(measure == "beta" ~ se,
+                             T ~ (log(upper_ci) - log(lower_ci))/3.92))
+
   return(data)
 }
 
@@ -645,6 +672,7 @@ general_filters <- function(data){
   data %>%
   janitor::clean_names() %>%
   filter(exclude !="Y",
+         study_id != 99999,
          point_estimate != "Missing",
          !is.na(point_estimate)) %>%
   return()  
