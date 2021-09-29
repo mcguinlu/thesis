@@ -199,7 +199,7 @@ n_included <- toc_df %>%
   distinct(study_id,.keep_all = T) %>%
   n_distinct()
 
-n_included <- toc_df %>%
+n__nrse_included <- toc_df %>%
   filter(type == "NRSE") %>%
   group_by(study_id) %>%
   distinct()
