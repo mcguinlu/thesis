@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---

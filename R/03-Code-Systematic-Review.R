@@ -77,7 +77,8 @@ gwet_table <- data.frame(
     "Strong",
     "Almost perfect"
   )
-)
+)  %T>%
+write.csv("data/table_words/gwet.csv")
 
 if(doc_type == "docx") {
   knitr::kable(gwet_table, caption = "(ref:gwet-caption)")
@@ -109,7 +110,8 @@ discrepancy_Inter <- agreeInter_table$Exclude[2]
 
 agreeInter_coeff_table <- agreeInter_table[1:2,2:4]
 rownames(agreeInter_coeff_table) <- agreeInter_coeff_table[,1]
-agreeInter_coeff_table <- agreeInter_coeff_table[-1]
+agreeInter_coeff_table <- agreeInter_coeff_table[-1] %T>%
+  write.csv("data/table_words/agreeInter.csv")
 
 agreeInter_coeff <- unlist(c(comma(irrCAC::gwet.ac1.table(agreeInter_coeff_table)[2]),
                              comma(irrCAC::kappa2.table(agreeInter_coeff_table)[2])))
@@ -125,7 +127,8 @@ discrepancy_Intra <- agreeIntra_table$Exclude[2]
 
 agreeIntra_coeff_table <- agreeIntra_table[1:2,2:4]
 rownames(agreeIntra_coeff_table) <- agreeIntra_coeff_table[,1]
-agreeIntra_coeff_table <- agreeIntra_coeff_table[-1]
+agreeIntra_coeff_table <- agreeIntra_coeff_table[-1] %T>%
+  write.csv("data/table_words/agreeIntra.csv")
 
 agreeIntra_coeff <- unlist(c(comma(irrCAC::gwet.ac1.table(agreeIntra_coeff_table)[2]),
                              comma(irrCAC::kappa2.table(agreeIntra_coeff_table)[2])))
@@ -193,7 +196,7 @@ toc_df <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which
          age_combo = case_when(age_combo=="74.900000000000006"~"74.9", T ~ age_combo))
 
 n_included <- toc_df %>%
- distinct(study_id,.keep_all = T) %>%
+  distinct(study_id,.keep_all = T) %>%
   n_distinct()
 
 toc_df2 <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which = 2) %>%
@@ -253,7 +256,8 @@ studyCharacteristics_table <- study_details %>%
   tidy_nums() %>%
   arrange(desc(Type),Study) %>%
   select(-Type) %>%
-  mutate(across(everything(),~stringr::str_replace(., "NA", "NR")))
+  mutate(across(everything(),~stringr::str_replace(., "NA", "NR"))) %T>%
+  write.csv("data/table_words/studyCharacteristics.csv")
 
 if(doc_type == "docx") {
   apply_flextable(studyCharacteristics_table, caption = "(ref:studyCharacteristics-caption)")
@@ -316,9 +320,8 @@ n_taiwan <- toc_df %>%
   mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_included)*100,2),"%")) %>%
   pull(label)
   
-
-n_taiwan <- toc_df %>%
-  filter(location == "Taiwan")
+# n_taiwan <- toc_df %>%
+#   filter(location == "Taiwan")
 
 world <- toc_df %>%
   count(location) %>%

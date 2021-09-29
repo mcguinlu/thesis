@@ -678,5 +678,54 @@ general_filters <- function(data){
   return()  
 }  
 
+# Count words in tables
+table_words <- function(){
+  
+  files <- list.files(here::here("data/table_words"))
+  
+  get_words_from_table <- function(fp){
+    
+    t<-readLines(here::here("data/table_words",fp))
+    sum(stringr::str_count(t,"\\w+"))
+    
+  }
+  return(sum(as.numeric(purrr::map_chr(files, get_words_from_table))))
+}
 
-
+# Count words in chapters
+get_words <- function(){
+  
+  files <- list.files(path = here::here(), pattern = "\\.Rmd$")
+  
+  files <- files[which(!(files %in% c("_main.Rmd","index.Rmd", "tmp.Rmd")))]
+  
+  words_v <- c()
+  
+  for (file in 1:length(files)) {
+    tmp <- wordcountaddin::word_count(here::here(files[file]))
+    words_v <- c(words_v, tmp)
+  }
+  
+  table_words <- table_words()
+  
+  words <- sum(words_v, table_words)
+  
+  date <- as.character(format(Sys.time(),"%Y%m%d"))
+  time <- as.character(format(Sys.time(),"%H%M"))
+  
+  tmpWords <- data.frame(words = words,
+                         date = date,
+                         time = time)
+  
+  masterWords <- read.csv(here::here("data","words","words.csv"),
+                          header = TRUE)
+  
+  masterWords <- rbind(masterWords,
+                       tmpWords) %>%
+    dplyr::group_by(date) %>%
+    slice(which.max(time)) %>%
+    dplyr::ungroup()
+  
+  return(masterWords)
+  
+}

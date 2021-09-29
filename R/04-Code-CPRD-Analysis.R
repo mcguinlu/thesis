@@ -48,7 +48,8 @@ p1 <- p1[order(p1$outcome), ]
 readExample_table <-
   read.csv(here::here("data", "cprd", "read_code_example.csv")) %>%
   dplyr::mutate("Read code" = Read.code) %>%
-  dplyr::select("Level", "Read code", "Term")
+  dplyr::select("Level", "Read code", "Term") %T>%
+  write.csv("data/table_words/readExample.csv")
 
 if (doc_type == "docx") {
   apply_flextable(readExample_table, caption = "(ref:readExample-caption)")
@@ -119,7 +120,8 @@ if (t[1] - sum(t[2:9]) != 0) {
 table1_disp[1,2:9] <- stringr::str_trim(comma(as.numeric(table1_disp[1,2:9])))
 
 # Create display table using kable
-cprdCharacteristics_table <- comma(table1_disp)
+cprdCharacteristics_table <- comma(table1_disp) %T>%
+  write.csv("data/table_words/cprdCharacteristics.csv")
 
 if (doc_type == "docx") {
   apply_flextable(cprdCharacteristics_table, caption = "(ref:cprdCharacteristics-caption)") %>%
@@ -178,7 +180,8 @@ if (doc_type == "docx") {
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- cprdSSA-table
 
-cprdSSA_table <- table1[19:21, -3]
+cprdSSA_table <- table1[19:21, -3] %T>%
+  write.csv("data/table_words/cprdSSA.csv")
 
 if (doc_type == "docx") {
   apply_flextable(cprdSSA_table, caption = "(ref:cprdSSA-caption)")
@@ -1224,7 +1227,8 @@ statinTypeTable_table <-
   mutate(Hydrophilic = paste0(Hydrophilic, "%)")) %>%
   mutate(Lipophilic = paste0(Lipophilic, "%)")) %>%
   rename("Total" = V6) %>%
-  rename("Prescription Year Group" = V1)
+  rename("Prescription Year Group" = V1) %T>%
+  write.csv("data/table_words/statinType.csv")
 
 if (doc_type == "docx") {
   apply_flextable(statinTypeTable_table, caption = "(ref:statinTypeTable-caption)")
@@ -1410,7 +1414,8 @@ diagnosisType_table <-
   tidyr::unite("Other dementia", 6:7, remove = TRUE, sep = " (") %>%
   mutate(across(c(2:6), ~ paste0(.x, "%)"))) %>%
   rename("Total" = V12) %>%
-  rename("Year of cohort entry" = V1)
+  rename("Year of cohort entry" = V1) %T>%
+  write.csv("data/table_words/diagnosisType.csv")
 
 if (doc_type == "docx") {
   apply_flextable(diagnosisType_table, caption = "(ref:diagnosisType-caption)")
@@ -1650,7 +1655,8 @@ main <- cbind(main,readLines(here::here("data/cprd/rate_table_othdem.txt"))[c(15
 main <- main %>%
   janitor::clean_names() %>%
   comma() %>%
-  add_row(v2 = "By drug class", .after = 1)
+  add_row(v2 = "By drug class", .after = 1) %T>%
+  write.csv("data/table_words/followUptable.csv")
 
 
 

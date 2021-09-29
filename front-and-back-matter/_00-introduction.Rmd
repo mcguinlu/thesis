@@ -9,71 +9,16 @@ library(ggplot2)
 
 options(scipen=999)
 
-get_words_short <- function(){
-
-files <- list.files(path = here::here(), pattern = "\\.Rmd$")
-
-files <- files[which(!(files %in% c("_main.Rmd","index.Rmd")))]
-
-words_v <- c()
-
-for (file in 1:length(files)) {
-  tmp <- wordcountaddin::word_count(here::here(files[file]))
-  words_v <- c(words_v, tmp)
-}
-
-words <- sum(words_v)
-
-return(words)
-
-}
-
-get_words <- function(){
-
-files <- list.files(path = here::here(), pattern = "\\.Rmd$")
-
-files <- files[which(!(files %in% c("_main.Rmd","index.Rmd", "tmp.Rmd")))]
-
-words_v <- c()
-
-for (file in 1:length(files)) {
-  tmp <- wordcountaddin::word_count(here::here(files[file]))
-  words_v <- c(words_v, tmp)
-}
-
-
-# TODO Work out what an appropriate number of words for tables is
-# Sum words and add number of words in tables
-words <- sum(words_v) + 250
-
-date <- as.character(format(Sys.time(),"%Y%m%d"))
-time <- as.character(format(Sys.time(),"%H%M"))
-
-tmpWords <- data.frame(words = words,
-                       date = date,
-                       time = time)
-
-masterWords <- read.csv(here::here("data","words","words.csv"),
-                        header = TRUE)
-
-masterWords <- rbind(masterWords,
-                     tmpWords) %>%
-  dplyr::group_by(date) %>%
-  slice(which.max(time)) %>%
-  dplyr::ungroup()
-
-return(masterWords)
-
-}
+source(here::here("R/helper.R"))
 
 words <- get_words()
+
+table_words <- table_words()
 
 write.csv(file = here::here("data","words","words.csv"),
           x = words,
           col.names = FALSE,
           row.names = FALSE)
-
-
 
 start_date <- as.Date("20201124", format="%Y%m%d")
 
@@ -97,6 +42,8 @@ words$date <- as.Date(words$date, format="%Y%m%d")
 ```
 
 Word count: `r words_today`
+
+Table words: `r table_words`
 
 Days: `r date_diff`
 

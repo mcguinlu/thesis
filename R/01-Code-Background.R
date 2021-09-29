@@ -3,7 +3,8 @@
 
 diagnosticCriteria_table <- read.csv("data/background/dementiaCriteria.csv") %>%
   mutate("Major neurocognitive event (previously dementia)" = Dementia) %>%
-  select(Criterion, "Major neurocognitive event (previously dementia)")
+  select(Criterion, "Major neurocognitive event (previously dementia)") %T>%
+  write.csv("data/table_words/diagnosticCriteria.csv")
 
 col_widths <- 32/ncol(diagnosticCriteria_table)
 
@@ -35,7 +36,8 @@ if(doc_type == "docx") {
 
 lipidLevels_table <- read.csv("data/background/lipidLevels.csv") %>%
   mutate("Measure (mg/dL)" = Measure) %>%
-  select("Fraction","Measure (mg/dL)","Classification")
+  select("Fraction","Measure (mg/dL)","Classification") %T>%
+  write.csv("data/table_words/lipidLevels.csv")
 
 if(doc_type == "docx"){
   knitr::kable(lipidLevels_table,caption = "(ref:lipidLevels-caption)")
@@ -60,7 +62,8 @@ if(doc_type == "docx"){
 
 lipidTreatments_table <- read.csv("data/background/lipidTreatments.csv") %>%
   mutate("Mechanism of action" = Mechanism) %>%
-  select(Treatment,Effect,"Mechanism of action",Examples)
+  select(Treatment,Effect,"Mechanism of action",Examples) %T>%
+  write.csv("data/table_words/lipidTreatments.csv")
 
 
 col_widths <- 32/ncol(lipidTreatments_table)
@@ -133,11 +136,14 @@ htmltools::html_print(DiagrammeR::add_mathjax(graph), viewer = NULL) %>%
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- thesisOverview-table
 
+# TODO Need to update this so that triangulation is it's own chapter
+
 thesisOverview_table <- read.csv("data/background/thesisOverview.csv") %>%
   mutate("Exposure/ Intervention" = Exposure.Intervention) %>%
   mutate("Research Question" = Research.Question) %>%
   mutate("Contibution to evidence synthesis framework" = Contribution) %>%
-  select("Chapter","Research Question","Exposure/ Intervention","Outcome","Contibution to evidence synthesis framework")
+  select("Chapter","Research Question","Exposure/ Intervention","Outcome","Contibution to evidence synthesis framework") %T>%
+  write.csv("data/table_words/thesisOverview.csv") 
 
 if(doc_type == "docx"){
   knitr::kable(thesisOverview_table,caption = "(ref:thesisOverview-caption)")
@@ -171,7 +177,8 @@ statinOverview_table <-
     "Brand name" = Brand,
     "Lipid-lowering effect" = Effect,
     "Year approved" = Year
-  )
+  ) %T>%
+  write.csv("data/table_words/statinOverview.csv")
 
 if(doc_type == "docx") {
   knitr::kable(statinOverview_table, caption = "(ref:statinOverview-caption)")

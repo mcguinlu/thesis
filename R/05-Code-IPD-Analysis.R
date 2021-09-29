@@ -34,8 +34,6 @@ forest_save <- function(data, lipid) {
 
 purrr::map2(.x = tmp$data, .y = tmp$lipid, ~ forest_save(.x, .y))
 
-
-
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- dataExcluded-table
 
@@ -53,7 +51,9 @@ if (doc_type == "docx") {
     booktabs = TRUE
   ) %>%
     row_spec(0, bold = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"))
+    kable_styling(latex_options = c("HOLD_position")) %>%
+    column_spec(1, width = paste0(7, "em")) %>%
+    column_spec(2, width = paste0(24, "em"))
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
