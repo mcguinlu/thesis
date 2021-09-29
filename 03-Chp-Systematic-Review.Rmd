@@ -297,7 +297,7 @@ Randomized controlled trials were assessed using the RoB2 tool.[@sterne2019] The
 <!----------------------------------------------------------------------------->
 &nbsp;
 
-#### Non-randomised studies of interventions/exposures
+#### Non-randomised studies of interventions/exposures {#rob-tools-nrse}
 
 For non-randomised studies of interventions (NRSI), I used the ROBINS-I (Risk Of Bias In Non-randomised Studies - of Interventions) tool.[@sterne2016] This tool assess the risk of bias across seven domains: Bias due to confounding, Bias due to selection of participants, Bias in classification of interventions, Bias due to deviations from intended interventions, Bias due to missing data, Bias in measurement of outcomes, and Bias in selection of the reported result. Similar to RoB 2, it has a number of prompting questions per domain, with acceptable judgements including “Low risk”, “Moderate risk”, “Serious risk” and “Critical risk”. Ideally, observational studies should be assessed in reference to an idealised randomised controlled trial. Under this approach, the (rare) overall judgement of "Low" indicates that the results should be considered equivalent to produced by a randomised controlled trial.
 

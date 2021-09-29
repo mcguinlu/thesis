@@ -38,7 +38,8 @@ purrr::map2(.x = tmp$data, .y = tmp$lipid, ~ forest_save(.x, .y))
 # ---- dataExcluded-table
 
 dataExcluded_table <- read.csv(here::here("data/ipd/dataExcluded.csv"), stringsAsFactors = F) %>%
-  arrange(Cohort)
+  arrange(Cohort) %T>%
+  write.csv()
 
 if (doc_type == "docx") {
   apply_flextable(dataExcluded_table, caption = "(ref:dataExcluded-caption)")

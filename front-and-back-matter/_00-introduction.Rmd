@@ -4,9 +4,6 @@
 <!-- For PDF output, we must include this LaTeX command after unnumbered headings, otherwise the numbers in the mini table of contents will be incorrect -->
 
 ```{r word-count, echo=FALSE, warning=FALSE, message=FALSE}
-library(dplyr)
-library(ggplot2)
-
 options(scipen=999)
 
 source(here::here("R/helper.R"))
@@ -62,7 +59,8 @@ ggplot(mapping = aes(x=date,y=words)) +
   geom_vline(xintercept = as.numeric(as.Date("20211116", format="%Y%m%d")), colour = "black", linetype = 2) +
   geom_vline(xintercept = as.numeric(as.Date("20211216", format="%Y%m%d")), colour = "red") +
   scale_x_date(limits = c(as.Date("20201124", format="%Y%m%d"),as.Date("20211231", format="%Y%m%d"))) +
-  geom_step(data = words, colour = "red")
+  geom_step(data = words, colour = "red") +
+  geom_text(aes(x = as.Date("20210910", format="%Y%m%d"), y = 30000, label = "Tables"))
 
 ```
 

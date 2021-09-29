@@ -1,9 +1,11 @@
+# Load key libraries
 library(magrittr)
 library(dplyr)
 library(ggplot2)
 library(patchwork)
 library(metafor)
 
+# Sort out conflicts in function names
 conflicted::conflict_prefer("summarize", "dplyr")
 conflicted::conflict_prefer("filter", "dplyr")
 conflicted::conflict_prefer("last", "data.table")
@@ -14,48 +16,54 @@ library(grDevices)
 extrafont::loadfonts(device = "win")
 grDevices::windowsFonts("Fira Sans" = grDevices::windowsFont("Fira Sans"))
 
-# Load forester function
+# Load forest plotting functions
 source(here::here("R/forester.R"))
 source(here::here("R/forest flexi.R"))
 
+# Make sure plotting device is closed
 try(dev.off())
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# General ----
 
 # Clean output of metafor using sensible defaults
 broom_ma <- function(metafor_obj, exp = TRUE) {
-  return(broom::tidy(
-    metafor_obj,
-    conf.int = TRUE,
-    include_studies = TRUE,
-    exponentiate = exp
-  ) %>%
-    rename("Study" = term) %>%
-    mutate(Study = ifelse(Study == "overall", "Overall",Study),
-           Study = stringr::str_replace(Study,c(".1$",".2$",".3$"),c("a","b","c"))))
+  return(
+    broom::tidy(
+      metafor_obj,
+      conf.int = TRUE,
+      include_studies = TRUE,
+      exponentiate = exp
+    ) %>%
+      rename("Study" = term) %>%
+      mutate(
+        Study = ifelse(Study == "overall", "Overall", Study),
+        Study = stringr::str_replace(Study, c(".1$", ".2$", ".3$"), c("a", "b", "c"))
+      )
+  )
 }
 
 
 # Generates an line pandoc citation string for all packages used in the thesis
-
-gen_rmd_citation <- function(filename = "pkg-refs.bib") {
-  
+gen_rmd_citation <- function(filename = "packages.bib") {
   # Read in bib file
-  pkgs <- readLines(here::here("bibliography",filename))
+  pkgs <- readLines(here::here("bibliography", filename))
   
   # Extract bibtex keys to a string
-  pkg_names <- unique(pkgs[which(grepl("@",pkgs))])
+  pkg_names <- unique(pkgs[which(grepl("@", pkgs))])
   
-  pkg_names <- unique(gsub(
-    "\\{|,", "", stringr::str_extract(pkg_names, "\\{.+")
-  ))
+  pkg_names <- unique(gsub("\\{|,", "", stringr::str_extract(pkg_names, "\\{.+")))
   
   # Read in list of packages that I need to have a citation for, but shouldn't
   # go in here, and exclude these from the vector
-  extra_packages <- readLines(file.path("data","extra_packages.txt"))
+  extra_packages <-
+    readLines(file.path("data", "extra_packages.txt"))
   
   pkg_names <- pkg_names[which(!(pkg_names %in% extra_packages))]
   
   # Format string as pandoc citation
-  pkg_cit <- paste0("[@", paste(pkg_names, collapse = "; @"),"]")
+  pkg_cit <- paste0("[@", paste(pkg_names, collapse = "; @"), "]")
   
   return(pkg_cit)
   
@@ -63,15 +71,14 @@ gen_rmd_citation <- function(filename = "pkg-refs.bib") {
 
 # Place comma at thousand position
 # Copied from https://github.com/thomasbattram/thesis
-comma <- function(x){
-  
+comma <- function(x) {
   format(x, digits = 2, big.mark = ",")
   
 }
 
 # Apply comma to all values in a table
 # Copied from https://github.com/thomasbattram/thesis
-tidy_nums <- function(df) 
+tidy_nums <- function(df)
 {
   df[] <- lapply(df, comma)
   return(df)
@@ -81,7 +88,8 @@ tidy_nums <- function(df)
 # Copied from https://github.com/thomasbattram/thesis
 num_to_text <- function(x, start_of_sentence = FALSE)
 {
-  if (!x%%1 == 0) warning("X is not an integer")
+  if (!x %% 1 == 0)
+    warning("X is not an integer")
   if (start_of_sentence) {
     out <- xfun::numbers_to_words(x)
     out <- stringr::str_to_sentence(out)
@@ -96,68 +104,79 @@ num_to_text <- function(x, start_of_sentence = FALSE)
 }
 
 
-# Get word count for a given file, and set new target
-word_check <- function(fp, words = 100){
-  
+# Get word count for a given markdown, and set new target
+word_check <- function(fp, words = 100) {
   if (!hasArg(fp)) {
     fp <- rstudioapi::getSourceEditorContext()$path
-    message("File: ",fp)
+    message("File: ", fp)
   }
   
   w <- wordcountaddin::word_count(fp)
   n <- w + words
   
-  message("Start:   ",format(Sys.time(),"%H:%M"),"\nCurrent: ",w,"\nNext:    ", n," <------\n")
+  message("Start:   ",
+          format(Sys.time(), "%H:%M"),
+          "\nCurrent: ",
+          w,
+          "\nNext:    ",
+          n,
+          " <------\n")
 }
 
 
 # Create nice estimate with consistent handling across thesis
-estimate <- function(estimate, lci, uci, type = "OR", sep = ",", to = "-", exp = F){
-  
-  if (!hasArg(estimate)) {
-    stop("Estimate missing")
+estimate <-
+  function(estimate,
+           lci,
+           uci,
+           type = "OR",
+           sep = ",",
+           to = "-",
+           exp = F) {
+    if (!hasArg(estimate)) {
+      stop("Estimate missing")
+    }
+    
+    if (!hasArg(lci)) {
+      stop("LCI missing")
+    }
+    
+    if (!hasArg(uci)) {
+      stop("UCI missing")
+    }
+    
+    if (exp == TRUE) {
+      estimate <- exp(estimate)
+      lci <- exp(lci)
+      uci <- exp(uci)
+    }
+    
+    if (type != "") {
+      type <- paste0(type, ": ")
+    }
+    
+    if (sep == ",") {
+      start <- ", "
+      end <- ""
+    } else {
+      start <- " ("
+      end <- ")"
+    }
+    
+    if (estimate > uci | estimate < lci) {
+      stop("Estimate outside CI bounds")
+    }
+    
+    if (lci > uci) {
+      stop("Lower CI is greater than upper CI")
+    }
+    
+    estimate <- stringr::str_trim(sprintf("%7.2f", estimate))
+    lci <- stringr::str_trim(sprintf("%7.2f", lci))
+    uci <- stringr::str_trim(sprintf("%7.2f", uci))
+    z <- paste0(type, estimate, start, "95%CI: ", lci, to, uci, end)
+    return(z)
   }
-  
-  if (!hasArg(lci)) {
-    stop("LCI missing")
-  }
-  
-  if (!hasArg(uci)) {
-    stop("UCI missing")
-  }
-  
-  if (exp == TRUE) {
-    estimate <- exp(estimate)
-    lci <- exp(lci)
-    uci <- exp(uci)
-  }
-  
-  if (type != "") {
-    type <- paste0(type, ": ")
-  }
-  
-  if (sep == ",") {
-    start <- ", "
-    end <- ""
-  } else {
-    start <- " ("
-    end <- ")"
-  }
-  
-  if(estimate > uci | estimate < lci){
-    stop("Estimate outside CI bounds")
-  }
-  
-  if(lci > uci){
-    stop("Lower CI is greater than upper CI")
-  }
-  
-  estimate <- stringr::str_trim(sprintf("%7.2f", estimate))
-  lci <- stringr::str_trim(sprintf("%7.2f", lci))
-  uci <- stringr::str_trim(sprintf("%7.2f", uci))
-  z <- paste0(type, estimate, start, "95%CI: ", lci, to, uci, end)
-  return(z)
-}
 
 # Run make commands from the console
 make <- function(arg = "pdf") {
@@ -165,15 +184,14 @@ make <- function(arg = "pdf") {
 }
 
 # Generate word count report
-covering <- function(){
+covering <- function() {
   rmarkdown::render("front-and-back-matter/_00-introduction.Rmd")
   browseURL("front-and-back-matter/_00-introduction.html")
 }
 
 
-# Render PDF and Word, then push changes to GitHub
+# Render PDF and Word versions, clean repo, then push changes to GitHub
 end_of_day <- function(words = NULL) {
-  
   # Make PDF and Word, and clean
   system("make pdf-quiet")
   system("make word")
@@ -183,41 +201,34 @@ end_of_day <- function(words = NULL) {
   gert::git_add(files = ".")
   gert::git_commit(paste0("End of day: ", words))
   gert::git_push()
-  
 }
 
 #' Function that returns some text
 #' @description Used to insert a inline placeholder function when writing a
 #'   paragraph, to be replaced at a later date with results.
-hold <- function(){
+hold <- function() {
   "**PLACEHOLDER**"
 }
-
-
 
 #' Run todor for active document, or specify file path
 #'
 #' @param fp File path (optional)
 
-todo <- function(fp){
-  
+todo <- function(fp) {
   if (!hasArg(fp)) {
     fp <- rstudioapi::getSourceEditorContext()$path
-    message("File: ",fp)
+    message("File: ", fp)
   }
   
   todor::todor_file(fp)
   
 }
 
-
-
-#' Open all files associated with a given chapter
+#' Open all markdown and R file associated with a given chapter
 #'
 #' @param N Chapter number
 
-chapter_edit <- function(N){
-  
+chapter_edit <- function(N) {
   # Open Chapter RMarkdown file
   chapters <- list.files(pattern = ".Rmd")
   
@@ -226,9 +237,12 @@ chapter_edit <- function(N){
   file.edit(chapter)
   
   # Open associated R file
-  rfiles <- list.files(path = "R", pattern = ".R", full.names = TRUE)
+  rfiles <-
+    list.files(path = "R",
+               pattern = ".R",
+               full.names = TRUE)
   
-  file.edit(rfiles[which(data.table::like(rfiles, N))])  
+  file.edit(rfiles[which(data.table::like(rfiles, N))])
   
   # Put focus back on RMarkdown
   rstudioapi::navigateToFile(chapter)
@@ -236,47 +250,48 @@ chapter_edit <- function(N){
 }
 
 
-# m
+# Create mindmap of chapter to help with layout of chapter subsections
 mindmap <- function(fp) {
-  
   if (!hasArg(fp)) {
-    fp <- R.utils::getRelativePath(rstudioapi::getSourceEditorContext()$path)
-    message("File: ",fp)
+    fp <-
+      R.utils::getRelativePath(rstudioapi::getSourceEditorContext()$path)
+    message("File: ", fp)
   }
   
-  input <- mindr::outline(fp, remove_curly_bracket = TRUE, savefile = FALSE)
+  input <-
+    mindr::outline(fp, remove_curly_bracket = TRUE, savefile = FALSE)
   
-  mindr::mm(
-    from = input, type = "text", root = " "
-  )
+  mindr::mm(from = input,
+            type = "text",
+            root = " ")
   
 }
 
-
+# Get list of people contribution to thesis R packages
 github_thanks <-
   function(packages = c("mcguinlu/medrxivr", "mcguinlu/robvis")) {
-    
     authors <-
       data.frame(authors = unlist(purrr::map(
-        packages, ~ usethis::use_tidy_thanks(.x,to = "2021-12-01")
-      )), stringsAsFactors = FALSE) %>%
+        packages, ~ usethis::use_tidy_thanks(.x, to = "2021-12-01")
+      )),
+      stringsAsFactors = FALSE) %>%
       dplyr::filter(authors != "mcguinlu") %>%
       dplyr::distinct() %>%
       dplyr::arrange(authors) %>%
-      dplyr::mutate(authors = glue::glue("[&#x0040;{authors}](https://github.com/{authors})")) 
+      dplyr::mutate(authors = glue::glue("[&#x0040;{authors}](https://github.com/{authors})"))
     
     text <-
       glue::glue_collapse(authors$authors, sep = ", ", last = ", and ") + glue::glue(".")
     
     return(text)
-    
   }
 
-
+# Convienence function for making relatively nice word tables for review
 apply_flextable <- function(data, caption = NULL) {
-  
-  replace_newline <- function(x){
-    x<- gsub(pattern = "\\\\newline",replacement = "", x = x)
+  replace_newline <- function(x) {
+    x <- gsub(pattern = "\\\\newline",
+              replacement = "",
+              x = x)
     
     return(x)
   }
@@ -286,10 +301,14 @@ apply_flextable <- function(data, caption = NULL) {
   ft <- flextable::flextable(data)  %>%
     flextable::bg(bg = "#A6A6A6", part = "header") %>%
     flextable::bold(part = "header") %>%
-    flextable::bold(j=1, part = "body") %>%
-    flextable::align(align = "center", part = "all" ) %>%
+    flextable::bold(j = 1, part = "body") %>%
+    flextable::align(align = "center", part = "all") %>%
     flextable::align(j = 1, align = "left") %>%
-    flextable::bg(i = ~ seq(from = 1, to = nrow(data)) %% 2 == 0, bg = "#DDDDDD", part = "body") %>%
+    flextable::bg(
+      i = ~ seq(from = 1, to = nrow(data)) %% 2 == 0,
+      bg = "#DDDDDD",
+      part = "body"
+    ) %>%
     flextable::fontsize(size = 9, part = "all") %>%
     flextable::set_table_properties(layout = "autofit")
   
@@ -302,57 +321,52 @@ apply_flextable <- function(data, caption = NULL) {
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# CPRD ----
 
-# The next two functions are for use with the CPRD analysis
-
-create_title_row <- function(top_title = "Any dementia", first_col, title) {
-  if (title == top_title) {
-    temp <- data.frame(
-      tmp = title,
-      HR = NA,
-      ci_lower = NA,
-      ci_upper = NA,
-      N_sub = NA,
-      N_fail = NA
-    )
-  } else{
-    temp <- data.frame(
-      tmp = c(" ", title),
-      HR = c(NA, NA),
-      ci_lower = c(NA, NA),
-      ci_upper = c(NA, NA),
-      N_sub = c(NA, NA),
-      N_fail = c(NA, NA)
-    )
+create_title_row <-
+  function(top_title = "Any dementia", first_col, title) {
+    if (title == top_title) {
+      temp <- data.frame(
+        tmp = title,
+        HR = NA,
+        ci_lower = NA,
+        ci_upper = NA,
+        N_sub = NA,
+        N_fail = NA
+      )
+    } else{
+      temp <- data.frame(
+        tmp = c(" ", title),
+        HR = c(NA, NA),
+        ci_lower = c(NA, NA),
+        ci_upper = c(NA, NA),
+        N_sub = c(NA, NA),
+        N_fail = c(NA, NA)
+      )
+    }
+    
+    colnames(temp)[1] <- first_col
+    
+    return(temp)
+    
   }
-  
-  colnames(temp)[1] <- first_col
-  
-  return(temp)
-  
-}
 
 generate_forester_plot <-
   function(results,
            filepath,
-           top_title = "Any dementia", 
+           top_title = "Any dementia",
            first_col = "drug",
-           outcome_levels = c(
-             "Any dementia",
-             "Probable AD",
-             "Possible AD",
-             "Vascular dementia",
-             "Other dementia"
-           ),
-           xlimits = c(0.3,3),
+           outcome_levels = c("Any dementia",
+                              "Probable AD",
+                              "Possible AD",
+                              "Vascular dementia",
+                              "Other dementia"),
+           xlimits = c(0.3, 3),
            display = FALSE,
            ...) {
-    
     results$outcome <-
-      factor(
-        results$outcome,
-        levels = outcome_levels
-      )
+      factor(results$outcome,
+             levels = outcome_levels)
     
     results$drug <-
       forcats::fct_rev(factor(
@@ -367,30 +381,39 @@ generate_forester_plot <-
         )
       ))
     
-    results <- results[order(results$outcome, results[first_col]), ]
+    results <- results[order(results$outcome, results[first_col]),]
     
     results <- results %>%
       group_by(outcome) %>%
       arrange(desc(drug), .by_group = T) %>%
-      select(all_of(first_col), drug, HR, ci_lower, ci_upper, N_sub, N_fail, outcome) %>%
+      select(all_of(first_col),
+             drug,
+             HR,
+             ci_lower,
+             ci_upper,
+             N_sub,
+             N_fail,
+             outcome) %>%
       ungroup()
     
     if (first_col == "drug") {
-      results <- mutate(results,drug = ifelse(drug == "Any", "Any drug class", as.character(drug)))
+      results <-
+        mutate(results,
+               drug = ifelse(drug == "Any", "Any drug class", as.character(drug)))
     }
     
     levels <- levels(results$outcome)
     
     subset <-
       lapply(levels, function(level) {
-        dplyr::filter(results,!!as.symbol("outcome") == level)
+        dplyr::filter(results, !!as.symbol("outcome") == level)
       })
     names(subset) <- levels
     
     subset_tables <-
       lapply(levels, function(level) {
         rbind(
-          create_title_row(top_title,first_col,as.character(level)),
+          create_title_row(top_title, first_col, as.character(level)),
           dplyr::select(
             subset[[level]],
             all_of(first_col),
@@ -435,11 +458,9 @@ generate_forester_plot <-
         subset_table$` Participants`
       )
     
-    subset_table$` Events` <- ifelse(
-      !is.na(subset_table$` Events`),
-      paste0(" ", comma(subset_table$` Events`),"   "),
-      subset_table$` Events`
-    )
+    subset_table$` Events` <- ifelse(!is.na(subset_table$` Events`),
+                                     paste0(" ", comma(subset_table$` Events`), "   "),
+                                     subset_table$` Events`)
     
     subset_table$point_shape <-
       ifelse(subset_table$Analysis == "   Any drug class",
@@ -452,11 +473,11 @@ generate_forester_plot <-
                "black",
                "grey50")
     } else {
-      point_colour <- rep("black",nrow(subset_table))
+      point_colour <- rep("black", nrow(subset_table))
     }
     
     
-    xbreaks <- c(xlimits[1],1,xlimits[2])
+    xbreaks <- c(xlimits[1], 1, xlimits[2])
     
     suppressMessages(
       forester_thesis(
@@ -476,39 +497,63 @@ generate_forester_plot <-
         font_family = "Fira Sans",
         null_line_at = 1,
         arrows = TRUE,
-        arrow_labels = c("Lower risk on drug","Higher risk on drug"),
+        arrow_labels = c("Lower risk on drug", "Higher risk on drug"),
         point_shapes = subset_table$point_shape,
-        bold_vec = bold_vec, 
+        bold_vec = bold_vec,
         colour_vec = point_colour,
         ...
       )
     )
-    
-  }
+}
 
 
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Appendix ----
 
-read_excel_allsheets <- function(filename, tibble = FALSE, col_names = FALSE) {
-  # I prefer straight data.frames
-  # but if you like tidyverse tibbles (the default with read_excel)
-  # then just pass tibble = TRUE
+# Used to load multiple sheets for the tables in the appendices
+read_excel_allsheets <-
+  function(filename,
+           tibble = FALSE,
+           col_names = FALSE) {
+    # I prefer straight data.frames
+    # but if you like tidyverse tibbles (the default with read_excel)
+    # then just pass tibble = TRUE
+    
+    sheets <- readxl::excel_sheets(filename)
+    
+    
+    
+    x <-
+      lapply(sheets, function(X)
+        readxl::read_excel(filename, sheet = X, col_names = col_names) %>% janitor::clean_names())
+    if (!tibble)
+      x <- lapply(x, as.data.frame)
+    names(x) <- sheets
+    x
+  }
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Systematic review ----
+
+# Generate yi/sei from reported data
+clean_effects <- function(data) {
+  data <- data %>%
+    mutate(
+      yi = case_when(measure == "beta" ~ point_estimate,
+                     T ~ log(point_estimate)),
+      sei = case_when(measure == "beta" ~ se,
+                      T ~ (log(upper_ci) - log(lower_ci)) / 3.92)
+    )
   
-  sheets <- readxl::excel_sheets(filename)
-  
-  
-  
-  x <- lapply(sheets, function(X) readxl::read_excel(filename, sheet = X, col_names = col_names) %>% janitor::clean_names())
-  if(!tibble) x <- lapply(x, as.data.frame)
-  names(x) <- sheets
-  x
+  return(data)
 }
 
 
+# Combine data on two groups to get summary age/SD, given group sizes
 combine_age <- function(age, group_size) {
-  
   age <- stringr::str_remove_all(age, " ")
   group_size <- stringr::str_remove_all(group_size, " ")
   
@@ -516,13 +561,14 @@ combine_age <- function(age, group_size) {
   re <- "\\(([^()]+)\\)"
   
   # Extract sd
-  sd <- c(stringr::str_extract_all(age,re, simplify = T))
-  sd <- as.numeric(substring(sd, 2, nchar(sd)-1))
+  sd <- c(stringr::str_extract_all(age, re, simplify = T))
+  sd <- as.numeric(substring(sd, 2, nchar(sd) - 1))
   
-  mean <- c(stringr::str_split(age,"\\|", simplify = T))
-  mean <- as.numeric(stringr::str_remove_all(mean,re))
+  mean <- c(stringr::str_split(age, "\\|", simplify = T))
+  mean <- as.numeric(stringr::str_remove_all(mean, re))
   
-  n <- as.numeric(stringr::str_split(group_size,"\\|", simplify = T))
+  n <-
+    as.numeric(stringr::str_split(group_size, "\\|", simplify = T))
   
   t <- utilities::sample.decomp(
     n = n,
@@ -533,25 +579,27 @@ combine_age <- function(age, group_size) {
     slice_tail() %>%
     tidy_nums()
   
-  return(paste0(t$sample.mean," (",t$sample.sd,")"))
+  return(paste0(t$sample.mean, " (", t$sample.sd, ")"))
   
 }
 
 
+# Combine data on two groups to get summary female %, given group sizes
 combine_female <- function(female, group_size) {
-  
   age <- stringr::str_remove_all(female, " ")
   age <- stringr::str_remove_all(group_size, " ")
   
-  percentages <- as.numeric(stringr::str_split(female,"\\|", simplify = T))
+  percentages <-
+    as.numeric(stringr::str_split(female, "\\|", simplify = T))
   
-  n <- as.numeric(stringr::str_split(group_size,"\\|", simplify = T))
+  n <-
+    as.numeric(stringr::str_split(group_size, "\\|", simplify = T))
   
-  t <- data.frame(percentages,n) %>%
-    mutate(proportion = percentages/100,
-           n_female = n*proportion) %>%
-    summarise(female = sum(n_female), 
-              percentage = female/sum(n)*100) %>%
+  t <- data.frame(percentages, n) %>%
+    mutate(proportion = percentages / 100,
+           n_female = n * proportion) %>%
+    summarise(female = sum(n_female),
+              percentage = female / sum(n) * 100) %>%
     slice_tail() %>%
     tidy_nums()
   
@@ -559,10 +607,8 @@ combine_female <- function(female, group_size) {
   
 }
 
-
-
-get_confidence_from_p<- function(est, p) {
-  
+# Convert estimate and p value to estimate and SE
+get_confidence_from_p <- function(est, p) {
   # From https://www.bmj.com/content/343/bmj.d2090
   
   z = -0.862 + sqrt(0.743 - 2.404 * log(p))
@@ -571,133 +617,134 @@ get_confidence_from_p<- function(est, p) {
   
   log_SE = abs(log_est / z)
   
-  list(
-    lower = exp(log_est - 1.96 * log_SE),
-    upper = exp(log_est + 1.96 * log_SE)
-  ) %>%
+  list(lower = exp(log_est - 1.96 * log_SE),
+       upper = exp(log_est + 1.96 * log_SE)) %>%
     tidy_nums() %>%
-  return()
+    return()
   
-
+  
 }
 
-save_fp <- function(dat, design = "obs",...) {
-  
+# Generate nice looking forest plots
+save_fp <- function(dat, design = "obs", ...) {
   # Don't perform meta-analysis if only one result
   
-  if (nrow(dat)==1) {
+  if (nrow(dat) == 1) {
     return()
   }
   
-  height <- max(nrow(dat)*70,500)
+  height <- max(nrow(dat) * 70, 500)
   
-  dat_rob <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"), which = 3) %>%
+  dat_rob <-
+    rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+                which = 3) %>%
     janitor::clean_names() %>%
     filter(result_id %in% dat$result_id)
-    
-    if (design == "obs") {
-      tool <- "ROBINS-I"
-      dat_rob <- select(dat_rob, -c(result,summary_of_biases, comments))
-    } else {
-      tool <- "ROB2"
-      dat_rob <- select(dat_rob, -c(d6,d7,result,summary_of_biases, comments))
-      
-    }  
-    
-  fp <- stringr::str_remove_all(paste0("fp_", design,"_",dat$exposure[1],"_", dat$outcome[1],".png")," ")
   
-  png(here::here("figures","sys-rev",fp), width = 1000, height = height, res=100)
+  if (design == "obs") {
+    tool <- "ROBINS-I"
+    dat_rob <-
+      select(dat_rob,-c(result, summary_of_biases, comments))
+  } else {
+    tool <- "ROB2"
+    dat_rob <-
+      select(dat_rob,-c(d6, d7, result, summary_of_biases, comments))
+    
+  }
   
-  forest_strata_rob(dat,dat_rob,rob_tool = tool, sei=sei,...)
+  fp <-
+    stringr::str_remove_all(paste0("fp_", design, "_", dat$exposure[1], "_", dat$outcome[1], ".png"),
+                            " ")
+  
+  png(
+    here::here("figures", "sys-rev", fp),
+    width = 1000,
+    height = height,
+    res = 100
+  )
+  
+  forest_strata_rob(dat, dat_rob, rob_tool = tool, sei = sei, ...)
   
   dev.off()
 }
 
 
 meta_grouped <- function(data) {
-  
   # Don't perform meta-analysis if only one result
   
-  if (nrow(data)==1) {
+  if (nrow(data) == 1) {
     return()
   }
   
-  t <- metafor::rma(data = data,
-               yi = yi,
-               sei = sei,
-               slab = paste(study_id, author,year)) 
-  
- 
-  estimate(res$beta, res$ci.lb, res$ci.ub, exp = T)
-  
-  details <- data.frame(stringsAsFactors = FALSE,
-                        exposure = data$exposure[1],
-                        outcome = data$outcome[1],
-                        studies = length(unique(data$study_id)),
-                        bias = data$bias[1], 
-                        I2 = t$I2
+  t <- metafor::rma(
+    data = data,
+    yi = yi,
+    sei = sei,
+    slab = paste(study_id, author, year)
   )
   
-  results <- predict.rma(t,transf=exp)
-
-  return(cbind(details,results))
-
+  
+  estimate(res$beta, res$ci.lb, res$ci.ub, exp = T)
+  
+  details <- data.frame(
+    stringsAsFactors = FALSE,
+    exposure = data$exposure[1],
+    outcome = data$outcome[1],
+    studies = length(unique(data$study_id)),
+    bias = data$bias[1],
+    I2 = t$I2
+  )
+  
+  results <- predict.rma(t, transf = exp)
+  
+  return(cbind(details, results))
+  
 }
 
-
-meta_estimate <- function(dat, ...){
-
+# Get nicely formatted random effects estimate
+meta_estimate <- function(dat, ...) {
   t <- metafor::rma(data = dat,
                     yi = yi,
-                    sei = sei) 
+                    sei = sei)
   
-  return(estimate(t$beta, t$ci.lb, t$ci.ub, exp = T,...))
+  return(estimate(t$beta, t$ci.lb, t$ci.ub, exp = T, ...))
 }
 
-
-clean_effects <- function(data){
-  
-  data <- data %>%
-      mutate(yi = case_when(measure == "beta" ~ point_estimate,
-                            T ~ log(point_estimate)),
-             sei = case_when(measure == "beta" ~ se,
-                             T ~ (log(upper_ci) - log(lower_ci))/3.92))
-
-  return(data)
-}
-
-
-general_filters <- function(data){
-  
+# General filters applied to imported data
+general_filters <- function(data) {
   data %>%
-  janitor::clean_names() %>%
-  filter(exclude !="Y",
-         study_id != 99999,
-         point_estimate != "Missing",
-         !is.na(point_estimate)) %>%
-  return()  
-}  
+    janitor::clean_names() %>%
+    filter(
+      exclude != "Y",
+      study_id != 99999,
+      point_estimate != "Missing",!is.na(point_estimate)
+    ) %>%
+    return()
+}
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Word counting ----
 
 # Count words in tables
-table_words <- function(){
-  
+table_words <- function() {
   files <- list.files(here::here("data/table_words"))
   
-  get_words_from_table <- function(fp){
-    
-    t<-readLines(here::here("data/table_words",fp))
-    sum(stringr::str_count(t,"\\w+"))
+  get_words_from_table <- function(fp) {
+    t <- readLines(here::here("data/table_words", fp))
+    sum(stringr::str_count(t, "\\w+"))
     
   }
-  return(sum(as.numeric(purrr::map_chr(files, get_words_from_table))))
+  return(sum(as.numeric(
+    purrr::map_chr(files, get_words_from_table)
+  )))
 }
 
 # Count words in chapters
-get_words <- function(){
-  
+get_words <- function() {
   files <- list.files(path = here::here(), pattern = "\\.Rmd$")
   
-  files <- files[which(!(files %in% c("_main.Rmd","index.Rmd", "tmp.Rmd")))]
+  files <-
+    files[which(!(files %in% c("_main.Rmd", "index.Rmd", "tmp.Rmd")))]
   
   words_v <- c()
   
@@ -710,14 +757,14 @@ get_words <- function(){
   
   words <- sum(words_v, table_words)
   
-  date <- as.character(format(Sys.time(),"%Y%m%d"))
-  time <- as.character(format(Sys.time(),"%H%M"))
+  date <- as.character(format(Sys.time(), "%Y%m%d"))
+  time <- as.character(format(Sys.time(), "%H%M"))
   
   tmpWords <- data.frame(words = words,
                          date = date,
                          time = time)
   
-  masterWords <- read.csv(here::here("data","words","words.csv"),
+  masterWords <- read.csv(here::here("data", "words", "words.csv"),
                           header = TRUE)
   
   masterWords <- rbind(masterWords,

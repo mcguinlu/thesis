@@ -199,6 +199,11 @@ n_included <- toc_df %>%
   distinct(study_id,.keep_all = T) %>%
   n_distinct()
 
+n_included <- toc_df %>%
+  filter(type == "NRSE") %>%
+  group_by(study_id) %>%
+  distinct()
+
 toc_df2 <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which = 2) %>%
   janitor::clean_names() %>%
   filter(!is.na(study_id)) %>%

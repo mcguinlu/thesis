@@ -234,6 +234,9 @@ Short section detailing the things I tried to do but which did not work.
 knitr::write_bib(c(.packages(), "bookdown", "knitr"), here::here("bibliography/packages.bib"))
 ```
 
+<!-- TODO These citations are not rendering properly - I think because bookdown using this latex format only allows 1 .bib file. -->
+
+
 This thesis was written in RMarkdown. Several R packages were used as part of this project.`r gen_rmd_citation("packages.bib")`
 All projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
 
