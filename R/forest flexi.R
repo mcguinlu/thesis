@@ -257,13 +257,13 @@ for (i in 1:nrow(dat_rob_vec)) {
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 
-if (length(unique(dat_rob$overall))>1) {
+if (length(unique(dat_rob$overall))>1 && nrow(dat)>2) {
 
 # Fit meta-regression model to test for subgroup differences
 
   if (!hasArg(sei)) {
     
-res <- rma(yi, vi, mods = ~ overall, data = dat)
+    res <- rma(yi, vi, mods = ~ overall, data = dat)
   } else {
     res <- rma(yi, sei=sei, mods = ~ overall, data = dat)
     

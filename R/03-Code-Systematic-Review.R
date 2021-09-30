@@ -35,6 +35,28 @@ prisma_df <-
   read.csv(here::here("data/sys-rev/PRISMAflow.csv"),
            stringsAsFactors = F)
 
+n_included <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which = 1) %>%
+  janitor::clean_names() %>%
+  filter(is.na(exclude)) %>%
+  distinct(study_id, author) %>%
+  n_distinct()
+
+prisma_df$n[24] <- n_included
+
+n_extra_reports <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which = 1) %>%
+  janitor::clean_names() %>%
+  filter(!is.na(exclude)) %>%
+  filter(additional_record_for_included_study == "Y") %>%
+  n_distinct()
+
+prisma_df$n[25] <- n_included + n_extra_reports
+
+exclusion_reasons <- rio::import(here::here("data/sys-rev/exclusion_reasons.csv")) %>%
+  arrange(desc(V2)) %>%
+  mutate(label = paste0(V1,", ",V2))
+
+prisma_df$n[21]<- paste0(exclusion_reasons$label, collapse = "; ")
+
 prisma_full <-
   read.csv(system.file("extdata", "PRISMA.csv", package = "PRISMA2020"),
            stringsAsFactors = F)[, c(1:4, 6:7)] %>%
@@ -54,7 +76,11 @@ PRISMA2020::PRISMA_save(
 )
 detach("prisma_full")
 
-
+# Check exclusion reasons and number included all add up to number screened
+# If FALSE, delete created PRISMA file which will cause RMarkdown render to fail
+if(!sum(exclusion_reasons$V2) + n_included + n_extra_reports == prisma_df$n[20]){
+  file.remove(here::here( "figures/sys-rev/prismaflow.png"))
+}
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- gwet-table
@@ -286,12 +312,12 @@ if(doc_type == "docx") {
                            extra_latex_after = "\\addlinespace") %>%
     kableExtra::group_rows(group_label = "Non-randomised studies of interventions", start_row = 3, end_row = 33, hline_after = T,
                            extra_latex_after = "\\addlinespace") %>%
-    kableExtra::group_rows(group_label = "Non-randomised studies of exposures", start_row = 34, end_row = 74, hline_after = T,
+    kableExtra::group_rows(group_label = "Non-randomised studies of exposures", start_row = 34, end_row = 76, hline_after = T,
                            extra_latex_after = "\\addlinespace") %>%
     kableExtra::group_rows(
       group_label = "Mendelian randomisation studies",
-      start_row = 75,
-      end_row = 81,
+      start_row = 77,
+      end_row = 83,
       hline_after = T,
       extra_latex_after = "\\addlinespace"
     ) %>%

@@ -578,11 +578,7 @@ For MR studies
 
 Additionally, Several synthesis were also assessed to be at risk of bias due to missing evidence. A key issue identified relating to bias due to missing data was the potential for the search to miss relevant Mendelian randomisation studies which had examined the association between Alzhiemer's disease and multiple risk factors. This is discussed further in Section \@ref(rev-discussion-MR).
 
-<!-- TODO Discuss Taiwan health database as good evidence on non-Caucasian idenitiies -->
-
-Haag is a good example of potentially missing results - number of cases of other outcoems reported, but no analysis performed.
-
-&nbsp;
+Several eligible studies included in the analysis did not have available results, either due to selective reporting of significant results in conference abstracts,[@su2017; @yamada2009b] or due to the unavailability of supplementary materials containing the relevant results.[@haag2009]
 
 <!----------------------------------------------------------------------------->
 
@@ -787,6 +783,8 @@ Some evidence that age has impact on observed lipid-dementia relationship - use 
 
 The majority of studies were non-randomised studies of lipids, or treatments that affect lipid levels such as statins. This distribution of evidence between analytical designs is to be expected. Randomised controlled trials of dementia are particularly challenging, as the long follow-up, necessary due to the long latent period of the condition, makes trials logistically challenging and financial expensive. Similarly, Mendelian randomisation is a comparatively new study design (as illustrated in Figure \@ref(fig:typeByYear)), and so only appears in the literature in recent years, driven by the availability of Alzheimer's disease summary genome wide association studies (GWAS) that form the basis of two-sample Mendelian randomisation approach.
 
+
+
 <!----------------------------------------------------------------------------->
 (ref:typeByYear-cap) __Study designs by year of publication__ - 
 
@@ -811,6 +809,9 @@ Of note, this review did not include the commonly cited PROSPER study, which exa
 <!-- The findings on high TC in midlife being associated with increased risk of late-life AD are still limited to the few studies that report relevant data from Scandinavia and the United States. The wider literature shows that level of TC in populations varies according to diet, urbanization, ethnicity, and income [56, 57]. from Anstey 2017 -->
 
 Questions over missing results - evidence from one of the conference abstract analysis pairs that a non-significant results are being suppressed.[@yamada2009; @yamada2009a] In addition, there were some concerns over the potential for estimates to be missing from the meta-analysis of observational studies not at random, given the preferential reporting of significant results observed in a number of analysis (see Section \@ref(risk-of-bias-res)).
+
+
+Generalisability was aided by the large number of studies performed using the Taiwan health database, which represents a good sources of evidence on non-Caucasian populations -->
 
 
 <!----------------------------------------------------------------------------->
