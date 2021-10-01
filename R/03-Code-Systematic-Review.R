@@ -49,7 +49,9 @@ n_extra_reports <- rio::import(here::here("data/sys-rev/data_extraction_main.xls
   filter(additional_record_for_included_study == "Y") %>%
   n_distinct()
 
-prisma_df$n[25] <- n_included + n_extra_reports
+n_reports_included <- n_included + n_extra_reports
+
+prisma_df$n[25] <- n_reports_included
 
 exclusion_reasons <- rio::import(here::here("data/sys-rev/exclusion_reasons.csv")) %>%
   arrange(desc(V2)) %>%
@@ -221,15 +223,6 @@ toc_df <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which
   mutate(female_combo = case_when(female_combo=="64.400000000000006"~"64.4", T ~ female_combo),
          age_combo = case_when(age_combo=="74.900000000000006"~"74.9", T ~ age_combo))
 
-n_included <- toc_df %>%
-  distinct(study_id,.keep_all = T) %>%
-  n_distinct()
-
-n__nrse_included <- toc_df %>%
-  filter(type == "NRSE") %>%
-  group_by(study_id) %>%
-  distinct()
-
 toc_df2 <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),which = 2) %>%
   janitor::clean_names() %>%
   filter(!is.na(study_id)) %>%
@@ -266,12 +259,111 @@ p_type <-
 
 ggsave(here::here("figures/sys-rev/type_by_year.png"), p_type, height = 3)
 
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- studyCharacteristics-table
 
 study_details <- left_join(toc_df, toc_df2, by =c("study_id"="study_id")) %>%
   mutate(Study = paste(author, year)) %>%
   mutate(type = factor(type,levels = c("RCT","NRSI","NRSE","MR")),)
+
+n_nrsi_included <- study_details %>%
+  filter(type == "NRSI") %>%
+  group_by(study_id) %>%
+  distinct() %>%
+  nrow()
+
+n_nrse_included <- study_details %>%
+  filter(type == "NRSE") %>%
+  group_by(study_id) %>%
+  distinct() %>%
+  nrow()
+
+n_statins <- study_details %>%
+  filter(type == "NRSI") %>%
+  mutate(statin = stringr::str_detect(Exposures,"[Ss]tatin")) %>%
+  group_by(statin) %>%
+  count() %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_nrsi_included)*100,2),"%")) %>%
+  pull(label)
+
+n_fibrates <- study_details %>%
+  filter(type == "NRSI") %>%
+  mutate(fibrate = stringr::str_detect(Exposures,"[Ff]ibrate")) %>%
+  filter(fibrate == "TRUE") %>%
+  group_by(fibrate) %>%
+  count() %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_nrsi_included)*100,2),"%")) %>%
+  pull(label)
+
+n_hyperchol <- study_details %>%
+  filter(type == "NRSE") %>%
+  mutate(fibrate = stringr::str_detect(Exposures,"Hyperchol")) %>%
+  filter(fibrate == "TRUE") %>%
+  group_by(fibrate) %>%
+  count() %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_nrse_included)*100,2),"%")) %>%
+  pull(label)
+
+n_TC <- study_details %>%
+  filter(type == "NRSE") %>%
+  mutate(fibrate = stringr::str_detect(Exposures,"TC")) %>%
+  filter(fibrate == "TRUE") %>%
+  group_by(fibrate) %>%
+  count() %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_nrse_included)*100,2),"%")) %>%
+  pull(label)
+
+n_LDL <- study_details %>%
+  filter(type == "NRSE") %>%
+  mutate(fibrate = stringr::str_detect(Exposures,"LDL")) %>%
+  filter(fibrate == "TRUE") %>%
+  group_by(fibrate) %>%
+  count() %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_nrse_included)*100,2),"%")) %>%
+  pull(label)
+
+n_HDL <- study_details %>%
+  filter(type == "NRSE") %>%
+  mutate(fibrate = stringr::str_detect(Exposures,"HDL")) %>%
+  filter(fibrate == "TRUE") %>%
+  group_by(fibrate) %>%
+  count() %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_nrse_included)*100,2),"%")) %>%
+  pull(label)
+
+n_TG <- study_details %>%
+  filter(type == "NRSE") %>%
+  mutate(fibrate = stringr::str_detect(Exposures,"TG")) %>%
+  filter(fibrate == "TRUE") %>%
+  group_by(fibrate) %>%
+  count() %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_nrse_included)*100,2),"%")) %>%
+  pull(label)
+
+n_Dementia <- study_details %>%
+  mutate(fibrate = stringr::str_detect(Outcomes,"Dementia")) %>%
+  filter(fibrate == "TRUE") %>%
+  group_by(fibrate) %>%
+  count() %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_included)*100,2),"%")) %>%
+  pull(label)
+
+n_AD <- study_details %>%
+  mutate(fibrate = stringr::str_detect(Outcomes,"AD")) %>%
+  filter(fibrate == "TRUE") %>%
+  group_by(fibrate) %>%
+  count() %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_included)*100,2),"%")) %>%
+  pull(label)
+
+n_VaD <- study_details %>%
+  mutate(fibrate = stringr::str_detect(Outcomes,"VaD")) %>%
+  filter(fibrate == "TRUE") %>%
+  group_by(fibrate) %>%
+  count() %>%
+  mutate(label = paste0("n = ", .$n,"; ", round((.$n/n_included)*100,2),"%")) %>%
+  pull(label)
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- studyCharacteristics-table
 
 studyCharacteristics_table <- study_details %>%
   # Add asterisk to preprinted studies
@@ -442,6 +534,28 @@ ggsave(
 )
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- preprintWeights-table
+
+preprintWeights_table <- rio::import("data/sys-rev/preprintWeights.csv")
+
+preprintWeights_table$Weight[1] <- mrStatinPreprintWeight 
+
+if (doc_type == "docx") {
+  apply_flextable(preprintWeights_table, caption = "(ref:preprintWeights-caption)")
+} else{
+  knitr::kable(
+    preprintWeights_table,
+    format = "latex",
+    caption = "(ref:preprintWeights-caption)",
+    caption.short = "(ref:preprintWeights-scaption)",
+    booktabs = TRUE,
+    align = "cccc"
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
+}
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- preprintGrowthSetup 
 
 # medrxivr::mx_snapshot() %>% 
@@ -555,20 +669,21 @@ rct_statin_acd <- estimate(res$beta, res$ci.lb, res$ci.ub, exp = T)
 
 try(dev.off(),silent = T)
 
-png(here::here("figures/sys-rev/fp_rct_statins_Dementia.png"), width = 1000, height = 400,res = 100)
+png(here::here("figures/sys-rev/fp_rct_statins_Dementia.png"),
+    pointsize = 15, width = 1750, height = 550,res = 100)
 
 forest_strata_rob(dat,dat_rob, at = log(c(0.3,1,3)),rob_me = "Low", xlab = "Odds ratio")
 
-text(-5,c(1,2), cex=0.75,dat$tpos)
-text(-4,c(1,2), cex=0.75,dat$tneg)
-text(-2.5,c(1,2), cex=0.75,dat$cpos)
-text(-1.5,c(1,2), cex=0.75,dat$cneg)
-text(c(-5,-4,-2.5,-1.5), 4.5, c("D+", "D-", "D+", "D-"),cex=0.75, font=2)
+text(-5,c(1,2), cex=1.2,dat$tpos)
+text(-4,c(1,2), cex=1.2,dat$tneg)
+text(-2.5,c(1,2), cex=1.2,dat$cpos)
+text(-1.5,c(1,2), cex=1.2,dat$cneg)
+text(c(-5,-4,-2.5,-1.5), 4.5, c("D+", "D-", "D+", "D-"),cex=1.2, font=2)
 
-text(-7,5,"Type", cex=0.75, font =2)
-text(-7,c(1,2), cex=0.75,dat$exposure)
+text(-7,5,"Type", cex=1.2, font =2)
+text(-7,c(1,2), cex=1.2,dat$exposure)
 
-text(c(-4.5,-2),     5, c("Statin", "Placebo"), cex =0.75,  font=2)
+text(c(-4.5,-2),     5, c("Statin", "Placebo"), cex =1.2,  font=2)
 dev.off()
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
@@ -582,8 +697,9 @@ dat <-
          measure == "HR",
          exposure == "Statin - Ever",
          outcome %in% c("Dementia", "AD", "VaD"),
-         is.na(sex),
-         is.na(age)) %>%
+         primary == 1) %>%
+  mutate(author = case_when(!is.na(sex) ~ paste0(author," (", sex," only)"),
+                          T ~ author)) %>%
   rename("n" = number_exposed) %>%
   select(
     result_id,
@@ -610,9 +726,9 @@ dat <- dat %>%
   group_split() %>%
   set_names(unlist(group_keys(dat)))
 
-purrr::map(dat,save_fp)
+purrr::map(dat,~save_fp(.x,at=log(c(0.3,1,3)), xlab = "Hazard ratio"))
 
-obsStatins <- purrr::map(dat,~meta_estimate(.x,type = "HR"))
+obsStatins <- purrr::map(dat,~ meta_estimate(.x,type = "HR"))
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- Hypercholesterolemia
@@ -622,16 +738,19 @@ dat <-
               which = 2) %>%
   general_filters() %>%
   filter(
-    is.na(age),
-    is.na(sex),
     is.na(direction),
     !grepl("Critical", comments),
     grepl("Hyperch", exposure_category),
-    point_estimate != "Missing"
+    point_estimate != "Missing", 
+    primary == 1
   ) %>%
+  mutate(author = case_when(!is.na(sex) ~ paste0(author," (", sex," only)"),
+                            T ~ author)) %>%
+  mutate(author = case_when(!is.na(age) ~ paste0(author," (", age,")"),
+                            T ~ author)) %>%
   rename("n" = number_exposed) %>%
   select(
-    study_id,
+    result_id,
     author,
     year,
     sex,
@@ -651,11 +770,26 @@ dat <-
   arrange(author, year) %>%
   group_by(outcome)
 
+obsHyperchol_n <- get_study_n(dat)
+
 dat <- dat %>% 
   group_split() %>%
   set_names(unlist(group_keys(dat)))
 
-purrr::map(dat,save_fp)
+
+# obsHyperchol_cite <- purrr::map(dat,get_citations_per_analysis)
+# obsHyperchol_n <- purrr::map(dat,get_study_n)
+
+purrr::map2(
+  dat,
+  c("Low", "High", "Some concerns"),
+  ~ save_fp(
+    .x,
+    rob_me = .y,
+    at = log(c(.3, 1, 3)),
+    preface = "hyperchol"
+  )
+)
 
 obsHyperchol <- purrr::map(dat,~meta_estimate(.x,type = "HR"))
 
@@ -677,9 +811,37 @@ dat <- dat %>%
   group_split() %>%
   set_names(unlist(group_keys(dat)))
 
-purrr::map(dat,~save_fp(.x,"MR"))
+# Generate forest plot for AD outcome, as it is the only one with >1 result
+dat_ad <- dat$AD %>%
+  arrange(desc(author))
+
+dat_rob <-
+  rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+              which = 3) %>%
+  janitor::clean_names() %>%
+  filter(result_id %in% dat_ad$result_id) %>%
+  select(-c(d6, d7, result, summary_of_biases, comments))
+
+
+png(here::here("figures/sys-rev/fp_MR_HMGCR_AD.png"), width = 1750, height = 550, pointsize = 15,res = 100)
+
+forest_strata_rob(dat_ad, dat_rob,sei = sei,at = log(c(0.3,1,3)),rob_me = "Low", xlab = "Odds ratio")
+
+text(-5,c(1,2), cex=1.2,dat_ad$snps)
+text(-5,5, cex=1.2,"HMGCR SNPS", font = 2)
+
+dev.off()
 
 mrStatin <- purrr::map(dat,~meta_estimate(.x,type = "RR"))
+
+# Get weight from fixed effect meta-analysis
+mrStatinPreprintWeight <- dat$AD %>%
+  metafor::rma(yi -yi, sei = sei, data = ., method = "FE") %>%
+  stats::weights() %>%
+  last() %>%
+  comma(.) %>%
+  paste0("%")
+  
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- mrLipidsAD
@@ -705,7 +867,6 @@ dat <- dat %>%
 
 mrLipidsAD <- purrr::map(dat,~meta_estimate(.x,type = "RR"))
 
-
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- LipidsSD
   
@@ -719,17 +880,20 @@ dat <-
     is.na(mr_type),
     is.na(age),
     is.na(sex),
-    is.na(direction),!grepl("Critical", comments),
+    is.na(direction),
+    !grepl("Critical", comments),
     exposure_category %in% c("Lipids", "Lipid"),
+    exposure %in% c("TC","TG", "LDL-c", "HDL-c"),
+    outcome %in% c("Dementia", "AD","VaD"),
     point_estimate != "Missing"
   ) %>%
   rename("n" = number_exposed) %>%
   select(
-    study_id,
+    result_id,
     author,
     year,
     sex,
-    exposure_category,
+    exposure,
     dose_range,
     age,
     n,
@@ -740,20 +904,29 @@ dat <-
     ends_with("_ci")
   ) %>%
   mutate(across(c(n, point_estimate, ends_with("_ci")), as.numeric)) %>%
-  mutate(point = log(point_estimate),
-         SE = (log(upper_ci) - log(lower_ci)) / 3.92) %>%
+  mutate(yi = log(point_estimate),
+         sei = (log(upper_ci) - log(lower_ci)) / 3.92) %>%
   arrange(author, year) %>%
-  group_by(exposure) %>%
-  count()
+  nest_by(outcome, exposure)
 
-dat <- dat %>% 
-  group_split() %>%
-  set_names(unlist(group_keys(dat)))
-  
-purrr::map(dat,save_fp)
-  
-obsHyperchol <- purrr::map(dat,~meta_estimate(.x,type = "HR"))
+names <- group_keys(dat) %>%
+  mutate(names = paste0(outcome,"_", stringr::str_remove(exposure,"-.+"))) %>%
+  pull(names)
 
+dat$data <- dat$data %>% 
+   set_names(names)
+
+# obsLipids_cite <- purrr::map(dat,get_citations_per_analysis)
+# obsLipids_n <- purrr::map(dat,get_study_n)
+  
+purrr::pmap(list(
+  dat = dat$data,
+  name = names(dat$data),
+  rob_me = rep("Low", 12)
+),
+purrr::possibly(~save_fp(.x, preface = .y, at = log(c(0.3,1,3))), NULL))
+
+obsLipids <- purrr::map(dat$data,~meta_estimate(.x,type = "HR"))
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- doseResponse
@@ -899,4 +1072,67 @@ text(c(.375), 8, c("GWAS"), font=2)
 
 text(c(.75), 8, c("# SNPS"), font=2)
 dev.off()
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- mrAssumpation
+
+library(dagitty)
+library(ggdag)
+
+dag <- dagitty::dagitty("dag {
+    G -> X
+    o <- C -> X
+    X -> Y
+    X <- U -> Y
+    X <- C -> Y
+    X -> Y
+    I [pos=\"-.2,.01\"]
+    II [pos=\"-.2,.08\"]
+    III [pos=\".1,-.05\"]
+    bb =\"-2,-2,2,2\"
+    C [pos=\"0.25,0.1\"]
+    G [pos=\"-.5,0\"]
+    X [exposure,pos=\"0,0\"]
+    Y [outcome,pos=\"0.5,0\"]
+  }") %>% ggdag_classic() +
+  theme_dag() +
+  geom_curve(data = data.frame(x = -0.481435967917461,
+                               y = 0.00985575213338419,
+                               xend = 0.220459770229494,
+                               yend = 0.0995368157305137),
+             mapping = aes(x = x,
+                           y = y,
+                           xend = xend,
+                           yend = yend),
+             angle = 90L,
+             colour = "black",
+             linetype = "dashed",
+             curvature = -0.17,
+             inherit.aes = FALSE,
+             show.legend = FALSE) + geom_curve(
+               data = data.frame(
+                 x = -0.483240327141489,
+                 y = -0.00951911045017763,
+                 xend = 0.478004935385662,
+                 yend = -0.00700575091499871
+               ),
+               mapping = aes(
+                 x = x,
+                 y = y,
+                 xend = xend,
+                 yend = yend
+               ),
+               angle = 90L,
+               linetype = "dashed",
+               colour = "black",
+               curvature = 0.25,
+               inherit.aes = FALSE,
+               show.legend = FALSE)
+
+
+
+ggplot2::ggsave(filename = file.path("figures","sys-rev","mrAssumptions.png"),
+                dag,
+                height = 4.2)
 

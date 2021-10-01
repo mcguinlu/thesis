@@ -9,12 +9,17 @@ if (rob_tool == "ROB2") {
   levels <- c("Low","Moderate","Serious","Critical")
 } 
   
-  
 dat_rob <- dat_rob %>%
   mutate(overall = factor(overall ,levels =levels)) %>%
   arrange(overall)
 
-dat <- left_join(dat, dat_rob) %>%
+if ("type" %in% colnames(dat_rob)) {
+  dat_rob <- dat_rob %>%
+    select(-type)
+  
+}
+
+dat <- left_join(dat, dat_rob, by = c("result_id"= "result_id")) %>%
   arrange(overall)
 
 dat_rob_vec <- dat_rob %>%
@@ -40,7 +45,7 @@ for (i in 1:nrow(dat_rob_vec)) {
   
 }
 
-x_min = -12
+x_min = -10
 x_max = 4.6
 textpos <- c(x_min, x_max-1)
 y_max <- max(rows)+4
@@ -55,7 +60,7 @@ rob_data <-
                                   stringsAsFactors = F))
 
 
-x_pos <- seq(x_max, by = 0.55, length.out = max_domain_column - 2)
+x_pos <- seq(x_max, by = 0.45, length.out = max_domain_column - 2)
 
 x_overall_pos <- max(x_pos) + 1
 
@@ -156,9 +161,9 @@ res$slab <- paste0("  ", res$slab)
 ### set up forest plot (with 2x2 table counts added; the 'rows' argument is
 ### used to specify in which rows the outcomes will be plotted)
 forest(res, xlim=c(x_min, new_x_lim), atransf=exp,
-       cex=0.75, ylim=c(-1.5, y_max), rows=rows, textpos = textpos,
+       cex=1.2, ylim=c(-1.5, y_max), rows=rows, textpos = textpos,
        mlab=mlabfun("RE Model for all studies", res),
-       psize=1, header="Author(s) and Year", addpred = T,...)
+       header="Author(s) and Year", addpred = T,...)
 
 ### set font expansion factor (as in forest() above) and use a bold font
 op <- par(font=2)
@@ -169,7 +174,7 @@ par(font=2)
 ### add text for the subgroups
 for (i in 1:nrow(dat_rob_vec)) {
   
-text(x_min, dat_rob_vec$heading[i], pos=4, dat_rob_vec$overall[i], cex = 0.75)
+text(x_min, dat_rob_vec$heading[i], pos=4, dat_rob_vec$overall[i], cex = 1.2)
 }
 
 ### set par back to the original settings
@@ -184,9 +189,9 @@ headers <- if(rob_tool == "ROB2"){
   }
 par(font = 2)
 # Need to add handling of top here
-graphics::text(mean(header_row), y_max, labels = "Risk of Bias", cex=0.75)
-graphics::text(header_row, y_max-2 + 1, labels = headers, cex=0.75)
-
+graphics::text(mean(header_row), y_max, labels = "Risk of Bias", cex=1.2)
+graphics::text(header_row, y_max-2 + 1, labels = headers, cex=1.2)
+par(op)
 
 # Plot domain points
 for (j in 1:length(x_pos)) {
@@ -237,7 +242,7 @@ for (i in 1:nrow(dat_rob_vec)) {
     res[[i]],
     fonts = 4,
     row = dat_rob_vec$stats[i],
-    cex = 0.75,
+    cex = 1.2,
     textpos=textpos,
     atransf = exp,
     annotate = F,
@@ -270,7 +275,7 @@ if (length(unique(dat_rob$overall))>1 && nrow(dat)>2) {
   }
 
 ### add text for the test of subgroup differences
-text(x_min,-1.9, pos = 4, cex = 0.75, bquote(
+text(x_min,-1.8, pos = 4, cex = 1.2, bquote(
   paste(
     "Test for Subgroup Differences: ",
     Q[M],
@@ -309,7 +314,7 @@ rob_me_syms <- c(h = "X",
           x = ""
 )
 
-text(x_pos[1]-.5,-1,pos=4,cex=0.75,"ROB Missing Evidence: ")
+text(x_pos[1]-.5,-1,pos=4,cex=1.2,"ROB Missing Evidence: ")
 
 graphics::points(
   x_overall_pos,
@@ -343,9 +348,10 @@ graphics::legend(
 ### Helper function to add Q-test, I^2, and tau^2 estimate info
 mlabfun <- function(text, res) {
   list(bquote(paste(.(text),
-                    " (Q = ", .(formatC(res$QE, digits=2, format="f")),
-                    ", df = ", .(res$k - res$p),
-                    ", p ", .(metafor:::.pval(res$QEp, digits=2, showeq=TRUE, sep=" ")), "; ",
+                    " (",
+                    # " Q = ", .(formatC(res$QE, digits=2, format="f")),
+                    # ", df = ", .(res$k - res$p),
+                    "p ", .(metafor:::.pval(res$QEp, digits=2, showeq=TRUE, sep=" ")), "; ",
                     I^2, " = ", .(formatC(res$I2, digits=1, format="f")), "%, ",
                     tau^2, " = ", .(formatC(res$tau2, digits=2, format="f")), ")")))}
 
@@ -382,7 +388,7 @@ annotate_poly <- function(yi, ci.lb, ci.ub, atransf = exp, textpos = 2, width, r
   
   annotext <- cbind(annotext[,1], " [", annotext[,2], ", ", annotext[,3], "]")
   annotext <- apply(annotext, 1, paste, collapse="")
-  text(x=textpos[2], rows, labels=annotext, pos=2, cex=0.75)
+  text(x=textpos[2], rows, labels=annotext, pos=2, cex=1.2)
 
 }
 

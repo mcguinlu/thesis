@@ -625,15 +625,55 @@ get_confidence_from_p <- function(est, p) {
   
 }
 
+n_effect <- function(x){
+  paste0("N = ",x$n,"; ",x$estimate)
+}
+
+get_study_n <- function(data){
+  
+  if (is.grouped_df(data)) {
+    data <- data %>%
+      ungroup()
+  }
+  
+  data %>%
+    mutate(study = stringr::str_remove(result_id,"-.+")) %>%
+    distinct(study) %>%
+    nrow() %>%
+    return()
+}
+
+get_citations_per_analysis <- function(data){
+  
+  if (is.grouped_df(data)) {
+    data <- data %>%
+      ungroup()
+  }
+  
+  citations <- data %>%
+    mutate(study = stringr::str_remove(result_id,"-.+")) %>%
+    distinct(study,.keep_all = T) %>%
+    mutate(author = stringr::str_remove(author," .+")) %>%
+    mutate(citation = paste0("@",stringr::str_to_lower(.$author),.$year)) %>%
+    pull(citation)
+  
+  
+  paste0("[",paste0(citations,collapse = ";"),"]") %>%
+    return()
+  
+  
+}
+
+
 # Generate nice looking forest plots
-save_fp <- function(dat, design = "obs", ...) {
+save_fp <- function(dat, design = "obs", preface = NULL, ...) {
   # Don't perform meta-analysis if only one result
   
   if (nrow(dat) == 1) {
     return()
   }
   
-  height <- max(nrow(dat) * 70, 500)
+  height <- max(nrow(dat) * 75, 600)
   
   dat_rob <-
     rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
@@ -644,22 +684,30 @@ save_fp <- function(dat, design = "obs", ...) {
   if (design == "obs") {
     tool <- "ROBINS-I"
     dat_rob <-
-      select(dat_rob,-c(result, summary_of_biases, comments))
+      select(dat_rob,-c(type,result, summary_of_biases, comments))
   } else {
     tool <- "ROB2"
     dat_rob <-
-      select(dat_rob,-c(d6, d7, result, summary_of_biases, comments))
+      select(dat_rob,-c(type,d6, d7, result, summary_of_biases, comments))
     
   }
   
+  if (!is.null(preface)) {
+    path_preface <- preface
+  } else {
+    path_preface <- dat$exposure[1]
+  }
+  
+  
   fp <-
-    stringr::str_remove_all(paste0("fp_", design, "_", dat$exposure[1], "_", dat$outcome[1], ".png"),
+    stringr::str_remove_all(paste0("fp_", design, "_", path_preface, "_", dat$outcome[1], ".png"), 
                             " ")
   
   png(
     here::here("figures", "sys-rev", fp),
-    width = 1000,
+    width = 1750,
     height = height,
+    pointsize = 15,
     res = 100
   )
   
@@ -707,7 +755,15 @@ meta_estimate <- function(dat, ...) {
                     yi = yi,
                     sei = sei)
   
-  return(estimate(t$beta, t$ci.lb, t$ci.ub, exp = T, ...))
+  dat_n <- dat %>%
+    mutate(result_id = stringr::str_remove(result_id,"-.+")) %>%
+    distinct(result_id) %>%
+    nrow()
+  
+  return(list(
+    n = dat_n,
+    estimate =  estimate(t$beta, t$ci.lb, t$ci.ub, exp = T, ...)
+  ))
 }
 
 # General filters applied to imported data
@@ -717,7 +773,8 @@ general_filters <- function(data) {
     filter(
       exclude != "Y",
       study_id != 99999,
-      point_estimate != "Missing",!is.na(point_estimate)
+      point_estimate != "Missing",
+      !is.na(point_estimate)
     ) %>%
     return()
 }

@@ -157,8 +157,61 @@ mx_results <- mx_search(mx_data, query)
 
 Note
 
+### Calculating Gwet's AC1
+
+Gwet's AC1 is defined as:
+
+$$AC1 = \frac{observed\;agreement-chance\;agreement}{1-chance\;agreement}$$ 
+
+In reference to a two-by-two table with cells A, B, C and D, it is calculated using the following:
+
+\begin{equation}
+  AC1 = \frac{\frac{A+D}{N}-e(\gamma)}{1-e(\gamma)}
+  (\#eq:AC1-main)
+\end{equation}
+
+where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, where 
+
+\begin{equation}
+  q = \frac{(A+C)+(A+B)}{2N}
+  (\#eq:AC1-supp)
+\end{equation}
+
 <!----------------------------------------------------------------------------->
 ### MR risk of bias tool {#appendix-mr-rob}
+
+<!-- TODO Need to include -->
+
+
+<!----------------------------------------------------------------------------->
+
+### Forest plots for lipid fractions {#lipid-fraction-forest-plots}
+
+<!-- TODO Need to add labels/captions to these -->
+
+<!----------------------------------------------------------------------------->
+```{r obsLipidsDementiaTC, echo = FALSE, results="asis", fig.pos = "H", out.width='100%'}
+knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Dementia_TC_.png"))
+```
+<!----------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
+```{r obsLipidsDementiaLDL, echo = FALSE, results="asis", fig.pos = "H", out.width='100%'}
+knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Dementia_LDL_.png"))
+```
+<!----------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
+```{r obsLipidsDementiaHDL, echo = FALSE, results="asis", fig.pos = "H", out.width='100%'}
+knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Dementia_HDL_.png"))
+```
+<!----------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
+```{r obsLipidsDementiaTG, echo = FALSE, results="asis", fig.pos = "H", out.width='100%'}
+knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Dementia_TG_.png"))
+```
+<!----------------------------------------------------------------------------->
 
 <!----------------------------------------------------------------------------->
 (ref:mrTool-caption) Tool used to assess risk of bias in Mendelian randomisation studies, adapted from that developed by Mamluk et al.[@mamluk2020]
