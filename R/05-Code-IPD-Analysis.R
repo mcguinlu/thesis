@@ -1,5 +1,28 @@
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# primaryFigures ----
+# ---- cohortNumbers 
+
+n_applied <- list()
+n_applied$DPUK <- 16
+n_applied$sysrev <- 20
+n_applied$DPUK_sysrev <- 1
+n_applied$total <- sum(unlist(n_applied))
+
+n_accessed <- list()
+n_accessed$DPUK <- 2
+n_accessed$sysrev <- 0
+n_accessed$DPUK_sysrev <- 1
+n_accessed$total <- sum(unlist(n_accessed))
+
+fmt_applied <- function(dat){
+  paste0("n = ",dat,", ",comma((dat/n_applied$total)*100),"%")
+}
+
+fmt_accessed <- function(dat){
+  paste0("n = ",dat,", ",comma((dat/n_accessed$total)*100),"%")
+}
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- primaryFigures
 
 tmp <-
   read.csv(

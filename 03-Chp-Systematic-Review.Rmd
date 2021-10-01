@@ -504,7 +504,11 @@ Those records which were excluded in the initial screening, but were included by
 ```{r characteristicsSetup, message=FALSE, results="asis", echo = FALSE}
 ```
 
-Following full-text screening, `r n_reports_included` reports describing `r n_included` unique studies met the criteria for inclusion in the review.[@ancelin2012a; @ancelin2013; @arvanitakis2008; @batty2014; @benn2017b; @bettermann2012a; @beydoun2011; @bruce2017; @burgess2017; @chao2015a; @chen2014; @chiang2007; @chitnis2015; @chou2014a; @chuang2015; @cramer2008; @dodge2011; @forti2010; @gnjidic2016; @gottesman2017; @gustafson2012; @haag2009; @hayden2006; @heartprotectionstudycollaborativegroup2002; @hendrie2015; @hippisley-cox2010a; @jick2000; @kimm2011; @kivipelto2001; @kivipelto2005a; @kuo2015; @li2004; @li2005a; @li2010; @liao2013; @liu2019a; @mainousa.g.2005; @mielke2005a; @mielke2010a; @mielke2011; @mukherjee2013; @muller2007; @noale2013; @notkola1998; @ostergaard2017; @pan2018; @parikh2011; @peters2009; @raffaitin2009; @rantanen2017; @rea2005a; @redelmeier2019; @reitz2004a; @reitz2010; @ridker2008; @ronnemaa2011; @schilling2017a; @smeeth2009a; @so2017; @solomon2007; @solomon2009a; @solomon2010; @sparks2008; @strand2013; @su2017; @svensson2019; @szwast2007; @tan2003a; @tynkkynen2016; @tynkkynen2018; @wang2012; @whitmer2005a; @yamada2009b; @yang2015; @yoshitake1995; @zamrini2004; @zandi2005; @zhu2018a; @zimetbaum1992] Table \@ref(tab:studyCharacteristics-table) presents a summary of the characteristics of each study.
+Following full-text screening, `r n_included` unique studies (described across `r n_reports_included` reports) met the criteria for inclusion in the review.[@ancelin2012a; @ancelin2013; @arvanitakis2008; @batty2014; @benn2017b; @bettermann2012a; @beydoun2011; @bruce2017; @burgess2017; @chao2015a; @chen2014; @chiang2007; @chitnis2015; @chou2014a; @chuang2015; @cramer2008; @dodge2011; @forti2010; @gnjidic2016; @gottesman2017; @gustafson2012; @haag2009; @hayden2006; @heartprotectionstudycollaborativegroup2002; @hendrie2015; @hippisley-cox2010a; @jick2000; @kimm2011; @kivipelto2001; @kivipelto2005a; @kuo2015; @li2004; @li2005a; @li2010; @liao2013; @liu2019a; @mainousa.g.2005; @mielke2005a; @mielke2010a; @mielke2011; @mukherjee2013; @muller2007; @noale2013; @notkola1998; @ostergaard2017; @pan2018; @parikh2011; @peters2009; @raffaitin2009; @rantanen2017; @rea2005a; @redelmeier2019; @reitz2004a; @reitz2010; @ridker2008; @ronnemaa2011; @schilling2017a; @smeeth2009a; @so2017; @solomon2007; @solomon2009a; @solomon2010; @sparks2008; @strand2013; @su2017; @svensson2019; @szwast2007; @tan2003a; @tynkkynen2016; @tynkkynen2018; @wang2012; @whitmer2005a; @yamada2009b; @yang2015; @yoshitake1995; @zamrini2004; @zandi2005; @zhu2018a; @zimetbaum1992] <!-- TODO implement citation column in and check in rendered version that there are X references -->
+
+
+
+Table \@ref(tab:studyCharacteristics-table) presents a summary of the characteristics of each study.
 
 The majority of included studies described non-randomised analyses, with the sole two included randomised controlled trials (the Heart Protection Study/British Heart Foundation trial,[@heartprotectionstudycollaborativegroup2002] and the JUPITER trial[@ridker2008]) both examining statins use on all-cause dementia in older adults. A similarly small number of Mendelian randomisation studies were identified, several of which employed a two-sample approach using the identical summary statistics from published GWAS, leading to complications in the synthesis (see Section \@ref(res-AD)). 
 
@@ -583,7 +587,7 @@ However, as a brief summary of the biases at play:
 
 ### All-cause dementia
 
-__Statins__
+#### Statins
 
 ```{r rctStatinDementia, include = FALSE, message=FALSE, warning=FALSE}
 ```
@@ -633,7 +637,7 @@ Finally, a single Mendelian randomisation analysis was identified examining the 
 
 &nbsp;
 
-__Lipids__
+#### Lipids
 
 Across all outcomes, lipid levels were categorised in a number of ways. The most common categorisation was hypercholesterolemia at baseline, defined most frequently as a total cholesterol measurement of greater than 6.5 mmol/L. 
 
@@ -656,6 +660,8 @@ Finally, there were no identified Mendelian randomisation analysis examining the
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Alzheimer's disease {#res-AD}
+
+#### Statins
 
 There were no randomised trials of statin, or any other lipid regulating agent, use on Alzheimer's disease, though several observational studies reported on this outcome and provid evidence for a protective effect (`r n_effect(obsStatins$AD)`; Figure \@ref(fig:obsStatinADFig)). 
 
@@ -683,7 +689,7 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_MR_HMGCR_AD.png"))
 
 &nbsp;
 
-__Lipids__
+#### Lipids
 
 `r obsHyperchol$AD$n` studies reported on the association of hypercholesterolemia with all-cause dementia and provided weak evidence for an effect (`r obsHyperchol$AD$estimate`, Figure \@ref(fig:obsHyperAD))
 
@@ -718,7 +724,7 @@ knitr::include_graphics(file.path("figures","sys-rev","mrDuplication.png"))
 
 ### Vascular dementia 
 
-__Statins__
+#### Statins
 
 As noted above, there was substantially less literature available on the association of my risk factors of interest and vascular dementia.
 
@@ -738,7 +744,7 @@ A single Mendelian randomisation analysis was identified that examining the effe
 
 &nbsp;
 
-__Lipids__
+#### Lipids
 
 `r obsHyperchol$VaD$n` studies reported on the association of hypercholesterolemia with all-cause dementia and provided weak evidence for an effect (`r obsHyperchol$VaD$estimate`, Figure \@ref(fig:obsHyperVaD))
 

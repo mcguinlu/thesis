@@ -1,11 +1,14 @@
 ---
-#########################################
-# options for knitting a single chapter #
-#########################################
+bibliography: bibliography/references.bib
+csl: bibliography/nature.csl
 output:
   bookdown::pdf_document2:
     template: templates/brief_template.tex
-  bookdown::word_document2: default
+  bookdown::word_document2: 
+      toc: false
+      toc_depth: 3
+      reference_docx: templates/word-styles-reference-01.docx
+      number_sections: false 
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -73,6 +76,10 @@ Describe in detail
 In addition, the tool also aim to capture the potential direction of bias for each result. Possible responses included: "Favours experimental", "Favours comparator", "Towards null", "Away from null", and "Unpredictable". Highlight that this is slightly different for the confounding domain in non-randomised studies.
 
 These levels only apply to existing tools, not the MR tool. However, a similar approach was employed.
+
+While the triangulation framework provides for inclusion of multiple distinct types of evidence, based on the scoping search, it is likely that the three main sources will be RCTs of statins, multivariable regression of prospective cohorts, and the use of genetic instruments in observational data (Mendelian Randomisation studies). One important difference between these approaches that will need to be addressed in the triangulation
+is that RCTs relate to short-term modification of lipid levels, whereas Mendelian randomisation studies typically refer to lifelong exposures; and traditional observational epidemiology approaches may refer to short or longterm exposure (although are often not explicit about this). The triangulation will take these into account, for example by superimposing the studies on a hypothetical model for exposure-outcome relationship across the life course.
+
 
 <!----------------------------------------------------------------------------->
 &nbsp;
