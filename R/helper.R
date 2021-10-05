@@ -4,6 +4,8 @@ library(dplyr)
 library(ggplot2)
 library(patchwork)
 library(metafor)
+library("png")
+
 
 # Sort out conflicts in function names
 conflicted::conflict_prefer("summarize", "dplyr")
@@ -214,13 +216,13 @@ hold <- function() {
 #'
 #' @param fp File path (optional)
 
-todo <- function(fp) {
+todo <- function(fp,...) {
   if (!hasArg(fp)) {
     fp <- rstudioapi::getSourceEditorContext()$path
     message("File: ", fp)
   }
   
-  todor::todor_file(fp)
+  todor::todor_file(fp,...)
   
 }
 
@@ -643,6 +645,26 @@ get_study_n <- function(data){
     return()
 }
 
+get_all_citations <- function() {
+  
+  citations <-
+    rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+                which = 1) %>%
+    janitor::clean_names() %>%
+    filter(!is.na(citation)) %>%
+    select(citation) %>%
+    arrange(citation) %>%
+    distinct() %>%
+    pull(citation)
+  
+  
+  paste0("[@",paste0(citations,collapse = "; @"),"]") %>%
+    return()
+  
+  
+}
+
+
 get_citations_per_analysis <- function(data){
   
   if (is.grouped_df(data)) {
@@ -650,18 +672,26 @@ get_citations_per_analysis <- function(data){
       ungroup()
   }
   
-  citations <- data %>%
-    mutate(study = stringr::str_remove(result_id,"-.+")) %>%
+  citations <-
+    rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+                which = 1) %>%
+    janitor::clean_names() %>%
+    filter(!is.na(citation)) %>%
+    select(study_id, citation) %>%
+    group_by(study_id) %>%
+    distinct()
+  
+  
+  citation_vec <- data %>%
+    mutate(study = as.numeric(stringr::str_remove(result_id,"-.+"))) %>%
     distinct(study,.keep_all = T) %>%
-    mutate(author = stringr::str_remove(author," .+")) %>%
-    mutate(citation = paste0("@",stringr::str_to_lower(.$author),.$year)) %>%
+    left_join(citations, by = c("study"="study_id")) %>%
+    mutate(citation = paste0("@",citation)) %>%
     pull(citation)
   
   
-  paste0("[",paste0(citations,collapse = ";"),"]") %>%
+  paste0("[",paste0(citation_vec,collapse = "; "),"]") %>%
     return()
-  
-  
 }
 
 
@@ -669,17 +699,18 @@ get_citations_per_analysis <- function(data){
 save_fp <- function(dat, design = "obs", preface = NULL, ...) {
   # Don't perform meta-analysis if only one result
   
-  if (nrow(dat) == 1) {
+  if (nrow(dat) < 2) {
     return()
   }
-  
-  height <- max(nrow(dat) * 75, 600)
   
   dat_rob <-
     rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
                 which = 3) %>%
     janitor::clean_names() %>%
     filter(result_id %in% dat$result_id)
+  
+  
+  height <- max(nrow(dat) * 100, 700)
   
   if (design == "obs") {
     tool <- "ROBINS-I"
@@ -712,6 +743,7 @@ save_fp <- function(dat, design = "obs", preface = NULL, ...) {
   )
   
   forest_strata_rob(dat, dat_rob, rob_tool = tool, sei = sei, ...)
+  
   
   dev.off()
 }
@@ -760,9 +792,12 @@ meta_estimate <- function(dat, ...) {
     distinct(result_id) %>%
     nrow()
   
+  citations <- get_citations_per_analysis(dat)
+  
   return(list(
     n = dat_n,
-    estimate =  estimate(t$beta, t$ci.lb, t$ci.ub, exp = T, ...)
+    estimate =  estimate(t$beta, t$ci.lb, t$ci.ub, exp = T, ...),
+    citations = citations
   ))
 }
 
@@ -833,3 +868,6 @@ get_words <- function() {
   return(masterWords)
   
 }
+
+
+

@@ -1,4 +1,4 @@
-forest_strata_rob <- function(dat, dat_rob, rob_tool = "ROB2",rob_me = "Low",sei = NULL,...){
+forest_strata_rob <- function(dat, dat_rob, rob_tool = "ROB2",rob_me = "Low",sei = NULL, title = NULL, ...){
 
 ### calculate log risk ratios and corresponding sampling variances (and use
 ### the 'slab' argument to store study labels as part of the data frame)
@@ -150,9 +150,9 @@ tsize <- rob_psize * 0.3
 
 ### fit random-effects model
 if (!hasArg(sei)) {
-  res <- rma(yi, vi, data=dat, slab = paste0(author, ", ", year))
+  res <- rma(yi, vi, data=dat, slab = paste0(author, ", ", year), method = "DL")
 } else {
-  res <- rma(yi, sei = sei, data=dat, slab = paste0(author, ", ", year))
+  res <- rma(yi, sei = sei, data=dat, slab = paste0(author, ", ", year), method = "DL")
 }
 
 ### indent study names
@@ -220,10 +220,10 @@ par(op)
 
 if (!hasArg(sei)) {
 rma_flexi <- function(x) {
-  rma(yi, vi, subset = (overall == x), data = dat)
+  rma(yi, vi, subset = (overall == x), data = dat, method = "DL")
 } } else{
   rma_flexi <- function(x) {
-    rma(yi, sei=sei, subset = (overall == x), data = dat)
+    rma(yi, sei=sei, subset = (overall == x), data = dat, method = "DL")
   }
 }
 
@@ -258,6 +258,13 @@ for (i in 1:nrow(dat_rob_vec)) {
 }
 }
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+
+if(!is.null(title)){
+  par(font = 2)
+  text(x_min, y_max, pos=4, bquote(bold(underline(.(title)))), cex = 1.2)
+  par(op)
+}
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
@@ -268,9 +275,9 @@ if (length(unique(dat_rob$overall))>1 && nrow(dat)>2) {
 
   if (!hasArg(sei)) {
     
-    res <- rma(yi, vi, mods = ~ overall, data = dat)
+    res <- rma(yi, vi, mods = ~ overall, data = dat, method = "DL")
   } else {
-    res <- rma(yi, sei=sei, mods = ~ overall, data = dat)
+    res <- rma(yi, sei=sei, mods = ~ overall, data = dat, method = "DL")
     
   }
 
