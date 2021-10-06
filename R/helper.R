@@ -652,6 +652,9 @@ get_all_citations <- function() {
                 which = 1) %>%
     janitor::clean_names() %>%
     filter(!is.na(citation)) %>%
+    select(citation) %>%
+    arrange(citation) %>%
+    distinct() %>%
     pull(citation)
   
   
@@ -674,7 +677,9 @@ get_citations_per_analysis <- function(data){
                 which = 1) %>%
     janitor::clean_names() %>%
     filter(!is.na(citation)) %>%
-    select(study_id, citation)
+    select(study_id, citation) %>%
+    group_by(study_id) %>%
+    distinct()
   
   
   citation_vec <- data %>%
@@ -787,9 +792,12 @@ meta_estimate <- function(dat, ...) {
     distinct(result_id) %>%
     nrow()
   
+  citations <- get_citations_per_analysis(dat)
+  
   return(list(
     n = dat_n,
-    estimate =  estimate(t$beta, t$ci.lb, t$ci.ub, exp = T, ...)
+    estimate =  estimate(t$beta, t$ci.lb, t$ci.ub, exp = T, ...),
+    citations = citations
   ))
 }
 
@@ -862,4 +870,48 @@ get_words <- function() {
 }
 
 
+save_dr <- function(dat, title, xref, preface){
+  
+  if (length(unique(dat$study_id)) < 3) {
+    return()
+  }
+  
+  
+  fp <- paste0("dr_",preface,".png")
+  
+  png(here::here("figures/sys-rev/",fp))
+  knots <-
+    round(with(dat, quantile(dose, probs = c(.25, .5, .75))), 2)
+  
+  spl <-
+    dosresmeta::dosresmeta(
+      formula = loghr ~ rms::rcs(dose, knots),
+      id = study_id,
+      se = se,
+      type = type,
+      cases = cases,
+      n = n,
+      data = dat
+    )
+  
+  newdata = data.frame(dose = seq(0, xref+150, 10))
+  
+    with(predict(spl, newdata, xref = xref), {
+    plot(
+      get("rms::rcs(dose, knots)dose"),
+      pred,
+      type = "l",
+      ylab = "Log HR",
+      ylog = F,
+      ylim = c(-1, 1),
+      las = 1,
+      xlab = paste0(title,", mg/dl"),
+      bty = "l",
+    )
+    lines(get("rms::rcs(dose, knots)dose"), ci.lb, lty = "dashed")
+    lines(get("rms::rcs(dose, knots)dose"), ci.ub, lty = "dashed")
+  })
+    text(xref+130, 1, paste0("N studies = ",length(unique(dat$study_id))))
+    dev.off()
+}
 

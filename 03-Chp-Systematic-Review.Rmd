@@ -195,7 +195,7 @@ This was particularly relevant to preprints and published papers reporting the s
 
 #### Combining across groups
 
-Following best practice, where summary data was presented across two groups (e.g. age at baseline stratified by hypercholesterolemia status), the following approach was used to combine the groups:[@higgins2019]
+In line with best practice, where summary data was presented across two groups (e.g. age at baseline stratified by hypercholesterolemia status), the following approach was used to combine the groups:[@higgins2019]
 
 \begin{equation}
 N = N_1 + N_2
@@ -213,6 +213,8 @@ Mean = \frac{(N_1M_1 + N_2N_2)}{(N_1 + N_2)}
 SD = \sqrt{\frac{(N_1-1)SD_1^2 + (N_2-1)SD_2^2 + \frac{N_1N_2}{N_1 + N_2}(M_1^2 + M_2^2 - 2M_1M_2)}{N1 + N2 -1}}
   (\#eq:combiningGroups3)
 \end{equation}
+
+&nbsp;
 
 This was implemented in a systematic manner, with the raw group data being extracted and a cleaning script employed to combine the groups for analysis.
 
@@ -293,7 +295,7 @@ At present, no formalised risk-of-bias assessment tool for Mendelian randomizati
 
 In addition to assessing the risk of bias within each result contributing to a synthesis, I also assessed risk of bias due to missing evidence at the analysis level. This assessment examines evidence missing due to selective non-reporting - as distinct from the selective reporting of a single result from multiple planned - and was performed using the forthcoming RoB-ME (Risk of Bias due to Missing Evidence in a synthesis) tool.[@zotero-15123] <!-- TODO Need more here describing missing evidence --> The tool is in development stages, and as part of this review, I piloted the tool, and provided feedback to the developers. <!-- TODO Cite Ben's work on effect of missing study versus choice of analysis method -->
 
-This additional appraisal marks a departure from the registered protocol, as there was initially no intention to try and examine the risk of bias due to missing evidence. This is largely because the tool did not exist when the protocol was originally registered.
+This additional appraisal marks a departure from the registered protocol, as there was initially no intention to try and examine the risk of bias due to missing evidence. This is largely because the tool did not exist when the protocol was registered.
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -353,7 +355,7 @@ One of the limitations of current risk-of-bias assessments in systematic reviews
 
 #### Assessment of added value of including preprints
 
-_[Note: Julian, I am particularly interested in your feedback on this section, and the corresponding results section (Section \@ref(sys-rev-including-preprints)), as I am not convinced on the language I am using]_
+_[Note: Julian, I am particularly interested in your feedback on this section, and the corresponding results section (Section \@ref(sys-rev-including-preprints-res)), as I am not convinced on the language I am using]_
 
 Preprints are considered a valuable evidence source within this thesis (see Introduction, Section \@ref(diverse-sources-preprints)). As an adjunct analysis to this review, I explored the additional evidential value of including preprints in each meta-analysis performed, assessed using the fixed effect weight from a standard meta-analysis.
 
@@ -368,7 +370,7 @@ Additionally, I followed identified preprints up after a two-year lag to investi
 
 ### Initial search and validation of search filters
 
-The database search identified `r num_to_text(23447)` records, of which `r comma(7338)` were duplicated records. Of the random sample of 500 records screened to ensure the accuracy of the study design filters, no eligible records were identified. Many of those excluded by the filters were basic science studies, commentaries or educational articles, as expected. <!-- TODO include some example citations here -->
+The database search identified `r num_to_text(23447)` records, of which `r comma(7338)` were duplicated records. Of the random sample of 500 records screened to ensure the accuracy of the study design filters, no eligible records were identified. Many of those excluded by the filters were commentaries/educational articles, or described basic science studies. <!-- TODO include some example citations here -->
 
 
 &nbsp;
@@ -443,11 +445,11 @@ Those records which were excluded in the initial screening, but were included by
 
 Following full-text screening, `r n_included` unique studies (described across `r n_reports_included` reports) met the criteria for inclusion in the review.`r get_all_citations()` Table \@ref(tab:studyCharacteristics-table) presents a summary of the characteristics of each study.
 
-The majority of included studies described non-randomised analyses, with the sole two included randomised controlled trials (the Heart Protection Study/British Heart Foundation trial[@heartprotectionstudycollaborativegroup2002] and the JUPITER trial[@ridker2008]) both reporting on the effect of statin use on all-cause dementia in older adults. A similarly small number of Mendelian randomisation studies were identified, several of which employed a two-sample approach using the identical summary statistics from published genome wide association studies (GWAS) leading to complications in the synthesis (see Section \@ref(sys-rev-res-AD)). 
+The majority of included studies described non-randomised analyses, with the sole two included randomised controlled trials (the Heart Protection Study/British Heart Foundation trial[@heartprotectionstudycollaborativegroup2002] and the JUPITER trial[@ridker2008]) both reporting on the effect of statin use on all-cause dementia in older adults. A similarly small number of Mendelian randomisation studies were identified, several of which employed a two-sample approach using summary statistics from the same published genome wide association studies (GWAS) leading to complications in the synthesis (see Section \@ref(sys-rev-res-AD)). 
 
 Of the `r n_nrsi_included` non-randomised studies examining treatments that modify lipid levels, all examined statin use (`r n_statins`), while a small number also reported on other non-statins agents such as fibrates (`r n_fibrates`). In the `r n_nrse_included` non-randomised studies of exposure, hypercholesterolemia (`r n_hyperchol`) and total cholesterol levels (`r n_TC`) were the most frequently reported risk factors.
 
-In terms of outcomes, the vast majority of studies examined either all-cause dementia (`r n_Dementia`) or Alzheimer's disease (`r n_AD`), with only a small proportion examining vascular dementia `r n_VaD`. Some rarer outcome classifications such as vascular-component or mixed dementia were also investigated, but were myc rarer.
+In terms of outcomes, the vast majority of studies examined either all-cause dementia (`r n_Dementia`) or Alzheimer's disease (`r n_AD`), with only a small proportion examining vascular dementia (`r n_VaD`). Some other outcome classifications such as vascular-component or mixed dementia were also investigated, but were much rarer.
 
 <!-- Many studies using electronic health records as their data source did not accurately report the diagnostic codes used to identify cases. -->
 
@@ -455,7 +457,7 @@ In terms of outcomes, the vast majority of studies examined either all-cause dem
 
 <!--- TODO Talk a little bit more about age here --->
 
-Three included reports were preprints (denoted in the Table \@ref(tab:studyCharacteristics-table) using an asterisk),[@ridker2008; @so2017;@zhu2017] one of which had subsequently been published and was captured by the primary literature search.[@zhu2018] All three included preprints were obtained from the bioRxiv preprint server and all described a Mendelian randomisation analysis.
+Three included reports were preprinted (denoted in the Table \@ref(tab:studyCharacteristics-table) using an asterisk),[@ridker2008; @so2017;@zhu2017] one of which had subsequently been published and was captured by the primary literature search.[@zhu2018] All three included preprints were obtained from the bioRxiv preprint server and all described a Mendelian randomisation analysis.
 
 <!-- As discussed in Section \@ref(rev-discussion-MR), the choice was not material, as the results from all studies using these data sources were comparable. -->
 
@@ -519,7 +521,7 @@ Following best practice, studies judged to be at critical risk of bias should be
 
 <!-- Several eligible studies included in the analysis did not have available results, either due to selective reporting of significant results in conference abstracts,[@su2017; @yamada2009b] or due to the unavailability of supplementary materials containing the relevant results.[@haag2009] -->
 
-<!----------------------------------------------------------------------------->
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### All-cause dementia {#sys-rev-res-Dementia}
 
@@ -681,18 +683,17 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_lipids_composite_AD.pdf"))
 ```
 <!----------------------------------------------------------------------------->
 
-
-Finally, there were several identified Mendelian randomisation studies examining the effect of genetically lowered LDL-c on Alzheimer's disease risk (Figure \ref(fig:mrDuplication)). However, all of these studies used a two-sample approach, making use of summary statistics from the GLGC and IGAP consortia. Due to this overlap, which would result in a falsely precise estimate caused by multiple counting of the same participants, no meta-analysis of these studies was performed. However, across all analysis, using varying number of SNPS, no evidence for an effect was observed (Figure \ref(mrDuplication)).
+Finally, there were several identified Mendelian randomisation studies examining the effect of genetically lowered LDL-c on Alzheimer's disease risk (Figure \@ref(fig:mrDuplication)). However, all of these studies used a two-sample approach, making use of summary statistics from the GLGC and IGAP consortia. Due to this overlap, which would result in a falsely precise estimate caused by multiple counting of the same participants, no meta-analysis of these studies was performed. However, across all analysis, using varying number of SNPS, no evidence for an effect was observed (Figure \@ref(fig:mrDuplication)).
 
 <!----------------------------------------------------------------------------->
-(ref:mrDuplication-cap) Summary of duplication of Mendelian randomisation studies which used summary statistics from the Global Lipid Genetics Consortium (GLGC) and the International Genomics of Alzheimer's Project (IGAP). Note that the Alzheimer’s Disease Genetics Consortium (ADGC) is a sub-cohort within IGAP.
+(ref:mrDuplication-cap) Summary of duplication across Mendelian randomisation studies which used summary statistics from the Global Lipid Genetics Consortium (GLGC) and the International Genomics of Alzheimer's Project (IGAP). Note that the Alzheimer’s Disease Genetics Consortium (ADGC) is a sub-cohort within IGAP.
 
 (ref:mrDuplication-scap) Summary of duplication across two sample Mendelian randomisation studies
 
 ```{r mrDuplicationSetup, include=FALSE}
 ```
 
-```{r mrDuplication, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:mrDuplication-cap)', out.width='100%', fig.scap='(ref:mrDuplication-scap)'}
+```{r mrDuplication, echo = FALSE, results="asis", fig.pos = "H", fig.align='center', fig.cap='(ref:mrDuplication-cap)', out.width='80%', fig.scap='(ref:mrDuplication-scap)'}
 knitr::include_graphics(file.path("figures","sys-rev","mrDuplication.png"))
 ```
 <!----------------------------------------------------------------------------->
