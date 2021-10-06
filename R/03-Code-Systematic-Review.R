@@ -206,6 +206,7 @@ if (doc_type == "docx") {
     row_spec(0, bold = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position")) %>%
     kableExtra::add_header_above(c(" " = 2, "Initial screening decision" = 3)) %>%
+    kableExtra::column_spec(1, width = "12em") %>%
     kableExtra::column_spec(0:2, bold = T) %>%
     kableExtra::column_spec(4, border_right = T) %>%
     kableExtra::collapse_rows(columns = 1, valign = "middle") %>%
@@ -230,6 +231,7 @@ if (doc_type == "docx") {
     kable_styling(latex_options = c("HOLD_position"))  %>%
     kableExtra::add_header_above(c(" " = 2, "Initial screening decision" = 3)) %>%
     kableExtra::column_spec(0:2, bold = T) %>%
+    kableExtra::column_spec(1, width = "12em") %>%
     kableExtra::column_spec(4, border_right = T) %>%
     kableExtra::collapse_rows(columns = 1, valign = "middle") %>%
     kableExtra::row_spec(2, extra_css = "border-bottom: 1px solid")
@@ -1037,7 +1039,7 @@ critical <-
     primary == 1
   )
 
-critical_citations <- get_citations_per_analysis(n_critical)
+critical_citations <- get_citations_per_analysis(critical)
 
 n_critical <- critical %>%
   group_by(study_id) %>%
@@ -1217,16 +1219,23 @@ obsLipids <- purrr::map(dat$data,  ~ meta_estimate(.x, type = "HR"))
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- doseResponse
 
-results_tc_dr <-
+dat <-
   rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
               which = 2) %>%
   general_filters() %>%
+  filter(exposure_category == "Lipids - DR")
+
+n_dr_initial <- dat %>%
+  distinct(study_id) %>%
+  nrow()
+
+dat <- dat %>%
   filter(
-    exposure_category == "Lipids - DR",
-    author != "Beydoun",
     !is.na(number_exposed),
-    !grepl("Quartile", dose_range),
+    !grepl("Quartile|Highest", dose_range),
     !is.na(cases),
+    !grepl("Non",exposure),
+    !is.na(dose_range),
     cases != "NR"
   ) %>%
   rename("n" = number_exposed) %>%
@@ -1288,81 +1297,54 @@ results_tc_dr <-
          loghr,
          se)
 
+n_dr_final <- dat %>%
+  distinct(study_id) %>%
+  nrow()
 
-t <- results_tc_dr %>%
-  group_by(exposure, outcome) %>%
-  group_split()
+n_dr_excluded <- n_dr_initial - n_dr_final
+  
+dat <- dat %>%  
+  nest_by(outcome, exposure)
 
-ggplot(t[[4]], aes(dose, loghr, group = study_id, shape = author)) +
-  geom_line() + geom_point() + theme_classic() + ylab("LnRR") +
-  xlab("Alcohol intake (mL/day)")
+names <- group_keys(dat) %>%
+  mutate(names = paste0(outcome, "_", stringr::str_remove(exposure, "-.+"))) %>%
+  pull(names)
 
-lin <-
-  dosresmeta::dosresmeta(
-    formula = loghr ~ dose,
-    id = study_id,
-    se = se,
-    type = type,
-    cases = cases,
-    n = n,
-    data = t[[4]]
+dat$data <- dat$data %>%
+  set_names(names)
+
+purrr::pmap(
+  list(
+    dat = dat$data,
+    xref = rep(c(40,100,200,150,40,100,200,40,100,200,150)),
+    title = c(
+        "High-density lipoprotein cholesterol",
+        "Low-density lipoprotein cholesterol",
+        "Total cholesterol",
+        "Triglycerides",
+        "High-density lipoprotein cholesterol",
+        "Low-density lipoprotein cholesterol",
+        "Total cholesterol",
+        "High-density lipoprotein cholesterol",
+        "Low-density lipoprotein cholesterol",
+        "Total cholesterol",
+        "Triglycerides"
+    ),
+    preface = names(dat$data)
+  ),
+  purrr::possibly(
+    ~ save_dr(
+      ..1,
+      xref = ..2,
+      title = ..3,
+      preface = ..4
+    ),
+    otherwise =  NULL
   )
-
-pred <- predict(lin, data.frame(dose = seq(100, 250, 10)))
-round(pred, 2)
-
-with(predict(lin, xref = 100, data.frame(dose = seq(0, 300, 10))), {
-  plot(
-    dose,
-    pred,
-    type = "l",
-    ylab = "Relative risk",
-    las = 1,
-    xlab = "Body Mass Index (BMI)",
-    bty = "l"
-  )
-  lines(dose, ci.lb, lty = "dashed")
-  lines(dose, ci.ub, lty = "dashed")
-})
+)
 
 
 
-knots <-
-  round(with(t[[4]], quantile(dose, probs = c(.25, .5, .75))), 2)
-
-spl <-
-  dosresmeta::dosresmeta(
-    formula = loghr ~ rms::rcs(dose, knots),
-    id = study_id,
-    se = se,
-    type = type,
-    cases = cases,
-    n = n,
-    data = t[[4]]
-  )
-
-pred <- predict(spl, data.frame(dose = seq(100, 250, 10)))
-round(pred, 2)
-
-newdata = data.frame(dose = seq(0, 250, 10))
-with(predict(spl, newdata, xref = 100), {
-  plot(
-    get("rms::rcs(dose, knots)dose"),
-    pred,
-    type = "l",
-    ylab = "Relative risk",
-    ylog = F,
-    ylim = c(-1, 1),
-    las = 1,
-    xlab = "Alcohol intake, grams/day",
-    bty = "l"
-  )
-  lines(get("rms::rcs(dose, knots)dose"), ci.lb, lty = "dashed")
-  lines(get("rms::rcs(dose, knots)dose"), ci.ub, lty = "dashed")
-  lines(y = c(0, 0),
-        x = c(-10, 250),
-        lty = 8)
-})
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
@@ -1408,10 +1390,10 @@ text(
   font = 3
 )
 
-text(c(0.25, 0.5), 7.35, c("Exposure", "Outcome"), font = 2)
-text(c(.375), 8, c("GWAS"), font = 2)
+text(c(0.25, 0.5), 8.35, c("Exposure", "Outcome"), font = 2)
+text(c(.375), 9, c("GWAS"), font = 2)
 
-text(c(.75), 8, c("# SNPS"), font = 2)
+text(c(.75), 9, c("# SNPS"), font = 2)
 dev.off()
 
 

@@ -652,9 +652,6 @@ get_all_citations <- function() {
                 which = 1) %>%
     janitor::clean_names() %>%
     filter(!is.na(citation)) %>%
-    select(citation) %>%
-    arrange(citation) %>%
-    distinct() %>%
     pull(citation)
   
   
@@ -677,9 +674,7 @@ get_citations_per_analysis <- function(data){
                 which = 1) %>%
     janitor::clean_names() %>%
     filter(!is.na(citation)) %>%
-    select(study_id, citation) %>%
-    group_by(study_id) %>%
-    distinct()
+    select(study_id, citation)
   
   
   citation_vec <- data %>%
@@ -792,12 +787,9 @@ meta_estimate <- function(dat, ...) {
     distinct(result_id) %>%
     nrow()
   
-  citations <- get_citations_per_analysis(dat)
-  
   return(list(
     n = dat_n,
-    estimate =  estimate(t$beta, t$ci.lb, t$ci.ub, exp = T, ...),
-    citations = citations
+    estimate =  estimate(t$beta, t$ci.lb, t$ci.ub, exp = T, ...)
   ))
 }
 
