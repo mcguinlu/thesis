@@ -962,6 +962,8 @@ obsFibrates <- purrr::map(dat,  ~ meta_estimate(.x, type = "HR"))
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- Hypercholesterolemia
 
+# TODO remove OR results
+
 dat <-
   rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
               which = 2) %>%
@@ -971,6 +973,7 @@ dat <-
     !grepl("Critical", comments),
     grepl("Hyperch", exposure_category),
     point_estimate != "Missing",
+    # measure = "HR",
     exposure != "TG",
     primary == 1
   ) %>%
@@ -1012,7 +1015,7 @@ dat <- dat %>%
 
 purrr::map2(
   dat,
-  c("Low", "High", "Some concerns"),
+  c("Some concerns", "Some concerns", "Some concerns"),
   ~ save_fp(
     .x,
     rob_me = .y,
@@ -1088,7 +1091,7 @@ forest_strata_rob(
   dat_rob,
   sei = sei,
   at = log(c(0.3, 1, 3)),
-  rob_me = "Low",
+  rob_me = "Some concerns",
   xlab = "Odds ratio"
 )
 
@@ -1555,3 +1558,48 @@ dev.off()
 
 ## Don't need to do for vascular dementia as only one lipid fraction (TC) has
 ## greater than one study presenting results on it.
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- obsStatinsOR
+
+dat <-
+  rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+              which = 2) %>%
+  general_filters() %>%
+  filter(
+    exposure_category == "Drug",
+    measure %in% c("RR","OR"),
+    exposure == "Statin - Ever",
+    outcome %in% c("Dementia", "AD", "VaD"),
+    primary == 1
+  ) %>%
+  mutate(author = case_when(!is.na(sex) ~ paste0(author, " (", sex, " only)"),
+                            T ~ author)) %>%
+  rename("n" = number_exposed) %>%
+  select(
+    result_id,
+    author,
+    year,
+    sex,
+    exposure_category,
+    dose_range,
+    age,
+    n,
+    exposure,
+    outcome,
+    cases,
+    point_estimate,
+    ends_with("_ci")
+  ) %>%
+  mutate(across(c(n, point_estimate, ends_with("_ci")), as.numeric)) %>%
+  mutate(yi = log(point_estimate),
+         sei = (log(upper_ci) - log(lower_ci)) / 3.92) %>%
+  arrange(author, year) %>%
+  group_by(outcome)
+
+dat <- dat %>%
+  group_split() %>%
+  set_names(unlist(group_keys(dat)))
+
+obsStatinsOR <- purrr::map(dat,  ~ meta_estimate(.x, type = "HR"))

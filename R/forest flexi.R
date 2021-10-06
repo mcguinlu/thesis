@@ -16,11 +16,10 @@ dat_rob <- dat_rob %>%
 if ("type" %in% colnames(dat_rob)) {
   dat_rob <- dat_rob %>%
     select(-type)
-  
 }
 
 dat <- left_join(dat, dat_rob, by = c("result_id"= "result_id")) %>%
-  arrange(overall)
+  arrange(overall, desc(author))
 
 dat_rob_vec <- dat_rob %>%
   mutate(row_n = 1:n()) %>%
@@ -269,7 +268,7 @@ if(!is.null(title)){
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 
-if (length(unique(dat_rob$overall))>1 && nrow(dat)>2) {
+if (length(unique(dat_rob$overall))>1 && nrow(dat)>9) {
 
 # Fit meta-regression model to test for subgroup differences
 
