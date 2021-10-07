@@ -1528,32 +1528,35 @@ img$TG <-
 
 # setup plot
 try(dev.off())
-pdf(
-  here::here("figures/sys-rev/fp_lipids_composite_Dementia.pdf"),
-  width = 8,
-  height = 12
-)
-par(mai = rep(0, 4)) # no margins
 
-# layout the plots into a matrix w/ 12 columns, by row
-layout(matrix(1:4, ncol = 1, byrow = TRUE))
-
-# do the plotting
-for (i in 1:4) {
-  plot(
-    NA,
-    xlim = 0:1,
-    ylim = 0:1,
-    bty = "n",
-    axes = 0,
-    xaxs = 'i',
-    yaxs = 'i'
+  pdf(
+    here::here("figures/sys-rev/fp_lipids_composite_Dementia.pdf"),
+    width = 8,
+    height = 12
   )
-  rasterImage(img[[i]], 0, 0, 1, 1)
-}
+  par(mai = rep(0, 4)) # no margins
+  
+  # layout the plots into a matrix w/ 12 columns, by row
+  layout(matrix(1:4, ncol = 1, byrow = TRUE))
+  
+  # do the plotting
+  for (i in 1:4) {
+    plot(
+      NA,
+      xlim = 0:1,
+      ylim = 0:1,
+      bty = "n",
+      axes = 0,
+      xaxs = 'i',
+      yaxs = 'i'
+    )
+    rasterImage(img[[i]], 0, 0, 1, 1)
+  }
+  
+  # write to PDF
+  dev.off()
 
-# write to PDF
-dev.off()
+
 
 
 ## Don't need to do for vascular dementia as only one lipid fraction (TC) has
