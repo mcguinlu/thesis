@@ -836,7 +836,10 @@ get_words <- function() {
   files <- list.files(path = here::here(), pattern = "\\.Rmd$")
   
   files <-
-    files[which(!(files %in% c("_main.Rmd", "index.Rmd", "tmp.Rmd")))]
+    files[which(!(files %in% c("_main.Rmd",
+                               "index.Rmd",
+                               "tmp.Rmd",
+                               "04-Chp-Systematic-Review-Results.Rmd")))]
   
   words_v <- c()
   
