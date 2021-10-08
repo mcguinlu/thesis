@@ -9,6 +9,8 @@
 - [ ] Check start of chapter quotes, including references
 - [ ] Quotes are rendering properly.
 - [ ] URLs resolve
+- [ ] Remove "Reference" headings from each chapter
+- [ ] Add all abbreviations used in tables to the Abbreviation section
 - [ ] Corrections don't overrun
 - [ ] Confirm TODOs, <!-.
 - [ ] Search for [CITE], XXXX, YYYY
@@ -25,7 +27,6 @@
 - [ ] Check short captions for figures
 - [ ] Randomisation vs randomization
 - [ ] Check citations, particularly of handbook
-- [ ] Remove chapter reference headings.
 - [ ] Ensure all equations are in equation blocks
 - [ ] Ensure that figure table captions follow same style (bold short caption - description)
 

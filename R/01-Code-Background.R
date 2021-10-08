@@ -136,8 +136,6 @@ htmltools::html_print(DiagrammeR::add_mathjax(graph), viewer = NULL) %>%
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- thesisOverview-table
 
-# TODO Need to update this so that triangulation is it's own chapter
-
 thesisOverview_table <- read.csv("data/background/thesisOverview.csv") %>%
   mutate("Exposure/ Intervention" = Exposure.Intervention) %>%
   mutate("Research Question" = Research.Question) %>%

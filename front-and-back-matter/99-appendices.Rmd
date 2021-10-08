@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 `r if(knitr:::is_latex_output()) '\\startappendices'`
 
 `r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
@@ -5,6 +10,7 @@
 <!-- If you feel it necessary to include an appendix, it goes here. The first appendix should include the commands above. -->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
+
 knitr::read_chunk(here::here("R/appendix.R"))
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
@@ -373,7 +379,7 @@ knitr::include_graphics("figures/sys-rev-tools/example-rob-summary-barplot.png")
 
 A list of arguments available to the two functions in robvis are shown in Table \@ref(tab:robvisarguments)
 
-`r br`
+&nbsp;
 
 ```{r robvisarguments, echo = FALSE, eval = TRUE}
 
@@ -390,28 +396,41 @@ arguments <- data.frame(stringsAsFactors=FALSE,
 "Defines whether weights should be used to produce the summary barplot figure. Default is `weighted = TRUE`, in line with current Cochrane Collaboration guidance.",
 "Defines the size of the points in the traffic light plot. Default is `psize = 20`."))
 
-if(doc.type == "docx"){
+if(doc_type == "docx"){
   
-  knitr::kable(arguments,escape = T,
+  knitr::kable(arguments,
+               escape = T,
              caption = "Description of the arguments available in the two main `robvis` functions. ‘X’ indicates that the option is available for the respective function.",
              
              col.names = c("Argument","rob_traffic_light()","rob_summary()", "Description"))
   
-}else{
+} else {
   
-  knitr::kable(arguments, booktabs = TRUE, longtable = TRUE, 
-             caption = "Description of the arguments available in the two main `robvis` functions. ‘X’ indicates that the option is available for the respective function.",
-             align = c("l","c","c","l"),
-             col.names = c("Argument","rob_traffic_light()","rob_summary()", "Description")) %>%
-  column_spec(4,"5cm") %>%
-  kable_styling(font_size = 9, 
-                bootstrap_options = c("striped", "hover"),
-                latex_options = c("repeat_header", "striped"))
+  knitr::kable(
+    arguments,
+    format = "latex",
+    booktabs = TRUE,
+    longtable = TRUE,
+    caption = "Description of the arguments available in the two main `robvis` functions. ‘X’ indicates that the option is available for the respective function.",
+    align = c("l", "c", "c", "l"),
+    col.names = c(
+      "Argument",
+      "rob_traffic_light()",
+      "rob_summary()",
+      "Description"
+    )
+  ) %>%
+    column_spec(4, "5cm") %>%
+    kable_styling(
+      font_size = 9,
+      bootstrap_options = c("striped", "hover"),
+      latex_options = c("repeat_header", "striped")
+    )
 }
 
 ```
 
-`r br`
+&nbsp;
 
 ### Reception and Future Plans
 
@@ -431,7 +450,14 @@ While `robvis` is a stable package, a range of additional functionality could be
 
 ## Creating 
 
+\newpage
+
 ## Copies of papers arising from this thesis {#published-papers}
+
+The following pages contain copies of papers arising from work performed as part of this thesis.
+
+<!-- TODO May need to reiterate contributions here -->
+
 
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf}

@@ -22,7 +22,6 @@ Hold
 \minitoc <!-- this will include a mini table of contents-->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
-source("R/doc_options.R")
 source("R/helper.R")
 knitr::read_chunk("R/05-Code-IPD-Analysis.R")
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format

@@ -5,7 +5,7 @@
 title: |
    Lipids and dementia:\
    An investigation of their relationship
-   
+
 author: Luke A McGuinness
 college: 
 degree: Doctor of Philosophy
@@ -26,7 +26,7 @@ abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with ab
 #######################
 ## bibliography path ##
 #######################
-bibliography: [bibliography/references.bib, bibliography/packages.bib]
+bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 bibliography-heading-in-pdf: Bibliography
 
@@ -84,11 +84,11 @@ link-citations: true
 documentclass: book
 
 ---
+<!-- TODO Confirm thesis title! -->
 
 ```{r create_chunk_options, include=FALSE, eval=knitr::is_latex_output()}
 source('scripts_and_filters/create_chunk_options.R')
 source("R/helper.R")
-options(scipen=999)
 ```
 
 <!--

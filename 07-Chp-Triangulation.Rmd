@@ -36,6 +36,8 @@ Hold
 
 # Aetiological triangulation across evidence sources {#tri-heading}
 
+\minitoc <!-- this will include a mini table of contents-->
+
 ## Lay Summary
 
 <!----------------------------------------------------------------------------->
@@ -65,13 +67,80 @@ This was also guideded by the forthcoming ROBINS-E tool, which has
 
 <!-- TODO See ROBINS-E for this, as to how to think about exposures -->
 
+This chapter will consider two questions
+
+
+Firstly, an ter
+
+Secondly an 
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+## Terminology
+
+The terminology used in describing different mechanisms by which an observed result may  complicate interpretation. This section clearly defines how each are used in h
+
+
+Here, internal bias is used in terms of 
+
+In contrast, external bias (also called indirectness, or )
+
+
+Additionally, potential biases can be additive or proportional. Pro
+
+
+
 ### Summary of triangulation
 
 Need to check how much I talk about this in the introduction
 
 Describe in detail
 
+
+### Evidence sources
+
+As outlined in the thesis overview presented in Section \@ref(hold), the triangulation draws on the research produced in the preceding chapters.
+
+
+a)	Proposed method for this chapter
+i)	Example: LDL-c at midlife on Alzheimer’s disease risk
+ii)	Specific causal effect of interest using ROBINS-E framework:
+•	Population of interest: General population
+•	Exposure of interest: Low density lipoprotein cholesterol
+•	Exposure window of interest: Midlife (45-60)
+•	How exposure over time should be summarized: Cumulative exposure
+iii)	Identify relevant studies from evidence base
+•	LDL-c assessed at midlife
+•	MR of LDL-c
+•	Statin use at midlife
+iv)	Assess risk of bias in each result, define expected directions of each bias and plot
+ 
+v)	Assign additive value to each level of bias (High = 0.2, Some concerns =0.1, Low = 0), assign sign to these values based on predicted direction and sum across result
+vi)	E.g. for effect estimate 0.71 (0.57-0.89):
+
+Element	D1	D2	D3	D4	D5	D6	D7	Overall
+Bias	High	Some concerns	Low	Low	Low	Some concerns	Some concerns	Serious
+Direction	Left	Away from null	-	-	-	Towards null	Away from null	
+Modifier	-0.2	-0.1	0	0	0	0.1	-0.1	-0.3
+
+vii)	Assign a proportional value representing the indirectness for each result
+•	Statin studies would give smaller proportion (e.g. 0.7) of effect observed for generally lower lipids, as they would reduce cumulative exposure 
+•	SNPs predict quite strongly LDL-c and so would have minimal indirectness
+viii)	Combine in a bias-adjusted meta-analysis 
+
+
+###	Limitations
+
+In previous attempts at bias/indirectness-adjusted meta-analysis, the extent to each was assessed via a elictation process using a number of experts.
+
+Ideally, the modifying values )
+
+i)	Ideally modifying values (both internal and external) would be based on empirical research, but in absence of this, sufficient to model multiple values (High = 0.1, Some concerns =0.05, Low = 0) and relationships (High = 0.3, Some concerns =0.1, Low = 0)? 
+Need range around modifying values, as total variance of the biases is added to the total variance of the studies (elicitation on scale presented above asks for range rather than single estimate
+
 ### Risk of bias tool
+
+
 
 In addition, the tool also aim to capture the potential direction of bias for each result. Possible responses included: "Favours experimental", "Favours comparator", "Towards null", "Away from null", and "Unpredictable". Highlight that this is slightly different for the confounding domain in non-randomised studies.
 

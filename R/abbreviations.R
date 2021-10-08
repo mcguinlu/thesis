@@ -1,4 +1,4 @@
-# IMport, sort and arragn
+# Import, sort and arrange abbreviations by alpha order
 
 abbr <-
   dplyr::arrange(read.csv(
@@ -22,6 +22,7 @@ abbr_text <- c(
 
 writeLines(abbr_text, here::here("front-and-back-matter","abbreviations.tex"))
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # Render the acknowledgements section from Rmd to Md and paste in the output of
 # github_thanks()
 
@@ -35,3 +36,4 @@ writeLines(glue::glue(
   .close = ">>"
 ),
 here::here("front-and-back-matter","_acknowledgements.md"))
+

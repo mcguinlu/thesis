@@ -26,10 +26,7 @@ When dealing with human beings controlled experiments frequently prove to be imp
 <!-- Include the early analysis we did here, that did not work as a result of limited scope. Could include some of the genetic work also. Will additionally need to put the relevant materials from the paper in the  -->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
-source("R/doc_options.R")
 source("R/helper.R")
-library(dplyr)
-options(scipen = 99)
 knitr::read_chunk("R/04-Code-CPRD-Analysis.R")
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```

@@ -27,7 +27,6 @@ Because they R.
 \minitoc <!-- this will include a mini table of contents-->
 
 ```{r setup, include=FALSE}
-source("R/doc_options.R")
 source("R/helper.R")
 library(medrxivr)
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format

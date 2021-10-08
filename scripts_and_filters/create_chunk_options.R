@@ -11,7 +11,6 @@ if (!("kableExtra" %in% installed.packages()))
 
 library(kableExtra)
 
-
 ##### add chunk options for PDF output ####
 # for guidance on how to create your own chunk options see
 # https://ulyngs.github.io/blog/posts/2019-02-01-how-to-create-your-own-chunk-options-in-r-markdown/

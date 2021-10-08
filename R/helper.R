@@ -5,7 +5,12 @@ library(ggplot2)
 library(patchwork)
 library(metafor)
 library("png")
-
+library(robvis)
+library(medrxivr)
+library(kableExtra)
+library(data.table)
+library(flextable)
+library(sf)
 
 # Sort out conflicts in function names
 conflicted::conflict_prefer("summarize", "dplyr")
@@ -25,6 +30,13 @@ source(here::here("R/forest flexi.R"))
 # Make sure plotting device is closed
 try(dev.off())
 
+# Set options
+
+options(kableExtra.auto_format = FALSE,
+        scipen = 999,
+        knitr.kable.NA = '')
+
+knitr::opts_chunk$set(echo = TRUE)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # General ----
@@ -225,6 +237,22 @@ todo <- function(fp,...) {
   todor::todor_file(fp,...)
   
 }
+
+todo_report <- function(){
+  
+  tmp <- tempfile()
+  
+  text <- todor::todor(output = "markdown")
+  
+  writeLines(text,paste0(tmp,".Rmd"))
+  
+  rmarkdown::render(paste0(tmp,".Rmd"))
+  
+  browseURL(paste0(tmp,".html"))
+}
+
+
+
 
 #' Open all markdown and R file associated with a given chapter
 #'

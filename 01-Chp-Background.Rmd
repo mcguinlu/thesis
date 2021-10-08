@@ -18,7 +18,6 @@ Science knows it doesn't know everything; otherwise, it'd stop.
 (ref:dara-quote) --- Dara O'Briain
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
-source("R/doc_options.R")
 source("R/helper.R")
 knitr::read_chunk("R/01-Code-Background.R")
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
@@ -29,8 +28,6 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 \minitoc <!-- this will include a mini table of contents-->
 
 ## Lay summary
-
-[Note: see Section \@ref(thesis-structure) for details on the layout of each chapter.]
 
 Around 850,000 people in the UK live with dementia, and by 2040, nearly twice as many will have the condition. Despite many promising candidates, no cure for dementia currently exists, meaning the focus is on finding ways to prevent the condition. The best way to do this is to find risk factors (characteristics that influence a person's chance of developing a disease) for dementia that we can easily change. Avoiding a risk factor does not guarantee that a person will not develop dementia but makes it less likely. A key risk factor for dementia may be the levels of lipids (fatty substances such as cholesterol) in a person's blood, though not all existing research agrees. The aim of this thesis is to use all available evidence to assess whether blood lipids levels are in fact a risk factor for dementia.
 
@@ -371,7 +368,7 @@ An overview of how all research studies in this thesis can be found in Table \@r
 
 \blandscape
 <!----------------------------------------------------------------------------->
-(ref:thesisOverview-caption) Summary of studies included in this thesis, and used as evidence sources in the triangulation exercise performed in Chapter \@ref(discussion-heading). Note, Chapter \@ref(sys-rev-tools-heading) is intentionally not included in this table, as it describes a tool rather than a research study.
+(ref:thesisOverview-caption) Summary of studies included in this thesis, and used as evidence sources in the triangulation exercise performed in Chapter \@ref(tri-heading). Note, Chapter \@ref(sys-rev-tools-heading) is intentionally not included in this table, as it describes a tool rather than a research study.
 
 (ref:thesisOverview-scaption) Summary of studies included in this thesis
 
