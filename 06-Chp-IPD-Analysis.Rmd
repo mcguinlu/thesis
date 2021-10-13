@@ -23,7 +23,7 @@ Hold
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source("R/helper.R")
-knitr::read_chunk("R/05-Code-IPD-Analysis.R")
+knitr::read_chunk("R/06-Code-IPD-Analysis.R")
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
 

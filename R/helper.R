@@ -238,11 +238,18 @@ todo <- function(fp,...) {
   
 }
 
-todo_report <- function(){
+todo_report <- function(fp){
+  
+  if (!hasArg(fp)) {
+    text <- todor::todor(output = "markdown")
+    
+  } else {
+    text <- todor::todor_file(fp,output = "markdown")
+  }
+  
+  
   
   tmp <- tempfile()
-  
-  text <- todor::todor(output = "markdown")
   
   writeLines(text,paste0(tmp,".Rmd"))
   

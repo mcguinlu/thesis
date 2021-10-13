@@ -67,7 +67,7 @@ if (doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- cprdCharacteristics-table
+# ---- cprdCharacteristics-setUp
 
 table1 <-
   read.csv(here::here("data", "cprd", "table1.csv"), header = FALSE)
@@ -78,9 +78,9 @@ table1 = table1[-1,]
 colnames(table1)[1] <- " "
 
 table1[1, 1] <- "Sample size (N)"
-table1[2, 1] <- "Year of \\newline cohort entry \\newline (median)"
+table1[2, 1] <- "Year of cohort entry \\newline (median)"
 table1[3, 1] <- "Female"
-table1[4, 1] <- "Age at \\newline cohort entry \\newline (median)"
+table1[4, 1] <- "Age at cohort entry \\newline (median)"
 table1[5, 1] <- "CAD"
 table1[6, 1] <- "CBS"
 table1[7, 1] <- "CVD"
@@ -106,18 +106,24 @@ table1[24, 1] <- "Follow up \\newline(years; median)"
 table1.copy <- table1
 
 table1 <- table1[, c(1, 10, 7, 9, 2:6, 8)]
-table1_disp <- table1[c(1:16, 22, 17:18, 23), ]
 
-# Quick check to ensure data quality
-t <- table1_disp[1, 2:10]
-t <- as.numeric(table1_disp[1, 2:10])
+eze_sta_n <- table1[1,7]
+nag_n <- table1[1,9]
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- cprdCharacteristics-table
 
-if (t[1] - sum(t[2:9]) != 0) {
+table1_disp <- table1[c(1:16, 22, 17:18, 23), c(1:6,8,10)]
+
+#Quick check to ensure data quality
+t <- table1_disp[1, 2:8]
+t <- as.numeric(table1_disp[1, 2:8])
+
+if (t[1] - sum(t[2:7], as.numeric(eze_sta_n), as.numeric(nag_n)) != 0) {
   stop("cprdCharacteristics-table: Sum of subgroups != Total sample size")
 }
 
-table1_disp[1,2:9] <- stringr::str_trim(comma(as.numeric(table1_disp[1,2:9])))
+table1_disp[1,2:8] <- stringr::str_trim(comma(as.numeric(table1_disp[1,2:8])))
 
 # Create display table using kable
 cprdCharacteristics_table <- comma(table1_disp) %T>%
@@ -150,15 +156,21 @@ if (doc_type == "docx") {
     align = "lccccccccc"
   ) %>%
     row_spec(0, bold = TRUE) %>%
-    column_spec(1, width = paste0(10, "em"), bold = TRUE) %>%
-    column_spec(2:10, width = paste0(6, "em")) %>%
+    column_spec(1, width = paste0(15, "em"), bold = TRUE) %>%
+    column_spec(2:8, width = paste0(7.7, "em")) %>%
     row_spec(2:nrow(cprdCharacteristics_table) - 1, hline_after = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position"),
-                  font_size = 5) %>%
+                  font_size = 7) %>%
     kableExtra::footnote(
       threeparttable = TRUE,
-      general_title = "Abbreviations:",
+      general_title = "",
       general = paste(
+        paste0("\\\\textit{Note:} The 'Nicotinic acid groups' (n=", 
+               nag_n,
+               ") and 'Ezetimibe and Statins' (n=",
+               eze_sta_n,
+               ") subgroups are not shown, but are included in the whole sample column\\\\newline"),
+        "\\\\textbf{Abbreviations:}",
         "LRA - Lipid regulating agent;",
         "IMD - Index of Multiple Deprivation;",
         "BMI - Body Mass Index;",
@@ -168,7 +180,7 @@ if (doc_type == "docx") {
         "PAD - Peripheral arterial disease;",
         "CKD - Chronic Kidney Disease;",
         "SD - Standard deviation."
-      )
+      ), escape = FALSE
     )
   
   table <- gsub("textbackslash\\{\\}newline", "\\newline", table)
@@ -385,7 +397,7 @@ probad_text <- paste0(
 )
 
 probad_fib <- results %>%
-  filter(outcome == "Any dementia" & drug == "Fibrates")
+  filter(outcome == "Probable AD" & drug == "Fibrates")
 
 probad_fib_text <- paste0(
   "HR:",
@@ -510,7 +522,8 @@ sens_bp_text <- paste0(
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- attritionFigure
 #Define main dataset
-main <- read.csv(here::here("data", "cprd", "cohort_attrition.csv"))
+main <- read.csv(here::here("data", "cprd", "cohort_attrition.csv")) %>%
+  comma()
 
 # Define node names
 main[1, 2] <- paste0("M0")
@@ -1569,13 +1582,6 @@ smeeth_oth_text <-
   )
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- covariate-def
-
-# ---- covariate-def
-
-
-
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- covariateDef-table
 
 covar <-
@@ -1604,9 +1610,9 @@ if (doc_type == "docx") {
     align = "lc"
   ) %>%
     row_spec(0, bold = TRUE) %>%  
-    column_spec(1, width = paste0(10, "em")) %>%
-    column_spec(2, width = paste0(22, "em")) %>%
-    kable_styling(latex_options = c("HOLD_position")) %>%
+    column_spec(1, width = paste0(15, "em")) %>%
+    column_spec(2, width = paste0(25, "em")) %>%
+    kable_styling(latex_options = c("HOLD_position"), font_size = 9) %>%
     row_spec(2:nrow(covariateDef_table ) - 1, hline_after = TRUE)
 }
 
@@ -1708,7 +1714,7 @@ if(doc_type == "docx"){
                                      "AD - Alzheimer's disease; ",
                                      "BAS - Bile acid sequestrants; ",
                                      "LRA - Lipid regulating agent; ",
-                                     "NAG - Nitric acid groups; ",
+                                     "NAG - Nicotinic acid groups; ",
                                      "Omega-3 FAGs - Omega-3 fatty acid groups; ",
                                      "PYAR - Participant-years-at-risk."
     )) %>%
@@ -1750,7 +1756,7 @@ if(doc_type == "docx"){
     add_indent(c(3:9), level_of_indent = 1) %>%
     row_spec(nrow(main) - 1, hline_after = TRUE) %>%
     column_spec(1, width = paste0(9, "em")) %>%
-    column_spec(2:16, width = paste0(3.5, "em")) %>%
+    column_spec(2:16, width = paste0(3, "em")) %>%
     column_spec(c(1,4,7,10,13),border_right = T) %>%
     kableExtra::footnote(
       threeparttable = TRUE,
@@ -1764,7 +1770,7 @@ if(doc_type == "docx"){
         "AD - Alzheimer's disease; ",
         "BAS - Bile acid sequestrants;",
         "LRA - Lipid regulating agent; ",
-        "NAG - Nitric acid groups; ",
+        "NAG - Nicotinic acid groups; ",
         "Omega-3 FGs - Omega-3 Fatty acid groups;",
         "PYAR - Participant-years-at-risk."
         ), escape = F

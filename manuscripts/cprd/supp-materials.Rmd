@@ -35,9 +35,7 @@ Main changes include:
 
 \newpage
 
-# Supplementary tables {#supp-tab}
-
-## Supplementary Table 1: RECORD Reporting Guidelines {#supp-tab-strobe}
+## Supplementary Material 2: RECORD Reporting Guidelines {#supp-tab-strobe}
 
 ```{r child = 'supplementary_files/STROBE-Checklist.Rmd', eval = FALSE}
 ```
@@ -48,7 +46,9 @@ A copy of the RECORD Checklist[@nicholls2016record] is provided below.
 
 \newpage
 
-## Supplementary Table 2: Definition of exposures and covariates
+# Supplementary tables {#supp-tab}
+
+## Supplementary Table 1: Definition of exposures and covariates
 
 (ref:covariateDef-caption) Definition of covariates adjusted for in the Cox PR model.
 
@@ -60,7 +60,7 @@ The code lists used to define covariates adjusted for in the fully-adjusted mode
 
 \newpage
 
-## Supplementary Table 3: Adherence and switching by drug class
+## Supplementary Table 2: Adherence and switching by drug class
 
 (ref:cprdSSA-caption) Adherence and switching by drug class.
 

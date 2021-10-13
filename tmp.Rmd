@@ -1,0 +1,21 @@
+---
+bibliography: bibliography/references.bib
+csl: bibliography/nature.csl
+output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+  bookdown::word_document2: 
+      toc: false
+      toc_depth: 3
+      reference_docx: templates/word-styles-reference-01.docx
+      number_sections: false 
+  bookdown::html_document2: default
+documentclass: book
+---
+
+```{r, echo = FALSE, warning=FALSE, message=FALSE}
+source("R/doc_options.R")
+source("R/helper.R")
+knitr::read_chunk("R/03-Code-Systematic-Review.R")
+doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
+```

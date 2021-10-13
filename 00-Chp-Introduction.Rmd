@@ -1,0 +1,38 @@
+---
+#########################################
+# options for knitting a single chapter #
+#########################################
+output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+documentclass: book
+---
+
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:intro-quote)', echo = FALSE}
+Hold
+```
+(ref:intro-quote) --- Hold
+
+# Introduction {#intro-heading}
+\minitoc <!-- this will include a mini table of contents-->
+
+## Additional ideas
+
+### General
+
+* Explore difference/similarities between the published and unpublished literature, potentially formally, using funnel plots and also by following up preprints to see if they are eventually published. Limit to the date we ran the original search and see if any study included in the study had not been published by the time the review was finished. 
+
+* Compare and contrast the codes used to find the AzD cases in the previous study and in this study, potentially with a view to contrasting misclassification between the two.
+
+* 
+
+### Background
+
+### medrxivr
+
+### 
+
+&nbsp;
+
