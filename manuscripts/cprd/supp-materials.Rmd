@@ -14,13 +14,9 @@ output:
 
 ```{r setup, include=FALSE, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE, eval = TRUE) # Remove to knit with plots/data
-options(scipen = 999)
-source(here::here("R/doc_options.R"))
 source(here::here("R/helper.R"))
-
 #Load relevant libraries and datasets from the 'outputs' folder
-
-knitr::read_chunk(here::here("R/04-Code-CPRD-Analysis.R"))
+knitr::read_chunk(here::here("R/05-Code-CPRD-Analysis.R"))
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to')
 ```
 
@@ -30,7 +26,7 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to')
 
 ## Supplementary Material 1: Changes to protocol {#supp-mat-protocol}
 
-Any changes made to the approved procotol are "Minor amendments" as per the ISAC criteria, specifically falling under the category of "Additional methods to further control for confounding or sensitivity analysis provided these are to be reported as secondary to the main findings".
+Any changes made to the approved protocol are "Minor amendments" as per the ISAC criteria, specifically falling under the category of "Additional methods to further control for confounding or sensitivity analysis provided these are to be reported as secondary to the main findings".
 
 Main changes include:
 

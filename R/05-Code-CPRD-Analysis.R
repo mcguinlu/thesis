@@ -49,7 +49,7 @@ readExample_table <-
   read.csv(here::here("data", "cprd", "read_code_example.csv")) %>%
   dplyr::mutate("Read code" = Read.code) %>%
   dplyr::select("Level", "Read code", "Term") %T>%
-  write.csv("data/table_words/readExample.csv")
+  write.csv(here::here("data/table_words/readExample.csv"))
 
 if (doc_type == "docx") {
   apply_flextable(readExample_table, caption = "(ref:readExample-caption)")
@@ -121,7 +121,7 @@ table1_disp[1,2:9] <- stringr::str_trim(comma(as.numeric(table1_disp[1,2:9])))
 
 # Create display table using kable
 cprdCharacteristics_table <- comma(table1_disp) %T>%
-  write.csv("data/table_words/cprdCharacteristics.csv")
+  write.csv(here::here("data/table_words/cprdCharacteristics.csv"))
 
 if (doc_type == "docx") {
   apply_flextable(cprdCharacteristics_table, caption = "(ref:cprdCharacteristics-caption)") %>%
@@ -181,7 +181,7 @@ if (doc_type == "docx") {
 # ---- cprdSSA-table
 
 cprdSSA_table <- table1[19:21, -3] %T>%
-  write.csv("data/table_words/cprdSSA.csv")
+  write.csv(here::here("data/table_words/cprdSSA.csv"))
 
 if (doc_type == "docx") {
   apply_flextable(cprdSSA_table, caption = "(ref:cprdSSA-caption)")
@@ -290,7 +290,7 @@ fu_ab_text <- paste0(round(characteristics$c1[1], 1),
 # Median and IQR for age at index
 age_text <- paste0(
   characteristics$c1[4],
-  " years (Inter quartile range (IQR):",
+  " years (inter-quartile range (IQR):",
   characteristics$c1[5],
   "-",
   characteristics$c1[6],
@@ -1228,7 +1228,7 @@ statinTypeTable_table <-
   mutate(Lipophilic = paste0(Lipophilic, "%)")) %>%
   rename("Total" = V6) %>%
   rename("Prescription Year Group" = V1) %T>%
-  write.csv("data/table_words/statinType.csv")
+  write.csv(here::here("data/table_words/statinType.csv"))
 
 if (doc_type == "docx") {
   apply_flextable(statinTypeTable_table, caption = "(ref:statinTypeTable-caption)")
@@ -1415,7 +1415,7 @@ diagnosisType_table <-
   mutate(across(c(2:6), ~ paste0(.x, "%)"))) %>%
   rename("Total" = V12) %>%
   rename("Year of cohort entry" = V1) %T>%
-  write.csv("data/table_words/diagnosisType.csv")
+  write.csv(here::here("data/table_words/diagnosisType.csv"))
 
 if (doc_type == "docx") {
   apply_flextable(diagnosisType_table, caption = "(ref:diagnosisType-caption)")
@@ -1588,8 +1588,9 @@ covar <-
 colnames(covar) <- covar[1, ]
 covar <- covar[-1, ]
 
-covariateDef_table <- covar
-
+covariateDef_table <- covar %T>%
+  write.csv(here::here("data/table_words/followUptable.csv"))
+  
 if (doc_type == "docx") {
   apply_flextable(covariateDef_table, caption = "(ref:covariateDef-caption)")
 } else{
@@ -1598,82 +1599,71 @@ if (doc_type == "docx") {
     format = "latex",
     caption = "(ref:covariateDef-caption)",
     caption.short = "(ref:covariateDef-scaption)",
-    booktabs = TRUE
+    booktabs = TRUE, 
+    row.names = FALSE,
+    align = "lc"
   ) %>%
-    row_spec(0, bold = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"))
+    row_spec(0, bold = TRUE) %>%  
+    column_spec(1, width = paste0(10, "em")) %>%
+    column_spec(2, width = paste0(22, "em")) %>%
+    kable_styling(latex_options = c("HOLD_position")) %>%
+    row_spec(2:nrow(covariateDef_table ) - 1, hline_after = TRUE)
 }
+
+
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- followUp-table
 
-clean_stata_output <- function(data){
-  
-  stringr::str_split(data,"  *") %>%
-    as.data.frame() %>%
-    janitor::clean_names() %>%
-    data.table::transpose() %>%
-    mutate(V4 = comma(as.numeric(V4)/365.25),
-           # Calculate rate per 100000 years
-           # Currently in rate per 1000 days-at-risk
-           V6 = comma(as.numeric(V6)*365.25*100), 
-           V5 = comma(as.numeric(V5))) %>%
-    select(V2,V4,V6,V5) %>%
-    filter(!V2 %in% c("hc_eze_~a", "hc_nag")) %>%
-    arrange(match(V2, c("None","hc_sta","hc_om3", "hc_fib","hc_eze","hc_bas"))) %>%
-    mutate(V2 = case_when(V2 == "None" ~ "No LRA (unexposed)",
-                          V2 == "hc_bas" ~ "  Bile acid sequestrants",
-                          V2 == "hc_sta" ~ "  Statins",
-                          V2 == "hc_fib" ~ "  Fibrates",
-                          V2 == "hc_om3" ~ "  Omega-3 Fatty Acid Groups",
-                          V2 == "hc_eze" ~ "  Ezetimibe",
-                          T ~ "Total"))
-}
+main_tmp <- read.csv(here::here("data/cprd/crude_rates.csv")) %>%
+  mutate(c1 = comma(as.numeric(c1)/365.25),
+       # Calculate rate per 100000 years
+       # Currently in rate per 1000 days-at-risk
+       c3 = comma(as.numeric(c3)*365.25*100), 
+       c2 = comma(as.numeric(c2))) %>%
+  mutate(drug = rep(c("total", "hc_bas", "hc_eze", "hc_eze_sta", "hc_fib", "hc_nag", "hc_om3", "hc_sta", "None"), 5)) %>%
+  mutate(c3 = ifelse(drug %in% c("hc_nag","hc_eze_sta"), "-",c3)) %>%
+  mutate(outcome = rep(c("All-cause dementia", "Probable Alzheimer's disease", "Possible Alzheimer's disease","Other dementia","Vascular demenia"), each = 9)) 
 
-options(scipen=999)
+main <- cbind(main_tmp[1:9,c(4,c(2,1,3))], # All-cause
+                          main_tmp[10:18,c(2,1,3)], # prob AD
+                          main_tmp[19:27,c(2,1,3)], # poss AD
+                          main_tmp[37:45,c(2,1,3)], # Vascular
+                          main_tmp[28:36,c(2,1,3)] # Other
+                          )
 
-main <- readLines(here::here("data/cprd/rate_table.txt"))[c(19:26,28)] %>%
-  clean_stata_output() %>%
-  select(V2,V5,V4,V6)
+colnames(main) <- c("v2", "v5", "v4", "v6", "v5_2", "v4_2", "v6_2", "v5_3", "v4_3", "v6_3", "v5_4", "v4_4", "v6_4", "v5_5", "v4_5", "v6_5")
 
-main <- cbind(main,readLines(here::here("data/cprd/rate_table_adprob.txt"))[c(15:22,24)] %>%
-  clean_stata_output() %>%
-  select(V5,V4,V6))
-
-main <- cbind(main,readLines(here::here("data/cprd/rate_table_adposs.txt"))[c(15:22,24)] %>%
-  clean_stata_output() %>%
-  select(V5,V4,V6))
-
-main <- cbind(main,readLines(here::here("data/cprd/rate_table_vasdem.txt"))[c(15:22,24)] %>%
-  clean_stata_output() %>%
-  select(V5,V4,V6))
-
-main <- cbind(main,readLines(here::here("data/cprd/rate_table_othdem.txt"))[c(15:22,24)] %>%
-  clean_stata_output() %>%
-  select(V5,V4,V6))
+main[10,] <- c("class", rep("",15))
 
 main <- main %>%
-  janitor::clean_names() %>%
-  comma() %>%
-  add_row(v2 = "By drug class", .after = 1) %T>%
-  write.csv("data/table_words/followUptable.csv")
-
-
+  arrange(match(v2, c("None","class","hc_sta","hc_om3", "hc_fib","hc_eze","hc_bas","hc_eze_sta","hc_nag"))) %>%
+  mutate(v2 = case_when(v2 == "None" ~ "No LRA (unexposed)",
+                          v2 == "hc_bas" ~ "  BAS",
+                          v2 == "hc_sta" ~ "  Statins",
+                          v2 == "hc_fib" ~ "  Fibrates",
+                          v2 == "hc_om3" ~ "  Omega-3 FAGs",
+                          v2 == "hc_eze" ~ "  Ezetimibe",
+                          v2 == "hc_eze_sta" ~ "  Ezetimibe + Statins",
+                          v2 == "hc_nag" ~ "  NAG",
+                          v2 == "class" ~ "By drug class",
+                          T ~ "Total")) %T>%
+  write.csv(here::here("data/table_words/followUptable.csv"))
 
 
 if(doc_type == "docx"){
   
-  labels <- c("Exposure group", rep(c("Events","Time-at-risk","Rate"),5))
+  labels <- c("Exposure group", rep(c("Events","PYAR","Rate"),5))
   
   names(labels) <- colnames(main)
   
   flextable::flextable(main) %>%
     set_header_labels(values = labels) %>%
     flextable::add_header(
-      "v2" = "Exposure group",
-      "v5" = "Any dementia",
-      "v4" ="Any dementia",
-      "v6" = "Any dementia",
+      "v2"   = "Exposure group",
+      "v5"   = "Any dementia",
+      "v4"   ="Any dementia",
+      "v6"   = "Any dementia",
       "v5_2" = "Probable AD",
       "v4_2" ="Probable AD",
       "v6_2" = "Probable AD",
@@ -1690,40 +1680,49 @@ if(doc_type == "docx"){
     ) %>%
     flextable::merge_h(part = "header") %>%
     flextable::merge_v(part = "header") %>%
-    flextable::align(
-      i = 1,
-      j = 3:11,
-      align = "center",
-      part = "header"
-    ) %>%
-    flextable::align(i = 2,
-                     j = 1,
-                     align = "left",
-                     part = "header") %>%
     flextable::bg(bg = "#A6A6A6", part = "header") %>%
     flextable::bold(part = "header") %>%
-    flextable::bold(j=1,i=c(1:2,8), part = "body") %>%
-    flextable::bold(i=8, part = "body") %>%
+    flextable::bold(j=1,i=c(1:2,10), part = "body") %>%
+    flextable::bold(i=10, part = "body") %>%
     flextable::fontsize(size = 9, part = "all") %>%
     flextable::hline(part = "header") %>%
-    flextable::hline(i=7,part = "body") %>%
-    flextable::padding(i=3:7, j=1, padding.left=20) %>%
+    flextable::hline(i=9,part = "body") %>%
+    flextable::padding(i=3:9, j=1, padding.left=20) %>%
     flextable::border(j=c(1,4,7,10,13), part = "all", border.right = officer::fp_border(color = "black")) %>%
     flextable::align(align = "center", part = "all" ) %>%
-    flextable::align(j = 1:2, align = "left", part = "all") %>%
+    flextable::align(j = 1, align = "left", part = "all") %>%
     flextable::align(i = 1, align = "center", part = "header") %>%
     flextable::set_table_properties(layout = "autofit") %>%
-    flextable::set_caption("(ref:followUp-caption)")
-  
-  
+    flextable::set_caption("(ref:followUp-caption)") %>%
+    flextable::add_footer(v2 = "") %>%
+    flextable::merge_at(j=1:16, part = "footer") %>%
+    flextable::fontsize(size = 8, part = "footer") %>%
+    flextable::compose(part = "footer",
+                       i = 1,
+                       j = 1:16,
+                       value = as_paragraph(as_sup("a"),
+                                     "Crude rate per 100,000 participant-years-at-risk\n",
+                                     as_sup("b"),
+                                     "One treatment containing both drugs, rather than the two classes being prescribed concurrently\n",
+                                     "Abbreviations: ",
+                                     "AD - Alzheimer's disease; ",
+                                     "BAS - Bile acid sequestrants; ",
+                                     "LRA - Lipid regulating agent; ",
+                                     "NAG - Nitric acid groups; ",
+                                     "Omega-3 FAGs - Omega-3 fatty acid groups; ",
+                                     "PYAR - Participant-years-at-risk."
+    )) %>%
+    flextable::compose(part = "body", i = 8, j=1, value = as_paragraph("Ezetimibe + Statins",
+                                                                      as_sup("b"))) %>%
+    flextable::compose(part = "header", i = 2, j=c(4,7,10,13,16), value = as_paragraph("Rate",
+                                                                       as_sup("a")))
+
 } else{
   
-  main %>%
+  table <- main %>%
     mutate(v2 = as.character(v2)) %>%
-    mutate(v2 = case_when(v2 == "  Omega-3 Fatty Acid Groups" ~ "Omega-3 FGs",
-                          v2 == "  Bile acid sequestrants" ~ "BAS",
-                          T ~ v2)) %>%
-    mutate(v2 = cell_spec(v2, bold  = c(T,T,rep(F,5),T), format = "latex")) %>%
+    mutate(v2 = ifelse(v2=="  Ezetimibe + Statins", paste("  Ezetimibe + Statins",footnote_marker_symbol(2,"latex")),v2)) %>%
+    mutate(v2 = cell_spec(v2, bold  = c(T,T,rep(F,7),T), format = "latex")) %>%
   knitr::kable(
     format = "latex",
     caption = "(ref:followUp-caption)",
@@ -1733,7 +1732,7 @@ if(doc_type == "docx"){
     align = "lccccccccccccccc",
     row.names = FALSE,
     col.names = c("Exposure Group",
-                  rep(c("Events","PYAR","Rate*"),5)), escape = F
+                  rep(c("Events","PYAR",paste("Rate",footnote_marker_symbol(1,"latex"))),5)), escape = F
   ) %>%
     row_spec(0, bold = TRUE) %>%
     kable_styling(position = "center",
@@ -1748,21 +1747,33 @@ if(doc_type == "docx"){
         "Other dementia" = 3
       ),bold = TRUE
     ) %>%
-    add_indent(c(3:7), level_of_indent = 1) %>%
+    add_indent(c(3:9), level_of_indent = 1) %>%
     row_spec(nrow(main) - 1, hline_after = TRUE) %>%
     column_spec(1, width = paste0(9, "em")) %>%
     column_spec(2:16, width = paste0(3.5, "em")) %>%
     column_spec(c(1,4,7,10,13),border_right = T) %>%
     kableExtra::footnote(
       threeparttable = TRUE,
-      general_title = "*Crude rate per 100,000 participant-years-at-risk",
-      general = paste("\\\\textbf{Abbreviations:}",
-        "PYAR - Participant-years-at-risk;",
+      general_title = "",
+      general = paste(
+        footnote_marker_symbol(1, "latex",T),
+        "Crude rate per 100,000 participant-years-at-risk\\\\newline",
+        footnote_marker_symbol(2, "latex",T),
+        "One treatment containing both drugs, rather than the two classes being prescribed concurrently\\\\newline",
+        "\\\\textbf{Abbreviations:}",
+        "AD - Alzheimer's disease; ",
+        "BAS - Bile acid sequestrants;",
+        "LRA - Lipid regulating agent; ",
+        "NAG - Nitric acid groups; ",
         "Omega-3 FGs - Omega-3 Fatty acid groups;",
-        "BAS - Bile acid sequestrants."
-      ), escape = F
+        "PYAR - Participant-years-at-risk."
+        ), escape = F
     )
     
+  table <- gsub("textbackslash\\{\\}dag\\\\", "\\dag", table)
+  table <- gsub("textbackslash\\{\\}textsuperscript\\\\", "\\textsuperscript", table)
+  
+  table
   
 }
 
