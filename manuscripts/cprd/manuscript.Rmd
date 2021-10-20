@@ -57,7 +57,7 @@ Canynge Hall, 39 Whatley Road, Bristol, BS8 2PS, United Kingdom.; luke.mcguinnes
 
 __Word counts__
 
-* Main text word count (max 4000): 3104
+* Main text word count (max 4000): 3442
 * Abstract word count (max 250): 250
 
 \newpage
@@ -303,7 +303,7 @@ The protocol for this study was approved by the CPRD’s Independent Scientific 
 
 __Data/code availability__
 
-This analysis used the CPRD-GOLD primary care dataset March 2016 snapshot (ISAC 15_246R), which is available upon application to the CPRD Independent Scientific Advisory Committee. The code lists used to define the outcomes and covariates for this study, in addition to the cleaning and analysis scripts used to create the study cohort and perform the analyses, are available on GitHub (https://github.com/mcguinlu/CPRD-LRA), and were archived at the time of publication on Zenodo (DOI: __TBC__).
+This analysis used the CPRD-GOLD primary care dataset March 2016 snapshot (ISAC 15_246R), which is available upon application to the CPRD Independent Scientific Advisory Committee. The code lists used to define the outcomes and covariates for this study are available as a supplementary file. The code lists, as well as the scripts used to create the study cohort and perform the analyses, are also available from the GitHub repository for this project (https://github.com/mcguinlu/CPRD-LRA), which was archived at the time of publication on Zenodo (DOI: __TBC__).
 
 &nbsp;
 
@@ -361,7 +361,7 @@ knitr::include_graphics(here::here("figures","cprd-analysis","forester_p1.png"))
 ```
 <!--------------------------------------------------------------------------->
 
-_Figure 1: Results from the primary analyses of CPRD data comparing prescription of an lipid-regulating drug with no prescription, stratified by dementia outcome and drug class. All results were obtained using the fully adjusted model and participant age as the time scale._
+_Figure 1: Results from the primary analyses of CPRD data comparing prescription of a lipid-regulating drug with no prescription, stratified by dementia outcome and drug class. All results were obtained using the fully adjusted model and participant age as the time scale._
 
 \newpage
 

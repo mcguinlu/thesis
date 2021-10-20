@@ -687,8 +687,9 @@ get_all_citations <- function() {
                 which = 1) %>%
     janitor::clean_names() %>%
     filter(!is.na(citation)) %>%
+    mutate(type = factor(subtype, levels = c("RCT", "NRSI", "NRSE", "MR"))) %>%
+    arrange(type, author) %>%
     select(citation) %>%
-    arrange(citation) %>%
     distinct() %>%
     pull(citation)
   

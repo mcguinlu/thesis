@@ -132,16 +132,22 @@ cprdCharacteristics_table <- comma(table1_disp) %T>%
 if (doc_type == "docx") {
   apply_flextable(cprdCharacteristics_table, caption = "(ref:cprdCharacteristics-caption)") %>%
     flextable::add_footer_row(
-      colwidths = 10,
+      colwidths = 8,
       values = paste(
-        "LRA - Lipid regulating agent;",
-        "IMD - Index of Multiple Deprivation;",
-        "BMI - Body Mass Index;",
-        "CAD - Coronary Arterial Disease;",
-        "CBS - Coronary Bypass Surgery;",
+        paste0("Note: The 'Nicotinic acid groups' (n=", 
+               nag_n,
+               ") and 'Ezetimibe and Statins' (n=",
+               eze_sta_n,
+               ") subgroups are not shown, but are included in the whole sample column\n"),
+        "Abbreviations:",
+        "BMI - Body mass index;",
+        "CAD - Coronary arterial disease;",
+        "CBS - Coronary bypass surgery;",
+        "CKD - Chronic kidney disease;",
         "CVD - Cardiovascular disease;",
+        "IMD - Index of multiple deprivation;",
+        "LRA - Lipid regulating agent;",
         "PAD - Peripheral arterial disease;",
-        "CKD - Chronic Kidney Disease;",
         "SD - Standard deviation."
       )
     )
@@ -171,14 +177,14 @@ if (doc_type == "docx") {
                eze_sta_n,
                ") subgroups are not shown, but are included in the whole sample column\\\\newline"),
         "\\\\textbf{Abbreviations:}",
-        "LRA - Lipid regulating agent;",
-        "IMD - Index of Multiple Deprivation;",
-        "BMI - Body Mass Index;",
-        "CAD - Coronary Arterial Disease;",
-        "CBS - Coronary Bypass Surgery;",
+        "BMI - Body mass index;",
+        "CAD - Coronary arterial disease;",
+        "CBS - Coronary bypass surgery;",
+        "CKD - Chronic kidney disease;",
         "CVD - Cardiovascular disease;",
+        "IMD - Index of multiple deprivation;",
+        "LRA - Lipid regulating agent;",
         "PAD - Peripheral arterial disease;",
-        "CKD - Chronic Kidney Disease;",
         "SD - Standard deviation."
       ), escape = FALSE
     )
@@ -215,12 +221,13 @@ if (doc_type == "docx") {
                   font_size = 7) %>%
     kableExtra::footnote(
       threeparttable = TRUE,
-      general_title = "Definitions:",
+      general_title = "",
       general = paste(
+        "\\\\textbf{Defintions:}",
         "Stopped - last prescription of the primary drug class followed by at least six months of observation with no further prescriptions;",
         "Added - second drug class prescribed before the last prescription of the initial class;",
         "Switched - second drug class being prescribed after the last prescription of the initial class."
-      )
+      ), escape = FALSE 
     )
 }
 
@@ -1240,6 +1247,14 @@ statinTypeTable_table <-
   mutate(Hydrophilic = paste0(Hydrophilic, "%)")) %>%
   mutate(Lipophilic = paste0(Lipophilic, "%)")) %>%
   rename("Total" = V6) %>%
+  mutate(
+    V1 = case_when(
+      V1 == ">=1996" ~ "<=2000",
+      V1 == ">=2001" ~ "2001-2005",
+      V1 == ">=2006" ~ "2006-2010",
+      V1 == ">=2011" ~ "2010<"
+    )
+  ) %>%
   rename("Prescription Year Group" = V1) %T>%
   write.csv(here::here("data/table_words/statinType.csv"))
 
@@ -1427,6 +1442,15 @@ diagnosisType_table <-
   tidyr::unite("Other dementia", 6:7, remove = TRUE, sep = " (") %>%
   mutate(across(c(2:6), ~ paste0(.x, "%)"))) %>%
   rename("Total" = V12) %>%
+  mutate(
+    V1 = case_when(
+      V1 == ">=1996" ~ "<=2000",
+      V1 == ">=2001" ~ "2001-2005",
+      V1 == ">=2006" ~ "2006-2010",
+      V1 == ">=2011" ~ "2010<",
+      T ~ "Total"
+    )
+  ) %>%
   rename("Year of cohort entry" = V1) %T>%
   write.csv(here::here("data/table_words/diagnosisType.csv"))
 
@@ -1459,13 +1483,12 @@ results_ce <-
     header = TRUE,
     stringsAsFactors = FALSE
   ) %>%
-  filter(outcome == "Probable AD") %>%
   mutate(
     analysis = case_when(
-      analysis == "Year Group 1" ~ ">=1996",
-      analysis == "Year Group 2" ~ ">=2001",
-      analysis == "Year Group 3" ~ ">=2006",
-      analysis == "Year Group 4" ~ ">=2011"
+      analysis == "Year Group 1" ~ "<=2000",
+      analysis == "Year Group 2" ~ "2001-2005",
+      analysis == "Year Group 3" ~ "2006-2010",
+      analysis == "Year Group 4" ~ "2010<"
     )
   )
 
@@ -1473,8 +1496,8 @@ generate_forester_plot(
   results_ce,
   here::here("figures/cprd-analysis/forester_cohort_entry.png"),
   first_col = "analysis",
-  top_title = "Probable AD",
-  outcome_levels = c("Probable AD"),
+  top_title = "Any dementia",
+  # outcome_levels = c("Probable AD", "Any dementia"),
   height_expansion= 0.1, adjustment = 0.35
 )
 
@@ -1600,6 +1623,12 @@ covariateDef_table <- covar %T>%
 if (doc_type == "docx") {
   apply_flextable(covariateDef_table, caption = "(ref:covariateDef-caption)")
 } else{
+  
+  cat("(ref:covariateDef-cell1)")
+  
+  covariateDef_table[4,2] <- "(ref:covariateDef-cell1)"
+  covariateDef_table[8,2] <- "(ref:covariateDef-cell2)"
+  
   knitr::kable(
     covariateDef_table,
     format = "latex",
@@ -1710,7 +1739,7 @@ if(doc_type == "docx"){
                                      "Crude rate per 100,000 participant-years-at-risk\n",
                                      as_sup("b"),
                                      "One treatment containing both drugs, rather than the two classes being prescribed concurrently\n",
-                                     "Abbreviations: ",
+                                     as_b("Abbreviations: "),
                                      "AD - Alzheimer's disease; ",
                                      "BAS - Bile acid sequestrants; ",
                                      "LRA - Lipid regulating agent; ",

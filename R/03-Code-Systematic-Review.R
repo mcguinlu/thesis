@@ -449,11 +449,17 @@ n_VaD <- study_details %>%
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- studyCharacteristics-table
 
+# TODO Ensure the citations here match up
+# Do it in relation to the full render as some citations are included in early questions
+# Also, need to deal with the fact that some studies are included >1 in the table
+
 studyCharacteristics_table <- study_details %>%
-  # Add asterisk to preprinted studies
+  ungroup() %>%
+  # Add asterisk to preprinted 
   mutate(Study = ifelse(study_id %in% c(90004, 90005, 3232), paste0(Study, "*"), Study)) %>%
   select(
     Study,
+    #Citation,
     type,
     location,
     number_participants,
@@ -474,12 +480,14 @@ studyCharacteristics_table <- study_details %>%
   tidy_nums() %>%
   arrange(desc(Type), Study) %>%
   select(-Type) %>%
+  # Add citation
   mutate(across(everything(),  ~ stringr::str_replace(., "NA", "NR"))) %T>%
   write.csv("data/table_words/studyCharacteristics.csv")
 
 if (doc_type == "docx") {
   apply_flextable(studyCharacteristics_table, caption = "(ref:studyCharacteristics-caption)")
 } else{
+  
   knitr::kable(
     studyCharacteristics_table,
     format = "latex",

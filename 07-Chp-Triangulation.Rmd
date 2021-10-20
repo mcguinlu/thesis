@@ -53,6 +53,41 @@ This chapter builds on the comprehensive systematic review presented in CHapter 
 
 <!----------------------------------------------------------------------------->
 
+### Qualitative triangulation
+
+<!-- TODO Need to talk about fibrates here too -->
+
+__Statins and all-cause dementia__
+
+This conflicts with the findings of our analysis, where statin use was associated with an increased risk of all-cause dementia (`r anydem_text`). Some of the included studies in the meta-analysis specifically exclude vascular dementia from the definition of all-cause dementia,[@chao2015] which may limit the ability for comparison with our findings for the all-cause dementia outcome.
+
+Additionally, a previous analysis of the THIN EHR database using a propensity-score matched analysis found a protective effect of statins on all-cause dementia (HR:0.81, 95%CI:0.69-0.96)[@smeeth2009]. 
+
+&nbsp;
+
+__Statins and Alzheimer's disease__
+
+Our results are broadly in line with the findings of two distinct approaches examining the effect of statin treatment on subsequent Alzheimer's disease. No randomized trials of statins for the prevention of Alzheimer's disease have been reported, but a recent meta-analysis of 20 observational studies found statins were associated with a reduced risk of Alzheimer's disease (RR 0.69, 95% CI 0.60–0.80) with stronger evidence than observed in our analysis.[@poly2020] This review included case-control studies and analyses likely to be at risk of immortal time bias, which may account for the discrepancy with our findings. Additionally, a recent Mendelian randomization study examining the effect of genetic inhibition of HMGCR on Alzheimer’s disease (a genetic proxy for statin treatment) provided equivocal evidence (OR: 0.91, 95%CI: 0.63-1.31) but was consistent with our results.[@williams2020]
+
+Our additional analyses stratified by statin properties found little evidence of differences in associations of lipophilic and hydrophilic statins and incidence of Alzheimer’s disease, consistent with a recent meta-analysis of observational studies.[@chu2018]
+
+&nbsp;
+
+__Statins and vascular/other dementia__
+
+Far fewer studies have tested the association between lipid-regulating agents and vascular dementia or other dementias. A recent review found four observational studies examining the association of statins and vascular dementia found limited evidence for an effect (RR:0.93, 95% CI 0.74–1.16).[@poly2020] This contrasts with the harmful association found in our analysis (`r vasdem_text`). When stratifying by lipid properties, lipophilic statins were more harmful than hydrophilic statins in vascular dementia, potentially due to their ability to cross the blood brain barrier.
+
+&nbsp;
+
+__Other drug classes__
+
+Apart from statins, few studies examining a lipid-regulating agent have been reported (Chapter \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading)). 
+
+One of the few classes for which a evidence was available were fibrates, which found little evidence of an association with all-cause dementia was identified,[@ancelin2012] inconsistent with our finding that patients prescribed fibrates had higher all-cause dementia risk than those prescribed other lipid lowering agents.
+
+A previous Mendelian randomization study found little evidence that genetic variants that proxy for ezetimibe affect risk of Alzheimer’s disease (OR: 1.17, 95%CI: 0.73-1.87),[@williams2020] consistent with our findings. Note that this study was published in 2020 and so was not included in the review.
+
+
 ### Background to the causal question
 
 Following best practice guidance, three 

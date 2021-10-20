@@ -36,6 +36,8 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ```{r prisma-flow-setup, include = FALSE}
 ```
 
+<!-- IDEA Stratify by ApoE4 genotype -->  
+
 ## Lay summary
 
 Systematic reviews are a type of research study that aim to collect and combine all existing evidence to provide the best possible answer to an important research question. Well-performed reviews involve multiple steps including: searching of existing studies; assessment of the studies against predefined inclusion criteria; collection of data from each study; and assessment of each study's methods. 
@@ -470,17 +472,22 @@ Three included reports were preprinted (denoted in the Table \@ref(tab:studyChar
 
 <!-- As discussed in Section \@ref(rev-discussion-MR), the choice was not material, as the results from all studies using these data sources were comparable. -->
 
-<!-- TODO Figures and tables to include here: -   Summary of risk of bias (not done) -->
+<!-- TODO Figures and tables to include here: -  Summary of risk of bias (not done) -->
 
 <!-- TODO Also need to extract the codes used in each study -->
 
 <!-- TODO Need to add abbreviations to table -->
+
+<!-- TODO Ensure citations make sense, and are correct! Get first reference and then add -->
+
 
 \blandscape{}
 <!----------------------------------------------------------------------------->
 (ref:studyCharacteristics-caption) Characteristics of included studies, stratified by study design. Note that three studies reported on multiple analytical designs within a single study report, and these have been duplicated across the relevant sub-sections.
 
 (ref:studyCharacteristics-scaption) Characteristics of included studies
+
+(ref:studyCharacteristics-first-cite) [@heartprotectionstudycollaborativegroup2002]
 
 ```{r studyCharacteristics-table, message=FALSE, results="asis", echo = FALSE}
 ```
@@ -761,6 +768,8 @@ Finally, there were no identified Mendelian randomisation analysis examining the
 There were `r n_dr_initial` studies that were eligible for dose-response meta-analysis as they provide several categories of lipid exposure. However, following data extract, `r num_to_text(n_dr_excluded)` were excluded as they did not reported the relevant information needed (most commonly, the cut-off measures for each category).
 
 Across the remaining `r num_to_text(n_dr_final)` studies, a sufficient number of studies (n $\geqslant$ 3) were identified only for the total cholesterol-Alzheimer's, LDL-Alzheimer's, and total cholesterol-dementia strata. This analysis provided very weak evidence for a non-linear effect of lipid levels on dementia outcomes, and Figure \@ref(fig:lipidsDoseResponse) illustrates this for the total cholesterol-Alzheimer's strata. Similar figures for the other analysed lipid-outcome strata are presented in Appendix \@ref(hold).
+
+<!-- TODO Add legend to this figure so that it is clear what the lines are - YBS was confused -->
 
 <!----------------------------------------------------------------------------->
 (ref:lipidsDoseResponse-cap) Dose-response meta-analysis of total cholesterol on Alzheimer's disease
