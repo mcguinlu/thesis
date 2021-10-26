@@ -13,7 +13,7 @@ output:
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:sys-rev-tools-quote)', echo = FALSE}
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:sys-rev-tools-quote)', echo = TRUE}
 Why are open source statistical programming  
 languages the best?
 
