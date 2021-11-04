@@ -19,7 +19,7 @@ of the observed association. Has it been repeatedly observed by different person
 ```
 (ref:tri-quote) --- Sir Austin Bradford Hill, 1965 [@hill1965]
 
-<!-- TODO Add this to the Chapter summary in the introduction and  -->
+<!-- TODO Add this to the Chapter summary in the introduction -->
 
 <!-- ### Triangulation  -->
 
@@ -49,20 +49,29 @@ Triangulation is the practice of using multiple sources of evidence to provide m
 
 ## Introduction
 
-This chapter will attempt to triangulate the evidence identified by the systematic review in Chapter \ref(sys-rev-heading-results), with the the results from the analysis of CPRD data (Chapter \ref(cprd-heading) and IPD \ref(ipd-heading).
+This chapter will attempt to triangulate the evidence identified by the systematic review in Chapter \@ref(sys-rev-heading-results), with the the results from the analysis of CPRD data (Chapter \@ref(cprd-heading) and IPD \@ref(ipd-heading).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Overview of triangulation {#triangulation-overview}
 
+Aetiological triangulation, or simply triangulation, is the process of comparing and contrasting across result in order to . 
+
+
+
+It has been widely used in the literature, and is comparable to Bradford-Hill's criteria of "consistency", that is the replication of an observed relationship across several different contexts.[@hill1965] In this framework, 
+
+&nbsp;<!----------------------------------------------------------------------->  
+
 ### Terminology
 
 __Different types of triangulation__
 
-Qualitative triangulation is describing the different results.It has been widely used in the literature, and is comparable to Bradford-Hill's criteria of "consistency", that is the replication of an observed relationship across several different "contexts". In this framework.
+_Qualitative_ triangulation is describing the different results. It regularly appears though not under that name, in the discussion of results section under the name "comparison with other literature". 
 
+Previous examples of this approach have used criteria such as  
 
-
+In contrast, _quantitative triangulation_ attempts to obtain a overall numerical result by synthesising the different types of evidence.
 
 However, previous attempts at triangulation ignore the potential for varying and opposing sources of bias within a evidence source. For example, 
 
@@ -74,12 +83,14 @@ In contrast, external bias (also called indirectness, or )
 
 Additionally, potential biases can be additive or proportional. Pro
 
-<!-- "If the aim of a meta-analysis is to summarize the literature rather than to address a target question, there is no need to adjust for external biases since differences between the (idealized) studies are accepted as diversity. The need to adjust for internal biases remains and our method can be applied directly to these." Taken from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2667303/ - good explanation on difference between qualitative and quantitative triangulation. -->
+Talk about problems of sclae - assuming bias direction at the study level works well if you only have one study per design category as in the example by Ference et al (e.g. IPD analysis of ) 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ## Methods
 ### Data sources
+
+As outlined in the thesis overview presented in Section \@ref(background-thesis-overview), the triangulation draws on the research produced in the preceding chapters.
 
 This chapter builds on the comprehensive systematic review presented in CHapter \@re(sys-rev-heading), and incorporates the results of the analyses presented in Chapters \@ref(cprd-heading) (statins on dementia outcomes in the CPRD) & \@ref(ipd-heading) (lipids on dementia outcomes in IPD).
 
@@ -100,18 +111,32 @@ Table \@ref(triSummary) illustrates the causal question each approach attempted 
 
 As a first step to assessing the evidence, all evidence sources were grouped by outcome and compared and contrasted. Potential reasons for heterogeneity were examined with specific reference to the risk of bias assessments performed. 
 
+This analysis built on the detailed risk of bias assessments performed and presented as part of the systematic review (Chapter \@ref()/\@ref()), and the results of the
+
 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Quantitative triangulation
 
-In addition to the qualitative discussion of evidence, I attempted to integrate the . This approach incorporated advancements in the way that bias in results is assessed to illustrate both how causal questions could be addressed under this quantitative triangulation framework, and 
+In addition to the qualitative discussion of evidence, I attempted to integrate the numerical results of the multiple approaches.
+
+A framework for bias-adjusted meta-analysis
+
+The code supporting the original implementation (written as a STATA do file) was converted into R code, and 
+
+This approach incorporated advancements in the way that bias in results is assessed to illustrate both how causal questions could be addressed under this quantitative triangulation framework, and 
+
+This was implemented via a bias-adjusted meta-analytical framework.
+
+Several steps were used to accomplish this approach, as described in the following sections.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 #### Definition of the causal questions of interest (case-studies)
-<!-- TODO See ROBINS-E for this, as to how to think about exposures -->
+<!-- TODO See ROBINS-E for this, as to how to think about exposures, adn the "Duration and timing of exposure being assessed with different approachesDuration and timing of exposure being assessed with different approaches" section of the aetiological triangulation -->
+
+In the first instance, following standard triangulation
 
 This chapter will consider two questions
 
@@ -127,12 +152,24 @@ Table with columns describing exposure, outcome, time-point, other aspects (cumu
 
 This was also guided by the forthcoming ROBINS-E tool, which has
 
-•	One interventional: Effect of average exposure to LDL-c during midlife on AD 
-•	One aetiological: Effect of cumulative LDL-c from birth
+*	Effect of average exposure to LDL-c during midlife on AD 
+*	Effect of cumulative LDL-c from birth to mid-life on AD
+* Effect of late-life LDL-c on all-cause dementia
 
+&nbsp;
 
-As outlined in the thesis overview presented in Section \@ref(hold), the triangulation draws on the research produced in the preceding chapters.
+<!-- TODO This table will describe the causal questions of interest, following the ROBINS-E framework as columns, and list the included studies adn the relative weights of each. -->
 
+<!----------------------------------------------------------------------------->
+(ref:questionsOfInterest-caption) questionsOfInterest
+
+(ref:questionsOfInterest-scaption) questionsOfInterest
+
+```{r questionsOfInterest-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
 
 a)	Proposed method for this chapter
 i)	Example: LDL-c at midlife on Alzheimer’s disease risk
@@ -211,9 +248,11 @@ As such, a simulation approach was taken to explore the impacts of several diffe
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-####	Assign modifying values to risk/direction of bias
+####	Assign modifying values to indirectness
 
 "One important difference between these approaches that will need to be addressed in the triangulation is that RCTs relate to short-term modification of lipid levels, whereas Mendelian randomisation studies typically refer to lifelong exposures; and traditional observational epidemiology approaches may refer to short or longterm exposure (although are often not explicit about this). The triangulation will take these into account, for example by superimposing the studies on a hypothetical model for exposure-outcome relationship across the life course."
+
+<!-- "If the aim of a meta-analysis is to summarize the literature rather than to address a target question, there is no need to adjust for external biases since differences between the (idealized) studies are accepted as diversity. The need to adjust for internal biases remains and our method can be applied directly to these." Taken from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2667303/ - good explanation on difference between qualitative and quantitative triangulation. -->
 
 ####	Combine in a bias-adjusted meta-analysis 
 
@@ -223,20 +262,6 @@ As such, a simulation approach was taken to explore the impacts of several diffe
 
 
 ## Results
-### Intro
-
-Summary of risk-of-bias/triangulation results
-
-Percentage of domains for which a direction of bias could be assigned?
-
-Compare bias-adjusted and
-
-See what happens if using additive (l=1,m=2,s=3,c=4) vs multiplicative/log scale (l=1,m=2,s=4,c=8). Present adjusted results and meta-analysis of adjusted results.
-
-Applicability/indirectness as an issue 
-Compare with GRADE and cite George's example of 40% of effect predicted by MR seen when using statins for 5 years
-
-<!----------------------------------------------------------------------------->
 
 ### Qualitative triangulation
 
@@ -287,8 +312,22 @@ __Impact of patient characteristics__
 
 ### Quantitative triangulation
 
+#### Intro
 
-### Standardisation across study designs
+Summary of risk-of-bias/triangulation results
+
+Percentage of domains for which a direction of bias could be assigned?
+
+Compare bias-adjusted and
+
+See what happens if using additive (l=1,m=2,s=3,c=4) vs multiplicative/log scale (l=1,m=2,s=4,c=8). Present adjusted results and meta-analysis of adjusted results.
+
+Applicability/indirectness as an issue 
+Compare with GRADE and cite George's example of 40% of effect predicted by MR seen when using statins for 5 years
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+#### Standardisation across study designs
 
 Standardising across different measures of ex
 
@@ -304,7 +343,9 @@ Future quantitative triangulation should move beyond the concept of comparing re
 
 While this makes the process both more labour intensive and complex, to assume that, for example, all retro-spective studies are equally at risk is to overlook. While ti could be true thtat all retrospective studies share some _minimal level_ of bias, there are several opportunities. Failing to seperate these out results in a lack of information. 
 
-In this chapter, I have presented a new visualistion fo the bias inherent to each result, and suggested hwo. While this work is largely illustrative, as the correst distributions of modifying values in each risk-of-bias domain should be driven by meta-epidemiologic studies, these do not yet exist.
+In this chapter, I have presented a new visualisation fo the bias inherent to each result, and suggested hwo. While this work is largely illustrative, as the correst distributions of modifying values in each risk-of-bias domain should be driven by meta-epidemiological studies, these do not yet exist.
+
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Problems with quantitative triangulation approach
 
@@ -312,7 +353,7 @@ Missing natural variation obtained from elicitation approach. Trade-off between 
 
 A potential combination between the two would be to use the variation in risk-of-bias assessments
 
-Eliciation and bias-adjusted not as favoured versus weighting [@stone2020] <!-- TODO Check this is actually what this reference says --> though weighting at the overall risk of bias level loses some of the information contained in domain-level based assessments. 
+Elicitation and bias-adjusted not as favoured versus weighting [@stone2020] <!-- TODO Check this is actually what this reference says --> though weighting at the overall risk of bias level loses some of the information contained in domain-level based assessments. 
 
 No good information on what the potential biases should be. 
 
@@ -321,14 +362,9 @@ Meta-epidemiological studies on the effect of different methodological issues on
 However, there is substantially less , arguably because of the absence of clear
 Many meta-epi studies of non-randomised studies assume bias at the study-design level, similar to the early triangulation frame-work, rather than considering the actual biases deemed to be present in a given result. In this scenario, study
 
-
-
 Potential future meta-epidemiology studies should begin to create these datasets. 
 
 A key example of a useful future study in this domain would be the mining of maximally adjusted vs. unadjusted estimates from abstracts from primary studies to assess the impact of insufficient confounding by topic. However, these datasets could also be built from systematic reviews of a topic, as they would already be gruped by reserach domain and provided the risk of bias data is shared, provide a ready source of information
-
-
-
 
 For example, if it was . New software for performing risk of bias assessments, being developed by the Bristol Appraisal and review of Research group has this as a secondary methodological aim.
 
@@ -348,7 +384,17 @@ Need range around modifying values, as total variance of the biases is added to 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-### Discussion of E-values
+### Challenges of real-life data
+
+Compare and contrast with the nice example presented in the triangulation paper - realities of non-exemplars is that it is very hard to get this right. ALso highlight the issue with assigning a direct of bias in many studies
+
+I hope this presents step forward in how researchers think about and visualise triangulation at the result level, rather than simply saying that certain 
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+### Alternative approaches
+
+#### E-values
 
 Present as an alternative to putting priors on the level of bias due to confounding. E-values work the other way around - get result then work out how strong a biasing factor would have to be to negate the result. One major problem is that they can only be used to evaluate negating biases, not other biases. 
 
@@ -358,13 +404,32 @@ Heavily criticised in a range of papers.
 
 Also, no useful to focus on a specific bias in the context of risk of bias domains
 
+As an example, I calculated the E-value required to attenuate the hamrful association observed between statin use and vascular dementia in the CPRD analysis ( `r hold()`` ) presented in Chapter \@ref(cprd-heading). Assuming an outcome prevalence of <15%, an E-value of 3.31 was identified
+
+This calculation was performed using the XXX R package.
+
+<!-- TODO Ensure that the example is provided first, as you then go on to disparage it - in the example given, the main driver of bias is likely to be confounding (though some may be due to misclassification) -->
+
+However, this approach is only useful if the only source of bias in a result is due to uncontrolled confounding (as assessed by a domain-based risk of bias tool).
+
+Otherwise, it's interpretation is more challenging, as the biasing effect is incorrectly assinged complete to confoudning, thus overestimating the expected effect of confounding. 
+
+the contribution of confounding to the bias in a result, and while it may be applicable if the only bias assessed to
+
+
 &nbsp;<!----------------------------------------------------------------------->  
 
-### Challenges of real-life data
 
-Compare and contrast with the nice example presented in the triangulation paper - realities of non-exemplars is that it is very hard to get this right. ALso highlight the issue with assigning a direct of bias in many studies
+### Methods for combining different exposures
 
-I hope this presents step forward in how researchers think about and visualise triangulation at the result level, rather than simply saying that certain 
+Present as an alternative
+
+Well-used body of literature to combine different outcome measurements, but unclear as to how to combine
+
+It may be possible to combine the different exposure measures
+
+However, in my approach, I treated te
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -379,6 +444,13 @@ Can I suggest any empirical studies that need to be performed? Average strength 
 ## Conclusion
 
 Triangulation is a promising developing field, somewhat hamstrung by the limited understanding of the impact of biases at the meta-epidemiological level.
+
+This chapter has demonstrated a repurposed framework for quantitative triangulation, exploiting existing methods in evidence synthesis and developments in the assessment of different risks of bias. 
+
+It also introduce a new way to visualise the biases at work in a particular result, rather than making assumptions about the type and directions of bias at the study design level as suggested by previous work on this topic. 
+
+Finally, it highlighted the limitations of current methods for triangulation in the absence of informative priors for the impact of biases across the 
+
 
 \newpage
 

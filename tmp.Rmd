@@ -21,7 +21,7 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 
 <!----------------------------------------------------------------------------->
-(ref:covariateDef-caption) Definition of covariates adjusted for in the full-adjusted model. The codelists used to define the majority of these covariates were originally created for use in a previously published analysis.[@walker2020] while otherss were built on or adapted from previous published work.[@khan2010; @taylor2016; @wright2017]
+(ref:covariateDef-caption) Definition of covariates adjusted for in the full-adjusted model. The codelists used to define the majority of these covariates were originally created for use in a previously published analysis.[@walker2020] while others were built on or adapted from previous published work.[@khan2010; @taylor2016; @wright2017]
 
 (ref:covariateDef-scaption) Covariates adjusted for.
 

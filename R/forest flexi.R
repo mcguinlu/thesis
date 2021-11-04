@@ -1,5 +1,12 @@
-forest_strata_rob <- function(dat, dat_rob, rob_tool = "ROB2",rob_me = "Low",sei = NULL, title = NULL, ...){
-
+forest_strata_rob <-
+  function(dat,
+           dat_rob,
+           rob_tool = "ROB2",
+           rob_me = "Low",
+           sei = NULL,
+           title = NULL,
+           ...) {
+    
 ### calculate log risk ratios and corresponding sampling variances (and use
 ### the 'slab' argument to store study labels as part of the data frame)
 
@@ -9,6 +16,7 @@ if (rob_tool == "ROB2") {
   levels <- c("Low","Moderate","Serious","Critical")
 } 
   
+# TODO the ordering of ROB is not quite right!
 dat_rob <- dat_rob %>%
   mutate(overall = factor(overall ,levels =levels)) %>%
   arrange(overall)
@@ -44,8 +52,17 @@ for (i in 1:nrow(dat_rob_vec)) {
   
 }
 
+arg <- list(...)
+
+if (is.null(arg$at)) {
+  x_adj <- log(3)
+} else {
+  x_adj <- arg$at[3]
+}
+
+
 x_min = -10
-x_max = 4.6
+x_max = 4.6 - log(3) + x_adj
 textpos <- c(x_min, x_max-1)
 y_max <- max(rows)+4
 
@@ -218,11 +235,24 @@ par(op)
 # Add sub-group, summary polygons & text
 
 if (!hasArg(sei)) {
-rma_flexi <- function(x) {
-  rma(yi, vi, subset = (overall == x), data = dat, method = "DL")
-} } else{
   rma_flexi <- function(x) {
-    rma(yi, sei=sei, subset = (overall == x), data = dat, method = "DL")
+    rma(
+      yi,
+      vi,
+      subset = (overall == x),
+      data = dat,
+      method = "DL"
+    )
+  }
+} else{
+  rma_flexi <- function(x) {
+    rma(
+      yi,
+      sei = sei,
+      subset = (overall == x),
+      data = dat,
+      method = "DL"
+    )
   }
 }
 
@@ -357,7 +387,7 @@ mlabfun <- function(text, res) {
                     " (",
                     # " Q = ", .(formatC(res$QE, digits=2, format="f")),
                     # ", df = ", .(res$k - res$p),
-                    "p ", .(metafor:::.pval(res$QEp, digits=2, showeq=TRUE, sep=" ")), "; ",
+                    "p ", .(metafor:::.pval(res$pval, digits=2, showeq=TRUE, sep=" ")), "; ",
                     I^2, " = ", .(formatC(res$I2, digits=1, format="f")), "%, ",
                     tau^2, " = ", .(formatC(res$tau2, digits=2, format="f")), ")")))}
 

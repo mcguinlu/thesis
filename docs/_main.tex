@@ -191,7 +191,7 @@ An investigation of their relationship}
 \degree{Doctor of Philosophy}
 % Term and year of submission, or date if your board requires (eg most masters)
 \degreedate{2022}
-\wordcount{37218}
+\wordcount{38250}
 
 
 %%%%% YOUR OWN PERSONAL MACROS
@@ -380,15 +380,15 @@ An investigation of their relationship}
 
 \adjustmtc
 
-Word count: 37218
+Word count: 38250
 
-Table words: 3251
+Table words: 3435
 
-Days: 335
+Days: 344
 
-Words behind: -857
+Words behind: -698
 
-Words today: 1080
+Words today: 241
 
 ~
 
@@ -807,8 +807,8 @@ In response to these limitations, new collaborative initiatives have developed t
 
 I will will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapter \ref{sys-rev-heading}. Any data obtained will be combined with that available from the DPUK portal as part of an individual participant data meta-analysis in Chapter \ref{ipd-analysis-heading}, enabling the assessment of the effect of lipids on dementia stratified by key variables such as sex.
 
-\hypertarget{thesis-overview}{%
-\section{Thesis overview}\label{thesis-overview}}
+\hypertarget{background-thesis-overview}{%
+\section{Thesis overview}\label{background-thesis-overview}}
 
 \hypertarget{aims-and-objectives}{%
 \subsection{Aims and objectives}\label{aims-and-objectives}}
@@ -1279,7 +1279,7 @@ For example, the results of our simple search above can be exported to the \text
 \hypertarget{reception-and-future-plans}{%
 \subsection{Reception and future plans}\label{reception-and-future-plans}}
 
-The tool has been well received by the community (as of December 2021, \texttt{medrxivr} has been downloaded more than 5300 times), and several use cases have been reported. It has been used to investigate the role of preprints in the response to the 2019 coronavirus outbreak,\textsuperscript{\protect\hyperlink{ref-kodvanj2020}{116}} perform searches of preprints as part of a systematic review,\textsuperscript{\protect\hyperlink{ref-noone2020}{117},\protect\hyperlink{ref-grassly2020}{118}} and examine how data-sharing behaviour is affected by journal policies (see \ref{thesis-output}).\textsuperscript{\protect\hyperlink{ref-mcguinness2020c}{\textbf{mcguinness2020c?}}}
+The tool has been well received by the community (as of December 2021, \texttt{medrxivr} has been downloaded more than 5500 times), and several use cases have been reported. It has been used to investigate the role of preprints in the response to the 2019 coronavirus outbreak,\textsuperscript{\protect\hyperlink{ref-kodvanj2020}{116}} perform searches of preprints as part of a systematic review,\textsuperscript{\protect\hyperlink{ref-noone2020}{117},\protect\hyperlink{ref-grassly2020}{118}} and examine how data-sharing behaviour is affected by journal policies (see \ref{thesis-output}).\textsuperscript{\protect\hyperlink{ref-mcguinness2020c}{\textbf{mcguinness2020c?}}}
 
 The package has been accepted into the rOpenSci suite of packages, a collection of ``carefully vetted, staff- and community-contributed R software tools that lower barriers to working with scientific data sources on the web''.\textsuperscript{\protect\hyperlink{ref-boettiger2015}{119}} As part of this process, following rigorous peer-review, an associated article introducing the tool was published by the Journal of Open Source Software.\textsuperscript{\protect\hyperlink{ref-mcguinness2020a}{\textbf{mcguinness2020a?}}} The entire review discussion is publicly available and can be viewed online.\textsuperscript{\protect\hyperlink{ref-zotero-15016}{120}} The tool has also been well received by the open-source community, demonstrated by the engagement of other developers in contributing to important new functionality and suggesting bug-fixes.
 
@@ -1303,7 +1303,7 @@ While searching of the medRxiv and bioRxiv databases was crucial for the systema
 
 There is also the potential that the cross-section of literature posted on medrxiv/bioRxiv is substantially different those suffering from publication bias (studies or analyses that are not published for a range of reasons including results that are not deemed ``novel'' or are not statistically significant).\textsuperscript{\protect\hyperlink{ref-song2010}{122}} This is because simply lowering the barriers to publication may well encourage authors to published ``null'' results, but due to the effort involved in writing up a distributable manuscript, it is unlikely to completely address the ``file drawer'' effect.\textsuperscript{\protect\hyperlink{ref-rosenthal1979}{76}}
 
-Using \texttt{medrxivr} an analysis of the publication rate for medRxiv preprints was performed (see Appendix \ref{appendix-sys-rev-tools}). Eighty-seven (67.4\%) of the 129 records posted on medRxiv in July 2019 were published by 30th July 2021 (i.e.~allowing for a two-year lag between preprint posting and publication). This finding agrees with previous work demonstrating that two-thirds of bioRxiv preprints are published in a peer-reviewed journal within two years of posting,\textsuperscript{\protect\hyperlink{ref-abdill2019b}{123}} indicating that a non-insignificant number of preprints are never formally published but remain accessible as preprints.
+Using \texttt{medrxivr}, an analysis of the publication rate for medRxiv preprints was performed (see Appendix \ref{appendix-sys-rev-tools}). Eighty-seven (67.4\%) of the 129 records posted on medRxiv in July 2019 were published by 30th July 2021 (i.e.~allowing for a two-year lag between preprint posting and publication). This finding agrees with previous work demonstrating that two-thirds of bioRxiv preprints are published in a peer-reviewed journal within two years of posting,\textsuperscript{\protect\hyperlink{ref-abdill2019b}{123}} indicating that a non-insignificant number of preprints are never formally published but remain accessible as preprints.
 
 It is likely too early (and likely too methodologically difficult) to tell whether the increased popularity and acceptance of preprint repositories will have any effect of the availability of research that was not considered ``publishable'' at other venues.
 
@@ -3665,19 +3665,29 @@ Triangulation is the practice of using multiple sources of evidence to provide m
 \hypertarget{introduction-3}{%
 \section{Introduction}\label{introduction-3}}
 
-This chapter will attempt to triangulate the evidence identified by the systematic review in Chapter \ref(sys-rev-heading-results), with the the results from the analysis of CPRD data (Chapter \ref(cprd-heading) and IPD \ref(ipd-heading).
+This chapter will attempt to triangulate the evidence identified by the systematic review in Chapter \ref{sys-rev-heading-results}, with the the results from the analysis of CPRD data (Chapter \ref{cprd-heading} and IPD \ref{ipd-heading}.
 
 ~
 
 \hypertarget{triangulation-overview}{%
 \subsection{Overview of triangulation}\label{triangulation-overview}}
 
+Aetiological triangulation, or simply triangulation, is the process of comparing and contrasting across result in order to .
+
+It has been widely used in the literature, and is comparable to Bradford-Hill's criteria of ``consistency'', that is the replication of an observed relationship across several different contexts.\textsuperscript{\protect\hyperlink{ref-hill1965}{313}} In this framework,
+
+~
+
 \hypertarget{terminology}{%
 \subsection{Terminology}\label{terminology}}
 
 \textbf{Different types of triangulation}
 
-Qualitative triangulation is describing the different results.It has been widely used in the literature, and is comparable to Bradford-Hill's criteria of ``consistency'', that is the replication of an observed relationship across several different ``contexts''. In this framework.
+\emph{Qualitative} triangulation is describing the different results. It regularly appears though not under that name, in the discussion of results section under the name ``comparison with other literature''.
+
+Previous examples of this approach have used criteria such as
+
+In contrast, \emph{quantitative triangulation} attempts to obtain a overall numerical result by synthesising the different types of evidence.
 
 However, previous attempts at triangulation ignore the potential for varying and opposing sources of bias within a evidence source. For example,
 
@@ -3689,6 +3699,8 @@ In contrast, external bias (also called indirectness, or )
 
 Additionally, potential biases can be additive or proportional. Pro
 
+Talk about problems of sclae - assuming bias direction at the study level works well if you only have one study per design category as in the example by Ference et al (e.g.~IPD analysis of )
+
 ~
 
 \hypertarget{methods-3}{%
@@ -3696,6 +3708,8 @@ Additionally, potential biases can be additive or proportional. Pro
 
 \hypertarget{data-sources}{%
 \subsection{Data sources}\label{data-sources}}
+
+As outlined in the thesis overview presented in Section \ref{background-thesis-overview}, the triangulation draws on the research produced in the preceding chapters.
 
 This chapter builds on the comprehensive systematic review presented in CHapter @re(sys-rev-heading), and incorporates the results of the analyses presented in Chapters \ref{cprd-heading} (statins on dementia outcomes in the CPRD) \& \ref{ipd-heading} (lipids on dementia outcomes in IPD).
 
@@ -3727,17 +3741,31 @@ Chapter 6 & Are lipid levels associated with dementia risk in an individual part
 
 As a first step to assessing the evidence, all evidence sources were grouped by outcome and compared and contrasted. Potential reasons for heterogeneity were examined with specific reference to the risk of bias assessments performed.
 
+This analysis built on the detailed risk of bias assessments performed and presented as part of the systematic review (Chapter @ref()/@ref()), and the results of the
+
 ~
 
 \hypertarget{quantitative-triangulation}{%
 \subsection{Quantitative triangulation}\label{quantitative-triangulation}}
 
-In addition to the qualitative discussion of evidence, I attempted to integrate the . This approach incorporated advancements in the way that bias in results is assessed to illustrate both how causal questions could be addressed under this quantitative triangulation framework, and
+In addition to the qualitative discussion of evidence, I attempted to integrate the numerical results of the multiple approaches.
+
+A framework for bias-adjusted meta-analysis
+
+The code supporting the original implementation (written as a STATA do file) was converted into R code, and
+
+This approach incorporated advancements in the way that bias in results is assessed to illustrate both how causal questions could be addressed under this quantitative triangulation framework, and
+
+This was implemented via a bias-adjusted meta-analytical framework.
+
+Several steps were used to accomplish this approach, as described in the following sections.
 
 ~
 
 \hypertarget{definition-of-the-causal-questions-of-interest-case-studies}{%
 \subsubsection{Definition of the causal questions of interest (case-studies)}\label{definition-of-the-causal-questions-of-interest-case-studies}}
+
+In the first instance, following standard triangulation
 
 This chapter will consider two questions
 
@@ -3753,10 +3781,38 @@ Table with columns describing exposure, outcome, time-point, other aspects (cumu
 
 This was also guided by the forthcoming ROBINS-E tool, which has
 
-• One interventional: Effect of average exposure to LDL-c during midlife on AD
-• One aetiological: Effect of cumulative LDL-c from birth
+\begin{itemize}
+\tightlist
+\item
+  Effect of average exposure to LDL-c during midlife on AD
+\item
+  Effect of cumulative LDL-c from birth to mid-life on AD
+\item
+  Effect of late-life LDL-c on all-cause dementia
+\end{itemize}
 
-As outlined in the thesis overview presented in Section \ref{hold}, the triangulation draws on the research produced in the preceding chapters.
+~
+
+
+
+
+
+\begin{table}[H]
+
+\caption[questionsOfInterest]{\label{tab:questionsOfInterest-table}questionsOfInterest}
+\centering
+\begin{tabular}[t]{lllll}
+\toprule
+\textbf{Chapter} & \textbf{Research Question} & \textbf{Exposure/Intervention} & \textbf{Outcome} & \textbf{Contribution}\\
+\midrule
+Chapter 3/4 & Based on the available evidence; \textbackslash{}newline (i) are lipid fractions associated with subsequent dementia risk, stratified by subtype? \textbackslash{}newline (ii) Are lipid regulating agents associated with subsequent dementia risk, stratified by subtype? \textbackslash{}newline & Lipids (HDL-c, LDL-c, TC, TG), \textbackslash{}newline \textbackslash{}newline Lipid regulating agents (statins, ezetimibe, fibrates, etc.) & Dementia, stratified by subtype & Provides overview of existing evidence\\
+Chapter 5 & Are lipid regulating agents associated with dementia risk in a large scale electonic health record database? \textbackslash{}newline & Seven classes of lipid regulating agents & Dementia, stratified by subtype & Provides additional observational data on vascular dementia (under-represented in the literature) \textbackslash{}newline \textbackslash{}newline Provides a source of observational evidence created using a method with distinct sources of bias to those identified by the systematic review\\
+Chapter 6 & Are lipid levels associated with dementia risk in an individual participant data meta-analysis? \textbackslash{}newline & Lipids (HDL-c, LDL-c, TC, TG) & Dementia, stratified by subtype & Provides additional evidence from unanalysed datasets \textbackslash{}newline \textbackslash{}newline Allows for stratification of effect by variables of interest (e.g. sex)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+~
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
@@ -3856,8 +3912,8 @@ As such, a simulation approach was taken to explore the impacts of several diffe
 
 ~
 
-\hypertarget{assign-modifying-values-to-riskdirection-of-bias-1}{%
-\subsubsection{Assign modifying values to risk/direction of bias}\label{assign-modifying-values-to-riskdirection-of-bias-1}}
+\hypertarget{assign-modifying-values-to-indirectness}{%
+\subsubsection{Assign modifying values to indirectness}\label{assign-modifying-values-to-indirectness}}
 
 ``One important difference between these approaches that will need to be addressed in the triangulation is that RCTs relate to short-term modification of lipid levels, whereas Mendelian randomisation studies typically refer to lifelong exposures; and traditional observational epidemiology approaches may refer to short or longterm exposure (although are often not explicit about this). The triangulation will take these into account, for example by superimposing the studies on a hypothetical model for exposure-outcome relationship across the life course.''
 
@@ -3868,20 +3924,6 @@ As such, a simulation approach was taken to explore the impacts of several diffe
 
 \hypertarget{results-3}{%
 \section{Results}\label{results-3}}
-
-\hypertarget{intro}{%
-\subsection{Intro}\label{intro}}
-
-Summary of risk-of-bias/triangulation results
-
-Percentage of domains for which a direction of bias could be assigned?
-
-Compare bias-adjusted and
-
-See what happens if using additive (l=1,m=2,s=3,c=4) vs multiplicative/log scale (l=1,m=2,s=4,c=8). Present adjusted results and meta-analysis of adjusted results.
-
-Applicability/indirectness as an issue
-Compare with GRADE and cite George's example of 40\% of effect predicted by MR seen when using statins for 5 years
 
 \hypertarget{qualitative-triangulation-1}{%
 \subsection{Qualitative triangulation}\label{qualitative-triangulation-1}}
@@ -3932,8 +3974,24 @@ A previous Mendelian randomization study found little evidence that genetic vari
 \hypertarget{quantitative-triangulation-1}{%
 \subsection{Quantitative triangulation}\label{quantitative-triangulation-1}}
 
+\hypertarget{intro}{%
+\subsubsection{Intro}\label{intro}}
+
+Summary of risk-of-bias/triangulation results
+
+Percentage of domains for which a direction of bias could be assigned?
+
+Compare bias-adjusted and
+
+See what happens if using additive (l=1,m=2,s=3,c=4) vs multiplicative/log scale (l=1,m=2,s=4,c=8). Present adjusted results and meta-analysis of adjusted results.
+
+Applicability/indirectness as an issue
+Compare with GRADE and cite George's example of 40\% of effect predicted by MR seen when using statins for 5 years
+
+~
+
 \hypertarget{standardisation-across-study-designs}{%
-\subsection{Standardisation across study designs}\label{standardisation-across-study-designs}}
+\subsubsection{Standardisation across study designs}\label{standardisation-across-study-designs}}
 
 Standardising across different measures of ex
 
@@ -3950,7 +4008,9 @@ Future quantitative triangulation should move beyond the concept of comparing re
 
 While this makes the process both more labour intensive and complex, to assume that, for example, all retro-spective studies are equally at risk is to overlook. While ti could be true thtat all retrospective studies share some \emph{minimal level} of bias, there are several opportunities. Failing to seperate these out results in a lack of information.
 
-In this chapter, I have presented a new visualistion fo the bias inherent to each result, and suggested hwo. While this work is largely illustrative, as the correst distributions of modifying values in each risk-of-bias domain should be driven by meta-epidemiologic studies, these do not yet exist.
+In this chapter, I have presented a new visualisation fo the bias inherent to each result, and suggested hwo. While this work is largely illustrative, as the correst distributions of modifying values in each risk-of-bias domain should be driven by meta-epidemiological studies, these do not yet exist.
+
+~
 
 \hypertarget{problems-with-quantitative-triangulation-approach}{%
 \subsection{Problems with quantitative triangulation approach}\label{problems-with-quantitative-triangulation-approach}}
@@ -3959,7 +4019,7 @@ Missing natural variation obtained from elicitation approach. Trade-off between 
 
 A potential combination between the two would be to use the variation in risk-of-bias assessments
 
-Eliciation and bias-adjusted not as favoured versus weighting\textsuperscript{\protect\hyperlink{ref-stone2020}{316}} though weighting at the overall risk of bias level loses some of the information contained in domain-level based assessments.
+Elicitation and bias-adjusted not as favoured versus weighting\textsuperscript{\protect\hyperlink{ref-stone2020}{316}} though weighting at the overall risk of bias level loses some of the information contained in domain-level based assessments.
 
 No good information on what the potential biases should be.
 
@@ -3993,8 +4053,20 @@ Ideally, the modifying values )
 
 ~
 
-\hypertarget{discussion-of-e-values}{%
-\subsection{Discussion of E-values}\label{discussion-of-e-values}}
+\hypertarget{challenges-of-real-life-data}{%
+\subsection{Challenges of real-life data}\label{challenges-of-real-life-data}}
+
+Compare and contrast with the nice example presented in the triangulation paper - realities of non-exemplars is that it is very hard to get this right. ALso highlight the issue with assigning a direct of bias in many studies
+
+I hope this presents step forward in how researchers think about and visualise triangulation at the result level, rather than simply saying that certain
+
+~
+
+\hypertarget{alternative-approaches}{%
+\subsection{Alternative approaches}\label{alternative-approaches}}
+
+\hypertarget{e-values}{%
+\subsubsection{E-values}\label{e-values}}
 
 Present as an alternative to putting priors on the level of bias due to confounding. E-values work the other way around - get result then work out how strong a biasing factor would have to be to negate the result. One major problem is that they can only be used to evaluate negating biases, not other biases.
 
@@ -4004,14 +4076,28 @@ Heavily criticised in a range of papers.
 
 Also, no useful to focus on a specific bias in the context of risk of bias domains
 
+As an example, I calculated the E-value required to attenuate the hamrful association observed between statin use and vascular dementia in the CPRD analysis ( \textbf{PLACEHOLDER}` ) presented in Chapter \ref{cprd-heading}. Assuming an outcome prevalence of \textless15\%, an E-value of 3.31 was identified
+
+This calculation was performed using the XXX R package.
+
+However, this approach is only useful if the only source of bias in a result is due to uncontrolled confounding (as assessed by a domain-based risk of bias tool).
+
+Otherwise, it's interpretation is more challenging, as the biasing effect is incorrectly assinged complete to confoudning, thus overestimating the expected effect of confounding.
+
+the contribution of confounding to the bias in a result, and while it may be applicable if the only bias assessed to
+
 ~
 
-\hypertarget{challenges-of-real-life-data}{%
-\subsection{Challenges of real-life data}\label{challenges-of-real-life-data}}
+\hypertarget{methods-for-combining-different-exposures}{%
+\subsection{Methods for combining different exposures}\label{methods-for-combining-different-exposures}}
 
-Compare and contrast with the nice example presented in the triangulation paper - realities of non-exemplars is that it is very hard to get this right. ALso highlight the issue with assigning a direct of bias in many studies
+Present as an alternative
 
-I hope this presents step forward in how researchers think about and visualise triangulation at the result level, rather than simply saying that certain
+Well-used body of literature to combine different outcome measurements, but unclear as to how to combine
+
+It may be possible to combine the different exposure measures
+
+However, in my approach, I treated te
 
 ~
 
@@ -4026,6 +4112,12 @@ Can I suggest any empirical studies that need to be performed? Average strength 
 \section{Conclusion}\label{conclusion-1}}
 
 Triangulation is a promising developing field, somewhat hamstrung by the limited understanding of the impact of biases at the meta-epidemiological level.
+
+This chapter has demonstrated a repurposed framework for quantitative triangulation, exploiting existing methods in evidence synthesis and developments in the assessment of different risks of bias.
+
+It also introduce a new way to visualise the biases at work in a particular result, rather than making assumptions about the type and directions of bias at the study design level as suggested by previous work on this topic.
+
+Finally, it highlighted the limitations of current methods for triangulation in the absence of informative priors for the impact of biases across the
 
 \newpage
 
@@ -4049,6 +4141,16 @@ This chapter
 \hypertarget{chapter-overview}{%
 \section{Chapter overview}\label{chapter-overview}}
 
+In this chapter I will summarise the principal findings from my thesis,
+
+assess the unique contributions of this thesis to the field of research,
+
+discuss the implications for both clinical and public health policy,
+
+describe the overall strengths and limitations of this thesis as a whole,
+
+suggest avenues for impactful future research based on my findings and experiences.
+
 ~
 
 \hypertarget{summary-of-principal-findings}{%
@@ -4059,26 +4161,40 @@ This chapter
 \hypertarget{overall-strengths-and-limitations}{%
 \section{Overall strengths and limitations}\label{overall-strengths-and-limitations}}
 
-\hypertarget{implications}{%
-\section{Implications}\label{implications}}
+This thesis has used multiple sources of evidence to examine the relationship between blood lipids levels and cholesterol risk.
 
-\hypertarget{clinical-practice}{%
-\subsection{Clinical practice}\label{clinical-practice}}
+It has highlighted the importance of including preprints in systematic review, and provided a tool to enable researchers to easily do so.
 
-\hypertarget{future-research}{%
-\subsection{Future research}\label{future-research}}
+It has analysed two previously unalysed datasets, adding useful information to the evidence base
 
-\hypertarget{conclusions-2}{%
-\section{Conclusions}\label{conclusions-2}}
-
-~
-
-\hypertarget{strengths-and-limitations-2}{%
-\subsection{Strengths and Limitations}\label{strengths-and-limitations-2}}
+However, the thesis as a whole is subject to some strong limitations.
 
 There are several strengths and limitations to the work presented in this thesis. One particularly strength is the lengths gone to find all available published and unpublished evidence around the question, and to integrate this evidence in a coherent framework, taking into account the limitations of ach source and how these limitations may be used to provide
 
 Need for large simple trials for common disease where small treatment effect can have large effect -\textsuperscript{\protect\hyperlink{ref-yusuf1984}{319}}
+
+This thesis is limited by the low response rate to data access requests, and the
+
+The lack of large, precise studies made comparison across different types of evidence difficult, while the low number of eligible studies for a
+
+~
+
+\hypertarget{implications-of-this-research}{%
+\section{Implications of this research}\label{implications-of-this-research}}
+
+\hypertarget{clinical-practice}{%
+\subsection{Clinical practice}\label{clinical-practice}}
+
+The clinical recommendations that can be drawn from the work in this thesis are limited, due to the
+
+however, a key limiting factor is the absence of a detailed pathological mechanism for Alzheimer's disease. Additionally, vascular dementia
+
+However, based on the available evidence
+
+~
+
+\hypertarget{public-health}{%
+\subsection{Public health}\label{public-health}}
 
 ~
 
@@ -4103,27 +4219,68 @@ Public engagement activities included
 
 Public involvement also steered the creation of the topic
 
-P
-
 ~
 
 \hypertarget{future-work}{%
 \section{Future work}\label{future-work}}
 
+\hypertarget{inclusion-of-preprints-1}{%
+\subsection{Inclusion of preprints}\label{inclusion-of-preprints-1}}
+
 Normalisation of inclusion of preprints in systematic reviews. Wider assessment of the evidence base that exists solely as preprinted literature ()
 
-Secondly, large-scale GWAS of vascular dementia should be performed, to identify associated loci that future Mendelian randomisation studies can make use of. While this is methodologically challenging, given the difficult in diagnosing ``pure'' vascular dementia, it would be a worthwhile endeavour, and would allow for the assessment of many genetically driven risk factors beyond those considered in this thesis.
+Studying of factors which influence eventual publication would also help to identify the extent and strength of publication bias by providing a
+
+Preprints also represent a key oppportunity to assess the impact of peer review on qualitivative changes within
+
+~
+
+\hypertarget{evidence-on-vascular-dementia}{%
+\subsection{Evidence on vascular dementia}\label{evidence-on-vascular-dementia}}
+
+As discussed, there is an absence of evidence on vascular dementia across the evidence base, potentially driven y
+
+large-scale GWAS of vascular dementia should be performed, to identify associated loci that future Mendelian randomisation studies can make use of. While this is methodologically challenging, given the difficult in diagnosing ``pure'' vascular dementia, it would be a worthwhile endeavour, and would allow for the assessment of many genetically driven risk factors beyond those considered in this thesis.
+
+~
+
+\hypertarget{reviewing-of-mendelian-randomisation-studies}{%
+\subsection{Reviewing of Mendelian randomisation studies}\label{reviewing-of-mendelian-randomisation-studies}}
 
 As a field, and as noted in Chapter \ref{sys-rev-heading-results}, the evidence synthesis theory and methods have not been sufficient developed for Mendelian randomisation studies. Future work should aim to validate search strategies for this study design, paying particular attention to the range of terms used to define it (e.g.~genetic instrumental variable analysis.)
 
-Finally, substantial future work should be directed towards the conduct of meta-epidemiologocial studies to assess the impact of different bias in non-pbservational studies. While frameworks such as the one employed in Chapter \ref{tri-heading} exist to allow for the production of bias-adjusted and triangulated estimates.
+Work is ongoing in this field, and new methodological work such as the release of teh MR-STROBE guidelines will aid in the future assessing by helping to improve the reporting of Mendelian randomisation studies.
+
+Problems with reporting of MR studies will hopefully
+
+~
+
+\hypertarget{empirical-estimates-of-bias}{%
+\subsection{Empirical estimates of bias}\label{empirical-estimates-of-bias}}
+
+Finally, substantial future work should be directed towards the conduct of meta-epidemiological studies to assess the impact of different bias in non-observational studies. While frameworks such as the one employed in Chapter \ref{tri-heading} exist to allow for the production of bias-adjusted and triangulated estimates.
+
+~
+
+\hypertarget{imporved-analytical-designs}{%
+\subsection{Imporved analytical designs}\label{imporved-analytical-designs}}
+
+Use of the real-world evidence approach needs to be traded off against the important limitations that t
+
+Talk about the problems with real world evidence, and highlight that even when using these techniques, you still don't get the correct answers.
+
+Tie in with GDS comments on off-targets effect.
 
 ~
 
 \hypertarget{overall-conclusions}{%
 \section{Overall conclusions}\label{overall-conclusions}}
 
-Definition of covariates adjusted for in the full-adjusted model. The codelists used to define the majority of these covariates were originally created for use in a previously published analysis.\textsuperscript{\protect\hyperlink{ref-walker2020}{271}} while others were built on or adapted from previous published work,\textsuperscript{\protect\hyperlink{ref-khan2010}{272}--\protect\hyperlink{ref-wright2017}{274}}. Definition of covariates adjusted for in the full-adjusted model. The codelists used to define the majority of these covariates were originally created for use in a previously published analysis.\textsuperscript{\protect\hyperlink{ref-walker2020}{271}} while otherss were built on or adapted from previous published work.\textsuperscript{\protect\hyperlink{ref-khan2010}{272}--\protect\hyperlink{ref-wright2017}{274}}
+This thesis has made unique and novel contributions to the
+
+Illustrating that commonly employed approaches to address
+
+Definition of covariates adjusted for in the full-adjusted model. The codelists used to define the majority of these covariates were originally created for use in a previously published analysis.\textsuperscript{\protect\hyperlink{ref-walker2020}{271}} while others were built on or adapted from previous published work,\textsuperscript{\protect\hyperlink{ref-khan2010}{272}--\protect\hyperlink{ref-wright2017}{274}}. Definition of covariates adjusted for in the full-adjusted model. The codelists used to define the majority of these covariates were originally created for use in a previously published analysis.\textsuperscript{\protect\hyperlink{ref-walker2020}{271}} while others were built on or adapted from previous published work.\textsuperscript{\protect\hyperlink{ref-khan2010}{272}--\protect\hyperlink{ref-wright2017}{274}}
 
 Covariates adjusted for. Covariates adjusted for.
 
@@ -5994,7 +6151,7 @@ psize & X &  & Defines the size of the points in the traffic light plot. Default
 \hypertarget{reception-and-future-plans-1}{%
 \subsection{Reception and Future Plans}\label{reception-and-future-plans-1}}
 
-As of December 2021, \texttt{robvis} has been downloaded more than 15000 times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{\textbf{mathias\_harrer\_2019\_2551803?}}}
+As of December 2021, \texttt{robvis} has been downloaded more than 15300 times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the ``Doing Meta-Analysis in R'' online textbook.\textsuperscript{\protect\hyperlink{ref-mathias_harrer_2019_2551803}{\textbf{mathias\_harrer\_2019\_2551803?}}}
 
 While \texttt{robvis} is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in \texttt{robvis} is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.\textsuperscript{\protect\hyperlink{ref-whiting2016robis}{\textbf{whiting2016robis?}}} Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.\textsuperscript{\protect\hyperlink{ref-cochranechpt7}{\textbf{cochranechpt7?}}} This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the \texttt{metafor::reporter()} function, which generates a brief paragraph of text describing the results of a meta-analysis. The future \texttt{robvis::reporter()} function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
 

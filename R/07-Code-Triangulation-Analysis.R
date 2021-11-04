@@ -17,3 +17,19 @@ if (doc_type == "docx") {
     row_spec(0, bold = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position"))
 }
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- questionsOfInterest-table
+
+questionsOfInterest_table <- rio::import("data/background/thesisOverview.csv") %T>%
+  write.csv("data/table_words/questionsOfInterest.csv")
+
+
+if(doc_type == "docx"){
+apply_flextable(questionsOfInterest_table,caption = "(ref:questionsOfInterest-caption)")
+}else{
+knitr::kable(questionsOfInterest_table, format = "latex", caption = "(ref:questionsOfInterest-caption)", caption.short = "(ref:questionsOfInterest-scaption)", booktabs = TRUE) %>% 
+row_spec(0, bold = TRUE) %>%
+kable_styling(latex_options = c("HOLD_position"))
+}

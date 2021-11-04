@@ -31,6 +31,16 @@ This chapter
 
 ## Chapter overview
 
+In this chapter I will summarise the principal findings from my thesis, 
+
+assess the unique contributions of this thesis to the field of research, 
+
+discuss the implications for both clinical and public health policy,
+
+describe the overall strengths and limitations of this thesis as a whole, 
+
+suggest avenues for impactful future research based on my findings and experiences.
+
 <!-- In this final chapter I will: -->
 <!--  Summarise the main findings from each chapter in relation to my two thesis hypotheses. -->
 <!-- Chapter 6: Discussion -->
@@ -46,31 +56,58 @@ This chapter
 ## Summary of principal findings
 
 
+
+
 &nbsp;<!----------------------------------------------------------------------->  
 
 ## Overall strengths and limitations
 
-## Implications 
-### Clinical practice
-### Future research
+This thesis has used multiple sources of evidence to examine the relationship between blood lipids levels and cholesterol risk. 
 
-## Conclusions
+It has highlighted the importance of including preprints in systematic review, and provided a tool to enable researchers to easily do so. 
 
-&nbsp;<!----------------------------------------------------------------------->  
+It has analysed two previously unalysed datasets, adding useful information to the evidence base
 
 
-### Strengths and Limitations
+However, the thesis as a whole is subject to some strong limitations. 
 
 There are several strengths and limitations to the work presented in this thesis. One particularly strength is the lengths gone to find all available published and unpublished evidence around the question, and to integrate this evidence in a coherent framework, taking into account the limitations of ach source and how these limitations may be used to provide 
 
 Need for large simple trials for common disease where small treatment effect can have large effect - [@yusuf1984]
 
-&nbsp;
-<!----------------------------------------------------------------------------->
+
+This thesis is limited by the low response rate to data access requests, and the
+
+The lack of large, precise studies made comparison across different types of evidence difficult, while the low number of eligible studies for a
+
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+## Implications of this research
+
+### Clinical practice
+
+The clinical recommendations that can be drawn from the work in this thesis are limited, due to the 
+
+however, a key limiting factor is the absence of a detailed pathological mechanism for Alzheimer's disease. Additionally, vascular dementia
+
+However, based on the available evidence 
+
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+### Public health
+
+
+
+&nbsp;<!----------------------------------------------------------------------->  
 
 ## Reproducible research
 
 Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tool to help search medRxiv and bioRxiv preprint metadata. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
+
+<!-- TODO Could he get it work, could he feck. -->
+
 
 Containerisation was used to ensure that the code is reproducible, in line iwht best practices
 
@@ -78,40 +115,74 @@ Commentary on the fact that the best you can do is replicate vs reproducible (du
 
 One is the ability to recreate the results given the same data and code, the other is the ability to recreate the results given the same code but a different dataset. IN theory it is possible to gain access the dataset given the information presented in Chapter \@(ref:cprd-analysis-heading). However, access is dependency on an ISAC application to the managing body of the CPRD. 
 
-&nbsp;
-<!----------------------------------------------------------------------------->
+&nbsp;<!----------------------------------------------------------------------->  
 
 ## Public involvement and engagement {#disc-PPI}
 
 <!-- TODO May need to tone this down a little bit -->
-
 
 Involving and engaging the public and patients has been a central theme to this thesis. 
 Public engagement activities included 
 
 Public involvement also steered the creation of the topic
 
-P
+
 
 &nbsp;
 <!----------------------------------------------------------------------------->
 
 ## Future work
 
+### Inclusion of preprints
+
 Normalisation of inclusion of preprints in systematic reviews. Wider assessment of the evidence base that exists solely as preprinted literature ()
 
-Secondly, large-scale GWAS of vascular dementia should be performed, to identify associated loci that future Mendelian randomisation studies can make use of. While this is methodologically challenging, given the difficult in diagnosing "pure" vascular dementia, it would be a worthwhile endeavour, and would allow for the assessment of many genetically driven risk factors beyond those considered in this thesis.
+Studying of factors which influence eventual publication would also help to identify the extent and strength of publication bias by providing a 
+
+Preprints also represent a key oppportunity to assess the impact of peer review on qualitivative changes within
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+### Evidence on vascular dementia
+
+As discussed, there is an absence of evidence on vascular dementia across the evidence base, potentially driven y
+
+large-scale GWAS of vascular dementia should be performed, to identify associated loci that future Mendelian randomisation studies can make use of. While this is methodologically challenging, given the difficult in diagnosing "pure" vascular dementia, it would be a worthwhile endeavour, and would allow for the assessment of many genetically driven risk factors beyond those considered in this thesis.
 
  <!-- TODO See notes from Pat/Emma on this -->
 
+&nbsp;<!----------------------------------------------------------------------->  
+
+### Reviewing of Mendelian randomisation studies
+
 As a field, and as noted in Chapter \@ref(sys-rev-heading-results), the evidence synthesis theory and methods have not been sufficient developed for Mendelian randomisation studies. Future work should aim to validate search strategies for this study design, paying particular attention to the range of terms used to define it (e.g. genetic instrumental variable analysis.)
 
-Finally, substantial future work should be directed towards the conduct of meta-epidemiologocial studies to assess the impact of different bias in non-pbservational studies. While frameworks such as the one employed in Chapter \@ref(tri-heading) exist to allow for the production of bias-adjusted and triangulated estimates.
+Work is ongoing in this field, and new methodological work such as the release of teh MR-STROBE guidelines will aid in the future assessing by helping to improve the reporting of Mendelian randomisation studies. 
 
+Problems with reporting of MR studies will hopefully
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+### Empirical estimates of bias
+
+Finally, substantial future work should be directed towards the conduct of meta-epidemiological studies to assess the impact of different bias in non-observational studies. While frameworks such as the one employed in Chapter \@ref(tri-heading) exist to allow for the production of bias-adjusted and triangulated estimates.
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+### Imporved analytical designs
+
+Use of the real-world evidence approach needs to be traded off against the important limitations that t
+
+Talk about the problems with real world evidence, and highlight that even when using these techniques, you still don't get the correct answers. 
+
+Tie in with GDS comments on off-targets effect.
 
 &nbsp;
 <!----------------------------------------------------------------------------->
 
 ## Overall conclusions
 
+This thesis has made unique and novel contributions to the 
+
+Illustrating that commonly employed approaches to address
 
