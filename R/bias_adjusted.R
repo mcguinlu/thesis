@@ -263,6 +263,9 @@ dat <- read.csv("turner_bias/real_example_rob.csv",stringsAsFactors = F) %>%
       select(result_id, author, year)
   )
 
+dat <- dat %>%
+  select(result_id, author, type, yi, sei, everything())
+
 png(
   here::here("triangulation_example_LDL_AD.png"),
   width = 1750,
@@ -298,9 +301,18 @@ turner <- rio::import("turner_bias/propbias.dta") %>%
   
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 
-    
+get_max_domain <- function(data) {
   
+    data %>%
+    janitor::clean_names() %>%
+    select(starts_with("d")) %>%
+    colnames() %>%
+    stringr::str_extract("[0-9].*") %>%
+    as.numeric() %>%
+    max() %>%
+    return()
   
+}  
 
 
   

@@ -38,6 +38,9 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 <!-- IDEA Stratify by ApoE4 genotype -->  
 
+<!-- TODO Gib Hermani question on bias in selection of AD patients in Ostergaard -->
+
+
 ## Lay summary
 
 Systematic reviews are a type of research study that aim to collect and combine all existing evidence to provide the best possible answer to an important research question. Well-performed reviews involve multiple steps including: searching of existing studies; assessment of the studies against predefined inclusion criteria; collection of data from each study; and assessment of each study's methods. 
@@ -262,7 +265,7 @@ A key aim of the review presented in this chapter is to identify different sourc
 There has been a recent movement within the evidence synthesis community away from examining _methodological quality_ to assessing _risk of bias_,[@mcguinness2018; @sterne2016] and thus directly evaluating the internal validity of a study. Internal validity is defined here as the absence of systematic error (or bias) in a study, which may influence its results.[@campbell1957; @juni2001] 
 
 This move was prompted by a unclear definition of "methodological quality" which could include facets such as unclear reporting, in addition to challenges in the comparison of results from different tools. <!-- TODO CITATION NEEDED --> As part of this shift, the focus shifted from checklist or score based tools towards domain-based methods, in which different potential sources of bias in a study are assessed in order. <!-- TODO CITATION NEEDED -->
-Finally, tools movide from assessing bias at the study level to considering each indivudal result reported seperately. For example, a study may report on the efficacy of an intervention at six months and two years follow-up. In this case, missing outcome data that is not an issue at six months may introduce bias after two years of follow-up, and assigning a single risk-of-bias judgement to the study as a whole masks the different biases applicable to each unique result.
+Finally, the new tools tools move from assessing bias at the study level to considering separately each individual numerical result reported.  For example, a study may report on the efficacy of an intervention at six months and two years follow-up. In this case, missing outcome data that is not an issue at six months may introduce bias after two years of follow-up, and assigning a single risk-of-bias judgement to the study as a whole masks the different biases applicable to each unique result.
 
 In this review, domain-based tools were used to assess the risk of bias for each result in each included study. The study design-specific tools are introduced and discussed in more detail in the following sections. 
 

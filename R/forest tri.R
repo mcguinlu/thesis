@@ -87,7 +87,7 @@ cols <- c(
     m = rob_colours$concerns_colour,
     l = rob_colours$low_colour,
     n = rob_colours$ni_colour,
-    x = rob_colours$na_colour
+    x = "transparent"
   )
   
 syms <- c(u = "?",
@@ -167,7 +167,7 @@ graphics::points(
   col = alpha(cols[dat[["overall"]]],0.6),
   cex = rob_psize
 )
-graphics::text(x_overall_pos, rows, syms[dat[["overall"]]], cex = tsize)
+# graphics::text(x_overall_pos, rows, syms[dat[["overall"]]], cex = tsize)
 par(op)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
