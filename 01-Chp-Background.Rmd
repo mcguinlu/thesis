@@ -309,7 +309,7 @@ A important developing source of grey literature are preprints. Defined by the C
 
 One of the major criticisms of using preprints as an evidence source is that they have not yet undergone formal peer review.[@maslove2018; @schalkwyk2020] However, this approach assigns substantial weight to peer-review as a indicator of "quality", and is at odds with the acceptance of non-reviewed conference proceedings as an evidence source.[@lefebvre2019searching; @mahood2014] The argument for including preprints as an evidence source is further strengthened by results that demonstrate preprinted studies seldom change following peer review. Meta-studies of the concordance between preprinted and published studies showed that results were broadly comparable between the two, indicating that while the numerical results may change, the overall interpretation of the results were consistent in the majority of cases.[@shi2021a; @klein2019; @nicholson2021] This indicates that preprints should be considered a reliable reflection of a given study.
 
-In this thesis, preprints are considered an important source of evidence, in contrast to previous reviews on this topic. However, as with many sources of grey literature,[@mahood2014] there are several logistical issues with carrying out systematic searches in preprint repositories. As such, to enable the inclusion of preprints in the systematic review described in Chapter \@ref(sys-rev-heading), a new tool addressing these issues is presented in Chapter \@ref(sys-rev-tools). 
+In this thesis, preprints are considered an important source of evidence, in contrast to previous reviews on this topic. However, as with many sources of grey literature,[@mahood2014] there are several logistical issues with carrying out systematic searches in preprint repositories. As such, to enable the inclusion of preprints in the systematic review described in Chapters \@ref(sys-rev-methods-heading), a new tool addressing these issues is presented in Chapter \@ref(sys-rev-tools). 
 
 <!----------------------------------------------------------------------------->
 ### Triangulating across study designs {#intro-triangulation}
@@ -318,7 +318,7 @@ As illustrated in Section \@ref(evidence-association), several diverse epidemiol
 
 This thesis seeks to apply a triangulation approach to provide the best available evidence on the effect of lipids, and lipid regulating agents, on dementia outcomes. 
 
-All existing evidence, regardless of study design, is first identified by the by the systematic review presented in Chapter \@ref(sys-rev-heading). Risk-of-bias assessment using a domain-based tool is already a recommended part of the systematic review process, but is particularly important to a triangulation exercise. [@Pagen71; @sterne2019a; @mcguinness2018] As such, a core component of the review is a comprehensive domain-based risk-of-bias assessment for all included studies.
+All existing evidence, regardless of study design, is first identified by the by the systematic review presented inChapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). Risk-of-bias assessment using a domain-based tool is already a recommended part of the systematic review process, but is particularly important to a triangulation exercise. [@Pagen71; @sterne2019a; @mcguinness2018] As such, a core component of the review is a comprehensive domain-based risk-of-bias assessment for all included studies.
 
 Finally all evidence, both pre-existing and produced as part of this thesis (Chapter \@ref(cprd-analysis-heading) and \@ref(ipd-analysis-heading)), are triangulated in Chapter \@ref(dicussion-heading). 
 
@@ -336,7 +336,7 @@ Despite their advantages, IPD meta-analysis are rarely performed.[@tugwell2010] 
 
 In response to these limitations, new collaborative initiatives have developed to enable rapid access to relevant data in a secure supported workshop. The most import in relation to this thesis is the Dementia Platform UK (DPUK),[@bauermeister2020] which aims to provide access to several dementia-related datasets via a single simplified application process.
 
-I will will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapter \@ref(sys-rev-heading). Any data obtained will be combined with that available from the DPUK portal as part of an individual participant data meta-analysis in Chapter \@ref(ipd-analysis-heading), enabling the assessment of the effect of lipids on dementia stratified by key variables such as sex.
+I will will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). Any data obtained will be combined with that available from the DPUK portal as part of an individual participant data meta-analysis in Chapter \@ref(ipd-analysis-heading), enabling the assessment of the effect of lipids on dementia stratified by key variables such as sex.
 <!----------------------------------------------------------------------------->
 
 ## Thesis overview {#background-thesis-overview}
@@ -358,23 +358,10 @@ Chapters are self-contained, presenting the methods and results of that specific
 
 -   **Chapter \@ref(background-heading):** Background information on dementia and blood lipid levels. This chapter provides an introduction to the topics covered in this thesis to non-subject area experts, and discusses the motivation for the remainder of the thesis.
 -   **Chapter \@ref(sys-rev-tools-heading):** This Chapter introduces a new tool, `medrxivr`, which was used to developed to allow for systematic searches of the health-related preprint repositories.
--   **Chapter \@ref(sys-rev-heading):** This Chapter describes a comprehensive systematic review and meta-analysis of all available evidence on the effect of blood lipids, and interventions that modified blood lipids, on dementia outcomes.
+-   **Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading):** These Chapters describe, respectively, the methods and results of a comprehensive systematic review and meta-analysis. This review examined all available evidence on the effect of blood lipids, and interventions that modified blood lipids, on dementia outcomes.
 -   **Chapter \@ref(cprd-analysis-heading):** This Chapter examines the relationship between lipid-regulating agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database.
 -   **Chapter \@ref(ipd-heading):** This Chapter describes an individual patient data analysis of several longitudinal cohort studies to describe the relationship between blood serum lipids and dementia outcomes, stratified by important covariates such as sex.
 -   **Chapter \@ref(discussion-heading)**: This Chapter integrates the diverse evidence identified by, and produced as part of, this thesis. The overall strengths and weaknesses of this project are discussed in detail, and further avenues of research are suggested.
-
-An overview of how all research studies in this thesis can be found in Table \@ref(tab:thesisOverview-table)
-
-\blandscape
-<!----------------------------------------------------------------------------->
-(ref:thesisOverview-caption) Summary of studies included in this thesis, and used as evidence sources in the triangulation exercise performed in Chapter \@ref(tri-heading). Note, Chapter \@ref(sys-rev-tools-heading) is intentionally not included in this table, as it describes a tool rather than a research study.
-
-(ref:thesisOverview-scaption) Summary of studies included in this thesis
-
-```{r thesisOverview-table, message=FALSE, results="asis", echo = FALSE}
-```
-<!----------------------------------------------------------------------------->
-\elandscape
 
 ## Outputs from this thesis {#thesis-output}
 
@@ -396,13 +383,13 @@ A paper introducing the open-source preprint search tool described in Chapter \@
 
 _Hennessy, E. A., Acabchuk, R., Arnold, P. A., Dunn, A. G., Foo, Y. Z., Johnson, B. T., Geange, S. R., Haddaway, N. R., Nakagawa, S., Mapanga, W., Mengersen, K., Page, M., Sánchez-Tójar, A. Welch, V.,  **McGuinness L. A.** (2021). Ensuring Prevention Science Research is Synthesis-Ready for Immediate and Lasting Scientific Impact. Prevention Science . DOI: [10.1007/s11121-021-01279-8](https://doi.org/10.1007/s11121-021-01279-8)_
 
-The experience of extracting data for the systematic review in Chapter \@ref(sys-rev-heading) inspired a practical guide for researchers. This piece was co-written with Dr. Emily Hennessy (see Author Declarations in the front materials). <!-- TODO Need to create author declarations section -->
+The experience of extracting data for the systematic review in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading) inspired a practical guide for researchers. This piece was co-written with Dr. Emily Hennessy (see Author Declarations in the front materials). <!-- TODO Need to create author declarations section -->
 
 &nbsp; 
 
 _**McGuinness, L. A.**, and Higgins J. P. T. (2020) "Risk‐of‐bias VISualization (robvis): An R package and Shiny web app for visualizing risk‐of‐bias assessments." Research Synthesis Method). DOI: [10.1002/jrsm.1411](https://doi.org/10.1002/jrsm.1411)_
   
-The tool used to visualise the risk-of-bias assessments in Chapter \@ref(sys-rev-heading) has been published in Research Synthesis Methods. See Appendix \@ref(appendix-robvis) for more details on this tool.
+The tool used to visualise the risk-of-bias assessments in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading) has been published in Research Synthesis Methods. See Appendix \@ref(appendix-robvis) for more details on this tool. Note that this publication does not describe the recently-developed functionality for producing bias direction plots, as described in Chapter \@ref(tri-heading).
 
 &nbsp; 
 

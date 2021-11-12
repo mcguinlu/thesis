@@ -134,38 +134,6 @@ htmltools::html_print(DiagrammeR::add_mathjax(graph), viewer = NULL) %>%
                    zoom = 6)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- thesisOverview-table
-
-thesisOverview_table <- read.csv("data/background/thesisOverview.csv") %>%
-  mutate("Exposure/ Intervention" = Exposure.Intervention) %>%
-  mutate("Research Question" = Research.Question) %>%
-  mutate("Contibution to evidence synthesis framework" = Contribution) %>%
-  select("Chapter","Research Question","Exposure/ Intervention","Outcome","Contibution to evidence synthesis framework") %T>%
-  write.csv("data/table_words/thesisOverview.csv") 
-
-if(doc_type == "docx"){
-  knitr::kable(thesisOverview_table,caption = "(ref:thesisOverview-caption)")
-}else{
-  table <- knitr::kable(
-    thesisOverview_table,
-    format = "latex",
-    caption = "(ref:thesisOverview-caption)",
-    caption.short = "(ref:thesisOverview-scaption)",
-    booktabs = TRUE
-  ) %>%
-    column_spec(1, width = paste0(6,"em")) %>%
-    column_spec(c(2,5), width = paste0(16,"em")) %>%
-    column_spec(c(3,4), width = paste0(7,"em")) %>%
-    row_spec(0, bold = TRUE) %>%
-    row_spec(2:nrow(thesisOverview_table)-1, hline_after = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"))
-  
-  table <- gsub("textbackslash\\{\\}newline","\\newline",table)
-  
-  table
-}
-
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- statinOverview-table
 
 statinOverview_table <-

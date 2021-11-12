@@ -269,7 +269,7 @@ dat <- dat %>%
 png(
   here::here("triangulation_example_LDL_AD.png"),
   width = 1750,
-  height = 1400,
+  height = 1200,
   pointsize = 15,
   res = 100
 )

@@ -32,13 +32,13 @@ encode result, gen(resultnum) label(result)
 gen logbiasmean=(log(lo)+log(hi))/2
 gen logbiasvar=((log(hi)-log(lo))/2)^2
 
+save propbias_full.dta, replace
 
 * Combine proportional biases for each study and each assessor, assuming lognormality for product of biases, for internal and external biases separately
 egen sumlogmn=sum(logbiasmean), by(study assessor external)
 egen sumlogvr=sum(logbiasvar), by(study assessor external)
 gen pooledmn=exp(sumlogmn+sumlogvr/2)
 gen pooledvr=exp(2*sumlogmn+sumlogvr)*(exp(sumlogvr)-1)
-
 
 * Save data set containing elicited means and variances for proportional biases
 collapse (mean) sumlogmn sumlogvr pooledmn pooledvr, by(study assessor external)

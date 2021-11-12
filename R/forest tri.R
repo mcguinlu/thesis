@@ -29,7 +29,7 @@ dat_rob_vec <- dat %>%
          max = ifelse(n==1,max-1,max),
          heading = ifelse(n==1,heading-1,heading))
 
-if (length(unique(dat_rob$type))==1) {
+if (length(unique(dat$type))==1) {
   dat_rob_vec <- dat_rob_vec %>%
     mutate(across(c(min, max, heading),~.-1))
 }
@@ -109,17 +109,19 @@ tsize <- rob_psize * 0.3
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # Make forest plot
 
-### fit random-effects model
-res <- rma(yi, sei = sei, data=dat, slab = paste0(author, ", ", year), method = "DL")
-
-### indent study names
-res$slab <- paste0("  ", res$slab)
-
 ### set up forest plot (with 2x2 table counts added; the 'rows' argument is
 ### used to specify in which rows the outcomes will be plotted)
-forest(res, xlim=c(x_min, new_x_lim), atransf=exp,
-       cex=1.2, ylim=c(-1.5, y_max), rows=rows, textpos = textpos,
-       mlab = "", header="Author(s) and Year", addpred = T)
+forest(x = dat$yi,
+       sei = dat$sei,
+       xlim=c(x_min, new_x_lim),
+       atransf=exp,
+       slab = paste0("  ", dat$author, ", ", dat$year),
+       cex=1.2,
+       ylim=c(-1.5, y_max),
+       rows=rows,
+       textpos = textpos,
+       mlab = "",
+       header="Author(s) and Year",)
 
 ### set font expansion factor (as in forest() above) and use a bold font
 op <- par(font=2)

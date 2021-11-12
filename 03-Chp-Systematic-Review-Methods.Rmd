@@ -28,7 +28,10 @@ knitr::read_chunk("R/03-Code-Systematic-Review.R")
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
 
-<!-- ## To Do -->
+<!-- TODO Consider reordering the forest plots so that they are the other way around -->
+
+
+
 
 <!-- TODO Extra studies to include: -->
 <!-- * Larsson - 10.1136/bmj.j5375 [@larsson2017b] -->
@@ -290,7 +293,7 @@ While a risk-of-bias tool for non-randomised studies of exposures (NRSE) is curr
 
 #### Mendelian randomisation studies
 
-At present, no formalised risk-of-bias assessment tool for Mendelian randomization studies is available. Assessment of the risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation,[@mamluk2020] as identified by a review of risk-of-bias assessments in systematic reviews of Mendelian randomisation studies (advance results from this review were obtained from contact with the review authors.). <!-- TODO CITATION NEEDED - add once published as a preprint --> A copy of this tool is available in Appendix \@ref(appendix-mr-rob), but in summary, results were assessed for bias arising from weak instruments, genetic and other confounding, pleiotropy and population stratification. Acceptable judgements for each fo the 5 domains in the tool included "low", "moderate" and "high" risk of bias.
+At present, no formalised risk-of-bias assessment tool for Mendelian randomization studies is available. Assessment of the risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation,[@mamluk2020] as identified by a review of risk-of-bias assessments in systematic reviews of Mendelian randomisation studies (advance results from this review were obtained from contact with the review authors).[@spiga2021] A copy of this tool is available in Appendix \@ref(appendix-mr-rob), but in summary, results were assessed for bias arising from weak instruments, genetic and other confounding, pleiotropy and population stratification. Acceptable judgements for each fo the 5 domains in the tool included "low", "moderate" and "high" risk of bias.
 
 <!----------------------------------------------------------------------------->
 &nbsp;

@@ -3,7 +3,7 @@
 \adjustmtc 
 <!-- For PDF output, we must include this LaTeX command after unnumbered headings, otherwise the numbers in the mini table of contents will be incorrect -->
 
-```{r word-count, echo=FALSE, warning=FALSE, message=FALSE}
+```{r wordcount, echo=FALSE, warning=FALSE, message=FALSE}
 options(scipen=999)
 
 source(here::here("R/helper.R"))
@@ -52,7 +52,7 @@ Words today: `r words_new_today`
 
 &nbsp;  
 
-```{r word-count-fig, echo=FALSE, warning=FALSE, message=FALSE}
+```{r wordcount-fig, echo=FALSE, warning=FALSE, message=FALSE}
 ggplot(mapping = aes(x=date,y=words)) +
   geom_line(data = target_df, colour = "black", linetype = 2) +
   geom_hline(yintercept = 40000, colour = "black", linetype = 2) +

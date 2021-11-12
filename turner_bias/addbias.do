@@ -19,11 +19,8 @@ drop study assessor
 rename studyid study
 rename assessid assessor
 
-drop if assessor != 1
-
 * Reshape the data set from long format to wide (one row for each study)
 qui reshape wide sela selb pera perb atta attb deta detb otha othb popa popb inta intb cona conb outa outb, i(study) j(assessor)
-
 
 * Input observed study data and calculate unadjusted logOR, variance and 95% confidence limits
 input r1 n1 r0 n0
@@ -44,16 +41,20 @@ order study r1 n1 r0 n0 estlogor varlogor
 
 * Calculate bias mean and sd from range limits, for each additive bias and each assessor
 foreach bias in sel per att det oth pop int con out {
-      gen est`bias'1=(log(`bias'a1)+log(`bias'b1))/2
-      gen sd`bias'1=(log(`bias'b1)-log(`bias'a1))/2
-      gen var`bias'1=sd`bias'1^2
+   forvalues i = 1/4 {
+      gen est`bias'`i'=(log(`bias'a`i')+log(`bias'b`i'))/2
+      gen sd`bias'`i'=(log(`bias'b`i')-log(`bias'a`i'))/2
+      gen var`bias'`i'=sd`bias'`i'^2
+   }
 }
 
 * Calculate mean and variance of total internal additive bias and total external additive bias, for each assessor
-egen addimn1=rsum(estsel1 estper1 estatt1 estdet1 estoth1)
-egen addivar1=rsum(varsel1 varper1 varatt1 vardet1 varoth1)
-egen addemn1=rsum(estpop1 estint1 estcon1 estout1)
-egen addevar1=rsum(varpop1 varint1 varcon1 varout1)
+forvalues i = 1/4 {
+   egen addimn`i'=rsum(estsel`i' estper`i' estatt`i' estdet`i' estoth`i')
+   egen addemn`i'=rsum(estpop`i' estint`i' estcon`i' estout`i')
+   egen addivar`i'=rsum(varsel`i' varper`i' varatt`i' vardet`i' varoth`i')
+   egen addevar`i'=rsum(varpop`i' varint`i' varcon`i' varout`i')
+}
 
 * Save data set containing unadjusted study results together with elicited means and variances for additive biases
 keep study estlogor varlogor add*
