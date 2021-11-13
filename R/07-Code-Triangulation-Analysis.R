@@ -94,7 +94,7 @@ dat <- read.csv("turner_bias/real_example_rob.csv",stringsAsFactors = F) %>%
   mutate(vi = sei^2)
 
 dat <- dat %>%
-  select(result_id, author, type, yi, vi, everything(), -sei)
+  select(result_id, author, type, yi, vi, everything())
 
 png(
   here::here("figures/tri/midlife_AD.png"),
