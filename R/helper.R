@@ -954,3 +954,51 @@ save_dr <- function(dat, title, xref, preface){
     dev.off()
 }
 
+# Rapid navigation via bookmarks
+
+bm_set <- function() {
+  
+  context <- rstudioapi::getSourceEditorContext()
+  
+  rstudio_bookmark <- list(start = rstudioapi::primary_selection(context)[["range"]]$start,
+                            path = context[["path"]],
+                            id = context[["id"]])
+  
+  options(rstudio_bookmark = rstudio_bookmark)
+}
+
+bm_go <- function(){
+  
+  bookmark <- getOption("rstudio_bookmark")
+  
+  if (is.null(bookmark)) {
+    stop("No bookmark defined!")
+    
+  }
+  
+  rstudioapi::navigateToFile(bookmark[["path"]])
+  
+  rstudioapi::setCursorPosition(bookmark[["start"]],
+                                bookmark[["id"]])
+  
+  rstudioapi::setSelectionRanges(c(bookmark[["start"]][1],
+                                   1,
+                                   bookmark[["start"]][1],
+                                   bookmark[["start"]][2]),
+                                 bookmark[["id"]])
+  
+}
+
+
+get_max_domain <- function(data) {
+  
+  data %>%
+    janitor::clean_names() %>%
+    select(starts_with("d")) %>%
+    colnames() %>%
+    stringr::str_extract("[0-9].*") %>%
+    as.numeric() %>%
+    max() %>%
+    return()
+  
+}  

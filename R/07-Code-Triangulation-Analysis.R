@@ -89,10 +89,12 @@ dat <- read.csv("turner_bias/real_example_rob.csv",stringsAsFactors = F) %>%
       which = 2
     ) %>% janitor::clean_names() %>%
       select(result_id, author, year)
-  )
+  ) %>%
+  # Get sampling variance (square of standard error)
+  mutate(vi = sei^2)
 
 dat <- dat %>%
-  select(result_id, author, type, yi, sei, everything())
+  select(result_id, author, type, yi, vi, everything(), -sei)
 
 png(
   here::here("figures/tri/midlife_AD.png"),
@@ -109,7 +111,6 @@ dev.off()
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- turnerEstimates
-# 
 
 add <- rio::import("turner_bias/addbias_full.dta") %>%
 # select est/variance for each internal bias for each assessor
@@ -144,6 +145,7 @@ prop <- rio::import("turner_bias/propbias_full.dta") %>%
   tidyr::pivot_longer(!c(study, assessor, domain),
                       names_to = "estimate", 
                       values_to = "value") %>%
+  # On the log scale, so n adjusted = 0
   mutate(value = ifelse(is.na(value),0,value)) %>%
   # Get mean of assessors for each estimate in each domain in each study
   # Take absolute, as direction is encoded in these values, whereas for us it
@@ -159,3 +161,6 @@ prop <- rio::import("turner_bias/propbias_full.dta") %>%
   summarise(mean = mean(value),
             max = max(value))
 
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-

@@ -253,18 +253,40 @@ dat_rob <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"), whi
 final <- left_join(ids, dat_rob, by = c("result_id" = "result_id")) %>%
   rename_at(vars(starts_with('d')), funs(paste0(.,"j"))) 
 
-
-dat <- read.csv("turner_bias/real_example_rob.csv",stringsAsFactors = F) %>%
+dat2 <- read.csv("turner_bias/real_example_rob.csv",stringsAsFactors = F) %>%
   left_join(
     rio::import(
       here::here("data/sys-rev/data_extraction_main.xlsx"),
       which = 2
     ) %>% janitor::clean_names() %>%
       select(result_id, author, year)
-  )
-
-dat <- dat %>%
-  select(result_id, author, type, yi, sei, everything())
+  ) %>%
+  mutate(vi = sei^2) %>%
+  select(-sei) %>%
+  select(result_id, author, type, yi, vi, everything()) %>%
+  tidyr::pivot_longer(matches("d[0-9]+(d|j|t)"), 
+                      names_to = c("domain",".value"),
+                      names_pattern = "(d[0-9]+)(d|j|t)") %>%
+  mutate(across(c(j,d,t), stringr::str_to_lower)) %>%
+  # Additive biases
+  mutate(m_add = case_when(t == "add" & j == "serious" ~ 0.16,
+                           t == "add" & j == "moderate" ~ 0.08,
+                       T ~ 0),
+         v_add = case_when(t == "add" & j == "serious" ~ 0.1,
+                           t == "add" & j == "moderate" ~ 0.05,
+                       T ~ 0)) %>%
+  # Proportional biases
+  mutate(m_prop = case_when(t == "prop" & j == "serious" ~ 0.1,
+                            t == "prop" & j == "moderate" ~ 0.03,
+                            T ~ 0),
+         v_prop = case_when(t == "prop" & j == "serious" ~ 0.05,
+                            t == "prop" & j == "moderate" ~ 0.016,
+                           T ~ 0)) %>%
+  # Signs
+  mutate(m_add = case_when(d == "left" ~ m_add*-1,
+                           T ~ m_add), 
+         m_prop = case_when(d == "left" ~ m_prop*-1,
+                            T ~ m_prop))
 
 png(
   here::here("triangulation_example_LDL_AD.png"),
@@ -281,16 +303,29 @@ dev.off()
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 
+turner_prop_bias <- rio::import("turner_bias/propbias_single.dta") %>%
+  group_by(study) %>%
+  summarise(sumlogmn = sum(logbiasmean, na.rm = T), 
+            sumlogvr = sum(logbiasvar, na.rm = T), 
+            prop_bias_mn = exp(sumlogmn+sumlogvr/2),
+            prop_bias_vr = (exp(2*sumlogmn+sumlogvr)*(exp(sumlogvr)-1))) %>%
+  select(study, starts_with("prop"))
+
 # Validate with Turner example
 turner <- rio::import("turner_bias/propbias.dta") %>%
   arrange(study, assessor) %>%
   left_join(rio::import("turner_bias/addbias.dta")) %>%
   filter(assessor == 1) %>%
   select(-assessor) %>%
-  mutate(estadjall = (estlogor-addimn-propimn*addemn)/(propimn*propemn),
-         varadjall=(((propimn^2)+propivar)*(propevar*(estadjall^2)+addevar) + propivar*((propemn*estadjall+addemn)^2) + addivar + varlogor)/((propimn*propemn)^2),
-         selogor=sqrt(varlogor),
-         seadjall=sqrt(varadjall)) %>%
+  
+  mutate(
+    estadjall = (estlogor - addimn - propimn * addemn) / (propimn * propemn),
+    varadjall = (((propimn ^ 2) + propivar) * (propevar * (estadjall ^
+                                                             2) + addevar) + propivar * ((propemn * estadjall + addemn) ^ 2) + addivar + varlogor
+    ) / ((propimn * propemn) ^ 2),
+    selogor = sqrt(varlogor),
+    seadjall = sqrt(varadjall)
+  ) %>%
   select(study, contains("logor"), contains("adjall"))
   
   model <- metafor::rma.uni(yi = estadjall,
@@ -301,18 +336,7 @@ turner <- rio::import("turner_bias/propbias.dta") %>%
   
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 
-get_max_domain <- function(data) {
-  
-    data %>%
-    janitor::clean_names() %>%
-    select(starts_with("d")) %>%
-    colnames() %>%
-    stringr::str_extract("[0-9].*") %>%
-    as.numeric() %>%
-    max() %>%
-    return()
-  
-}  
+
 
 
   
