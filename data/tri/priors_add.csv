@@ -1,4 +1,4 @@
-Bias Level, Scenario 1, Scenario 2
-Low,-,-
-Moderate,"N(.08, .05)","N(.08, .05)"
-High,"N(.16, .12)","N(.4, .29)"
+Bias Level, Scenario 1, Scenario 2, Proportional bias
+Low,-,-,-
+Moderate,"N(.08, .05)","N(.08, .05)","N(.03, .16)"
+High,"N(.16, .12)","N(.4, .29)","N(.1, .05)"

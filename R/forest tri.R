@@ -231,6 +231,43 @@ for (i in 1:nrow(dat_rob_vec)) {
 }
 }
 
+# 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+  
+  # if (nrow(dat)>9) {
+  #   
+  #   # Fit meta-regression model to test for subgroup differences
+  #   
+  #   if (!is.null(sei)) {
+  #     
+  #     res <- rma(yi, vi, mods = ~ type, data = dat, method = "DL")
+  #     
+  #   } else {
+  #     
+  #     res <- rma(yi, sei=sei, mods = ~ type, data = dat, method = "DL")
+  #     
+  #   }
+  #   
+  #   ### add text for the test of subgroup differences
+  #   text(x_min,-1.8, pos = 4, cex = 1.2, bquote(
+  #     paste(
+  #       "Test for Subgroup Differences: ",
+  #       Q[M],
+  #       " = ",
+  #       .(formatC(
+  #         res$QM, digits = 2, format = "f"
+  #       )),
+  #       ", df = ",
+  #       .(res$p - 1),
+  #       ", p = ",
+  #       .(formatC(
+  #         res$QMp, digits = 2, format = "f"
+  #       ))
+  #     )
+  #   ))
+  # }
+
+
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 
 if(!is.null(title)){

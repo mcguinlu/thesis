@@ -68,10 +68,11 @@ if (doc_type == "docx") {
     caption = "(ref:priorsAdd-caption)",
     caption.short = "(ref:priorsAdd-scaption)",
     booktabs = TRUE, 
-    align = "lcc"
+    align = "lccc"
   ) %>%
     row_spec(0, bold = TRUE) %>%
     column_spec(1, bold = TRUE) %>%
+    kableExtra::add_header_above(c(" " = 1, "Additive bias" = 2," " = 1),bold = T) %>%
     row_spec(2:nrow(priors_add_table) - 1, hline_after = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position"))
 }
@@ -180,6 +181,9 @@ model_unadj <- metafor::rma.uni(yi = yi,
                                 data = dat_final, 
                                 slab = paste(dat_final$author,dat_final$year))
 
+unadj_effect <- estimate(exp(model_unadj$b),exp(model_unadj$ci.lb),exp(model_unadj$ci.ub),type = "")
+
+unadj_tau2 <- model_unadj$tau2
 unadj_I2 <- model_unadj$I2
 
 metafor::forest(model_unadj, annotate = T, showweights = TRUE)
@@ -188,6 +192,9 @@ model_adj <- metafor::rma.uni(yi = yi_adj,
                               vi = vi_adj,
                               data = dat_final,
                               slab = paste(dat_final$author,dat_final$year))
+adj_effect <- estimate(exp(model_adj$b),exp(model_adj$ci.lb),exp(model_adj$ci.ub),type = "")
+adj_tau2 <- model_adj$tau2
+adj_I2 <- model_adj$I2
 
 metafor::forest(model_adj,annotate = T,  showweights = TRUE)
 
@@ -233,8 +240,8 @@ dev.off()
 
 # Validate formula using Turner data
 turner <- rio::import("turner_bias/propbias.dta") %>%
-  # arrange(study, assessor) %>%
-  # left_join(rio::import("turner_bias/addbias.dta")) %>%
+  arrange(study, assessor) %>%
+  left_join(rio::import("turner_bias/addbias.dta")) %>%
   filter(assessor == 1) %>%
   select(-assessor) %>%
   rename("yi" = estlogor,
@@ -247,3 +254,32 @@ model <- metafor::rma.uni(yi = yi_adj,
                           data = turner)
 
 metafor::forest(model, showweights = TRUE)
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- exampleDirection
+
+png("figures/tri/exampleDirection.png", width = 600, height = 300)
+
+forest.default(
+  x = c(-0.5, 0.5,-0.5, 0.5),
+  vi = c(0.01, 0.01,0.01, 0.01),
+  xlim = c(-2.2, 1.8),
+  annotate = T,
+  slab = c(
+    "Additive - Favours intervention",
+    "Additive - Favours intervention",
+    "Proportional - Towards null",
+    "Proportional - Towards null"
+  ),
+  xlab = "Favours comparator | Favours intervention",
+  header = c("Bias"),
+  top = 2.5
+)
+
+graphics::text(-.15, 4, "\U2192", cex = 2, col = "red")
+graphics::text(.85, 3, "\U2192", cex = 2, col = "red")
+graphics::text(-.15, 2, "\U2192", cex = 2, col = "red")
+graphics::text(.15, 1, "\U2190", cex = 2, col = "red")
+
+
+dev.off()
