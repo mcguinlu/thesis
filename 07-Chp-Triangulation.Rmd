@@ -432,6 +432,15 @@ Calculate internal-bias adjusted
 
 Calculate both-adjusted
 
+<!----------------------------------------------------------------------------->
+(ref:biasDirectionSingle-cap) Bias direction plot for a single study showing the predicted direction of bias in each domain. Additive biases are characterised using arrows, while the proportional biases are denoted using $<$ and $>$. A question mark indicates that the direction of bias was unpredictable.
+
+(ref:biasDirectionSingle-scap) Bias direction plot for a single study
+```{r biasDirectionSingle, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:biasDirectionSingle-cap)', out.width='100%', fig.scap='(ref:biasDirectionSingle-scap)'}
+knitr::include_graphics(file.path("figures/misc/UoBcrest.pdf"))
+```
+<!----------------------------------------------------------------------------->
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -442,7 +451,7 @@ Midlife LDL-c on Alzheimer's disease
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-```{r biasDirectionPlots, include = F}
+```{r ldlAdBIAMA, include = F}
 ```
 
 (ref:ldlAdBiasDirection-cap) __Bias direction plot, summarising internal biases related to effect of LDL-c on Alzheimer's disease :__
@@ -460,6 +469,15 @@ and citations of studies - going to be a bit of pain
 
 As expected
 
+<!----------------------------------------------------------------------------->
+(ref:fpLdlAd-cap) __shortcap:__
+
+(ref:fpLdlAd-scap) shortcap
+
+```{r fpLdlAd, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:fpLdlAd-cap)', out.width='100%', fig.scap='(ref:fpLdlAd-scap)'}
+knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad.png"))
+```
+<!----------------------------------------------------------------------------->
 
 
 &nbsp;<!----------------------------------------------------------------------->  
@@ -475,6 +493,7 @@ As expected
 knitr::include_graphics(file.path("figures/misc/UoBcrest.pdf"))
 ```
 <!----------------------------------------------------------------------------->    
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 

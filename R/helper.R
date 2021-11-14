@@ -1002,3 +1002,188 @@ get_max_domain <- function(data) {
     return()
   
 }  
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Triangulation Functions
+
+source("R/forest tri.R")
+
+rob_to_long <- function(data){
+  
+  data %>%
+    # Clean and covert to long format
+    tidyr::pivot_longer(
+      matches("d[0-9]+(d|j|t)"),
+      names_to = c("domain", ".value"),
+      names_pattern = "(d[0-9]+)(d|j|t)"
+    ) %>%
+    mutate(across(c(j, d, t), stringr::str_to_lower)) %>%
+    return()
+}
+
+append_values_bias <- function(data, values, common = T) {
+  
+  # Define criteria on which to join with values#
+  # If common = T, means that the values of Serious/Moderate are consistent across domains
+  if (common == T) {
+    by = c("j")
+    
+    if ("domain" %in% colnames(values)) {
+      values <- select(values, -domain)
+    }
+    
+  } else {
+    by = c("domain","j")
+  }
+  
+  data %>%
+    # Convert to long format
+    rob_to_long() %>%
+    
+    # Add basic values
+    left_join(values, by = by) %>%
+    
+    # Set values to 0 when judgement is NA
+    # Most common when one tool has less domains than another
+    mutate(across(matches("bias_._add|bias_._prop"),
+                  ~ case_when(is.na(j) == T ~ 0,
+                              j == "NA" ~ 0,
+                              T ~ .))) %>%
+    
+    # Set additive biases mean/var to 0 when type is "prop"
+    mutate(across(matches("bias_._add"),
+                  ~ case_when(t == "prop" ~ 0,
+                              T ~ .))) %>%
+    
+    # Set proportional biases mean/var to 0 when type is "add"
+    mutate(across(matches("bias_._prop"),
+                  ~ case_when(t == "add" ~ 0,
+                              T ~ .))) %>%
+    
+    # Adjust signs of bias based on d (direction)
+    # Where d is unpredictable, set mean to 0, but keep variance estimate
+    mutate(
+      bias_m_add = case_when(d == "left" ~ bias_m_add * -1,
+                             d == "unpredictable" ~ 0,
+                             T ~ bias_m_add),
+      bias_m_prop = case_when(d == "left" ~ bias_m_prop * -1,
+                              d == "unpredictable" ~ 0,
+                              T ~ bias_m_prop)
+    ) %>%
+    
+    return()
+}  
+
+
+append_values_indirect <- function(data, values, common = T) {
+  
+  # Define criteria on which to join with values#
+  # If common = T, means that the values of Serious/Moderate are consistent across domains
+  if (common == T) {
+    by = c("j")
+    
+    if ("domain" %in% colnames(values)) {
+      values <- select(values, -domain)
+    }
+    
+  } else {
+    by = c("domain","j")
+  }
+  
+  data %>%
+    # Convert to long format
+    rob_to_long() %>%
+    
+    # Add basic values
+    left_join(values, by = by) %>%
+    
+    # Set values to 0 when judgement is NA
+    # Most common when one tool has less domains than another
+    mutate(across(matches("ind_._add|ind_._prop"),
+                  ~ case_when(is.na(j) == T ~ 0,
+                              j == "NA" ~ 0,
+                              T ~ .))) %>%
+    
+    # Set additive biases mean/var to 0 when type is "prop"
+    mutate(across(matches("ind_._add"),
+                  ~ case_when(t == "prop" ~ 0,
+                              T ~ .))) %>%
+    
+    # Set proportional biases mean/var to 0 when type is "add"
+    mutate(across(matches("ind_._prop"),
+                  ~ case_when(t == "add" ~ 0,
+                              T ~ .))) %>%
+    
+    # Adjust signs of bias based on d (direction)
+    # Where d is unpredictable, set mean to 0, but keep variance estimate
+    mutate(
+      ind_m_add = case_when(d == "left" ~ ind_m_add * -1,
+                            d == "unpredictable" ~ 0,
+                            T ~ ind_m_add),
+      ind_m_prop = case_when(d == "left" ~ ind_m_prop * -1,
+                             d == "unpredictable" ~ 0,
+                             T ~ ind_m_prop)
+    ) %>%
+    
+    return()
+} 
+
+
+calculate_adjusted_estimates <- function(data) {
+  data %>%
+    mutate(
+      yi_adj = (yi - addimn - propimn * addemn) / (propimn * propemn),
+      vi_adj = ((((propimn ^ 2) + propivar) * (propevar * (yi_adj ^
+                                                             2) + addevar) + propivar * ((propemn * yi_adj + addemn) ^ 2) + addivar + vi
+      ) / ((propimn * propemn) ^ 2))
+    ) %>%
+    return()
+  
+}
+
+prep_tri_data <- function(dat_rob, dat_ind, bias_values, indirect_values){
+  
+  dat_rob_long <- dat_rob %>%
+    append_values_bias(bias_values) 
+  
+  dat_ind_long <- dat_ind %>%
+    append_values_indirect(indirect_values)
+  
+  i_add <- dat_rob_long %>%
+    group_by(result_id) %>%
+    summarise(addimn = sum(bias_m_add, na.rm = T),
+              addivar = sum(bias_v_add, na.rm = T)) %>%
+    select(result_id, starts_with("add"))
+  
+  e_add <- dat_ind_long %>%
+    group_by(result_id) %>%
+    summarise(addemn = sum(ind_m_add, na.rm = T),
+              addevar = sum(ind_v_add, na.rm = T)) %>%
+    select(result_id, starts_with("add"))
+  
+  i_prop <- dat_rob_long %>%
+    group_by(result_id) %>%
+    summarise(sumlogmn = sum(bias_m_prop, na.rm = T), 
+              sumlogvr = sum(bias_v_prop, na.rm = T), 
+              propimn = exp(sumlogmn+sumlogvr/2),
+              propivar = (exp(2*sumlogmn+sumlogvr)*(exp(sumlogvr)-1))) %>%
+    select(result_id, starts_with("prop"))
+  
+  e_prop <- dat_ind_long %>%
+    group_by(result_id) %>%
+    summarise(sumlogmn = sum(ind_m_prop, na.rm = T), 
+              sumlogvr = sum(ind_v_prop, na.rm = T), 
+              propemn = exp(sumlogmn+sumlogvr/2),
+              propevar = (exp(2*sumlogmn+sumlogvr)*(exp(sumlogvr)-1))) %>%
+    select(result_id, starts_with("prop"))
+  
+  dat_final <- dat_rob %>%
+    select(result_id,author,year,yi,vi) %>%
+    left_join(i_add) %>%
+    left_join(i_prop)%>%
+    left_join(e_add) %>%
+    left_join(e_prop) %>%
+    calculate_adjusted_estimates() %>%
+    return()
+  
+}

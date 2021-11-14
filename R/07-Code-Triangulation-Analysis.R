@@ -76,39 +76,6 @@ if (doc_type == "docx") {
     kable_styling(latex_options = c("HOLD_position"))
 }
 
-
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- biasDirectionPlots
-
-source("R/forest tri.R")
-
-dat <- read.csv("turner_bias/real_example_rob.csv",stringsAsFactors = F) %>%
-  left_join(
-    rio::import(
-      here::here("data/sys-rev/data_extraction_main.xlsx"),
-      which = 2
-    ) %>% janitor::clean_names() %>%
-      select(result_id, author, year)
-  ) %>%
-  # Get sampling variance (square of standard error)
-  mutate(vi = sei^2)
-
-dat <- dat %>%
-  select(result_id, author, type, yi, vi, everything())
-
-png(
-  here::here("figures/tri/midlife_AD.png"),
-  width = 1750,
-  height = 1200,
-  pointsize = 15,
-  res = 100
-)
-
-forest_triangulation(dat, sei = dat$sei, title = "LDL-c and AD")
-
-dev.off()
-
-
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- turnerEstimates
 
@@ -161,6 +128,122 @@ prop <- rio::import("turner_bias/propbias_full.dta") %>%
   summarise(mean = mean(value),
             max = max(value))
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- ldlAdBIAMA 
 
+# read in values from spreadsheet
+
+bias_values <- rio::import("turner_bias/bias_values.csv") %>%
+  rename_with(~paste0("bias_",.), matches("_"))
+
+indirect_values <- rio::import("turner_bias/indirectness_values.csv")  %>%
+  rename_with(~paste0("ind_",.), matches("_"))
+
+# Load general data
+dat_gen <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+                       which = 2) %>% janitor::clean_names() %>%
+  select(result_id, author, year)
+
+# Read in result and risk of bias data
+dat_rob <- read.csv("turner_bias/real_example_rob.csv",
+                    stringsAsFactors = F) %>%
+  left_join(dat_gen) %>%
+  mutate(vi = sei^2) %>%
+  select(result_id, author, type, yi, vi, everything()) 
+
+dat_ind <- read.csv("turner_bias/real_example_indirect.csv",
+                    stringsAsFactors = F) %>%
+  left_join(dat_gen) %>%
+  mutate(vi = sei^2) %>%
+  select(result_id, author, type, yi, vi, everything()) 
+
+# Save bias direction plot
+
+png(
+  here::here("figures/tri/midlife_AD.png"),
+  width = 1750,
+  height = 1200,
+  pointsize = 15,
+  res = 100
+)
+
+forest_triangulation(dat_rob, sei = dat$sei, title = "LDL-c and AD")
+
+dev.off()
+
+# Prepare data for bias-/indirectness-adjusted meta-analysis
+
+dat_final <- prep_tri_data(dat_rob, dat_ind, bias_values, indirect_values)
+
+model_unadj <- metafor::rma.uni(yi = yi,
+                                vi = vi,
+                                data = dat_final, 
+                                slab = paste(dat_final$author,dat_final$year))
+
+unadj_I2 <- model_unadj$I2
+
+metafor::forest(model_unadj, annotate = T, showweights = TRUE)
+
+model_adj <- metafor::rma.uni(yi = yi_adj,
+                              vi = vi_adj,
+                              data = dat_final,
+                              slab = paste(dat_final$author,dat_final$year))
+
+metafor::forest(model_adj,annotate = T,  showweights = TRUE)
+
+# Build paired forest plot
+
+png("figures/tri/fp_paired_midlife_ldl_ad.png", height = 400, width = 800)
+
+par(mfrow=c(1,2))
+par(mar=c(5,0,1,0))
+
+metafor::forest(
+  model_unadj,
+  xlim = c(-6, 6),
+  xlab = "Effect measure",
+  atransf = exp,
+  at = log(c(0.3, 1, 3)),
+  showweights = TRUE
+)
+text(log(0.01), 20, "Author and Year", cex=.8, font=2)
+text(log(40), 20.5, "Unadjusted", cex=.8, font=2)
+text(log(9.3), 19.5, "Weight", cex=.8, font=2)
+text(log(100), 19.5, "Estimate", cex=.8, font=2)
+
+par(mar=c(5,0,1,0))
+metafor::forest(
+  model_adj,
+  xlim = c(-6, 6),
+  xlab = "Effect measure",
+  atransf = exp,
+  at = log(c(0.3, 1, 3)),
+  mlab = " ",
+  slab = rep("", length(dat_final$yi)),
+  showweights = TRUE
+)
+text(log(40), 20.5, "Adjusted", cex=.8, font=2)
+text(log(9.3), 19.5, "Weight", cex=.8, font=2)
+text(log(100), 19.5, "Estimate", cex=.8, font=2)
+
+dev.off()
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- turnerValidation 
+
+# Validate formula using Turner data
+turner <- rio::import("turner_bias/propbias.dta") %>%
+  # arrange(study, assessor) %>%
+  # left_join(rio::import("turner_bias/addbias.dta")) %>%
+  filter(assessor == 1) %>%
+  select(-assessor) %>%
+  rename("yi" = estlogor,
+         "vi" = varlogor) %>%
+  calculate_adjusted_estimates()  
+
+
+model <- metafor::rma.uni(yi = yi_adj,
+                          vi = vi_adj,
+                          data = turner)
+
+metafor::forest(model, showweights = TRUE)

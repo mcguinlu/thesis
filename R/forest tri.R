@@ -62,6 +62,14 @@ y_max <- max(rows)+4
 dat <- dat %>%
   mutate(across(-c(result_id,author,type,yi,sei, year), robvis:::clean_data))
 
+# Combine direction and type
+for (j in paste0("d",1:7)) {
+  for (i in 1:nrow(dat)) {
+    dat[i,paste0(j,"d")] <- paste0(dat[i,paste0(j,"d")],dat[i,paste0(j,"t")])
+  }
+}
+
+
 x_pos <- seq(x_max, by = 0.45, length.out = 9 - 2)
 
 x_overall_pos <- max(x_pos) + 1
@@ -90,9 +98,15 @@ cols <- c(
     x = "transparent"
   )
   
-syms <- c(u = "?",
+syms <- c(ua = "?",
+          up = "?",
+          lp = "<",
+          rp = ">",
+          la = "\U2190",
+          ra = "\U2192",
           l = "\U2190",
           r = "\U2192",
+          xx = "",
           x = "")
   
   shapes <- c(c = 15,
@@ -121,7 +135,8 @@ forest(x = dat$yi,
        rows=rows,
        textpos = textpos,
        mlab = "",
-       header="Author(s) and Year",)
+       header="Author(s) and Year", 
+       ...)
 
 ### set font expansion factor (as in forest() above) and use a bold font
 op <- par(font=2)
@@ -160,7 +175,6 @@ for (j in 1:length(x_pos)) {
   )
   graphics::text(x_pos[j], rows, syms[dat[[paste0("d", j,"d")]]], cex = tsize)
 }
-
 
 graphics::points(
   rep(x_overall_pos, length(rows)),
