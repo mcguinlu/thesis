@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -34,23 +34,26 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 ## Lay Summary
 
-As part of a broader investigation into the relationship between lipid levels and dementia risk, I applied for access to `r n_applied$total` unique data sources containing information on these variables. However, only a small proportion of these data sources (`r fmt_applied(n_accessed$total)`) provided me with access. 
+TBC
 
-The resulting analysis did not suggest an effect of any lipid fraction (total cholesterol, LDL-c, HDL-c, or triglycerides) on any dementia outcome. In addition, patients characteristics such as age and sex did not have any impact on the relationship of lipid fractions and dementia outcomes.
+<!-- As part of a broader investigation into the relationship between lipid levels and dementia risk, I applied for access to `r n_applied$total` unique data sources containing information on these variables. However, only a small proportion of these data sources (`r fmt_applied(n_accessed$total)`) provided me with access.  -->
 
-Finally, the reasons for the low response rate are explored and future studies to investigate how data access rates could be improved are suggested. 
+<!-- The resulting analysis did not suggest an effect of any lipid fraction (total cholesterol, LDL-c, HDL-c, or triglyceride) on any dementia outcome. In addition, patients characteristics such as age and sex did not have any impact on the relationship of lipid fractions and dementia outcomes. -->
+
+<!-- Finally, the reasons for the low response rate are explored and future studies to investigate how data access rates could be improved are suggested.  -->
 
 <!----------------------------------------------------------------------------->
 &nbsp;
 
 ## Introduction
 
-Individual patient data meta-analyses are considered to be the gold standard form of evidence synthesis, allowing for the application of a common selection model and analytical approach across all identified cohorts. They are particularly useful for investigating the impact of patient-level characteristics, something that is not possible with aggregate data unless the results have been explicitly stratified by the characteristic of interest. 
+Individual patient data (IPD) meta-analyses are considered to be the gold standard form of evidence synthesis, allowing for the application of a common selection model and analytical approach across all identified cohorts.[@riley2010] They are particularly useful for investigating the impact of patient-level characteristics, something that is not possible with aggregate data unless the results are stratified by the characteristic of interest.[@riley2010;@thompson2005] 
 
-While the systematic review presented in Chapter \@ref(sys-rev-heading) did not provide strong evidence for an effect of age at lipid measurement or patient sex on the relationship between lipids and dementia, the number of included studies in the lipid fraction meta-analyses were very small, due to both the relatively small number of studies reporting on this exposure and the poor reporting of smmary statistics of patient characteristics.
+While the systematic review presented in Chapter \@ref(sys-rev-heading) did not identify strong evidence for an effect of sex or age at lipid measurement on the relationship between lipids and dementia. However, the number of included studies in the lipid fraction meta-analyses was small, due to both the relatively small number of studies reporting on the lipids exposure and the poor reporting of summary statistics of patient characteristics in those that did. Additionally, best practice guidance recommends against basing the decision to perform an IPD meta-analysis on the between-study heterogeneity in a summary data meta-analysis, as similar distributions of patient covariates across studies may mask a true effect.[@riley2020]
 
-As such, the aims of this analysis were two fold: firstly, to perform a individual patient data meta-analysis across identified cohorts to examine the impact of patient age-at-measurement and sex on the effect of lipids on dementia; and secondly, to expand the evidence base for the effect of lipids on dementia outcomes by incorporating previously unanalysed cohorts contained in the Dementia Platform UK, a large consortia of dementia cohorts.
+As such, the aims of this analysis were two fold: firstly, to perform a individual patient data meta-analysis across identified cohorts to examine the impact of patient age-at-measurement and sex on the effect of lipids on dementia; and secondly, to expand the evidence base for the effect of lipids on dementia outcomes by obtaining estimates from previously unanalysed cohorts available via the Dementia Platform UK, a large consortia of dementia cohorts.
 
+<!-- TODO Read this[@riley2020] -->
 <!----------------------------------------------------------------------------->
 &nbsp;
 
@@ -58,139 +61,112 @@ As such, the aims of this analysis were two fold: firstly, to perform a individu
 
 ### Eligibility criteria
 
-Eligible data sources were defined as those that contained lipid measurements and lipids reported/available as a continuous measure, Data sources which were cross-sectional, either by design or due to the available data (e.g. a study conducted multiple waves, but onyl data from a single wave could be accessed) were excluded. Similarly, due to the limited time-frame, studies making use of population-level electronic health records, which often require an extensive project proposals in order to gain access to the data, were ineligible due to the time and cost involved in applying. The one exception to this was data from the CPRD, which I already had access to as part of the analysis reported in Chapter \ref(cprd-analysis-heading).
+#### Study design
 
-<!-- TODO Read this[@riley2020] -->
+Eligible data sources were defined as those that contained measurements of blood lipids (total cholesterol (TC), low-density lipoprotein cholesterol (LDL-c), high-lipoprotein cholesterol (HDL-c), and triglyceride (TG)), available as a continuous measure. Additionally, they were required to contain data on at least one dementia outcome (all-cause dementia, Alzheimer's disease, vascular dementia). Participants must be free of dementia at baseline.
+
+Data sources which were cross-sectional, either by design or due to the available data (e.g. a study conducted across multiple waves, but only data from a single wave could be accessed) were excluded. Similarly, due to the limited time afforded by this thesis, studies making use of population-level electronic health records, which often require an extensive project proposals in order to gain access to the data, were ineligible due to the time and cost involved in applying. No restrictions were put on the number of participants or the length of follow-up. 
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+#### Exposures/outcome
+
+I considered four blood lipid fractions as part of this analysis, namely: total cholesterol, low-density lipoprotein cholesterol (LDL-c), high-density lipoprotein cholesterol (HDL-c) and triglycerides. Cohorts were eligible for inclusion if they contained data on at least one of these in a continuous format (i.e. studies with binary "hypercholesteromemia" would be excluded).
+
+In line with the analyses presented in other chapters, eligible cohorts were those containing data on at least one outcome of interest, namely: all-cause dementia, Alzheimer's disease, or vascular dementia. 
+
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Applying for data access
 
-Potentially eligible data sources were identified via two mechanisms with a distinct focus. For each approach, the number of cohorts responding to the request, and where applciable, the reasons given for a lack of data sharing were recorded.
+Potentially eligible data sources as defined above were identified via two mechanisms, each with a distinct focus. For both approaches, the number of cohorts responding to the request for data access, and where applicable, the reasons given for a lack of data sharing were recorded.
 
-#### Systematic review
+&nbsp;<!----------------------------------------------------------------------->  
 
-The first approach focused on previously analysed data sources. The systematic review detailed in Chapter \@ref(sys-rev-heading) identified several observational prospective cohort studies examining the effect of blood lipid levels on dementia outcomes. The data sources used in each of these cohort analyses were screened against the criteria listed in the previous section, and eligible cohorts were approached for data access. In the first instance, the first/corresponding author of the publication was emailed (see Appendix \@ref(ipd-email-collab) for a copy of the text and documentation sent to potentially collaborators) in Autumn 2020. If this approach did not elicit a response within two months, the last author was contacted, on the basis that the first/corresponding author may have been a more junior member of the research group who has moved to a different institution.
+#### Cohorts identified by the systematic review
 
-#### Dementia Platform UK
+The first approach focused on previously analysed observational prospective cohort studies examining the effect of blood lipid levels on dementia outcomes, as identified by the systematic review presented in Chapter \@ref(sys-rev-heading)  The data sources used in each of these cohort analyses were screened against the criteria listed in the previous section, and eligible cohorts were approached for data access. In the first instance, the first/corresponding author of the publication was emailed (see Appendix \@ref(ipd-email-collab) for a copy of the text and documentation sent to potentially collaborators) in Autumn 2020. If this approach did not elicit a response within two months, the last author was contacted, on the basis that the first/corresponding author may have been a more junior member of the research group who has moved to a different institution.
 
-The second approach focused on incorporating previously unanalysed data, thus providing additional evidence on the relationship between statins and dementia risk. 
+&nbsp;<!----------------------------------------------------------------------->  
 
-This was achieved through the Dementia Platform UK (DPUK), a collaborative grouping of existing dementia cohorts established by the MRC which works with data owners to make their data readily accessible for secondary analysis.[@bauermeister2020] It provides access to 42 cohorts with over 3 million participants, and makes use of a central streamlined application processs for all cohorts with the intent of making it easier to access data from existing data sources.
+#### Cohorts contained in Dementia Platform UK
+
+The second approach focused on incorporating relevant, previously-unanalysed data into the analysis, thus providing additional evidence on the relationship between blood lipids and dementia risk. This was achieved through the Dementia Platform UK (DPUK), a collaborative grouping of existing dementia cohorts established by the MRC which works with data owners to make their data readily accessible for secondary analysis.[@bauermeister2020] It provides access to 42 cohorts with over 3 million participants, and makes use of a central streamlined application processs for all cohorts with the intent of making it easier to access data from existing data sources.
 
 Cohorts included in the DPUK were assessed against the eligibility criteria, and in Autumn 2020, an application for access to a subset of 16 cohorts was made via the common-access procedure.
 
-&nbsp;<!----------------------------------------------------------------------->  
-
-### Risk of bias assessment
-
-Risk of bias assessment was performed for each of the included cohorts using the risk-of-bias assessment tool for non-randomised studies of exposures introduced previously (for a more detailed discussion of this tool, see Section \@ref(rob-tools-nrse)).
-
-Due to the inherent conflict of interest in assessing my own analysis, the result were also assessed by two independent reviewers.
-
-<!-- Be clear on the different types of databases, e.g. those where users are followed up regularly vs those where participants are captured via EHR-->
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-### Missing data
-
-<!-- TODO This was taken from Chapter 4, so may need to rephrase slightly -->
-<!-- IDEA See Sean's thesis for some additional detail on this -->
-
-In this analysis, missing data were handled using a multiple imputation approach. Variables with missing observations were identified, and 20 imputed datasets were created.[@sterne2009] Nominal variables with missing values were modelled using multinomial logistic regression, while continuous variables were modelled using linear regression. As per best practice, all variables used in the analytic model, including the outcome, were included in the imputation model.[@moons2006using] Imputation was performed using the MICE (Multiple Imputation by Chained Equations) using the XXX command in R.
-
-<!-- TODO Need to talk about how missing variables were handled across studies -->
-
-<!----------------------------------------------------------------------------->
-&nbsp;
-
-### Variable definition
-
-#### Exposure
-
-To aid interpretability of the outcome, all analyses were standardised to refer to a 1-standard deviation increase in the lipid fraction under investigation.
-
-#### Outcomes
-
-Similar to the analyses presented in othe chapters, th endpoints in this analysis was incidience of dementia and related sub-types (AD, vascular dementia). 
-
-#### Covariates
-
-Relevant covariates were adjusted for in all models. these included age, sex,education and comorbities. For information on how these were defined across cohorts, see Appendix \@ref(hold).
-
-&nbsp;<!----------------------------------------------------------------------->  
-
-### Statistical analysis
-
-#### Descriptive statistics
-
-
-All IPD obtained was examined and recoded as necessary to ensure they comply with the coding guideline for the IPD database. As recommended , summary statistics for each data source were calculated and compared to publicly available statistics to ensure no errors were introduced in the data cleaning process.[@levis2021] Any discrepancies were investigated. 
+### Primary analysis
 
 #### Data cleaning and harmonisation
 
-Across all cohorts, data cleaning was performed in a similar manner, using commonly named variables, so that a single model could be applied using functional programming. The one exception to this is the CPRD data, which was held in a different system to the rest. However, an identical model was applied within this cohort. The advantage of this approach is that it reduces the likelihood of errors in model mis-specification if needing to change variables names from cohort to cohort.
+Where data on one of these exposures (TC, LDL-c, HDL-c, TG) was missing, it was inferred from the other three fractions (where available) using the Friedwald formula (Equation \@ref(eq:total-cholesterol-formula)). Lipids levels were retained as continuous variables rather than dichotomising into, for example, a hypercholesterolemia exposure given the additional power this adds to the meta-analysis.[@riley2020;@ensor2018] Where lipid measurements were reported in _mg/dL_, these were converted to _mmol/L_. To aid interpretability of the outcome, all analyses were standardised to refer to a 1-standard deviation increase in the lipid fraction under investigation. 
+
+Across all cohorts, data cleaning was performed in a similar manner, standardising to commonly named variables so that a single model could be applied using functional programming.[@wickham2016a] The advantage of this approach is that it reduces the likelihood of errors in model mis-specification if needing to change variables names from cohort to cohort. Following data cleaning, summary statistics for each data source were calculated and compared to publicly available statistics to ensure no errors were introduced in the data cleaning process, in line with best practice.[@levis2021]
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+#### Covariate definition
+
+With an awareness that discrepancies in available covariates is a common issue in IPD studies, I defined an idealised set of covariate domains to be age, sex, education, BMI, ApoE4 status, smoking/alcohol status and prevalent cardiovascular disease. This set covers key risk factors for dementia/Alzheimer's disease in addition to general cardiovascular risk factors. Ethnicity was considered as a potential addition covariate of interest, but several of the DPUK cohorts (whose data dictionaries could be inspected in advance) made it clear that ethnicity data was either not available or would not be shared. Details on how these variables were coded, given the available data, are presented in Section \@ref(ipd-covar-definition).
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+#### Missing data
+
+Missing data in this analysis was classified as either relating to missing values (a cohort collected data on a variable of interest, but some values are missing) or missing variables (a cohort did not collect data on a variable of interest).
+
+Variables with missing values were identified, and 20 imputed datasets were created.[@sterne2009] Imputation was performed using the MICE (Multiple Imputation by Chained Equations) using the `mice` package in R.
+
+Systematically missing variables were originally intended to be addressed using a previously described method.[@fibrinogenstudiescollaboration2009] Here, the correlation between the fully-adjusted and partially-adjusted estimate in cohorts with the full set of covariates is used to estimate the fully-adjusted effect in those cohorts missing covariates. However, this method requires several large cohorts to contain the full set of covariates, a condition this analysis failed to meet given the very low response rate. As such, two other common approaches were employed.[@fibrinogenstudiescollaboration2009] Firstly, all cohorts were analysed adjusted for the set of common covariates across cohorts (age,sex,smoking, alcohol, presence of morbidities). Secondly, cohorts with the full complement of covariates (Whitehall II and EPIC) were analysed using a maximally-adjusted model. Results between the common-set-adjusted and maximally-adjusted models were compared.
+
+&nbsp;<!----------------------------------------------------------------------->  
 
 #### Individual patient data analysis
 
-<!-- Need detailed paragraph here describing the different between two stage versus one-stage approach -->
+In this analysis, an two-stage individual patient data analysis was planned. Under a two-stage approach, estimates for the effect of each lipid fraction on available dementia outcomes in each study were first calculated for each data source. Effect estimates for the associations between lipid fractions and incident dementia, adjusted for identical covariates, were obtained by applying a common model to each data source. More specifically, odds ratios were used to quantify the effect of a 1-SD lower exposure to a lipid fraction on dementia outcomes. Examination of the data available via the DPUK indicated that the common time-to-event approach used in studies of dementia outcome would be precluded by the absence of detailed time-to-event data. An overall effect estimate was then produced by combining data-source-specific estimates in a random-effects meta-analysis (see Section \@ref(hold) in Chapter \@ref(hold) for a broader discussion of meta-analysis methods).
 
-In this analysis, an two-stage individual patient data model was used out of necessity, with the one-stage model being precluded by the included datasets being in protected data silos. It also allows for each studys' data to be analysed according to a common analysis plan, which is particularly important in this topic, due to the differing definitions between studies of the serum concentrations above or below which lipids are deemed to be at abnormal levels.
+A two-stage approach was employed for a number of reasons. Firstly, and most importantly, a two-stage approach allows for siloed data, enabling researchers who are unwilling/unable to provide their data to analyse themselves following a specified analysis plan. Secondly, it allows for the production of forest plots of within-cohort estimates, something which is useful for the triangulation exercise in Chapter \@ref(tri-heading). Finally, a two-stage approach is simpler to model, as it uses standard well-documented summary effect estimate meta-analysis techniques, and automatically accounts for methodological issues such as clustering within cohorts[@abo-zaid2013] and the potential for ecological bias.[@burke2017]
 
-Under a two-stage approach, estimates for the effect of each lipid fraction on available dementia outcomes in each study were first calculated for each data source. Effect estimates for the associations between lipid fractions and incident dementia, adjusted for identical covariates, were obtained by applying a common model to each data source. More specifically, hazard ratios were used to quantify the effect of a 1-SD lower exposure to a lipid fraction on dementia outcomes. A discrete proportional hazards model was employed to account for the interval censoring introduced by design of the longitudinal cohort studies.[@wang2017] An overall effect estimate was then produced by combining data-source-specific estimtes in a random-effects meta-analysis (see Section \@ref(hold) in Chapter \@ref(hold) for a broader discussion of meta-analysis methods). Following best practice, clustering within studies was accounted for.[@abo-zaid2013]
 
-<!-- TODO talk about different methods - see here: https://onlinelibrary.wiley.com/doi/10.1002/sim.8516 -->
-<!-- TODO Figure showing the outline of interval censored studies. -->
+&nbsp;<!----------------------------------------------------------------------->  
+
+#### Comparison with published findings
+ 
+Following estimation of the main effect, where an included data source had previously been analysed, the results of this analysis were compared against those published previously. Where discrepancies were identified, these were investigated.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 #### Investigating effect of patient-level covariates
 
-In order to investigate the interaction of patient-level characteristics with lipid levels, interaction terms for lipid-covariate terms were included in the model above. These were extracted and synthesised using a random effects meta-analysis.
-
-&nbsp;<!----------------------------------------------------------------------->  
-
-#### Combining published aggregate data and individual participant data
-
-Where a data source did not provided their individual participant data, but stratified by a patient characteristic of interest in the published data, the aggregate data and individual data were combined.
-
-<!-- TODO How does this work? -->
-
-&nbsp;<!----------------------------------------------------------------------->  
-
-### Comparison with published findings
-
-Where an included data source had previously been analysed and results for the association between lipid levels and dementia outcomes reported, these were compared to the results of this analysis. If discrepancies were identified, these were investigated.
-
-<!-- TODO Need more on this method here -->
-
-### Secondary analyses
-
-#### Amount of information added
-
-The proportion of new information added to the evidence base via incorporation of the unanalysed datasets was quantified, by addding the additional results to the lipid-dementia meta-analyses presented in Section \@ref(hold), and extracting the combined weights assigned to the new data in a fixed-effect model.
-
-<!-- #### Contact information  -->
-
-#### Data availability statements
-
-As a sensitivity analysis, I examined the data sharing statements for each using a predefined categories used in a similar previous analysis.[@mcguinness2020DAScomparison]
-
-<!-- TODO This should have a plot showing how many over time had good vs bad DAS -->
-
-<!-- TODO In addition, need plot similar to study design over time in Chapter 3, showing cohort responses over time -->
+In order to investigate the interaction of patient-level characteristics (age and sex) with lipid levels, interaction terms for lipid-covariate terms were extracted and synthesised using a random effects meta-analysis. To avoid ecological bias, where between-study do not reflect the within-study association, cohorts where there was no within-study variation in the covariate of interest were excluded from the interaction analysis for that covariate.[@burke2017] As an example, it is impossible to estimate, for example, the impact of sex on the lipid~dementia relationship in a study which contains female participants. 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ## Results
 
+```{r ipdSummStat, include=F}
+```
+
+```{r prepIPDFigures,include=F}
+```
+
 ### Data access
 
 <!-- Need exact number from each approach, plus detailed exclusion reasons -->
 
-Of the `r n_applied$total` studies to which I applied for data access, only three (`r paste0(comma((n_accessed$total/n_applied$total)*100),"%")`) provided data and were included in the analysis. Figure \@ref(fig:cohortFlowchart) details whether the cohorts eventually included in the review were identified by the systematic review or via DPUK portal. In addition, the reasons for cohorts not being included in the analysis are presented, stratified by application approach.
+Of the `r n_applied$total` studies to which I applied for data access, only three (`r paste0(comma((n_accessed$total/n_applied$total)*100),"%")`) were included in the final analysis. Figure \@ref(fig:cohortFlowchart) details whether the cohorts eventually included in the review were identified by the systematic review or via DPUK portal. In addition, the reasons for cohorts not being included in the analysis are presented, where available, stratified by application approach.
 
-In summary, the requests for data from cohorts identified by the systematic review was characterised by a very low response rate. For the minority who did respond, common reasons given by corresponding authors for not sharing the data included that they no longer worked with the same group and did not know if the data were available or how to obtain it, had access to the data, or that they were currently or intended to perform a similar analysis as the one proposed.
+In summary, the requests for data from cohorts identified by the systematic review were characterised by a very low response rate. For the minority who did respond, common reasons given by corresponding authors for not sharing the data included that they: no longer worked with the same group and did not know if the data were available or how to obtain it; no longer had access to the data; or were currently performing, or intended to perform, a similar analysis as the one proposed.
 
-With respect to the application to DPUK cohorts, where a dedicated project manager liaises with data owners on the applicants' behalf, the overall response rate was higher resulting in eventual access to three cohorts (one of which was also identified by the systematic review). However, even using this streamlined approach, a response was obtained for only half of the approach cohorts.
+<!-- TODO Need numbers in the above section. -->
+
+
+With respect to the application to DPUK cohorts, where a dedicated project manager liaises with data owners on the applicants' behalf, the overall response rate was higher. However, even using this streamlined approach, a response was obtained for only half of the approached cohorts, resulting in eventual access to eight (one of which was also identified by the systematic review). However, on inspection of the obtained data, five of these were deemed ineligible, the reasons for which are documented in the following section.
+
+<!-- TODO Fix width of this image, and one box is not rendering right, and update numbers! -->
 
 <!----------------------------------------------------------------------------->
 ```{r cohortFlowchartSetup, include = FALSE}
@@ -209,26 +185,29 @@ As highlighted in Figure \@ref(fig:cohortFlowchart), there was little overlap be
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-### Included data sources
+### Data sources
 
-The four data sources used in this analysis are summarised in Table \@ref(tab:cohortOverview-table) and are described in detail in the following sections. Of note, all included data sources were based in the United Kingdom. This is likely due to the majority of included datasets coming from the Dementia Platform UK route (Figure  \@ref(fig:cohortFlowchart)), which as implied by the name, has a geographical focus on cohorts performed in the United Kingdom.[@bauermeister2020]
+<!-- TODO Be clear on the different types of databases, e.g. those where users are followed up regularly vs. those where participants are captured via EHR-->
 
-&nbsp;
+<!-- TODO Need to talk about how dementia was assessed in each! -->
 
-<!----------------------------------------------------------------------------->
-(ref:cohortOverview-caption) Summary of cohorts for which data were available
+<!-- TODO Link to appendix about data sources not approached -->
 
-(ref:cohortOverview-scaption) Summary of included cohorts
 
-```{r cohortOverview-table, message=FALSE, results="asis", echo = FALSE}
+The three data sources used in this analysis are summarised in Table \@ref(tab:cohortOverview-table) and are described in detail in the following sections. Of note, all included data sources were based in the United Kingdom. This is due to the majority of included datasets coming from the Dementia Platform UK route (Figure \@ref(fig:cohortFlowchart)), which as implied by the name, has a narrow geographical focus.[@bauermeister2020]
+
+As highlighted in Figure \@ref(fig:cohortFlowchart), eight cohorts from the DPUK responding positively but on inspection of data provided these cohorts were excluded for a range of reason. The exclusion reason for each cohort for which data were provided is illustrated in Table \@ref(tab:dataExcluded-table). In summary, two cohorts contained were memory-complaint cohorts, containing patients unlikely to be free of dementia at baseline (BRACE, MEMENTO). Two cohorts, despite being designed as multi-wave studies, only shared data related to a single wave, and so represented cross-sectional data (Generation Scotland, NICOLA). Finally TRACK HD is a genetic cohort where cohort owners advised me that dementia will inevitably develop in mid-life driven by the Huntington's (HTT gene) mutation and that this effect would likely far outweigh the effect of lipids. Finally, the ELSA study was excluded based on the dichotomous definition of the exposure variable <!-- TODO CITATION NEEDED for each study here! -->
+
+&nbsp;<!----------------------------------------------------------------------->  
+(ref:dataExcluded-caption) Exclusion reasons for cohorts providing data
+
+(ref:dataExcluded-scaption) Exclusion reasons for cohorts providing data
+
+```{r dataExcluded-table, message=FALSE, results="asis", echo = FALSE}
 ```
-<!----------------------------------------------------------------------------->
+&nbsp;<!----------------------------------------------------------------------->  
 
-&nbsp;
-
-<!-- TODO Update table with SD for age, and types of outcomes, and follow-up, and check why number of events in EPIC is less than expected (5 vs 8)-->
-
-<!-- TODO * Description (including observation period, numbers, numbers with outcome, etc) -->
+The included data sources are described in detail below.
 
 &nbsp;<!----------------------------------------------------------------------->
 
@@ -239,21 +218,6 @@ The Caerphilly <!-- TODO Check spelling --> Prospective Study is a longitudinal 
 Cholesterol measures (total, LDL-c, HDL-c and triglyceride) were measured at baseline in 1979-1983. 
 As the study population has aged, additional outcomes. Of particular relevance to this analysis, from Phase III (1989-1993) onwards, a battery of cognitive tests were introduced.
 
-
-&nbsp;<!----------------------------------------------------------------------->  
-
-#### CPRD
-
-The Clinical Practice Research Datalink (CPRD) is a large population-based, electronic health record (EHR) database.[@herrett2015] containing the primary care records for more than 10 million primary care patients in England, and is broadly representative of the UK population in terms of age, sex and ethnicity.[@herrett2015; @mathur2014]
-
-The CPRD is introduced more fully in Chapter \@ref(). Briefly, a similar approach to the cohort definition as used in Chapter
-
-Participants were included from the first date of lipid measurement, so no issues with immortal time bias as discussed in Chapter ...
-
-Additionally, other number of participants is larger in this analysis as there is no restriction on the level which lipids should be in order to be included in the analysis.
-
-the
-
 &nbsp;<!----------------------------------------------------------------------->  
 
 #### Epic Norfolk
@@ -262,176 +226,219 @@ The European Prospective Investigation of Cancer - Norfolk is a  [@riboli1997; @
 
 The added evidental value of the EPIC cohort is small, given the relatively small number of participants and the fact that the cohort has only 8 dementia events.
 
-```{r tests}
-```
-
 &nbsp;<!----------------------------------------------------------------------->  
 
 #### Whitehall II
 
 _The Whitehall II study is a prospective cohort study of 10 308 participants (70% men), aged 35–55 years and recruited between 1985 and 1989 from 20 London-based Civil service departments (https://www.ucl.ac.uk/whitehallII). Clinical examinations have been performed in 1991-1994, 1997-1999, 2002-2004, 2007-2009, 2012-2013, 2015-2016 with the data from circulating metabolomic traits and cognitive testing for the present study obtained from the 1997-1999 clinic phase._ - taken from EN ID: 2140
 
-This data source was analysed in one of the included studies identified by the systematic review presented in Chapter \@ref(sys-rev-heading),[@tynkkynen2018] meaning that a comparison between the published result and the analysis reported here was was possible.
+This data source was analysed in one of the included studies identified by the systematic review presented in Chapter \@ref(sys-rev-heading),[@tynkkynen2018] meaning that a comparison between the published result and the analysis reported here was was possible. However, this previous analysis focused on all-cause dementia and Alzheimer's disease as outcomes, so the assessment of vascular dementia represents a new source of evidence.
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-### Excluded data sources
+### Covariate definition & missing data {#ipd-covar-definition}
 
-#### Cohorts identified the systematic review but excluded from the IPD analysis
+Based on available data across cohorts, smoking was classified as never/ever/current, while alcohol consumption was classified as never/ever. Education was categorised into 4 levels (None,O-levels,A-levels,Degree). BMI was treated as a continuous variable while presence of co-morbidities was treated as dichotomous. 
 
-<!-- Should also include a list of reasons why specific additional cohorts were not included - some like the EHR might be too big to get -->
+A key consideration in the definition of covariates was the classification of age. The Whitehall II study, the largest cohort to which I had access, only shared age data in five-year age band (e.g. 40-44, 45-49, etc.). To ensure comparability across the cohorts, I created identical categories in the CaPS and EPIC data. This grouped age variable was then used in all subsequent analyses. 
 
-The main reason for exclusion within this records was use of an electronic health record database. Examples included the Taiwan National Health Insurance database and studies run in the US making use of Medicare data.
-
-<!----------------------------------------------------------------------------->
-&nbsp;
-
-#### Cohorts identified in the DPUK but excluded from the IPD analysis
-
-<!-- Should also include a list of reasons why specific additional cohorts were not included - some like the EHR might be too big to get -->
-
-Several additional cohorts are present in the DPUK collection but were not formally approached with a request for data access. This was primarily due to the information obtained via the online data dictionary system or via initial contact with the cohort owners indicating that the study was relatively new (and so was yet to collect more than 1 wave of data) or that the exposure variables of interest were not recorded.
-
-<!-- TODO LBC 1936 -->
-
-<!----------------------------------------------------------------------------->
-&nbsp;
-
-#### Cohorts providing data but ultimately excluded
-
-As highlighted in Figure \@ref(fig:cohortFlowchart), several cohorts from the DPUK responding positively but on inspection of data provided these cohorts were excluded for a range of reason. The exclusion reason for each cohort for which data were provided is illustrated in Table \@ref(tab:dataExcluded-table).
-
-&nbsp;
-
-<!----------------------------------------------------------------------------->
-(ref:dataExcluded-caption) Exclusion reasons for cohorts providing data
-
-(ref:dataExcluded-scaption) Exclusion reasons for cohorts providing data
-
-```{r dataExcluded-table, message=FALSE, results="asis", echo = FALSE}
-```
-<!----------------------------------------------------------------------------->
-
-&nbsp;
-
-BRACE is a memory-complaint-based cohort, suggesting that it is unlikely they were dementia-free at baseline). <!-- TODO CITATION NEEDED --> Similarly, the Memento study was excluded as it's criteria for entry required participants to be outpatients from a memory clinic. <!-- TODO CITATION NEEDED --> The Generation Scotland provided only cross-sectional data only for the variables of interest, as did the the NICOLA study. <!-- TODO CITATION NEEDED x2 --> Finally, the ELSA study was excluded based on the definition of the exposure variable. This study provided a "high cholesterol" a binary variable rather than the raw continuous lipid measurement data. <!-- TODO CITATION NEEDED -->
+Missing values in collected variables was common across the cohorts. A matrix of covariate, and whether they were not available or contained missing values for each included cohort, can be seen Appendix \@ref(?). The Whitehall II and EPIC cohorts had data on all covariates of interest, while two systematically missing covariates were identified in the CaPS cohort, namely education and BMI. No included cohort provided information on the ApoE4 status of participants, and so this variable could not be adjusted for in the analysis.
 
 &nbsp;<!----------------------------------------------------------------------->  
-
-#### Cohorts approach but received no answer
-
-
-
-This was particularly common among the cohorts identified via the systematic review and included studies with  a dedicated access process or data access committee. A cohort of particular interest, having been used in multiple studies identified by the systematic review, is the Three City Study in France. Despite multiple attempts to contact the team, there was no response received. <!-- TODO CITATION NEEDED --> This study was approach at multiple points over the curse of this analysis, and no answer was received.
-
-This was also a problem for cohorts approach via the DPUK - half of the cohorts applied to did not respond to the application within a year.
 
 ### Analytical results
 
-There was no evidence for an effect of any lipid fraction on any dementia outcome (Figure \@ref(fig:tcDementiaMain)). Additionally, meta-analysis of the interaction coefficients for age-at-lipid-measurement and participant sex did not reveal an evidence for an varying effect across these variables.
+#### Descriptive statistics
 
-<!-- TODO Will need some method to define how/from where the different cohorts were obtained. -->
+Altogether `r n_total_ipd` patients across the three cohorts were included in this analysis. Cumulatively, there were 1329 cases of all-cause dementia, with `r n_ipd_dementia` and `r n_ipd_vasdem` cases further classified as Alzheimer's disease and vascular dementia, respectively. Summary statistics for each cohort are provided in Table \@ref(tab:cohortOverview-table).
 
-<!----------------------------------------------------------------------------->
 &nbsp;
 
-<!-- TODO Create similar crude rate table as for CPRD analysis chapter -->
-
 <!----------------------------------------------------------------------------->
-(ref:tcDementiaMain-cap) __Random effects meta-analysis of estimates from included data sources:__
+(ref:covariateSummary-caption) Summary of characteristics for cohorts included in the IPD  analysis
 
-(ref:tcDementiaMain-scap) IPD analysis of total cholesterol and dementia
+(ref:covariateSummary-scaption) Summary of characteristics of IPD cohorts
 
-```{r tcDementiaMain, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:tcDementiaMain-cap)', out.width='100%', fig.scap='(ref:tcDementiaMain-scap)'}
-knitr::include_graphics(file.path("figures/ipd/TC.png"))
+```{r covariateSummary-table, message=FALSE, results="asis", echo = FALSE}
 ```
 <!----------------------------------------------------------------------------->
 
-<!-- ### Effect by age -->
+&nbsp;
 
+#### Main effects
 
-<!-- ### Heterogeneity -->
+The results from the main effect analysis across the varying lipid fractions on each dementia,  considered can be seen in Figures \@ref(fig:mainEffectDem) & \@ref(fig:mainEffectVad), respectively. There was very weak evidence for the evidence for an association of an lipid level with either all-cause or vascular dementia, with the exception of a harmful association between raised triglycerides and vascular dementia (`r tri_vasdem`).
 
 <!----------------------------------------------------------------------------->
-&nbsp;
+(ref:mainEffectDem-cap) IPD meta-analysis of all-cause dementia, stratified by lipid fraction
+
+(ref:mainEffectDem-scap) IPD meta-analysis of all-cause dementia, stratified by lipid fraction
+
+```{r mainEffectDem, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:mainEffectDem-cap)', out.width='100%', fig.scap='(ref:mainEffectDem-scap)'}
+knitr::include_graphics(file.path("figures/ipd/main_Dementia.png"))
+```
+<!----------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
+(ref:mainEffectVad-cap) IPD meta-analysis of vascular dementia, stratified by lipid fraction. Note that the vascular dementia outcome was only available in the CaPS and Whitehall II cohorts.
+
+(ref:mainEffectVad-scap) IPD meta-analysis of all-cause dementia, stratified by lipid fraction
+
+```{r mainEffectVad, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:mainEffectVad-cap)', out.width='100%', fig.scap='(ref:mainEffectVad-scap)'}
+knitr::include_graphics(file.path("figures/ipd/main_vasdem.png"))
+```
+<!----------------------------------------------------------------------------->
+
+Estimates from the common-set-adjusted model were comparable to the fully-adjusted model (further adjusted for education and BMI) in cohorts reporting all covariates of interest (Figure \@ref(fig:ipdModelComparison)).
+
+<!----------------------------------------------------------------------------->
+(ref:ipdModelComparison-cap) Comparison of results from the common-set-adjusted (Model 1) and fully-adjusted (Model 1) analyses.
+
+(ref:ipdModelComparison-scap) Comparison of partially and maximally adjusted results
+
+```{r ipdModelComparison, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:ipdModelComparison-cap)', out.width='100%', fig.scap='(ref:ipdModelComparison-scap)'}
+knitr::include_graphics(file.path("figures/ipd/main_model_comparison.png"))
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+#### Interaction effects
+
+Given minimal effect of further adjustment for education and BMI on the effect estimates, the results from the interaction analysis presented here were obtained using the common-set-adjusted model. Further, while the maximally-adjusted could have been employed in the analysis of the effect of sex, as the CaPS cohort contains only men and had to be excluded from this analysis, employing the same underlying model helped to ensure comparability between the age and sex interaction estimates. 
+
+For all-cause dementia, there was no evidence of an nteraction of lipid levels with either age group or sex (Figures \@ref(fig:interactionDementiaAge) & \@ref(fig:interactionDementiaSex)).
+
+<!----------------------------------------------------------------------------->
+(ref:interactionDementiaAge-cap)  Meta-analysis of interaction terms representing the effect of a one-step increase in age group on the lipid/dementia association
+
+(ref:interactionDementiaAge-scap) shortcap
+
+```{r interactionDementiaAge, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:interactionDementiaAge-cap)', out.width='100%', fig.scap='(ref:interactionDementiaAge-scap)'}
+knitr::include_graphics(file.path("figures/ipd/interaction_age_dementia.png"))
+```
+<!----------------------------------------------------------------------------->
+
+Similarly, there was no . Note that the CaPS cohort was excluded from this analysis, as it contains only a single sex and therefore provides no information on exposure-sex interaction.
+
+<!----------------------------------------------------------------------------->
+(ref:interactionDementiaSex-cap) Meta-analysis of interaction terms representing the effect of being male on the lipid/dementia association
+
+(ref:interactionDementiaSex-scap) shortcap
+
+```{r interactionDementiaSex, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:interactionDementiaSex-cap)', out.width='100%', fig.scap='(ref:interactionDementiaSex-scap)'}
+knitr::include_graphics(file.path("figures/ipd/interaction_sex_dementia.png"))
+```
+<!----------------------------------------------------------------------------->
+
+For the consideration of vascular dementia, I was only able to explore the effect of age, as only the CaPS and Whitehall cohorts contained details on vascular dementia as an outcome. As discussed above, the CaPS data contained a single sex, excluding it from a exposure-sex analysis. Similar to all-cause dementia, there was very weak evidence for an effect of age on the assocation between lipid fractions and vascular dementia.
+
+<!----------------------------------------------------------------------------->
+(ref:interactionVascularAge-cap) Meta-analysis of interaction terms representing the effect of a one-step increase in age group on the lipid/vascular dementia association
+
+(ref:interactionVascularAge-scap) shortcap
+
+```{r interactionVascularAge, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:interactionVascularAge-cap)', out.width='100%', fig.scap='(ref:interactionVascularAge-scap)'}
+knitr::include_graphics(file.path("figures/ipd/interaction_age_vasdem.png"))
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+#### Comparison with previous analyses
+
+For the single cohort where a previously published analysis was available (Whitehall II),[@tynkkynen2018] results from the maximally-adjusted model for both all-cause dementia and Alzheimer's disease were comparable, with the exception of the trigluceride fraction (Figure \@ref(fig:whitehallComparison)). Tynkkynen _et al._ found a protective effect of triglycerides on all-cause dementia (`r estimate(0.69,0.56,0.85,"HR")`) while this analysis found evidence for a harmful effect (`r estimate(1.26,1.12,1.41,"OR")`).
+
+<!-- TODO These are generated - check they are correct! -->
+
+<!----------------------------------------------------------------------------->
+(ref:whitehallComparison-cap) Comparison of results across the two analysis of the Whitehall II cohort
+
+(ref:whitehallComparison-scap) Comparison of results across the two analysis of the Whitehall II cohort
+
+```{r whitehallComparison, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:whitehallComparison-cap)', out.width='100%', fig.scap='(ref:whitehallComparison-scap)'}
+knitr::include_graphics(file.path("figures/ipd/whitehall_comparison.png"))
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;<!----------------------------------------------------------------------->  
 
 ## Discussion
 
 ### Summary of findings
 
-This analysis requested data from `r n_applied$total` data sources, but only obtained data from `r fmt_applied(n_accessed$total)`, all of which were based in the United Kingdom. No evidence for an effect of lipids on the risk of dementia or related outcomes was identified. Similalarly, there was no evidence for an effect of age-at-measurement or sex on the lipid-dementia relationship.
+This analysis requested data from `r n_applied$total` data sources, but only obtained data from three, all of which were based in the United Kingdom. No evidence for an effect of lipids on the risk of dementia or related outcomes was identified, except for a harmful association of raised triglycerides with vascular dementia risk. Similarly, there was very weak evidence for an interaction of the effect of lipids levels on dementia outcomes with two participants age or sex.
 
-Additionally analyses revealed that authors of cohorts indentified by the systematic review rarely stated that the data underpinning their analyses would be freely available, while a review of corresponding authors of these publications demonstrated that for many, the institutional email address provided was out of date.
+I found a qualitative different between the association of triglycerides and all-cause dementia identified in this analysis and that previously reported by Tynkkynen _et al._[@tynkkynen2018]
+Investigation of this discrepancy indicated that it was likely to be due to the Whitehall snapshot that each analysis had access to, as comparison of summary statistics indicated that this analysis had substantially more dementia events (n=287 vs n=114).
 
-<!-- Useful citation for discussion[@levis2021] -->
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Limitations
 
 #### Low response rate to request for data
 
-_(although, in hindsight, the form of contact used (email) has been shown to be less successful in eliciting responses from authors when compared with telephoning[@danko2019])_
+The obvious key limitation of this analysis is the very low response rate to requests for data access, which may bias the results if there are systematic differences between cohorts that share data and those that do not.[@ahmed2012] Whether or not to press ahead with an IPD analysis in the absence of all (or even most) data is a personal decision, and some previous analyses have highlighted where they decided not to pursue an IPD study.[@jaspers2014] For the purposes of this thesis, the decision was made to conduct the IPD analysis, as it provided additional evidence sources that could be incorporated into the triangulation exercise detailed in Chapter \@ref(tri-heading).
 
+A low response rate is not unexpected, given that a review of IPD studies published between 1987 and 2015 found that fewer than half managed to obtained data from greater than 80% of studies, <!-- TODO CITE and are these RCTs or all studies? --> and that in many cases, the exact percentage of studies for which data were obtained was not accurately reported. However, it is assumed that a ~10% response rate is at the lower end of the scale.
 
-<!-- TODO Plot showing when datasets requested were published and comparing this with the -->
-A key limitation of this analysis is the very low response rate to requests for data access. This finding is not unexpected however, given that a review of IPD studies published between 1987 and 2015 found that fewer than half managed to obtained data from greater than 80% of studies, <!-- TODO CITE and are these RCTs or all studies? --> and that in many cases, the exact percentage of studies for which data were obtained was not accurately reported.
+There are likely several likely reasons for this low response rate. In general terms, there are a several well-documented reasons why data are not made readily available, including concerns regarding participant privacy, concerns around scoping or "parasitic" behaviour, and a lack of trust between primary and secondary researchers.[@vanpanhuis2014] More specific to this analysis, individual participant data meta-analysis including studies other than randomised controlled trials have less success in obtaining individual participant data from studies.[@nevitt2017a] Additionally, while no evidence is available on whether the characteristics of the researcher requesting data access influences the response rate and eventual decision, there is the possibility that my position as a PhD student meant I was less likely to elicit the response rate than a well-known professor might. The timing of the requests for data access, coinciding with a global pandemic, may also have affected the response rate as researchers prioritised other work. 
 
-There are likely several likely reasons for this low response rate. In general terms, there are a several well-documented reasons why data are not made readily available, including concerns regarding participant privacy, concerns around scoping or "parasitic" behaviour, and a lack of trust between primary and secondary researchers. <!-- TODO CITATION NEEDED -->
+Finally, the method of contact used (email) has been shown to be less successful in eliciting responses from authors when compared with telephoning.[@danko2019] One of the reasons for this may be that the email addresses reported on publications are more likely to be out of date for older publications. Anecdotally, post-hoc investigation of a subset of cohorts revealed that several corresponding/first authors were no longer at the same institution as when the study was reported, and as a result, were unlikely to have access to the institutional email address listed on the study publication.
 
-More specific to this analysis, individual participant data meta-analysis including studies other than randomised controlled trials have less success in obtaining individual participant data from studies.[@nevitt2017a] Additionally, while no evidence is available on whether the characteristics of the researcher requesting data access influences the response rate and eventual decision, there is the possibility that my position as a PhD student meant I was less likely to elicit the response rate than a well-known professor might. The timing of the requests for data access, coinciding with a global pandemic, may also have affected the response rate as researchers prioritised other work. 
-
-_Many authors claim that their data can be made “available on request”, despite previous work establishing that these statements are demonstrably untrue in the majority of cases - that when data is requested, it is not actually made available. [@krawczyk2012; @miyakawa2020; @naudet2018] Additionally, previous work found that the availability of data “available on request” declines with article age, indicating that this approach is not a valid long term option for data sharing.[@vines2014] Several of the included studies are greater than 10 years old, and so obtaining data from these cohorts is less likely compared with more recently published studies._ <!-- TODO taken from DAS paper, so will need to change language -->
-
-One of the reasons for this may be that the email addresses reported on publications are more likely to be out of date for older publications. Qualitatively, investigation of a subset of cohorts revealed that several corresponding/first authors were no longer at the same institution as when the study was reported, and as a result, were unlikely to have access to the institutional email address listed on the study publication. <!-- All of these are arguments towards better reporting of data availability, ownership - also talk about the ORCID and advatnages of permanent identifier-->
-
- These challenges are in theory what the DPUK was built to address. However, even with the help of the streamlined application process afforded by the DPUK, accessing sufficient data was a challenge. The response rate among DPUK cohorts a year after application was just 50%. In addition, some cohorts responded that that the proposed study question was already under investigation by another group, and that they would not share the data on this basis. In light of this, a centralised database of ongoing analysis being performed in DPUK would be of enormous help. Finally, the DPUK should more clearly distinguish between those cohorts that are "DPUK native" versus externally hosted, as the response time for externally hosted cohorts is likely to be much longer.
-
-<!-- TODO CITATION NEEDED: paper on trust as a big issue + paper on systematic review of barriers to data sharing -->
- 
-Whether or not to press ahead with an IPD analysis in the absence of all (or even most) data is a personal decision, and some previous analyses have highlighted where they decided not to pursue an IPD study.[@jaspers2014] 
-
-<!-- However, fewer than half of systematic reviews with IPDMA, published between 1987 and 2015, retrieved data from at least 80% of relevant studies and from at least 80% of relevant participants [16]. The number of IPDMAs increased over this period [17], but data retrieval rates remained unchanged [16, 18]. Inability to include eligible studies compromises the systematic review’s purpose, decreases study power, and leads to healthcare decisions based on an incomplete, potentially biased data sample (studies with available data may differ from those whose data are not available) [10, 19, 20]. However, analysis combining individual and study level data may mitigate these effects [3, 21]. from [@ventresca2020a] -->
-
-For the purposes of this thesis, conducting the IPD analysis was useful as it afforded me the opportunity to gain experience in applying the methodology. In addition, it allowed me to analysed two addition previously unanalysed cohort studies which were then utilised in the triangulation study detailed in Chapter \@ref(tri-heading).
+These challenges are in theory what the DPUK was built to address. However, even with the help of the streamlined application process afforded by the DPUK, accessing sufficient data was a challenge. The response rate among DPUK cohorts a year after application was just 50%. In addition, some cohorts responded that that the proposed study question was already under investigation by another group, and that they would not share the data on this basis. In light of this, a centralised database of ongoing analysis being performed in DPUK would be of enormous help. Finally, the DPUK should more clearly distinguish between those cohorts that are "DPUK native" (i.e. where a copy of the data is already held on DPUK servers) versus externally hosted, as the response time for externally hosted cohorts is likely to be much longer.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-#### Risk of bias assessment
+#### Uncontrolled confounding
 
-There is some concerns about performing risk of bias assessments on your own analysis, and so two secondary reviewers
+Given the extremely low .
 
-<!-- #### Opportunistic inclusion of CPRD data -->
+[Note: this made sense to me, and I hope you agree with the approach]
+
+While IPD analysis, it is well recognised
+
+However, given the inherent limitations to this IPD analysis afford by the , I considered the maximally adjusted values more useful in broader terms of the thesis, as they could be considered individual sources of evidence in the triangulation exercise presented in Chapter 7.
+
+In addition, discrepancies between the age/sex adjusted models and the maximally adjusted 
+
+Given the limited power of this analysis, I did not pursue further options to impute systematically missing variables, instead consid
 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Strengths
 
-While this analysis did not manage to systematically obtain and analyse a large proportion of identified data, it did enable an analysis of two previously unanalysed datasets - the CaPS study and the EPIC Norfolk study - providing additional data that is incorporated into the triangulation exercise reported in Chapter \@ref(tri-heading).
+While this analysis did not manage to systematically obtain and analyse a large proportion of identified data, it did enable an analysis of two previously unanalysed datasets - the CaPS and EPIC Norfolk cohorts - providing additional data that is incorporated into the triangulation exercise reported in Chapter \@ref(tri-heading).
 
-&nbsp;<!----------------------------------------------------------------------->  
-
-<!-- ### Study within a review -->
-
-<!-- In future, it could have been worth running a "study within a review", such as that used to examine the best method [@godolphin2019a] to identify and access study data. -->
-
-<!-- Options could include an investigation of the impact of applicant chacateristics  -->
-
-<!-- Previous SWARs have been registered as protocols, but have not yet reported! - Not sure this is actually true! Double check. -->
-
+__[Note: I feel quite negatively about this analysis, so suggestions for other strengths to flesh out this section would be welcome!]__
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Reflections on the process
 
-In hindsight, attempting to undertake a large-scale IPD meta-analysis as part of a larger PhD project may have been overly ambitious. Data harmonization between cohorts in an IPD analysis is an often under-appreciated challenge,[@levis2021] and in line with this, data cleaning for this analysis took substantially longer than expected. 
+In hindsight, attempting to undertake a large-scale IPD meta-analysis as part of a larger PhD project may have been overly ambitious. Data harmonization between cohorts in an IPD analysis is an often under-appreciated challenge,[@levis2021] and in line with this, data cleaning for this analysis took substantially longer than expected. While the cohort response rate was substantially lower that expected, given the time and resource of data cleaning and harmonisation for just three cohorts, a situationin whcih all 37 cohorts responded positively would have been logistically challenging within the scope of my PhD.
 
-<!-- While the cohort response rate was substantially lower that expected, given the time and resource intensity of data cleaning and harmonisation for just 4 cohorts, all full-scale IPD would have been logisitically challenging. It is positive that off the cohorts analysed, the majority represented new data not previously considered -->
+For the purposes of this thesis, conducting the IPD analysis was useful as it afforded me the opportunity to gain experience in applying the methodology. In addition, it allowed me to analysed two addition previously unanalysed cohort studies which were then utilised in the triangulation study detailed in Chapter \@ref(tri-heading).
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+### Future work
+
+While it is tempting to suggest that an IPD analysis of lipid levels be reattempted, without empirical guided approaches to increase the response rate, this may just result with a similar set of studies as described here. In line with this and the limitations considered earlier in this chapter, future methodological work could formally consider the effect of requester characteristics (sex, location, career stage) on response rates in IPD analyses.
+
+Additionally, the production of detailed guidance on handling cases where covariates are systematically missing. Much of the literature around IPD analysis is focused on the synthesis of trials, where additional covariate information is needed for the assessment of treatment-covariate interactions, rather than the adjustment of the estimate for confounding. Given the wide availability of non-randomised cohorts, improved guidance would support future work using this method.
+
+Finally, a movement towards both unique persistent identification of researchers, through schemes such as the ORCID programme,[@nature2009] would help with contact issues. Researchers move institutions frequently, and so the contact details provided on publications are frequently out of date.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ## Conclusion
 
-This analysis provided very weak evidence for an effect of lipid fractions on dementia outcomes. However, it does provide an analysis two previous unanalysed data sources that are subsequently used in Chapter \@ref(tri-heading).
+This chapter described an attempted IPD analysis, provided very weak evidence for an interaction between patient characteristics and lipids levels on the risk of allc-cause and dementia outcomes. It  discussed potential reasons for the low response rate observed in this analysis and made recommendations for future work on this topic.
+
+In the subsequent chapter, the results of this analysis will be incorporated, along with those produced in previous chapter, into a proposed triangulation framework.
 
 \newpage
 

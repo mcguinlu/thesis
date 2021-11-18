@@ -50,8 +50,12 @@ if (is.null(arg$at)) {
   x_adj <- arg$at[3]
 }
 
+if (is.null(arg$at)) {
+  x_min = -10
+} else {
+  x_min <- arg$x_min
+}
 
-x_min = -10
 x_max = 4.6 - log(3) + x_adj
 textpos <- c(x_min, x_max-1)
 y_max <- max(rows)+4
@@ -84,13 +88,10 @@ new_x_lim <- x_overall_pos + .5
 
 rob_colours <- robvis:::get_colour("ROBINS-I", "cochrane")
 
-judgements<-   c("Critical risk of bias",
-                   "Serious risk of bias",
+judgements<-   c(  "Serious risk of bias",
                    "Moderate risk of bias",
-                   "Low risk of bias",
-                   "No information")
+                   "Low risk of bias")
 cols <- c(
-    c = rob_colours$critical_colour,
     s = rob_colours$high_colour,
     m = rob_colours$concerns_colour,
     l = rob_colours$low_colour,
@@ -129,7 +130,7 @@ forest(x = dat$yi,
        sei = dat$sei,
        xlim=c(x_min, new_x_lim),
        atransf=exp,
-       slab = paste0("  ", dat$author, ", ", dat$year),
+       slab = paste0("  ", dat$author, " ", dat$year),
        cex=1.2,
        ylim=c(-1.5, y_max),
        rows=rows,
@@ -279,112 +280,34 @@ if(!is.null(title)){
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 
 graphics::legend(
-  legend_pos,
-  -1.8,
-  judgements,
-  pch = 15,
+  legend_pos-1.3,
+  -1.7,
+  c(judgements),
+  pch = c(15,15,15,16,50),
   xjust = 0.5,
-  col = head(cols,-1),
+  col = c(cols[1:3],"white","white"),
   xpd = TRUE,
-  title = parse(text = "bold(\"Judgement\")"),
-  title.adj = 0.1,
-  cex = .7,
+  title = parse(text = "bold(\"Extent of bias\")"),
+  title.adj = 0.05,
+  cex = .8,
   pt.cex = .7,
   y.intersp = 0.7
 )
 
+graphics::legend(
+  legend_pos+0.95,
+  -1.7,
+  c("\U2190  \U2192  Additive bias: ","  <   >   Proportional bias", "    ?     Unpredictable"),
+  xjust = 0.5,
+  xpd = TRUE,
+  adj = 0.15,
+  title = parse(text = "bold(\"Type of bias\")"),
+  title.adj = 0.05,
+  cex = .8,
+  y.intersp = 0.7
+  )
 
 }
 
 
-### Helper function to add Q-test, I^2, and tau^2 estimate info
-mlabfun <- function(text, res) {
-  list(bquote(paste(.(text),
-                    " (",
-                    # " Q = ", .(formatC(res$QE, digits=2, format="f")),
-                    # ", df = ", .(res$k - res$p),
-                    "p ", .(metafor:::.pval(res$pval, digits=2, showeq=TRUE, sep=" ")), "; ",
-                    I^2, " = ", .(formatC(res$I2, digits=1, format="f")), "%, ",
-                    tau^2, " = ", .(formatC(res$tau2, digits=2, format="f")), ")")))}
 
-
-
-annotate_poly <- function(yi, ci.lb, ci.ub, atransf = exp, textpos = 2, width, rows){
-  
-  if (is.function(atransf)) {
-
-    annotext <- cbind(sapply(yi, atransf), sapply(ci.lb, atransf), sapply(ci.ub, atransf))
-    ### make sure order of intervals is always increasing
-    
-    tmp <- .psort(annotext[,2:3])
-    annotext[,2:3] <- tmp
-    
-  } else {
-    
-    annotext <- cbind(yi, ci.lb, ci.ub)
-    
-  }
-  
-  annotext <- .fcf(annotext, 2)
-  
-  if (missing(width) || is.null(width)) {
-    width <- apply(annotext, 2, function(x) max(nchar(x)))
-  } else {
-    if (length(width) == 1L)
-      width <- rep(width, ncol(annotext))
-  }
-  
-  for (j in seq_len(ncol(annotext))) {
-    annotext[,j] <- formatC(annotext[,j], width=width[j])
-  }
-  
-  annotext <- cbind(annotext[,1], " [", annotext[,2], ", ", annotext[,3], "]")
-  annotext <- apply(annotext, 1, paste, collapse="")
-  text(x=textpos[2], rows, labels=annotext, pos=2, cex=1.2)
-
-}
-
-
-.fcf <- function(x, digits) {
-  
-  if (all(is.na(x))) { # since formatC(NA, format="f", digits=2) fails
-    x
-  } else {
-    trimws(formatC(x, format="f", digits=digits))
-  }
-  
-}
-
-.psort <- function(x,y) {
-  
-  ### t(apply(xy, 1, sort)) would be okay, but problematic if there are NAs;
-  ### either they are removed completely (na.last=NA) or they are always put
-  ### first/last (na.last=FALSE/TRUE); but we just want to leave the NAs in
-  ### their position!
-  
-  if (is.null(x) || length(x) == 0L) ### need to catch this
-    return(NULL)
-  
-  if (missing(y)) {
-    if (is.matrix(x)) {
-      xy <- x
-    } else {
-      xy <- rbind(x) ### in case x is just a vector
-    }
-  } else {
-    xy <- cbind(x,y)
-  }
-  
-  n <- nrow(xy)
-  
-  for (i in seq_len(n)) {
-    if (anyNA(xy[i,]))
-      next
-    xy[i,] <- sort(xy[i,])
-  }
-  
-  colnames(xy) <- NULL
-  
-  return(xy)
-  
-}

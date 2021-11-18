@@ -29,6 +29,7 @@
 - [ ] Check citations, particularly of handbook
 - [ ] Ensure all equations are in equation blocks
 - [ ] Ensure that figure table captions follow same style (bold short caption - description)
+- [ ] Ensure that everything I say is in the Appendix __is actually in the Appendix!__
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice

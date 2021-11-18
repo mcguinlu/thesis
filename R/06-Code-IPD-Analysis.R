@@ -39,12 +39,12 @@ graph <- grViz(diagram = "digraph cfa {
       tab11 [label = 'N identified: @@1-3',height = 1]
       tab21 [label = 'N identified: @@1-1',height = 1]
       
-      tab02 [label = 'N data obtained: 0 \n\n Exclusion reasons:\n-No response (n= 14)\n-No access to data (n= 2)\n-Planned analysis (n= 3)',height = 2]
-      tab12 [label = 'N data obtained: 1, height = 2]
-      tab22 [label = 'N data obtained: \n\n Exclusion reasons:\n-Dementia cohort (n= )\n-No exposure variables (n= )\n-Planned analysis (n= )',height = 2]
+      tab02 [label = 'N data obtained: 0 \n\n Exclusion reasons:\n- No response (n= 15)\n- No access to data (n= 3)\n- Planned analysis (n= 2)',height = 2]
+      tab12 [label = 'N data obtained: 1', height = 2]
+      tab22 [label = 'N data obtained: 8\n\n Exclusion reasons:\n- No response (n= 8)',height = 2]
       
-      tab3 [label = 'N assessed for inclusion: 8',height = 1]
-      tab4 [label = 'N excluded following investigation: 5 \n\n Exclusion reasons:\n-Single wave (n= 2) \n-Cognitively impaired cohort (n= 2) \n-No lipid measurements at baseline (n=1)',height = 1]
+      tab3 [label = 'N data inspected: 9',height = 1]
+      tab4 [label = 'N excluded following investigation: 6 \n\n Exclusion reasons:\n- Cross-sectional data (n= 2) \n- Cognitively impaired cohort (n= 2) \n- Dichotomised exposure (n=1)\n- Genetic risk cohort (n=1)',height = 2]
       tab5 [label = 'Final number of \ncohorts included: @@2-4',height = 1]
 
       subgraph {
@@ -81,57 +81,20 @@ graph <- grViz(diagram = "digraph cfa {
 
 ")
 
-
 htmltools::html_print(DiagrammeR::add_mathjax(graph), viewer = NULL) %>%
   webshot::webshot(file = "figures/ipd/cohortFlowchart.png", delay = 1,
                    # selector = '.html-widget-static-bound',
                    vwidth = 800,
                    vheight = 744,
-                   cliprect = c(5,160, 660, 510),
+                   cliprect = c(5,140, 700, 510),
                    zoom = 6)
-
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- primaryFigures
-
-tmp <-
-  read.csv(
-    "data/ipd/ipd_age_sex.csv",
-    strip.white = T,
-    stringsAsFactors = F,
-    header = T
-  ) %>%
-  filter(cohort != "MEMENTO") %>%
-  nest_by(lipid)
-
-library(metafor)
-
-forest_save <- function(data, lipid) {
-  png(paste0("figures/ipd/", lipid, ".png"),
-      width = 700,
-      height = 220)
-  
-  # metafor::rma(yi = estimate, vi = se, data = data, slab = cohort, method = "DL", measure = "OR") %>%
-  #   forest(showweights = T, refline = 1, annotate = T, header = c(lipid,"Estimate [95%CI]"), transf=exp)
-  
-  meta::metagen(
-    TE = estimate,
-    seTE = se,
-    studlab = cohort,
-    data = data
-  ) %>% meta::forest(overall = FALSE,
-                     xlab = paste("LogOR per 1-SD change in", lipid))
-  
-  dev.off()
-}
-
-purrr::map2(.x = tmp$data, .y = tmp$lipid, ~ forest_save(.x, .y))
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- dataExcluded-table
 
 dataExcluded_table <- read.csv(here::here("data/ipd/dataExcluded.csv"), stringsAsFactors = F) %>%
   arrange(Cohort) %T>%
-  write.csv()
+  write.csv("data/table_words/dataExcluded.csv")
 
 if (doc_type == "docx") {
   apply_flextable(dataExcluded_table, caption = "(ref:dataExcluded-caption)")
@@ -145,35 +108,320 @@ if (doc_type == "docx") {
   ) %>%
     row_spec(0, bold = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position")) %>%
-    column_spec(1, width = paste0(7, "em")) %>%
-    column_spec(2, width = paste0(24, "em"))
+    row_spec(2:nrow(dataExcluded_table) - 1, hline_after = TRUE) %>%
+
+    column_spec(1, width = paste0(12, "em")) %>%
+    column_spec(2, width = paste0(20, "em"))
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- cohortOverview-table
+# ---- covariateSummary-table
 
-cohortOverview_table <- read.csv(here::here("data/ipd/cohortSummary.csv"), stringsAsFactors = F) %>%
-  arrange(Cohort) %>%
-  rename("Dementia events (all-cause)" = Dementia,
-  "Age (mean)" = Age,
-  "Male (%)" = Male)
+covariateSummary_table <- rio::import(here::here("data/ipd/toc.csv")) %>%
+  rename(" " = Variable)
 
-if(doc_type == "docx") {
-  apply_flextable(cohortOverview_table, caption = "(ref:cohortOverview-caption)")
+if (doc_type == "docx") {
+  apply_flextable(covariateSummary_table, caption = "(ref:covariateSummary-caption)")
 } else{
   knitr::kable(
-    cohortOverview_table,
+    covariateSummary_table,
     format = "latex",
-    caption = "(ref:cohortOverview-caption)",
-    caption.short = "(ref:cohortOverview-scaption)",
-    align = c("lcccc"),
-    booktabs = TRUE
+    caption = "(ref:covariateSummary-caption)",
+    caption.short = "(ref:covariateSummary-scaption)",
+    booktabs = TRUE, 
+    align = "lccc"
   ) %>%
     row_spec(0, bold = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position")) %>%
-    column_spec(1, width = paste0(7, "em")) %>%
-    column_spec(2:5, width = paste0(6, "em"))
-    
+    row_spec(2:nrow(covariateSummary_table) - 1, hline_after = TRUE) %>%
+    kableExtra::column_spec(1, bold = FALSE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
 }
 
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- prepIPDFigures
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Main effectsl, dementia
+main_effects <- rio::import(here::here("data/ipd/results_main.csv")) %>%
+  filter(analysis == "Model 1",
+         outcome == "Dementia") %>%
+  mutate(slab = paste0(cohort)) %>%
+  mutate(slab = paste0("    ", slab)) %>%
+  mutate(term = factor(term, levels = c("Triglycerides","HDL-c","LDL-c","Total cholesterol"))) %>%
+  arrange(term,desc(cohort))
+
+png(here::here("figures/ipd/main_Dementia.png"), width = 800, height = 600)
+
+metafor::forest(
+  x = main_effects$yi,
+  sei = main_effects$sei,
+  slab = main_effects$slab,
+  atransf = exp,
+  ref = log(1),
+  xlim = c(-4, 2.25),
+  header = c("Lipids"),
+  rows = c(2,3,4,8,9,10,14,15,16,20,21,22),
+  ylim = c(0.5, 26),
+  xlab = "OR per 1-SD increase in lipid",
+  at = log(c(0.3, 1, 3)),
+  cex = 1
+)
+
+graphics::text(-4, 5, pos=4, "Triglycerides", cex=1,font=2)
+graphics::text(-4, 11, pos=4, "HDL-c", cex=1,font=2)
+graphics::text(-4, 17, pos=4, "LDL-c", cex=1,font=2)
+graphics::text(-4, 23, pos=4, "Total cholesterol", cex=1,font=2)
+
+res <- purrr::map(levels(main_effects$term), rma_flexi)
+
+purrr::map2(res, c(1,7,13,19), ~add_subgroup(.x,.y))
+dev.off()
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Main effects, vascular dementia
+main_effects <- rio::import(here::here("data/ipd/results_main.csv")) %>%
+  filter(analysis == "Model 1",
+         outcome == "vas_dem") %>%
+  mutate(slab = paste0(cohort)) %>%
+  mutate(slab = paste0("    ", slab)) %>%
+  mutate(term = factor(term, levels = c("Triglycerides","HDL-c","LDL-c","Total cholesterol"))) %>%
+  arrange(term,desc(cohort))
+ 
+png(here::here("figures/ipd/main_vasdem.png"), width = 800, height = 600)
+
+metafor::forest(
+  x = main_effects$yi,
+  sei = main_effects$sei,
+  slab = main_effects$slab,
+  atransf = exp,
+  ref = log(1),
+  xlim = c(-4, 2.25),
+  header = c("Lipids"),
+  rows = c(2,3,7,8,12,13,17,18),
+  ylim = c(0.5, 22),
+  xlab = "OR per 1-SD increase in lipid",
+  at = log(c(0.3, 1, 3)),
+  cex = 1
+)
+
+graphics::text(-4, 4, pos=4, "Triglycerides", cex=1,font=2)
+graphics::text(-4, 9, pos=4, "HDL-c", cex=1,font=2)
+graphics::text(-4, 14, pos=4, "LDL-c", cex=1,font=2)
+graphics::text(-4, 19, pos=4, "Total cholesterol", cex=1,font=2)
+
+res <- purrr::map(levels(main_effects$term), rma_flexi)
+
+vad_res <- unlist(res[1])
+
+tri_vasdem <- estimate(vad_res$b,vad_res$ci.lb,vad_res$ci.ub,type = "OR",exp = T)
+
+purrr::map2(res, c(1,6,11,16), ~add_subgroup(.x,.y))
+dev.off()
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Main effects, model comparison
+main_effects <- rio::import(here::here("data/ipd/results_main.csv")) %>%
+  filter(cohort %in% c("Whitehall","EPIC"),
+    outcome == "Dementia") %>%
+  mutate(slab = paste(cohort)) %>%
+  mutate(slab = paste0("    ", slab)) %>%
+  mutate(term = factor(term, levels = c("Triglycerides","HDL-c","LDL-c","Total cholesterol"))) %>%
+  arrange(term,desc(cohort), desc(analysis))
+
+png(here::here("figures/ipd/main_model_comparison.png"), width = 800, height = 700)
+
+metafor::forest.default(
+  x = main_effects$yi,
+  sei = main_effects$sei,
+  slab = main_effects$slab,
+  ilab = main_effects$analysis,
+  ilab.xpos = -2,
+  atransf = exp,
+  xref = 1,
+  xlim = c(-4, 2.25),
+  header = c("Lipid/Cohort"),
+  ylim = c(-1,26),
+  xlab = "OR per 1-SD increase in lipid",
+  rows = c(1,2,3,4,7,8,9,10,13,14,15,16,19,20,21,22),
+  at = log(c(0.3, 1, 3))
+)
+
+graphics::text(-2, 26, pos=1, "Analysis", cex=1,font=2)
+graphics::text(-4, 5, pos=4, "Triglycerides", cex=1,font=2)
+graphics::text(-4, 11, pos=4, "HDL-c", cex=1,font=2)
+graphics::text(-4, 17, pos=4, "LDL-c", cex=1,font=2)
+graphics::text(-4, 23, pos=4, "Total cholesterol", cex=1,font=2)
+
+graphics::text(-4, -.5, pos=4, "Model 1: Age, sex, smoking, alcohol, and presence of vascular disease", cex=0.9, font =2)
+graphics::text(-4, -1.1, pos=4, "Model 2: Model 1 + BMI and education", cex=0.9, font = 2)
+
+dev.off()
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Main effects, Whitehall
+
+tyk <- rio::import(here::here("data/ipd/results_tyk.csv")) %>%
+  mutate(yi = log(yi),
+    sei = ((log(uci)-log(lci))/3.92)) %>%
+  select(-c(uci,lci))
+
+main_effects <- rio::import(here::here("data/ipd/results_main.csv")) %>%
+  filter(cohort == "Whitehall",
+         analysis == "Model 2",
+         outcome == "Dementia") %>%
+  select(-analysis) %>%
+  mutate(cohort = "IPD Analysis") %>%
+  rbind(tyk) %>%
+  mutate(slab = paste(cohort)) %>%
+  mutate(slab = paste0("    ", slab)) %>%
+  mutate(term = factor(term, levels = c("Triglycerides","HDL-c","LDL-c","Total cholesterol"))) %>%
+  arrange(term,desc(cohort))
+
+png(here::here("figures/ipd/whitehall_comparison.png"), width = 700, height = 600)
+
+metafor::forest.default(
+  x = main_effects$yi,
+  sei = main_effects$sei,
+  slab = main_effects$slab,
+  ilab = main_effects$analysis,
+  ilab.xpos = -2,
+  atransf = exp,
+  xref = 1,
+  xlim = c(-3, 2.25),
+  header = c("Lipid/Cohort"),
+  ylim = c(1,22),
+  xlab = "OR per 1-SD increase in lipid",
+  rows = c(2,3,7,8,12,13,17,18),
+  at = log(c(0.3, 1, 3))
+)
+
+graphics::text(-3, 4, pos=4, "Triglycerides", cex=1,font=2)
+graphics::text(-3, 9, pos=4, "HDL-c", cex=1,font=2)
+graphics::text(-3, 14, pos=4, "LDL-c", cex=1,font=2)
+graphics::text(-3, 19, pos=4, "Total cholesterol", cex=1,font=2)
+
+dev.off()
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Interaction effects, vascular dementia, age
+main_effects <- rio::import(here::here("data/ipd/results_interaction.csv")) %>%
+  filter(analysis == "age",
+         outcome == "vas_dem") %>%
+  mutate(slab = paste0(cohort)) %>%
+  mutate(slab = paste0("    ", slab)) %>%
+  mutate(term = factor(term, levels = c("Triglycerides","HDL-c","LDL-c","Total cholesterol"))) %>%
+  arrange(term,desc(cohort))
+
+png(here::here("figures/ipd/interaction_age_vasdem.png"), width = 800, height = 600)
+
+metafor::forest(
+  x = main_effects$yi,
+  sei = main_effects$sei,
+  slab = main_effects$slab,
+  atransf = exp,
+  ref = log(1),
+  xlim = c(-4, 2.25),
+  header = c("Lipids"),
+  rows = c(2,3,7,8,12,13,17,18),
+  ylim = c(0.5, 22),
+  xlab = "OR per step increase in age group",
+  at = log(c(0.3, 1, 3)),
+  cex = 1
+)
+
+graphics::text(-4, 4, pos=4, "Triglycerides", cex=1,font=2)
+graphics::text(-4, 9, pos=4, "HDL-c", cex=1,font=2)
+graphics::text(-4, 14, pos=4, "LDL-c", cex=1,font=2)
+graphics::text(-4, 19, pos=4, "Total cholesterol", cex=1,font=2)
+
+res <- purrr::map(levels(main_effects$term), rma_flexi)
+
+purrr::map2(res, c(1,6,11,16), ~add_subgroup(.x,.y))
+dev.off()
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Interaction effects, dementia, sex
+main_effects <- rio::import(here::here("data/ipd/results_interaction.csv")) %>%
+  filter(analysis == "sex",
+         outcome == "Dementia") %>%
+  mutate(slab = paste0(cohort)) %>%
+  mutate(slab = paste0("    ", slab)) %>%
+  mutate(term = factor(term, levels = c("Triglycerides","HDL-c","LDL-c","Total cholesterol"))) %>%
+  arrange(term,desc(cohort))
+
+png(here::here("figures/ipd/interaction_sex_dementia.png"), width = 800, height = 600)
+
+metafor::forest(
+  x = main_effects$yi,
+  sei = main_effects$sei,
+  slab = main_effects$slab,
+  atransf = exp,
+  ref = log(1),
+  xlim = c(-4, 2.25),
+  header = c("Lipids"),
+  rows = c(2,3,7,8,12,13,17,18),
+  ylim = c(0.5, 22),
+  xlab = "OR",
+  at = log(c(0.3, 1, 3)),
+  cex = 1
+)
+
+graphics::text(-4, 4, pos=4, "Triglycerides", cex=1,font=2)
+graphics::text(-4, 9, pos=4, "HDL-c", cex=1,font=2)
+graphics::text(-4, 14, pos=4, "LDL-c", cex=1,font=2)
+graphics::text(-4, 19, pos=4, "Total cholesterol", cex=1,font=2)
+
+res <- purrr::map(levels(main_effects$term), rma_flexi)
+
+purrr::map2(res, c(1,6,11,16), ~add_subgroup(.x,.y))
+dev.off()
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# Interaction effects, age, dementia
+main_effects <- rio::import(here::here("data/ipd/results_interaction.csv")) %>%
+  filter(analysis == "age",
+         outcome == "Dementia") %>%
+  mutate(slab = paste0(cohort)) %>%
+  mutate(slab = paste0("    ", slab)) %>%
+  mutate(term = factor(term, levels = c("Triglycerides","HDL-c","LDL-c","Total cholesterol"))) %>%
+  arrange(term,desc(cohort))
+
+png(here::here("figures/ipd/interaction_age_dementia.png"), width = 800, height = 600)
+
+metafor::forest(
+  x = main_effects$yi,
+  sei = main_effects$sei,
+  slab = main_effects$slab,
+  atransf = exp,
+  ref = log(1),
+  xlim = c(-4, 2.25),
+  header = c("Lipids"),
+  rows = c(2,3,4,8,9,10,14,15,16,20,21,22),
+  ylim = c(0.5, 26),
+  xlab = "OR per step increase in age group",
+  at = log(c(0.3, 1, 3)),
+  cex = 1
+)
+
+graphics::text(-4, 5, pos=4, "Triglycerides", cex=1,font=2)
+graphics::text(-4, 11, pos=4, "HDL-c", cex=1,font=2)
+graphics::text(-4, 17, pos=4, "LDL-c", cex=1,font=2)
+graphics::text(-4, 23, pos=4, "Total cholesterol", cex=1,font=2)
+
+res <- purrr::map(levels(main_effects$term), rma_flexi)
+
+purrr::map2(res, c(1,7,13,19), ~add_subgroup(.x,.y))
+dev.off()
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- ipdSummStat
+
+n_total_ipd <- comma(8208+1115+2512)
+
+n_ipd_dementia <- 287+8+247
+n_ipd_vasdem <- 37+77
 

@@ -278,6 +278,9 @@ In summary, multiple sources of evidence exist on the relationship between stati
 
 ## Theoretical framework: Evidence synthesis 
 
+<!-- TODO Consider inverting the order so that triangulation comes last - as it does in the thesis as a whole! -->
+
+
 Evidence synthesis is the process of finding and integrating information from several sources to examine a research question.[@donnelly2018a] A common tyoe of evidence synthesis is a systematic review, either with or without a meta-analysis.[@chandler2019chapter]
 
 The results of an evidence synthesis exercise can be used to provide a more definitive answer to that question or, failing that, to highlight gaps in the existing evidence base. The ability to identify these gaps is particularly useful in guiding future research to address questions that have yet to be answered.
@@ -337,6 +340,7 @@ Despite their advantages, IPD meta-analysis are rarely performed.[@tugwell2010] 
 In response to these limitations, new collaborative initiatives have developed to enable rapid access to relevant data in a secure supported workshop. The most import in relation to this thesis is the Dementia Platform UK (DPUK),[@bauermeister2020] which aims to provide access to several dementia-related datasets via a single simplified application process.
 
 I will will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). Any data obtained will be combined with that available from the DPUK portal as part of an individual participant data meta-analysis in Chapter \@ref(ipd-analysis-heading), enabling the assessment of the effect of lipids on dementia stratified by key variables such as sex.
+
 <!----------------------------------------------------------------------------->
 
 ## Thesis overview {#background-thesis-overview}
@@ -351,6 +355,7 @@ The specific research objectives that this thesis seeks to address are:
 * To review all available evidence across multiple diverse study designs to assess the effect of lipids and lipid regulating agents on dementia risk
 * To examine whether there is evidence for an effect of lipid-regulating agents on dementia and related outcomes in a large scale population-based cohort, the Clinical Practice Research Datalink (CPRD)
 * To meta-analyse raw dementia-related datasets as part of a individual participant data (IPD meta-analysis) to produce evidence on exposure-covariate interactions
+* To propose a generalised framework for the quantitative triangulation across diverse evidence sources
 
 ### Structure {#thesis-structure}
 

@@ -1,0 +1,29 @@
+analysis,cohort,term,outcome,yi,sei
+Model 1,CAPS,Total cholesterol,Dementia,-0.0474,0.0689
+Model 1,CAPS,HDL-c,Dementia,-0.0328,0.0691
+Model 1,CAPS,LDL-c,Dementia,-0.0462,0.0698
+Model 1,CAPS,Triglycerides,Dementia,-0.018,0.0706
+Model 1,EPIC,Total cholesterol,Dementia,0.398,0.421
+Model 1,EPIC,HDL-c,Dementia,-0.391,0.63
+Model 1,EPIC,LDL-c,Dementia,0.443,0.453
+Model 1,EPIC,Triglycerides,Dementia,0.385,0.307
+Model 1,Whitehall,Total cholesterol,Dementia,0.00599,0.064
+Model 1,Whitehall,HDL-c,Dementia,0.0694,0.0653
+Model 1,Whitehall,LDL-c,Dementia,-0.0975,0.0644
+Model 1,Whitehall,Triglycerides,Dementia,0.205,0.0434
+Model 2,EPIC,Total cholesterol,Dementia,0.367,0.419
+Model 2,EPIC,HDL-c,Dementia,-0.342,0.654
+Model 2,EPIC,LDL-c,Dementia,0.399,0.462
+Model 2,EPIC,Triglycerides,Dementia,0.397,0.311
+Model 2,Whitehall,Total cholesterol,Dementia,-0.0354,0.0839
+Model 2,Whitehall,HDL-c,Dementia,0.0416,0.0893
+Model 2,Whitehall,LDL-c,Dementia,-0.126,0.0849
+Model 2,Whitehall,Triglycerides,Dementia,0.229,0.0602
+Model 1,CAPS,Total cholesterol,vas_dem,-0.0603,0.131
+Model 1,CAPS,HDL-c,vas_dem,-0.0707,0.139
+Model 1,CAPS,LDL-c,vas_dem,-0.156,0.138
+Model 1,CAPS,Triglycerides,vas_dem,0.235,0.11
+Model 1,Whitehall,Total cholesterol,vas_dem,0.4,0.219
+Model 1,Whitehall,HDL-c,vas_dem,0.71,0.218
+Model 1,Whitehall,LDL-c,vas_dem,-0.201,0.248
+Model 1,Whitehall,Triglycerides,vas_dem,0.399,0.0803

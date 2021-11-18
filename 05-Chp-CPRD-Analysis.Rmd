@@ -138,7 +138,7 @@ The index date for a participant was defined as the date where the first relevan
 
 ### Exposures
 
-We considered seven lipid-regulating drug classes based on groupings in the British National Formulary (BNF),[@wishart2017] namely: statins, fibrates, bile acid sequestrants, ezetimibe, nicotinic acid groups, ezetimibe and statin (representing one treatment containing both drugs, rather than the two classes being prescribed concurrently), and omega-3 fatty acid groups.  
+I considered seven lipid-regulating drug classes based on groupings in the British National Formulary (BNF),[@wishart2017] namely: statins, fibrates, bile acid sequestrants, ezetimibe, nicotinic acid groups, ezetimibe and statin (representing one treatment containing both drugs, rather than the two classes being prescribed concurrently), and omega-3 fatty acid groups.  
  
 A participants drug class was assigned based on their first recorded prescription, and any drug switching was ignored in an effort to mimic an intention-to-treat approach. We did however examine how often the initial drug class altered according to one of three criteria:
 
@@ -152,7 +152,7 @@ A participants drug class was assigned based on their first recorded prescriptio
 
 ### Outcomes {#cprd-outcomes}
 
-We considered five outcomes as part of this analysis: probable  Alzheimer’s disease, possible Alzheimer’s disease, vascular dementia, other dementias, and a composite all-cause dementia outcome. When two or more outcomes were coded in a participant’s clinical record, a decision tree was used to differentiate between them (Figure \@ref(fig:decisionTreeFig)). The diagnosis date of the outcome was determined by the first record of a relevant code.
+I considered five outcomes as part of this analysis: probable  Alzheimer’s disease, possible Alzheimer’s disease, vascular dementia, other dementias, and a composite all-cause dementia outcome. When two or more outcomes were coded in a participant’s clinical record, a decision tree was used to differentiate between them (Figure \@ref(fig:decisionTreeFig)). The diagnosis date of the outcome was determined by the first record of a relevant code.
 
 <!----------------------------------------------------------------------------->
 (ref:decisionTreeFig-cap) Decision tree for assigning dementia subtypes, based on the presence of Read codes in the patient's record. Note that an outcome of "probable" or "Possible" Alzheimer's disease (AD) requires the absence of any vascular outcome codes.
