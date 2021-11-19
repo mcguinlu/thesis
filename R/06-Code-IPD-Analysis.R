@@ -41,7 +41,7 @@ graph <- grViz(diagram = "digraph cfa {
       
       tab02 [label = 'N data obtained: 0 \n\n Exclusion reasons:\n- No response (n= 15)\n- No access to data (n= 3)\n- Planned analysis (n= 2)',height = 2]
       tab12 [label = 'N data obtained: 1', height = 2]
-      tab22 [label = 'N data obtained: 8\n\n Exclusion reasons:\n- No response (n= 8)',height = 2]
+      tab22 [label = 'N data obtained: 8\n\n Exclusion reasons:\n- No response (n= 7)\n- Planned analysis (n= 1)',height = 2]
       
       tab3 [label = 'N data inspected: 9',height = 1]
       tab4 [label = 'N excluded following investigation: 6 \n\n Exclusion reasons:\n- Cross-sectional data (n= 2) \n- Cognitively impaired cohort (n= 2) \n- Dichotomised exposure (n=1)\n- Genetic risk cohort (n=1)',height = 2]

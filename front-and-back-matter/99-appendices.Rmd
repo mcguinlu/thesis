@@ -271,12 +271,11 @@ if(doc_type == "docx") {
 ## Chapter \@ref(discussion-heading)
 
 <!----------------------------------------------------------------------------->
-### Catalogue of failures
+### Catalogue of failures {#appendix-catalogue-failures}
 
-Short section detailing the things I tried to do but which did not work.
+Short section detailing the things I tried to do but which did not work:
 
-
-
+failing to realise that the initial codelist used for the positive control outcome of IHD in the CPRD analysis (Chapter \@ref(cprd-heading))
 
 <!----------------------------------------------------------------------------->
 # Other Appendix {#other-appendix-heading}
@@ -461,3 +460,4 @@ The following pages contain copies of papers arising from work performed as part
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/prevsci.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf}

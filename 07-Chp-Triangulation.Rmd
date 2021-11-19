@@ -137,6 +137,7 @@ The risk of bias tools used to assess each result are described in detail in Sec
 
 <!-- Due to the inherent conflict of interest in assessing my own analysis, the result were also assessed by two independent reviewers. -->
 
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Qualitative triangulation
 
@@ -217,6 +218,8 @@ As indicated in the options above, the response to this question is also used to
 
 In contrast, for proportional biases, whether the estimate should be increased or decreased proportionally depends on the current position of the point estimate relative to the null. For example, if the effect estimate represents a protective effect (below the null), then bias towards the null would be adjusted for by moving the effect estimate propotionally to the right. In contrast, if the effect of the intervention is harmful (effect estimate above the null), bias towards the null would be adjusted for by moving the effect estimate propotionally to the left. 
 
+<!-- TODO The additive biases in this example figure should refer to favouring the comparator, meaning that the bias is pulling towards the intervention side (i.e. is making the comparator look better). -->
+
 <!----------------------------------------------------------------------------->
  ```{r exampleDirectionSetup, include = F}
  ```
@@ -240,7 +243,7 @@ Note that for some domains, only one type of bias is allowed. For example, in th
 
 To aid with the triangulation exercise and to act as a sense-check, I created a new method to visualise the extent, direction and type of bias in each result to enable detailed comparison across different studies contributing to a synthesis. Similar to the standard paired forest plots introduced in Chapter \@ref(sys-rev-), these "bias direction" plots show the  level of bias across the domains in each study is reported using coloured blocks. However, in contrast to the previous plots, symbols are used to illustrate the predicted absolute direction of bias in that domain, as discussed in the previous section. Distinct symbol pairs are used to denote additive and proportional biases.
 
-Convience functions in the `triangulate` package (see Section \@ref(tri-software)) were used to preprocess risk of bias data for use with both bias-direction plots and adjusted meta-analyses, as discussed in subsequent sections. These bias direction plots themselves were created using the risk-of-bias visualisation tool described in Appendix \ref(?).
+Convenience functions in the `triangulate` package (see Section \@ref(tri-software)) were used to preprocess risk of bias data for use with both bias-direction plots and adjusted meta-analyses, as discussed in subsequent sections. These bias direction plots themselves were created using the risk-of-bias visualisation tool described in Appendix \ref(?).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -321,10 +324,9 @@ The standard error of this estimate is then calculated as:
 
 Once each individual result has been adjusted, I performed a random effects meta-analysis using the unadjusted and adjusted (under the two scenarios defined above) results. <!-- TODO CITATION NEEDED -->
 
-<!-- TODO Deal with the fact that the Panel wasn't super useful -->
+<!-- TODO Sensitivity analysis - set means to zero and only adjust for variance. Essentially adding uncertainty based on the amount of bias but not moving the effect estimate -->
 
 &nbsp;<!----------------------------------------------------------------------->  
-
 
 ## Results
 
@@ -391,6 +393,14 @@ Calculate internal-bias adjusted
 
 The unadjusted effect for this study was `r hold()` and the adjusted effect estimate for this study was `r hold()`
 
+In this study, there were 3 domains at greater than low risk of bias: Bias due to confounding, Bias due to definition of the outcome, and Bias in the selection of the reported result. 
+
+In Domain 1, the study did not adjust for ApoE4, which is predicted to mask any true assocation between statins and . As such, the bias is predicted to _favour the comparator_ and so the absolu
+
+In Domain 5, there was a moderate risk of differential miclassification on the basis of the exposure, and so the predicted direction of bias in this domain is to _favours the intervention_. As such, the absolute direction of bias is to the left.
+
+For consistency with the other NRSI, in the absence of a protocol, bias in the selection of the reported result is assumed to be _away from the null_. Given the position of the effect estimate below the null (`r hold()`), the absolute direction of bias in this domain is to the left.
+
 <!----------------------------------------------------------------------------->
 (ref:biasDirectionSingle-cap) Bias direction plot for a single study showing the predicted direction of bias in each domain. Additive biases are characterised using arrows, while the proportional biases are denoted using $<$ and $>$. A question mark indicates that the direction of bias was unpredictable.
 
@@ -405,6 +415,8 @@ knitr::include_graphics(file.path("figures/tri/midlife_AD_single.png"))
 #### Case study: effect of LDL-c at midlife on Alzheimer's disease
 
 From the data sources identified in Section \@(), I identified X results relevant to my causal question of interest. <!-- TODO CITATION NEEDED will need to cite these! --> The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:ldlAdBiasDirection), stratified by study design.
+
+<!-- Question - Hypercholesterolemia should not be included here, as it is focused on total cholesterol rather than specifically LDL-c, right? -->  
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -426,8 +438,9 @@ The results of the unadjusted and the bias-/indirectness-adjusted (under the Sce
 
 To explore the different impacts of the two defined scenarios for additive bias, I plotted these:
 
-<!-- TODO Finish -->
+<!-- TODO How effect are fibrates at lowering triglycerides? is it a direct effect, or are there alternative -->
 
+<!-- TODO Finish -->
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -445,6 +458,9 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad.png"))
 ```
 
 &nbsp;<!----------------------------------------------------------------------->  
+
+#### Case study: effect of triglycerides at midlife on vascular dementia
+
 
 
 ## Discussion
@@ -495,16 +511,27 @@ Similar there are several examples of usmeta to define priors for other statisti
 
 Elicitation and bias-adjusted not as favoured versus weighting [@stone2020] <!-- TODO Check this is actually what this reference says --> though weighting at the overall risk-of-bias level loses some of the information contained in domain-level based assessments. 
 
+In future, domain specific. In fact, it may also be more reasonable for domains such as confounding to adjust on a per-confounder basis. In the approach, prior distributions are assigned to each of the confounding domains prespecified as part of the ROBINS-I tool. Then, rather than assigning a domain level distrbution based on an arbraty judgement of how many important confounders are missing, the result is adjusted for each confounder not accounted for in the original analysis. As an example, ApoE4 is a much stronger confounder of the LDL-c than a single lifestyle indicator.
+
+<!-- TODO Talk about sensitivity analysis that only added variance rather than moving the point estimate, and highlight that this is a way to account for bias without having to make strong predictions about the direction of bias in a given domain. -->
+
+Estimates of modifying means might be conservative in relation to some potentially strong confounders. A previous simulation study estimated that ApoE4 would induce a RR of 1.09 with risk of dementia per 1-SD increase in LDL-c.[@iwagami2021a]
+
+
 
 #### Subjectivity of bias-/indirectness-assessment
 
 <!-- TODO Add text here on the subjectivity of qualitative risk of bias assessment and cite ROBINS-I to say that risk of bias is hard. Note that this will apply  -->
 
-A key issue in this analysis is t
+A key issue in this analysis is the subjectivity of both the 
 
 
-As observed from Figure \@ref(@) in the bias-adjusted analysis, the Ostergaard _et al._ 2017
- 
+Key problem here is if the rigourness of the tools is not equivalent. This is less of an issue for the ROB suite of tools (RoB 2.0, ROBINS-I, ROBINS-E). This can be illustrated by the Ostergaard _et al._ study having low risk of bias. 
+
+This is particularly problematic given the default of the ROBINS-I and ROBINS-E tool to require a "Moderate" judgement in the confounding domain. It means that, if the MR tool is insufficiently assessing bias in MR studies, the best performed cohort study (low risk of bias across everything other that confounding) will  always downweighted versus potentialyl a poor MR study.
+
+Similarly,
+
 &nbsp;<!----------------------------------------------------------------------->  
 
 #### Low and critical risk of bias
