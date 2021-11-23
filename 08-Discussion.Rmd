@@ -27,94 +27,114 @@ Hold
 
 ## Lay summary
 
-This chapter details the
-
+TBC
 
 ## Introduction 
 
-The aim of this thesis was to attempt to infer the causal effect of blood lipid levels on dementia outcomes.
+The aim of this thesis was to attempt to infer the causal effect of blood lipid levels on dementia outcomes. In this discussion, I will review the role of each chapter in the broader thesis, summarise the principal findings and contributions of this thesis, and discuss the implications of my findings for both clinical and public health policy. I consider the overall strengths and limitations of this thesis as a coherent body of work, and suggest avenues for impactful future research based on my findings and experiences.
 
-In this chapter I will summarise the principal findings from my thesis, assess the unique contributions of this thesis to the field of research, discuss the implications for both clinical and public health policy, describe the overall strengths and limitations of this thesis as a whole, suggest avenues for impactful future research based on my findings and experiences.
+## Chapter summary
 
-In __Chapter \@ref(sys-rev-tools-heading)__ presents a new tool for the systematic searching of health-related preprints, and detail
+This thesis is comprised of a mix of informative, methodological and applied chapters.
 
-In __Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)__ describe the methods and results of a comprehensive systematic review of the relationship between blood lipids (and treatments that modify them) and dementia outcomes.
+In Chapter __Chapter \@ref(sys-rev-tools-heading)__, I introduced the core concepts considered in thie
 
-In __Chapter \@ref(cprd-heading)__ presents an analysis of lipid-regulating use and dementia outcomes in the CPRD, a large scale 
+In __Chapter \@ref(sys-rev-tools-heading)__, I  presented a new tool for the systematic searching of health-related preprints, and detail
 
-In __Chapter \@ref(ipd-heading)__ presents an individual patient data meta-analysis, using previously unanalysed data accessed via the Dementia Platform UK.
+In __Chapters \@ref(sys-rev-methods-heading)__, I describe the methods of a comprehensive systematic review of the relationship between dementia outcomes and blood lipids (and treatments that modify them). The results of this analysis are then presented in __Chapter \@ref(sys-rev-results-heading)__.
 
-In __Chapter \@ref(tri-heading)__ presents a narrative summary of the evidence identified and produced by the preceding chapters, and proposes a new method of systematically integration of multiple evidence sources as part of quantitative triangulation exercise.
+In __Chapter \@ref(cprd-heading)__, I describe an analysis of lipid-regulating use and dementia outcomes in the CPRD, a large scale electronic health database. I make use of control outcomes to illustrate insufficiently controlled biases
+
+In __Chapter \@ref(ipd-heading)__, I present an individual patient data meta-analysis, using previously unanalysed data accessed via the Dementia Platform UK to add to the evidence base on the association of blood lipids and dementia outcomes.
+
+Finally, in __Chapter \@ref(tri-heading)__ I propose a new method of systematically integration of multiple evidence sources as part of quantitative triangulation exercise. I illustrate the method by considering two causal questions (LDL-c and Alzheimer's disease; triglycerides and vascular dementia), drawing on the evidence identified or produced by previous chapters.
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-## New evidence produced
+## Summary of principle findings
 
-Since the systematic review was performed, there have been some notable further analysis related to the central thesis question here. Two of these are discussed here notable studies are discussed here.
 
-Found slight raised risk of dementia in CPRD patients () with higher LDL-c measured at mid-life, driven by the finding for Alzheimer's disease [@iwagami2021]. Not inconsistent with the findings presented in this thesis, particularly given the lack of adjustment for confounding by ApoE4.
+Overall, I did not identify a consistent effect of any blood lipid fraction (total cholesterol, LDL cholesterol, HDL cholesterol or triglycerides) on any dementia outcome (all-cause dementia, Alzheimer's disease or vascular dementia). 
+
+While published non-randomised studies provided evidence for a protective effect of statin use on Alzheimer's disease, this effect was not maintained when incorporated along with other sources of evidence in a quantitative triangulation framework. However, this equally may indicate that statins have a pleiotropic effects on Alzheimer's disease, that is an effect other than through lipid-lowering. However, this observed effect could also be due to reporting biases, a 
+
+The inclusion of preprints 
+
+Statins were by far the most studied lipid-regulating agent in relation to dementia outcomes, a unsurprising finding given the large proportion of patients taking statins as indicated by my analysis of the CPRD data.
+
+The inclusion
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+## New evidence
+
+Since the systematic review described in this thesis was performed, there have been two notable analysis of large cohorts performed related to the central thesis question here. Two of these are discussed here notable studies are discussed here.
+
+The first a large scale analysis of blood lipids in the CPRD, which found a slight raised risk of dementia in CPRD patients () with higher LDL-c measured at mid-life, driven by the finding for Alzheimer's disease.[@iwagami2021] These findings are n Not inconsistent with the findings presented in this thesis, particularly given the lack of adjustment for confounding by ApoE4.
 
 <!-- TODO The study says that simulated effect of ApoE4 is a 1.09 RR in the absence of a true causal effect. Main results are between 1.03 and 1.17. CI for most extreme results is (lower = 1.08) is not inconsistent with the effect introduced by ApoE4 which is just a single confounder out of many -->
 
-In relation to the suggestion in this analysis that raised triglycerides were associated with an increasede risk of vascular dementia, a 2021 study in a  125,727 Danish participants found the moderate hypertriglyceridemia was associated with increased risk of non-Alzheimer's dementia (`r estimate(1.79, 1.16,2.87,"HR")`).[@nordestgaard2021]
+An analysis of 502,226 participants of the UK BioBank found no association between lipids at mid-life and dementia outcomes (women: TC `r estimate(1.04,.99,1.09,"HR")`, HDL `r estimate(0.95,.83,1.1,"HR")`, LDL `r estimate(1.6,1,1.13,"HR")`/men: TC `r estimate(0.98,.93,1.03,"HR")`, HDL `r estimate(1.1,.95,1.29,"HR")`, LDL `r estimate(.97.91,1.04,"HR")`).[@gong2021] Results were boardly similar between the all-cause dementia, Alzheimer's disease and vascular dementia outcomes. This is comparable to my findings.
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+## Summary of contributions
+
+The research described in this thesis represents a number of novel contributions to the the fields of evidence synthesis 
+
+With respect to dementia epidemiology, the systematic review reported in Chapters
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ## Lessons learned
 
-As part 
+As a reflective process throughout the PhD, I maintained a catalogue of failures available in Appendix \@ref(appendix-catalogue-failures), describing . here I present a more general rel
 
 In hindsight, the decision to take a broad approach to inclusion of dementia outcomes potentially resulted in larger workload than anticipated, particularly when considered evidence from across different study designs. In a do-over, I would have considered a single dementia outcome.
 
-Additionally, in hindsight, I may have considered a mor. However, under the conditions of my grant, the scope for chang
+Additionally, in hindsight, I may have considered a more methodological thesis. The Chapter's I enjoyed working on the most (Chapters \@ref())
 
-As a reflective process throughout the PhD, I maintained a catalogue of failures (available in Appendix \@ref(appendix-catalogue-failures)).
+Further, a more aggressive approach to , Potential approaches could have included sending emails via my supervisors
 
-
+However, normal opportunities to tie people down in person were suspended during COVID. 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ## Overall strengths and limitations
 
-The strengths a limitations of each component of this thesis are discussed in the respective chapters. Here I highlight the strengths and weakness of the thesis as a body of work.
+The strengths a limitations of each component of this thesis have been discussed in the respective chapters. Here I highlight the strengths and weakness of the thesis as a body of work.
 
-This thesis has used multiple sources of evidence to examine the relationship between blood lipids levels and cholesterol risk. 
+&nbsp;<!----------------------------------------------------------------------->  
+
+#### Strengths
+
+This thesis has used multiple sources of evidence to examine the relationship between blood lipids levels and cholesterol risk in a systemtatic manner, including diverse sources of evidence, inclu
 
 It has highlighted the importance of including preprints in systematic review, and provided a tool to enable researchers to easily do so. 
 
-It has analysed two previously unanalysed datasets, adding useful information to the evidence base.
+It has provided new evidence on an understudied condition (vascular demenita), analysing three previously unexplored datasets to provide evinde
 
-However, the thesis as a whole is subject to some strong limitations. 
-
-
-__Strengths__
 - New evidence sources for an under-studied condition
 - Development of new methods and tool
 
+One particularly strength is the lengths gone to find all available published and unpublished evidence around the question, and to integrate this evidence in a coherent framework, taking into account the limitations of ach source and how these limitations may be used to provide 
 
+&nbsp;<!----------------------------------------------------------------------->  
 
+#### Weaknessess
 
-__Weaknesses__
-A general limitation of this thesis is the absence of known results/data. This occured in both the systematic review, via the selection of reporting results and potential for publication bias. It was also observeed. 
+However, the thesis as a whole is subject to some strong limitations. 
 
-These facts both potentially bias the summary associations observed here, in addition to weakening the precision of the estimates produced. 
+A general limitation of this thesis is the absence of known results/data. This occurred in both the systematic review, via the selection of reporting results and potential for publication bias. It was also observed. 
 
-- Confounding by indication
+Similarly, missing evidence was a common theme across this thesis. In Chapters \@ref(hold)/\@ref(hold), several studies stated that they did not report the results of an analysis because the results were not significant. This was particularly common among non-randomised studies of exposure examining blood lipids directly. Fortunately, new tools such as the forthcoming ROB-ME. 
 
-- A lot of UK based data
+Similarly, an absence of evidence on vascular dementia limits the certainty. In both these cases, accounting for missing evidence will be an important part of future evidence snythesis work on this topic.  
 
+Missing evidence in the form of a poor response to data access requests was also observed in the IPD analysis reported in Chapter \@ref(hold).
 
-
-
-There are several strengths and limitations to the work presented in this thesis. One particularly strength is the lengths gone to find all available published and unpublished evidence around the question, and to integrate this evidence in a coherent framework, taking into account the limitations of ach source and how these limitations may be used to provide 
-
-Need for large simple trials for common disease where small treatment effect can have large effect - [@yusuf1984]
-
-
-This thesis is limited by the low response rate to data access requests, and the
-
-The lack of large, precise studies made comparison across different types of evidence difficult, while the low number of eligible studies for a
-
+A final weakness of this thesis is the geographical focus. All primary analysis presented drew on data from the UK population (CPRD, CaPS, EPIC Norfolk, Whitehall II). 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -122,31 +142,23 @@ The lack of large, precise studies made comparison across different types of evi
 
 ### Clinical practice
 
-Across multiple sources of evidence, there was no consistent effect of blood lipids, or . Some 
+The clinical recommendations that can be drawn from the work in this thesis are limited, due to the low strength of evidence. Across multiple sources of evidence, there was no consistent effect of blood lipids on dementia outcomes.
 
-The clinical recommendations that can be drawn from the work in this thesis are limited, due to the low strength of evidence related to the
+However, even under the scenario that a strong protective effect was identified, whether or not to prescribed a statin at mid-life will always be guided by factors other than dementia prevention. Patients must live to a certain age in order to be at risk of dementia (with the exception of familial early onset dementias), which is substantially less likely if hypercholesterolemia is left unchecked.
+
+However, while this thesis did not provide any evidence for a protective effect of lipid-lowering, it similarly did not provide any evidence for a harmful effect of statin exposure on dementia outcomes. 
 
 There was very we. Conversely however, there was an absence of evidence for a harmful effect of statins on. Given the reality that given the choice, given the conflicting evidence 
 
-Patients must live to a sufficient age to be at risk of dementia outcomes, which is substantially less like if high lipid levels in mid-life. 
-
-The role of lipid-lowering 
-
-As with many many studies of dementia outcomes, a key limiting factor of any analysis is the absence of a detailed pathological mechanism for Alzheimer's disease. It could well be that statins do have a true effect independently of lipid levels, though based on the certainty of evidence in NRSI, this is unlikely.
-
-However, based on the available evidence 
-
-For other dementia outcomes, 
-
-
+As with many many studies of dementia outcomes, a key limiting factor of any analysis is the absence of a detailed pathological mechanism for the condition. It could well be that statins do have a true effect independently of lipid levels, though based on the certainty of evidence in NRSI, this is unlikely.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Public health
 
+The absence of an effect of blood lipids on dementia outcomes is an unh
 
-
-
+However, future work 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -154,25 +166,11 @@ For other dementia outcomes,
 
 Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tool to help search medRxiv and bioRxiv preprint metadata. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
 
-<!-- TODO Could he get it work, could he feck. -->
-
 Unfortunately, given the. However, as discussed in other chapters of this thesis and elsewhere, sharing of analysis code is a useful step towards transparency when the underlying datasets are not readily available.
 
 Commentary on the fact that the best you can do is replicate vs reproducible (due the closed nature of the data).
 
 One is the ability to recreate the results given the same data and code, the other is the ability to recreate the results given the same code but a different dataset. IN theory it is possible to gain access the dataset given the information presented in Chapter \@(ref:cprd-analysis-heading). However, access is dependency on an ISAC application to the managing body of the CPRD. 
-
-&nbsp;<!----------------------------------------------------------------------->  
-
-## Public involvement and engagement {#disc-PPI}
-
-<!-- TODO May need to tone this down a little bit -->
-
-Involving and engaging the public and patients has been a central theme to this thesis. 
-Public engagement activities included 
-
-Public involvement also steered the creation of the topic
-
 
 &nbsp;
 <!----------------------------------------------------------------------------->
@@ -183,31 +181,34 @@ Several avenues for future research, building on the work presented here, are po
 
 ### Inclusion of preprints
 
-Normalisation of inclusion of preprints in systematic reviews. Wider assessment of the evidence base that exists solely as preprinted literature ()
+Given the evidence that this thesis produced on the usefulness of including preprints, normalisation of inclusion of preprints in systematic reviews. Wider assessment of the evidence base that exists solely as preprinted literature ()
 
-Studying of factors which influence eventual publication would also help to identify the extent and strength of publication bias by providing a 
+Meta-epidemiological studies examining the factors which influence eventual publication would also help to quantify the extent and strength of publication bias
+
 
 Preprints also represent a key opportunity to assess the impact of peer review on qualitative changes within
+
+Future work should also address how to handle discrepancies between the preprinted and published versions of a paper, particularly if the results are subtantially different between the two versions.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Evidence on vascular dementia
 
-As discussed, there is an absence of evidence on vascular dementia across the evidence base, potentially driven (for NRSI) at the leasby a publication
+As discussed in an earlier section, there is an absence of evidence on vascular dementia across the evidence base
+
+Future work should aim to address this evidence gap. 
 
 large-scale GWAS of vascular dementia should be performed, to identify associated loci that future Mendelian randomisation studies can make use of. While this is methodologically challenging, given the difficult in diagnosing "pure" vascular dementia, it would be a worthwhile endeavour, and would allow for the assessment of many genetically driven risk factors beyond those considered in this thesis.
 
-This is particularly relevant given that there was some evidence for an association of hypertriglyceraecia with vascular dementia. Future research should explicitly examine this relationship as part o f wider exploration of vascular disease.
-
- <!-- TODO See notes from Pat/Emma on this -->
+This is particularly relevant given that there was some evidence for an association of hypertriglyceraemia with vascular dementia. Future research should explicitly examine this relationship as part of wider exploration of vascular disease.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-### Viewing of Mendelian randomisation studies
+### Reviewing Mendelian randomisation studies
 
-As noted in Chapter \@ref(sys-rev-heading-results), evidence synthesis theory and methods have not been sufficient developed for the inclusion of Mendelian randomisation studies.
+As noted in previous chapters, evidence synthesis theory and methods have not been sufficient developed for the inclusion of Mendelian randomisation studies.
 
-A key issue arises from the lack of an established risk of bias tool, which adds uncertainty to the accuracy of risk-of-bias assessments which can influence future work based on them, as discussed in Chapter \@ref(7). In addition, a lack of guidance around whether the inclusion of two-sample Mendelian randomisation studies using identical summary statistics. This was illustrated in detail in Chapter \@ref(4), where XXX studies using the same , and meta-analysing these as independent effect estimates would provide an overly precise result. Finally, future work should aim to validate search strategies for this study design, paying particular attention to the range of terms used to define it (e.g. genetic instrumental variable analysis).
+A key issue arises from the lack of an established risk of bias tool, limiting future work that requires systematic risk-of-bias assessment, such as the triangulation framework presented in Chapter \@ref(hold). In addition, a lack of guidance around whether the inclusion of two-sample Mendelian randomisation studies using identical summary statistics. This was illustrated in detail in Chapter \@ref(4), where XXX studies using the same , and meta-analysing these as independent effect estimates would provide an overly precise result. Finally, future work should aim to validate search strategies for this study design, paying particular attention to the range of terms used to define it (e.g. genetic instrumental variable analysis).
 
 Synthesis of Mendelian randomisation studies is not helped by the varied (and often poor) reporting, though the recent release of the STROBE-MR reporting guidelines should go someway to addressing this. 
 
@@ -221,24 +222,30 @@ Finally, substantial future work should be directed towards the conduct of meta-
 
 ### Triangulation
 
-The field of quantitative triangulation is one ripe for future work. In the first instance, guidance 
+It is customary at this point to recommend that a large scale. However, based on the evidence described. In addition, logistical challenges in relation 
 
-Finally, methods for the standardisation of meth
+In summary, there is a need to make better use of the existing evidence accounting for the 
 
+The field of quantitative triangulation is one ripe for future work. 
 
+In the first instance, guidance 
 
-Use of the real-world evidence approach needs to be traded off against the important limitations that t
-
-Talk about the problems with real world evidence, and highlight that even when using these techniques, you still don't get the correct answers. 
-
-Tie in with GDS comments on off-targets effect.
+Finally, accounting for bias (and indirectness, if considering causal effects rather than a summary of the literature) is essentially in the interpretation of published literature. While this can take many forms, from the stratification of forest plots by overall risk of bias level, to the or to the more advance bias adjustment approach detailed here, it is insufficient to draw clinical recommendations from meta-analysis that treat effect estimates as if they were unbiased.
 
 &nbsp;
 <!----------------------------------------------------------------------------->
 
 ## Overall conclusions
 
+The 
+
+In addition, I have created 
+
+and proposed a novel combination of existing methods in pursuit of a generalised quantitative framework.
+
 This thesis has made unique and novel contributions to the 
 
 Illustrating that commonly employed approaches to address
+
+Blood lipids
 

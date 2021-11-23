@@ -87,6 +87,12 @@ gen_rmd_citation <- function(filename = "packages.bib") {
 # Copied from https://github.com/thomasbattram/thesis
 comma <- function(x) {
   format(x, digits = 2, big.mark = ",")
+}
+
+comma_tight <- function(x) {
+  format(x, digits = 2, big.mark = ",") %>%
+    stringr::str_squish() %>%
+    return()
   
 }
 
@@ -820,9 +826,11 @@ meta_grouped <- function(data) {
 
 # Get nicely formatted random effects estimate
 meta_estimate <- function(dat, ...) {
+  
   t <- metafor::rma(data = dat,
                     yi = yi,
-                    sei = sei)
+                    sei = sei,
+                    method = "DL")
   
   dat_n <- dat %>%
     mutate(result_id = stringr::str_remove(result_id,"-.+")) %>%

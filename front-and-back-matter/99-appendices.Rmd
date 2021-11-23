@@ -10,7 +10,7 @@ output:
 <!-- If you feel it necessary to include an appendix, it goes here. The first appendix should include the commands above. -->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
-
+source(here::here("R/helper.R"))
 knitr::read_chunk(here::here("R/appendix.R"))
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
@@ -186,39 +186,6 @@ where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, wh
 <!----------------------------------------------------------------------------->
 ### MR risk of bias tool {#appendix-mr-rob}
 
-<!-- TODO Need to include -->
-
-
-<!----------------------------------------------------------------------------->
-
-### Forest plots for lipid fractions {#lipid-fraction-forest-plots}
-
-<!-- TODO Need to add labels/captions to these -->
-
-<!----------------------------------------------------------------------------->
-```{r obsLipidsDementiaTC, echo = FALSE, results="asis", fig.pos = "H", out.width='100%'}
-knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Dementia_TC_.png"))
-```
-<!----------------------------------------------------------------------------->
-
-<!----------------------------------------------------------------------------->
-```{r obsLipidsDementiaLDL, echo = FALSE, results="asis", fig.pos = "H", out.width='100%'}
-knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Dementia_LDL_.png"))
-```
-<!----------------------------------------------------------------------------->
-
-<!----------------------------------------------------------------------------->
-```{r obsLipidsDementiaHDL, echo = FALSE, results="asis", fig.pos = "H", out.width='100%'}
-knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Dementia_HDL_.png"))
-```
-<!----------------------------------------------------------------------------->
-
-<!----------------------------------------------------------------------------->
-```{r obsLipidsDementiaTG, echo = FALSE, results="asis", fig.pos = "H", out.width='100%'}
-knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Dementia_TG_.png"))
-```
-<!----------------------------------------------------------------------------->
-
 <!----------------------------------------------------------------------------->
 (ref:mrTool-caption) Tool used to assess risk of bias in Mendelian randomisation studies, adapted from that developed by Mamluk et al.[@mamluk2020]
 
@@ -250,14 +217,17 @@ if(doc_type == "docx") {
 
 ```
 
-
 <!----------------------------------------------------------------------------->
 ## Chapter \@ref(cprd-analysis-heading) {#appendix-cprd-analysis}
 <!----------------------------------------------------------------------------->
+
 ### Amendments to protocol {#appendix-cprd-amendments}
 
 
-
+<!----------------------------------------------------------------------------->
+## Chapter \@ref(tri-heading) {#appendix-tri-analysis}
+<!----------------------------------------------------------------------------->
+### Calculation of average adjustment from expert elicitation
 
 <!----------------------------------------------------------------------------->
 ### Code lists
@@ -275,7 +245,12 @@ if(doc_type == "docx") {
 
 Short section detailing the things I tried to do but which did not work:
 
-failing to realise that the initial codelist used for the positive control outcome of IHD in the CPRD analysis (Chapter \@ref(cprd-heading))
+Failing to properly scope the literature and correctly estimate the number of studies returned by the search
+
+
+failing to realise that the initial code list used for the positive control outcome of IHD in the CPRD analysis (Chapter \@ref(cprd-heading))
+
+<!-- TODO Include the early analysis we did here, that did not work as a result of limited scope. Could include some of the genetic work also. Will additionally need to put the relevant materials from the paper in the  -->
 
 <!----------------------------------------------------------------------------->
 # Other Appendix {#other-appendix-heading}
@@ -288,164 +263,13 @@ knitr::write_bib(c(.packages(), "bookdown", "knitr"), here::here("bibliography/p
 
 <!-- TODO These citations are not rendering properly - I think because bookdown using this latex format only allows 1 .bib file. -->
 
-
 This thesis was written in RMarkdown. Several R packages were used as part of this project.`r gen_rmd_citation("packages.bib")`
 All projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
 
 <!----------------------------------------------------------------------------->
 ## Producing risk-of-bias visualisations with `robvis` {#appendix-robvis}
 
-### Introduction
 
-Risk of bias assessment - evaluation of the internal validity of studies included in a systematic review - often forms a key part of the evidence synthesis process, particularly in the health sciences.[@cochranechpt7] A well-developed family of tools is widely used, which have in common the characteristic that they evaluate specific domains of bias rather being constructed as a checklist or a quantitative score.[@cochranechpt7] These tools include the RoB 2 tool for randomized trials,[@sterne2019rob] the ROBINS-I tool for non-randomized studies of interventions,[@sterne2016robins] the QUADAS 2 tool for test accuracy and the ROBIS tool for systematic reviews.[@whiting2011quadas] Within each bias domains a judgement is reached about the strength of the study in that regard: for example, the first domain in the Cochrane RoB 2 tool deals with bias arising from the randomization process.[@sterne2019rob] Accessible graphics summarizing the results of these domain-based risk-of-bias assessments are included in reports of systematic reviews. A convenient plot in many reviews is a "traffic light" plot, which tabulates the judgement for each study in each domain. For larger numbers of studies, when such a table become unmanageable, a popular alternative is a weighted bar plot, which show the proportion of information with each judgement for each domain.[@higgins2008assessing]
-
-Researchers can face a number of barriers in creating these plots. While some evidence synthesis platforms, such as Cochrane's Review Manager,[@cochrane2014review] are able to produce these visualizations, not all researchers use these systems to conduct their systematic reviews, and copying the risk-of-bias data into these systems simply to produce the plots is inefficient and error prone. Likewise, creating the figures by hand, through software such as MS PowerPoint or Adobe Illustrator, may lead to unintentional errors and require the plots to be redrawn during an update to the review. Additionally, while the field of evidence synthesis software has grown rapidly in recent years,[@marshall2015systematic] this growth has not been equally distributed across the different aspects of the systematic review process. For example, a recent review found several software offerings aimed specifically at the abstract screening stage of the review process,[@harrison2020software] but no similar time- and error-reducing tool has been proposed for visualizing the results of risk-of-bias assessments.
-
-Fortunately, tools such as R, RStudio and `Shiny` (an R package for building interactive web apps) have made it easier than ever to produce such a tool.[@rref; @rstudioref; @shinyref] Here, we present `robvis` (Risk Of Bias VISualiation),[@mcguinness2019a] an R package and `Shiny` web-app that allows users to create publication-ready risk-of-bias plots quickly and easily. Originally created for use with the major risk-of-bias assessment tools used in health research, the tool allows users to visualize the results from any domain-based risk-of-bias assessment or quality appraisal tool.
-
-The tool is open-source and available to use free of charge. Users can download a stable version of the R package from CRAN (<https://cran.r-project.org/package=robvis>); or access and contribute to the development version via GitHub (<https://github.com/mcguinlu/robvis>).
-
-### Development
-
-Development of `robvis` began in April 2019 at the Evidence Synthesis Hackathon (ESH), an event which brings together interested researchers, practitioners and coders to discuss and develop new open-source evidence synthesis technologies. Test versions of both the R package and the web app were made available in early June 2019, with attendees of the ESH and members of the Bristol Appraisal and Review of Research (BARR) group at the University of Bristol being invited to test the tool and provide feedback. This feedback, along with other feature suggestions from the wider evidence synthesis community captured via GitHub issues, was incorporated and the first release version of the package was uploaded to CRAN in November 2019. The tool has been well received and is beginning to be cited in the evidence synthesis literature.[@gibb2019consistent; @habadi2019prevalence; @veloso2020effectiveness; @simillis2020; @tanneru2020]
-
-### Installation
-
-A stable version of `robvis` is hosted on the Comprehensive R Archive Network (CRAN) and can be installed using:
-
-```{r, eval = FALSE}
-install.packages("robvis")
-```
-
-As development of `robvis` is ongoing, new features are often available in the development version some time before they appear in the stable CRAN version. The most recent development version can be install from GitHub using:
-
-```{r, eval = FALSE}
-devtools::install_github("mcguinlu/robvis")
-```
-
-### Usage
-
-`robvis` contains two main functions. The first, `rob_traffic_light()`, creates a traffic light plot by tabulating each study by each domain, providing a more detailed view of the results of the risk-of-bias assessment. The second, `rob_summary()`, creates a weighted bar plot showing the proportion of information with each judgement for each domain in the assessment tool specified.
-
-A worked example using these functions is outlined below, showing the ease with which risk-of-bias plots can be created using `robvis`. A detailed description of the additional options that can be used with each function is presented in Table \@ref(tab:robvisarguments)
-
-Using the example data set (`data_rob2`) which is built into the package and is presented in Table \@ref(tab:robdata) for reference, the traffic light plot shown in Figure \@ref(fig:trafficplot) is created using:
-
-<!-- TODO __NEED TO ADD DATA HERE!__ -->
-
-
-```{r, eval = FALSE}
-
-rob_traffic_light(data = data_rob2,
-                  tool = "ROB2",
-                  psize = 15)
-```
-
-```{r trafficplot, echo = FALSE, eval = TRUE, fig.cap = "Example risk of bias traffic light plot created using `robvis`", out.width = "100%", fig.align = "centre"}
-
-plotdata <- robvis::data_rob2
-
-tfplot <- robvis::rob_traffic_light(data = plotdata, "ROB2", psize = 5) 
-
-robvis::rob_save(tfplot, 
-                 file = "figures/sys-rev-tools/example-rob-traffic-light-plot.png")
-
-knitr::include_graphics("figures/sys-rev-tools/example-rob-traffic-light-plot.png", auto_pdf = TRUE)
-```
-
-Similary, using the same data set, the summary barplot shown in Figure \@ref(fig:summaryplot) is created using:
-
-```{r, eval = FALSE}
-
-rob_summary(data = data_rob2,
-            tool = "ROB2", 
-            overall = TRUE)
-
-```
-
-```{r summaryplot, echo = FALSE, eval = TRUE, fig.cap = "Example risk of bias summary plot created using `robvis` and the example ROB2 dataset", out.width = "100%"}
-
-sumplot <- robvis::rob_summary(plotdata, "ROB2", overall = TRUE)
-
-robvis::rob_save(sumplot,
-                 file = "figures/sys-rev-tools/example-rob-summary-barplot.png")
-
-knitr::include_graphics("figures/sys-rev-tools/example-rob-summary-barplot.png")
-
-```
-
-A list of arguments available to the two functions in robvis are shown in Table \@ref(tab:robvisarguments)
-
-&nbsp;
-
-```{r robvisarguments, echo = FALSE, eval = TRUE}
-
-arguments <- data.frame(stringsAsFactors=FALSE,
-              argument = c("data", "tool", "colour", "overall", "weighted",
-                           "psize"),
-     rob_traffic_light = c("\nX", "X", "X", "", "", "X"),
-           rob_summary = c("X", "X", "X", "X", "X", ""),
-           Description = c(
-"Defines the dataframe containing the summary (domain) level risk-of-bias assessments. See the text and Table 1 for the format expected by `robvis`",
-"Defines the risk of bias assessment tool used. The RoB2 (`tool=\"ROB2\"`), ROBINS-I (`tool=\"ROBINS-I\"`), and QUADAS-2 (`tool=\"QUADAS-2\"`) assessments tools are currently supported. Other tools can be visualised using the generic template (`tool = \"Generic\"`)",
-"Defines the colour scheme for the plot. The default is `colour = \"cochrane\"` which uses the \"Cochrane\" (red, yellow, green) colours, while a preset option for a colour-blind friendly palette is also available (`colour = \"colourblind\"`). Alternatively, users can specify their own colour scheme e.g. `colour = c(\"#f442c8\", \"#bef441\", \"#000000\")`",
-"Defines whether to include an additional bar showing the distibution of overall risk of bias judgements in the summary barplot figure. Default is `overall = FALSE`.",
-"Defines whether weights should be used to produce the summary barplot figure. Default is `weighted = TRUE`, in line with current Cochrane Collaboration guidance.",
-"Defines the size of the points in the traffic light plot. Default is `psize = 20`."))
-
-if(doc_type == "docx"){
-  
-  knitr::kable(arguments,
-               escape = T,
-             caption = "Description of the arguments available in the two main `robvis` functions. ‘X’ indicates that the option is available for the respective function.",
-             
-             col.names = c("Argument","rob_traffic_light()","rob_summary()", "Description"))
-  
-} else {
-  
-  knitr::kable(
-    arguments,
-    format = "latex",
-    booktabs = TRUE,
-    longtable = TRUE,
-    caption = "Description of the arguments available in the two main `robvis` functions. ‘X’ indicates that the option is available for the respective function.",
-    align = c("l", "c", "c", "l"),
-    col.names = c(
-      "Argument",
-      "rob_traffic_light()",
-      "rob_summary()",
-      "Description"
-    )
-  ) %>%
-    column_spec(4, "5cm") %>%
-    kable_styling(
-      font_size = 9,
-      bootstrap_options = c("striped", "hover"),
-      latex_options = c("repeat_header", "striped")
-    )
-}
-
-```
-
-&nbsp;
-
-### Reception and Future Plans
-
-```{r, echo = FALSE}
-robvisstats <- cranlogs::cran_downloads("robvis", from = "2019-11-22", to = "2021-12-01")
-
-robvis_downloads <- format(plyr::round_any(sum(robvisstats$count),100, f = floor), scientific = FALSE)
-
-date <- format(as.Date("2021-12-01"),"%B %Y")
-
-```
-
-As of `r date`, `robvis` has been downloaded more than `r robvis_downloads` times. It has been well received but the systematic review community, and has been cited frequently in the published literature. A paper describing the tool was published in a special issue of Research Synthesis Methods focusing on data visualisation methods. A chapter on the tool has been incorporated in to the "Doing Meta-Analysis in R" online textbook.[@mathias_harrer_2019_2551803]
-
-While `robvis` is a stable package, a range of additional functionality could be added. At present, the number of tools with a specific template included in `robvis` is limited - adding additional templates is a priority. For example, a template for ROBIS, a tool for assessing risk of bias in systematic reviews, is in developement.[@whiting2016robis] Additionally, the tool does not yet allow for the production of paired forest plots, where the risk-of-bias judgement is presented alongside each specific result included in the meta-analysis.[@cochranechpt7] This was initially considered to be beyond the scope of the tool, as it involves the visualization of something other than risk-of-bias assessments. However, following user-driven demand, this functionality is in development and will be available in the near future. Finally, we would like to add similar functionality to that provided by the `metafor::reporter()` function, which generates a brief paragraph of text describing the results of a meta-analysis. The future `robvis::reporter()` function would provide a boilerplate description of the assessment tool used and the key domains at risk of bias.
-
-
-## Creating 
 
 \newpage
 
@@ -455,9 +279,8 @@ The following pages contain copies of papers arising from work performed as part
 
 <!-- TODO May need to reiterate contributions here -->
 
-
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/prevsci.pdf}
-\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf}

@@ -300,7 +300,7 @@ fu_text <- paste0(
   round(characteristics$c1[2], 1),
   "-",
   round(characteristics$c1[3], 1),
-  ")"
+  "years )"
 )
 
 fu_ab_text <- paste0(round(characteristics$c1[1], 1),
@@ -313,7 +313,7 @@ age_text <- paste0(
   characteristics$c1[5],
   "-",
   characteristics$c1[6],
-  ")"
+  "years )"
 )
 
 total_followup <-
@@ -529,8 +529,7 @@ sens_bp_text <- paste0(
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- attritionFigure
 #Define main dataset
-main <- read.csv(here::here("data", "cprd", "cohort_attrition.csv")) %>%
-  comma()
+main <- read.csv(here::here("data", "cprd", "cohort_attrition.csv"))
 
 # Define node names
 main[1, 2] <- paste0("M0")
@@ -548,6 +547,8 @@ main <- main[, c(2, 1)]
 for (i in 1:13) {
   main[14 + i, 2] <- as.numeric(main[i, 2]) - as.numeric(main[i + 1, 2])
 }
+
+main[,2] <- comma_tight(main[,2])
 
 # Create labels
 main[1, 3] <-

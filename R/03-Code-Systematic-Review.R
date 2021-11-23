@@ -857,10 +857,10 @@ forest_strata_rob(dat,
                   rob_me = "Low",
                   xlab = "Odds ratio")
 
-text(-5, c(1, 2), cex = 1.2, dat$tpos)
-text(-4, c(1, 2), cex = 1.2, dat$tneg)
-text(-2.5, c(1, 2), cex = 1.2, dat$cpos)
-text(-1.5, c(1, 2), cex = 1.2, dat$cneg)
+text(-5, c(2, 1), cex = 1.2, dat$tpos)
+text(-4, c(2, 1), cex = 1.2, dat$tneg)
+text(-2.5, c(2, 1), cex = 1.2, dat$cpos)
+text(-1.5, c(2, 1), cex = 1.2, dat$cneg)
 text(c(-5,-4,-2.5,-1.5),
      4.5,
      c("D+", "D-", "D+", "D-"),
@@ -868,7 +868,7 @@ text(c(-5,-4,-2.5,-1.5),
      font = 2)
 
 text(-7, 5, "Type", cex = 1.2, font = 2)
-text(-7, c(1, 2), cex = 1.2, dat$exposure)
+text(-7, c(2, 1), cex = 1.2, dat$exposure)
 
 text(c(-4.5,-2),
      5,
