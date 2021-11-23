@@ -725,6 +725,7 @@ get_citations_per_analysis <- function(data){
     mutate(citation = paste0("@",citation)) %>%
     pull(citation)
   
+  citation_vec<- citation_vec[which(citation_vec != "@NA")]
   
   paste0("[",paste0(citation_vec,collapse = "; "),"]") %>%
     return()

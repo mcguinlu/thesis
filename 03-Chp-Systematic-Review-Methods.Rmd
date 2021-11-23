@@ -687,8 +687,11 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_hyperchol_AD.png"))
 
 Similarly to all-cause dementia, several studies analysed individual lipid fractions by estimating the risk of dementia per 1 standard deviation increase in that fraction (Figure \@ref(fig:lipidFractionsAD)). Very weak evidence for an effect on all-cause dementia was found for total cholesterol (`r n_effect(obsLipids$AD_TC)`), LDL-c (`r n_effect(obsLipids$AD_LDL)`), HDL-c (`r n_effect(obsLipids$AD_HDL)`) or triglycerides (`r n_effect(obsLipids$AD_TG)`).
 
+<!-- TODO This should also show Raffatin! -->
+
+
 <!----------------------------------------------------------------------------->
-(ref:lipidFractionsAD-cap) Random-effects meta-analysis of four lipid fractions (total cholesteol, HDL, LDL, and triglycerides) on Alzheimer's disease risk, standardised per 1-SD increase in the lipid fraction.
+(ref:lipidFractionsAD-cap) Random-effects meta-analysis of LDL on vascular dementia risk, standardised per 1-SD increase in the lipid fraction.
 
 (ref:lipidFractionsAD-scap) Random-effects meta-analysis of four lipid fractions on Alzheimer's disease
 
@@ -749,6 +752,8 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_hyperchol_VaD.png"))
 <!----------------------------------------------------------------------------->
 
 Few studies investigated the effect of individual lipid fractions. Only for total cholesterol was there greater than one result reported (Figure \@ref(fig:lipidFractionsVaD)), and a meta-analysis of these found very weak evidence for an effect (`r n_effect(obsLipids$VaD_TC)`). A single study provided evidence on the other three fractions,[@yoshitake1995] and similar found minimal evidence of an effect LDL-c (`r n_effect(obsLipids$VaD_LDL)`), HDL-c (`r n_effect(obsLipids$VaD_HDL)`) or triglycerides (`r n_effect(obsLipids$VaD_TG)`).
+
+<!-- TODO This is not technically - more studies available on vascular dementia -->
 
 <!----------------------------------------------------------------------------->
 (ref:lipidFractionsVaD-cap) Random-effects meta-analysis of total cholesterol on vascular dementia, standardised per 1-SD increase in the lipid fraction.

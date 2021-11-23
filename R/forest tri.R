@@ -50,7 +50,7 @@ if (is.null(arg$at)) {
   x_adj <- arg$at[3]
 }
 
-if (is.null(arg$at)) {
+if (is.null(arg$x_min)) {
   x_min = -10
 } else {
   x_min <- arg$x_min
@@ -136,7 +136,7 @@ forest(x = dat$yi,
        rows=rows,
        textpos = textpos,
        mlab = "",
-       header="Author(s) and Year", 
+       header="Author(s) and Year",
        ...)
 
 ### set font expansion factor (as in forest() above) and use a bold font

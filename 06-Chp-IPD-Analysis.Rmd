@@ -144,7 +144,10 @@ Following estimation of the main effect, where an included data source had previ
 
 #### Investigating the effect of patient-level covariates
 
-In order to investigate the interaction of patient-level characteristics (age and sex) with lipid levels, interaction terms for lipid-covariate terms were extracted and synthesised using a random effects meta-analysis. To avoid ecological bias, where the between-study association does not reflect the within-study associations, cohorts where there was no within-study variation in the covariate of interest were excluded from the interaction analysis for that covariate.[@burke2017] As an example, it is impossible to estimate the impact of sex on the lipid~dementia relationship in a study which contains female participants. All interaction analysis were performed using the common-set-adjusted model (Model 1).
+In order to investigate the interaction of patient-level characteristics (age and sex) with lipid levels, interaction terms for lipid-covariate terms were extracted and synthesised using a random effects meta-analysis.[@fisher2017a] To avoid ecological bias, where the between-study association does not reflect the within-study associations, cohorts where there was no within-study variation in the covariate of interest were excluded from the interaction analysis for that covariate.[@burke2017] As an example, it is impossible to estimate the impact of sex on the lipid~dementia relationship in a study which contains female participants. All interaction analysis were performed using the common-set-adjusted model (Model 1).
+
+<!-- QUESTION Why was Ancelin, which provides summary level data stratified by sex, not included in the analysis? Several reasons: i) cause it was not adjusted for the same covariates; ii) because the -->
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 

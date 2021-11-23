@@ -56,7 +56,7 @@ if(doc_type == "docx") {
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- priorsAdd-table
 
-priors_add_table <- rio::import("data/tri/priors_add.csv") %T>%
+priors_add_table <- rio::import("data/tri/priors_bias_tab.csv") %T>%
   write.csv("data/table_words/priors_add.csv")
 
 if (doc_type == "docx") {
@@ -75,6 +75,29 @@ if (doc_type == "docx") {
     column_spec(1, bold = TRUE) %>%
     kableExtra::add_header_above(c("Bias Level" = 1, "Additive bias" = 2,"Proportional bias" = 1),bold = T, line = F) %>%
     row_spec(2:nrow(priors_add_table) - 1, hline_after = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
+}
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- priorsIndirect-table
+
+priors_ind_table <- rio::import("data/tri/priors_indirect_tab.csv") %T>%
+  write.csv("data/table_words/priors_indirect.csv")
+
+if (doc_type == "docx") {
+  apply_flextable(priors_ind_table, caption = "(ref:priorsAdd-caption)")
+} else{
+  knitr::kable(
+    priors_ind_table,
+    format = "latex",
+    caption = "(ref:priorsAdd-caption)",
+    caption.short = "(ref:priorsAdd-scaption)",
+    booktabs = TRUE, 
+    align = "lc"
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(1, bold = TRUE) %>%
+    row_spec(2:nrow(priors_ind_table) - 1, hline_after = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position"))
 }
 
@@ -162,25 +185,24 @@ prop_e <- rio::import("turner_bias/propbias_full.dta") %>%
 
 # read in values from spreadsheet
 
-bias_values_scenario1 <- rio::import("turner_bias/bias_values_scenario1.csv") %>%
+bias_values_scenario1 <- rio::import("data/tri/bias_values_scenario1.csv") %>%
   rename_with(~paste0("bias_",.), matches("_"))
 
-bias_values_scenario2 <- rio::import("turner_bias/bias_values_scenario2.csv") %>%
+bias_values_scenario2 <- rio::import("data/tri/bias_values_scenario2.csv") %>%
   rename_with(~paste0("bias_",.), matches("_"))
 
-indirect_values <- rio::import("turner_bias/indirectness_values.csv")  %>%
+indirect_values <- rio::import("data/tri/indirectness_values.csv")  %>%
   rename_with(~paste0("ind_",.), matches("_"))
 
 # Load general data
 dat_gen <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
                        which = 2) %>% janitor::clean_names() %>%
-  select(result_id, author, year) %>%
+  select(result_id, author, year,) %>%
   mutate(year = as.character(year)) %>%
-  tibble::add_row(result_id = "999-1", author = "Chp 5 - CPRD", year = "") %>%
-  tibble::add_row(result_id = "999-2", author = "Chp 6 - IPD", year = "")
+  tibble::add_row(result_id = "999-1", author = "Chp 5 - CPRD", year = "")
 
 # Read in result and risk of bias data
-dat_rob <- read.csv("turner_bias/real_example_rob.csv",
+dat_rob <- read.csv("data/tri/ldl_ad_rob.csv",
                     stringsAsFactors = F) %>%
   left_join(dat_gen) %>%
   mutate(vi = sei^2) %>%
@@ -188,17 +210,20 @@ dat_rob <- read.csv("turner_bias/real_example_rob.csv",
   # Standardise effect direction
   mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi))
 
-dat_ind <- read.csv("turner_bias/real_example_indirect.csv",
+dat_ind <- read.csv("data/tri/ldl_rob_indirect.csv",
                     stringsAsFactors = F) %>%
   left_join(dat_gen) %>%
   mutate(vi = sei^2) %>%
   select(result_id, author, type, yi, vi, everything())  %>%
   # Standardise effect direction
   mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi))
+
+
+ldl_ad_citations <- get_citations_per_analysis(dat_rob)
 
 # Save bias direction plot
 
-dat_rob_single <- head(tail(dat_rob,2),1)
+dat_rob_single <- tail(dat_rob,1)
 
 png(
   here::here("figures/tri/midlife_AD_single.png"),
@@ -208,7 +233,12 @@ png(
   res = 100
 )
 
-forest_triangulation(dat_rob_single, title = "LDL-c and AD", at = log(c(0.3,1,3)), x_min = -5)
+forest_triangulation(dat_rob_single,
+                     title = "LDL-c and AD",
+                     at = log(c(0.3, 1, 3)),   
+                     xlab = "Favours experimental | Favours comparator",
+                     cex.lab	 = 0.9,
+                     x_min = -5)
 
 dev.off()
 
@@ -220,7 +250,13 @@ png(
   res = 100
 )
 
-forest_triangulation(dat_rob, sei = dat$sei, title = "LDL-c and AD")
+forest_triangulation(
+  dat_rob,
+  sei = dat$sei,
+  title = "LDL-c and AD",
+  xlab = "Favours experimental | Favours comparator",
+  cex.lab	 = 0.9
+)
 
 dev.off()
 
@@ -228,6 +264,27 @@ dev.off()
 
 dat_final_single <-
   prep_tri_data(dat_rob_single, dat_ind, bias_values_scenario1, indirect_values)
+
+metafor::forest(dat_final_single$yi,
+                dat_final_single$vi, atransf=exp)
+
+single_unadjusted <- estimate(
+  dat_final_single$yi,
+  dat_final_single$yi - 1.96 * sqrt(dat_final_single$vi),
+  dat_final_single$yi + 1.96 * sqrt(dat_final_single$vi),
+  exp = T,
+  type = "",
+  sep = "("
+)
+
+single_adjusted <- estimate(
+  dat_final_single$yi_adj,
+  dat_final_single$yi_adj - 1.96 * sqrt(dat_final_single$vi_adj),
+  dat_final_single$yi_adj + 1.96 * sqrt(dat_final_single$vi_adj),
+  exp = T,
+  type = "",
+  sep = "("
+)
 
 dat_final_scenario1 <-
   prep_tri_data(dat_rob, dat_ind, bias_values_scenario1, indirect_values)
@@ -249,8 +306,8 @@ unadj_effect <-
            exp(model_unadj$ci.ub),
            type = "")
 
-unadj_tau2 <- model_unadj$tau2
-unadj_I2 <- model_unadj$I2
+unadj_tau2 <- comma(model_unadj$tau2)
+unadj_I2 <- comma(model_unadj$I2)
 
 metafor::forest(model_unadj, annotate = T, showweights = TRUE)
 
@@ -270,8 +327,8 @@ adj_effect_scenario1 <-
     type = ""
   )
 
-adj_tau2 <- model_adj_scenario1$tau2
-adj_I2 <- model_adj_scenario1$I2
+adj_tau2 <- comma(model_adj_scenario1$tau2)
+adj_I2 <- comma(model_adj_scenario1$I2)
 
 metafor::forest(model_adj_scenario1,
                 annotate = T,
@@ -316,10 +373,10 @@ metafor::forest(
   at = log(c(0.3, 1, 3)),
   showweights = TRUE
 )
-text(log(0.01), 20, "Author and Year", cex=.8, font=2)
-text(log(40), 20.5, "Unadjusted", cex=.8, font=2)
-text(log(9.3), 19.5, "Weight", cex=.8, font=2)
-text(log(100), 19.5, "Estimate", cex=.8, font=2)
+text(log(0.01), 21, "Author and Year", cex=.8, font=2)
+text(log(40), 21.5, "Unadjusted", cex=.8, font=2)
+text(log(9.3), 20.5, "Weight", cex=.8, font=2)
+text(log(100), 20.5, "Estimate", cex=.8, font=2)
 
 par(mar=c(5,0,1,0))
 metafor::forest(
@@ -332,9 +389,9 @@ metafor::forest(
   slab = rep("", length(dat_final_scenario1$yi)),
   showweights = TRUE
 )
-text(log(40), 20.5, "Adjusted (Scenario 1)", cex=.8, font=2)
-text(log(9.3), 19.5, "Weight", cex=.8, font=2)
-text(log(100), 19.5, "Estimate", cex=.8, font=2)
+text(log(40), 21.5, "Adjusted (Scenario 1)", cex=.8, font=2)
+text(log(9.3), 20.5, "Weight", cex=.8, font=2)
+text(log(100), 20.5, "Estimate", cex=.8, font=2)
 
 dev.off()
 
@@ -354,9 +411,10 @@ metafor::forest(
   mlab = " ",
   showweights = TRUE
 )
-text(log(40), 20.5, "Adjusted (Scenario 1)", cex=.8, font=2)
-text(log(9.3), 19.5, "Weight", cex=.8, font=2)
-text(log(100), 19.5, "Estimate", cex=.8, font=2)
+text(log(0.01), 21, "Author and Year", cex=.8, font=2)
+text(log(40), 21.5, "Adjusted (Scenario 1)", cex=.8, font=2)
+text(log(9.3), 20.5, "Weight", cex=.8, font=2)
+text(log(100), 20.5, "Estimate", cex=.8, font=2)
 
 par(mar=c(5,0,1,0))
 metafor::forest(
@@ -369,11 +427,220 @@ metafor::forest(
   slab = rep("", length(dat_final_scenario2$yi)),
   showweights = TRUE
 )
-text(log(40), 20.5, "Adjusted (Scenario 2)", cex=.8, font=2)
-text(log(9.3), 19.5, "Weight", cex=.8, font=2)
-text(log(100), 19.5, "Estimate", cex=.8, font=2)
+text(log(40), 21.5, "Adjusted (Scenario 2)", cex=.8, font=2)
+text(log(9.3), 20.5, "Weight", cex=.8, font=2)
+text(log(100), 20.5, "Estimate", cex=.8, font=2)
 
 dev.off()
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- tgVadBIAMA
+# 
+vad_set <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+                       which = 2) %>% 
+  janitor::clean_names() %>%
+  filter(exposure == "TG",
+         outcome == "VaD",
+         !(study_id %in% c(10312,13401))) %>%
+  select(result_id, point_estimate, upper_ci,lower_ci) %>%
+  tibble::add_row(result_id = "999-1",point_estimate = "1.25",lower_ci="1.02",upper_ci="1.57") %>%
+  tibble::add_row(result_id = "999-2",point_estimate = "1.49",lower_ci="1.27",upper_ci="1.74") %>%
+  tibble::add_row(result_id = "999-3",point_estimate = "1.29",lower_ci="0.83",upper_ci="2.02") %>%
+  mutate(across(c(
+    point_estimate, starts_with(c("number_", "cases_")), ends_with("_ci")
+  ), as.numeric)) %>%
+  mutate(point = log(point_estimate),
+         SE = (log(upper_ci) - log(lower_ci)) / 3.92)
+
+# Read in general data
+dat_gen <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+which = 2) %>% 
+  janitor::clean_names() %>%
+  mutate(year = ifelse(is.na(age), year, paste(year,"-",age))) %>%
+  select(result_id, author, year) %>%
+  
+  mutate(year = as.character(year)) %>%
+  tibble::add_row(result_id = "999-1", author = "Chp 6 - IPD (CaPS)", year = "") %>%
+  tibble::add_row(result_id = "999-2", author = "Chp 6 - IPD (Whitehall II)", year = "") %>%
+  tibble::add_row(result_id = "999-3", author = "Chp 5 - CPRD", year = "")
+
+# Read in result and risk of bias data
+dat_rob_vad <- read.csv("data/tri/tg_vad_rob.csv",
+                    stringsAsFactors = F) %>%
+  left_join(dat_gen) %>%
+  mutate(vi = sei^2) %>%
+  select(result_id, author, type, yi, vi, everything())  %>%
+  # Standardise effect direction
+  mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi)) %>%
+  arrange(desc(author))
+
+dat_ind_vad <- read.csv("data/tri/tg_vad_indirect.csv",
+                    stringsAsFactors = F) %>%
+  left_join(dat_gen) %>%
+  mutate(vi = sei^2) %>%
+  select(result_id, author, type, yi, vi, everything())  %>%
+  # Standardise effect direction
+  mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi))  %>%
+  arrange(desc(author))
+
+tg_vad_citations <- get_citations_per_analysis(dat_rob_vad)
+
+png(
+  here::here("figures/tri/midlife_VaD.png"),
+  width = 1750,
+  height = 1300,
+  pointsize = 15,
+  res = 100
+)
+
+forest_triangulation(dat_rob_vad,
+                     sei = dat$sei,
+                     at = log(c(.3,1,3)),
+                     xlab = "Favours experimental | Favours comparator",
+                     cex.lab	 = 0.9,
+                     
+                     title = "Triglycerides and VaD")
+
+dev.off()
+
+#Prep data and run meta-analyses
+dat_final_scenario1_vad <-
+  prep_tri_data(dat_rob_vad, dat_ind_vad, bias_values_scenario1, indirect_values)
+
+dat_final_scenario2_vad <-
+  prep_tri_data(dat_rob_vad, dat_ind_vad, bias_values_scenario2, indirect_values)
+
+# Run unadjusted model and extract results
+model_unadj_vad <- metafor::rma.uni(
+  yi = yi,
+  vi = vi,
+  data = dat_final_scenario1_vad,
+  slab = paste(dat_final_scenario1_vad$author, dat_final_scenario1_vad$year)
+)
+
+unadj_effect_vad <-
+  estimate(exp(model_unadj_vad$b),
+           exp(model_unadj_vad$ci.lb),
+           exp(model_unadj_vad$ci.ub),
+           type = "")
+
+unadj_vad_tau2 <- comma(model_unadj_vad$tau2)
+unadj_vad_I2 <- comma(model_unadj_vad$I2)
+
+metafor::forest(model_unadj_vad, annotate = T, showweights = TRUE)
+
+# Run bias-/indirectness-adjusted model using Scenario 1
+model_adj_scenario1_vad <- metafor::rma.uni(
+  yi = yi_adj,
+  vi = vi_adj,
+  data = dat_final_scenario1_vad,
+  slab = paste(dat_final_scenario1_vad$author, dat_final_scenario1_vad$year)
+)
+
+adj_effect_scenario1_vad <-
+  estimate(
+    exp(model_adj_scenario1_vad$b),
+    exp(model_adj_scenario1_vad$ci.lb),
+    exp(model_adj_scenario1_vad$ci.ub),
+    type = ""
+  )
+
+adj_vad_tau2 <- comma(model_adj_scenario1_vad$tau2)
+adj_vad_I2 <- comma(model_adj_scenario1_vad$I2)
+
+metafor::forest(model_adj_scenario1_vad,
+                annotate = T,
+                showweights = TRUE)
+
+model_adj_scenario2_vad <- metafor::rma.uni(
+  yi = yi_adj,
+  vi = vi_adj,
+  data = dat_final_scenario2_vad,
+  slab = paste(dat_final_scenario2_vad$author, dat_final_scenario2_vad$year)
+)
+
+adj_effect_scenario2_vad <-
+  estimate(
+    exp(model_adj_scenario2_vad$b),
+    exp(model_adj_scenario2_vad$ci.lb),
+    exp(model_adj_scenario2_vad$ci.ub),
+    type = ""
+  )
+
+# Build paired forest plot
+
+png("figures/tri/fp_paired_midlife_tg_vad.png", height = 400, width = 800)
+
+par(mfrow=c(1,2))
+par(mar=c(5,0,1,0))
+
+metafor::forest(
+  model_unadj_vad,
+  xlim = c(-6, 6),
+  xlab = "Effect measure",
+  atransf = exp,
+  at = log(c(0.3, 1, 3)),
+  showweights = TRUE
+)
+text(log(0.01), 9, "Author and Year", cex=.8, font=2)
+text(log(40), 9.5, "Unadjusted", cex=.8, font=2)
+text(log(9.3), 8.5, "Weight", cex=.8, font=2)
+text(log(100), 8.5, "Estimate", cex=.8, font=2)
+
+par(mar=c(5,0,1,0))
+metafor::forest(
+  model_adj_scenario1_vad,
+  xlim = c(-6, 6),
+  xlab = "Effect measure",
+  atransf = exp,
+  at = log(c(0.3, 1, 3)),
+  mlab = " ",
+  slab = rep("", length(dat_final_scenario1_vad$yi)),
+  showweights = TRUE
+)
+text(log(40), 9.5, "Adjusted (Scenario 1)", cex=.8, font=2)
+text(log(9.3), 8.5, "Weight", cex=.8, font=2)
+text(log(100), 8.5, "Estimate", cex=.8, font=2)
+
+dev.off()
+
+
+png("figures/tri/fp_paired_midlife_tg_vad_scenarios.png", height = 400, width = 800)
+
+par(mfrow=c(1,2))
+par(mar=c(5,0,1,0))
+
+metafor::forest(
+  model_adj_scenario1_vad,
+  xlim = c(-6, 6),
+  xlab = "Effect measure",
+  atransf = exp,
+  at = log(c(0.3, 1, 3)),
+  showweights = TRUE
+)
+text(log(0.01), 9, "Author and Year", cex=.8, font=2)
+text(log(40), 9.5, "Adjusted (Scenario 1)", cex=.8, font=2)
+text(log(9.3), 8.5, "Weight", cex=.8, font=2)
+text(log(100), 8.5, "Estimate", cex=.8, font=2)
+
+par(mar=c(5,0,1,0))
+metafor::forest(
+  model_adj_scenario2_vad,
+  xlim = c(-6, 6),
+  xlab = "Effect measure",
+  atransf = exp,
+  at = log(c(0.3, 1, 3)),
+  mlab = " ",
+  slab = rep("", length(dat_final_scenario1_vad$yi)),
+  showweights = TRUE
+)
+text(log(40), 9.5, "Adjusted (Scenario 2)", cex=.8, font=2)
+text(log(9.3), 8.5, "Weight", cex=.8, font=2)
+text(log(100), 8.5, "Estimate", cex=.8, font=2)
+
+dev.off()
+
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- turnerValidation 
@@ -408,12 +675,12 @@ forest.default(
   xlim = c(-2.2, 1.8),
   annotate = T,
   slab = c(
-    "Additive - Favours intervention",
-    "Additive - Favours intervention",
+    "Additive - Favours comparator",
+    "Additive - Favours comparator",
     "Proportional - Towards null",
     "Proportional - Towards null"
   ),
-  xlab = "Favours comparator | Favours intervention",
+  xlab = "Favours experimental | Favours comparator",
   header = c("Bias"),
   top = 2.5
 )
