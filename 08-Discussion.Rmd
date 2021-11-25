@@ -1,17 +1,18 @@
 ---
 output:
-  bookdown::word_document2: 
-      reference_docx: templates/word-styles-reference-01.docx   
   bookdown::pdf_document2:
     template: templates/brief_template.tex
+  bookdown::word_document2: 
+      reference_docx: templates/word-styles-reference-01.docx   
   bookdown::html_document2: default
 documentclass: book
 ---
 
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:intro-quote)', echo = FALSE}
-Hold
+Since many intra-study biases are difficult or impossible to deal with, the meta-analytic results of observational research are often acts of politics, not science.
 ```
-(ref:intro-quote) --- Hold
+
+(ref:intro-quote) --- Alvan R. Feinstein, 1995 [@feinstein1995]
 
 # Discussion {#discussion-heading}
 \minitoc <!-- this will include a mini table of contents-->
@@ -71,11 +72,11 @@ The inclusion
 
 Since the systematic review described in this thesis was performed, there have been two notable analysis of large cohorts performed related to the central thesis question here. Two of these are discussed here notable studies are discussed here.
 
-The first a large scale analysis of blood lipids in the CPRD, which found a slight raised risk of dementia in CPRD patients () with higher LDL-c measured at mid-life, driven by the finding for Alzheimer's disease.[@iwagami2021] These findings are n Not inconsistent with the findings presented in this thesis, particularly given the lack of adjustment for confounding by ApoE4.
+The first a large scale analysis of blood lipids in the CPRD, which found a slight raised risk of dementia in CPRD patients () with higher LDL-c measured at mid-life, driven by the finding for Alzheimer's disease.[@iwagami2021] These findings are  consistent with the findings presented in this thesis, particularly given the lack of adjustment for confounding by ApoE4. <!-- TODO The study says that simulated effect of ApoE4 is a 1.09 RR in the absence of a true causal effect. Main results are between 1.03 and 1.17. CI for most extreme results is (lower = 1.08) is not inconsistent with the effect introduced by ApoE4 which is just a single confounder out of many -->
 
-<!-- TODO The study says that simulated effect of ApoE4 is a 1.09 RR in the absence of a true causal effect. Main results are between 1.03 and 1.17. CI for most extreme results is (lower = 1.08) is not inconsistent with the effect introduced by ApoE4 which is just a single confounder out of many -->
-
-An analysis of 502,226 participants of the UK BioBank found no association between lipids at mid-life and dementia outcomes (women: TC `r estimate(1.04,.99,1.09,"HR")`, HDL `r estimate(0.95,.83,1.1,"HR")`, LDL `r estimate(1.6,1,1.13,"HR")`/men: TC `r estimate(0.98,.93,1.03,"HR")`, HDL `r estimate(1.1,.95,1.29,"HR")`, LDL `r estimate(.97.91,1.04,"HR")`).[@gong2021] Results were boardly similar between the all-cause dementia, Alzheimer's disease and vascular dementia outcomes. This is comparable to my findings.
+The UKBioBank is a [@sudlow2015]
+ 
+A recent analysis of 502,226 participants of this found no association between lipids at mid-life and dementia outcomes (women: TC `r estimate(1.04,.99,1.09,"HR")`, HDL `r estimate(0.95,.83,1.1,"HR")`, LDL `r estimate(1.06,1,1.13,"HR")`/men: TC `r estimate(0.98,.93,1.03,"HR")`, HDL `r estimate(1.1,.95,1.29,"HR")`, LDL `r estimate(.97,.91,1.04,"HR")`).[@gong2021] Results were boardly similar between the all-cause dementia, Alzheimer's disease and vascular dementia outcomes. This is comparable to my findings.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -109,7 +110,7 @@ The strengths a limitations of each component of this thesis have been discussed
 
 #### Strengths
 
-This thesis has used multiple sources of evidence to examine the relationship between blood lipids levels and cholesterol risk in a systemtatic manner, including diverse sources of evidence, inclu
+This thesis has used multiple sources of evidence to examine the relationship between blood lipids levels and cholesterol risk in a systematic manner, including diverse sources of evidence, inclu
 
 It has highlighted the importance of including preprints in systematic review, and provided a tool to enable researchers to easily do so. 
 
@@ -142,6 +143,11 @@ A final weakness of this thesis is the geographical focus. All primary analysis 
 
 ### Clinical practice
 
+This should focus on doctors being honesty with patients from the outset and describing what they know regarding the uncertainty of the evidence.
+
+While also recognising that the impact of statin or other LRA use on dementia is going to be secondary to their established effect on lipid-lowering. To even be at risk of developing dementia, patients must survive to old-age, something that is substantially less likely given uncontolled hypercholesterolaemia.
+
+
 The clinical recommendations that can be drawn from the work in this thesis are limited, due to the low strength of evidence. Across multiple sources of evidence, there was no consistent effect of blood lipids on dementia outcomes.
 
 However, even under the scenario that a strong protective effect was identified, whether or not to prescribed a statin at mid-life will always be guided by factors other than dementia prevention. Patients must live to a certain age in order to be at risk of dementia (with the exception of familial early onset dementias), which is substantially less likely if hypercholesterolemia is left unchecked.
@@ -155,6 +161,8 @@ As with many many studies of dementia outcomes, a key limiting factor of any ana
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Public health
+
+This section should
 
 The absence of an effect of blood lipids on dementia outcomes is an unh
 

@@ -271,7 +271,7 @@ todo_report <- function(fp){
 #'
 #' @param N Chapter number
 
-chapter_edit <- function(N) {
+chapter_edit <- function(N, all = TRUE) {
   # Open Chapter RMarkdown file
   chapters <- list.files(pattern = ".Rmd")
   
@@ -279,13 +279,15 @@ chapter_edit <- function(N) {
   
   file.edit(chapter)
   
-  # Open associated R file
+  if (all) {
+    # Open associated R file
   rfiles <-
     list.files(path = "R",
                pattern = ".R",
                full.names = TRUE)
   
   file.edit(rfiles[which(data.table::like(rfiles, N))])
+  }
   
   # Put focus back on RMarkdown
   rstudioapi::navigateToFile(chapter)
@@ -959,7 +961,12 @@ save_dr <- function(dat, title, xref, preface){
     lines(get("rms::rcs(dose, knots)dose"), ci.lb, lty = "dashed")
     lines(get("rms::rcs(dose, knots)dose"), ci.ub, lty = "dashed")
   })
-    text(xref+130, 1, paste0("N studies = ",length(unique(dat$study_id))))
+    legend(x = "topright",          # Position
+           legend = c("Estimate", "95% CI",""),  # Legend texts
+           lty = c(1, 2,2),           # Line types
+           col = c("black", "black","transparent"),           # Line colors
+           lwd = 2)
+    text(xref+115, .81, paste0("N studies = ",length(unique(dat$study_id))))
     dev.off()
 }
 

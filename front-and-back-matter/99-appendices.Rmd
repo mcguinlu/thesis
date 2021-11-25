@@ -82,8 +82,11 @@ med_res <-
 ```
 
 
-## Chapter \@ref(sys-rev-heading) {#appendix-sys-rev}
+## Chapter \@ref(sys-rev-methods-heading) {#appendix-sys-rev}
 <!----------------------------------------------------------------------------->
+
+<!-- TODO This needs to be split in two!  -->
+
 
 ### Search strategy {#appendix-search-strategy}
 
@@ -216,6 +219,32 @@ if(doc_type == "docx") {
 
 
 ```
+
+
+## Chapter \@ref(sys-rev-results-heading)
+
+### Dose response plots by fraction
+
+<!----------------------------------------------------------------------------->
+(ref:drDemeniaTC-cap) Dose-response meta-analysis of total cholesterol on all-cause dementia
+
+(ref:drDemeniaTC-scap) shortcap
+
+```{r drDemeniaTC, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:drDemeniaTC-cap)', out.width='100%', fig.scap='(ref:drDemeniaTC-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/dr_Dementia_TC.png"))
+```
+<!----------------------------------------------------------------------------->  
+
+<!----------------------------------------------------------------------------->
+(ref:drAdLDL-cap) Dose-response meta-analysis of low-density lipoprotein cholesterol on Alzheimer's disease
+
+(ref:drAdLDL-scap) shortcap
+
+```{r drAdLDL, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:drAdLDL-cap)', out.width='100%', fig.scap='(ref:drAdLDL-scap)'}
+knitr::include_graphics(file.path("figures/sys-rev/dr_AD_LDL.png"))
+```
+<!----------------------------------------------------------------------------->
+
 
 <!----------------------------------------------------------------------------->
 ## Chapter \@ref(cprd-analysis-heading) {#appendix-cprd-analysis}

@@ -1813,4 +1813,104 @@ if(doc_type == "docx"){
   
 }
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- dags
+# 
 
+
+ggplot2::ggsave(filename = file.path("figures","cprd-analysis","indicationBias.png"),
+                dagitty::dagitty("dag {
+  Statin [exposure,pos=\"0.000,0.000\"]
+  \"Vascular outcomes\" [outcome,pos=\"2.000,0.000\"]
+  \"Uncontrolled variable\" [pos=\"1.000,1.000\"]
+  \"Uncontrolled variable\" -> Statin
+  \"Uncontrolled variable\" -> \"Vascular outcomes\"
+}") %>% ggdag_classic(size = 6) +
+  xlim(-0.5,3) +
+  geom_text(data = data.frame(x = 0.316392393234329,
+                              y = 0.537705383514239,
+                              label = "Prompts"),
+            mapping = aes(x = x,
+                          y = y,
+                          label = label),
+            angle = 0L,
+            lineheight = 1L,
+            hjust = 0.5,
+            vjust = 0.5,
+            colour = "black",
+            family = "sans",
+            fontface = "bold",
+            inherit.aes = FALSE,
+            show.legend = FALSE) +
+  geom_text(data = data.frame(x = 0.88,
+                              y = 0.05,
+                              label = "Induced positive"),
+            mapping = aes(x = x,
+                          y = y,
+                          label = label),
+            angle = 0L,
+            lineheight = 1L,
+            hjust = 0.5,
+            vjust = 0.5,
+            colour = "black",
+            family = "sans",
+            fontface = "bold",
+            inherit.aes = FALSE,
+            show.legend = FALSE) +
+  geom_text(data = data.frame(x = 0.88,
+                              y = -0.04,
+                              label = "association"),
+            mapping = aes(x = x,
+                          y = y,
+                          label = label),
+            angle = 0L,
+            lineheight = 1L,
+            hjust = 0.5,
+            vjust = 0.5,
+            colour = "black",
+            family = "sans",
+            fontface = "bold",
+            inherit.aes = FALSE,
+            show.legend = FALSE) +
+  geom_text(data = data.frame(x = 1.65891420807966,
+                              y = 0.537705383514239,
+                              label = "Causes"),
+            mapping = aes(x = x,
+                          y = y,
+                          label = label),
+            angle = 0L,
+            lineheight = 1L,
+            hjust = 0.5,
+            vjust = 0.5,
+            colour = "black",
+            family = "sans",
+            fontface = "bold",
+            inherit.aes = FALSE,
+            show.legend = FALSE) +
+  geom_curve(data = data.frame(x = 0.220612676359188,
+                               y = -0.000788829298738025,
+                               xend = 1.45,
+                               yend = -0.00157828084913909),
+             mapping = aes(x = x,
+                           y = y,
+                           xend = xend,
+                           yend = yend),
+             linetype = "dashed",
+             angle = 0L,
+             size = 0.6,
+             colour = "black",
+             curvature = 0,
+             arrow = structure(list(angle = 0,
+                                    length = structure(0,
+                                                       class = "unit",
+                                                       valid.unit = 2L,
+                                                       unit = "inches"),
+                                    ends = 2L,
+                                    type = 2L),
+                               class = "arrow"),
+             inherit.aes = FALSE,
+             show.legend = FALSE) +
+  
+  theme_dag(),
+width = 8,
+height = 3)

@@ -686,7 +686,7 @@ This section will expand on a potential explanation for the observed results det
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-#### Confounding by indication
+#### Confounding by indication {#cprd-confounding-by-ind}
 
 A likely explanation for the observed increased risk of dementia outcomes with a vascular component (e.g. vascular and other dementias) with lipid-regulating agent use, and an important limitation of this analysis, is residual "confounding by indication". While the term has been used to describe different source of bias in epidemiological analyses,[@salas1999] it is used here to described the role of risk factors that both prompt treatment and increase the risk of the outcome, thus causing a distorted positive association between the treatment and outcome (see Figure \@ref(fig:indicationBias)). In causal inference nomenclature, statins and dementia are said to be _d_-connected as there is an open "backdoor" path between them via the uncontrolled confounders.[@suttorp2015] In the context of this analysis, the confounding variable (or, more likely, variables) would prompt both prescription of statins and also represent a vascular risk factor that contributes to the development of the vascular dementia. A similar confounding structure likely exists for ezetimibe, another hypercholesterolemia treatment, providing an explanation for the association of vascular/other dementia but not Alzheimer's disease with this exposure.
 
@@ -695,104 +695,10 @@ A likely explanation for the observed increased risk of dementia outcomes with a
 
 (ref:indicationBias-scap) Confounding by indication causal diagram
 
+```{r dags, include=F}
+```
+
 ```{r indicationBias, echo = FALSE, results="asis", fig.pos = "H",fig.align='center',fig.cap='(ref:indicationBias-cap)', out.width='80%', fig.scap='(ref:indicationBias-scap)', message = FALSE}
-
-ggplot2::ggsave(filename = file.path("figures","cprd-analysis","indicationBias.png"),
-dagitty::dagitty("dag {
-  Statin [exposure,pos=\"0.000,0.000\"]
-  \"Vascular outcomes\" [outcome,pos=\"2.000,0.000\"]
-  \"Uncontrolled variable\" [pos=\"1.000,1.000\"]
-  \"Uncontrolled variable\" -> Statin
-  \"Uncontrolled variable\" -> \"Vascular outcomes\"
-}") %>% ggdag_classic(size = 6) +
-  xlim(-0.5,3) +
-  geom_text(data = data.frame(x = 0.316392393234329,
-                              y = 0.537705383514239,
-                              label = "Prompts"),
-            mapping = aes(x = x,
-                          y = y,
-                          label = label),
-            angle = 0L,
-            lineheight = 1L,
-            hjust = 0.5,
-            vjust = 0.5,
-            colour = "black",
-            family = "sans",
-            fontface = "bold",
-            inherit.aes = FALSE,
-            show.legend = FALSE) +
-  geom_text(data = data.frame(x = 0.88,
-                              y = 0.05,
-                              label = "Induced positive"),
-            mapping = aes(x = x,
-                          y = y,
-                          label = label),
-            angle = 0L,
-            lineheight = 1L,
-            hjust = 0.5,
-            vjust = 0.5,
-            colour = "black",
-            family = "sans",
-            fontface = "bold",
-            inherit.aes = FALSE,
-            show.legend = FALSE) +
-  geom_text(data = data.frame(x = 0.88,
-                              y = -0.04,
-                              label = "association"),
-            mapping = aes(x = x,
-                          y = y,
-                          label = label),
-            angle = 0L,
-            lineheight = 1L,
-            hjust = 0.5,
-            vjust = 0.5,
-            colour = "black",
-            family = "sans",
-            fontface = "bold",
-            inherit.aes = FALSE,
-            show.legend = FALSE) +
-  geom_text(data = data.frame(x = 1.65891420807966,
-                              y = 0.537705383514239,
-                              label = "Causes"),
-            mapping = aes(x = x,
-                          y = y,
-                          label = label),
-            angle = 0L,
-            lineheight = 1L,
-            hjust = 0.5,
-            vjust = 0.5,
-            colour = "black",
-            family = "sans",
-            fontface = "bold",
-            inherit.aes = FALSE,
-            show.legend = FALSE) +
-  geom_curve(data = data.frame(x = 0.220612676359188,
-                               y = -0.000788829298738025,
-                               xend = 1.45,
-                               yend = -0.00157828084913909),
-             mapping = aes(x = x,
-                           y = y,
-                           xend = xend,
-                           yend = yend),
-             linetype = "dashed",
-             angle = 0L,
-             size = 0.6,
-             colour = "black",
-             curvature = 0,
-             arrow = structure(list(angle = 0,
-                                    length = structure(0,
-                                                       class = "unit",
-                                                       valid.unit = 2L,
-                                                       unit = "inches"),
-                                    ends = 2L,
-                                    type = 2L),
-                               class = "arrow"),
-             inherit.aes = FALSE,
-             show.legend = FALSE) +
-
-  theme_dag(),
-width = 8,
-height = 3)
 
 knitr::include_graphics(file.path("figures","cprd-analysis","indicationBias.png"))
 ```
@@ -847,7 +753,7 @@ This analysis serves to illustrative the importance of the code lists chosen to 
 <!--------------------------------------------------------------------------->
 &nbsp;
 
-### Strengths and limitations
+### Strengths and limitations {#cprd-limitations}
 
 The primary strength of this analysis is the relative size of the CPRD and length of follow-up. Having reviewed the existing literature, as identified by the systematic review in Chapter \@ref(sys-rev-heading), this analysis of `r comma(attrition[14,1])` participants is one of the largest available studies of this research question. Additionally, this analysis followed LRA users and non-users from a common index date, using a time-updating treatment indicator to correctly assign time-at-risk to the exposed and unexposed groups. This approach has been less commonly used in the literature and allows for the mitigation of potential immortal time bias. Finally, it is one of the few that provide evidence on the association of lipid-regulating agent use and vascular and other dementias, and used negative and positive controls to assess the potential for residual confounding.
 

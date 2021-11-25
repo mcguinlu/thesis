@@ -32,6 +32,8 @@
 - [ ] Ensure that everything I say is in the Appendix __is actually in the Appendix!__
 - [ ] Check Zotero links are present!
 - [ ] Link to `triangulate`
+- [ ] Decide on capitalisation of chapter!
+- [ ] Check ordering items is the same e.g. abc vs i,ii,iii
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice

@@ -11,9 +11,9 @@ forest_strata_rob <-
 ### the 'slab' argument to store study labels as part of the data frame)
 
 if (rob_tool == "ROB2") {
-  levels <- c("Low","Some concerns","High","Critical")
+  levels <- rev(c("Low","Some concerns","High","Critical"))
 } else {
-  levels <- c("Low","Moderate","Serious","Critical")
+  levels <- rev(c("Low","Moderate","Serious","Critical"))
 } 
   
 # TODO the ordering of ROB is not quite right!

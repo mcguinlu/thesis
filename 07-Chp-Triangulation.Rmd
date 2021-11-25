@@ -14,8 +14,7 @@ documentclass: book
 ---
 
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:tri-quote)', echo = TRUE}
-Next on my list of features to be specially considered I would place the consistency
-of the observed association. Has it been repeatedly observed by different persons, in different places, circumstances and times?
+Next on my list of features to be specially considered I would place the consistency of the observed association. Has it been repeatedly observed by different persons, in different places, circumstances and times?
 ```
 (ref:tri-quote) --- Sir Austin Bradford Hill, 1965 [@hill1965]
 
@@ -71,7 +70,7 @@ Taken together, these limitations to qualitative triangulation detail a need for
 ## Methods
 ### Data sources {#tri-data-sources}
 
-This triangulation exercise draws on the research produced in each of the preceding chapters. More specifically, this chapter builds on the comprehensive systematic review of existing evidence presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). This evidence base is then supplemented by new evidence on the association of statin use with dementia outcomes in the CPRD (Chapter \@ref(cprd-heading)) and the association of lipids with dementia outcomes in previously unanalysed datasets accessed via the DPUK (Chapter \@ref(ipd-heading)).
+This triangulation exercise draws on the research produced in each of the preceding chapters. More specifically, this chapter builds on the comprehensive systematic review of existing evidence presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). This evidence base is then supplemented by new evidence on the association of statin use with dementia outcomes in the CPRD (Chapter \@ref(cprd-analysis-heading)) and the association of lipids with dementia outcomes in previously unanalysed datasets accessed via the DPUK (Chapter \@ref(ipd-heading)).
 
 Table \@ref(tab:thesisOverview-table) summarises the research each data source has attempted to address, the exposures and outcomes considered in each case, and the contribution of each chapter to the triangulation exercise presented here.
 
@@ -90,7 +89,7 @@ Table \@ref(tab:thesisOverview-table) summarises the research each data source h
 
 ### Qualitative triangulation {#qual-tri}
 
-As discussed in the introduction to this Chapter (Section \@ref(triangulation-overview)), as part of a narrative synthesis of the evidence all information sources were initally grouped by outcome, and the findings from each source were narratively compared and contrasted. Potential reasons for heterogeneity between study designs were examined with specific reference to the risk-of-bias assessments performed. 
+As discussed in the introduction to this Chapter (Section \@ref(triangulation-overview)), as part of a narrative synthesis of the evidence all information sources were initially grouped by outcome, and the findings from each source were narratively compared and contrasted. Potential reasons for heterogeneity between study designs were examined with specific reference to the risk-of-bias assessments performed. 
 
 This analysis built on the detailed risk-of-bias assessments performed and presented as part of the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)). Similarly, risk-of-bias assessments were performed for each new source of evidence presented in this thesis. The risk of bias tools used to assess each result are described in detail in Section \@ref(risk-of-bias), but in summary, RCTS were assessed using the RoB 2 tool;[@sterne2019] NRSI using the ROBINS-I tool;[@sterne2016] NRSE using the ROBINS-E tool (see Section \@ref(rob-tools-nrse));[@morganr2020; @french2019] and MR studies using the Mamluk et al. tool.[@mamluk2020] 
 
@@ -166,6 +165,9 @@ In addition to assessing the extent of bias, as defined by the three levels deta
 * "Unpredictable"
 
 As indicated in the options above, the response to this question is also used to determine the predicted type of bias as either additive or proportional. Proportional biases are dependent on the magnitude of the effect, while additive biases are not.[@turner2009]
+
+<!-- TODO Need to include some text here on examples of each: e.g. immortal time bias, or  -->
+
 
 For additive biases, determining the absolute direction of bias was simply a case of whether the bias is expected to shift the effect estimate to the left or right on an imaginary forest plot. For example, the estimate would be shifted to the right if a bias was predicted to favour the comparator (Figure \@ref(fig:exampleDirection)). 
 
@@ -245,7 +247,7 @@ Where the direction of bias in a domain was unpredictable for a given result, th
 
 ####	Assessing and assigning prior values to indirectness
 
-The indirectness of a result (also termed external bias, relevance, generalisability, or applicability) is defined here as the discrepancy between the research question addressed by the "idealised" study and the causal question of interest.
+The indirectness of a result (also termed external bias, external validity, relevance, generalisability, or applicability) is defined here as the discrepancy between the research question addressed by the "idealised" study and the causal question of interest.
 
 An identical approach was employed to assess, and assign prior distributions to, the indirectness in each result. The target question for each result was compared against the causal question of interest with respect to three domains, defined as important by the GRADE framework for assessing the certainty of evidence:[@guyatt2011] population, intervention/exposure, and outcome. I again used the scale of "Low/"Moderate"/"High" to quantify the extent of indirectness in each domain. All indirectness was defined _a priori_ as being proportional in nature (i.e. depending on the magnitude of the effect), in line with previous work on this topic.[@turner2009;@thompson2011] As above, data from the previous elicitation exercise were used to inform reasonable prior distributions for each level of indirectness (Table \@ref(tab:priorsIndirect-table)).
 
@@ -343,7 +345,7 @@ Finally, the IPD analysis (Chapter \@Ref(hold)) provided supporting evidence for
 
 #### Single study
 
-As an illustrative example, the bias and indirectness inherent to the estimate of the effect of statin use on Alzheimer's disease in the CPRD are considered here. For this result, there were three domains at greater than low risk of bias: Bias due to confounding, Bias due to definition of the outcome, and Bias in the selection of the reported result (Figure \@ref(fig:biasDirectionSingle)). In Domain 1 (bias due to confounding), the study did not adjust for ApoE4 status, which is predicted to mask any true association between statins and Alzheimer's disease (see Section \@ref(hold) for a fuller discussion). As such, the bias is predicted to _favour the comparator_ and so the absolute direction of bias is to the right. In Domain 7 (bias in measurement of the outcome), there was a high risk of differential misclassification on the basis of the exposure. Here, history of statin use may make a diagnosis of vascular dementia more likely than Alzheimer's disease, and so for this outcome, this bias is predicted to _favour the experiment_ (in this case, an intervention). As such, the absolute direction of bias is to the left. In Domain 7 (bias in selection of the reported result), for consistency with the other NRSI, in the absence of a protocol the bias is assumed to be _away from the null_. Given the position of the effect estimate below the null, the absolute direction of bias in this domain is to the left.
+As an illustrative example, the bias and indirectness inherent to the estimate of the effect of statin use on Alzheimer's disease in the CPRD are considered here. For this result, there were three domains at greater than low risk of bias: Bias due to confounding, Bias due to definition of the outcome, and Bias in the selection of the reported result (Figure \@ref(fig:biasDirectionSingle)). In Domain 1 (bias due to confounding), the study did not adjust for ApoE4 status, which is predicted to mask any true association between statins and Alzheimer's disease (see Section \@ref(cprd-limitations) for a fuller discussion). As such, the bias is predicted to _favour the comparator_ and so the absolute direction of bias is to the right. In Domain 7 (bias in measurement of the outcome), there was a high risk of differential misclassification on the basis of the exposure. Here, history of statin use may make a diagnosis of vascular dementia more likely than Alzheimer's disease, and so for this outcome, this bias is predicted to _favour the experiment_ (in this case, an intervention). As such, the absolute direction of bias is to the left. In Domain 7 (bias in selection of the reported result), for consistency with the other NRSI, in the absence of a protocol the bias is assumed to be _away from the null_. Given the position of the effect estimate below the null, the absolute direction of bias in this domain is to the left.
 
 &nbsp;<!----------------------------------------------------------------------->  
 (ref:biasDirectionSingle-cap) Bias direction plot for a single study showing the predicted direction of bias in each domain. Additive biases are characterised using arrows, while the proportional biases are denoted using $<$ and $>$. A question mark indicates that the direction of bias was unpredictable.
@@ -494,6 +496,10 @@ A related issue is the "Low" risk of bias judgement. In this analysis, I assumed
 #### Combination of different effect measures
 
 A final limitation to this analysis is the synthesis of different effect estimates. As discussed in Section \@ref(hold), hazard ratios are not directly comparable to odds ratios, as they inherently account for person time-at-risk.[@mckenzie2019] As non-randomised studies (NRSI/NRSI) of dementia outcomes report hazard ratios and Mendelian randomisation studies report odds ratios, the resulting synthesis may be biased by the integration of these two different effect measures.
+
+
+<!-- TODO Need to add some text here that says that assessment of the different domains  -->
+
 
 __[Note: I would be particularly interested in your feedback here. It seems quantitative triangulation will frequently require integration of different effect measures if comparing e.g. NRSI reporting hazard ratios with MR reporting odds ratios. How should this be handled?]__
 
