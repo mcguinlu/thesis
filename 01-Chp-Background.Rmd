@@ -11,10 +11,11 @@ output:
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:dara-quote)', echo = FALSE}
-Science knows it doesn't know everything; otherwise, it'd stop.
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:dara-quote)', echo = TRUE}
+Considering everything, it seems we are dealing
+here with a special illness.
 ```
-(ref:dara-quote) --- Dara O'Briain
+(ref:dara-quote) --- Alois Alzheimer, 1907 [@alzheimer1907; @stelzmann1995]
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source("R/helper.R")

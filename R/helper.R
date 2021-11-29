@@ -708,7 +708,6 @@ get_all_citations <- function() {
   
 }
 
-
 get_citations_per_analysis <- function(data){
   
   if (is.grouped_df(data)) {

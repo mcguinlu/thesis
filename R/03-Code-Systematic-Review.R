@@ -293,7 +293,7 @@ toc_df2 <-
       exposure
     )
   ) %>%
-  group_by(study_id) %>%
+  group_by(study_id, type) %>%
   summarize(
     Criteria = paste0(unique(diagnostic_criteria), collapse = "; "),
     Exposures = paste0(unique(exposure), collapse = "; "),
@@ -330,7 +330,7 @@ ggsave(here::here("figures/sys-rev/type_by_year.png"),
 
 
 study_details <-
-  left_join(toc_df, toc_df2, by = c("study_id" = "study_id")) %>%
+  left_join(toc_df, toc_df2, by = c("study_id" = "study_id", "subtype" = "type")) %>%
   mutate(Study = paste(author, year)) %>%
   mutate(type = factor(type, levels = c("RCT", "NRSI", "NRSE", "MR")),)
 
@@ -447,42 +447,63 @@ n_VaD <- study_details %>%
   pull(label)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- studyCharacteristics-table
+# ---- studyCharacteristics-setup
 
 # TODO Ensure the citations here match up
 # Do it in relation to the full render as some citations are included in early questions
 # Also, need to deal with the fact that some studies are included >1 in the table
 
-studyCharacteristics_table <- study_details %>%
+
+citations_sysrev <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+            which = 1) %>%
+  janitor::clean_names() %>%
+  select(study_id,citation) %>%
+  distinct()
+
+studyCharacteristics <- study_details %>%
   ungroup() %>%
   # Add asterisk to preprinted 
   mutate(Study = ifelse(study_id %in% c(90004, 90005, 3232), paste0(Study, "*"), Study)) %>%
+  left_join(citations_sysrev) %>%
+  mutate("result_id" = study_id) %>%
+  arrange(desc(subtype), Study) 
+
+sysrevcites <- glue::glue_data(studyCharacteristics,"(ref:{citation}{subtype}cite) {Study}[@{citation}]\n\n")
+
+studyCharacteristics_table <- studyCharacteristics %>%
+  
+  mutate(Study = paste0("(ref:",citation,subtype,"cite)")) %>%
+  select(-citation) %>%
   select(
-    Study,
-    #Citation,
-    type,
-    location,
-    number_participants,
-    age_combo,
-    female_combo,
-    Exposures,
-    Outcomes,
-    Criteria,-c(study_id, author, year)
-  ) %>%
+  study_id,
+  result_id,
+  Study,
+  #Citation,
+  subtype,
+  location,
+  number_participants,
+  age_combo,
+  female_combo,
+  Exposures,
+  Outcomes,
+  Criteria,
+  -c(author, year)
+) %>%
   rename(
     "Location" = location,
-    "Type" = type,
     "N" = number_participants,
     "Female (%)" = female_combo,
     "Age at baseline" = age_combo,
     "Diagnostic criteria" = Criteria,
   ) %>%
   tidy_nums() %>%
-  arrange(desc(Type), Study) %>%
-  select(-Type) %>%
+  select(-c(subtype, result_id, study_id)) %>%
   # Add citation
   mutate(across(everything(),  ~ stringr::str_replace(., "NA", "NR"))) %T>%
   write.csv("data/table_words/studyCharacteristics.csv")
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- studyCharacteristics-table
 
 if (doc_type == "docx") {
   apply_flextable(studyCharacteristics_table, caption = "(ref:studyCharacteristics-caption)")
@@ -556,6 +577,7 @@ if (doc_type == "docx") {
         "VaD - vascular dementia."
       )
     )
+
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-

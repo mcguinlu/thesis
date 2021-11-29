@@ -8,11 +8,11 @@ output:
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:intro-quote)', echo = FALSE}
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:discussion-quote)', echo = FALSE}
 Since many intra-study biases are difficult or impossible to deal with, the meta-analytic results of observational research are often acts of politics, not science.
 ```
 
-(ref:intro-quote) --- Alvan R. Feinstein, 1995 [@feinstein1995]
+(ref:discussion-quote) --- Alvan R. Feinstein, 1995 [@feinstein1995]
 
 # Discussion {#discussion-heading}
 \minitoc <!-- this will include a mini table of contents-->

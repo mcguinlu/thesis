@@ -14,7 +14,7 @@ output:
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:cprdquote)', echo = FALSE}
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:cprdquote)', echo = TRUE}
 When dealing with human beings controlled experiments frequently prove to be impracticable, so for a scientific basis for our assumptions we turn to past history to reconstruct the suspected causal chain of events - and then our statistical troubles may begin.
 ```
 (ref:cprdquote) --- Harold F. Dorn, 1953 [@dorn1953]

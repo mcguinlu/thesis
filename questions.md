@@ -16,3 +16,11 @@ Why did you not use a trial emulation analysis? See emails for reasons to justif
 Would confounding effect of ApoE4 not be somewhat moderated by adjusting for LDL-c 
 
 Increased risk of AD with fibrates? Not consistent across AD outcomes like exetimibe is across  vascular/other
+
+Which method did you use for random effects meta-analysis and why?
+
+Why is the dose response model multi-variate? Accounts for results and the correlation between results.
+
+What is the purpose of using knots?
+
+Talk about problems with including Hippsley-Cox re double-counting

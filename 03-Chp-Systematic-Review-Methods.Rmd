@@ -12,11 +12,11 @@ output:
   bookdown::html_document2: default
 documentclass: book
 ---
-```{block type='savequote', include=knitr::is_latex_output(),quote_author='(ref:sys-rev-quote)', echo = FALSE}
+```{block type='savequote', include=knitr::is_latex_output(),quote_author='(ref:sys-rev-methods-quote)', echo = TRUE}
 "It is surely a great criticism of our profession that we have not organised a critical summary by speciality or sub-speciality, up-dated periodically, of all relevant RCTS."  
 ```
 
-(ref:sys-rev-quote) --- Archibald Cochrane, 2000 [@cochrane1979]
+(ref:sys-rev-methods-quote) --- Archibald Cochrane, 2000 [@cochrane1979]
 
 # Systematic review of existing evidence on the association between blood lipids and dementia outcomes: Methods {#sys-rev-methods-heading}
 
@@ -37,9 +37,9 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 ## Lay summary
 
-Systematic reviews are a type of research study that aim to collect and combine all existing evidence to provide the best possible answer to an important research question. Well-performed reviews involve multiple steps including: searching of existing studies; assessment of the studies against predefined inclusion criteria; collection of data from each study; and assessment of each study's methods. 
+Systematic reviews are a type of research study that aim to collect and combine all existing evidence to provide the best possible answer to an important research question. Well-performed reviews involve multiple steps including: searching of existing studies; assessment of the studies against predefined inclusion criteria; collection of data from each study; and assessment of each study's method and results. 
 
-This chapter presents the methods used to perform a systematic review of primary studies that have examined the relationship between the levels of blood lipids (such as cholesterol and triglycerides) and dementia outcomes. In addition, the review examined the relationship betweeen treatments that change blood lipid levels, such as statins, and dementia outcomes. The results of this systematic review are then presented in Chapter \@ref(sys-rev-results-heading.)
+This chapter presents the methods used to perform a systematic review of primary studies that have examined the relationship between the levels of blood lipids (such as cholesterol and triglycerides) and dementia outcomes. In addition, the review examined the relationship between treatments that change blood lipid levels, such as statins, and dementia outcomes. The results of this systematic review are then presented in Chapter \@ref(sys-rev-results-heading.)
 
 &nbsp;
 
@@ -48,7 +48,7 @@ This chapter presents the methods used to perform a systematic review of primary
 
 In this chapter, I describe a comprehensive systematic review of the relationship between blood lipid levels (and treatments that modify them) and the subsequent risk of dementia and related outcomes. 
 
-This analysis sought to address two specific aims. Firstly, as discussed in the Introduction to this thesis (Section \@ref(evidence-association)), several diverse forms of evidence on the relationship of lipids and dementia exist. These include randomised controlled trials, observational studies of different design, and Mendelian randomisation studies. However, based on a scoping review of existing literature, no previous evidence synthesis exercise has attempted to examine the association of lipids/statins with dementia outcomes across these distinct evidence types. Collating these diverse evidence sources is important, as if the observed association between lipids and dementia is constant across them, it increases our confidence in the association. As such, the primary aim of this analysis was to systematically review all available literature describing prospective analyses, regardless of study design.
+This analysis sought to address two specific aims. Firstly, as discussed in the introduction to this thesis (Section \@ref(evidence-association)), several diverse forms of evidence on the relationship of lipids and dementia exist. These include randomised controlled trials, observational studies of different design, and Mendelian randomisation studies. However, based on a scoping review of existing literature, no previous evidence synthesis exercise has attempted to examine the association of lipids/statins with dementia outcomes across these distinct evidence types. Collating these diverse evidence sources is important, as if the observed association between lipids and dementia is constant across them, it increases our confidence in the association. As such, the primary aim of this analysis was to systematically review all available literature describing prospective analyses, regardless of study design.
 
 Secondly, I explicitly sought to include health-related preprint servers as a potential evidence source in this review, as they are infrequently considered by evidence synthesists but  report relevant unpublished analyses. As a sensitivity analysis to this review presented in this chapter, I sought to quantify the additional evidential value of including preprints, making use of the preprint search tool presented in Chapter \@ref(sys-rev-tools-heading).
 
@@ -76,7 +76,9 @@ In line with best-practice guidance, secondary reviewers were used to check the 
 
 #### Inclusion criteria 
 
-I sought to include studies that examined blood lipid levels as a risk factor for dementia outcomes, defined either as binary hypercholesterolemia variable or by category/1-standard-deviation increase of a specific lipid fraction (total cholesterol, high- and low-density lipoprotein cholesterol and triglycerides). I also aimed to include studies examining the effect of treatments that modify lipids levels as a source of indirect evidence. Eligible study designs included randomized controlled trials and non-randomized observational studies of lipid modifying treatments, longitudinal studies examining the effect of increased/decreased blood lipid levels, and genetic instrumental variable (Mendelian randomization) studies examining the effect of genetically increased/decreased blood lipid levels.
+I sought to include studies that examined blood lipid levels as a risk factor for dementia outcomes, defined either as binary hypercholesterolemia variable or by category/1-standard-deviation increase of a specific lipid fraction (total cholesterol, high- and low-density lipoprotein cholesterol and triglycerides). I also aimed to include studies examining the effect of treatments that modify blood lipid levels, such as statins or fibrates, as a source of indirect evidence.
+
+Eligible study designs were randomized controlled trials, non-randomized studies of exposures, non-randomised studies of  , longitudinal studies examining the effect of increased/decreased blood lipid levels, and genetic instrumental variable (Mendelian randomization) studies examining the effect of genetically increased/decreased blood lipid levels.
 
 Eligible studies screened participants for dementia at baseline and excluded any prevalent cases. Alternatively, where no baseline screening was employed, participants were assumed to be dementia free if less than 50 years of age at baseline. Studies of any duration were included to allow for exploration of the effect of length of follow-up on the effect estimate using meta-regression. No limits were placed on the sample size of included studies.
 
@@ -179,8 +181,10 @@ Data extraction was performed using a piloted data extraction form. Extracted it
 
 <!-- COMMENT [Yoav] How did you choose what data to include? re: studyification -->
 
+<!-- COMMENT [Julian] Same analysis or same data? Don't want 2+ analyses of the same data to appear in a meta-analysis (unless orthogonal; e.g. MR + RCT) -->
+<!-- QUESTION Why does being orthogonal make it okay? And the Three City Study is likely to be included several times -->
 
-As part of the data extraction process, multiple records resulting from the analysis of the same data were included and grouped into single units, hereafter called studies. This was common in cases where multiple papers report results on the same cohort but at different time points. This process builds out the most comprehensive account of a given studies possible by incorporating information from all available records.
+As part of the data extraction process, multiple records resulting from a single analysis were included and grouped into single units, hereafter called studies. This was most common in cases where multiple records reported on the same analysis but at different time points. In this case, the result corresponding to the longest follow-up was used. Grouping records into studies builds out the most comprehensive account of a given analysis by incorporating information from all available records. 
 
 This was particularly relevant to preprints and published papers reporting the same study, which were not considered to be duplicate records but instead different reports of the same study. This is due to the potential for the published version to offer some information that the preprint did not, and vice versa.
 
@@ -189,7 +193,7 @@ This was particularly relevant to preprints and published papers reporting the s
 
 #### Combining across groups
 
-In line with best practice, where summary data was presented across two groups (e.g. age at baseline stratified by hypercholesterolemia status), the following approach was used to combine the groups:[@higgins2019]
+In line with best practice, where summary data were presented across two groups (e.g. age at baseline stratified by hypercholesterolemia status), the following approach was used to combine the groups:[@higgins2019]
 
 \begin{equation}
 N = N_1 + N_2
@@ -225,7 +229,7 @@ Where necessary, lipid levels reported in _mmol/L_ were converted in _mg/dL_ usi
   (\#eq:lipidConversion)
 \end{equation} 
 
-where $Z = 38.67$ for total cholesterol, LDL-c and HDL-c, and $Z = 88.57$ for triglycerides. The choice of _mg/dL_ was influenced by the widely-used categorises of lipids levels on the _mg/dL_ scale, as shown in Table \@ref(tab:lipidLevels-table) in Section \@ref(intro-lipid-fractions).
+where $Z = 38.67$ for total cholesterol, LDL-c and HDL-c, and $Z = 88.57$ for triglycerides.[@rugge2011] The choice of _mg/dL_ was influenced by the widely-used categorises of lipids levels on the _mg/dL_ scale, as shown in Table \@ref(tab:lipidLevels-table) in Section \@ref(intro-lipid-fractions).
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -237,17 +241,6 @@ Where additional data points not included in the report of an analysis were requ
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-#### Analysis of varying effect measures
-
-<!-- TODO Include formulae and informed assumptions  -->
-
-The range of effect measures presented by studies (odds ratios, risk ratios, hazard ratios, etc) are not directly interchangeable in the context of systematic review.  As such, different effect estimates can be one potential problem that precludes a meta-analysis of all studies.[@mckenzie2019] If the outcome is rare, as is the case for dementia outcomes, the estimated odds and risk ratios will approximate each other.<!-- TODO CITATION NEEDED --> However, hazard ratios provide a very different interpretation, taking into account person-time-at-risk in each treatment group.
-
-Several existing reviews do not distinguish between the types of effect measures and include all existing studies in a single meta-analysis to produce an overall effect estimate. However, in this review, the small subset of studies reporting odds/risk ratios are synthesised separately to those reporting hazard ratios.
-
-<!----------------------------------------------------------------------------->
-&nbsp;
-
 ### Risk-of-bias assessment {#risk-of-bias}
 
 A key aim of the review presented in this chapter is to identify different sources of evidence at risk of a diverse range of biases, and to contrast and compare findings across them (see Section \@ref(triangulation-overview) for an overview of triangulation and Chapter \@ref(tri-heading) for the results of this analysis). To enable this triangulation exercise, a detailed and structured risk-of-bias assessment formed an important part of this review.
@@ -255,7 +248,7 @@ A key aim of the review presented in this chapter is to identify different sourc
 There has been a recent movement within the evidence synthesis community away from examining _methodological quality_ to assessing _risk of bias_,[@mcguinness2018; @sterne2016] and thus directly evaluating the internal validity of a study. Internal validity is defined here as the absence of systematic error (or bias) in a study, which may influence its results.[@campbell1957; @juni2001] 
 
 This move was prompted by an unclear definition of "methodological quality" which could include facets such as unclear reporting, in addition to challenges in the comparison of results from different tools. <!-- TODO CITATION NEEDED --> As part of this shift, the focus shifted from checklist or score based tools towards domain-based methods, in which different potential sources of bias in a study are assessed in order. <!-- TODO CITATION NEEDED -->
-Finally, the new tools tools move from assessing bias at the study level to considering separately each individual numerical result reported.  For example, a study may report on the efficacy of an intervention at six months and two years follow-up. In this case, missing outcome data that is not an issue at six months may introduce bias after two years of follow-up, and assigning a single risk-of-bias judgement to the study as a whole masks the different biases applicable to each unique result.
+Finally, the new tools tools move from assessing bias at the study level to considering separately each individual numerical result reported.  For example, a study may report on the efficacy of an intervention at six months and two years follow-up. In this case, missing outcome data that are not an issue at six months may introduce bias after two years of follow-up, and assigning a single risk-of-bias judgement to the study as a whole masks the different biases applicable to each unique result.
 
 In this review, domain-based tools were used to assess the risk of bias for each result in each included study. The study design-specific tools are introduced and discussed in more detail in the following sections. 
 
@@ -298,14 +291,18 @@ This additional appraisal marks a departure from the registered protocol, as the
 
 An initial qualitative synthesis of evidence was performed, summarising the data extracted from studies stratified by study design. Where individual studies were deemed comparable, they were incorporated into a quantitative analysis or "meta-analysis". <!-- TODO CITATION NEEDED --> 
 
-Results were not combined across different study designs (i.e. RCTs were not combined in a meta-analysis with results from observational studies). The summary effect estimates produced by meta-analysis of individual study designs are discussed, but are compared and contrasted more fully as part of the triangulation exercise presented in Chapter \@ref(discussion-heading).
-
 &nbsp;
 <!----------------------------------------------------------------------------->
 
+#### Analysis overview
+
+Results were not combined across different study designs (i.e. RCTs were not combined in a meta-analysis with results from observational studies). The summary effect estimates produced across individual study designs are discussed, but are compared and contrasted more fully as part of the triangulation exercise presented in Chapter \@ref(discussion-heading). Analysis are presented seperately for each dementia type of interest.
+
+The range of effect measures presented by studies (odds ratios, risk ratios, hazard ratios, etc) are not directly interchangeable in the context of systematic review.  As such, different reported effect estimates can be one potential problem that precludes a meta-analysis of all studies.[@mckenzie2019] However if the outcome is rare, as is the case for dementia outcomes, the estimated odds, risk and hazard ratios will approximate each other.[@vanderweele2020] As such, I did not stratify the analyses by reported effect measure.
+ 
 #### Random-effects meta-analysis
 
-For results examining the effect of binary or continuous exposure (as opposed to categorical/dose-response, as discussed in the next section) on any dementia outcome, a random-effects meta-analysis model was used. Random-effects meta-analysis does not assume one true underlying effect, but rather allows for a distribution of true effects with variance $\tau^2$. The weight ($w$) assigned to each result (denoted as $y_i$) is then give as the inverse of variance of that result plus the estimate of between-result variance, denoted as $w_i = \frac{1}{v_i+\tau^2}$ for result $i$.
+I used a random-effects model in all meta-analysis presented in this chapter.[[@hedges1998;@dersimonian1986] Random-effects meta-analysis does not assume one true underlying effect, but rather allows for a distribution of true effects with variance $\tau^2$. The weight ($w$) assigned to each result (denoted as $y_i$) is then given as the inverse of variance of that result plus the estimate of between-result variance, denoted as $w_i = \frac{1}{v_i+\tau^2}$ for result $i$.
 
 Once the weights are calculated for each result, the overall estimate ($\hat{y}$) and variance ($Var(\hat{y})$) can be estimated:
 
@@ -329,9 +326,13 @@ Results were stratified into subgroups on the basis of the overall risk of bias 
 
 Several of the included studies presented data on multiple categories of lipid levels, but provided an overall effect estimate based on a comparison of only two of these categories (e.g. for example, highest vs lowest quartile). <!-- TODO Question: if I look at highest vs lowest, and also at top dose vs lowest dose, am I double counting results? --> While this allows for easy interpretation of the resulting effect estimate, it ignores any potential non-linear relationships between the exposure and outcome, in addition to discarding useful information contained in the interim groups. In order to address this limitation, I performed a dose-response meta-analysis in those studies reporting more than two categories for lipid levels. This marks a departure from the published protocol, as I was unaware that such a large number of studies would report dementia risk across multiple lipid categories.
 
-Studies were excluded from this analysis if the number of categories was less than three or if the necessary information for synthesis (cut-off points, number of participants and number of events per category) was not available. A restricted cubic spline model was fitted to allow for a non-linear relationship, for example a U or J-shaped relationship, where low and high levels of the exposure can have different effects versus a "normal" reference dose. <!-- TODO CITATION NEEDED --> The locations of the knots in the model were identified using fixed percentiles (25th, 50th, 75th) of the exposure data. Reference doses were defined _a priori_ as the cut-off of the "Normal"/"Optimal" categories for each fraction, as detailed in Table \@ref(tab:lipidLevels-table). Under this approach, the reference dose was defined as 200 mg/dL for total cholesterol, 100 mg/dL for LDL-c, 40 mg/dL for HDL-c, and 150 mg/dL for triglycerides. 
+Studies were excluded from this analysis if the number of categories was less than three or if the necessary information for synthesis (cut-off points, number of participants and number of events per category) was not available. When the highest reported category was open ended (e.g LDL-c $\geqslant$ 200 mg/dL), I calculated the category midpoint by assuming the width of the highest category was the same as the one immediately below it. Similarly, when the lowest category was open-ended (e.g LDL-c $\leqslant$ 100 mg/dL), I set the lower boundary for this category to zero (though this is unlikely to occur naturally).
 
-When the highest reported category was open ended (e.g LDL-c $\geqslant$ 200 mg/dL), I calculated the category midpoint by assuming the width of the highest category was the same as the one immediately below it. Similarly, when the lowest category was open-ended (e.g LDL-c $\leqslant$ 100 mg/dL), I set the lower boundary for this category to zero (though this is unlikely to occur naturally).
+
+I took a two-stage dose-response meta-analysis approach, where study-specific trends are estimated before being pooled acrosss studies.[@greenland1992] To estimate within-study trends, a restricted cubic spline model was fitted within each to allow for a non-linear relationship between lipid levels and dementia, for example a U or J-shaped relationship, where low and high levels of a lipid fraction can have different effects versus the "normal" reference dose.[@durrleman1989;@liu2009] <!-- TODO CITATION NEEDED --> 
+Reference doses were defined _a priori_ as the cut-off of the "Normal"/"Optimal" categories for each fraction, as detailed in Table \@ref(tab:lipidLevels-table). Under this approach, the reference dose was defined as 200 mg/dL for total cholesterol, 100 mg/dL for LDL-c, 40 mg/dL for HDL-c, and 150 mg/dL for triglycerides. 
+
+Restricted cubic spline models use "knots" to create separate the data into subsets or "windows", in which the trend is modelled. Further restrictions are then imposed, in that the curves in each window must join up "smoothly" at the knot location, and that the trend is assumed to be linear before the first knot and after the last knot.[@gauthier2020] The locations of the knots in the model were identified using fixed percentiles (5th, 50th, 95th) of the exposure data.[@durrleman1989] Once the within-study trends have been estimated, they are combined in a multivariate random-effects meta-analysis using the restricted maximum likelihood method.[@liu2009; @white2009;@gasparrini2012] All dose-response analyses were implemented using the `dosresmeta` R package.[@crippa2016]
 
 &nbsp;
 <!----------------------------------------------------------------------------->
@@ -348,23 +349,18 @@ Finally, I investigated the potential for small study effects, which may be caus
 
 #### Visualisation of results {#sys-rev-visualising-results}
 
-Evidence maps are useful way to explore the distribution of research cohorts included in a systematic review.[@saran2018] As part of the initial descriptive synthesis, the location of each individual study contributing to the evidence base was quantified and visualised on a world map.
+Evidence maps are useful way to explore the distribution of research cohorts included in a systematic review.[@saran2018] As part of the initial descriptive synthesis, the location of each individual study contributing to the evidence base was visualised on a world map.
 
-One of the limitations of current risk-of-bias assessments in systematic reviews is that they are often divorced from the results to which they refer, and are infrequently incorporated into the analysis.[@marusic2020; @katikireddi2015] In response to this criticism, I developed a new visualisation tool which was designed to allow for the production of "paired" forest plots - a risk-of-bias assessment is presented alongside it's corresponding numerical result -  as recommended by the ROB2 publication.[@sterne2019] This tool was developed as an adjunct to this thesis to aid in creating standardised risk-of-bias figures,[@mcguinness2020robvisPaper] and the "paired" forest plot functionality grew out of a collaboration with other researchers to design a modular method for creating custom forest plots.[@zotero-14999] A summary of this tool is contained in Appendix \@ref(appendix-robvis), and all forest plots presented in this Chapter were created using this tool.
-
-
+One of the limitations of current risk-of-bias assessment practice in systematic reviews is that they are often divorced from the results to which they refer, and are infrequently incorporated into the analysis.[@marusic2020; @katikireddi2015] In response to this criticism, I developed a new visualisation tool which was designed to allow for the production of "paired" forest plots - a risk-of-bias assessment is presented alongside it's corresponding numerical result -  as recommended by the ROB2 publication.[@sterne2019] This tool was developed as an adjunct to this thesis to aid in creating standardised risk-of-bias figures,[@mcguinness2020robvisPaper] and the "paired" forest plot functionality grew out of a collaboration with other researchers to design a modular method for creating custom forest plots.[@zotero-14999] A summary of this tool is contained in Appendix \@ref(appendix-robvis), and all forest plots presented in this Chapter were created using this tool.
 
 &nbsp;
 <!----------------------------------------------------------------------------->
 
 #### Assessment of added value of including preprints
 
-<!-- TODO _[Note: Julian, I am particularly interested in your feedback on this section, and the corresponding results section (Section \@ref(sys-rev-including-preprints-res)), as I am not convinced on the language I am using]_ -->
-
-Preprints are considered a valuable evidence source within this thesis (see Introduction, Section \@ref(diverse-sources-preprints)). As an adjunct analysis to this review, I explored the additional evidential value of including preprints in each meta-analysis performed, assessed using the fixed effect weight from a standard meta-analysis.
+Preprints are considered a valuable evidence source within this thesis (see Introduction, Section \@ref(diverse-sources-preprints)). As an adjunct analysis to this review, I explored the additional evidential value of including preprints in each meta-analysis performed, assessed using the fixed effect weight from a standard meta-analysis. In addition, in meta-analysis including at least one preprinted result, I assessed the impact of including the preprinted results on the summary estimate using a leave-one-out approach.
 
 <!-- COMMENT You need to state a priori in what objective way you can judge if pre-prints do or do not have added value -->
-
 
 Additionally, I followed identified preprints up after a two-year lag to investigate whether they had been subsequently published (in which case preprints provide a snapshot into the future, and a systematic review update would capture these reports) or not (in which case preprints provide a distinct evidence source to conventional bibliographic databases).
 
