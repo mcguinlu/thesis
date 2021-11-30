@@ -130,7 +130,6 @@ $endif$
 % Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
 \addbibresource{$bibliography$}
 
-\setcounter{tocdepth}{0} 
 \setcounter{minitocdepth}{1} 
 
 \newlength{\cslhangindent}
@@ -160,6 +159,8 @@ $endif$
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
 
+\dominitoc
+\faketableofcontents
 %%%%% CHOOSE YOUR LINE SPACING HERE
 % This is the official option.  Use it for your submission copy and library copy:
 \setlength{\textbaselineskip}{22pt plus2pt}
@@ -172,6 +173,9 @@ $endif$
 
 % Leave this line alone; it gets things started for the real document.
 \setlength{\baselineskip}{\textbaselineskip}
+
+
+
 
 % all your chapters and appendices will appear here
 $body$
