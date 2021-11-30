@@ -2,11 +2,11 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2:
     reference_docx: templates/word-styles-reference-01.docx
     number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -324,7 +324,7 @@ As illustrated in Section \@ref(evidence-association), several diverse epidemiol
 
 This thesis seeks to apply a triangulation approach to provide the best available evidence on the effect of lipids, and lipid regulating agents, on dementia outcomes. 
 
-All existing evidence, regardless of study design, is first identified by the by the systematic review presented inChapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). Risk-of-bias assessment using a domain-based tool is already a recommended part of the systematic review process, but is particularly important to a triangulation exercise. [@Pagen71; @sterne2019; @mcguinness2018] As such, a core component of the review is a comprehensive domain-based risk-of-bias assessment for all included studies.
+All existing evidence, regardless of study design, is first identified by the by the systematic review presented inChapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). Risk-of-bias assessment using a domain-based tool is already a recommended part of the systematic review process, but is particularly important to a triangulation exercise. [@page2021; @sterne2019; @mcguinness2018] As such, a core component of the review is a comprehensive domain-based risk-of-bias assessment for all included studies.
 
 Finally all evidence, both pre-existing and produced as part of this thesis (Chapter \@ref(cprd-analysis-heading) and \@ref(ipd-analysis-heading)), are triangulated in Chapter \@ref(dicussion-heading). 
 
