@@ -67,6 +67,10 @@ n_wrong_exposure <- exclusion_reasons %>%
   filter(V1 == "Wrong exposure") %>%
   pull(V2)
 
+n_wrong_outcome <- exclusion_reasons %>%
+  filter(V1 == "Wrong outcome") %>%
+  pull(V2)
+
 n_study_design <- exclusion_reasons %>%
   filter(V1 == "Wrong study design") %>%
   pull(V2)
@@ -524,9 +528,10 @@ if (doc_type == "docx") {
       latex_options = c("HOLD_position", "repeat_header"),
       font_size = 7
     ) %>%
-    kableExtra::column_spec(0, width = "20em") %>%
-    kableExtra::column_spec(c(1, 3:8), width = "9.5em") %>%
-    kableExtra::column_spec(2, width = "5em") %>%
+    kableExtra::column_spec(0, width = "25em") %>%
+    kableExtra::column_spec(c(1), width = "12em") %>%
+    kableExtra::column_spec(c(4:8), width = "9.4em") %>%
+    kableExtra::column_spec(2:3, width = "6em") %>%
     kableExtra::group_rows(
       group_label = "Randomised controlled trials",
       start_row = 1,
@@ -1075,7 +1080,7 @@ critical <-
 critical_citations <- get_citations_per_analysis(critical)
 
 n_critical <- critical %>%
-  group_by(study_id) %>%
+  select(study_id) %>%
   n_distinct()
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-

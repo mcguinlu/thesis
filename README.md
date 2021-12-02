@@ -25,7 +25,7 @@
 - [ ] Check figure and table titles are appropriately bolded
 - [ ] Check short captions for tables
 - [ ] Check short captions for figures
-- [ ] Randomisation vs randomization
+- [ ] Randomis* vs randomiz*
 - [ ] Check citations, particularly of handbook
 - [ ] Ensure all equations are in equation blocks
 - [ ] Ensure that figure table captions follow same style (bold short caption - description)
@@ -35,6 +35,8 @@
 - [ ] Decide on capitalisation of chapter!
 - [ ] Check ordering items is the same e.g. abc vs i,ii,iii
 - [ ] Check use of weak vs very weak evidence
+- [ ] Decide on use of I in lay summaries
+- [ ] Do table/figure captions get periods?
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice

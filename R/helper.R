@@ -670,8 +670,13 @@ get_confidence_from_p <- function(est, p) {
   
 }
 
-n_effect <- function(x){
-  paste0("N = ",x$n,"; ",x$estimate)
+n_effect <- function(x, N = TRUE){
+  
+  if (N) {
+  return(paste0("N = ",x$n,"; ",x$estimate))
+  } else {
+  return(paste0(x$estimate))
+  }
 }
 
 get_study_n <- function(data){

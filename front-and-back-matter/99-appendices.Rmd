@@ -91,6 +91,9 @@ med_res <-
 
 
 * MR tool, actually used Mamluk
+
+* ROB-ME
+
 * No MCI, given size of dementia findings
  
 * Sources of funding: Given that any bias introduced by sources of funding would operate , conflicts of interest and bias were considered seperate things here.[@sterne2013]
@@ -138,10 +141,10 @@ med_res <-
 
 library(medrxivr)
 
-mx_data <- mx_api_content(to_date = "2019-09-01")
+mx_data <- mx_api_content(to_date = "2019-07-01")
 
 bx_data <- mx_api_content(server = "biorxiv",
-                                    to_date = "2019-09-01")
+                                    to_date = "2019-07-01")
 
 topic1 <- c(mx_caps("statin"),
             mx_caps("ldl"),

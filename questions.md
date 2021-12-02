@@ -24,3 +24,5 @@ Why is the dose response model multi-variate? Accounts for results and the corre
 What is the purpose of using knots?
 
 Talk about problems with including Hippsley-Cox re double-counting
+
+wHY OKAY TO INCLUDE ehr WHEN NOT USING CRITERIA? nOT COLLECTED FOR REASEARCH AND SO POTENTIALLY LESS LIKELY TO HAVE DIFFERENTIAL MISCLASSIFICATION
