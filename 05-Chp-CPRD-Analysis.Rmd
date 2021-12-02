@@ -60,7 +60,7 @@ Firstly, it explicitly examines vascular dementia as an outcome. The systematic 
 
 Secondly, and in a similar vein, the analysis intentionally takes a different analytical approach to that most commonly used to examine the effect of statins on dementia as identified by the systematic review. Specifically, this involved a concerted effort to address immortal time bias though use of a Cox proportional hazards analysis, incorporating a time-varying treatment indicator.[@suissa2008] By employing this approach, the analysis provides an evidence source at risk of a distinct bias. The results from this analysis will be incorporated into the triangulation exercise presented in Chapter \@ref(discussion-heading).
 
-This chapter represents an extended version of a preprint manuscript, a copy of which is available in Appendix \@ref(published-papers).
+This chapter represents an extended version of a preprinted manuscript, a copy of which is available in Appendix \@ref(published-papers).
 
 <!--------------------------------------------------------------------------->
 
@@ -160,7 +160,6 @@ A range of additional variables were included in the analysis, intended to addre
 &nbsp;
 
 <!-- TODO May need to reword this table slightly as taken from Venexia walkers -->
-
 
 <!----------------------------------------------------------------------------->
 (ref:covariateDef-caption) Definition of covariates adjusted for in the full-adjusted model. The code lists used to define the majority of these covariates were originally created for use in a previously published analysis.[@walker2020] while others were built on or adapted from previous published work,[@khan2010; @taylor2016; @wright2017].
@@ -761,7 +760,7 @@ However, the findings of this analysis are subject to several limitations in add
 
 Misclassification of outcomes is not the only issue introduced by the use of EHR codes to define outcomes. Comparing and contrasting between different studies is particularly difficult because of the impact that the use of different code lists can have on the analysis, as illustrated by the discrepancy between the results when using the code lists defined for this study and those used by Smeeth _et al_. This presents a particular challenge in comparing research across different time-periods and coding systems, particularly the unexpected results I obtained for the vascular and other dementias outcomes.
 
-A further limitation stems from the possibility of uncontrolled confounding due to genetic factors. The number of ApoE $\epsilon4$ alleles represents the strongest genetic risk factor for Alzheimer's disease, but also substantially increases LDL cholesterol levels,[@bennet2007] potentially prompting treatment with a statin or other lipid regulating agent. I was unable to control for ApoE genotype in this analysis as I did not have access to genetic data on participants. As a result, any protective association between LRA use and the Alzheimer's disease outcomes may be masked by residual negative confounding by ApoE. 
+A further limitation stems from the possibility of uncontrolled confounding due to genetic factors. The number of _ApoE_ $\epsilon4$ alleles represents the strongest genetic risk factor for Alzheimer's disease, but also substantially increases LDL cholesterol levels,[@bennet2007] potentially prompting treatment with a statin or other lipid regulating agent. I was unable to control for _ApoE_ genotype in this analysis as I did not have access to genetic data on participants. As a result, any protective association between LRA use and the Alzheimer's disease outcomes may be masked by residual negative confounding by ApoE. 
 
 Finally, as with many studies of dementia, there is a risk of reverse causation in my analysis. Dementia and associated conditions have a long prodromal period, during which preclinical disease could cause indications for the prescription of a lipid-regulating agent. 
 

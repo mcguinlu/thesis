@@ -119,7 +119,7 @@ The inclusion
 
 Since the systematic review described in this thesis was performed, there have been two notable analysis of large cohorts performed related to the central thesis question here. Two of these are discussed here notable studies are discussed here.
 
-The first a large scale analysis of blood lipids in the CPRD, which found a slight raised risk of dementia in CPRD patients () with higher LDL-c measured at mid-life, driven by the finding for Alzheimer's disease.[@iwagami2021] These findings are  consistent with the findings presented in this thesis, particularly given the lack of adjustment for confounding by ApoE4. <!-- TODO The study says that simulated effect of ApoE4 is a 1.09 RR in the absence of a true causal effect. Main results are between 1.03 and 1.17. CI for most extreme results is (lower = 1.08) is not inconsistent with the effect introduced by ApoE4 which is just a single confounder out of many -->
+The first a large scale analysis of blood lipids in the CPRD, which found a slight raised risk of dementia in CPRD patients () with higher LDL-c measured at mid-life, driven by the finding for Alzheimer's disease.[@iwagami2021] These findings are  consistent with the findings presented in this thesis, particularly given the lack of adjustment for confounding by ApoE4. <!-- TODO The study says that simulated effect of _ApoE4_ is a 1.09 RR in the absence of a true causal effect. Main results are between 1.03 and 1.17. CI for most extreme results is (lower = 1.08) is not inconsistent with the effect introduced by _ApoE4_ which is just a single confounder out of many -->
 
 The UKBioBank is a [@sudlow2015]
  
@@ -229,6 +229,12 @@ Several avenues for future research, building on the work presented here, are po
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Inclusion of preprints
+
+<!-- TODO Incorporate Julian's comments below -->
+
+<!-- REVIEW [JH] I think, on general reflection, that portraying this as an issue around “grey literature” may not be particularly useful. Preprints are arguably some of the least “grey” of the very ambiguously defined family of grey sources, such that some definitions of “grey” might not include them.
+It seems to me that preprints are such a big and important part of the landscape now that you can just portray the methodology as dealing with preprints rather than including grey literature.
+Interesting debate as to whether preprints are grey literature, given that many of them are increasingly becoming findable in electronic bibliographic databases. We have no clear and widely used definition of grey literature.  -->
 
 Given the evidence that this thesis produced on the usefulness of including preprints, normalisation of inclusion of preprints in systematic reviews. Wider assessment of the evidence base that exists solely as preprinted literature ()
 

@@ -1326,6 +1326,6 @@ rma_flexi <- function(x) {
     sei = sei,
     subset = (term == x),
     data = main_effects,
-    method = "DL"
+    method = "FE"
   )
 }

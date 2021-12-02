@@ -155,11 +155,12 @@ if(doc_type == "docx") {
     caption = "(ref:statinOverview-caption)",
     caption.short = "(ref:statinOverview-scaption)",
     booktabs = TRUE, 
-    align = "ccccc"
+    align = "lcccc"
   ) %>%
     row_spec(0, bold = TRUE) %>%
     column_spec(1, width = paste0(6,"em"), bold= TRUE) %>%
-    column_spec(2:4, width = paste0(6,"em")) %>%
+    column_spec(2:3, width = paste0(5.5,"em")) %>%
+    column_spec(4, width = paste0(6,"em")) %>%
     column_spec(5, width = paste0(7.6,"em")) %>%
     row_spec(2:nrow(statinOverview_table)-1, hline_after = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position"))

@@ -44,7 +44,7 @@ graph <- grViz(diagram = "digraph cfa {
       tab22 [label = 'N data obtained: 8\n\n Exclusion reasons:\n- No response (n= 7)\n- Planned analysis (n= 1)',height = 2]
       
       tab3 [label = 'N data inspected: 9',height = 1]
-      tab4 [label = 'N excluded following investigation: 6 \n\n Exclusion reasons:\n- Cross-sectional data (n= 2) \n- Cognitively impaired cohort (n= 2) \n- Dichotomised exposure (n=1)\n- Genetic risk cohort (n=1)',height = 2]
+      tab4 [label = 'N excluded following investigation: 6 \n\n For exclusion reasons,\n see Table 6.1',height = 2]
       tab5 [label = 'Final number of \ncohorts included: @@2-4',height = 1]
 
       subgraph {
@@ -142,7 +142,7 @@ if (doc_type == "docx") {
 # ---- prepIPDFigures
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# Main effectsl, dementia
+# Main effects, dementia
 main_effects <- rio::import(here::here("data/ipd/results_main.csv")) %>%
   filter(analysis == "Model 1",
          outcome == "Dementia") %>%
@@ -262,24 +262,39 @@ dev.off()
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # Main effects, Whitehall
 
-tyk <- rio::import(here::here("data/ipd/results_tyk.csv")) %>%
-  mutate(yi = log(yi),
-    sei = ((log(uci)-log(lci))/3.92)) %>%
-  select(-c(uci,lci))
+tyk <-
+  rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+              which = 2) %>%
+  general_filters() %>%
+  filter(study_id == 2140, 
+         cohort == "WHITEHALL") %>%
+  mutate(across(c(
+    point_estimate, starts_with(c("number_", "cases_")), ends_with("_ci")
+  ), as.numeric)) %>%
+  mutate(point = log(point_estimate),
+         SE = (log(upper_ci) - log(lower_ci)) / 3.92) %>%
+  select(exposure, outcome, point, SE) %>%
+  mutate(cohort = "Tynkkynen et al., 2018") %>%
+  mutate(exposure = case_when(exposure == "TC" ~ "Total cholesterol",
+                              exposure == "TG" ~ "Triglycerides",
+                              T ~ exposure)) %>%
+  rename(term =exposure, yi = point, sei = SE) %>%
+  select(cohort, term, outcome, yi,sei) %>%
+  filter(outcome == "Dementia")
 
 main_effects <- rio::import(here::here("data/ipd/results_main.csv")) %>%
   filter(cohort == "Whitehall",
          analysis == "Model 2",
          outcome == "Dementia") %>%
   select(-analysis) %>%
-  mutate(cohort = "IPD Analysis") %>%
+  mutate(cohort = "IPD Analysis - Model 2") %>%
   rbind(tyk) %>%
   mutate(slab = paste(cohort)) %>%
   mutate(slab = paste0("    ", slab)) %>%
   mutate(term = factor(term, levels = c("Triglycerides","HDL-c","LDL-c","Total cholesterol"))) %>%
   arrange(term,desc(cohort))
 
-png(here::here("figures/ipd/whitehall_comparison.png"), width = 700, height = 600)
+png(here::here("figures/ipd/whitehall_comparison_dementia.png"), width = 700, height = 600)
 
 metafor::forest.default(
   x = main_effects$yi,
