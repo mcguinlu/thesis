@@ -20,6 +20,8 @@ documentclass: book
 
 # Systematic review of existing evidence on the association between blood lipids and dementia outcomes: Methods {#sys-rev-methods-heading}
 
+&nbsp;
+
 \minitoc <!-- this will include a mini table of contents-->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
@@ -35,15 +37,17 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 <!-- TODO Gib Hermani question on bias in selection of AD patients in Ostergaard -->
 
-## Lay summary
+::: {.laybox data-latex=""}
+## Lay summary {-}
 
 Systematic reviews are a type of research study that aim to collect and combine all existing evidence to provide the best possible answer to an important research question. Well-performed reviews involve multiple steps including: searching for existing studies; assessment of the studies against predefined inclusion criteria; collection of data from each study; and assessment of each study's method and results. 
-
-This chapter presents the methods used to perform a systematic review of primary studies that have examined the relationship between the levels of blood lipids (such as cholesterol and triglycerides) and dementia outcomes. In addition, the review examined the relationship between treatments that change blood lipid levels, such as statins, and dementia outcomes. The results of this systematic review are then presented in Chapter \@ref(sys-rev-results-heading).
-
 &nbsp;
 
-<!----------------------------------------------------------------------------->
+This chapter presents the methods used to perform a systematic review of primary studies that have examined the relationship between the levels of blood lipids (such as cholesterol and triglycerides) and dementia outcomes. In addition, the review examined the relationship between treatments that change blood lipid levels, such as statins, and dementia outcomes. The results of this systematic review are then presented in Chapter \@ref(sys-rev-results-heading).
+:::
+
+&nbsp;<!----------------------------------------------------------------------->  
+
 ## Introduction {#sys-rev-intro}
 
 In this chapter, I describe a comprehensive systematic review of the relationship between blood lipid levels (and treatments that modify them) and the subsequent risk of dementia and related outcomes. 
@@ -285,11 +289,11 @@ An initial qualitative synthesis of evidence was performed, summarising the data
 &nbsp;
 <!----------------------------------------------------------------------------->
 
-#### Analysis overview
+#### Analysis overview {#sys-rev-analysis-overview}
 
 Results were not combined across different study designs (i.e. RCTs were not combined in a meta-analysis with results from observational studies). The summary effect estimates produced across individual study designs are discussed, but are compared and contrasted more fully as part of the triangulation exercise presented in Chapter \@ref(discussion-heading). Similarly, analyses are presented separately for each dementia outcome of interest (all-cause dementia, Alzheimer's disease, vascular dementia).
 
-The range of effect measures presented by studies (odds ratios, risk ratios, hazard ratios, etc) are not directly interchangeable in the context of systematic review.  As such, different reported effect estimates can be one potential problem that precludes a meta-analysis of all studies.[@mckenzie2019] However if the outcome is rare, as is the case for dementia outcomes, the estimated odds, risk and hazard ratios will approximate each other.[@vanderweele2020] As such, I did not stratify the analyses by reported effect measure.
+The range of effect measures presented by studies (odds ratios, risk ratios, hazard ratios, etc.) are not directly interchangeable in the context of systematic review.  As such, different reported effect estimates can be one potential problem that precludes a meta-analysis of all studies.[@mckenzie2019] However if the outcome is rare, as is the case for dementia outcomes, the estimated odds, risk and hazard ratios will approximate each other.[@vanderweele2020] As such, I did not stratify the analyses by reported effect measure.
  
 &nbsp;<!----------------------------------------------------------------------->  
 

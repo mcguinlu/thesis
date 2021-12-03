@@ -79,6 +79,32 @@ if (doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- singleIndirect-table
+
+singleIndirect_table <- rio::import(here::here("data/tri/single_indirectness.csv")) %T>%
+  write.csv("data/table_words/single_indirectness.csv")
+
+if (doc_type == "docx") {
+  apply_flextable(singleIndirect_table, caption = "(ref:singleIndirect-caption)")
+} else{
+  knitr::kable(
+    singleIndirect_table,
+    format = "latex",
+    caption = "(ref:singleIndirect-caption)",
+    caption.short = "(ref:singleIndirect-scaption)",
+    booktabs = TRUE, 
+    align = "lcccc"
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position")) %>%
+    row_spec(2:nrow(singleIndirect_table) - 1, hline_after = TRUE) %>%
+    column_spec(c(1,4), width = paste0(5, "em")) %>%
+    column_spec(c(5), width = paste0(6, "em")) %>%
+    column_spec(c(2,3), width = paste0(9, "em"))
+}
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- priorsIndirect-table
 
 priors_ind_table <- rio::import("data/tri/priors_indirect_tab.csv") %T>%
@@ -674,19 +700,20 @@ forest.default(
   vi = c(0.01, 0.01,0.01, 0.01),
   xlim = c(-2.2, 1.8),
   annotate = T,
-  slab = c(
-    "Additive - Favours comparator",
-    "Additive - Favours comparator",
-    "Proportional - Towards null",
-    "Proportional - Towards null"
-  ),
+  rows = c(5,4,2,1),
+  slab = rep("",4),
   xlab = "Favours experimental | Favours comparator",
   header = c("Bias"),
   top = 2.5
 )
 
-graphics::text(-.15, 4, "\U2192", cex = 2, col = "red")
-graphics::text(.85, 3, "\U2192", cex = 2, col = "red")
+graphics::text(-2.2, 4.5, "Additive - Favours comparator",pos=4)
+graphics::text(-2.2, 1.5, "Proportional - Towards null",pos=4)
+
+graphics::text(-.15, 5, "\u2014", cex = 1.8, col = "red")
+graphics::text(-0.1, 5, "\u2014", cex = 1.8, col = "red")
+graphics::text(0, 5, "\U2192", cex = 2, col = "red")
+graphics::text(.85, 4, "\U2192", cex = 2, col = "red")
 graphics::text(-.15, 2, "\U2192", cex = 2, col = "red")
 graphics::text(.15, 1, "\U2190", cex = 2, col = "red")
 

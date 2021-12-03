@@ -7,6 +7,7 @@ output:
 
 `r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
 
+
 <!-- If you feel it necessary to include an appendix, it goes here. The first appendix should include the commands above. -->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
@@ -16,7 +17,9 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ```
 
 <!----------------------------------------------------------------------------->
-# By Chapter {#chapter-appendix-heading}
+# Appendices by Chapter {#chapter-appendix-heading}
+
+\minitoc <!-- this will include a mini table of contents-->
 
 <!----------------------------------------------------------------------------->
 ## Chapter \@ref(background-heading) {#appendix-into}
@@ -96,7 +99,7 @@ med_res <-
 
 * No MCI, given size of dementia findings
  
-* Sources of funding: Given that any bias introduced by sources of funding would operate , conflicts of interest and bias were considered seperate things here.[@sterne2013]
+* Sources of funding: Given that any bias introduced by sources of funding would operate , conflicts of interest and bias were considered separate things here.[@sterne2013]
  
  * Dose response
 
@@ -232,7 +235,6 @@ if(doc_type == "docx") {
 
 ```
 
-
 ## Chapter \@ref(sys-rev-results-heading)
 
 ### Dose response plots by fraction
@@ -264,6 +266,13 @@ knitr::include_graphics(file.path("figures/sys-rev/dr_AD_LDL.png"))
 
 ### Amendments to protocol {#appendix-cprd-amendments}
 
+### Code lists
+
+
+
+## Chapter \@ref(ipd-heading) {#appendix-ipd-analysis}
+<!----------------------------------------------------------------------------->
+### Email and documents sent to potental collaborators {#ipd-email-collab}
 
 <!----------------------------------------------------------------------------->
 ## Chapter \@ref(tri-heading) {#appendix-tri-analysis}
@@ -273,10 +282,29 @@ knitr::include_graphics(file.path("figures/sys-rev/dr_AD_LDL.png"))
 <!----------------------------------------------------------------------------->
 ### Code lists
 
-
-## Chapter \@ref(ipd-heading) {#appendix-ipd-analysis}
 <!----------------------------------------------------------------------------->
-### Email and documents sent to potental collaborators {#ipd-email-collab}
+### Comparison of two scenarios of bias
+
+<!----------------------------------------------------------------------------->
+(ref:fpLdlAdComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses of LDL-c/Alzheimer's disease, using two different scenarios for the relationship of levels of bias. The left forest plot shows the result where the difference in mean value between the "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. In the right plot, the difference in mean value between "High" and "Moderate" is twice that between "Moderate" and "Low". 
+
+(ref:fpLdlAdComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses under two different scenarios of prior distributions of bias.
+
+```{r fpLdlAdComparison, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:fpLdlAdComparison-cap)', out.width='100%', fig.scap='(ref:fpLdlAdComparison-scap)'}
+knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad_scenarios.png"))
+```
+<!----------------------------------------------------------------------------->
+
+
+<!----------------------------------------------------------------------------->
+(ref:fpTgVaDComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses of triglycerides/vascular dementia, using two different scenarios for the relationship of levels of bias. The left forest plot shows the result where the difference in mean value between the "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. In the right plot, the difference in mean value between "High" and "Moderate" is twice that between "Moderate" and "Low". 
+
+(ref:fpTgVaDComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses under two different scenarios of prior distributions of bias.
+
+```{r fpTgVaDComparison, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:fpTgVaDComparison-cap)', out.width='100%', fig.scap='(ref:fpTgVaDComparison-scap)'}
+knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_tg_vad_scenarios.png"))
+```
+<!----------------------------------------------------------------------------->
 
 <!----------------------------------------------------------------------------->
 ## Chapter \@ref(discussion-heading)

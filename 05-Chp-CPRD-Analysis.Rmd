@@ -21,11 +21,9 @@ When dealing with human beings controlled experiments frequently prove to be imp
 
 # Primary analysis of lipid-regulating agents and dementia outcomes {#cprd-analysis-heading}
 
+&nbsp;
+
 \minitoc <!-- this will include a mini table of contents-->
-
-<!-- TODO text -->
-
-
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source("R/helper.R")
@@ -37,20 +35,26 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ```
 
 <!--------------------------------------------------------------------------->
-
-## Lay summary
+::: {.laybox data-latex=""}
+## Lay summary {-}
 
 Electronic health record (EHR) databases are large collections of medical data, used to manage patient administration and care. Under these systems, whenever a patient attends their GP, their clinical data is recorded in a central database using a standardised coding system. These databases have several advantages over traditional methods of data collection, including the number of people they contain and the relatively low cost of data collection via routine care. This is particularly important when studying diseases such as dementia, which may begin to develop in patients long before symptoms are seen. 
 
+&nbsp;
+
 This analysis makes use of the Clinical Practice Research Datalink (CPRD), which contains the electronic medical records of more than 3 million people from general practices across England. Using this data, the analysis presented in this chapter examined whether treatments which lower cholesterol levels (also known as lipid-regulating agents or LRA) of which statins are a prime example, affect the risk of all-cause dementia and related outcomes (Alzheimer's disease, vascular dementia and other dementias).
+
+&nbsp;
 
 Little evidence for an effect of lipid-regulating agents effect on the risk of Alzheimer's disease was found, with the exception of a slightly increased risk in those prescribed a certain type of lipid-regulating agent called fibrates. In contrast, I found an increased risk of vascular and other (i.e. non-Alzheimer's) dementia was associated with lipid-regulating agent use. 
 
+&nbsp;
+
 This increased risk in outcomes with a vascular element (e.g. vascular dementia) is unexpected, and is very likely to be due to the presence of bias in the analysis. This bias, called "confounding by indication", is caused when those who are prescribed a statin are more at risk of vascular dementia for a range of reasons, which makes it appear as if statins are harmful. Despite this limitation, the analysis presented provides an important source of information which will be used in later chapters.
 
-<!--------------------------------------------------------------------------->
+:::
 
-&nbsp;
+&nbsp;<!----------------------------------------------------------------------->  
 
 ## Introduction
 

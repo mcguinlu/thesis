@@ -9,7 +9,7 @@ forest_triangulation <-
 
 levels <- c("Low","Moderate","Serious","Critical")
 
-levels_type <- c("MR","NRSE","NRSI")
+levels_type <- c("MR","NRSI","NRSE")
   
 # TODO the ordering of ROB is not quite right!
 dat <- dat %>%

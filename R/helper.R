@@ -205,8 +205,8 @@ make <- function(arg = "pdf") {
 
 # Generate word count report
 covering <- function() {
-  rmarkdown::render("front-and-back-matter/_00-introduction.Rmd")
-  browseURL("front-and-back-matter/_00-introduction.html")
+  rmarkdown::render("scripts_and_filters/covering.Rmd")
+  browseURL("scripts_and_filters/covering.html")
 }
 
 
@@ -272,9 +272,19 @@ todo_report <- function(fp){
 #' @param N Chapter number
 
 chapter_edit <- function(N, all = TRUE) {
-  # Open Chapter RMarkdown file
-  chapters <- list.files(pattern = ".Rmd")
   
+  # If character, search front and back matter
+  if (is.character(N)) {
+    
+    chapters <- list.files(path = "front-and-back-matter/",pattern = ".Rmd",full.names = T)
+
+  } else{
+    
+   chapters <- list.files(pattern = ".Rmd")
+  
+  }
+  
+  # Open Chapter RMarkdown file
   chapter <- chapters[which(data.table::like(chapters, N))]
   
   file.edit(chapter)

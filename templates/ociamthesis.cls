@@ -233,13 +233,17 @@
     {{\@college} \par}
 \vspace*{1ex}
     {University of Bristol \par}
-\vspace*{20mm}
+\vspace*{15mm}
     {{\submittedtext} \par}
 \vspace*{1ex}
     {\it {\@degree} \par}
 \vspace*{2ex}
     {\@degreedate}}
   \end{center}
+  \begin{flushright}
+  {\large \vspace*{2ex}
+    {Word count: {\@wordcount} \par}}
+  \end{flushright}  
 \fi
   \vfill\null
 \end{alwayssingle}}

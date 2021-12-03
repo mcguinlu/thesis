@@ -21,6 +21,9 @@ These particular systematic reviews [individual participant data reviews] remain
 <!-- TODO Need quote for here -->
 
 # Individual participant data meta-analysis of blood lipid levels and dementia outcomes {#ipd-heading}
+
+&nbsp;
+
 \minitoc <!-- this will include a mini table of contents-->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
@@ -34,7 +37,7 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 ::: {.laybox data-latex=""}
 
-## Lay Summary
+## Lay Summary {-}
 
 <!-- TODO Finish lay summary -->
 
@@ -270,7 +273,7 @@ Across the three cohorts, `r n_total_ipd` participants were included in this ana
 
 #### Main effects
 
-The results from the main effect analysis across the varying lipid fractions on each dementia,  considered can be seen in Figures \@ref(fig:mainEffectDem) & \@ref(fig:mainEffectVad), respectively. There was very weak evidence for an association of any lipid level with either all-cause or vascular dementia, with the exception of a harmful association between raised triglycerides and vascular dementia (`r tri_vasdem`).
+The results from the main effect analysis across the varying lipid fractions on each dementia,  considered can be seen in Figures \@ref(fig:mainEffectDem) & \@ref(fig:mainEffectVad), respectively. There was very weak evidence for an association of any lipid level with either all-cause or vascular dementia, with the exception of a harmful association between raised triglycerides and vascular dementia (`r ipd_vasdem`).
 
 <!-- REVIEW Present main effect for WhiteHall AD analysis - or rather highlight that it is shown in Figure XXX in comparison with Tynken -->
 

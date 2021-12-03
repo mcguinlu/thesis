@@ -386,6 +386,15 @@ In the following sections, analyses are grouped first by outcome (all-cause deme
 ```{r lipidFrationsSetup, include = FALSE, message=FALSE, warning=FALSE}
 ```
 
+```{r obsStatins, include = FALSE, message=FALSE, warning=FALSE}
+```
+
+```{r obsFibrates, include = FALSE, message=FALSE, warning=FALSE}
+```
+
+```{r mrStatins, include = FALSE, message=FALSE, warning=FALSE}
+```
+
 The two randomised controlled trials provided weak evidence (`r rct_statin_acd`) of an effect on statin use on all-cause dementia risk (Figure \@ref(fig:rctStatinDementiaFig)).
 
 <!-----------------------------------------------------------------------------> 
@@ -400,9 +409,6 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_rct_statins_Dementia.png")
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-```{r obsStatins, include = FALSE, message=FALSE, warning=FALSE}
-```
-
 In contrast, a meta-analysis of `r obsStatins$Dementia$n` prospective observational studies provided some evidence of a protective effect of statins use on all-cause dementia risk (`r obsStatins$Dementia$estimate`, Figure \@ref(fig:obsStatinDementiaFig)).
 
 <!----------------------------------------------------------------------------->
@@ -415,17 +421,11 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Statin-Ever_Dementia.p
 ```
 <!----------------------------------------------------------------------------->
 
-```{r mrStatins, include = FALSE, message=FALSE, warning=FALSE}
-```
-
 Finally, a single Mendelian randomisation analysis was identified examining the effect of  lowered LDL-c levels on the risk of all-cause dementia via genetic inhibition of the 3-hydroxy-3-methylglutaryl-coenzyme A reductase (HMGCR), emulating statin treatment (see Section \@ref(intro-statins) for more details of the statin mechanism of action). This analysis provided weak evidence for an effect (`r mrStatin$Dementia$estimate`). 
 
 &nbsp; <!---------------------------------------------------------------------->
 
 #### Fibrates
-
-```{r obsFibrates, include = FALSE, message=FALSE, warning=FALSE}
-```
 
 `r num_to_text(obsFibrates$Dementia$n,T)` studies examined the effect of fibrate use on all-cause dementia and found weak evidence for an effect (`r obsFibrates$Dementia$estimate`, Figure \@ref(fig:obsFibrateDementiaFig)).
 

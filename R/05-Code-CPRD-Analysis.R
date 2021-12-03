@@ -415,6 +415,18 @@ probad_fib_text <- paste0(
   round(probad_fib$ci_upper, 2)
 )
 
+probad_sta <- results %>%
+  filter(outcome == "Probable AD" & drug == "Statins")
+
+probad_sta_text <- paste0(
+  "HR:",
+  round(probad_sta$HR, 2),
+  ", 95%CI:",
+  round(probad_sta$ci_lower, 2),
+  "-",
+  round(probad_sta$ci_upper, 2)
+)
+
 possad <- results %>%
   filter(outcome == "Possible AD" & drug == "Any")
 
@@ -449,6 +461,30 @@ vasdem_eze_text <- paste0(
   round(vasdem_eze$ci_lower, 2),
   "-",
   round(vasdem_eze$ci_upper, 2)
+)
+
+vasdem_fib <- results %>%
+  filter(outcome == "Vascular dementia" & drug == "Fibrates")
+
+vasdem_fib_text <- paste0(
+  "HR:",
+  round(vasdem_fib$HR, 2),
+  ", 95%CI:",
+  round(vasdem_fib$ci_lower, 2),
+  "-",
+  round(vasdem_fib$ci_upper, 2)
+)
+
+vasdem_sta <- results %>%
+  filter(outcome == "Vascular dementia" & drug == "Statins")
+
+vasdem_sta_text <- paste0(
+  "HR:",
+  round(vasdem_sta$HR, 2),
+  ", 95%CI:",
+  round(vasdem_sta$ci_lower, 2),
+  "-",
+  round(vasdem_sta$ci_upper, 2)
 )
 
 othdem <- results %>%
@@ -498,6 +534,19 @@ anydem_fib_text <- paste0(
   "-",
   round(anydem_fib$ci_upper, 2)
 )
+
+anydem_sta <- results %>%
+  filter(outcome == "Any dementia" & drug == "Statins")
+
+anydem_sta_text <- paste0(
+  "HR:",
+  round(anydem_sta$HR, 2),
+  ", 95%CI:",
+  round(anydem_sta$ci_lower, 2),
+  "-",
+  round(anydem_sta$ci_upper, 2)
+)
+
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-

@@ -1,0 +1,66 @@
+# Covering material {-}
+
+\adjustmtc 
+<!-- For PDF output, we must include this LaTeX command after unnumbered headings, otherwise the numbers in the mini table of contents will be incorrect -->
+
+```{r wordcount, echo=FALSE, warning=FALSE, message=FALSE}
+options(scipen=999)
+
+source(here::here("R/helper.R"))
+
+words <- get_words()
+
+table_words <- table_words()
+
+write.csv(file = here::here("data","words","words.csv"),
+          x = words,
+          col.names = FALSE,
+          row.names = FALSE)
+
+start_date <- as.Date("20201124", format="%Y%m%d")
+
+max_date <- as.Date(max(words$date), format="%Y%m%d")
+
+words_today <- words$words[which(as.Date(words$date, format="%Y%m%d")==max_date)]
+
+date_diff <- as.numeric((max_date) - start_date)
+
+target <- (date_diff*97) + 5580
+
+words_behind <- words$words[which(words$date == max(words$date))] - target
+
+words_new_today <- words$words[which(words$date == max(words$date))] - words$words[length(words$words)-1]
+
+target_df <- data.frame(date = c(start_date,as.Date("20211116", format="%Y%m%d")),
+                           words = c(5580, 40000))
+
+words$date <- as.Date(words$date, format="%Y%m%d")
+
+```
+
+Word count: `r words_today`
+
+Table words: `r table_words`
+
+Days: `r date_diff`
+
+Words behind: `r format(words_behind, scientific = F)`
+
+Words today: `r words_new_today`
+
+&nbsp;  
+
+&nbsp;  
+
+```{r wordcount-fig, echo=FALSE, warning=FALSE, message=FALSE}
+ggplot(mapping = aes(x=date,y=words)) +
+  geom_line(data = target_df, colour = "black", linetype = 2) +
+  geom_hline(yintercept = 40000, colour = "black", linetype = 2) +
+  geom_vline(xintercept = as.numeric(as.Date("20211116", format="%Y%m%d")), colour = "black", linetype = 2) +
+  geom_vline(xintercept = as.numeric(as.Date("20211216", format="%Y%m%d")), colour = "red") +
+  scale_x_date(limits = c(as.Date("20201124", format="%Y%m%d"),as.Date("20211231", format="%Y%m%d"))) +
+  geom_step(data = words, colour = "red") +
+  geom_text(aes(x = as.Date("20210910", format="%Y%m%d"), y = 30000, label = "Tables"))
+
+```
+

@@ -214,7 +214,7 @@ res <- purrr::map(levels(main_effects$term), rma_flexi)
 
 vad_res <- unlist(res[1])
 
-tri_vasdem <- estimate(vad_res$b,vad_res$ci.lb,vad_res$ci.ub,type = "OR",exp = T)
+ipd_vasdem <- estimate(vad_res$b,vad_res$ci.lb,vad_res$ci.ub,type = "OR",exp = T)
 
 purrr::map2(res, c(1,6,11,16), ~add_subgroup(.x,.y))
 dev.off()

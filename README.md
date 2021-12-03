@@ -37,6 +37,8 @@
 - [ ] Check use of weak vs very weak evidence
 - [ ] Decide on use of I in lay summaries
 - [ ] Do table/figure captions get periods?
+- [ ] Check abstract is <300 words
+- [ ] ensure word count is showing
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice
