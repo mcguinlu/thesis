@@ -16,7 +16,7 @@ documentclass: book
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:tri-quote)', echo = TRUE}
 Next on my list of features to be specially considered I would place the consistency of the observed association. Has it been repeatedly observed by different persons, in different places, circumstances and times?
 ```
-(ref:tri-quote) --- Sir Austin Bradford Hill, 1965 [@hill1965]
+(ref:tri-quote) --- Austin Bradford Hill, 1965 [@hill1965]
 
 <!-- TODO Add this to the Chapter summary in the introduction -->
 
@@ -48,9 +48,9 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ::: {.laybox data-latex=""}
 ## Lay summary {-}
 
+<!-- Triangulation is the practice of using multiple sources of evidence to provide more reliable answers to a research question. Different sources of evidence will have different limitations. If the result from each source points towards the same answer, this improves our confidence in the conclusion. -->
 
 __TBC__
-
 
 :::
 
@@ -95,7 +95,7 @@ Additionally, both the qualitative and quantitative triangulation exercises used
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-## Qualitative (narrative) triangulation 
+## Qualitative (narrative) triangulation {#qual-tri}
 
 ```{r rctStatinDementia, include = FALSE, message=FALSE, warning=FALSE}
 ```
@@ -163,20 +163,18 @@ The IPD analysis provided supporting evidence for the absence of an effect of an
 
 The qualitative comparison presented above identified no consistent effect of any lipid fraction on any dementia outcome across the evidence sources presented in this thesis. However, it is clear that this qualitative approach faces difficulties in interpretation when the number of individual results available is large, as discussed in the introduction to this chapter. This is true even when using summary estimates from meta-analyses of primary studies, which sacrifice valuable information on the biases inherent to each individual result. 
 
-In the following section, I propose and apply a novel quantitative triangulation framework to address these limitations. The absence of any clear signals across the evidence base does not make for particularly interesting case studies but I will nonetheless use the identified evidence to illustrate the novel methodological approach. 
+In the following section, I propose and apply a novel quantitative triangulation framework to address these limitations. This approach incorporates recent advancements in the way that bias in results is assessed (namely the move to domain-based assessment tools)[@sterne2019] and existing methods for bias-/indirectness-adjusted meta-analysis[@turner2009] to integrate the numerical results of the multiple approaches. The absence of any clear signals across the evidence base, as detailed in the previous section, does not make for particularly interesting case studies but I will nonetheless use the identified evidence to illustrate the novel methodological approach. 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Methods
 
-In addition to the qualitative discussion of the evidence presented in Section (\@ref(qual-tri)), I attempted to integrate the numerical results of the multiple approaches under a proposed quantitative triangulation framework. This approach incorporates recent advancements in the way that bias in results is assessed (namely the move to domain-based assessment tools)[@sterne2019] and existing methods for bias-/indirectness-adjusted meta-analysis[@turner2009] to illustrate how causal questions could be addressed under this framework.
-
-This proposed framework involves several steps, described in detail in the following sections. In summary, these steps are:
+The proposed framework involves several steps, described in detail in the following sections. In summary, these steps are:
 
 1. Define the causal question of interest
 1. Identify of relevant evidence sources and standardise effect directions
 1. Specify idealised version of each study
-1. Assess and visualise the extent and direction of bias in each result
+1. Assess the extent and direction of bias/indirectness in each result
 1. Define modifying terms for bias and indirectness in each result
 1. Calculate bias-/indirectness-adjusted results and perform meta-analysis
 
@@ -188,7 +186,7 @@ In order to illustrate the bias-/indirectness adjustment process detailed in the
 
 Using the ROBINS-E framework,[@morganr2020] I defined the parameters of my causal questions of interest:
 
-__Case study #1: Effect of mid-life LDL-c on Alzheimer's disease__
+_Case study #1: Effect of mid-life LDL-c on Alzheimer's disease_
 
 *	_Population of interest_: General population
 *	_Exposure of interest_: Low density lipoprotein cholesterol
@@ -196,7 +194,7 @@ __Case study #1: Effect of mid-life LDL-c on Alzheimer's disease__
 * _Summary measure of exposure over time_: Average exposure 
 * _Outcome of interest:_ Alzheimer's disease
 
-__Case study #2: Effect of mid-life triglycerides on vascular dementia__
+_Case study #2: Effect of mid-life triglycerides on vascular dementia_
 
 *	_Population of interest_: General population
 *	_Exposure of interest_: Triglycerides
@@ -204,9 +202,12 @@ __Case study #2: Effect of mid-life triglycerides on vascular dementia__
 * _Summary measure of exposure over time_: Average exposure
 * _Outcome of interest:_ Vascular dementia
 
+<!-- QUESTION Should population here include a geographical aspect, as in the Discussion I say that the generalisability to other populations is an issue. -->
+
+
 &nbsp;
 
-These questions were chosen for several reasons. Firstly, work presented in previous chapters had identified some evidence for an association in these exposure/outcome pairs. Secondly, given the long prodomal period between the onset of physiological changes in the brain and presentation of dementia symptoms, it seems likely that conditions during the mid-life period are particularly important. Finally, examining the causal impact of a lipid faction on a specific outcome (e.g. Alzheimer's disease), rather than a composite outcome (e.g. all-cause dementia), focuses on an single causal pathway rather than including several conditions in the outcome definition that likely have very different mechanisms of disease. In addition, previous work presented in this thesis illustrated that the component conditions (in this case Alzheimer's disease and vascular dementia) are likely to be subject to very different confounding structures (see Section \@ref(cprd-confounding-by-ind)), and use of an composite all-cause outcome in the triangulation framework may mask this.
+These causal questions were chosen for several reasons. Firstly, work presented in previous chapters had identified some evidence for an association in these exposure/outcome pairs. Secondly, given the long prodomal period between the onset of physiological changes in the brain and presentation of dementia symptoms, it seems likely that conditions during the mid-life period are particularly important. Finally, examining the causal impact of a lipid faction on a specific outcome (e.g. Alzheimer's disease), rather than a composite outcome (e.g. all-cause dementia), focuses on an single causal pathway rather than including several conditions in the outcome definition that likely have very different mechanisms of disease. In addition, previous work presented in this thesis illustrated that the component conditions (in this case Alzheimer's disease and vascular dementia) are likely to be subject to very different confounding structures (see Section \@ref(cprd-confounding-by-ind)), and use of an composite all-cause outcome in the triangulation framework may mask this.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -215,6 +216,8 @@ These questions were chosen for several reasons. Firstly, work presented in prev
 Once the causal question of interest had been defined, relevant individual results were obtained from the data sources described in Section \@ref(tri-data-sources). In a broad sense, this meant extracting results that examined the relationship between the exposure/outcome pair, either directly (e.g. non-randomised studies of LDL-c levels) or indirectly (e.g. non-randomised studies of statins, or Mendelian randomisation studies using genetic instruments for LDL-c levels).
 
 Once the set of relevant results were identified, effects were standardised to refer to the risk resulting from a "reduction" in the lipid fraction. For both non-randomised studies and Mendelian randomisation analysis of lipid levels, the association is usually reported per 1-SD increase in the lipid fraction. In this case, the effect estimates were inverted to ensure consistency across study designs.
+
+<!-- TODO Note that the results are converted to the log scale. -->
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -284,7 +287,7 @@ To aid with the quantitative triangulation exercise, I created a new method to v
 &nbsp;<!----------------------------------------------------------------------->  
 
 ####	Assign modifying values to risk/direction of bias
-<!-- TODO Note that they are on the log scale - Lines 45-50 of addbias -->
+<!-- TODO Note that they are on the log scale, and that this requires the results to be on the log scale too! - Lines 45-50 of addbias -->
 
 Following definition of the extent, type and direction of bias in each domain, I assigned a prior distribution on the log scale to each combination. For example, a "high" additive bias in $j$th domain of the $i$th study is defined as $\delta_{i,j}^{\mathrm{High}}$ and uncertainty around this estimate is given by a distribution:
 
@@ -295,7 +298,9 @@ Following definition of the extent, type and direction of bias in each domain, I
 
 The sign of $\mu_{i,j}^{\mathrm{High}}$ is defined by the absolute direction of the bias. If the bias is expected to pull the effect to the left, $\mu_{i,j}^{\mathrm{High}}$ is given a negative sign, and if it is expected to pull the effect to the right, it is given a positive sign.
 
-<!-- QUESTION sign is negaitve if to the left, because you are taking it away in the final formula and it therefore needs a negative sign to be positive overall! -->
+<!-- QUESTION sign is negative if to the left, because you are taking it away in the final formula and it therefore needs a negative sign to be positive overall! -->
+
+<!-- TODO Need to explain here that for proportional bias, the results are exponentiated  -->
 
 One key feature of the domain-based risk-of-bias tools is that the domains are considered interchangeable - i.e. a "high" judgement in one domain is equivalent to a "high" judgement in any other. As such, for this analysis, I assumed that the distributions assigned to each extent of bias were identical across all values of $j$, that is, were identical for all domains in the risk-of-bias assessment tool. To illustrate for additive biases:
 
@@ -360,6 +365,9 @@ Using the the method reported in Turner _et al._,[@turner2009] total additive an
 The adjusted estimate for each result, $\hat\theta$, is defined as:
 
 <!-- TODO Need to be able to explain the order in which the biases are adjusted for -->
+
+<!-- TODO Talk about validation at some point -->
+
 
 \begin{equation}
   \hat{\theta} = \frac{y_i - \mu_{i\beta}^{\mathrm{In}}\mu_{i\delta}^{\mathrm{In}} - \mu_{i\delta}^{\mathrm{B}}}{\mu_{i\beta}^{\mathrm{B}}\mu_{i\beta}^{\mathrm{In}}}
@@ -508,6 +516,8 @@ In addition, it has sought to provide a generalised framework for quantitative t
 
 The quantitative analysis presented in this chapter is subject to some strong methodological limitation, which are discussed in detail below.
 
+&nbsp;<!----------------------------------------------------------------------->  
+
 #### Defining reasonable prior distributions for bias and indirectness
 
 The key limitation of the quantitative synthesis presented in this chapter is the lack of empirical evidence available for the prior distributions for bias and indirectness. While I attempted to address this by informing the prior distributions using data from a previous expert elicitation exercise, the extent of bias/indirectness in that analysis may not generalise to the one presented here.
@@ -522,7 +532,7 @@ Finally, it may in fact be more reasonable for domains such as bias due to confo
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-#### Accuracy of bias-/indirectness-assessment
+#### Accuracy of bias-/indirectness-assessment {#tri-accuracy}
 
 A key issue in this analysis is the accuracy of the assessment of bias and indirectness in each result. It has been widely demonstrated that the inter-rater agreement when using risk-of-bias tools is low with regards to the extent of bias assigned to each domain[@hartling2011; @minozzi2019; @minozzi2020] Though not previously studied, given the difficulty in assessing the predicted direction of bias, agreement on this aspect of the tools is likely to be lower still.
 
@@ -543,6 +553,8 @@ A related issue is the "Low" risk of bias judgement. In this analysis, I assumed
 A final limitation to this analysis is the synthesis of different effect estimates. As discussed in Section \@ref(sys-rev-analysis-overview), hazard ratios are not directly comparable to odds ratios, as they inherently account for person time-at-risk.[@mckenzie2019] As non-randomised studies (NRSI/NRSI) of dementia outcomes report hazard ratios and Mendelian randomisation studies report odds ratios, the resulting synthesis may be biased by the integration of these two different effect measures. This is primarily a concern for common outcomes, as when the outcome is rare, the odds, risk and hazard ratios approximate each other.
 
 <!-- REVIEW Could add that ORs could be converted to RRs using a measure of "hyptothecial" risk -->
+
+<!-- TODO An extra step of the process should be the consideration of whether it is reasonable to synthesis across different effect estimates. Fine for rare, not for common. Fancy models that can be used to synthesis effect estimates are still compatabile with this approach as each invidual estimate is first adjusted and the adjusted estimate can then be used with whatever meta-anlaysis technique you like. -->
 
 &nbsp;<!----------------------------------------------------------------------->  
 

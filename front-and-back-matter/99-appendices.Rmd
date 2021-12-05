@@ -19,7 +19,11 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 <!----------------------------------------------------------------------------->
 # Appendices by Chapter {#chapter-appendix-heading}
 
+&nbsp;
+
 \minitoc <!-- this will include a mini table of contents-->
+
+\newpage
 
 <!----------------------------------------------------------------------------->
 ## Chapter \@ref(background-heading) {#appendix-into}
@@ -309,20 +313,41 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_tg_vad_scenario
 <!----------------------------------------------------------------------------->
 ## Chapter \@ref(discussion-heading)
 
+### Reproducible research {#disc-repro-research}
+
+Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tool to help search medRxiv and bioRxiv preprint metadata. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
+
+Unfortunately, given the. However, as discussed in other chapters of this thesis and elsewhere, sharing of analysis code is a useful step towards transparency when the underlying datasets are not readily available.
+
+Commentary on the fact that the best you can do is replicate vs reproducible (due the closed nature of the data).
+
+One is the ability to recreate the results given the same data and code, the other is the ability to recreate the results given the same code but a different dataset. IN theory it is possible to gain access the dataset given the information presented in Chapter \@(ref:cprd-analysis-heading). However, access is dependency on an ISAC application to the managing body of the CPRD. 
+
 <!----------------------------------------------------------------------------->
 ### Catalogue of failures {#appendix-catalogue-failures}
 
 Short section detailing the things I tried to do but which did not work:
 
-Failing to properly scope the literature and correctly estimate the number of studies returned by the search
+- Failed to properly scope the literature and correctly estimate the number of studies returned by the search
 
+- Failed IV analysis of anti-HC drugs because of low numbers of non-statins.
 
-failing to realise that the initial code list used for the positive control outcome of IHD in the CPRD analysis (Chapter \@ref(cprd-heading))
+- Failed to realise that the initial code list used for the positive control outcome of IHD in the CPRD analysis (Chapter \@ref(cprd-heading))
+
+- Unsuccessful grant application with Andy
+
+- Unsuccessful grant application with Chris Penfold
+
+- Unsuccessful grant application with Matt
+
+- Instrumental variable analysis of lipid regulation use using physicians prescribing preference. 
+
+- 2 x unsuccessful conference abstracts
 
 <!-- TODO Include the early analysis we did here, that did not work as a result of limited scope. Could include some of the genetic work also. Will additionally need to put the relevant materials from the paper in the  -->
 
 <!----------------------------------------------------------------------------->
-# Other Appendix {#other-appendix-heading}
+# Other Appendices {#other-appendix-heading}
 
 ## Software used to create this thesis
 
@@ -338,7 +363,9 @@ All projects in these thesis attempt to conform to minimal best practices for re
 <!----------------------------------------------------------------------------->
 ## Producing risk-of-bias visualisations with `robvis` {#appendix-robvis}
 
+<!-- TODO Need to complete this sections -->
 
+_TBC_
 
 \newpage
 

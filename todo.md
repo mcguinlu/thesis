@@ -1,0 +1,11 @@
+- [ ] CPRD analysis with minimum follow-up
+- [ ] Add HMGCR MR to triangulation
+- [ ] Fix table in systematic review - see "IMPORTANT" notes
+- [ ] Fix estimates in IPD (IHD imputed)
+- [ ] Double check risk of bias data
+- [ ] Explain proportional hazards better
+- [ ] Basic paired forest plot functionality in robvis
+- [ ] Basic triangulate package
+- [ ] reproduce single analysis using triangulate
+- [ ] Assess heterogeneity in the IPD to determine use of fixed versus random effects.
+

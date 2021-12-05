@@ -15,7 +15,6 @@ test <-
       )
   )
 
-
 searchHits_table <- test$Medline
 
 if (doc_type == "docx") {

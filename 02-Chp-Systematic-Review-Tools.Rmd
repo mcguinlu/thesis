@@ -72,8 +72,6 @@ knitr::include_graphics(file.path("figures","sys-rev-tools","medrxiv-role.png"))
 
 ## Development
 
-<!-- IDEA Add timeline chart as seen here: https://bookdown.org/alecri/thesis/4-methods.html#sec:dosresmeta -->  
-
 ### Success criteria {#success-criteria}
 
 I developed the tool to meet three success criteria,[@wateridge1995] influenced both by the functionality required to perform systematic searches as part of the review in Chapter \@ref(sys-rev-heading), discussion with information specialist colleagues, and an informal survey of the evidence synthesis and health librarian communities on Twitter. The criteria were as follows:
@@ -380,7 +378,3 @@ Part of the motivation for creating the `medrxivr` tool was a belief that the de
 -   I have outlined the motivation for developing this tool in relation to this thesis - more specifically, that it was used to perform systematic and reproducible searches of key literature sources used in the comprehensive systematic review described in Chapter \@ref(sys-rev-heading).
 
 -   I have contrasted `medrxivr` with other available interfaces to medRxiv/bioRxiv data to highlight the added functionality it offers. I have also discussed the tools reception to date, its limitations, and the important role of open-source tools like `medrxivr` in evidence synthesis.
-
-\newpage
-
-## References

@@ -83,7 +83,6 @@ link-citations: true
 documentclass: book
 
 ---
-<!-- TODO Confirm thesis title! -->
 
 ```{r create_chunk_options, include=FALSE, eval=knitr::is_latex_output()}
 source('scripts_and_filters/create_chunk_options.R')

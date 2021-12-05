@@ -41,6 +41,8 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 <!-- TODO Finish lay summary -->
 
+<!-- At the same time, I will write to authors to obtain anonymised data on individual participants. The data from each study will be combined using a technique known as individual participant data (IPD) meta-analysis. This will allow me to examine if the relationship between lipids in dementia depends on any patient characteristics (e.g. sex or age). -->
+
 Individual participant data (IPD) meta-analyses are a special type of meta-analysis that contact the authors of relevant studies to request access to the raw data on each participant. This is different to the meta-analyses presented in the previous chapter, which used published summary results.
 
 &nbsp;
@@ -384,6 +386,9 @@ The obstacles to data access described above are in theory what the DPUK was bui
 &nbsp;<!----------------------------------------------------------------------->  
 
 #### Uncontrolled confounding
+
+<!-- TODO May need to talk about other confounders here -->
+
  
 A key limitation of this analysis is the potential for uncontrolled confounding. Across all cohorts, adjustment for _ApoE4_ was not possible as I did not have access to genetic data on participants. _ApoE4_ is a strong risk factor for both increased LDL-c levels and Alzheimer's disease,[@bennet2007;@safieh2019] and failing to adjust for this factor means residual confounding in the LDL-c fraction results is likely. 
 
@@ -435,7 +440,7 @@ Finally, this analysis provides new evidence on a previously unexplored outcome 
 
 ### Reflections on the process
 
-In hindsight, attempting to undertake a large-scale IPD meta-analysis as part of a larger PhD project may have been overly ambitious. Data harmonization between cohorts in an IPD analysis is an often under-appreciated challenge,[@levis2021] and in line with this, data cleaning for this analysis took substantially longer than expected. While the cohort response rate was substantially lower that expected, given the time and resource of data cleaning and harmonisation for just three cohorts, a situation in which all 37 cohorts responded positively would have been logistically challenging within the scope of my PhD.
+In hindsight, attempting to undertake a large-scale IPD meta-analysis as part of a larger PhD project may have been overly ambitious. Data harmonization between cohorts in an IPD analysis is an often under-appreciated challenge,[@levis2021] and in line with this, data cleaning for this analysis took substantially longer than expected. While the cohort response rate was substantially lower that expected, given the time and resource of data cleaning and harmonisation for just three cohorts, a situation in which all 37 cohorts responded positively would have been logistically challenging within the scope of a PhD.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -458,7 +463,3 @@ Finally, a movement towards increased use of unique persistent identification of
 - I discussed potential reasons for the low response rate, and explored other limitations of this analysis. I highlighted the contribution of this work to the wider topic via the analysis of previously unexplored cohorts (CaPS & EPIC) and outcomes (vascular dementia). Finally, I recommended that future research formally investigate the impact of request characteristics on requests for data.
 
 - The new evidence produced by this analysis will be incorporated, along with evidence identified or produced in the previous chapters, into the triangulation analysis presented in the following chapter.
-
-\newpage
-
-## References

@@ -39,6 +39,7 @@
 - [ ] Do table/figure captions get periods?
 - [ ] Check abstract is <300 words
 - [ ] ensure word count is showing
+- [ ] Search for casual
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice
@@ -46,8 +47,6 @@
 ## VIVA
 - Spend 1hr watching Imperial [videos](http://www3.imperial.ac.uk/graduateschool/currentst
 udents/onlineresources/passingyourviva)
-
-
 
 ## Useful info
 

@@ -267,7 +267,7 @@ The results of an evidence synthesis exercise can be used to provide a more defi
 This thesis seeks to use an evidence synthesis framework to assess the effect of lipids, and treatments that influence lipid levels, on dementia outcomes. Specifically, this thesis considers three concepts within the umbrella term of evidence synthesis:
 
 * Inclusion of preprints
-* Individual patient data meta-analysis
+* Individual participant data meta-analysis
 * Triangulation across evidence sources
 
 These three elements are expanded on below and are used to frame the research presented in the subsequent Chapters.
@@ -286,7 +286,7 @@ In this thesis, preprints are considered an important source of evidence, in con
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-### Individual patient data meta-analysis
+### Individual participant data meta-analysis
 
 Individual participant data (IPD) meta-analyses are commonly considered to be the gold standard in evidence synthesis methodology.[@riley2010; @stewart1993] IPD methods seek to obtain the raw data from each study identified in a systematic review, rather than basing the meta-analysis on summary results extracted from the literature.[@riley2010]
 
@@ -333,7 +333,7 @@ Chapters are self-contained, presenting the methods and results of that specific
 -   **Chapter \@ref(sys-rev-tools-heading):** This chapter introduces a new tool, `medrxivr`, which was used to developed to allow for systematic searches of the health-related preprint repositories.
 -   **Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading):** These chapters describe, respectively, the methods and results of a comprehensive systematic review and meta-analysis. This review examined all available evidence on the effect of blood lipids and interventions that modified blood lipids on dementia outcomes.
 -   **Chapter \@ref(cprd-analysis-heading):** This chapter examines the relationship between lipid-regulating agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database.
--   **Chapter \@ref(ipd-heading):** This chapter describes an individual patient data analysis of several longitudinal cohort studies to describe the relationship between blood serum lipids and dementia outcomes, stratified by important covariates such as sex.
+-   **Chapter \@ref(ipd-heading):** This chapter describes an individual participant data analysis of several longitudinal cohort studies to describe the relationship between blood serum lipids and dementia outcomes, stratified by important covariates such as sex.
 -   **Chapter \@ref(tri-heading)**: This chapter integrates the evidence identified and produced by the preceeding chapters as part of a quantitative triangulation framework.
 -   **Chapter \@ref(discussion-heading)**: This chapter summarise the key clinical and methodological findings of the thesis and discusses their implications for practice. The overall strengths and weaknesses of this project are discussed in detail, and further avenues of research are suggested.
 
@@ -448,5 +448,3 @@ devtools::install_github("mcguinlu/robvis")
 * In this introductory chapter, I provided background information on the core elements of the central research question and framed the research presented in the context of a theoretical framework of evidence synthesis. I outlined the central aim of the thesis and provided an overview of the individual analyses performed.
 
 * I also described the contributions of this thesis to the scientific literature. Finally, I discussed the research tools and software developed to support the analyses in this thesis, one of which (the preprint search tool) is introduced more fully in the following chapter.
-
-\newpage
