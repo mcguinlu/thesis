@@ -8,7 +8,7 @@ title: |
 author: Luke A McGuinness
 college: 
 degree: Doctor of Philosophy
-degreedate: 2022
+degreedate: December 2021
 word-count: |
   `r read.csv("data/words/words.csv") %>% dplyr::pull(1) %>% dplyr::last()`
 abstract: |

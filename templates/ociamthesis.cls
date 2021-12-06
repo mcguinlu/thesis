@@ -45,7 +45,8 @@
 \setlength{\abstractseparatelineskip}{10pt plus1pt minus1pt}
 \setlength{\abstractseparateparskip}{0pt plus 1pt}
 
-\newcommand{\submittedtext}{{A thesis submitted for the degree of}}
+\newcommand{\submittedtext}{{A dissertation submitted to the University of Bristol in accordance with the requirements for award of the degree of}}
+\newcommand{\submittedfaculty}{{in the Faculty of Health Sciences}}
 \usepackage{varwidth}
 \newcommand{\originalitytext}{%
    \rule[-2mm]{1pt}{7mm}\hspace{-1pt}%
@@ -226,22 +227,20 @@
   \end{center}
 \else
   \begin{center}
-    { \LARGE {\bfseries {\@title}} \par}
-{\large \vspace*{30mm} {\crest \par} \vspace*{25mm}}
+    { \huge {\bfseries {\@title}} \par}
+{\large \vspace*{20mm} {\crest \par} \vspace*{25mm}}
     {{\Large \@author} \par}
-{\large \vspace*{1ex}
-    {{\@college} \par}
-\vspace*{1ex}
-    {University of Bristol \par}
-\vspace*{15mm}
+{\vspace*{15mm}
     {{\submittedtext} \par}
 \vspace*{1ex}
     {\it {\@degree} \par}
+\vspace*{1ex}
+    {{\submittedfaculty} \par}
 \vspace*{2ex}
     {\@degreedate}}
   \end{center}
   \begin{flushright}
-  {\large \vspace*{2ex}
+  {\it \vspace*{2ex}
     {Word count: {\@wordcount} \par}}
   \end{flushright}  
 \fi
@@ -270,21 +269,6 @@
 
 \newenvironment{declaration}%
 {   \begin{alwayssingle}\chapter*{Author's declaration}
-    \thispagestyle{empty}
-	\pagestyle{empty}
-	\setlength{\baselineskip}{\frontmatterbaselineskip}
-}
-{\end{alwayssingle}}
-
-% COVID Statment
-%
-% The COVID statment environment puts a large, bold, centered 
-% "Acknowledgements" label at the top of the page. The acknowledgements
-% themselves appear in a quote environment, i.e. tabbed in at both sides, and
-% on its own page.
-
-\newenvironment{covidStatment}%
-{   \begin{alwayssingle}\chapter*{COVID Impact Statement}
     \thispagestyle{empty}
 	\pagestyle{empty}
 	\setlength{\baselineskip}{\frontmatterbaselineskip}

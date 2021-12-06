@@ -1138,7 +1138,7 @@ plot1 <-
     data = data.frame(
       x = c(0.060048391976198, 0.060048391976198),
       y = c(0.803071359423899, 1.8),
-      label = c("Diagnosis", "Diagnosis\n(cohort entry)")
+      label = c("Index event", "Index event\n(cohort entry)")
     ),
     mapping = aes(x = x,
                   y = y,
@@ -1157,7 +1157,7 @@ plot1 <-
   geom_text(
     data = data.frame(x = 1,
                       y = 0.803071359423899,
-                      label = "Drug prescription\n(cohort entry)"),
+                      label = "Statin initiation\n(cohort entry)"),
     mapping = aes(x = x,
                   y = y,
                   label = label),
@@ -1217,7 +1217,7 @@ plot2 <-
     data = data.frame(
       x = c(0.060048391976198, 0.060048391976198),
       y = c(0.803071359423899, 1.8),
-      label = "Diagnosis\n(cohort entry)"
+      label = "Index event\n(cohort entry)"
     ),
     mapping = aes(x = x,
                   y = y,
@@ -1236,7 +1236,7 @@ plot2 <-
   geom_text(
     data = data.frame(x = 1,
                       y = 0.803071359423899,
-                      label = "Drug prescription"),
+                      label = "Statin initiation"),
     mapping = aes(x = x,
                   y = y,
                   label = label),

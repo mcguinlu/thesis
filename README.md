@@ -40,6 +40,10 @@
 - [ ] Check abstract is <300 words
 - [ ] ensure word count is showing
 - [ ] Search for casual
+- [ ] try and -> try to
+- [ ] hypercholesteromemia spelling
+- [ ] search `<!--` for comments and ensure nothing untoward
+- [ ] Search for data and check that using singular
 
 ## Notes
 - [ ] Need to ask about the passive vs active voice

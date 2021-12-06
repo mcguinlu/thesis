@@ -387,6 +387,9 @@ Once each individual result had been adjusted using this approach, I performed a
 
 <!-- TODO Should a fixed or random effects be used, because in theory you are adjusting for all potential causes of heterogeneity. -->
 
+<!-- TODO Sensitivity analysis using only heterogeneity - no change to point estimate - places less importance on the accurate determination of the direction of bias -->
+
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -518,7 +521,7 @@ The quantitative analysis presented in this chapter is subject to some strong me
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-#### Defining reasonable prior distributions for bias and indirectness
+#### Defining reasonable prior distributions for bias and indirectness {#tri-prior-def}
 
 The key limitation of the quantitative synthesis presented in this chapter is the lack of empirical evidence available for the prior distributions for bias and indirectness. While I attempted to address this by informing the prior distributions using data from a previous expert elicitation exercise, the extent of bias/indirectness in that analysis may not generalise to the one presented here.
 
