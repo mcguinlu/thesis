@@ -627,7 +627,7 @@ The risk of bias due to missing evidence in each synthesis is shown beside the o
 
 There were `r n_dr_initial` studies initially considered eligible for the dose-response meta-analysis, as they appear to provide data on risk of dementia outcomes across several categories of lipid exposure. However, following data extraction, `r num_to_text(n_dr_excluded)` were excluded as they did not reported the relevant information needed (most commonly, the cut-off measures for each category).
 
-Across the remaining `r num_to_text(n_dr_final)` studies, a sufficient number of results (n $\geqslant$ 3) were identified only for the total cholesterol-Alzheimer's, LDL-Alzheimer's, and total cholesterol-dementia strata. This analysis provided weak evidence for a non-linear effect of lipid levels on dementia outcomes, and Figure \@ref(fig:lipidsDoseResponse) illustrates this for the total cholesterol-Alzheimer's strata. Similar figures for the other analysed lipid-outcome strata are presented in Appendix \@ref(hold).
+Across the remaining `r num_to_text(n_dr_final)` studies, a sufficient number of results (n $\geqslant$ 3) were identified only for the total cholesterol-Alzheimer's, LDL-Alzheimer's, and total cholesterol-dementia strata. This analysis provided weak evidence for a non-linear effect of lipid levels on dementia outcomes, and Figure \@ref(fig:lipidsDoseResponse) illustrates this for the total cholesterol-Alzheimer's strata. Similar figures for the other analysed lipid-outcome strata are presented in Appendix \@ref(appendix-dr-fraction).
 
 <!-- TODO Add legend to this figure so that it is clear what the lines are - YBS was confused -->
 

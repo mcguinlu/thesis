@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -314,7 +314,7 @@ $$
 \delta_{i,1}^{\mathrm{Moderate}} = \delta_{i,2}^{\mathrm{Moderate}} = ... = \delta_{i,j}^{\mathrm{Moderate}}
 $$
 
-Reasonable values for the position and spread of the prior distributions were informed by a previously-reported expert bias elicitation exercise.[@turner2009] Using open data from that study, I calculated the mean values for the mean and variance of the adjustment distributions across all biases considered by that exercise (see Appendix \@ref(?) for more details on how these were calculated). For the purposes of this illustrative analysis and to highlight the generalised nature of the code used to perform the analysis (see Section \@ref(tri-software)), I used the calculated values to inform two scenarios of modifying distributions (Table \@ref(tab:priorsAdd-table)) for additive biases, and a single set for proportional biases. In the first scenario, the relationship between the position assigned to each additive judgement is linear. In the second scenario, the step from "Moderate" to "High" is twice that from "Low" to "Moderate". Across both additive and proportional biases, the variance of the "High" judgement distribution was defined to be greater than that of the "Moderate" judgement.
+Reasonable values for the position and spread of the prior distributions were informed by a previously-reported expert bias elicitation exercise.[@turner2009] Using open data from that study, I calculated the mean values for the mean and variance of the adjustment distributions across all biases considered by that exercise (see Appendix \@ref(appendix-adjustment-values) for more details on how these were calculated). For the purposes of this illustrative analysis and to highlight the generalised nature of the code used to perform the analysis (see Section \@ref(tri-software)), I used the calculated values to inform two scenarios of modifying distributions (Table \@ref(tab:priorsAdd-table)) for additive biases, and a single set for proportional biases. In the first scenario, the relationship between the position assigned to each additive judgement is linear. In the second scenario, the step from "Moderate" to "High" is twice that from "Low" to "Moderate". Across both additive and proportional biases, the variance of the "High" judgement distribution was defined to be greater than that of the "Moderate" judgement.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -468,7 +468,7 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad.png"))
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-No substantial differences were observed between the summary estimates obtained under the two scenarios of additive bias (Figure \@ref(fig:fpLdlAdComparison) in Appendix \@ref(appendix-tri-analysis)).
+No substantial differences were observed between the summary estimates obtained under the two scenarios of additive bias (Appendix \@ref(appendix-tri-analysis)).
 
 <!-- TODO Need to present overall summary estimate under two scenarios of bias and then send people to the Appendix. -->
 
@@ -587,7 +587,7 @@ Appreciation that both the risk-of-bias and indirectness of a result should be a
 
 ### Outputs {#tri-software}
 
-There are two key outputs from this project. The first is the `triangulate` R package. Personal communication with the authors of the original method resulted in the STATA code to implement the bias-/indirectness-adjusted model.[@turner2009] This has since been generalised as part of the `triangulate` R package to enable other users to apply the approach detailed here. The package allows for preprocessing of domain-based risk-of-bias data to correctly identify the direction of the bias relative to the effect estimate, use of domain-specific prior distributions, production of bias direction plots (via the tool described in Appendix \@ref(?), calculation of bias/indirectness-adjusted estimates for each result, and synthesis of these adjusted results in a standard random-effects meta-analysis.
+There are two key outputs from this project. The first is the `triangulate` R package. Personal communication with the authors of the original method resulted in the STATA code to implement the bias-/indirectness-adjusted model.[@turner2009] This has since been generalised as part of the `triangulate` R package to enable other users to apply the approach detailed here. The package allows for preprocessing of domain-based risk-of-bias data to correctly identify the direction of the bias relative to the effect estimate, use of domain-specific prior distributions, production of bias direction plots (via the tool described in Appendix \@ref(appendix-robvis), calculation of bias/indirectness-adjusted estimates for each result, and synthesis of these adjusted results in a standard random-effects meta-analysis.
 
 The second key output is an annotated example dataset for the LDL-c/Alzheimer's disease causal question addressed in this chapter. Available via the `triangulate` package, this data will provide developers of new triangulation methods with an example dataset on which to test new tools, something which seriously hindered development of this work.
 

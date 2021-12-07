@@ -1,14 +1,6 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 `r if(knitr:::is_latex_output()) '\\startappendices'`
 
 `r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
-
-
-<!-- If you feel it necessary to include an appendix, it goes here. The first appendix should include the commands above. -->
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
 source(here::here("R/helper.R"))
@@ -16,19 +8,15 @@ knitr::read_chunk(here::here("R/appendix.R"))
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
 
-<!----------------------------------------------------------------------------->
-# Appendices by Chapter {#chapter-appendix-heading}
 
-&nbsp;
+# Appendices by Chapter {#chapter-appendix-heading}
 
 \minitoc <!-- this will include a mini table of contents-->
 
 \newpage
 
-<!----------------------------------------------------------------------------->
 ## Chapter \@ref(background-heading) {#appendix-into}
 
-<!----------------------------------------------------------------------------->
 ### Publications beyond the scope of this thesis {#appendix-publications}
 
 __Peer reviewed__
@@ -54,7 +42,7 @@ __Under review/Preprints__
   
   
   
-<!----------------------------------------------------------------------------->
+
 
 ### Involvement of patients and the public {#appendix-ppi}
 
@@ -64,10 +52,10 @@ Additionally,
 
 Lay summaries appear at the beginning of each chapter, reviewed by the Patient and Public Involvement panel. They provide a plain language summary
 
-<!----------------------------------------------------------------------------->
+
 
 ## Chapter \@ref(sys-rev-tools-heading) {#appendix-sys-rev-tools}
-<!----------------------------------------------------------------------------->
+
 
 ### Code for publication rate analysis
 
@@ -90,7 +78,7 @@ med_res <-
 
 
 ## Chapter \@ref(sys-rev-methods-heading) {#appendix-sys-rev}
-<!----------------------------------------------------------------------------->
+
 
 ### Deviations from protocol
 
@@ -107,11 +95,19 @@ med_res <-
  
  * Dose response
 
+### Web of Science Databases Searched {#appendix-wos-databases}
+
+(ref:wosDatabases-caption) Summary of Web of Science databases searched.
+
+(ref:wosDatabases-scaption) Summary of Web of Science databases searched.
+
+```{r wosDatabases-table, message=FALSE, results="asis", echo = FALSE}
+```
+
+&nbsp;<!----------------------------------------------------------------------->  
+
 ### Search strategy {#appendix-search-strategy}
 
-&nbsp;
-
-<!----------------------------------------------------------------------------->
 (ref:searchHits-caption) Overview of the full Medline search strategy.
 
 (ref:searchHits-scaption) searchHits
@@ -119,27 +115,8 @@ med_res <-
 ```{r searchHits-table, message=FALSE, results="asis", echo = FALSE}
 ```
 
-<!----------------------------------------------------------------------------->
+&nbsp;<!----------------------------------------------------------------------->  
 
-&nbsp;
-
-### Web of Science Databases Searched {#appendix-wos-databases}
-
-&nbsp;
-
-<!----------------------------------------------------------------------------->
-(ref:wosDatabases-caption) Summary of Web of Science databases searched.
-
-(ref:wosDatabases-scaption) Summary of Web of Science databases searched.
-
-```{r wosDatabases-table, message=FALSE, results="asis", echo = FALSE}
-
-```
-<!----------------------------------------------------------------------------->
-
-&nbsp;
-
-<!----------------------------------------------------------------------------->
 ### Code to search preprints {#appendix-medrxivr-code}
 
 <!-- TODO Double check this is the final code used -->
@@ -185,7 +162,7 @@ mx_results <- mx_search(mx_data, query)
 
 Note
 
-### Calculating Gwet's AC1
+### Calculating Gwet's AC1 {#appendix-gwet}
 
 Gwet's AC1 is defined as:
 
@@ -205,10 +182,9 @@ where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, wh
   (\#eq:AC1-supp)
 \end{equation}
 
-<!----------------------------------------------------------------------------->
+
 ### MR risk of bias tool {#appendix-mr-rob}
 
-<!----------------------------------------------------------------------------->
 (ref:mrTool-caption) Tool used to assess risk of bias in Mendelian randomisation studies, adapted from that developed by Mamluk et al.[@mamluk2020]
 
 (ref:mrTool-scaption) Mendelian randomisation risk-of-bias assessment tool
@@ -236,14 +212,13 @@ if(doc_type == "docx") {
     kable_styling(latex_options = c("HOLD_position","repeat_header"))
 }
 
-
 ```
 
 ## Chapter \@ref(sys-rev-results-heading)
 
-### Dose response plots by fraction
+### Dose response plots by fraction {#appendix-dr-fraction}
 
-<!----------------------------------------------------------------------------->
+
 (ref:drDemeniaTC-cap) Dose-response meta-analysis of total cholesterol on all-cause dementia
 
 (ref:drDemeniaTC-scap) shortcap
@@ -251,9 +226,9 @@ if(doc_type == "docx") {
 ```{r drDemeniaTC, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:drDemeniaTC-cap)', out.width='100%', fig.scap='(ref:drDemeniaTC-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/dr_Dementia_TC.png"))
 ```
-<!----------------------------------------------------------------------------->  
+  
 
-<!----------------------------------------------------------------------------->
+
 (ref:drAdLDL-cap) Dose-response meta-analysis of low-density lipoprotein cholesterol on Alzheimer's disease
 
 (ref:drAdLDL-scap) shortcap
@@ -261,35 +236,37 @@ knitr::include_graphics(file.path("figures/sys-rev/dr_Dementia_TC.png"))
 ```{r drAdLDL, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:drAdLDL-cap)', out.width='100%', fig.scap='(ref:drAdLDL-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/dr_AD_LDL.png"))
 ```
-<!----------------------------------------------------------------------------->
 
 
-<!----------------------------------------------------------------------------->
+
+
 ## Chapter \@ref(cprd-analysis-heading) {#appendix-cprd-analysis}
-<!----------------------------------------------------------------------------->
+
 
 ### Amendments to protocol {#appendix-cprd-amendments}
 
-### Code lists
-
-
-
 ## Chapter \@ref(ipd-heading) {#appendix-ipd-analysis}
-<!----------------------------------------------------------------------------->
+
 ### Email and documents sent to potental collaborators {#ipd-email-collab}
 
-<!----------------------------------------------------------------------------->
-## Chapter \@ref(tri-heading) {#appendix-tri-analysis}
-<!----------------------------------------------------------------------------->
-### Calculation of average adjustment from expert elicitation
 
-<!----------------------------------------------------------------------------->
+
+### Covariate matrix {#appendix-ipd-covariate-matrix}
+
+### Dementia definitions across cohorts {#appendix-ipd-dementia-def}
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+## Chapter \@ref(tri-heading) {#appendix-tri-analysis}
+
+### Calculation of average adjustment from expert elicitation {#appendix-adjustment-values}
+
+
 ### Code lists
 
-<!----------------------------------------------------------------------------->
+
 ### Comparison of two scenarios of bias
 
-<!----------------------------------------------------------------------------->
 (ref:fpLdlAdComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses of LDL-c/Alzheimer's disease, using two different scenarios for the relationship of levels of bias. The left forest plot shows the result where the difference in mean value between the "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. In the right plot, the difference in mean value between "High" and "Moderate" is twice that between "Moderate" and "Low". 
 
 (ref:fpLdlAdComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses under two different scenarios of prior distributions of bias.
@@ -297,10 +274,7 @@ knitr::include_graphics(file.path("figures/sys-rev/dr_AD_LDL.png"))
 ```{r fpLdlAdComparison, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:fpLdlAdComparison-cap)', out.width='100%', fig.scap='(ref:fpLdlAdComparison-scap)'}
 knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad_scenarios.png"))
 ```
-<!----------------------------------------------------------------------------->
 
-
-<!----------------------------------------------------------------------------->
 (ref:fpTgVaDComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses of triglycerides/vascular dementia, using two different scenarios for the relationship of levels of bias. The left forest plot shows the result where the difference in mean value between the "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. In the right plot, the difference in mean value between "High" and "Moderate" is twice that between "Moderate" and "Low". 
 
 (ref:fpTgVaDComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses under two different scenarios of prior distributions of bias.
@@ -308,9 +282,7 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad_scenario
 ```{r fpTgVaDComparison, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:fpTgVaDComparison-cap)', out.width='100%', fig.scap='(ref:fpTgVaDComparison-scap)'}
 knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_tg_vad_scenarios.png"))
 ```
-<!----------------------------------------------------------------------------->
 
-<!----------------------------------------------------------------------------->
 ## Chapter \@ref(discussion-heading)
 
 ### Reproducible research {#disc-repro-research}
@@ -323,7 +295,7 @@ Commentary on the fact that the best you can do is replicate vs reproducible (du
 
 One is the ability to recreate the results given the same data and code, the other is the ability to recreate the results given the same code but a different dataset. IN theory it is possible to gain access the dataset given the information presented in Chapter \@(ref:cprd-analysis-heading). However, access is dependency on an ISAC application to the managing body of the CPRD. 
 
-<!----------------------------------------------------------------------------->
+
 ### Catalogue of failures {#appendix-catalogue-failures}
 
 Short section detailing the things I tried to do but which did not work:
@@ -346,7 +318,7 @@ Short section detailing the things I tried to do but which did not work:
 
 <!-- TODO Include the early analysis we did here, that did not work as a result of limited scope. Could include some of the genetic work also. Will additionally need to put the relevant materials from the paper in the  -->
 
-<!----------------------------------------------------------------------------->
+
 # Other Appendices {#other-appendix-heading}
 
 ## Software used to create this thesis
@@ -360,7 +332,7 @@ knitr::write_bib(c(.packages(), "bookdown", "knitr"), here::here("bibliography/p
 This thesis was written in RMarkdown. Several R packages were used as part of this project.`r gen_rmd_citation("packages.bib")`
 All projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
 
-<!----------------------------------------------------------------------------->
+
 ## Producing risk-of-bias visualisations with `robvis` {#appendix-robvis}
 
 <!-- TODO Need to complete this sections -->

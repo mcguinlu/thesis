@@ -247,7 +247,7 @@ Based on available data across cohorts, smoking was classified as never/ever/cur
 
 A key consideration in the definition of covariates across cohorts was the classification of age. The Whitehall II study, the largest cohort to which I had access, only shared age data in five-year age band (e.g. 40-44, 45-49, etc.). To ensure comparability across the cohorts, I created identical categories in the CaPS and EPIC data. This grouped age variable was then used in all subsequent analyses. 
 
-Missing values in collected variables was common across the cohorts. A matrix of covariates, and whether they were not available or contained missing values for each included cohort, can be seen Appendix \@ref(hold). The Whitehall II and EPIC cohorts contained data on all but one covariates of interest, while three missing covariates were identified in the CaPS cohort, namely education, BMI and ethnicity. No included cohort provided information on the _ApoE4_ status of participants, and so this variable could not be adjusted for in the analysis.
+Missing values in collected variables was common across the cohorts. A matrix of covariates, and whether they were not available or contained missing values for each included cohort, can be seen Appendix \@ref(appendix-ipd-covariate-matrix). The Whitehall II and EPIC cohorts contained data on all but one covariates of interest, while three missing covariates were identified in the CaPS cohort, namely education, BMI and ethnicity. No included cohort provided information on the _ApoE4_ status of participants, and so this variable could not be adjusted for in the analysis.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -255,7 +255,7 @@ Missing values in collected variables was common across the cohorts. A matrix of
 
 #### Descriptive statistics
 
-Across the three cohorts, `r n_total_ipd` participants were included in this analysis (Whitehall II = 8208, EPIC = 1115, CaPS = 2512). All cohorts contained data on the four exposure variables of interest (or sufficient data from which to calculate them) and on all-cause dementia outcomes. The only other dementia outcome examined across cohorts was vascular dementia, which was reported in the CaPS and Whitehall II studies. The definitions of dementia outcomes used across cohorts can be seen in Appendix \@ref(hold). Cumulatively, there were `r n_ipd_dementia` cases of all-cause dementia, with `r n_ipd_vasdem` further classified as vascular dementia. Summary statistics for each cohort are provided in Table \@ref(tab:cohortSummary-table).
+Across the three cohorts, `r n_total_ipd` participants were included in this analysis (Whitehall II = 8208, EPIC = 1115, CaPS = 2512). All cohorts contained data on the four exposure variables of interest (or sufficient data from which to calculate them) and on all-cause dementia outcomes. The only other dementia outcome examined across cohorts was vascular dementia, which was reported in the CaPS and Whitehall II studies. The definitions of dementia outcomes used across cohorts can be seen in Appendix \@ref(appendix-ipd-dementia-def). Cumulatively, there were `r n_ipd_dementia` cases of all-cause dementia, with `r n_ipd_vasdem` further classified as vascular dementia. Summary statistics for each cohort are provided in Table \@ref(tab:cohortSummary-table).
 
 <!-- TODO Need average follow-up by cohort here - or rather put it in the table -->
 <!-- TODO Need total number of Azd cases in whitehall in the paragraph above-->
