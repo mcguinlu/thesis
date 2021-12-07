@@ -58,7 +58,7 @@ This increased risk in outcomes with a vascular element (e.g. vascular dementia)
 
 ## Introduction
 
-In this chapter, I present an analysis of a large population-based electronic health record dataset to investigate the relationship between lipid-regulating agent (LRA) use and dementia outcomes. The analysis aims to address two important limitations of the current evidence base as identified by the systematic review presented in Chapter \@ref(sis-rev-heading).
+In this chapter, I present an analysis of a large population-based electronic health record dataset to investigate the relationship between lipid-regulating agent (LRA) use and dementia outcomes. The analysis aims to address two important limitations of the current evidence base as identified by the systematic review presented in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading).
 
 Firstly, it explicitly examines vascular dementia as an outcome. The systematic review presented in the previous chapter identified an evidence gap around the effect of lipid-regulating agents on the risk of vascular dementia. As triangulation exercises require as many diverse sources of evidence as possible, this analysis provides a source of information on this outcome. 
 
@@ -269,7 +269,7 @@ knitr::include_graphics(file.path("figures","cprd-analysis","immortal_time.png")
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-This second presentation appears to be common in the existing literature on the relationship of statins and dementia, as several of the studies included in the systematic review presented in Chapter \@ref(sys-rev-heading) were identified as being at risk of immortal time bias following formal risk of bias assessment using the ROBINS-I tool (see Section \@ref(risk-of-bias-subheading)).
+This second presentation appears to be common in the existing literature on the relationship of statins and dementia, as several of the studies included in the systematic review performed as part of this thesis were identified as being at risk of immortal time bias following formal risk of bias assessment using the ROBINS-I tool (see Section \@ref(risk-of-bias-res)).
 
 <!-- TODO May need to crosslink a bit better -->
 
@@ -679,7 +679,7 @@ knitr::include_graphics(file.path("figures","cprd-analysis","forester_sta_type.p
 
 &nbsp;
 
-#### Impact of dementia code lists {#comparing-code lists}
+#### Impact of dementia code lists {#comparing-codelists}
 
 ```{r smeethText, include = FALSE}
 ```
@@ -700,7 +700,7 @@ The effect estimates were robust to the exclusion of potentially pregnant partic
 
 ### Interpretation of results
 
-This section will expand on a potential explanation for the observed results detailed above. However, as the comparison of evidence across different sources is the aim of the triangulation exercise presented in later chapters, a detailed comparison with other published literature will not be provided here, except where needed to illustrate a methodological point. For a detailed comparison of the result presented above with the existing evidence base identified by the systematic review (Chapter \@ref(sys-rev-heading)), see Chapter \@ref(tri-heading).
+This section will expand on a potential explanation for the observed results detailed above. However, as the comparison of evidence across different sources is the aim of the triangulation exercise presented in later chapters, a detailed comparison with other published literature will not be provided here, except where needed to illustrate a methodological point. For a detailed comparison of the result presented above with the existing evidence base identified by the systematic review, see Chapter \@ref(tri-heading).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -728,7 +728,7 @@ In line with this, an increasingly harmful effect is observed when moving from t
 
 A review of other available literature suggests that this observation (a harmful effect of lipid-regulating agents on vascular-related outcomes) is not unusual. Using a conventional epidemiological technique, a previous analysis also found an increased risk of coronary heart disease (analogous to the ischemic heart disease outcome used in this analysis) in those taking statins (`r estimate(1.31,1.04, 1.66, type = "HR")`).[@danaei2013] Controlling for confounding by indication in that study through the use of a trial emulation analysis gave an estimate of 0.89 (95%CI: 0.73-1.09), a comparable though less precise estimate to that observed in RCTs of statin use (`r estimate(0.73,0.67,0.80,type="")`).[@taylor2013] 
 
-Given the absence of vascular dementia in the published literature, as highlighted in the previous chapter (see Section \@ref(sys-rev-pub-bias)), the unexpected increase in vascular dementia risk with statin use is particularly interesting. It is possible that this finding reflects publication bias if previous research encountered similar methodological issues to this analysis, and these results did not make it into the evidence base as unexpected or assumedly incorrect results are less likely to be submitted or accepted for publication.
+Given the absence of vascular dementia in the published literature, as highlighted in the previous chapter, the unexpected increase in vascular dementia risk with statin use is particularly interesting. It is possible that this finding reflects publication bias if previous research encountered similar methodological issues to this analysis, and these results did not make it into the evidence base as unexpected or assumedly incorrect results are less likely to be submitted or accepted for publication.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -773,7 +773,7 @@ This analysis serves to illustrative the importance of the code lists chosen to 
 
 ### Strengths and limitations {#cprd-limitations}
 
-The primary strength of this analysis is the relative size of the CPRD and length of follow-up. Having reviewed the existing literature, as identified by the systematic review in Chapter \@ref(sys-rev-heading), this analysis of `r comma(attrition[14,1])` participants is one of the largest available studies of this research question. Additionally, this analysis followed LRA users and non-users from a common index date, using a time-updating treatment indicator to correctly assign time-at-risk to the exposed and unexposed groups. This approach has been less commonly used in the literature and allows for the mitigation of potential immortal time bias. Finally, it is one of the few that provide evidence on the association of lipid-regulating agent use and vascular and other dementias, and used negative and positive controls to assess the potential for residual confounding.
+The primary strength of this analysis is the relative size of the CPRD and length of follow-up. Having reviewed the existing literature, as identified by the systematic review element of this thesis, this analysis of `r comma(attrition[14,1])` participants is one of the largest available studies of this research question. Additionally, this analysis followed LRA users and non-users from a common index date, using a time-updating treatment indicator to correctly assign time-at-risk to the exposed and unexposed groups. This approach has been less commonly used in the literature and allows for the mitigation of potential immortal time bias. Finally, it is one of the few that provide evidence on the association of lipid-regulating agent use and vascular and other dementias, and used negative and positive controls to assess the potential for residual confounding.
 
 However, the findings of this analysis are subject to several limitations in addition to the confounding by indication discussed above. There is a strong possibility of differential misclassification of dementia-related conditions based on the exposure.[@porta2014] As an illustrative example, those with memory complaints may be more likely to be classified as vascular dementia than Alzheimer's disease if their medical records contain prescriptions for lipid-regulating agents. Further, there is potential for general non-differential misclassification of the outcome due to the varying positive predictive value of electronic health record code lists to identify dementia cases.[@wilkinson2018; @mcguinness2019validity]
 

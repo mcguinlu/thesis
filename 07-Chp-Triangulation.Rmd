@@ -133,7 +133,7 @@ As part of a qualitative triangulation of the new and existing evidence identifi
 
 #### All-cause dementia
 
-Analysis of lipid levels across both the systematic review (Chapter \@ref(sy-rev-results-heading)) and the IPD analysis (Chapter \@ref(ipd-analysis-heading)) both found extremely weak evidence for an association of any lipid fraction with all-cause dementia (TC `r obsLipids$Dementia_TC$estimate`; LDL-c `r obsLipids$Dementia_LDL$estimate`; HDL-c `r obsLipids$Dementia_HDL$estimate`; triglycerides `r obsLipids$Dementia_TG$estimate`). Similarly, meta-analysis of studies identified by the review which examined a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$Dementia$estimate`). Finally, a meta-analysis of RCTs of statin use (`r rct_statin_acd`) and of MR analyses of genetic instruments that mimic statin use (`r mrStatin$Dementia$estimate`) both found weak evidence of an association, providing indirect evidence on the effect of lipid lowering on this outcome.
+Analysis of lipid levels across both the systematic review (Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading)) and the IPD analysis (Chapter \@ref(ipd-heading)) both found extremely weak evidence for an association of any lipid fraction with all-cause dementia (TC `r obsLipids$Dementia_TC$estimate`; LDL-c `r obsLipids$Dementia_LDL$estimate`; HDL-c `r obsLipids$Dementia_HDL$estimate`; triglycerides `r obsLipids$Dementia_TG$estimate`). Similarly, meta-analysis of studies identified by the review which examined a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$Dementia$estimate`). Finally, a meta-analysis of RCTs of statin use (`r rct_statin_acd`) and of MR analyses of genetic instruments that mimic statin use (`r mrStatin$Dementia$estimate`) both found weak evidence of an association, providing indirect evidence on the effect of lipid lowering on this outcome.
 
 In contrast, the meta-analysis of NRSI of statin use found a slight protective effect (`r obsStatins$Dementia$estimate`), though many of the studies in this analysis were found to be at risk of immortal time bias, which would be expected to favour the intervention. Finally, analysis of the association of statin use with all-cause dementia in the CPRD (Chapter \@ref(cprd-analysis-heading)) found evidence of a harmful association (`r anydem_sta_text`), though this is likely to be driven by the substantial confounding by indication identified in the vascular dementia subgroup.
 
@@ -203,7 +203,6 @@ _Case study #2: Effect of mid-life triglycerides on vascular dementia_
 * _Outcome of interest:_ Vascular dementia
 
 <!-- QUESTION Should population here include a geographical aspect, as in the Discussion I say that the generalisability to other populations is an issue. -->
-
 
 &nbsp;
 
@@ -282,7 +281,7 @@ The predicted direction and type of bias were not recorded for domains at "Low" 
 
 #### Visualisation of extent and direction of bias
 
-To aid with the quantitative triangulation exercise, I created a new method to visualise the extent, direction and type of bias in each result, enabling detailed comparison across different studies contributing to a synthesis. Similar to the standard paired forest plots introduced in Chapter \@ref(sys-rev-), these "bias direction" plots show the level (or extent) of bias across the domains for each result reported using coloured blocks. However, in contrast to the previous forest plots, symbols are used to illustrate the predicted absolute direction of bias in that domain. Distinct symbol pairs are used to denote additive and proportional biases. Illustrations of these are provided in the Section \@ref(quant-tri-results).
+To aid with the quantitative triangulation exercise, I created a new method to visualise the extent, direction and type of bias in each result, enabling detailed comparison across different studies contributing to a synthesis. Similar to the standard paired forest plots introduced in Chapter \@ref(sys-rev-methods-heading), these "bias direction" plots show the level (or extent) of bias across the domains for each result reported using coloured blocks. However, in contrast to the previous forest plots, symbols are used to illustrate the predicted absolute direction of bias in that domain. Distinct symbol pairs are used to denote additive and proportional biases. Illustrations of these are provided in the Section \@ref(quant-tri-results).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -433,7 +432,7 @@ The unadjusted estimate was `r single_unadjusted `. After accounting for the bia
 
 #### Case study #1: effect of LDL-c at midlife on Alzheimer's disease
 
-From the data sources identified in Section \@ref(tri-data-sources), I identified 18 results relevant to my first causal question of interest. Most (n=17) were identified via the systematic review,`r ldl_ad_citations` while Chapter \@ref(cprd-heading) provided an additional estimate from the CPRD analysis.  The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:ldlAdBiasDirection), stratified by study design.
+From the data sources identified in Section \@ref(tri-data-sources), I identified 18 results relevant to my first causal question of interest. Most (n=17) were identified via the systematic review,`r ldl_ad_citations` while Chapter \@ref(cprd-analysis-heading) provided an additional estimate from the CPRD analysis.  The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:ldlAdBiasDirection), stratified by study design.
 
 <!-- QUESTION Hypercholesterolemia should not be included here, as it is focused on total cholesterol rather than specifically LDL-c, right? -->  
 
@@ -476,7 +475,7 @@ No substantial differences were observed between the summary estimates obtained 
 
 #### Case study #2: effect of triglycerides at midlife on vascular dementia
 
-From the data sources identified in Section \@ref(tri-data-sources), I identified 7 results relevant to my causal question of interest: 4 were identified via the systematic review,`r tg_vad_citations` while Chapter \@ref(cprd-heading) provided two additional estimates from unanalysed datasets (CaPS and Whitehall II), and Chapter \@ref(ipd-heading) provides an estimate for the effect of fibrates, a treatment for hypertriglyceridaemia. The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:tgVadBiasDirection), stratified by study design.
+From the data sources identified in Section \@ref(tri-data-sources), I identified 7 results relevant to the causal effect of triglycerides at midlife on vascular dementia. Four were identified via the systematic review,`r tg_vad_citations` while Chapter \@ref(cprd-analysis-heading) provided two additional estimates from unanalysed datasets (CaPS and Whitehall II), and Chapter \@ref(ipd-heading) provides an estimate for the effect of fibrates, a treatment for hypertriglyceridaemia. The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:tgVadBiasDirection), stratified by study design.
 
 <!----------------------------------------------------------------------------->
 (ref:tgVadBiasDirection-cap) Bias direction plot, summarising the internal biases related to effect of triglycerides on vascular dementia, stratified by study design.

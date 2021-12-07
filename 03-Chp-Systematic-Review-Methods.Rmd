@@ -319,7 +319,9 @@ The range of effect measures presented by studies (odds ratios, risk ratios, haz
  
 &nbsp;<!----------------------------------------------------------------------->  
 
-#### Random-effects meta-analysis
+#### Random-effects meta-analysis {#meta-analysis-methods}
+
+<!-- TODO May need to talk about FE models here, as I refer to this section for a broader discussion of meta-analysis in the IPD chapter -->
 
 I used a random-effects model in all meta-analyses.[@hedges1998;@dersimonian1986] Random-effects meta-analysis does not assume one true underlying effect, but rather allows for a distribution of true effects with variance $\tau^2$. The result in the $i$th study is denoted as $y_i$. The weight assigned to this result is then given as the inverse of the variance of that result ($v_i$) plus the estimate of between-result variance ($\tau^2$):
 

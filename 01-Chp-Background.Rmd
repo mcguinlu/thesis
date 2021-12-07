@@ -153,7 +153,7 @@ Elevated LDL-c in the bloodstream, a condition also known as hypercholesterolaem
 
 ### Statins {#intro-statins}
 
-Statins are a commonly prescribed method of lipid regulation.[@collins2016] Statins inhibit the conversion of 3-hydroxy-3-methylglutaryl-coenzyme-A (HMG-CoA) into mevalonate, by competitively binding with HMG-CoA reductase (HMGCR). This conversion is a key rate-limiting step in the cholesterol biosynthesis pathway (see Figure \@ref(statin-mechanisam)), enabling statins to reduce effectively the production of LDL cholesterol.
+Statins are a commonly prescribed method of lipid regulation.[@collins2016] Statins inhibit the conversion of 3-hydroxy-3-methylglutaryl-coenzyme-A (HMG-CoA) into mevalonate, by competitively binding with HMG-CoA reductase (HMGCR). This conversion is a key rate-limiting step in the cholesterol biosynthesis pathway (see Figure \@ref(fig:statin-mechanisam)), enabling statins to reduce effectively the production of LDL cholesterol.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -185,9 +185,9 @@ Several statin treatments have been widely available for some time (see Table \@
 
 ### Other lipid regulating agents (LRA)
 
-There are several other interventions that can be used to modify a persons lipid profile, each of which act via different mechanisms (Table \@ref(tab)). However, in general, these treatments are either used as adjunct (additional) treatments with statins therapy or are used in situations where statins are contra-indicated or not tolerated. 
+There are several other interventions that can be used to modify a persons lipid profile, each of which act via different mechanisms. However, in general, these treatments are either used as adjunct (additional) treatments to statin therapy or are used in situations where statins are contra-indicated or not tolerated. 
 
-<!-- see https://www.heart.org/en/health-topics/cholesterol/prevention-and-treatment-of-high-cholesterol-hyperlipidemia/cholesterol-medications for information on the indications for treatment - could present as a table -->
+<!-- TODO see https://www.heart.org/en/health-topics/cholesterol/prevention-and-treatment-of-high-cholesterol-hyperlipidemia/cholesterol-medications for information on the indications for treatment - could present as a table . If using table, put reference to it in the above par -->
 
 The most commonly used non-statin therapeutic is ezetimibe,[@kosoglou2005] which prevents intestinal absorption of cholesterol. However, when used alone, it has a limited LDL-c lowering effect, leading to the creation of combined statin/ezetimibe therapies (both compounds contained in a single pill, as opposed to complimentary treatments).[@genest2006]
 
@@ -282,7 +282,7 @@ However, the role of preprints in evidence syntheses is less well defined. Defin
 
 One of the major criticisms of using preprints as an evidence source is that they have not yet undergone formal peer review.[@maslove2018; @schalkwyk2020] However, this approach assigns substantial weight to peer-review as a indicator of "quality", and is at odds with the acceptance of non-reviewed conference proceedings as an evidence source.[@lefebvre2019searching; @mahood2014] The argument for including preprints as an evidence source is further strengthened by results that demonstrate preprinted studies seldom change following peer review. Meta-studies of the concordance between preprinted and published studies showed that results were broadly comparable between the two, indicating that while the numerical results may change, the overall interpretation of the results were consistent in the majority of cases.[@shi2021; @klein2019; @nicholson2021] This indicates that preprints should be considered a reliable reflection of a given study.
 
-In this thesis, preprints are considered an important source of evidence, in contrast to previous reviews on this topic. However, as with grey literature,[@mahood2014] there are several logistical problems with carrying out systematic searches in preprint repositories. As such, to enable the inclusion of preprints in the systematic review described in Chapters \@ref(sys-rev-methods-heading), a new tool addressing these issues is presented in Chapter \@ref(sys-rev-tools). 
+In this thesis, preprints are considered an important source of evidence, in contrast to previous reviews on this topic. However, as with grey literature,[@mahood2014] there are several logistical problems with carrying out systematic searches in preprint repositories. As such, to enable the inclusion of preprints in the systematic review described in Chapters \@ref(sys-rev-methods-heading), a new tool addressing these issues is presented in Chapter \@ref(sys-rev-tools-heading). 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -298,14 +298,14 @@ Despite their advantages, IPD meta-analysis are rarely performed.[@tugwell2010] 
 
 In response to these limitations, new collaborative initiatives have developed to enable rapid access to relevant data in a secure supported workshop. The most import in relation to this thesis is the Dementia Platform UK (DPUK),[@bauermeister2020] which aims to provide access to several dementia-related datasets via a single simplified application process.
 
-I will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). Any data obtained will be combined with that available from the DPUK portal as part of an IPD meta-analysis in Chapter \@ref(ipd-analysis-heading). This will enable the assessment of the effect of lipids on dementia stratified by key variables such as sex.
+I will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). Any data obtained will be combined with that available from the DPUK portal as part of an IPD meta-analysis in Chapter \@ref(ipd-heading). This will enable the assessment of the effect of lipids on dementia stratified by key variables such as sex.
 
 <!----------------------------------------------------------------------------->
 ### Triangulating across study designs {#intro-triangulation}
 
 As illustrated in Section \@ref(evidence-association), several diverse epidemiological methods have been used to examine the effect of varying blood lipid levels on dementia risk. However, each method is limited by its own biases. Aetiological triangulation is a developing evidence synthesis method that seeks to exploit these inherent differences in study design, and as a result, in biases.[@lawlor2016] If several sources of evidence are available and point towards identical conclusions about an exposure-outcome relationship, and these sources are at risk of unrelated biases, this strengthens our confidence in the result. The ideal scenario is where predicted sources of bias are likely to be in competing directions, one to strengthen the effect of the exposure and the other to attenuate it.[@lawlor2016] As such, triangulating these results can provide a middle-ground between the competing directions of bias. A triangulation approach can also prove useful in helping to prospectively design new studies that are at risk of different sources of bias to those already observed in the published literature.[@munafo2018] However, existing methods for triangulation are limited to a qualitative discussion of the different identified results with respect to their biases,[@lawlor2016] an approach which faces issues in interpretability when assessing many results.
 
-To address this limitation, this thesis seeks to develop and apply a novel quantitative triangulation approach to answer causal questions on the effect of blood lipids on dementia outcomes. All existing evidence, regardless of study design, is first identified and assessed using domain-based tools by the systematic review presented in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). The existing evidence base is then supplemented by two primary analyses, presented in Chapters \@ref(cprd-analysis-heading) and \@ref(ipd-analysis-heading). Finally all existing and new evidence is incorporated into the quantiatative triangulation framework in Chapter \@ref(tri-heading). 
+To address this limitation, this thesis seeks to develop and apply a novel quantitative triangulation approach to answer causal questions on the effect of blood lipids on dementia outcomes. All existing evidence, regardless of study design, is first identified and assessed using domain-based tools by the systematic review presented in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). The existing evidence base is then supplemented by two primary analyses, presented in Chapters \@ref(cprd-analysis-heading) and \@ref(ipd-heading). Finally all existing and new evidence is incorporated into the quantiatative triangulation framework in Chapter \@ref(tri-heading). 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -375,7 +375,7 @@ The tool used to visualise the risk-of-bias assessments in Chapters \@ref(sys-re
 
 _**McGuinness, L. A.**, and Sheppard A. L. 2020. “A Descriptive Analysis of the Data Availability Statements Accompanying Medrxiv Preprints and a Comparison with Their Published Counterparts.”  PLOS ONE 16(5): e0250887. DOI: [10.1371/journal.pone.0250887](https://doi.org/10.1371/journal.pone.0250887)_
 
-Using the tool described in Chapter \@ref(sys-rev-tools), I lead a "research-on-research" study to assess the concordance between the openness of data availability statements accompanying a sample of medRxiv preprints and their published counterparts.
+Using the tool described in Chapter \@ref(sys-rev-tools-heading), I led a "research-on-research" study to assess the concordance between the openness of data availability statements accompanying a sample of medRxiv preprints and their published counterparts.
 
 &nbsp; 
 
