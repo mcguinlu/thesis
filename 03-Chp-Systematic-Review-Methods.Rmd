@@ -65,7 +65,7 @@ Given the size of the review, I have separated the methods and results into two 
 
 ### Protocol
 
-A pre-specified protocol for this analysis was registered on the Open Science Framework platform and is available for inspection.[@mcguinnessluke2020]
+A pre-specified protocol for this analysis was registered on the Open Science Framework platform and is available for inspection.[@mcguinnessluke2020] Deviations from the protocol are summarised in Appendix \@ref(appendix-sys-rev-deviations).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -152,7 +152,7 @@ Interpretion of agreement coefficients is a widely debated topic, and while arbi
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:gwet-caption) Suggested ranges to aid in interpretation of Gwet's AC1 inter-rater reliability metric
+(ref:gwet-caption) Suggested ranges to aid in interpretation of Gwet's AC1 inter-rater reliability metric[@mchugh2012]
 
 (ref:gwet-scaption) Ranges for Gwet's AC1
 
@@ -299,8 +299,6 @@ At present, no formalised risk-of-bias assessment tool for Mendelian randomizati
 
 In addition to assessing the risk of bias within each result contributing to a synthesis, I also assessed risk of bias due to missing evidence at the analysis level. This assessment examines evidence missing due to selective non-reporting as distinct from the selective reporting of a single result from multiple planned analyses. The assessment was performed using the forthcoming RoB-ME (Risk of Bias due to Missing Evidence in a synthesis) tool.[@zotero-15123] <!-- TODO Need more here describing missing evidence --> The tool is in development stages, and as part of this review, I piloted the tool and provided feedback to the developers.
 
-This additional appraisal marks a departure from the registered protocol, as there was initially no intention to try to examine the risk of bias due to missing evidence. This is largely because the tool did not exist when the protocol was registered.
-
 <!----------------------------------------------------------------------------->
 &nbsp;
 
@@ -350,7 +348,7 @@ Results included in each meta-analysis were stratified into subgroups on the bas
 
 #### Dose-response analyses
 
-Several of the included studies presented data on multiple categories of lipid levels, but provided an overall effect estimate based on a comparison of only two of these categories (e.g. for example, highest vs lowest quartile). <!-- TODO Question: if I look at highest vs lowest, and also at top dose vs lowest dose, am I double counting results? --> While this allows for easy interpretation of the resulting effect estimate, it ignores any potential non-linear relationships between the exposure and outcome, in addition to discarding useful information contained in the interim groups. In order to address this limitation, I performed a dose-response meta-analysis in those studies reporting more than two categories of lipid levels. This marks a departure from the published protocol, as I had not expected the number of studies reporting dementia risk across lipid sub-categories to be sufficient for a dose response analysis.
+Several of the included studies presented data on multiple categories of lipid levels, but provided an overall effect estimate based on a comparison of only two of these categories (e.g. for example, highest vs lowest quartile). <!-- TODO Question: if I look at highest vs lowest, and also at top dose vs lowest dose, am I double counting results? --> While this allows for easy interpretation of the resulting effect estimate, it ignores any potential non-linear relationships between the exposure and outcome, in addition to discarding useful information contained in the interim groups. In order to address this limitation, I performed a dose-response meta-analysis in those studies reporting more than two categories of lipid levels.
 
 <!-- TODO Maybe rephrase last sentence -->
 

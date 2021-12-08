@@ -106,7 +106,7 @@ Work on the `medrxivr` tool began in Summer 2019, and initially consisted of a d
 
 Early versions of the tool had a reliance on scraping data directly from the repository website. Web-scraping is a fragile mechanism for extracting data, as it is entirely dependent on consistent website design and underlying code structure remaining unchanged.[@shaw2002; @laprie1992]. In the case of `medrxivr`, as the medRxiv/bioRxiv websites are regularly updated, ensuring the web-scraping performed as expected required that I regularly update or fix the script.
 
-However, an Application Programming Interface (API) for the medRxiv and bioRxiv repositories was made public in early 2020 by the institution responsible for managing these preprint repositories, the Cold Springs Harbor Laboratory. This allowed for newer versions of the `medrxivr` package to engage in active "fault prevention" and provide a more robust interface to the data by removing the reliance of web-scraping.[@laprie1992]
+However, an application programming interface (API) for the medRxiv and bioRxiv repositories was made public in early 2020 by the institution responsible for managing these preprint repositories, the Cold Springs Harbor Laboratory. This allowed for newer versions of the `medrxivr` package to engage in active "fault prevention" and provide a more robust interface to the data by removing the reliance of web-scraping.[@laprie1992]
 
 &nbsp;
 
@@ -166,7 +166,7 @@ Prior to searching the metadata, it must first be imported in R. In `medrixvr`, 
 
 &nbsp;
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, class.source = "bg-danger"}
 # Get a copy of the database from the live medRxiv API endpoint
 mx_data <- mx_api_content()
 ```
@@ -334,24 +334,26 @@ For example, I led a descriptive analysis of the change in data availability sta
 ```{r, include=FALSE}
 med_res <-
   # Use snapshot from July 2021
-  medrxivr::mx_search(medrxivr::mx_snapshot("ccedfb8a44304b9fba4e3ba518a8ce4ed2294770"),
-                      "*",
-                      from_date = "2019-07-01",
-                      to_date = "2019-08-01") %>%
-mutate(pub_ind = ifelse(published == "NA", 0, 1)) %>%
+  medrxivr::mx_search(
+    medrxivr::mx_snapshot("ccedfb8a44304b9fba4e3ba518a8ce4ed2294770"),
+    query = "*",
+    from_date = "2019-07-01",
+    to_date = "2019-08-01"
+  ) %>%
+  mutate(pub_ind = ifelse(published == "NA", 0, 1)) %>%
   group_by(pub_ind) %>%
-  count() 
+  count()
 
 published <- med_res$n[2]
 publication_n <- sum(med_res$n)
 publish_percent <- paste0("(", round(published/publication_n*100,1),"%)")
 ```
 
-Secondly, using `medrxivr`, an analysis of the publication rate for medRxiv preprints was performed (see Appendix \@ref(appendix-sys-rev-tools)). `r published` of the `r publication_n` records `r publish_percent` posted on medRxiv in July 2019 were published by 30th July 2021 (i.e. allowing for a two-year lag between preprint posting and publication). This finding agrees with previous work demonstrating that two-thirds of bioRxiv preprints are published in a peer-reviewed journal within two years of posting.[@abdill2019popularity] This analysis further illustrates that a non-insignificant number of preprints are never formally published but remain accessible as preprints.
+Secondly, using `medrxivr`, an analysis of the publication rate for medRxiv preprints was performed (see Appendix \@ref(appendix-tools-pub)). `r published` of the `r publication_n` records `r publish_percent` posted on medRxiv in July 2019 were published by 30th July 2021 (i.e. allowing for a two-year lag between preprint posting and publication). This finding agrees with previous work demonstrating that two-thirds of bioRxiv preprints are published in a peer-reviewed journal within two years of posting.[@abdill2019popularity] This analysis further illustrates that a subtantial number of preprints are never formally published but remain accessible as preprints.
 
 In summary, the meta-research/methodological analyses described above illustrate that easy access to medRxiv/bioRxiv metadata has applications beyond the inclusion of preprints in systeamtic review.
 
-<!----------------------------------------------------------------------------->
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Limitations of `medrxivr` {#medrxivr-limitations}
 

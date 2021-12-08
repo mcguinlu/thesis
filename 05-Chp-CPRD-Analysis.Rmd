@@ -86,7 +86,7 @@ An *a priori* protocol for this study was published,[@walker2016] and amendments
 
 ### Data source {#cprd-data-source}
 
-Previously known as the General Practice Research Database (GPRD), the Clinical Practice Research Datalink (CPRD) is a large population-based electronic health record (EHR) database.[@herrett2015] The database has been collecting primary care data from participating practices across England since 1987.[@williams2012; @wood2001revitalizing] It contains the primary care records for more than 10 million primary care patients in England, and is broadly representative of the UK population in terms of age, sex and ethnicity.[@herrett2015; @mathur2014]
+Previously known as the General Practice Research Database, the Clinical Practice Research Datalink (CPRD) is a large population-based EHR database.[@herrett2015] The database has been collecting primary care data from participating practices across England since 1987.[@williams2012; @wood2001revitalizing] It contains the primary care records for more than 10 million primary care patients in England, and is broadly representative of the UK population in terms of age, sex and ethnicity.[@herrett2015; @mathur2014]
 
 To avoid the ambiguity of interpreting free-text clinical notes and to allow for easy analysis of the resulting data, the CPRD primarily collects data using a predefined coding system known as Read codes.[@booth1994] All clinical events, including clinical test results and diagnoses, can be identified by a specific Read code. The codes use a nested approach (see Table \@ref(tab:readExample-table)), with the initial characters defining broad diagnostic topics (e.g. Eu... - Mental and behavioural disorders), while subsequent characters provide additional information on the specific condition diagnosed (e.g. Eu001 - Dementia in Alzheimer's disease with late onset).
 
@@ -138,7 +138,7 @@ Participants were ineligible for our cohort if they were less than 40 years of a
 
 ### Exposures
 
-I considered seven lipid-regulating drug classes based on groupings in the British National Formulary (BNF),[@wishart2017] namely: statins, fibrates, bile acid sequestrants, ezetimibe, nicotinic acid groups, ezetimibe and statin (representing one treatment containing both drugs, rather than the two classes being prescribed concurrently), and omega-3 fatty acid groups.  
+I considered seven lipid-regulating drug classes based on groupings in the British National Formulary,[@wishart2017] namely: statins, fibrates, bile acid sequestrants, ezetimibe, nicotinic acid groups, ezetimibe and statin (representing one treatment containing both drugs, rather than the two classes being prescribed concurrently), and omega-3 fatty acid groups.  
  
 A participants drug class was assigned based on their first recorded prescription, and any drug switching was ignored in an effort to mimic an intention-to-treat approach. We did however examine how often the initial drug class altered according to one of three criteria:
 
@@ -385,7 +385,7 @@ As detailed in the introduction, the properties of statins may be important due 
 
 As part of an exploratory analysis of the effect of the choice of code lists on the analysis, I created an alternative Alzheimer's disease and non-Alzheimer's dementia outcome using code lists from a published study by Smeeth _et al_.[@smeeth2009] The intended purpose of this analysis was to assess the robustness of my results to the choice of code list.
 
-This published analysis used a propensity matching approach to estimate the association of statins with a range of outcomes in The Health Improvement Network (THIN) database, an alternative source of English electronic health records which has substantial overlap with the CPRD.[@carbonari2015] The code lists used in this analysis were obtained through correspondence with the authors of that study, and are available for inspection (see Section \@ref(cprd-data-avail)).
+This published analysis used a propensity matching approach to estimate the association of statins with a range of outcomes in The Health Improvement Network database, an alternative source of English electronic health records which has substantial overlap with the CPRD.[@carbonari2015] The code lists used in this analysis were obtained through correspondence with the authors of that study, and are available for inspection (see Section \@ref(cprd-data-avail)).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -573,7 +573,7 @@ Adjustment for additional covariates beyond age and sex had a limited impact on 
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:unadjustedComparisonFig-cap) Results of three models adjusting for a different set of covariates. Note that the x-axis cutoffs (.5,2) are different compared to other plots (0.3,3) to enable greater comparison between the different models.
+(ref:unadjustedComparisonFig-cap) Results of three models adjusting for a different set of covariates. Note that the x-axis cutoffs (0.5,2) are different compared to other plots (0.3,3) to enable greater comparison between the different models.
 
 (ref:unadjustedComparisonFig-scap) Comparison of different combinations of covariates
 

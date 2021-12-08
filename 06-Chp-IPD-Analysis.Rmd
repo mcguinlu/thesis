@@ -106,7 +106,7 @@ Potentially eligible data sources as defined above were identified via two mecha
 
 #### Cohorts identified by the systematic review
 
-The first approach focused on previously analysed observational prospective cohort studies examining the effect of blood lipid levels on dementia outcomes, as identified by the systematic review presented in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). The data sources used in each of these cohort analyses were screened against the criteria listed in the previous section, and eligible cohorts were approached for data access. In the first instance, the first/corresponding author of the publication was emailed (see Appendix \@ref(ipd-email-collab) for a copy of the text and documentation sent to potential collaborators) in Autumn 2020. If this approach did not elicit a response within two months, the last author was contacted, on the basis that the first/corresponding author may have been a more junior member of the research group who had moved to a different institution.
+The first approach focused on previously analysed observational prospective cohort studies examining the effect of blood lipid levels on dementia outcomes, as identified by the systematic review presented in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). The data sources used in each of these cohort analyses were screened against the criteria listed in the previous section, and eligible cohorts were approached for data access. In the first instance, the first/corresponding author of the publication was emailed (see Appendix \@ref(ipd-email-collab) for a copy of the correspondence sent to potential collaborators) in Autumn 2020. If this approach did not elicit a response within two months, the last author was contacted, on the basis that the first/corresponding author may have been a more junior member of the research group who had moved to a different institution.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -142,6 +142,8 @@ A range of additional variables were included in the analysis, intended to addre
 Missing data in this analysis was classified as either relating to missing values (a cohort collected data on a variable of interest, but some values are missing) or missing variables (a cohort did not collect data on a variable of interest). Variables with missing values were identified, and 20 imputed datasets were created.[@sterne2009] Imputation was performed using the MICE (Multiple Imputation by Chained Equations) using the `mice` package in R.
 
 Missing variables were originally intended to be addressed using a previously described method.[@fibrinogenstudiescollaboration2009] Here, the correlation between the fully-adjusted and partially-adjusted estimate in cohorts with the full set of covariates is used to estimate the fully-adjusted effect in those cohorts missing covariates. However, this method requires several large cohorts to contain the full set of covariates, a condition this analysis failed to meet given the very low response rate. As such, two other common approaches were employed.[@fibrinogenstudiescollaboration2009] In the primary analysis, all cohorts were analysed adjusted for the set of common covariates across cohorts (Model 1: age, sex, smoking, alcohol, presence of morbidities). As a sensitivity analysis, cohorts with the full complement of covariates (Whitehall II and EPIC) were analysed using a maximally-adjusted model (Model 2: Model 1, further adjusted for education and BMI). Results between the common-set-adjusted (Model 1) and maximally-adjusted (Model 2) models were then compared.
+
+<!-- TODO May need to rethink this, as introducing model based on missing data which isn't fully discussed until later. -->
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -242,7 +244,7 @@ Of note, the Whitehall II cohort was analysed in one of the included studies ide
 
 ### Covariate definition & missing data {#ipd-covar-definition}
 
-Based on available data across cohorts, smoking was classified as never/ever/current, while alcohol consumption was classified as never/ever. Education was categorised into 4 levels (None,O-levels,A-levels,Degree). BMI was treated as a continuous variable while presence of vascular co-morbidities was treated as dichotomous. 
+Based on available data across cohorts, smoking was classified as never/ever/current, while alcohol consumption was classified as never/ever. Education was categorised into 4 levels (None, O-levels, A-levels, Degree). BMI was treated as a continuous variable while presence of vascular co-morbidities was treated as dichotomous. 
 
 A key consideration in the definition of covariates across cohorts was the classification of age. The Whitehall II study, the largest cohort to which I had access, only shared age data in five-year age band (e.g. 40-44, 45-49, etc.). To ensure comparability across the cohorts, I created identical categories in the CaPS and EPIC data. This grouped age variable was then used in all subsequent analyses. 
 
@@ -280,7 +282,7 @@ The results from the main effect analysis across the varying lipid fractions on 
 
 
 <!----------------------------------------------------------------------------->
-(ref:mainEffectDem-cap) IPD meta-analysis (model 1) of all-cause dementia outcomes, stratified by lipid fraction
+(ref:mainEffectDem-cap) IPD meta-analysis (Model 1) of all-cause dementia outcomes, stratified by lipid fraction
 
 (ref:mainEffectDem-scap) IPD meta-analysis of all-cause dementia, stratified by lipid fraction
 
@@ -292,7 +294,7 @@ knitr::include_graphics(file.path("figures/ipd/main_Dementia.png"))
 <!-- TODO Now that using a fixed effect model, evidence of TG/ACD association -->
 
 <!----------------------------------------------------------------------------->
-(ref:mainEffectVad-cap) IPD meta-analysis (model 1) of vascular dementia outcomes, stratified by lipid fraction. Note that the vascular dementia outcome was only available in the CaPS and Whitehall II cohorts.
+(ref:mainEffectVad-cap) IPD meta-analysis (Model 1) of vascular dementia outcomes, stratified by lipid fraction. Note that the vascular dementia outcome was only available in the CaPS and Whitehall II cohorts.
 
 (ref:mainEffectVad-scap) IPD meta-analysis of all-cause dementia, stratified by lipid fraction
 

@@ -71,10 +71,6 @@ gen_rmd_citation <- function(filename = "packages.bib") {
   
   # Read in list of packages that I need to have a citation for, but shouldn't
   # go in here, and exclude these from the vector
-  extra_packages <-
-    readLines(file.path("data", "extra_packages.txt"))
-  
-  pkg_names <- pkg_names[which(!(pkg_names %in% extra_packages))]
   
   # Format string as pandoc citation
   pkg_cit <- paste0("[@", paste(pkg_names, collapse = "; @"), "]")
