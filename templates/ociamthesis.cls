@@ -247,8 +247,6 @@
   \vfill\null
 \end{alwayssingle}}
 
-
-
 % DEDICATION
 %
 % The dedication environment makes sure the dedication gets its
