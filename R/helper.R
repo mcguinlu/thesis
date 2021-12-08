@@ -935,6 +935,12 @@ save_dr <- function(dat, title, xref, preface){
     return()
   }
   
+  if (title == "Low-density lipoprotein cholesterol") {
+    x_adjust <- 125
+  } else {
+    x_adjust <- 115
+  }
+
   
   fp <- paste0("dr_",preface,".png")
   
@@ -975,7 +981,7 @@ save_dr <- function(dat, title, xref, preface){
            lty = c(1, 2,2),           # Line types
            col = c("black", "black","transparent"),           # Line colors
            lwd = 2)
-    text(xref+115, .81, paste0("N studies = ",length(unique(dat$study_id))))
+    text(xref+x_adjust, .81, paste0("N studies = ",length(unique(dat$study_id))))
     dev.off()
 }
 
