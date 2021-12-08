@@ -6,6 +6,9 @@ abbr <-
     stringsAsFactors = FALSE
   ), Acronym)
 
+# Save it back to the file in the sorted order
+write.csv(abbr, "data/abbreviations/abbreviations.csv", row.names = FALSE, quote = F)
+
 acron <- abbr$Acronym
 def <- abbr$Definition
 
