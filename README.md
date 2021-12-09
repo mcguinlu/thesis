@@ -10,7 +10,6 @@ You must submit two electronic copies of your dissertation separately to cover:
 - [ ] Review abstract text, and all text in front/back materials
 - [ ] Review [Bristol guidelines](http://www.bris.ac.uk/media-library/sites/social-community-medicine/migrated/documents/preparingathesis.pdf)
 - [ ] Check if references are duplicated via distinct bibtex keys. || Sort out duplicated citation keys (e.g.[mcguinness2019a] vs [mcguinness2019b])
-- [ ] Check use of "we" vs "I"
 - [ ] Check each chapter has a Lay summary.
 - [ ] Check start of chapter quotes, including references
 - [ ] Quotes are rendering properly.
@@ -26,6 +25,8 @@ You must submit two electronic copies of your dissertation separately to cover:
 - [ ] Check context of figure cross-references to ensure they are pointing to the right figure.
 - [ ] Check context of table cross-references to ensure they are pointing to the right table.
 - [ ] Search for common  mispellings/inconistencies 
+    - [ ] "we" vs "I"
+    - [ ] our vs my
     _ [ ] casual
     - [ ] codelist vs code list
     - [ ] Randomis* vs randomiz*
@@ -36,7 +37,6 @@ You must submit two electronic copies of your dissertation separately to cover:
     - [ ] ApoE4 is italicised
 - [ ] Check all codeblocks with `eval = FALSE` to make sure they are still valid
 - [ ] Do search for everything in parentheses "(...)" and make sure all acronyms are in abbreviations list 
-- [ ] Check figure and table titles are appropriately bolded
 - [ ] Check short captions for tables
 - [ ] Check short captions for figures
 - [ ] Double check citations, particularly of handbook

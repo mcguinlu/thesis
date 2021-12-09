@@ -8,96 +8,121 @@ knitr::read_chunk(here::here("R/appendix.R"))
 doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting format
 ```
 
-
 # Appendices by Chapter {#chapter-appendix-heading}
 
 \minitoc <!-- this will include a mini table of contents-->
 
 \newpage
 
-## Chapter \@ref(background-heading) {#appendix-into}
+## Chapter 1 {#appendix-into}
 
 ### Publications beyond the scope of this thesis {#appendix-publications}
 
-__Peer reviewed__
+In addition to publications arising directly from this thesis (described in Section \@ref(literature-contributions) & included in Appendix \@ref(published-papers)), I have been involved in a number of external research projects. Taken together, these additional projects provided extensive experience in evidence synthesis methods and in collaborating across large teams.
 
-  * PRISMA main paper
-  
-  * PRISMA E&E
-  
-  * PRISMA 2020 software
-  
-  * COVID Suicide Living Review
-  
-  * Data extraction tools systematic review
-  
-  
-<!-- TODO update list with proper references and a description of each. Essentially, look at the Trello -->
+During 2020, I was involved in the updating of the Preferred Reporting Items for Systematic reviews and Meta-Analyses (PRISMA) statement. My contributions were focused on the data sharing aspects of the guidelines and on building an interactive web application that would allow users to complete the PRISMA checklist. Publications arising from this work are listed below: 
 
-__Under review/Preprints__
+*	*Page, M.J., Moher, D., Bossuyt, P., Boutron, I., Hoffmann, T., Mulrow, C., Shamseer, L., Tetzlaff, J., Akl, E., Brennan, S.E., Chou, R., Glanville, J., Grimshaw, J., Hróbjartsson, A., Lalu, M.M., Li, T., Loder, E., Mayo-Wilson, E., McDonald, S., __McGuinness, L.A.__, Stewart, L., Thomas, J., Tricco, A., Welch, V.A., Whiting, P., McKenzie, J. (2021). PRISMA 2020 statement: updated guidelines for reporting systematic reviews and meta-analyses. BMJ 372:n71 [10.1136/bmj.n71](https://doi.org/10.1136/bmj.n71)*
 
-  * MSc Paper on systematic reviews of this thesis topic
-  
-  * 
-  
-  
-  
+*	*Page, M.J., Moher, D., Bossuyt, P., Boutron, I., Hoffmann, T., Mulrow, C., Shamseer, L., Tetzlaff, J., Akl, E., Brennan, S.E., Chou, R., Glanville, J., Grimshaw, J., Hróbjartsson, A., Lalu, M.M., Li, T., Loder, E., Mayo-Wilson, E., McDonald, S., __McGuinness, L.A.__, Stewart, L., Thomas, J., Tricco, A., Welch, V.A., Whiting, P., McKenzie, J. (2021). PRISMA 2020 explanation and elaboration: updated guidance and exemplars for reporting systematic reviews. BMJ 372:n160. DOI: [10.1136/bmj.n160](https://doi.org/10.1136/bmj.n160)*
 
+* *Haddaway, N. R., Page, M. J., Pritchard, C. C., & McGuinness, L. A. (2021). PRISMA2020: An R package and Shiny app for producing PRISMA 2020-compliant flow diagrams, with interactivity for optimised digital transparency and Open Synthesis. MedRxiv, DOI: [10.1101/2021.07.14.21260492](https://doi.org/10.1101/2021.07.14.21260492)*
 
-### Involvement of patients and the public {#appendix-ppi}
+&nbsp;
 
-Patients were involved at several stages of this research. when designing the PhD programme of work, a Patient and Public Advisory Group (PPAG) provided feedback on the relevance of the question.
+In response to the COVID-19 pandemic, I worked with a team of evidence synthesists to develop a literature searching/screening pipeline. This work underpinned a living systematic review on impact of the COVID-19 pandemic on self-harm and suicidal behaviour. Subsequently, the pipeline enabled rapid reviews of related topics, such as an analysis of the available evidence by population.
 
-Additionally,
+*	*John, A., Okolie, C., Eyles, E., Webb, R.T., Schmidt, L., __McGuinness, L.A.__, Olorisade, B.K., Arensman, E., Hawton, K., Kapur, N. and Moran, P., 2020. The impact of the COVID-19 pandemic on self-harm and suicidal behaviour: a living systematic review. F1000Research, 9(1097). DOI: &nbsp; [10.12688/f1000research.25522.2](https://doi.org/10.12688/f1000research.25522.2)*
 
-Lay summaries appear at the beginning of each chapter, reviewed by the Patient and Public Involvement panel. They provide a plain language summary
+*	*John, A., Eyles, E., __McGuinness, L.A.__, Okolie, C., Olorisade, B.K., Schmidt, L., Webb, R.T., Arensman, E., Hawton, K., Kapur, N. and Moran, P., 2020. The impact of the COVID-19 pandemic on self-harm and suicidal behaviour: protocol for a living systematic review. F1000Research, 9(644), p.644. DOI: [10.12688/f1000research.24274.1](https://doi.org/10.12688/f1000research.24274.1)*
 
+* *Eyles, E., Moran, P., Okolie, C., Dekel, D., Macleod-Hall, C., Webb, R. T., Schmidt, L., Knipe, D., Sinyor, M., __McGuinness, L. A.__, Arensman, E., Hawton, K., O’Connor, R. C., Kapur, N., O’Neill, S., Olorisade, B., Cheng, H.-Y., Higgins, J. P. T., John, A., & Gunnell, D. (2021). Systematic review of the impact of the COVID-19 pandemic on suicidal behaviour amongst health and social care workers across the world. Journal of Affective Disorders Reports, 6, 100271. DOI: [10.1016/j.jadr.2021.100271](https://doi.org/10.1016/j.jadr.2021.100271)*
 
+&nbsp;
 
-## Chapter \@ref(sys-rev-tools-heading) {#appendix-sys-rev-tools}
+Finally, I have acted as part of a large review team for a number of other evidence synthesis exercises:
 
+*	*Grant, M. C., Geoghegan, L., Arbyn, M., Mohammed, Z., __McGuinness, L.A.__, Clarke, E. L., & Wade, R. (2020). The Prevalence of Symptoms in 24,410 Adults Infected by the Novel Coronavirus (SARS-CoV-2; COVID-19): A Systematic Review and Meta-Analysis of 148 Studies from 9 Countries. PLOS ONE. DOI: [10.1371/journal.pone.0234765](https://doi.org/10.1371/journal.pone.0234765)*
+ 
+* *Cheng, H.Y., __McGuinness, L.A.__, Elbers, R.G., MacArthur, G.J., Taylor, A., McAleenan, A., Dawson, S., López-López, J.A., Higgins, J.P., Cowlishaw, S. and Lingford-Hughes, A. (2020). Treatment interventions to maintain abstinence from alcohol in primary care: systematic review and network meta-analysis. BMJ, 371. DOI: [10.1136/bmj.m3934](https://doi.org/10.1136/bmj.m3934)*
 
-### Code for publication rate analysis
+*	*Schmidt, L., Olorisade, B.K., __McGuinness, L.A.__, Thomas, J. and Higgins, J.P. (2020). Data extraction methods for systematic review (semi) automation. F1000Research, 10:401. DOI: &nbsp; [10.12688/f1000research.51117.1](https://doi.org/10.12688/f1000research.51117.1)* 
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+## Chapter 2 {#appendix-sys-rev-tools}
+
+### Code for publication rate analysis {#appendix-tools-pub}
+
+medRxiv automatically links preprints to their published counterparts, and provides the DOI of the published article as part of the metadata on a given preprint. Using `medrxivr` to access this data, I could assess the two-year publication rate of preprints originally posted to medRxiv in July 2019. The code used for this analysis is presented below:
+
+&nbsp;
 
 ```{r, eval=FALSE}
-med_res <-
-  # Use snapshot of published status from July 2021
-  medrxivr::mx_search(
-    medrxivr::mx_snapshot("ccedfb8a44304b9fba4e3ba518a8ce4ed2294770"),
+# Load relevant packages
+library(medrxivr)
+library(dplyr)
+
+# Use snapshot of published status from July 2021
+  mx_search(
+    mx_snapshot("ccedfb8a44304b9fba4e3ba518a8ce4ed2294770"),
     query = "*",
+    # Limit to those 129 records published in July 2019
     from_date = "2019-07-01",
     to_date = "2019-08-01"
   ) %>%
-  # Create indicator to show which records have been published
-  mutate(pub_ind = ifelse(published == "NA", 0, 1)) %>%
-  # Group by indicator variable and count
-  group_by(pub_ind) %>%
-  count() 
-
+    
+# Create indicator to show which records have been published
+  mutate(Status = ifelse(published == "NA",
+                          "Not published",
+                          "Published")) %>%
+    
+# Group by indicator variable ("Published"/"Not published")
+  group_by(Status) %>%
+    
+# Get total number per group, and percentage of total (N=129)
+  summarise(N = n(),
+            Percent = comma(n() / 129 * 100)) 
 ```
 
+&nbsp;
 
-## Chapter \@ref(sys-rev-methods-heading) {#appendix-sys-rev}
+As shown in Table \@ref(tab:medRes-table), two-thirds of preprints were published within two years of their submission to medRxiv.
 
+&nbsp;
 
-### Deviations from protocol
+<!----------------------------------------------------------------------------->
+(ref:medRes-caption) Publication status of medRxiv preprints deposited in July 2019, allowing for a two-year lag
 
-<!-- TODO Complete -->
+(ref:medRes-scaption) Publication status of medRxiv preprints
 
+```{r medRes-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
 
-* MR tool, actually used Mamluk
+&nbsp;
 
-* ROB-ME
+## Chapter 3 {#appendix-sys-rev}
 
-* No MCI, given size of dementia findings
+### Deviations from protocol {#appendix-sys-rev-deviations}
+
+There were a number of deviations from the pre-registered protocol for the systematic review reported in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading):[@mcguinnessluke2020] 
+
+* I had originally intended to examine both dementia and mild cognitive impairment (MCI) as outcomes of interest. However, given the large number of relevant records for the dementia outcomes, I did not include MCI as an outcome.
+
+* For Mendelian randomisation analyses, I had originally intended to use a panel of experts to assess he risk of bias in this study design. However, through private correspondence with the authors of a review of risk-of-bias assessment tools for Mendelian randomisation studies (since published[@spiga2021]), I became aware of the Mamluk _et al_ tool. Given this tool was considered to be the best available for assessing Mendelian randomisation studies and that it followed a domain-based approach, enabling comparison with tools for other study designs, I decided to use it in the review. 
+
+* I performed an additional assessment of the risk of bias due to missing evidence using the ROB-ME tool. This analysis was not planned because the tool did not exist when the protocol was written.
+
+* I had originally intended to assess sources of funding alongside bias. However, on further reading,[@sterne2013] I learned that any bias introduced by sources of funding would operate through one of the existing domains of the risk-of-bias tools. As such, I did not consider funding sources seperately.
  
-* Sources of funding: Given that any bias introduced by sources of funding would operate , conflicts of interest and bias were considered separate things here.[@sterne2013]
- 
- * Dose response
+ * Finally, I performed a dose response meta-analysis to assess the evidence for a non-linear realtionship between lipids and dementia outcomes. This marked a departure from the published protocol, as I had not expected the number of studies reporting dementia risk across lipid sub-categories to be sufficient for a dose response analysis.
 
-### Web of Science Databases Searched {#appendix-wos-databases}
+&nbsp;<!----------------------------------------------------------------------->  
 
-(ref:wosDatabases-caption) Summary of Web of Science databases searched.
+### Web of Science databases searched {#appendix-wos-databases}
+
+(ref:wosDatabases-caption) Summary of Web of Science databases searched. The contents of the Web of Science core collection can vary depending on an institution's subscription, and so detailing the exact databases and ranges searched is important.
 
 (ref:wosDatabases-scaption) Summary of Web of Science databases searched.
 
@@ -108,11 +133,59 @@ med_res <-
 
 ### Search strategy {#appendix-search-strategy}
 
-(ref:searchHits-caption) Overview of the full Medline search strategy.
+An overview of the number of hits per database, in addition to the full line-by-line search results for the each database, are presented below. 
 
-(ref:searchHits-scaption) searchHits
+(ref:searchOverviewAppendix-caption) Summary of number of records identified in each database searched
 
-```{r searchHits-table, message=FALSE, results="asis", echo = FALSE}
+(ref:searchOverviewAppendix-scaption) searchOverviewAppendix
+
+```{r searchOverviewAppendix-table, message=FALSE, results="asis", echo = FALSE}
+```
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+
+(ref:searchHitsMedline-caption) Overview of the full Medline search strategy.
+
+(ref:searchHitsMedline-scaption) Medline search strategy
+
+```{r searchHitsMedline-table, message=FALSE, results="asis", echo = FALSE}
+```
+
+&nbsp;
+
+(ref:searchHitsEmbase-caption) Overview of the full Embase search strategy.
+
+(ref:searchHitsEmbase-scaption) Embase search strategy
+
+```{r searchHitsEmbase-table, message=FALSE, results="asis", echo = FALSE}
+```
+
+&nbsp;
+
+(ref:searchHitsPI-caption) Overview of the full PyscINFO search strategy.
+
+(ref:searchHitsPI-scaption) PyscINFO search strategy
+
+```{r searchHitsPI-table, message=FALSE, results="asis", echo = FALSE}
+```
+
+&nbsp;
+
+(ref:searchHitsCentral-caption) Overview of the full CENTRAL search strategy.
+
+(ref:searchHitsCentral-scaption) CENTRAL search strategy
+
+```{r searchHitsCentral-table, message=FALSE, results="asis", echo = FALSE}
+```
+
+&nbsp;
+
+(ref:searchHitsWos-caption) Overview of the full Web of Science search strategy.
+
+(ref:searchHitsWos-scaption) Web of Science search strategy
+
+```{r searchHitsWos-table, message=FALSE, results="asis", echo = FALSE}
 ```
 
 &nbsp;<!----------------------------------------------------------------------->  
@@ -121,15 +194,15 @@ med_res <-
 
 <!-- TODO Double check this is the final code used -->
 
+As detailed extensively in the main text, the inclusion of preprinted literature was a key aspect of the review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). Using the `medrxivr` tool presented in Chapter \@ref(sys-rev-tools-heading). 
+
+Given the relatively small number of records contained in the preprint server, no study design filters were employed. For the same reason, the number of search terms is smaller compared with the main database searches, as terms returning no records have been removed. 
+
 ```{r, eval = FALSE}
 
 library(medrxivr)
 
-mx_data <- mx_api_content(to_date = "2019-07-01")
-
-bx_data <- mx_api_content(server = "biorxiv",
-                                    to_date = "2019-07-01")
-
+# Define exposure search terms
 topic1 <- c(mx_caps("statin"),
             mx_caps("ldl"),
             mx_caps("hdl"),
@@ -143,30 +216,37 @@ topic1 <- c(mx_caps("statin"),
             mx_caps("lipid"),
             mx_caps("cholesterol"))
 
+# Define outcome search terms
 topic2 <- c(mx_caps("dementia"),
             mx_caps("alzheim"),
             mx_caps("MCI"),
             mx_caps("mild cognitive"))
 
-query <- list(
-  topic1,
-  topic2
-)
+# Combine search topics using Boolean AND
+query <- list(topic1, topic2)
 
+# Run search in bioRxiv
+bx_data <- mx_api_content(server = "biorxiv",
+                          to_date = "2019-08-01")
 bx_results <- mx_search(bx_data, query)
 
-
+# Run search in medRxiv
+mx_data <- mx_api_content(server = "medrxiv",
+                          to_date = "2019-08-01")
 mx_results <- mx_search(mx_data, query)
 
 ```
 
-Note
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Calculating Gwet's AC1 {#appendix-gwet}
 
-Gwet's AC1 is defined as:
+Gwet's agreement coefficient, $AC1$ is defined as:
 
-$$AC1 = \frac{observed\;agreement-chance\;agreement}{1-chance\;agreement}$$ 
+\begin{equation}
+AC1 = \frac{observed\;agreement-chance\;agreement}{1-chance\;agreement}
+  (\#eq:AC1-words)
+\end{equation}
 
 In reference to a two-by-two table with cells A, B, C and D, it is calculated using the following:
 
@@ -182,8 +262,9 @@ where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, wh
   (\#eq:AC1-supp)
 \end{equation}
 
+&nbsp;<!----------------------------------------------------------------------->  
 
-### MR risk of bias tool {#appendix-mr-rob}
+### Risk-of-bias assessment tool for Mendelian randomisation studies {#appendix-mr-rob}
 
 (ref:mrTool-caption) Tool used to assess risk of bias in Mendelian randomisation studies, adapted from that developed by Mamluk et al.[@mamluk2020]
 
@@ -214,16 +295,19 @@ if(doc_type == "docx") {
 
 ```
 
-## Chapter \@ref(sys-rev-results-heading)
+&nbsp;<!----------------------------------------------------------------------->  
+
+## Chapter 4
 
 ### Dose response plots by fraction {#appendix-dr-fraction}
 
+In addition to examining a non-linear relationship between LDL-c and Alzheimer's disease (see Figure \@ref(fig:lipidsDoseResponse)), I performed a dose response analysis for two other exposure-outcome pairs. The results of these analyses are presented below. 
 
 (ref:drDemeniaTC-cap) Dose-response meta-analysis of total cholesterol on all-cause dementia
 
 (ref:drDemeniaTC-scap) shortcap
 
-```{r drDemeniaTC, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:drDemeniaTC-cap)', out.width='100%', fig.scap='(ref:drDemeniaTC-scap)'}
+```{r drDemeniaTC, echo = FALSE, results="asis", fig.align='center', fig.pos = "H", fig.cap='(ref:drDemeniaTC-cap)', out.width='60%', fig.scap='(ref:drDemeniaTC-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/dr_Dementia_TC.png"))
 ```
   
@@ -233,39 +317,81 @@ knitr::include_graphics(file.path("figures/sys-rev/dr_Dementia_TC.png"))
 
 (ref:drAdLDL-scap) shortcap
 
-```{r drAdLDL, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:drAdLDL-cap)', out.width='100%', fig.scap='(ref:drAdLDL-scap)'}
+```{r drAdLDL, echo = FALSE, results="asis", fig.align='center', fig.pos = "H", fig.cap='(ref:drAdLDL-cap)', out.width='60%', fig.scap='(ref:drAdLDL-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/dr_AD_LDL.png"))
 ```
 
+&nbsp;<!----------------------------------------------------------------------->  
 
-
-
-## Chapter \@ref(cprd-analysis-heading) {#appendix-cprd-analysis}
-
+## Chapter 5 {#appendix-cprd-analysis}
 
 ### Amendments to protocol {#appendix-cprd-amendments}
 
-## Chapter \@ref(ipd-heading) {#appendix-ipd-analysis}
+Any changes made to the approved protocol are "Minor amendments" as per the ISAC criteria, specifically falling under the category of "Additional methods to further control for confounding or sensitivity analysis provided these are to be reported as secondary to the main findings".
 
-### Email and documents sent to potental collaborators {#ipd-email-collab}
+Changes include:
 
-
-
-### Covariate matrix {#appendix-ipd-covariate-matrix}
-
-### Dementia definitions across cohorts {#appendix-ipd-dementia-def}
+-   Use of a time-varying treatment indicator, to correctly classify time-at-risk.
+-   Inclusion of additional covariates that are adjusted for in the main model.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-## Chapter \@ref(tri-heading) {#appendix-tri-analysis}
+## Chapter 6 {#appendix-ipd-analysis}
 
-### Calculation of average adjustment from expert elicitation {#appendix-adjustment-values}
+### Email and documents sent to potental collaborators {#ipd-email-collab}
+
+__To be copied from email__
+
+### Covariate matrix {#appendix-ipd-covariate-matrix}
 
 
-### Code lists
+### Dementia definitions across cohorts {#appendix-ipd-dementia-def}
 
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:ipdDementiaDef-caption) Definition of dementia outcomes across cohorts included in the individual participant data meta-analysis
+
+(ref:ipdDementiaDef-scaption) Definition of dementia outcomes in IPD meta-analysis
+
+```{r ipdDementiaDef-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+## Chapter 7 {#appendix-tri-analysis}
+
+### Calculation of average adjustment values from previous expert elicitation exercise {#appendix-adjustment-values}
+
+The paper describing the bias/indirectness-adjusted meta-analysis method used expert elicitation to define a distribution for  bias and indirectness across eight studies examining the effectiveness of routine anti-D prophylaxis in Rhesus negative women.[@turner2009] The authors consider five sources of bias (selection bias, performance bias, attrition bias, detection bias and other bias) and four sources of indirectness (population, intervention, control, outcome). For each domain of bias/indirectness, four experts were asked to define the 67% interval around the effect expected due to bias/indirectness in the absence of a true effect. Additive or multiplicative scales were used to capture the intervals for additive and proportional bias/indirectness, respectively. The authors then use assumed log-normality of these distributions to derive a mean and variance for each on the log scale.
+
+In an attempt to inform the prior distributions used in the triangulation exercise presented in Chapter \@ref(tri-heading), I first averaged the mean and variance values across the four experts for each source of bias/indirectness within each study. I averaged the absolute value of the mean, as I wanted to obtain the average adjustment regardless of direction of adjustment which was indicated using the sign of the mean in the original analysis).
+
+I then took the average and maximum of these averaged mean and variance values. The distributions arising from this analysis are presented in Table \@ref(tab:turnerEstimates-table). The two step approach (averaging across assessors before taking the average/maximum across sources of bias) was important. While the final mean values will be the same whichever approach is taken, in a one-step process the maximum value can be artificially inflated by a single expert's estimate. Averaging across experts for a given bias in a given study before taking the maximum value across biases and studies prevented this.
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:turnerEstimates-caption) Mean and maximum distributions for bias and indirectness obtained from data resulting from the elicitation exercise reported in _Turner et al_[@turner2009]
+
+(ref:turnerEstimates-scaption) turnerEstimates
+
+```{r turnerEstimates-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
+The mean values shown were used to define the distributions assigned to  "Moderate" bias/indirectness judgements in my analysis (see Tables \@ref(tab:priorsAdd-table) & \@ref(tab:priorsIndirect-table)).
+
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Comparison of two scenarios of bias
+
+As discussed in the main text, I defined two sets of additive bias distributions as a sensitivity analysis. The results for the two case studies under the two scenarios are presented in the figures below.
 
 (ref:fpLdlAdComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses of LDL-c/Alzheimer's disease, using two different scenarios for the relationship of levels of bias. The left forest plot shows the result where the difference in mean value between the "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. In the right plot, the difference in mean value between "High" and "Moderate" is twice that between "Moderate" and "Low". 
 
@@ -283,9 +409,11 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad_scenario
 knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_tg_vad_scenarios.png"))
 ```
 
-## Chapter \@ref(discussion-heading)
+## Chapter 8
 
 ### Reproducible research {#disc-repro-research}
+
+All software projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
 
 Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tool to help search medRxiv and bioRxiv preprint metadata. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
 
@@ -321,6 +449,10 @@ Short section detailing the things I tried to do but which did not work:
 
 # Other Appendices {#other-appendix-heading}
 
+\minitoc <!-- this will include a mini table of contents-->
+
+\newpage
+
 ## Software used to create this thesis
 
 ```{r, include = FALSE}
@@ -329,25 +461,75 @@ knitr::write_bib(c(.packages(), "bookdown", "knitr"), here::here("bibliography/p
 
 <!-- TODO These citations are not rendering properly - I think because bookdown using this latex format only allows 1 .bib file. -->
 
-This thesis was written in RMarkdown. Several R packages were used as part of this project.`r gen_rmd_citation("packages.bib")`
-All projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
+This thesis was written in RMarkdown using the RStudio integrated development environment. Several R packages were used as part of this project.`r gen_rmd_citation("packages.bib")` The version number of these packages is shown below:
 
+&nbsp;
+
+```{r, echo = FALSE}
+sessionInfo()
+```
+
+\newpage  
 
 ## Producing risk-of-bias visualisations with `robvis` {#appendix-robvis}
 
 <!-- TODO Need to complete this sections -->
+The robvis package provides functions to convert a risk-of-bias assessment summary table into a summary plot or a traffic-light plot, formatted based on the specific risk-of-bias assessment tool used.
 
-_TBC_
+robvis currently contains templates for the following tools:
 
-\newpage
+* ROB2
+* ROBINS-I
+* QUADAS-2
+* ROB1
+
+For the direction bias plots, the data expected by the tools is more comprehensive.
+
+&nbsp;
+
+\blandscape
+<!----------------------------------------------------------------------------->
+(ref:biasData-caption) biasData
+
+(ref:biasData-scaption) biasData
+
+```{r biasData-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:biasDirectionData-caption) biasDirectionData
+
+(ref:biasDirectionData-scaption) biasDirectionData
+
+```{r biasDirectionData-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+\elandscape
 
 ## Copies of papers arising from this thesis {#published-papers}
 
-The following pages contain copies of papers arising from work performed as part of this thesis.
+The following pages contain copies of the following publications:
+
+- _**McGuinness L. A.**, Higgins J. P. T., Walker, V. M., Davies, N. M., Martin, R. M., Coulthard, E., Davey-Smith, G., Kehoe, P. G., and Ben-Shlomo, Y. (2021) Association of lipid-regulating drugs with dementia and related conditions: an observational study of data from the Clinical Practice Research Datalink. medRxiv. DOI:   [10.1101/2021.10.21.21265131](https://doi.org/10.1101/2021.10.21.21265131)_
+
+- _**McGuinness, L. A.**, and L Schmidt. (2020) medrxivr: Accessing and searching medRxiv and bioRxiv preprint data in R. Journal of Open Source Software 5.54 2651. DOI: [10.21105/joss.02651](https://doi.org/10.21105/joss.02651)_
+
+- _**McGuinness, L. A.**, and Higgins J. P. T. (2020) "Risk‐of‐bias VISualization (robvis): An R package and Shiny web app for visualizing risk‐of‐bias assessments." Research Synthesis Method). DOI: [10.1002/jrsm.1411](https://doi.org/10.1002/jrsm.1411)_
+
+- _**McGuinness, L. A.**, and Sheppard A. L. 2020. “A Descriptive Analysis of the Data Availability Statements Accompanying Medrxiv Preprints and a Comparison with Their Published Counterparts.”  PLOS ONE 16(5): e0250887. DOI: [10.1371/journal.pone.0250887](https://doi.org/10.1371/journal.pone.0250887)_
+
+- _Hennessy, E. A., Acabchuk, R., Arnold, P. A., Dunn, A. G., Foo, Y. Z., Johnson, B. T., Geange, S. R., Haddaway, N. R., Nakagawa, S., Mapanga, W., Mengersen, K., Page, M., Sánchez-Tójar, A. Welch, V.,  **and McGuinness L. A.** (2021). Ensuring Prevention Science Research is Synthesis-Ready for Immediate and Lasting Scientific Impact. Prevention Science . DOI: [10.1007/s11121-021-01279-8](https://doi.org/10.1007/s11121-021-01279-8)_
+
+These manuscripts arose from work performed as part of this thesis, as discussed more fully in Section \@ref(literature-contributions).
 
 <!-- TODO May need to reiterate contributions here -->
 
-\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf}
+<!-- TODO These have been removed so as to not mess-up the plagarism score -->
+
+\includepdf[pages=-,link=true,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf}
 \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf}

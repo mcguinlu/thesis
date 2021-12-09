@@ -1,4 +1,5 @@
 - [ ] CPRD analysis with minimum follow-up
+- [ ] The tri results should be standarised before calculating direction of effect, because other-wise it is pulling it in the wrong direction
 - [ ] Add HMGCR MR to triangulation
 - [ ] Fix table in systematic review - see "IMPORTANT" notes
 - [ ] Fix estimates in IPD (IHD, imputed)
@@ -8,4 +9,5 @@
 - [ ] Basic paired forest plot functionality in robvis
 - [ ] Basic triangulate package
 - [ ] Reproduce single analysis from Turner using triangulate
+- [ ] Deal with acronyms: ensure that they are explained once per chapter so a bit more self-contained, and apply this approach across chapters.
 

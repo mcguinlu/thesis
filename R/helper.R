@@ -107,11 +107,11 @@ num_to_text <- function(x, start_of_sentence = FALSE)
   if (!x %% 1 == 0)
     warning("X is not an integer")
   if (start_of_sentence) {
-    out <- xfun::numbers_to_words(x)
+    out <- xfun::numbers_to_words(x, and = TRUE)
     out <- stringr::str_to_sentence(out)
   } else {
     if (x < 11 & x > -1) {
-      out <- xfun::numbers_to_words(x)
+      out <- xfun::numbers_to_words(x, and=TRUE)
     } else {
       out <- comma(x)
     }
