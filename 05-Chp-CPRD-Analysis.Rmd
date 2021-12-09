@@ -2,14 +2,14 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+    pandoc_args: !expr rmdfiltr::add_wordcount_filter()  
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
-    pandoc_args: !expr rmdfiltr::add_wordcount_filter()  
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -58,7 +58,7 @@ This increased risk in outcomes with a vascular element (e.g. vascular dementia)
 
 ## Introduction
 
-In this chapter, I present an analysis of a large population-based electronic health record dataset to investigate the relationship between lipid-regulating agent (LRA) use and dementia outcomes. The analysis aims to address two important limitations of the current evidence base as identified by the systematic review presented in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading).
+In this chapter, I present an analysis of a large population-based electronic health record dataset to investigate the relationship between lipid-regulating agent (LRA) use and dementia outcomes. The analysis aims to address two important limitations of the current evidence base as identified by the systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading).
 
 Firstly, it explicitly examines vascular dementia as an outcome. The systematic review presented in the previous chapter identified an evidence gap around the effect of lipid-regulating agents on the risk of vascular dementia. As triangulation exercises require as many diverse sources of evidence as possible, this analysis provides a source of information on this outcome. 
 
@@ -130,7 +130,7 @@ The index date for a participant was defined as the date where the first relevan
 * last registration date with their GP practice;
 * the last CPRD collection date for their practice.
 
-Participants were ineligible for our cohort if they were less than 40 years of age (as these patients are less likely to be prescribed a LRA), had less than 12 months of "research quality" data, were simultaneously prescribed more than one lipid-regulating agent (due to the difficult of assigning these to a single exposure group), or were diagnosed with an outcome of interest before or on the date of the index event (i.e. had less than one full day of follow-up). 
+Participants were ineligible for the cohort if they were less than 40 years of age (as these patients are less likely to be prescribed a LRA), had less than 12 months of "research quality" data, were simultaneously prescribed more than one lipid-regulating agent (due to the difficult of assigning these to a single exposure group), or were diagnosed with an outcome of interest before or on the date of the index event (i.e. had less than one full day of follow-up). 
 
 <!--------------------------------------------------------------------------->
 
@@ -213,9 +213,9 @@ Missing data are a recognised problem in electronic health records databases.[@w
 
 <!-- IDEA Add more detail here on the missing data approach -->
 
-In this analysis, missing data were handled using a multiple imputation approach.[@sterne2009] Variables with missing observations were identified for inclusion in the imputation model. Nominal variables with missing values were modelled using multinomial logistic regression, while continuous variables were modelled using linear regression. As per best practice, all variables used in the analytic model, including the outcome, were included in the imputation model.[@moons2006] Using the MICE (Multiple Imputation by Chained Equations) command in STATA16, 20 imputed datasets were created.
+In this analysis, missing data was handled using a multiple imputation approach.[@sterne2009] Variables with missing observations were identified for inclusion in the imputation model. Nominal variables with missing values were modelled using multinomial logistic regression, while continuous variables were modelled using linear regression. As per best practice, all variables used in the analytic model, including the outcome, were included in the imputation model.[@moons2006] Using the MICE (Multiple Imputation by Chained Equations) command in STATA16, 20 imputed datasets were created.
 
-Missing data were only considered problematic for variables where a numerical test result was expected (e.g. BMI), or where a code existed for the absence of the condition (e.g. categorical smoking status). This approach was necessary, as absence of a code for other treatments or conditions (e.g. statin use or dementia) was assumed to indicate absence of the treatment/condition rather than being considered missing.[@wells2013strategies]
+Missing data was only considered problematic for variables where a numerical test result was expected (e.g. BMI), or where a code existed for the absence of the condition (e.g. categorical smoking status). This approach was necessary, as absence of a code for other treatments or conditions (e.g. statin use or dementia) was assumed to indicate absence of the treatment/condition rather than being considered missing.[@wells2013strategies]
 
 &nbsp;
 <!--------------------------------------------------------------------------->
@@ -422,7 +422,7 @@ knitr::include_graphics(file.path("figures","cprd-analysis","cohort_attrition.pn
 
 The median participant age at index was `r age_text` and participants were followed up for a median of `r fu_text`. During follow-up, an all-cause dementia diagnosis was recorded for `r comma(p1[1,2])` patients  (`r comma(p1[2,2])` probable AD, `r comma(p1[3,2])` possible AD, `r comma(p1[4,2])` vascular dementia, `r comma(p1[5,2])` other dementias).
 
-The number of events, time-at-risk and crude rates for each drug class, tabulated by dementia outcome, are shown in Table \@ref(tab:followUp-table). A substantial majority (`r percentage.statins`) of participants prescribed a lipid-regulating agent were prescribed a statin. I excluded the "Ezetimibe and statins" (n=`r eze_sta_n`) and "Nicotinic acid groups" (n= `r nag_n`) classes from subsequent class-based subgroup analyses based on the extremely small number of participants in these groups. Note that the "Ezetimibe and statins" treatment group represent those prescribed a single treatment containing both ezetimibe and statins, rather than those where the two treatments were prescribed concurrently.
+The number of events, time-at-risk and crude rates for each drug class, tabulated by dementia outcome, are shown in Table \@ref(tab:followUp-table). A substantial majority (`r percentage.statins`) of participants prescribed a lipid-regulating agent were prescribed a statin. I excluded the "Ezetimibe and statins" (N =`r eze_sta_n`) and "Nicotinic acid groups" (N = `r nag_n`) classes from subsequent class-based subgroup analyses based on the extremely small number of participants in these groups. Note that the "Ezetimibe and statins" treatment group represent those prescribed a single treatment containing both ezetimibe and statins, rather than those where the two treatments were prescribed concurrently.
 
 \blandscape
 
@@ -509,7 +509,7 @@ In contrast to the findings for Alzheimer's disease outcomes, an association bet
 
 #### All-cause dementia
 
-For the composite all-cause dementia outcome, we found treatment with a lipid-regulating agent was associated with a slightly increased risk (`r anydem_text`), which lies between the associations for the Alzheimer and non-Alzheimer dementia outcomes as would be expected. There was also some evidence that fibrates were associated with increased risk of all-cause dementia (`r anydem_fib_text`). 
+For the composite all-cause dementia outcome, I found treatment with a lipid-regulating agent was associated with a slightly increased risk (`r anydem_text`), which lies between the associations for the Alzheimer and non-Alzheimer dementia outcomes as would be expected. There was also some evidence that fibrates were associated with increased risk of all-cause dementia (`r anydem_fib_text`). 
 
 &nbsp;
 
@@ -765,7 +765,7 @@ knitr::include_graphics(file.path("figures/cprd-analysis/sankey_diagram.png"))
 ```
 <!----------------------------------------------------------------------------->
 
-This analysis serves to illustrative the importance of the code lists chosen to define the outcomes of interest, particularly if they are used to define competing outcomes (e.g. AD vs non-AD dementia). This different codes used by Smeeth _et al._, in addition to an analytical approach that adjusted for covariates defined after the index date, may go some way to explaining why our analysis obtained different results despite the substantial overlap in the data sources used.
+This analysis serves to illustrative the importance of the code lists chosen to define the outcomes of interest, particularly if they are used to define competing outcomes (e.g. AD vs non-AD dementia). This different codes used by Smeeth _et al._, in addition to an analytical approach that adjusted for covariates defined after the index date, may go some way to explaining why my analysis obtained different results despite the substantial overlap in the data sources used.
 
 
 <!--------------------------------------------------------------------------->
@@ -779,7 +779,7 @@ However, the findings of this analysis are subject to several limitations in add
 
 Misclassification of outcomes is not the only issue introduced by the use of EHR codes to define outcomes. Comparing and contrasting between different studies is particularly difficult because of the impact that the use of different code lists can have on the analysis. This problem is illustrated by the discrepancy between the results when using the code lists defined for this study and those used by Smeeth _et al_. This presents a particular challenge in comparing research across different time-periods and coding systems, particularly the unexpected results I obtained for the vascular and other dementias outcomes.
 
-A further limitation stems from the possibility of uncontrolled confounding due to genetic factors. The number of _ApoE_ $\epsilon4$ alleles represents the strongest genetic risk factor for Alzheimer's disease, but also substantially increases LDL cholesterol levels,[@bennet2007] potentially prompting treatment with a statin or other lipid regulating agent. I was unable to control for _ApoE_ genotype in this analysis as I did not have access to genetic data on participants. As a result, any protective association between LRA use and the Alzheimer's disease outcomes may be masked by residual negative confounding by ApoE. 
+A further limitation stems from the possibility of uncontrolled confounding due to genetic factors. The number of _Apo_$\mathcal{E}4$ alleles represents the strongest genetic risk factor for Alzheimer's disease, but also substantially increases LDL cholesterol levels,[@bennet2007] potentially prompting treatment with a statin or other lipid regulating agent. I was unable to control for _Apo_$\mathcal{E}$ genotype in this analysis as I did not have access to genetic data on participants. As a result, any protective association between LRA use and the Alzheimer's disease outcomes may be masked by residual negative confounding by _Apo_$\mathcal{E}$. 
 
 Finally, as with many studies of dementia, there is a risk of reverse causation in my analysis. Dementia and associated conditions have a long prodromal period, during which preclinical disease could cause indications for the prescription of a lipid-regulating agent. 
 

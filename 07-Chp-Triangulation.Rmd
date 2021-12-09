@@ -133,7 +133,7 @@ As part of a qualitative triangulation of the new and existing evidence identifi
 
 #### All-cause dementia
 
-Analysis of lipid levels across both the systematic review (Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading)) and the IPD analysis (Chapter \@ref(ipd-heading)) both found extremely weak evidence for an association of any lipid fraction with all-cause dementia (TC `r obsLipids$Dementia_TC$estimate`; LDL-c `r obsLipids$Dementia_LDL$estimate`; HDL-c `r obsLipids$Dementia_HDL$estimate`; triglycerides `r obsLipids$Dementia_TG$estimate`). Similarly, meta-analysis of studies identified by the review which examined a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$Dementia$estimate`). Finally, a meta-analysis of RCTs of statin use (`r rct_statin_acd`) and of MR analyses of genetic instruments that mimic statin use (`r mrStatin$Dementia$estimate`) both found weak evidence of an association, providing indirect evidence on the effect of lipid lowering on this outcome.
+Analysis of lipid levels across both the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)) and the IPD analysis (Chapter \@ref(ipd-heading)) both found extremely weak evidence for an association of any lipid fraction with all-cause dementia (TC `r obsLipids$Dementia_TC$estimate`; LDL-c `r obsLipids$Dementia_LDL$estimate`; HDL-c `r obsLipids$Dementia_HDL$estimate`; triglycerides `r obsLipids$Dementia_TG$estimate`). Similarly, meta-analysis of studies identified by the review which examined a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$Dementia$estimate`). Finally, a meta-analysis of RCTs of statin use (`r rct_statin_acd`) and of MR analyses of genetic instruments that mimic statin use (`r mrStatin$Dementia$estimate`) both found weak evidence of an association, providing indirect evidence on the effect of lipid lowering on this outcome.
 
 In contrast, the meta-analysis of NRSI of statin use found a slight protective effect (`r obsStatins$Dementia$estimate`), though many of the studies in this analysis were found to be at risk of immortal time bias, which would be expected to favour the intervention. Finally, analysis of the association of statin use with all-cause dementia in the CPRD (Chapter \@ref(cprd-analysis-heading)) found evidence of a harmful association (`r anydem_sta_text`), though this is likely to be driven by the substantial confounding by indication identified in the vascular dementia subgroup.
 
@@ -217,6 +217,9 @@ Once the causal question of interest had been defined, relevant individual resul
 Once the set of relevant results were identified, effects were standardised to refer to the risk resulting from a "reduction" in the lipid fraction. For both non-randomised studies and Mendelian randomisation analysis of lipid levels, the association is usually reported per 1-SD increase in the lipid fraction. In this case, the effect estimates were inverted to ensure consistency across study designs.
 
 <!-- TODO Note that the results are converted to the log scale. -->
+
+<!-- TODO The results should be standarised before calculating direction of effect, because other-wise it is pulling it in the wrong direction -->
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -402,7 +405,7 @@ Once each individual result had been adjusted using this approach, I performed a
 
 #### Single study
 
-As an illustrative example of the process using a single result, the bias and indirectness inherent to the estimate of the effect of statin use on Alzheimer's disease in the CPRD (as analysed in Chapter \@ref(cprd-analysis-heading)) are considered here. For this result, there were three domains at greater than low risk of bias: Bias due to confounding, Bias due to definition of the outcome, and Bias in the selection of the reported result (Figure \@ref(fig:biasDirectionSingle)). In Domain 1 (bias due to confounding), the study did not adjust for _ApoE4_ status, which is predicted to mask any true association between statins and Alzheimer's disease (see Section \@ref(cprd-limitations) for a fuller discussion). As such, the bias is predicted to _favour the comparator_ and so the absolute direction of bias is to the right. In Domain 7 (bias in measurement of the outcome), there was a high risk of differential misclassification on the basis of the exposure. Here, history of statin use may make a diagnosis of vascular dementia more likely than Alzheimer's disease, and so for this outcome, this bias is predicted to _favour the experimental_ (in this case, an intervention). As such, the absolute direction of bias is to the left. In Domain 7 (bias in selection of the reported result), for consistency with the other NRSI, in the absence of a protocol the bias is assumed to be _away from the null_. Given the position of the effect estimate below the null, the absolute direction of bias in this domain is to the left.
+As an illustrative example of the process using a single result, the bias and indirectness inherent to the estimate of the effect of statin use on Alzheimer's disease in the CPRD (as analysed in Chapter \@ref(cprd-analysis-heading)) are considered here. For this result, there were three domains at greater than low risk of bias: Bias due to confounding, Bias due to definition of the outcome, and Bias in the selection of the reported result (Figure \@ref(fig:biasDirectionSingle)). In Domain 1 (bias due to confounding), the study did not adjust for _Apo_$\mathcal{E}4$ status, which is predicted to mask any true association between statins and Alzheimer's disease (see Section \@ref(cprd-limitations) for a fuller discussion). As such, the bias is predicted to _favour the comparator_ and so the absolute direction of bias is to the right. In Domain 7 (bias in measurement of the outcome), there was a high risk of differential misclassification on the basis of the exposure. Here, history of statin use may make a diagnosis of vascular dementia more likely than Alzheimer's disease, and so for this outcome, this bias is predicted to _favour the experimental_ (in this case, an intervention). As such, the absolute direction of bias is to the left. In Domain 7 (bias in selection of the reported result), for consistency with the other NRSI, in the absence of a protocol the bias is assumed to be _away from the null_. Given the position of the effect estimate below the null, the absolute direction of bias in this domain is to the left.
 
 &nbsp;<!----------------------------------------------------------------------->  
 (ref:biasDirectionSingle-cap) Bias direction plot for a single study showing the predicted direction of bias in each domain. Additive biases are characterised using arrows, while the proportional biases are denoted using $<$ and $>$. A question mark indicates that the direction of bias was unpredictable.
@@ -432,7 +435,7 @@ The unadjusted estimate was `r single_unadjusted `. After accounting for the bia
 
 #### Case study #1: effect of LDL-c at midlife on Alzheimer's disease
 
-From the data sources identified in Section \@ref(tri-data-sources), I identified 18 results relevant to my first causal question of interest. Most (n=17) were identified via the systematic review,`r ldl_ad_citations` while Chapter \@ref(cprd-analysis-heading) provided an additional estimate from the CPRD analysis.  The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:ldlAdBiasDirection), stratified by study design.
+From the data sources identified in Section \@ref(tri-data-sources), I identified 18 results relevant to my first causal question of interest. Most (N =17) were identified via the systematic review,`r ldl_ad_citations` while Chapter \@ref(cprd-analysis-heading) provided an additional estimate from the CPRD analysis.  The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:ldlAdBiasDirection), stratified by study design.
 
 <!-- QUESTION Hypercholesterolemia should not be included here, as it is focused on total cholesterol rather than specifically LDL-c, right? -->  
 
@@ -457,6 +460,8 @@ The results of the unadjusted and the bias-/indirectness-adjusted (under Scenari
 
 <!-- TODO This should really be stratified by type -->
 
+<!-- TODO This needs to have the heterogeneity values too -->
+
 (ref:fpLdlAd-cap) Random effects meta-analysis of the association of midlife LDL-c with Alzheimer's disease, using unadjusted and bias-/indirectness-adjusted results.
 
 (ref:fpLdlAd-scap) Random effects meta-analysis using unadjusted and bias-/indirectness-adjusted results.
@@ -470,6 +475,9 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad.png"))
 No substantial differences were observed between the summary estimates obtained under the two scenarios of additive bias (Appendix \@ref(appendix-tri-analysis)).
 
 <!-- TODO Need to present overall summary estimate under two scenarios of bias and then send people to the Appendix. -->
+
+<!-- TODO There is a very slight effect in the unadjusted here, but reduces to blah blah on adjustmet -->
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -524,7 +532,7 @@ The quantitative analysis presented in this chapter is subject to some strong me
 
 The key limitation of the quantitative synthesis presented in this chapter is the lack of empirical evidence available for the prior distributions for bias and indirectness. While I attempted to address this by informing the prior distributions using data from a previous expert elicitation exercise, the extent of bias/indirectness in that analysis may not generalise to the one presented here.
 
-Ideally, these prior distributions would be based on empirical data on the effect of different domains of bias/indirectness on a result. Most meta-epidemiological studies examining the effect of different methodological issues studied only randomised controlled trials,[@amer2021; @page2016] and the estimates of bias they produce may not hold for non-randomised study designs. However, the prior distributions defined here are broadly comparable to previously reported estimates of the impact of bias in non-randomised trials. For example, a previous simulation study estimated that, in the absence of true effect of LDL-c, _ApoE4_ would induce a RR of 1.09 with risk of dementia per 1-SD increase in LDL-c.[@iwagami2021] This is comparable to the mean assigned to the prior distribution mapped to "Moderate" additive bias (N(0.08,0.05), Table \@ref(tab:priorsAdd-table)).
+Ideally, these prior distributions would be based on empirical data on the effect of different domains of bias/indirectness on a result. Most meta-epidemiological studies examining the effect of different methodological issues studied only randomised controlled trials,[@amer2021; @page2016] and the estimates of bias they produce may not hold for non-randomised study designs. However, the prior distributions defined here are broadly comparable to previously reported estimates of the impact of bias in non-randomised trials. For example, a previous simulation study estimated that, in the absence of true effect of LDL-c, _Apo_$\mathcal{E}4$ would induce a RR of 1.09 with risk of dementia per 1-SD increase in LDL-c.[@iwagami2021] This is comparable to the mean assigned to the prior log-normal distribution mapped to "Moderate" additive bias ($N(0.09,0.05)$, Table \@ref(tab:priorsAdd-table)).
 
 <!-- TODO Also mention here that when the number of results is large, performing elictation for each separately in addition to the risk of bias assessments is going to be difficult. -->
 

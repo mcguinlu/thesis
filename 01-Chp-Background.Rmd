@@ -218,7 +218,7 @@ This section provides an overview of the varying sources of evidence on the rela
 
 ### Basic science {#intro-basic-science}
 
-A role for lipids in the aetiology of dementia is supported by both genetic linkage studies and functional cell biology studies. The generation of the amyloid plaques found in the brains of Alzheimer's patients is cholesterol dependent,,[@burns2003; @mizuno1999] while the most established genetic risk factor for late-onset dementia, apolipoprotein E (ApoE), is involved in cerebral cholesterol transport. Several other genes involved in cholesterol transport have also been found to be associated with increased AD susceptibility.[@beecham2014; @harold2009; @meng2007]
+A role for lipids in the aetiology of dementia is supported by both genetic linkage studies and functional cell biology studies. The generation of the amyloid plaques found in the brains of Alzheimer's patients is cholesterol dependent,,[@burns2003; @mizuno1999] while the most established genetic risk factor for late-onset dementia, apolipoprotein E (_Apo_$\mathcal{E}$), is involved in cerebral cholesterol transport. Several other genes involved in cholesterol transport have also been found to be associated with increased AD susceptibility.[@beecham2014; @harold2009; @meng2007]
 
 Despite these results, evidence from the diverse range of epidemiological studies on this topic has been inconclusive.
 
@@ -252,7 +252,7 @@ Newer methodological approaches, such as Mendelian randomisation (MR),[@daveysmi
 2. the IV and outcome do not share a common cause (the independence assumption); and
 3. the IV does not affect the outcome other than via the exposure (the exclusion restriction assumption).
 
-Recent MR studies indicated that genetically determined low levels of LDL-c may cause a reduction in AD risk.[@larsson2017; @ostergaard2015] However, the effect was attenuated in sensitivity analysis that exclude the region surrounding the ApoE gene, the strongest known risk factor for Alzheimer's disease.[@kim2009] Inclusion of _ApoE4_ variants invalidates the exclusion restriction criteria (Assumption 3, above), as the risk reduction observed may be driven by variants in this region via a pathway independent of lipid levels. This was supported by further MR studies where _ApoE4_ variants were intentionally excluded.[@benn2017] Despite the increasing number of MR studies examining this topic, no systematic review of this study design as a source of evidence has been performed.
+Recent MR studies indicated that genetically determined low levels of LDL-c may cause a reduction in AD risk.[@larsson2017; @ostergaard2015] However, the effect was attenuated in sensitivity analysis that exclude the region surrounding the _Apo_$\mathcal{E}$ gene, the strongest known risk factor for Alzheimer's disease.[@kim2009] Inclusion of _Apo_$\mathcal{E}4$ variants invalidates the exclusion restriction criteria (Assumption 3, above), as the risk reduction observed may be driven by variants in this region via a pathway independent of lipid levels. This was supported by further MR studies where _Apo_$\mathcal{E}4$ variants were intentionally excluded.[@benn2017] Despite the increasing number of MR studies examining this topic, no systematic review of this study design as a source of evidence has been performed.
 
 In summary, multiple sources of evidence exist on the relationship between statins and dementia. In the next section, I introduce the synthesis of diverse sources of evidence as the theoretical framework used in this thesis.
 
@@ -298,14 +298,14 @@ Despite their advantages, IPD meta-analysis are rarely performed.[@tugwell2010] 
 
 In response to these limitations, new collaborative initiatives have developed to enable rapid access to relevant data in a secure supported workshop. The most import in relation to this thesis is the Dementia Platform UK (DPUK),[@bauermeister2020] which aims to provide access to several dementia-related datasets via a single simplified application process.
 
-I will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). Any data obtained will be combined with that available from the DPUK portal as part of an IPD meta-analysis in Chapter \@ref(ipd-heading). This will enable the assessment of the effect of lipids on dementia stratified by key variables such as sex.
+I will attempt to obtain the raw data from relevant primary studies identified by the systematic review in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). Any data obtained will be combined with that available from the DPUK portal as part of an IPD meta-analysis in Chapter \@ref(ipd-heading). This will enable the assessment of the effect of lipids on dementia stratified by key variables such as sex.
 
 <!----------------------------------------------------------------------------->
 ### Triangulating across study designs {#intro-triangulation}
 
 As illustrated in Section \@ref(evidence-association), several diverse epidemiological methods have been used to examine the effect of varying blood lipid levels on dementia risk. However, each method is limited by its own biases. Aetiological triangulation is a developing evidence synthesis method that seeks to exploit these inherent differences in study design, and as a result, in biases.[@lawlor2016] If several sources of evidence are available and point towards identical conclusions about an exposure-outcome relationship, and these sources are at risk of unrelated biases, this strengthens our confidence in the result. The ideal scenario is where predicted sources of bias are likely to be in competing directions, one to strengthen the effect of the exposure and the other to attenuate it.[@lawlor2016] As such, triangulating these results can provide a middle-ground between the competing directions of bias. A triangulation approach can also prove useful in helping to prospectively design new studies that are at risk of different sources of bias to those already observed in the published literature.[@munafo2018] However, existing methods for triangulation are limited to a qualitative discussion of the different identified results with respect to their biases,[@lawlor2016] an approach which faces issues in interpretability when assessing many results.
 
-To address this limitation, this thesis seeks to develop and apply a novel quantitative triangulation approach to answer causal questions on the effect of blood lipids on dementia outcomes. All existing evidence, regardless of study design, is first identified and assessed using domain-based tools by the systematic review presented in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading). The existing evidence base is then supplemented by two primary analyses, presented in Chapters \@ref(cprd-analysis-heading) and \@ref(ipd-heading). Finally all existing and new evidence is incorporated into the quantiatative triangulation framework in Chapter \@ref(tri-heading). 
+To address this limitation, this thesis seeks to develop and apply a novel quantitative triangulation approach to answer causal questions on the effect of blood lipids on dementia outcomes. All existing evidence, regardless of study design, is first identified and assessed using domain-based tools by the systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). The existing evidence base is then supplemented by two primary analyses, presented in Chapters \@ref(cprd-analysis-heading) and \@ref(ipd-heading). Finally all existing and new evidence is incorporated into the quantiatative triangulation framework in Chapter \@ref(tri-heading). 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -331,7 +331,7 @@ Chapters are self-contained, presenting the methods and results of that specific
 
 -   **Chapter \@ref(background-heading):** Background information on dementia and blood lipid levels. This chapter provides an introduction to the topics covered in this thesis to non-subject area experts, and discusses the motivation for the remainder of the thesis.
 -   **Chapter \@ref(sys-rev-tools-heading):** This chapter introduces a new tool, `medrxivr`, which was used to developed to allow for systematic searches of the health-related preprint repositories.
--   **Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading):** These chapters describe, respectively, the methods and results of a comprehensive systematic review and meta-analysis. This review examined all available evidence on the effect of blood lipids and interventions that modified blood lipids on dementia outcomes.
+-   **Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading):** These chapters describe, respectively, the methods and results of a comprehensive systematic review and meta-analysis. This review examined all available evidence on the effect of blood lipids and interventions that modified blood lipids on dementia outcomes.
 -   **Chapter \@ref(cprd-analysis-heading):** This chapter examines the relationship between lipid-regulating agent use and dementia outcomes in the Clinical Practice Research Datalink, a large primary care electronic health record database.
 -   **Chapter \@ref(ipd-heading):** This chapter describes an individual participant data analysis of several longitudinal cohort studies to describe the relationship between blood serum lipids and dementia outcomes, stratified by important covariates such as sex.
 -   **Chapter \@ref(tri-heading)**: This chapter integrates the evidence identified and produced by the preceeding chapters as part of a quantitative triangulation framework.
@@ -363,13 +363,13 @@ A paper introducing the open-source preprint search tool described in Chapter \@
 
 _Hennessy, E. A., Acabchuk, R., Arnold, P. A., Dunn, A. G., Foo, Y. Z., Johnson, B. T., Geange, S. R., Haddaway, N. R., Nakagawa, S., Mapanga, W., Mengersen, K., Page, M., Sánchez-Tójar, A. Welch, V.,  **and McGuinness L. A.** (2021). Ensuring Prevention Science Research is Synthesis-Ready for Immediate and Lasting Scientific Impact. Prevention Science . DOI: [10.1007/s11121-021-01279-8](https://doi.org/10.1007/s11121-021-01279-8)_
 
-The experience of extracting data for the systematic review in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading) inspired a practical guide for researchers. This piece was co-written with Dr. Emily Hennessy (see Author Declarations in the front materials). 
+The experience of extracting data for the systematic review in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading) inspired a practical guide for researchers. This piece was co-written with Dr. Emily Hennessy (see Author Declarations in the front materials). 
 
 &nbsp; 
 
 _**McGuinness, L. A.**, and Higgins J. P. T. (2020) "Risk‐of‐bias VISualization (robvis): An R package and Shiny web app for visualizing risk‐of‐bias assessments." Research Synthesis Method). DOI: [10.1002/jrsm.1411](https://doi.org/10.1002/jrsm.1411)_
   
-The tool used to visualise the risk-of-bias assessments in Chapters \@ref(sys-rev-methods-heading)/\@ref(sys-rev-results-heading) has been published in Research Synthesis Methods. See Appendix \@ref(appendix-robvis) for more details on this tool. Note that this publication does not describe the recently-developed functionality for producing bias direction plots, as described in Chapter \@ref(tri-heading).
+The tool used to visualise the risk-of-bias assessments in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading) has been published in Research Synthesis Methods. See Appendix \@ref(appendix-robvis) for more details on this tool. Note that this publication does not describe the recently-developed functionality for producing bias direction plots, as described in Chapter \@ref(tri-heading).
 
 &nbsp; 
 
@@ -399,7 +399,7 @@ _"On the shoulders of giants": advantages and challenges to building on establis
 
 &nbsp;
 
-_"RoB 2.0: A revised tool to assess risk of bias in randomized trials"_: Webinar, co-presented with Dr. Theresa Moore as part of the Evidence Synthesis Ireland Methods Series.
+_"RoB 2.0: A revised tool to assess risk of bias in randomised trials"_: Webinar, co-presented with Dr. Theresa Moore as part of the Evidence Synthesis Ireland Methods Series.
 
 &nbsp;<!----------------------------------------------------------------------->  
 

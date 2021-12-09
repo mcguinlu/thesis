@@ -33,7 +33,7 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ```{r prisma-flow-setup, include = FALSE}
 ```
 
-<!-- IDEA Stratify by _ApoE4_ genotype -->  
+<!-- IDEA Stratify by _Apo_$\mathcal{E}4$ genotype -->  
 
 <!-- TODO Gib Hermani question on bias in selection of AD patients in Ostergaard -->
 
@@ -82,7 +82,7 @@ In line with best-practice guidance, secondary reviewers were used to check the 
 
 I sought to include studies that examined blood lipid levels as a risk factor for dementia outcomes, defined either as binary hypercholesterolemia variable or by category/1-standard-deviation increase in a specific lipid fraction (total cholesterol, high- and low-density lipoprotein cholesterol and triglycerides). I also aimed to include studies examining the effect of lipid-regulating agents (LRA) as a source of indirect evidence. LRA are treatments used to modify blood lipids levels, and common examples include statins, fibrates, and ezetimibe. 
 
-Eligible study designs were randomized controlled trials of LRA, cohort studies examining blood lipids or LRA, and genetic instrumental variable studies (more commonly known as Mendelian randomization studies) examining the effect of genetically increased/decreased blood lipid levels. 
+Eligible study designs were randomised controlled trials of LRA, cohort studies examining blood lipids or LRA, and genetic instrumental variable studies (more commonly known as Mendelian randomisation studies) examining the effect of genetically increased/decreased blood lipid levels. 
 
 Eligible studies screened participants for dementia at baseline and excluded any prevalent cases. Alternatively, where no baseline screening was employed, participants were assumed to be dementia free if less than 50 years of age at baseline. Studies of any duration were included to allow for exploration of the effect of length of follow-up on the effect estimate. No limits were placed on the sample size of included studies. Eligible studies defined dementia outcomes according to recognised criteria. Examples of acceptable criteria included the International Classification of Diseases (ICD),[@organizationwho1993] National Institute of Neurological Disorders and Stroke Association-Internationale pour la Recherche en l'Enseignement en Neurosciences (NINDS-AIREN),[@roman1993] or Diagnostic and Statistical Manual of Mental Disorders (DSM) criteria.[@edition2013] Studies utilising electronic health records were the sole exception to this, as it was assumed that health care professionals employed their own expertise when entering the outcome into the EHR.
 
@@ -123,7 +123,7 @@ When searching the bibliographic databases, study design filters (Lines 9-11 in 
 
 <!-- TODO need to comment on this feed-back process, or remove -->
 
-I also searched clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomized controlled trials. In addition, I searched the bioRxiv and medRxiv preprint repositories using the tool developed in Chapter \@ref(sys-rev-tools-heading) to identify potentially relevant preprinted studies (see Appendix \@ref(appendix-medrxivr-code) for the code used to search these preprint repositories).
+I also searched clinical trial registries, for example ClinicalTrials.gov, to identify relevant randomised controlled trials. In addition, I searched the bioRxiv and medRxiv preprint repositories using the tool developed in Chapter \@ref(sys-rev-tools-heading) to identify potentially relevant preprinted studies (see Appendix \@ref(appendix-medrxivr-code) for the code used to search these preprint repositories).
 
 Grey literature was searched via ProQuest, OpenGrey and Web of Science Conference Proceedings Citation Index, while theses were accessed using the Open Access Theses and Dissertations portal. In addition, the abstracts list of relevant conferences (e.g. the proceedings of the Alzheimer's Association International Conference, published in the journal Alzheimer's & Dementia) were searched by hand. <!-- TODO how were these searched? Date and other range --> Finally, the reference lists of included studies were searched by hand, while forward and reverse citation searching ("snowballing") was performed using Google Scholar.[@greenhalgh2005; @wohlin2014]
 
@@ -194,7 +194,7 @@ This was particularly relevant to preprints and published papers reporting the s
 
 #### Combining across groups
 
-In line with best practice, where summary data were presented across two groups (e.g. age at baseline stratified by hypercholesterolemia status), the following approach was used to combine the groups:[@higgins2019]
+In line with best practice, where summary data was presented across two groups (e.g. age at baseline stratified by hypercholesterolemia status), the following approach was used to combine the groups:[@higgins2019]
 
 \begin{equation}
 N = N_1 + N_2
@@ -258,7 +258,7 @@ In this review, domain-based tools were used to assess the risk of bias for each
 
 Randomised controlled trials were assessed using the RoB 2 tool.[@sterne2019] The tool assesses the risk of bias across five domains:
 
-* bias arising from the randomization process, 
+* bias arising from the randomisation process, 
 * bias due to deviations from intended intervention, 
 * bias due to missing outcome data, 
 * bias in measurement of the outcome, 
@@ -290,7 +290,7 @@ While a risk-of-bias tool for non-randomised studies of exposures (NRSE) is curr
 
 #### Mendelian randomisation studies
 
-At present, no formalised risk-of-bias assessment tool for Mendelian randomization studies is available. Assessment of the risk of bias in Mendelian randomization studies was informed by the approach used in a previous systematic review of Mendelian randomisation,[@mamluk2020] as identified by a review of risk-of-bias assessments in systematic reviews of Mendelian randomisation studies.[@spiga2021] Advanced results from this review were obtained from contact with the review authors. A copy of this tool is available in Appendix \@ref(appendix-mr-rob), but in summary, results were assessed for bias arising from weak instruments, genetic and other confounding, pleiotropy and population stratification. Acceptable judgements for each of the five domains in the tool were "low", "moderate" and "high" risk of bias.
+At present, no formalised risk-of-bias assessment tool for Mendelian randomisation studies is available. Assessment of the risk of bias in Mendelian randomisation studies was informed by the approach used in a previous systematic review of Mendelian randomisation,[@mamluk2020] as identified by a review of risk-of-bias assessments in systematic reviews of Mendelian randomisation studies.[@spiga2021] Advanced results from this review were obtained from contact with the review authors. A copy of this tool is available in Appendix \@ref(appendix-mr-rob), but in summary, results were assessed for bias arising from weak instruments, genetic and other confounding, pleiotropy and population stratification. Acceptable judgements for each of the five domains in the tool were "low", "moderate" and "high" risk of bias.
 
 <!----------------------------------------------------------------------------->
 &nbsp;
