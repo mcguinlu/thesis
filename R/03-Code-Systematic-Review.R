@@ -355,7 +355,7 @@ n_statins <- study_details %>%
   mutate(statin = stringr::str_detect(Exposures, "[Ss]tatin")) %>%
   group_by(statin) %>%
   count() %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((
+  mutate(label = paste0("N = ", .$n, "; ", round((
     .$n / n_nrsi_included
   ) * 100, 1), "%")) %>%
   pull(label)
@@ -366,7 +366,7 @@ n_fibrates <- study_details %>%
   filter(fibrate == "TRUE") %>%
   group_by(fibrate) %>%
   count() %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((
+  mutate(label = paste0("N = ", .$n, "; ", round((
     .$n / n_nrsi_included
   ) * 100, 1), "%")) %>%
   pull(label)
@@ -377,7 +377,7 @@ n_hyperchol <- study_details %>%
   filter(fibrate == "TRUE") %>%
   group_by(fibrate) %>%
   count() %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((
+  mutate(label = paste0("N = ", .$n, "; ", round((
     .$n / n_nrse_included
   ) * 100, 1), "%")) %>%
   pull(label)
@@ -388,7 +388,7 @@ n_TC <- study_details %>%
   filter(fibrate == "TRUE") %>%
   group_by(fibrate) %>%
   count() %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((
+  mutate(label = paste0("N = ", .$n, "; ", round((
     .$n / n_nrse_included
   ) * 100, 1), "%")) %>%
   pull(label)
@@ -399,7 +399,7 @@ n_LDL <- study_details %>%
   filter(fibrate == "TRUE") %>%
   group_by(fibrate) %>%
   count() %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((
+  mutate(label = paste0("N = ", .$n, "; ", round((
     .$n / n_nrse_included
   ) * 100, 1), "%")) %>%
   pull(label)
@@ -410,7 +410,7 @@ n_HDL <- study_details %>%
   filter(fibrate == "TRUE") %>%
   group_by(fibrate) %>%
   count() %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((
+  mutate(label = paste0("N = ", .$n, "; ", round((
     .$n / n_nrse_included
   ) * 100, 1), "%")) %>%
   pull(label)
@@ -421,7 +421,7 @@ n_TG <- study_details %>%
   filter(fibrate == "TRUE") %>%
   group_by(fibrate) %>%
   count() %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((
+  mutate(label = paste0("N = ", .$n, "; ", round((
     .$n / n_nrse_included
   ) * 100, 1), "%")) %>%
   pull(label)
@@ -431,7 +431,7 @@ n_Dementia <- study_details %>%
   filter(fibrate == "TRUE") %>%
   group_by(fibrate) %>%
   count() %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((.$n / n_included) * 100, 1), "%")) %>%
+  mutate(label = paste0("N = ", .$n, "; ", round((.$n / n_included) * 100, 1), "%")) %>%
   pull(label)
 
 n_AD <- study_details %>%
@@ -439,7 +439,7 @@ n_AD <- study_details %>%
   filter(fibrate == "TRUE") %>%
   group_by(fibrate) %>%
   count() %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((.$n / n_included) * 100, 1), "%")) %>%
+  mutate(label = paste0("N = ", .$n, "; ", round((.$n / n_included) * 100, 1), "%")) %>%
   pull(label)
 
 n_VaD <- study_details %>%
@@ -447,7 +447,7 @@ n_VaD <- study_details %>%
   filter(fibrate == "TRUE") %>%
   group_by(fibrate) %>%
   count() %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((.$n / n_included) * 100, 1), "%")) %>%
+  mutate(label = paste0("N = ", .$n, "; ", round((.$n / n_included) * 100, 1), "%")) %>%
   pull(label)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
@@ -591,7 +591,7 @@ if (doc_type == "docx") {
 n_taiwan <- toc_df %>%
   count(location) %>%
   filter(location == "Taiwan") %>%
-  mutate(label = paste0("n = ", .$n, "; ", round((.$n / n_included) * 100, 2), "%")) %>%
+  mutate(label = paste0("N = ", .$n, "; ", round((.$n / n_included) * 100, 2), "%")) %>%
   pull(label)
 
 # n_taiwan <- toc_df %>%
