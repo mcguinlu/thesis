@@ -463,11 +463,18 @@ if(doc_type == "docx") {
       threeparttable = TRUE,
       general_title = "",
       general = paste(
+        "Values shown are N (%) unless otherwise stated.\\\\newline",
         "\\\\textbf{Key:}",
         "Complete - No missing values;",
         "X - Variable not recorded/available in this cohort;",
-        "* - LDL values derived from total cholesterol, HDL and triglycerides."
-      ),
+        "* - LDL values derived from total cholesterol, HDL and triglycerides.\\\\newline",
+        "\\\\textbf{Abbreviations:}",
+        "BMI - Body mass index;",
+        "IHD - Ischemic heart disease;",
+        "HDL - Low-density lipoprotein cholesterol;",
+        "LDL - Low-density lipoprotein cholesterol;",
+        "TG - Triglycerides."
+      ), 
       escape = F
     )
 }

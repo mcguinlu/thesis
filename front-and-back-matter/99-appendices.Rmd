@@ -351,15 +351,14 @@ knitr::include_graphics(file.path("figures/hold.png"))
 
 <!-- ### Email sent to potental collaborators {#ipd-email-collab} -->
 
-<!-- __To be copied from email__ -->
+<!-- TODO __To be copied from email__ -->
 
 ### Covariate matrix {#appendix-ipd-covariate-matrix}
-
 
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:missingMatrix-caption) Overview of missing data across covariates included in IPD analysis. Note that LDL is missing completely for the Whitehall and CaPS datasets as this measure was derived from the measures for TC, HDL and TG following multiple imputation of missing values in these variables.
+(ref:missingMatrix-caption) Overview of missing data across covariates (described as N (%)) included in IPD analysis. Note that LDL is missing completely for the Whitehall and CaPS datasets as this measure was derived from the measures for TC, HDL and TG following multiple imputation of missing values in these variables.
 
 (ref:missingMatrix-scaption) missingMatrix
 
@@ -384,6 +383,18 @@ knitr::include_graphics(file.path("figures/hold.png"))
 <!----------------------------------------------------------------------------->
 
 &nbsp;
+
+### Comparison with previous analysis of the Whitehall II cohort {#appendix-ipd-whitehall}
+
+<!----------------------------------------------------------------------------->
+(ref:whitehallComparisonAd-cap) Comparison of results across the two analysis of the Whitehall II cohort for the Alzheimer's disease outcome. 
+
+(ref:whitehallComparisonAd-scap) Comparison of results across the two analysis of the Whitehall II cohort
+
+```{r whitehallComparisonAd, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:whitehallComparisonAd-cap)', out.width='100%', fig.scap='(ref:whitehallComparisonAd-scap)'}
+knitr::include_graphics(file.path("figures/ipd/whitehall_comparison_ad.png"))
+```
+<!----------------------------------------------------------------------------->
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -469,13 +480,15 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_tg_vad_scenario
 
 Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tools to search preprinted literature, create visualisations of risk-of-bias data and to preform quantitative triangulation. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
 
-Unfortunately, given the nature of the data underpinning the CPRD (Chapter \@ref(cprd-analysis-heading)) and IPD (Chapter \@ref(ipd-heading)) analyses, it is not possible to make it publicly available. Access to the CPRD data is dependent on an application to its managing body, while acces to the cohorts within the DPUK requires approval from both the DPUK and inidividual cohort owners. IN the absence of data sharing, the best option to enable review and increase transparency is the open sharing of the code used to perform the analysis.
+Unfortunately, given the nature of the data underpinning the CPRD (Chapter \@ref(cprd-analysis-heading)) and IPD (Chapter \@ref(ipd-heading)) analyses, it is not possible to make it publicly available. Access to the CPRD data is dependent on an application to its managing body, while acces to the cohorts within the DPUK requires approval from both the DPUK and inidividual cohort owners. In the absence of data sharing, the best option to enable review and increase transparency is the open sharing of the code used to perform the analysis.[@goldacre2019]
 
 Finally, all software projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Catalogue of failures {#appendix-catalogue-failures}
+
+OVer the course of my PhD, I kept a record of attempted
 
 Short section detailing the things I tried to do but which did not work:
 
