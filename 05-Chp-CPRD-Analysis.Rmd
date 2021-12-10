@@ -779,9 +779,11 @@ However, the findings of this analysis are subject to several limitations in add
 
 Misclassification of outcomes is not the only issue introduced by the use of EHR codes to define outcomes. Comparing and contrasting between different studies is particularly difficult because of the impact that the use of different code lists can have on the analysis. This problem is illustrated by the discrepancy between the results when using the code lists defined for this study and those used by Smeeth _et al_. This presents a particular challenge in comparing research across different time-periods and coding systems, particularly the unexpected results I obtained for the vascular and other dementias outcomes.
 
+<!-- TODO Talk here about the reduced biological validity of  -->
+
 A further limitation stems from the possibility of uncontrolled confounding due to genetic factors. The number of _Apo_$\mathcal{E}4$ alleles represents the strongest genetic risk factor for Alzheimer's disease, but also substantially increases LDL cholesterol levels,[@bennet2007] potentially prompting treatment with a statin or other lipid regulating agent. I was unable to control for _Apo_$\mathcal{E}$ genotype in this analysis as I did not have access to genetic data on participants. As a result, any protective association between LRA use and the Alzheimer's disease outcomes may be masked by residual negative confounding by _Apo_$\mathcal{E}$. 
 
-Finally, as with many studies of dementia, there is a risk of reverse causation in my analysis. Dementia and associated conditions have a long prodromal period, during which preclinical disease could cause indications for the prescription of a lipid-regulating agent. 
+Finally, as with many studies of dementia, there is a risk of reverse causation in my analysis. Dementia and associated conditions have a long prodromal period, during which preclinical disease could cause indications for the prescription of a lipid-regulating agent. Enforcing a minimum period of follow-up would address this limitation, but the use of a time-varying treatment indicator in this analysis prevents the use of this approach (see Appendix \@ref(cprd-min-fu) for a fuller discussion of this topic).
 
 <!--------------------------------------------------------------------------->
 &nbsp;

@@ -1,5 +1,5 @@
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- searchOverviewAppendix-table
+# ---- searchOverviewAppendix-table ----
 
 searches <-
   # Read in all sheets
@@ -41,7 +41,7 @@ if(doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- searchHitsMedline-table
+# ---- searchHitsMedline-table ----
 
 searchHitsMedline_table <- searches$Medline
 
@@ -71,7 +71,7 @@ if (doc_type == "docx") {
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- searchHitsEmbase-table
+# ---- searchHitsEmbase-table ----
 
 searchHitsEmbase_table <- searches$EMBASE
 
@@ -98,7 +98,7 @@ if (doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- searchHitsPI-table
+# ---- searchHitsPI-table ----
 
 searchHitsPI_table <- searches$PyscINFO
 
@@ -125,7 +125,7 @@ if (doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- searchHitsCentral-table
+# ---- searchHitsCentral-table ----
 
 searchHitsCentral_table <- searches$CENTRAL
 
@@ -152,7 +152,7 @@ if (doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- searchHitsWos-table
+# ---- searchHitsWos-table ----
 
 searchHitsWos_table <- searches$WoS
 
@@ -179,7 +179,7 @@ if (doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- wosDatabases-table
+# ---- wosDatabases-table ----
 
 wosDatabases_table <- read.csv(here::here("data/sys-rev/wosDatabases.csv"))
 
@@ -202,7 +202,7 @@ if(doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- medRes-table
+# ---- medRes-table ----
 
 medRes_table <- rio::import("data/appendix/med_res.csv") %>%
   rename(Status = "pub_ind") %>%
@@ -223,12 +223,41 @@ if(doc_type == "docx") {
     kable_styling(latex_options = c("HOLD_position"))
 }
 
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- mrTool-table ----
+
+mrTool_table <- read.csv(here::here("data/sys-rev/mrRobTool.csv")) %>%
+  select(1:5) %>%
+  rename("Bias domain" = Bias.domain)
+
+if(doc_type == "docx") {
+  knitr::kable(mrTool_table, caption = "(ref:mrTool-caption)")
+} else{
+  knitr::kable(
+    mrTool_table,
+    format = "latex",
+    caption = "(ref:mrTool-caption)",
+    caption.short = "(ref:mrTool-scaption)",
+    longtable = TRUE,
+    booktabs = TRUE,
+    linesep=""
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(column = 1:5, width = paste0(32/5,"em")) %>%
+    row_spec(2:nrow(mrTool_table)-1, hline_after = TRUE) %>%
+    add_header_above(
+      c(" "," ", "Risk of bias judgement" = 3),bold = TRUE
+    ) %>%
+    kable_styling(latex_options = c("HOLD_position","repeat_header"))
+}
+
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- biasData-table
+# ---- biasData-table ----
 
 biasData_table <- robvis::data_rob2 %>%
   head(5)
+
 
 if (doc_type == "docx") {
   apply_flextable(biasData_table, caption = "(ref:biasData-caption)")
@@ -242,22 +271,29 @@ if (doc_type == "docx") {
   ) %>%
     row_spec(0, bold = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position"),
-                  font_size = 10)
+                  font_size = 8)
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- biasDirectionData-table
+# ---- biasDirectionData-table ----
 
 biasDirectionData_table <- rio::import("data/tri/ldl_ad_rob.csv") %>%
   mutate(yi = round(yi,2),
          sei = round(sei,2)) %>%
   head(5) %>%
-  mutate(Study = paste("Study ",1:5)) %>%
-  select(Study, everything(),-c(result_id,type, starts_with("d6"),starts_with("d7")))
+  mutate(ID = 1:5) %>%
+  select(ID, everything(),-c(result_id,type))
 
 biasDirectionData_table[biasDirectionData_table=="Add"] <- "A"
 biasDirectionData_table[biasDirectionData_table=="Prop"] <- "P"
-biasDirectionData_table[biasDirectionData_table=="None"] <- NA
+biasDirectionData_table[biasDirectionData_table=="Unpredictable"] <- "U"
+biasDirectionData_table[biasDirectionData_table=="Right"] <- "R"
+biasDirectionData_table[biasDirectionData_table=="Left"] <- "L"
+biasDirectionData_table[biasDirectionData_table=="None"] <- "-"
+biasDirectionData_table[biasDirectionData_table == "Serious"] <- "High"
+biasDirectionData_table[biasDirectionData_table=="Moderate"] <- "M"
+biasDirectionData_table[biasDirectionData_table=="High"] <- "H"
+biasDirectionData_table[biasDirectionData_table=="Low"] <- "L"
 
 if(doc_type == "docx") {
   apply_flextable(biasDirectionData_table, caption = "(ref:biasDirectionData-caption)")
@@ -267,15 +303,35 @@ if(doc_type == "docx") {
     format = "latex",
     caption = "(ref:biasDirectionData-caption)",
     caption.short = "(ref:biasDirectionData-scaption)",
-    booktabs = TRUE
+    booktabs = TRUE,
+    align = "lcccccccccccccccccccccccc"
   ) %>%
     row_spec(0, bold = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"), 
-                  font_size = 10)
+    column_spec(c(1, 3, 6, 9, 12, 15, 18, 21, 24), border_right = T) %>%
+    kable_styling(latex_options = c("HOLD_position"),
+                  font_size = 8) %>%
+    kableExtra::footnote(
+      threeparttable = TRUE,
+      general_title = "",
+      general = paste(
+        "\\\\textbf{Abbreviations:}",
+        "yi - Effect estimate;",
+        "sei - Standard error of the effect estimate;",
+        "H - High risk of bias;",
+        "M - Moderate risk of bias;",
+        "L - Low risk of bias;",
+        "R - Right;",
+        "L - Left;",
+        "U - Unpredictable;",
+        "A - Additive;",
+        "P - Proportional"
+      ),
+      escape = F
+    )
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- turnerEstimates-table
+# ---- turnerEstimates-table ----
 
 add <- rio::import("turner_bias/addbias_full.dta") %>%
   # select est/variance for each internal bias for each assessor
@@ -381,7 +437,43 @@ if(doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- ipdDementiaDef-table
+# ---- missingMatrix-table ----
+
+missingMatrix_table <- rio::import("data/appendix/missing_matrix.csv") %>%
+  mutate(across(2:4,~stringr::str_replace(.,"\\)","%\\)")),
+         across(2:4,~stringr::str_replace(.,"C","Complete")),
+         across(2:4,~stringr::str_replace(.,"-","X")))
+
+if(doc_type == "docx") {
+  apply_flextable(missingMatrix_table, caption = "(ref:missingMatrix-caption)")
+} else{
+  knitr::kable(
+    missingMatrix_table,
+    format = "latex",
+    caption = "(ref:missingMatrix-caption)",
+    caption.short = "(ref:missingMatrix-scaption)",
+    booktabs = TRUE, 
+    align = "lccc",
+    linesep = ""
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(1, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))  %>%
+    kableExtra::footnote(
+      threeparttable = TRUE,
+      general_title = "",
+      general = paste(
+        "\\\\textbf{Key:}",
+        "Complete - No missing values;",
+        "X - Variable not recorded/available in this cohort;",
+        "* - LDL values derived from total cholesterol, HDL and triglycerides."
+      ),
+      escape = F
+    )
+}
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- ipdDementiaDef-table ----
 
 ipdDementiaDef_table <- rio::import("data/appendix/ipd_dementia_definitions.csv")
 
@@ -396,7 +488,302 @@ if(doc_type == "docx") {
     booktabs = TRUE
   ) %>%
     row_spec(0, bold = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"))  %>%
-    column_spec(column = 1, width = paste0(3,"em")) %>%
-    column_spec(column = 2:6, width = paste0(5.8,"em"))
+    column_spec(column = 1, width = paste0(4,"em")) %>%
+    column_spec(column = 2:6, width = paste0(6.9,"em")) %>%
+    row_spec(nrow(ipdDementiaDef_table) - 1, hline_after = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
 }
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- addTable1-table ----
+
+addTable1_table <- rio::import("turner_bias/addbias_full.dta") %>%
+  # select est/variance for each internal bias for each assessor
+  select(study,
+         matches("estsel|estper|estatt|estdet"),
+         matches("varsel|varper|varatt|vardet")) %>%
+  tidyr::pivot_longer(!study,
+                      names_to = c("estimate","domain","assessor"), 
+                      names_pattern = "(.{3})(.{3})(.)",
+                      values_to = c("value")) %>%
+tidyr::pivot_wider(names_from = estimate, values_from = value) %>%
+  mutate(across(c(est,var),~round(.,2))) %>%
+  rename("Study" = study,
+         "Domain" = domain,
+         "Assessor" = assessor,
+         "Position" = est,
+         "Variance" = var) %>%
+  slice(9:16) %>%
+  mutate(Domain = ifelse(Domain == "att","Attrition bias","Detection bias")) 
+
+if (doc_type == "docx") {
+  apply_flextable(addTable1_table, caption = "(ref:addTable1-caption)")
+} else{
+  knitr::kable(
+    addTable1_table,
+    format = "latex",
+    caption = "(ref:addTable1-caption)",
+    caption.short = "(ref:addTable1-scaption)",
+    booktabs = TRUE,
+    align = "ccccc",
+    linesep  = c("", "","", "\\addlinespace")
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
+}
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- addTable2-table ----
+
+addTable2_table <- addTable1_table %>%
+  group_by(Study, Domain) %>%
+  # Get mean of assessors for each estimate in each domain in each study
+  # Take absolute, as direction is encoded in these values, whereas for us it
+  # will be defined separately, so just after the total amount it was adjusted
+  # by in any direction
+  summarise(Position = mean(abs(Position)),
+            Variance = mean(abs(Variance))) %>%
+  ungroup() 
+
+if(doc_type == "docx") {
+  apply_flextable(addTable2_table, caption = "(ref:addTable2-caption)")
+} else{
+  knitr::kable(
+    addTable2_table,
+    format = "latex",
+    caption = "(ref:addTable2-caption)",
+    caption.short = "(ref:addTable2-scaption)",
+    booktabs = TRUE,
+    align = "cccc"
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
+}
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- addTable3-table ----
+
+addTable3_table <- addTable2_table %>%
+  # Get mean across domains and studies, to give the impact of any single domain
+  # in any study + maximum across domains and studies to give max impact of
+  # single domain in any study
+  summarise('Mean position' = mean(Position),
+            'Mean variance' = mean(Variance),
+            'Max position' = max(Position),
+            'Max variance' = max(Variance))
+
+if(doc_type == "docx") {
+  apply_flextable(addTable3_table, caption = "(ref:addTable3-caption)")
+} else{
+  knitr::kable(
+    addTable3_table,
+    format = "latex",
+    caption = "(ref:addTable3-caption)",
+    caption.short = "(ref:addTable3-scaption)",
+    booktabs = TRUE,
+    align = "ccccc"
+  ) %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(latex_options = c("HOLD_position"))
+}
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- robAppendixFigures ----
+
+plot <- rob_summary(data = data_rob2, tool = "ROB2")
+rob_save(plot, here::here("figures/appendix/robSummary.png"))
+
+plot <- rob_traffic_light(data = data_rob2,
+                          tool = "ROB2",
+                          psize = 10)
+rob_save(plot, here::here("figures/appendix/robTraffic.png"))
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- minFollowUp ----
+
+library(ggplot2)
+library(patchwork)
+
+df <- data.frame(
+  type = c("Exposed","Exposed","Unexposed", "Unexposed"),
+  length = c(3,1.5,3,0.8),
+  group = c("Excluded time","Captured time", "Excluded time","Captured time")
+)
+
+plot1 <-
+  ggplot(df, aes(
+    y = type,
+    x = length,
+    fill = group,
+    alpha = group
+  )) +
+  geom_bar(stat = "identity",
+           width = .1,
+           colour = "black") +
+  scale_fill_manual(values = c("black", "white")) +
+  scale_alpha_manual(values = c(1, 0.5)) +
+  scale_x_continuous(expand = c(0, .2)) +
+  theme_minimal() + theme(
+    panel.grid = element_blank(),
+    axis.text.y.left = element_text(color = "black"),
+    axis.title = element_blank(),
+    axis.text.x = element_blank(),
+    legend.title = element_blank()
+  ) +
+  geom_text(
+    data = data.frame(
+      x = c(0.060048391976198, 0.060048391976198),
+      y = c(0.803071359423899, 1.8),
+      label = c("Index event\n(cohort entry)", "Index event\n(cohort entry)")
+    ),
+    mapping = aes(x = x,
+                  y = y,
+                  label = label),
+    angle = 0L,
+    lineheight = 1L,
+    hjust = 0.5,
+    vjust = 0.5,
+    size = 3,
+    colour = "black",
+    family = "sans",
+    fontface = "plain",
+    inherit.aes = FALSE,
+    show.legend = FALSE
+  ) +
+  geom_text(
+    data = data.frame(
+      x = c(3, 3),
+      y = c(0.803071359423899, 1.8),
+      label = "Start of follow-up\n(10 year lag)"
+    ),
+    mapping = aes(x = x,
+                  y = y,
+                  label = label),
+    angle = 0L,
+    lineheight = 1L,
+    hjust = 0.5,
+    vjust = 0.5,
+    size = 3,
+    colour = "black",
+    family = "sans",
+    fontface = "plain",
+    inherit.aes = FALSE,
+    show.legend = FALSE
+  ) +
+geom_text(
+  data = data.frame(
+    x = c(4.5,3.8),
+    y = c(0.803071359423899, 1.8),
+    label = "Outcome"
+  ),
+  mapping = aes(x = x,
+                y = y,
+                label = label),
+  angle = 0L,
+  lineheight = 1L,
+  hjust = 0.5,
+  vjust = 0.5,
+  size = 3,
+  colour = "black",
+  family = "sans",
+  fontface = "plain",
+  inherit.aes = FALSE,
+  show.legend = FALSE
+)
+
+df2 <- data.frame(
+  type = factor(c("Participant B", "Participant B", "Participant A"), levels = c("Participant B", "Participant A")),
+  length = c(1, 2, 2),
+  group = c("Unexposed", "Exposed", "Unexposed")
+)
+
+plot2 <-
+  ggplot(df2, aes(
+    y = type,
+    x = length,
+    fill = group,
+    alpha = group
+  )) +
+  geom_bar(stat = "identity",
+           width = .1,
+           colour = "black") +
+  scale_fill_manual(values = c("black", "white", "grey50")) +
+  scale_alpha_manual(values = c(1, 1, 1)) +
+  scale_x_continuous(expand = c(0, .2)) +
+  theme_minimal() + theme(
+    panel.grid = element_blank(),
+    axis.text.y.left = element_text(color = "black"),
+    axis.title = element_blank(),
+    axis.text.x = element_blank(),
+    legend.title = element_blank()
+  ) +
+  geom_text(
+    data = data.frame(
+      x = c(0.060048391976198, 0.060048391976198),
+      y = c(0.803071359423899, 1.8),
+      label = "Index event\n(cohort entry)"
+    ),
+    mapping = aes(x = x,
+                  y = y,
+                  label = label),
+    angle = 0L,
+    lineheight = 1L,
+    hjust = 0.5,
+    vjust = 0.5,
+    size = 3,
+    colour = "black",
+    family = "sans",
+    fontface = "plain",
+    inherit.aes = FALSE,
+    show.legend = FALSE
+  ) +
+  geom_text(
+    data = data.frame(x = 1,
+                      y = 0.803071359423899,
+                      label = "Statin initiation"),
+    mapping = aes(x = x,
+                  y = y,
+                  label = label),
+    angle = 0L,
+    lineheight = 1L,
+    hjust = 0.5,
+    vjust = 0.5,
+    size = 3,
+    colour = "black",
+    family = "sans",
+    fontface = "plain",
+    inherit.aes = FALSE,
+    show.legend = FALSE
+  ) +
+  geom_text(
+    data = data.frame(
+      x = c(3, 2),
+      y = c(0.803071359423899, 1.8),
+      label = "Outcome"
+    ),
+    mapping = aes(x = x,
+                  y = y,
+                  label = label),
+    angle = 0L,
+    lineheight = 1L,
+    hjust = 0.5,
+    vjust = 0.5,
+    size = 3,
+    colour = "black",
+    family = "sans",
+    fontface = "plain",
+    inherit.aes = FALSE,
+    show.legend = FALSE
+  )
+
+plot <- plot1 / plot2 +
+  plot_annotation(tag_levels = c("A", "B"))
+
+
+ggsave(
+  plot,
+  filename =  here::here("figures/appendix/minFU.png"),
+  width = 21,
+  height = 14,
+  units = "cm"
+)

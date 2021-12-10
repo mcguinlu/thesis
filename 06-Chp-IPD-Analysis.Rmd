@@ -106,7 +106,7 @@ Potentially eligible data sources as defined above were identified via two mecha
 
 #### Cohorts identified by the systematic review
 
-The first approach focused on previously analysed observational prospective cohort studies examining the effect of blood lipid levels on dementia outcomes, as identified by the systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). The data sources used in each of these cohort analyses were screened against the criteria listed in the previous section, and eligible cohorts were approached for data access. In the first instance, the first/corresponding author of the publication was emailed (see Appendix \@ref(ipd-email-collab) for a copy of the correspondence sent to potential collaborators) in Autumn 2020. If this approach did not elicit a response within two months, the last author was contacted, on the basis that the first/corresponding author may have been a more junior member of the research group who had moved to a different institution.
+The first approach focused on previously analysed observational prospective cohort studies examining the effect of blood lipid levels on dementia outcomes, as identified by the systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). The data sources used in each of these cohort analyses were screened against the criteria listed in the previous section, and eligible cohorts were approached for data access. In the first instance, the first/corresponding author of the publication was emailed <!-- TODO (see Appendix \@ref(ipd-email-collab) for a copy of the correspondence sent to potential collaborators) --> in Autumn 2020. If this approach did not elicit a response within two months, the last author was contacted, on the basis that the first/corresponding author may have been a more junior member of the research group who had moved to a different institution.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -133,7 +133,10 @@ Across all cohorts, data cleaning was performed in a similar manner, standardizi
 
 #### Covariate definition
 
-A range of additional variables were included in the analysis, intended to address the potential for confounding. With an awareness that discrepancies in available covariates is a common issue in IPD studies, I defined an idealised set of covariate domains to be age, sex, education, BMI, _Apo_$\mathcal{E}4$ status, smoking/alcohol status, ethnicity, and prevalent cardiovascular disease. This set covers key risk factors for dementia/Alzheimer's disease in addition to general cardiovascular risk factors. Details on how these variables were coded, given the available data, are presented in Section \@ref(ipd-covar-definition).
+A range of additional variables were included in the analysis, intended to address the potential for confounding. With an awareness that discrepancies in available covariates is a common issue in IPD studies, I defined an idealised set of covariate domains to be age, sex, education, BMI, _Apo_$\mathcal{E}4$ status, smoking/alcohol status, ethnicity, and prevalent diabetes or cardiovascular disease. This set covers key risk factors for dementia/Alzheimer's disease in addition to general cardiovascular risk factors. Details on how these variables were coded, given the available data, are presented in Section \@ref(ipd-covar-definition).
+
+<!-- TODO Need to go through and make sure that I have updated the covariate list appropriately -->
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -258,9 +261,6 @@ Missing values in collected variables was common across the cohorts. A matrix of
 
 Across the three cohorts, `r n_total_ipd` participants were included in this analysis (Whitehall II = 8208, EPIC = 1115, CaPS = 2512). All cohorts contained data on the four exposure variables of interest (or sufficient data from which to calculate them) and on all-cause dementia outcomes. The only other dementia outcome examined across cohorts was vascular dementia, which was reported in the CaPS and Whitehall II studies. The definitions of dementia outcomes used across cohorts can be seen in Appendix \@ref(appendix-ipd-dementia-def). Cumulatively, there were `r n_ipd_dementia` cases of all-cause dementia, with `r n_ipd_vasdem` further classified as vascular dementia. Summary statistics for each cohort are provided in Table \@ref(tab:covariateSummary-table).
 
-<!-- TODO Need average follow-up by cohort here - or rather put it in the table -->
-<!-- TODO Need total number of Azd cases in whitehall in the paragraph above-->
-
 &nbsp;
 
 <!----------------------------------------------------------------------------->
@@ -270,9 +270,11 @@ Across the three cohorts, `r n_total_ipd` participants were included in this ana
 
 ```{r covariateSummary-table, message=FALSE, results="asis", echo = FALSE}
 ```
-<!----------------------------------------------------------------------------->
+&nbsp;<!----------------------------------------------------------------------->  
 
-&nbsp;
+<!-- TODO Note here about how the IHD variable in CAPS has a note saying there might be an issue with the variables, while the Whitehall study uses narrow range of codes to define CHD. EPIC is selfreported angina/mi/arrythmia -->
+
+
 
 #### Main effects
 
@@ -322,6 +324,9 @@ knitr::include_graphics(file.path("figures/ipd/main_model_comparison.png"))
 Given minimal effect of further adjustment for education and BMI on the effect estimates, the results from the interaction analysis presented here were obtained using the common-set-adjusted model. Further, while the maximally-adjusted model (Model 2) could have been employed in the analysis of the effect of sex, as the CaPS cohort contains only men and had to be excluded from this analysis, employing the same underlying model helped to ensure comparability between the age and sex interaction estimates.
 
 For all-cause dementia, there was no evidence of an interaction of lipid levels with either age group or sex (Figures \@ref(fig:interactionDementiaAge) & \@ref(fig:interactionDementiaSex)). Note that for the sex interaction analysis, the CaPS cohort was excluded as it contains only a single sex and therefore provides no information on exposure-sex interaction.
+
+<!-- TODO If using fixed effect model, need to udate subgroup labels to reflect this -->
+
 
 <!----------------------------------------------------------------------------->
 (ref:interactionDementiaAge-cap)  Meta-analysis of interaction terms representing the effect of a one-step increase in age group on the lipid/all-cause dementia association

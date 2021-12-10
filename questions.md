@@ -26,3 +26,5 @@ What is the purpose of using knots?
 Talk about problems with including Hippsley-Cox re double-counting
 
 wHY OKAY TO INCLUDE ehr WHEN NOT USING CRITERIA? nOT COLLECTED FOR REASEARCH AND SO POTENTIALLY LESS LIKELY TO HAVE DIFFERENTIAL MISCLASSIFICATION
+
+Why is the std error of LDL much wider than others? Needed to be calculated from the imputed values of TC, HDL and TG, and so more variability across the different datasets.

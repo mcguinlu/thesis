@@ -95,12 +95,20 @@ eq:AC1-supp
 tab:mrTool-table
 fig:drDemeniaTC
 fig:drAdLDL
+fig:minFU
+fig:cprdMinFu
+tab:missingMatrix-table
 tab:ipdDementiaDef-table
+tab:addTable1-table
+tab:addTable2-table
+tab:addTable3-table
 tab:turnerEstimates-table
 fig:fpLdlAdComparison
 fig:fpTgVaDComparison
 tab:biasData-table
 tab:biasDirectionData-table
+fig:robSummary
+fig:robTraffic
 background-heading
 introduction
 dementia
@@ -365,8 +373,8 @@ chapter-4
 appendix-dr-fraction
 appendix-cprd-analysis
 appendix-cprd-amendments
+cprd-min-fu
 appendix-ipd-analysis
-ipd-email-collab
 appendix-ipd-covariate-matrix
 appendix-ipd-dementia-def
 appendix-tri-analysis
@@ -378,4 +386,5 @@ appendix-catalogue-failures
 other-appendix-heading
 software-used-to-create-this-thesis
 appendix-robvis
+simple-visualisations
 published-papers

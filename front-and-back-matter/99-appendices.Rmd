@@ -22,7 +22,7 @@ In addition to publications arising directly from this thesis (described in Sect
 
 During 2020, I was involved in the updating of the Preferred Reporting Items for Systematic reviews and Meta-Analyses (PRISMA) statement. My contributions were focused on the data sharing aspects of the guidelines and on building an interactive web application that would allow users to complete the PRISMA checklist. Publications arising from this work are listed below: 
 
-*	*Page, M.J., Moher, D., Bossuyt, P., Boutron, I., Hoffmann, T., Mulrow, C., Shamseer, L., Tetzlaff, J., Akl, E., Brennan, S.E., Chou, R., Glanville, J., Grimshaw, J., Hróbjartsson, A., Lalu, M.M., Li, T., Loder, E., Mayo-Wilson, E., McDonald, S., __McGuinness, L.A.__, Stewart, L., Thomas, J., Tricco, A., Welch, V.A., Whiting, P., McKenzie, J. (2021). PRISMA 2020 statement: updated guidelines for reporting systematic reviews and meta-analyses. BMJ 372:n71 [10.1136/bmj.n71](https://doi.org/10.1136/bmj.n71)*
+*	*Page, M.J., Moher, D., Bossuyt, P., Boutron, I., Hoffmann, T., Mulrow, C., Shamseer, L., Tetzlaff, J., Akl, E., Brennan, S.E., Chou, R., Glanville, J., Grimshaw, J., Hróbjartsson, A., Lalu, M.M., Li, T., Loder, E., Mayo-Wilson, E., McDonald, S., __McGuinness, L.A.__, Stewart, L., Thomas, J., Tricco, A., Welch, V.A., Whiting, P., McKenzie, J. (2021). PRISMA 2020 statement: updated guidelines for reporting systematic reviews and meta-analyses. BMJ 372:n71. DOI:  [10.1136/bmj.n71](https://doi.org/10.1136/bmj.n71)*
 
 *	*Page, M.J., Moher, D., Bossuyt, P., Boutron, I., Hoffmann, T., Mulrow, C., Shamseer, L., Tetzlaff, J., Akl, E., Brennan, S.E., Chou, R., Glanville, J., Grimshaw, J., Hróbjartsson, A., Lalu, M.M., Li, T., Loder, E., Mayo-Wilson, E., McDonald, S., __McGuinness, L.A.__, Stewart, L., Thomas, J., Tricco, A., Welch, V.A., Whiting, P., McKenzie, J. (2021). PRISMA 2020 explanation and elaboration: updated guidance and exemplars for reporting systematic reviews. BMJ 372:n160. DOI: [10.1136/bmj.n160](https://doi.org/10.1136/bmj.n160)*
 
@@ -46,7 +46,7 @@ Finally, I have acted as part of a large review team for a number of other evide
  
 * *Cheng, H.Y., __McGuinness, L.A.__, Elbers, R.G., MacArthur, G.J., Taylor, A., McAleenan, A., Dawson, S., López-López, J.A., Higgins, J.P., Cowlishaw, S. and Lingford-Hughes, A. (2020). Treatment interventions to maintain abstinence from alcohol in primary care: systematic review and network meta-analysis. BMJ, 371. DOI: [10.1136/bmj.m3934](https://doi.org/10.1136/bmj.m3934)*
 
-*	*Schmidt, L., Olorisade, B.K., __McGuinness, L.A.__, Thomas, J. and Higgins, J.P. (2020). Data extraction methods for systematic review (semi) automation. F1000Research, 10:401. DOI: &nbsp; [10.12688/f1000research.51117.1](https://doi.org/10.12688/f1000research.51117.1)* 
+*	*Schmidt, L., Olorisade, B.K., __McGuinness, L.A.__, Thomas, J. and Higgins, J.P. (2020). Data extraction methods for systematic review (semi) automation. F1000Research, 10:401. DOI: [10.12688/f1000research.51117.1](https://doi.org/10.12688/f1000research.51117.1)* 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -262,40 +262,20 @@ where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, wh
   (\#eq:AC1-supp)
 \end{equation}
 
-&nbsp;<!----------------------------------------------------------------------->  
+\blandscape
 
 ### Risk-of-bias assessment tool for Mendelian randomisation studies {#appendix-mr-rob}
+
+A copy of the risk of bias tool used to assess Mendelian randomisation studies is presented in Table \@ref(mrTool-table), below.
 
 (ref:mrTool-caption) Tool used to assess risk of bias in Mendelian randomisation studies, adapted from that developed by Mamluk et al.[@mamluk2020]
 
 (ref:mrTool-scaption) Mendelian randomisation risk-of-bias assessment tool
 
 ```{r mrTool-table, message=FALSE, results="asis", echo = FALSE}
-
-mrTool_table <- read.csv(here::here("data/sys-rev/mrRobTool.csv")) %>%
-  select(1:5) %>%
-  rename("Bias domain" = Bias.domain)
-
-if(doc_type == "docx") {
-  knitr::kable(mrTool_table, caption = "(ref:mrTool-caption)")
-} else{
-  knitr::kable(
-    mrTool_table,
-    format = "latex",
-    caption = "(ref:mrTool-caption)",
-    caption.short = "(ref:mrTool-scaption)",
-    longtable = TRUE,
-    booktabs = TRUE
-  ) %>%
-    row_spec(0, bold = TRUE) %>%
-    column_spec(column = 1:5, width = paste0(32/5,"em")) %>%
-    row_spec(2:nrow(mrTool_table)-1, hline_after = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position","repeat_header"))
-}
-
 ```
 
-&nbsp;<!----------------------------------------------------------------------->  
+\elandscape
 
 ## Chapter 4
 
@@ -311,8 +291,6 @@ In addition to examining a non-linear relationship between LDL-c and Alzheimer's
 knitr::include_graphics(file.path("figures/sys-rev/dr_Dementia_TC.png"))
 ```
   
-
-
 (ref:drAdLDL-cap) Dose-response meta-analysis of low-density lipoprotein cholesterol on Alzheimer's disease
 
 (ref:drAdLDL-scap) shortcap
@@ -334,15 +312,62 @@ Changes include:
 -   Use of a time-varying treatment indicator, to correctly classify time-at-risk.
 -   Inclusion of additional covariates that are adjusted for in the main model.
 
+### Minimum follow-up period {#cprd-min-fu}
+
+Enforcing a minimum period of follow-up is normally used to reduce the risk of reverse causation in an analysis by excluding events occurring within a certain time-frame post-exposure. With respect to dementia outcomes, which have a long prodomal period, enforcing a minimum period of follow-up can add biological validity to an analysis. Incident cases of dementia that occur within a few years of starting a drug may already be beyond effective preventive treatment at the time the drug was started, and so restricting the analysis to those with longer exposure to treatment may provide a more reliable estimate of the effect.
+
+Panel A of Figure \@ref(fig:minFU) describes a standard analysis of an exposure with a minimum enforced follow-up period (in this case, 10 years). Participants enter the cohort and are classified at that point as either exposed or unexposed, for example, on the basis of a total cholesterol measurement. Participants are followed-up over time, but events occuring before the minimum period of follow-up are discarded.
+
+<!----------------------------------------------------------------------------->
+```{r minFollowUp, include = FALSE}
+```
+
+(ref:minFU-cap) __shortcap:__
+
+(ref:minFU-scap) shortcap
+
+```{r minFU, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:minFU-cap)', out.width='100%', fig.scap='(ref:minFU-scap)'}
+knitr::include_graphics(file.path("figures/appendix/minFU.png"))
+```
+<!----------------------------------------------------------------------------->
+
+However, applying a similar approach to the analysis performed in Chapter \@ref(cprd-analysis-heading), illustrated in Panel B of Figure \@ref(fig:minFU), is challenging. The use of a time updating treatment indicator results in two potential starting points for the 10-year lag: entry into the cohort or initiation of statin therapy. As the purpose of this analysis is to investigate the impact of statin treatment, starting the minimum period of follow-up from cohort entry is not helpful as it does not ensure that participants have been exposed to the drug for 10 years. Alternatively, defining the minimum period of follow-up from statin initiation cause issues around the treatment of time-at-risk before statin initiation and around the start point for the follow-up period in those never prescribed a statin. In summary, either approach is likely to be substantially biased.
+
+With these caveats in mind, below I present a sensitivity analysis of the association of statins with dementia outcomes, enforcing a minimum 10-year period of follow-up from statin initiation in those prescribed a statin. 
+
+<!----------------------------------------------------------------------------->
+(ref:cprdMinFu-cap) Estimates from the 
+
+(ref:cprdMinFu-scap) shortcap
+
+```{r cprdMinFu, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:cprdMinFu-cap)', out.width='100%', fig.scap='(ref:cprdMinFu-scap)'}
+knitr::include_graphics(file.path("figures/hold.png"))
+```
+<!----------------------------------------------------------------------------->
+
 &nbsp;<!----------------------------------------------------------------------->  
 
 ## Chapter 6 {#appendix-ipd-analysis}
 
-### Email and documents sent to potental collaborators {#ipd-email-collab}
+<!-- ### Email sent to potental collaborators {#ipd-email-collab} -->
 
-__To be copied from email__
+<!-- __To be copied from email__ -->
 
 ### Covariate matrix {#appendix-ipd-covariate-matrix}
+
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:missingMatrix-caption) Overview of missing data across covariates included in IPD analysis. Note that LDL is missing completely for the Whitehall and CaPS datasets as this measure was derived from the measures for TC, HDL and TG following multiple imputation of missing values in these variables.
+
+(ref:missingMatrix-scaption) missingMatrix
+
+```{r missingMatrix-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;
 
 
 ### Dementia definitions across cohorts {#appendix-ipd-dementia-def}
@@ -350,7 +375,7 @@ __To be copied from email__
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:ipdDementiaDef-caption) Definition of dementia outcomes across cohorts included in the individual participant data meta-analysis
+(ref:ipdDementiaDef-caption) Definition of dementia outcomes across cohorts included in the individual participant data meta-analysis. Note the codes used to define dementia and related outcomes in the HES data as part of the Whitehall II cohort were taken from a previously published analysis.[@russ2014]
 
 (ref:ipdDementiaDef-scaption) Definition of dementia outcomes in IPD meta-analysis
 
@@ -368,22 +393,51 @@ __To be copied from email__
 
 The paper describing the bias/indirectness-adjusted meta-analysis method used expert elicitation to define a distribution for  bias and indirectness across eight studies examining the effectiveness of routine anti-D prophylaxis in Rhesus negative women.[@turner2009] The authors consider five sources of bias (selection bias, performance bias, attrition bias, detection bias and other bias) and four sources of indirectness (population, intervention, control, outcome). For each domain of bias/indirectness, four experts were asked to define the 67% interval around the effect expected due to bias/indirectness in the absence of a true effect. Additive or multiplicative scales were used to capture the intervals for additive and proportional bias/indirectness, respectively. The authors then use assumed log-normality of these distributions to derive a mean and variance for each on the log scale.
 
-In an attempt to inform the prior distributions used in the triangulation exercise presented in Chapter \@ref(tri-heading), I first averaged the mean and variance values across the four experts for each source of bias/indirectness within each study. I averaged the absolute value of the mean, as I wanted to obtain the average adjustment regardless of direction of adjustment which was indicated using the sign of the mean in the original analysis).
+The resulting data for two domains of bias (attrition and detection) in one study are shown in Table \@ref(tab:addTable1-table).
 
-I then took the average and maximum of these averaged mean and variance values. The distributions arising from this analysis are presented in Table \@ref(tab:turnerEstimates-table). The two step approach (averaging across assessors before taking the average/maximum across sources of bias) was important. While the final mean values will be the same whichever approach is taken, in a one-step process the maximum value can be artificially inflated by a single expert's estimate. Averaging across experts for a given bias in a given study before taking the maximum value across biases and studies prevented this.
+&nbsp;<!----------------------------------------------------------------------->  
+(ref:addTable1-caption) Distributions of bias, defined by position and variance terms, assigned by four independent experts to attrition and detection bias in a single study. This data was obtained from a previous publication,[@turner2009] and represents an illustrative subset of the larger dataset. 
 
-&nbsp;
+(ref:addTable1-scaption) addTable1
 
-<!----------------------------------------------------------------------------->
-(ref:turnerEstimates-caption) Mean and maximum distributions for bias and indirectness obtained from data resulting from the elicitation exercise reported in _Turner et al_[@turner2009]
+```{r addTable1-table, message=FALSE, results="asis", echo = FALSE}
+```
+&nbsp;<!----------------------------------------------------------------------->  
+
+In an attempt to inform the prior distributions used in the triangulation exercise presented in Chapter \@ref(tri-heading), I first averaged the position and variance values across the four experts for each source of bias/indirectness within each study. I took the average of the absolute of the position value, as I wanted to obtain the average adjustment regardless of direction. The results of this process for the example data presented below are shown in Table \@ref(tab:addTable2-table).
+
+&nbsp;<!----------------------------------------------------------------------->  
+(ref:addTable2-caption) Position and variance values for two example bias domains (attritiona and detection), obtained by averaging the absolute of the values contained in \@ref(tab:addTable3-table) across the four reviewers.
+
+(ref:addTable2-scaption) addTable1
+
+```{r addTable2-table, message=FALSE, results="asis", echo = FALSE}
+```
+&nbsp;<!-----------------------------------------------------------------------> 
+
+I then took the average and maximum of the expert-averaged position and variance values. The results of this for the example data are presented in Table \@ref(tab:addTable3-table). 
+
+&nbsp;<!----------------------------------------------------------------------->  
+(ref:addTable3-caption) Mean and maximum of position and variance values desribed in Table \@ref(tab:addTable3-table)
+
+(ref:addTable3-scaption) addTable1
+
+```{r addTable3-table, message=FALSE, results="asis", echo = FALSE}
+```
+&nbsp;<!-----------------------------------------------------------------------> 
+
+This two step approach (averaging across assessors before taking the average and maximum across domains/studies) was important. While the final average values will be the same whichever approach is taken, in a one-step process, the maximum value can be artificially inflated by a single expert's estimate. For example, in the illustrative data subset above, Assessor 2 assigns a distribution of N(-0.32,0.14), which would double the maximum position (0.16) and triple the maximum variance (0.0475) obtained when first averaging across experts.
+
+The distributions arising from this applying this approach to the entire dataset, stratified by bias/indirectness and additive/proportional effects, are presented in Table \@ref(tab:turnerEstimates-table).
+
+&nbsp;<!----------------------------------------------------------------------->  
+(ref:turnerEstimates-caption) Mean and maximum distributions for bias and indirectness obtained from data resulting from the elicitation exercise reported in _Turner et al_[@turner2009]. Note I did not calculate values for additive indirectness, as in my analysis, all indirectness was assumed to be proportional.
 
 (ref:turnerEstimates-scaption) turnerEstimates
 
 ```{r turnerEstimates-table, message=FALSE, results="asis", echo = FALSE}
 ```
-<!----------------------------------------------------------------------------->
-
-&nbsp;
+&nbsp;<!----------------------------------------------------------------------->  
 
 The mean values shown were used to define the distributions assigned to  "Moderate" bias/indirectness judgements in my analysis (see Tables \@ref(tab:priorsAdd-table) & \@ref(tab:priorsIndirect-table)).
 
@@ -391,17 +445,17 @@ The mean values shown were used to define the distributions assigned to  "Modera
 
 ### Comparison of two scenarios of bias
 
-As discussed in the main text, I defined two sets of additive bias distributions as a sensitivity analysis. The results for the two case studies under the two scenarios are presented in the figures below.
+As discussed in the main text, I defined two sets of additive bias distributions as a sensitivity analysis. The results for the two case studies under the two scenarios are presented in the figures below. Under the first, shown on the left of the subsequent  forest plot, the difference in the position value between the distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Under the second scenario, the difference in the position value between the distributions assigned to "High" and "Moderate" is twice that between "Moderate" and "Low".
 
-(ref:fpLdlAdComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses of LDL-c/Alzheimer's disease, using two different scenarios for the relationship of levels of bias. The left forest plot shows the result where the difference in mean value between the "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. In the right plot, the difference in mean value between "High" and "Moderate" is twice that between "Moderate" and "Low". 
+(ref:fpLdlAdComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses of LDL-c/Alzheimer's disease, using two different scenarios for the relationship of levels of bias.  
 
-(ref:fpLdlAdComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses under two different scenarios of prior distributions of bias.
+(ref:fpLdlAdComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses under two different scenarios of prior distributions of bias. Scenario 1: position value between the distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Scenario 2: position value between the distributions assigned to "High" and "Moderate" bias levels is twice that between "Moderate" and "Low" levels
 
 ```{r fpLdlAdComparison, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:fpLdlAdComparison-cap)', out.width='100%', fig.scap='(ref:fpLdlAdComparison-scap)'}
 knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad_scenarios.png"))
 ```
 
-(ref:fpTgVaDComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses of triglycerides/vascular dementia, using two different scenarios for the relationship of levels of bias. The left forest plot shows the result where the difference in mean value between the "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. In the right plot, the difference in mean value between "High" and "Moderate" is twice that between "Moderate" and "Low". 
+(ref:fpTgVaDComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses of triglycerides/vascular dementia, using two different scenarios for the relationship of levels of bias. Scenario 1: position value between the distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Scenario 2: position value between the distributions assigned to "High" and "Moderate" bias levels is twice that between "Moderate" and "Low" levels
 
 (ref:fpTgVaDComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses under two different scenarios of prior distributions of bias.
 
@@ -413,16 +467,13 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_tg_vad_scenario
 
 ### Reproducible research {#disc-repro-research}
 
-All software projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
+Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tools to search preprinted literature, create visualisations of risk-of-bias data and to preform quantitative triangulation. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
 
-Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tool to help search medRxiv and bioRxiv preprint metadata. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
+Unfortunately, given the nature of the data underpinning the CPRD (Chapter \@ref(cprd-analysis-heading)) and IPD (Chapter \@ref(ipd-heading)) analyses, it is not possible to make it publicly available. Access to the CPRD data is dependent on an application to its managing body, while acces to the cohorts within the DPUK requires approval from both the DPUK and inidividual cohort owners. IN the absence of data sharing, the best option to enable review and increase transparency is the open sharing of the code used to perform the analysis.
 
-Unfortunately, given the. However, as discussed in other chapters of this thesis and elsewhere, sharing of analysis code is a useful step towards transparency when the underlying datasets are not readily available.
+Finally, all software projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
 
-Commentary on the fact that the best you can do is replicate vs reproducible (due the closed nature of the data).
-
-One is the ability to recreate the results given the same data and code, the other is the ability to recreate the results given the same code but a different dataset. IN theory it is possible to gain access the dataset given the information presented in Chapter \@(ref:cprd-analysis-heading). However, access is dependency on an ISAC application to the managing body of the CPRD. 
-
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Catalogue of failures {#appendix-catalogue-failures}
 
@@ -489,7 +540,7 @@ For the direction bias plots, the data expected by the tools is more comprehensi
 
 \blandscape
 <!----------------------------------------------------------------------------->
-(ref:biasData-caption) biasData
+(ref:biasData-caption) First five assessments contained in `data_rob2`, an example dataset for the Risk of Bias 2 tool for randomised controlled trials available via the `robvis` package.
 
 (ref:biasData-scaption) biasData
 
@@ -500,7 +551,7 @@ For the direction bias plots, the data expected by the tools is more comprehensi
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:biasDirectionData-caption) biasDirectionData
+(ref:biasDirectionData-caption) Example data illustrating the structure required for bias direction plots. $d_ij$, $d_id$, and $d_it$ define the extent (Serious, Moderate, Low), direction (right or left), and type (additive or proportional) of bias in the $i$th domain. Note that, because of the wide nature of the data, I have abbreviated the data in order to display it. A key for interpreting the data can be found below the table.
 
 (ref:biasDirectionData-scaption) biasDirectionData
 
@@ -508,6 +559,43 @@ For the direction bias plots, the data expected by the tools is more comprehensi
 ```
 <!----------------------------------------------------------------------------->
 \elandscape
+
+### Simple visualisations
+
+```{r robAppendixFigures, include = FALSE}
+```
+
+```{r, eval = FALSE}
+rob_summary(data = data_rob2, tool = "ROB2")
+```
+
+<!----------------------------------------------------------------------------->
+(ref:robSummary-cap) __shortcap:__
+
+(ref:robSummary-scap) shortcap
+
+```{r robSummary, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:robSummary-cap)', out.width='80%', fig.scap='(ref:robSummary-scap)'}
+knitr::include_graphics(file.path("figures/appendix/robSummary.png"))
+```
+<!----------------------------------------------------------------------------->
+
+```{r, eval = FALSE}
+rob_traffic_light(data = data_rob2,
+                  tool = "ROB2",
+                  psize = 10)
+```
+
+<!----------------------------------------------------------------------------->
+(ref:robTraffic-cap) __shortcap:__
+
+(ref:robTraffic-scap) shortcap
+
+```{r robTraffic, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:robTraffic-cap)', out.width='80%', fig.scap='(ref:robTraffic-scap)'}
+knitr::include_graphics(file.path("figures/appendix/robTraffic.png"))
+```
+<!----------------------------------------------------------------------------->
+
+\newpage
 
 ## Copies of papers arising from this thesis {#published-papers}
 
