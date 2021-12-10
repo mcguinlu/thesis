@@ -2,12 +2,13 @@
 - [ ] The tri results should be standarised before calculating direction of effect, because other-wise it is pulling it in the wrong direction
 - [ ] Add HMGCR MR to triangulation
 - [ ] Fix table in systematic review - see "IMPORTANT" notes
-- [ ] Fix estimates in IPD (IHD, imputed)
-- [ ] Assess heterogeneity in the IPD to determine use of fixed versus random effects.
+- [x] Fix estimates in IPD (IHD, imputed)
+- [X] Assess heterogeneity in the IPD to determine use of fixed versus random effects.
 - [ ] Double check risk of bias data
 - [ ] Explain proportional biases better
 - [ ] Basic paired forest plot functionality in robvis
 - [ ] Basic triangulate package
 - [ ] Reproduce single analysis from Turner using triangulate
 - [ ] Deal with acronyms: ensure that they are explained once per chapter so a bit more self-contained, and apply this approach across chapters.
+- [ ] Go through IPD chapter and ensure the list of covariates is correct!
 

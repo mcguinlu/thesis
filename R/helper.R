@@ -1311,7 +1311,7 @@ annotate_poly <- function(yi, ci.lb, ci.ub, atransf = exp, textpos = 2, width, r
   
 }
 
-add_subgroup <- function(res, row){
+add_subgroup <- function(res, row, method = "RE"){
   
   addpoly(
     res,
@@ -1321,7 +1321,7 @@ add_subgroup <- function(res, row){
     textpos = -4,
     atransf = exp,
     annotate = F,
-    mlab = mlabfun("RE Model for lipid fraction", res)
+    mlab = mlabfun(paste(method,"Model for lipid fraction"), res)
   )
   
   annotate_poly(res["b"],
@@ -1332,12 +1332,12 @@ add_subgroup <- function(res, row){
                 cex = 1)
 }
 
-rma_flexi <- function(x) {
+rma_flexi <- function(x,method = "DL") {
   rma(
     yi,
     sei = sei,
     subset = (term == x),
     data = main_effects,
-    method = "FE"
+    method = method
   )
 }

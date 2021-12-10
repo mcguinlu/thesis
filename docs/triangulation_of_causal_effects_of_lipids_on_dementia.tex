@@ -3669,7 +3669,7 @@ A range of additional variables were included in the analysis, intended to addre
 
 Missing data in this analysis was classified as either relating to missing values (a cohort collected data on a variable of interest, but some values are missing) or missing variables (a cohort did not collect data on a variable of interest). Variables with missing values were identified, and 20 imputed datasets were created.\textsuperscript{\protect\hyperlink{ref-sterne2009}{297}} Imputation was performed using the MICE (Multiple Imputation by Chained Equations) using the \texttt{mice} package in R.
 
-Missing variables were originally intended to be addressed using a previously described method.\textsuperscript{\protect\hyperlink{ref-fibrinogenstudiescollaboration2009}{328}} Here, the correlation between the fully-adjusted and partially-adjusted estimate in cohorts with the full set of covariates is used to estimate the fully-adjusted effect in those cohorts missing covariates. However, this method requires several large cohorts to contain the full set of covariates, a condition this analysis failed to meet given the very low response rate. As such, two other common approaches were employed.\textsuperscript{\protect\hyperlink{ref-fibrinogenstudiescollaboration2009}{328}} In the primary analysis, all cohorts were analysed adjusted for the set of common covariates across cohorts (Model 1: age, sex, smoking, alcohol, presence of morbidities). As a sensitivity analysis, cohorts with the full complement of covariates (Whitehall II and EPIC) were analysed using a maximally-adjusted model (Model 2: Model 1, further adjusted for education and BMI). Results between the common-set-adjusted (Model 1) and maximally-adjusted (Model 2) models were then compared.
+Missing variables were originally intended to be addressed using a previously described method.\textsuperscript{\protect\hyperlink{ref-fibrinogenstudiescollaboration2009}{328}} Here, the correlation between the fully-adjusted and partially-adjusted estimate in cohorts with the full set of covariates is used to estimate the fully-adjusted effect in those cohorts missing covariates. However, this method requires several large cohorts to contain the full set of covariates, a condition this analysis failed to meet given the very low response rate. As such, two other common approaches were employed.\textsuperscript{\protect\hyperlink{ref-fibrinogenstudiescollaboration2009}{328}} In the primary analysis, all cohorts were analysed adjusted for the set of common covariates across cohorts (Model 1: age, sex, smoking, alcohol, diabetes). As a sensitivity analysis, cohorts with the full complement of covariates (Whitehall II and EPIC) were analysed using a maximally-adjusted model (Model 2: Model 1, further adjusted for education, ethnicity, and prevalent ischemic heart disease and BMI). Results between the common-set-adjusted (Model 1) and maximally-adjusted (Model 2) models were then compared.
 
 ~
 
@@ -3785,7 +3785,7 @@ Based on available data across cohorts, smoking was classified as never/ever/cur
 
 A key consideration in the definition of covariates across cohorts was the classification of age. The Whitehall II study, the largest cohort to which I had access, only shared age data in five-year age band (e.g.~40-44, 45-49, etc.). To ensure comparability across the cohorts, I created identical categories in the CaPS and EPIC data. This grouped age variable was then used in all subsequent analyses.
 
-Missing values in collected variables was common across the cohorts. A matrix of covariates, and whether they were not available or contained missing values for each included cohort, can be seen Appendix \ref{appendix-ipd-covariate-matrix}. The Whitehall II and EPIC cohorts contained data on all but one covariates of interest, while three missing covariates were identified in the CaPS cohort, namely education, BMI and ethnicity. No included cohort provided information on the \emph{Apo}\(\mathcal{E}4\) status of participants, and so this variable could not be adjusted for in the analysis.
+Missing values in collected variables was common across the cohorts. A matrix of covariates, and whether they were not available or contained missing values for each included cohort, can be seen Appendix \ref{appendix-ipd-covariate-matrix}. The Whitehall II and EPIC cohorts contained data on all but one covariates of interest, while three missing covariates were identified in the CaPS cohort, namely education, prevalent ischemic heart disease, BMI and ethnicity. No included cohort provided information on the \emph{Apo}\(\mathcal{E}4\) status of participants, and so this variable could not be adjusted for in the analysis.
 
 ~
 
@@ -3807,6 +3807,7 @@ Across the three cohorts, 11,835 participants were included in this analysis (Wh
 
 \caption[Summary of characteristics of IPD cohorts]{\label{tab:covariateSummary-table}Summary of characteristics for cohorts included in the IPD analysis}
 \centering
+\begin{threeparttable}
 \begin{tabular}[t]{>{}lccc}
 \toprule
 \textbf{ } & \textbf{Whitehall II} & \textbf{Epic} & \textbf{CaPS}\\
@@ -3828,7 +3829,7 @@ Alcohol ever, N (\%) & 6612 (80.6) & 37 (3.3) & 2235 (89)\\
 \midrule
 Ethnicity (white), N (\%) & 7387 (90) & 1107 (99.3) & -\\
 \midrule
-CVD, N (\%) & 7 (0.1) & 63 (5.7) & -\\
+IHD, N (\%) & 7 (0.1) & 63 (5.7) & -\\
 \midrule
 TC, Mean (SD) & 6.49 (1.16) & 5.93 (1.08) & 5.93 (1.15)\\
 \midrule
@@ -3849,6 +3850,10 @@ Vascular dementia, N (\%) & 37 (0.5) & - & 77 (3.1)\\
 Non-vascular dementia, N (\%) & - & - & 170 (6.8)\\
 \bottomrule
 \end{tabular}
+\begin{tablenotes}
+\item \textbf{Abbreviations:} BMI - Body mass index; IHD - Ischemic heart disease; HDL - Low-density lipoprotein cholesterol; LDL - Low-density lipoprotein cholesterol; TG - Triglycerides.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
 ~
@@ -3856,7 +3861,7 @@ Non-vascular dementia, N (\%) & - & - & 170 (6.8)\\
 \hypertarget{main-effects}{%
 \subsubsection{Main effects}\label{main-effects}}
 
-The results from the main effect analysis across the varying lipid fractions on each dementia, considered can be seen in Figures \ref{fig:mainEffectDem} \& \ref{fig:mainEffectVad}, respectively. There was weak evidence for an association of any lipid level with either all-cause or vascular dementia, with the exception of a harmful association between raised triglycerides and vascular dementia (OR: 1.41, 95\%CI: 1.24-1.60).
+The results from the main effect analysis across the varying lipid fractions on each dementia, considered can be seen in Figures \ref{fig:mainEffectDem} \& \ref{fig:mainEffectVad}, respectively. There was weak evidence for an association of any lipid level with either all-cause or vascular dementia, with the exception of a harmful association between raised triglycerides and vascular dementia (OR: 1.25, 95\%CI: 1.01-1.54).
 
 
 
@@ -3874,14 +3879,14 @@ The results from the main effect analysis across the varying lipid fractions on 
 \includegraphics[width=1\linewidth]{figures/ipd/main_vasdem} \caption[IPD meta-analysis of all-cause dementia, stratified by lipid fraction]{IPD meta-analysis (Model 1) of vascular dementia outcomes, stratified by lipid fraction. Note that the vascular dementia outcome was only available in the CaPS and Whitehall II cohorts.}\label{fig:mainEffectVad}
 \end{figure}
 
-Estimates from the common-set-adjusted model (Model 1: adjusted for age, sex, smoking, alcohol, presence of vascular comorbidites) were comparable to the fully-adjusted model (Model 2: Model 1 further adjusted for education and BMI) for the effect of lipids on all-cause dementia in cohorts reporting all covariates of interest (Figure \ref{fig:ipdModelComparison}).
+Estimates from the common-set-adjusted model (Model 1: adjusted for age, sex, smoking, alcohol, and diabetes) were comparable to the fully-adjusted model (Model 2: Model 1 further adjusted for ethnicity, prevalent ischemic heart disease, education and BMI) for the effect of lipids on all-cause dementia in cohorts reporting all covariates of interest (Figure \ref{fig:ipdModelComparison}).
 
 
 
 
 
 \begin{figure}[H]
-\includegraphics[width=1\linewidth]{figures/ipd/main_model_comparison} \caption[Comparison of partially and maximally adjusted results]{Comparison of results from the common-set-adjusted (Model 1) and fully-adjusted (Model 2) analyses.}\label{fig:ipdModelComparison}
+\includegraphics[width=1\linewidth]{figures/ipd/main_model_comparison} \caption[Comparison of partially and maximally adjusted results]{Comparison of results from the common-set-adjusted (Model 1) and fully-adjusted (Model 2) analyses for the all-cause dementia outcome.}\label{fig:ipdModelComparison}
 \end{figure}
 
 ~
@@ -3965,7 +3970,9 @@ More generally, systematically missing variables meant that a trade-off between 
 
 For the single cohort (Whitehall II), a previously published analysis was available. Tynkkynen \emph{et al.}\textsuperscript{\protect\hyperlink{ref-tynkkynen2018}{245}} analysed the association of blood lipids and risk of all-cause dementia and Alzheimer's disease across several cohorts, including the Whitehall II cohort.
 
-In an attempt to validate my approach, I compared the results from the maximally-adjusted model (Model 2) in this analysis with those reported by Tynkkynen \emph{et al.} for both all-cause dementia and Alzheimer's disease. The results were broadly comparable (Figures \ref{fig:whitehallComparisonDementia} and \ref{fig:whitehallComparisonAd}), with the exception of the association of triglycerides with all-cause dementia. Tynkkynen \emph{et al.}\textsuperscript{\protect\hyperlink{ref-tynkkynen2018}{245}} found a protective effect of triglycerides on this outcome (HR: 0.69, 95\%CI: 0.56-0.85) while this analysis found evidence for a harmful effect (OR: 1.26, 95\%CI: 1.12-1.41).
+In an attempt to validate my approach, I compared the results from the maximally-adjusted model (Model 2) in this analysis with those reported by Tynkkynen \emph{et al.} for both all-cause dementia and Alzheimer's disease.
+
+The results for the Alzheimer's disease outcome were comparable (Appendix \ref{appendix-ipd-whitehall}). However, for the vascular dementia outcome (Figure \ref{fig:whitehallComparisonDementia}), I identified a discrepancy in the association of triglycerides with all-cause dementia estimated by the two analyses. Tynkkynen \emph{et al.}\textsuperscript{\protect\hyperlink{ref-tynkkynen2018}{245}} found a protective effect of triglycerides on this outcome (HR: 0.69, 95\%CI: 0.56-0.85) while this analysis found evidence for a harmful effect (OR: 1.26, 95\%CI: 1.12-1.41).
 
 
 
@@ -3975,17 +3982,9 @@ In an attempt to validate my approach, I compared the results from the maximally
 \includegraphics[width=1\linewidth]{figures/ipd/whitehall_comparison_dementia} \caption[Comparison of results across the two analysis of the Whitehall II cohort]{Comparison of results across the two analysis of the Whitehall II cohort for the all-cause dementia outcome.}\label{fig:whitehallComparisonDementia}
 \end{figure}
 
-
-
-
-
-\begin{figure}[H]
-\includegraphics[width=1\linewidth]{figures/hold} \caption[Comparison of results across the two analysis of the Whitehall II cohort]{Comparison of results across the two analysis of the Whitehall II cohort for the Alzheimer's disease outcome.}\label{fig:whitehallComparisonAd}
-\end{figure}
-
 ~
 
-Investigation of this discrepancy indicated that it was likely to be due to the Whitehall snapshot that each analysis had access to, as comparison of summary statistics indicated that this analysis had substantially more dementia events (N =287 in this analysis vs.~n=114 in Tynkkynen \emph{et al.}). The covariates adjusted for in each analysis were similar, though the previous analysis had access to genetic data, allowing it to adjust for \emph{Apo}\(\mathcal{E}4\) status. However, given that \emph{Apo}\(\mathcal{E}4\) is a risk factor for increased LDL-c rather than triglycerides,\textsuperscript{\protect\hyperlink{ref-bennet2007}{321}} it seems unlikely that additional adjustment for this variable is responsible for the discrepancy in findings observed.
+Investigation revealed several possible reasons for this discrepancy. The first is that it was likely to be due to the Whitehall snapshot that each analysis had access to, as comparison of summary statistics indicated that this analysis had substantially more dementia events (N =287 in this analysis vs.~n=114 in Tynkkynen \emph{et al.}). Additionally, this analysis uses multiple imputation to address missing data, while the Tynkkynen \emph{et al.} does not mention how missing data was addressed, though the reduced precision in the estimates suggest a complete case analysis. Finally, the covariates adjusted for in each analysis were similar, though the previous analysis had access to genetic data, allowing it to adjust for \emph{Apo}\(\mathcal{E}4\) status. However, given that \emph{Apo}\(\mathcal{E}4\) is a risk factor for increased LDL-c rather than triglycerides,\textsuperscript{\protect\hyperlink{ref-bennet2007}{321}} it seems unlikely that additional adjustment for this variable is responsible for the discrepancy in findings observed.
 
 ~
 
@@ -4148,7 +4147,7 @@ Finally, the IPD analysis provided no additional information on the Alzheimer's 
 
 There was a general absence of existing evidence on vascular dementia outcomes. Meta-analysis of published results was only possible for the total cholesterol lipid fraction (HR: 1.05, 95\%CI: 0.79-1.41). A meta-analysis of studies examining hypercholesterolemia also found weak evidence for an association with vascular dementia (HR: 1.20, 95\%CI: 1.00-1.44). Similarly, a meta-analysis of statin use found weak evidence for an effect on this outcome (HR: 0.99, 95\%CI: 0.79-1.25). The CPRD analysis found evidence for a harmful association of statin use (HR:1.81, 95\%CI:1.73-1.9), though this finding is likely to be the result of severe confounding by indication related to vascular factors, as identified through the use of control outcomes.
 
-The IPD analysis provided supporting evidence for the absence of an effect of any fraction on vascular dementia, with the sole exception of triglycerides. Raised triglycerides were associated with an increased incidence of vascular dementia across two previously unanalysed cohorts (OR: 1.41, 95\%CI: 1.24-1.60), though there is the potential for uncontrolled confounding due to the limited information on covariates available. With respect to evidence on treatments for hypertriglyceridemia, examination of fibrates in the CPRD provided weak evidence of an association with vascular dementia (HR:1.29, 95\%CI:0.83-2.02).
+The IPD analysis provided supporting evidence for the absence of an effect of any fraction on vascular dementia, with the sole exception of triglycerides. Raised triglycerides were associated with an increased incidence of vascular dementia across two previously unanalysed cohorts (OR: 1.25, 95\%CI: 1.01-1.54), though there is the potential for uncontrolled confounding due to the limited information on covariates available. With respect to evidence on treatments for hypertriglyceridemia, examination of fibrates in the CPRD provided weak evidence of an association with vascular dementia (HR:1.29, 95\%CI:0.83-2.02).
 
 ~
 
@@ -7570,7 +7569,7 @@ With these caveats in mind, below I present a sensitivity analysis of the associ
 
 \begin{table}[H]
 
-\caption[missingMatrix]{\label{tab:missingMatrix-table}Overview of missing data across covariates included in IPD analysis. Note that LDL is missing completely for the Whitehall and CaPS datasets as this measure was derived from the measures for TC, HDL and TG following multiple imputation of missing values in these variables.}
+\caption[missingMatrix]{\label{tab:missingMatrix-table}Overview of missing data across covariates (described as N (\%)) included in IPD analysis. Note that LDL is missing completely for the Whitehall and CaPS datasets as this measure was derived from the measures for TC, HDL and TG following multiple imputation of missing values in these variables.}
 \centering
 \begin{threeparttable}
 \begin{tabular}[t]{>{}lccc}
@@ -7584,7 +7583,7 @@ With these caveats in mind, below I present a sensitivity analysis of the associ
 \textbf{Smoke ever} & 1454 (17.7\%) & 7 (0.6\%) & 10 (0.4\%)\\
 \textbf{Alcohol ever} & 1344 (16.4\%) & 26 (2.3\%) & 129 (5.1\%)\\
 \textbf{Ethnicity} & 30 (0.4\%) & 6 (0.5\%) & X\\
-\textbf{CVD} & Complete & 1 (0.1\%) & X\\
+\textbf{IHD} & Complete & 1 (0.1\%) & X\\
 \textbf{Diabetes} & 372 (3.3\%) & 1 (0.1\%) & 9 (0.4\%)\\
 \textbf{TC} & 82 (1\%) & 114 (10.2\%) & 55 (2.2\%)\\
 \textbf{LDL-c} & * & 140 (12.6\%) & *\\
@@ -7593,7 +7592,7 @@ With these caveats in mind, below I present a sensitivity analysis of the associ
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item \textbf{Key:} Complete - No missing values; X - Variable not recorded/available in this cohort; * - LDL values derived from total cholesterol, HDL and triglycerides.
+\item Values shown are N (%) unless otherwise stated.\newline \textbf{Key:} Complete - No missing values; X - Variable not recorded/available in this cohort; * - LDL values derived from total cholesterol, HDL and triglycerides.\newline \textbf{Abbreviations:} BMI - Body mass index; IHD - Ischemic heart disease; HDL - Low-density lipoprotein cholesterol; LDL - Low-density lipoprotein cholesterol; TG - Triglycerides.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -7632,6 +7631,17 @@ ICD-10: F01\\
 \end{table}
 
 ~
+
+\hypertarget{appendix-ipd-whitehall}{%
+\subsection{Comparison with previous analysis of the Whitehall II cohort}\label{appendix-ipd-whitehall}}
+
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/ipd/whitehall_comparison_ad} \caption[Comparison of results across the two analysis of the Whitehall II cohort]{Comparison of results across the two analysis of the Whitehall II cohort for the Alzheimer's disease outcome.}\label{fig:whitehallComparisonAd}
+\end{figure}
 
 ~
 
@@ -7777,7 +7787,7 @@ As discussed in the main text, I defined two sets of additive bias distributions
 
 Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tools to search preprinted literature, create visualisations of risk-of-bias data and to preform quantitative triangulation. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it.
 
-Unfortunately, given the nature of the data underpinning the CPRD (Chapter \ref{cprd-analysis-heading}) and IPD (Chapter \ref{ipd-heading}) analyses, it is not possible to make it publicly available. Access to the CPRD data is dependent on an application to its managing body, while acces to the cohorts within the DPUK requires approval from both the DPUK and inidividual cohort owners. IN the absence of data sharing, the best option to enable review and increase transparency is the open sharing of the code used to perform the analysis.
+Unfortunately, given the nature of the data underpinning the CPRD (Chapter \ref{cprd-analysis-heading}) and IPD (Chapter \ref{ipd-heading}) analyses, it is not possible to make it publicly available. Access to the CPRD data is dependent on an application to its managing body, while acces to the cohorts within the DPUK requires approval from both the DPUK and inidividual cohort owners. In the absence of data sharing, the best option to enable review and increase transparency is the open sharing of the code used to perform the analysis.\textsuperscript{\protect\hyperlink{ref-goldacre2019}{136}}
 
 Finally, all software projects in these thesis attempt to conform to minimal best practices for research computing.\textsuperscript{\protect\hyperlink{ref-wilson2014}{370},\protect\hyperlink{ref-wilson2017}{371}}
 
@@ -7785,6 +7795,8 @@ Finally, all software projects in these thesis attempt to conform to minimal bes
 
 \hypertarget{appendix-catalogue-failures}{%
 \subsection{Catalogue of failures}\label{appendix-catalogue-failures}}
+
+OVer the course of my PhD, I kept a record of attempted
 
 Short section detailing the things I tried to do but which did not work:
 
