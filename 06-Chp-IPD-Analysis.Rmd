@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -144,7 +144,7 @@ A range of additional variables were included in the analysis, intended to addre
 
 Missing data in this analysis was classified as either relating to missing values (a cohort collected data on a variable of interest, but some values are missing) or missing variables (a cohort did not collect data on a variable of interest). Variables with missing values were identified, and 20 imputed datasets were created.[@sterne2009] Imputation was performed using the MICE (Multiple Imputation by Chained Equations) using the `mice` package in R.
 
-Missing variables were originally intended to be addressed using a previously described method.[@fibrinogenstudiescollaboration2009] Here, the correlation between the fully-adjusted and partially-adjusted estimate in cohorts with the full set of covariates is used to estimate the fully-adjusted effect in those cohorts missing covariates. However, this method requires several large cohorts to contain the full set of covariates, a condition this analysis failed to meet given the very low response rate. As such, two other common approaches were employed.[@fibrinogenstudiescollaboration2009] In the primary analysis, all cohorts were analysed adjusted for the set of common covariates across cohorts (Model 1: age, sex, smoking, alcohol, presence of morbidities). As a sensitivity analysis, cohorts with the full complement of covariates (Whitehall II and EPIC) were analysed using a maximally-adjusted model (Model 2: Model 1, further adjusted for education and BMI). Results between the common-set-adjusted (Model 1) and maximally-adjusted (Model 2) models were then compared.
+Missing variables were originally intended to be addressed using a previously described method.[@fibrinogenstudiescollaboration2009] Here, the correlation between the fully-adjusted and partially-adjusted estimate in cohorts with the full set of covariates is used to estimate the fully-adjusted effect in those cohorts missing covariates. However, this method requires several large cohorts to contain the full set of covariates, a condition this analysis failed to meet given the very low response rate. As such, two other common approaches were employed.[@fibrinogenstudiescollaboration2009] In the primary analysis, all cohorts were analysed adjusted for the set of common covariates across cohorts (Model 1: age, sex, smoking, alcohol, diabetes). As a sensitivity analysis, cohorts with the full complement of covariates (Whitehall II and EPIC) were analysed using a maximally-adjusted model (Model 2: Model 1, further adjusted for education, ethnicity, and prevalent ischemic heart disease and BMI). Results between the common-set-adjusted (Model 1) and maximally-adjusted (Model 2) models were then compared.
 
 <!-- TODO May need to rethink this, as introducing model based on missing data which isn't fully discussed until later. -->
 
@@ -157,6 +157,8 @@ In this analysis, a two-stage IPD analysis was planned. Under a two-stage approa
 <!-- REVIEW ORs - the one issue here may be the length of follow-up. Was it roughly equal across cohorts such that the ORs are comparable? -->
 
 A two-stage IPD approach was employed for a number of reasons. Firstly, and most importantly, a two-stage approach allows for siloed data, enabling researchers who are unwilling/unable to provide their data to analyse themselves following a specified analysis plan.[@riley2010] Secondly, it allows for the production of forest plots of within-cohort estimates, something which is useful for the triangulation exercise in Chapter \@ref(tri-heading). Finally, a two-stage approach is simpler to model, as it uses standard well-documented summary effect estimate meta-analysis techniques, and automatically accounts for methodological issues such as clustering within cohorts[@abo-zaid2013] and the potential for ecological bias.[@burke2017]
+
+<!-- TODO Need to state that using a fixed effect model for the interaction terms -->
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -251,7 +253,7 @@ Based on available data across cohorts, smoking was classified as never/ever/cur
 
 A key consideration in the definition of covariates across cohorts was the classification of age. The Whitehall II study, the largest cohort to which I had access, only shared age data in five-year age band (e.g. 40-44, 45-49, etc.). To ensure comparability across the cohorts, I created identical categories in the CaPS and EPIC data. This grouped age variable was then used in all subsequent analyses. 
 
-Missing values in collected variables was common across the cohorts. A matrix of covariates, and whether they were not available or contained missing values for each included cohort, can be seen Appendix \@ref(appendix-ipd-covariate-matrix). The Whitehall II and EPIC cohorts contained data on all but one covariates of interest, while three missing covariates were identified in the CaPS cohort, namely education, BMI and ethnicity. No included cohort provided information on the _Apo_$\mathcal{E}4$ status of participants, and so this variable could not be adjusted for in the analysis.
+Missing values in collected variables was common across the cohorts. A matrix of covariates, and whether they were not available or contained missing values for each included cohort, can be seen Appendix \@ref(appendix-ipd-covariate-matrix). The Whitehall II and EPIC cohorts contained data on all but one covariates of interest, while three missing covariates were identified in the CaPS cohort, namely education, prevalent ischemic heart disease, BMI and ethnicity. No included cohort provided information on the _Apo_$\mathcal{E}4$ status of participants, and so this variable could not be adjusted for in the analysis.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -305,10 +307,10 @@ knitr::include_graphics(file.path("figures/ipd/main_vasdem.png"))
 ```
 <!----------------------------------------------------------------------------->
 
-Estimates from the common-set-adjusted model (Model 1: adjusted for age, sex, smoking, alcohol, presence of vascular comorbidites) were comparable to the fully-adjusted model (Model 2: Model 1 further adjusted for education and BMI) for the effect of lipids on all-cause dementia in cohorts reporting all covariates of interest (Figure \@ref(fig:ipdModelComparison)).
+Estimates from the common-set-adjusted model (Model 1: adjusted for age, sex, smoking, alcohol, and diabetes) were comparable to the fully-adjusted model (Model 2: Model 1 further adjusted for ethnicity, prevalent ischemic heart disease, education and BMI) for the effect of lipids on all-cause dementia in cohorts reporting all covariates of interest (Figure \@ref(fig:ipdModelComparison)).
 
 <!----------------------------------------------------------------------------->
-(ref:ipdModelComparison-cap) Comparison of results from the common-set-adjusted (Model 1) and fully-adjusted (Model 2) analyses.
+(ref:ipdModelComparison-cap) Comparison of results from the common-set-adjusted (Model 1) and fully-adjusted (Model 2) analyses for the all-cause dementia outcome.
 
 (ref:ipdModelComparison-scap) Comparison of partially and maximally adjusted results
 
@@ -324,9 +326,6 @@ knitr::include_graphics(file.path("figures/ipd/main_model_comparison.png"))
 Given minimal effect of further adjustment for education and BMI on the effect estimates, the results from the interaction analysis presented here were obtained using the common-set-adjusted model. Further, while the maximally-adjusted model (Model 2) could have been employed in the analysis of the effect of sex, as the CaPS cohort contains only men and had to be excluded from this analysis, employing the same underlying model helped to ensure comparability between the age and sex interaction estimates.
 
 For all-cause dementia, there was no evidence of an interaction of lipid levels with either age group or sex (Figures \@ref(fig:interactionDementiaAge) & \@ref(fig:interactionDementiaSex)). Note that for the sex interaction analysis, the CaPS cohort was excluded as it contains only a single sex and therefore provides no information on exposure-sex interaction.
-
-<!-- TODO If using fixed effect model, need to udate subgroup labels to reflect this -->
-
 
 <!----------------------------------------------------------------------------->
 (ref:interactionDementiaAge-cap)  Meta-analysis of interaction terms representing the effect of a one-step increase in age group on the lipid/all-cause dementia association
@@ -408,7 +407,9 @@ More generally, systematically missing variables meant that a trade-off between 
 
 For the single cohort (Whitehall II), a previously published analysis was available. Tynkkynen _et al._[@tynkkynen2018] analysed the association of blood lipids and risk of all-cause dementia and Alzheimer's disease across several cohorts, including the Whitehall II cohort.
 
-In an attempt to validate my approach, I compared the results from the maximally-adjusted model (Model 2) in this analysis with those reported by Tynkkynen _et al._ for both all-cause dementia and Alzheimer's disease. The results were broadly comparable (Figures \@ref(fig:whitehallComparisonDementia) and \@ref(fig:whitehallComparisonAd)), with the exception of the association of triglycerides with all-cause dementia. Tynkkynen _et al._[@tynkkynen2018] found a protective effect of triglycerides on this outcome (`r estimate(0.69,0.56,0.85,"HR")`) while this analysis found evidence for a harmful effect (`r estimate(1.26,1.12,1.41,"OR")`).
+In an attempt to validate my approach, I compared the results from the maximally-adjusted model (Model 2) in this analysis with those reported by Tynkkynen _et al._ for both all-cause dementia and Alzheimer's disease.
+
+The results for the Alzheimer's disease outcome were comparable (Appendix \@ref(appendix-ipd-whitehall)). However, for the vascular dementia outcome (Figure \@ref(fig:whitehallComparisonDementia)), I identified a discrepancy in the association of triglycerides with all-cause dementia estimated by the two analyses. Tynkkynen _et al._[@tynkkynen2018] found a protective effect of triglycerides on this outcome (`r estimate(0.69,0.56,0.85,"HR")`) while this analysis found evidence for a harmful effect (`r estimate(1.26,1.12,1.41,"OR")`). 
 
 <!----------------------------------------------------------------------------->
 (ref:whitehallComparisonDementia-cap) Comparison of results across the two analysis of the Whitehall II cohort for the all-cause dementia outcome. 
@@ -420,19 +421,11 @@ knitr::include_graphics(file.path("figures/ipd/whitehall_comparison_dementia.png
 ```
 <!----------------------------------------------------------------------------->
 
-<!----------------------------------------------------------------------------->
-(ref:whitehallComparisonAd-cap) Comparison of results across the two analysis of the Whitehall II cohort for the Alzheimer's disease outcome. 
-
-(ref:whitehallComparisonAd-scap) Comparison of results across the two analysis of the Whitehall II cohort
-
-```{r whitehallComparisonAd, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:whitehallComparisonAd-cap)', out.width='100%', fig.scap='(ref:whitehallComparisonAd-scap)'}
-knitr::include_graphics(file.path("figures/hold.png"))
-```
-<!----------------------------------------------------------------------------->
-
 &nbsp;<!----------------------------------------------------------------------->  
 
-Investigation of this discrepancy indicated that it was likely to be due to the Whitehall snapshot that each analysis had access to, as comparison of summary statistics indicated that this analysis had substantially more dementia events (N =287 in this analysis vs. n=114 in Tynkkynen _et al._). The covariates adjusted for in each analysis were similar, though the previous analysis had access to genetic data, allowing it to adjust for _Apo_$\mathcal{E}4$ status. However, given that _Apo_$\mathcal{E}4$ is a risk factor for increased LDL-c rather than triglycerides,[@bennet2007] it seems unlikely that additional adjustment for this variable is responsible for the discrepancy in findings observed.
+<!-- TODO Talk about the fact that I used multiple imputation and they did not. Evidenced by wider confidence intervals, indicating a smaller sample size, likely the result of a complete case -->
+
+Investigation revealed several possible reasons for this discrepancy. The first is that it was likely to be due to the Whitehall snapshot that each analysis had access to, as comparison of summary statistics indicated that this analysis had substantially more dementia events (N =287 in this analysis vs. n=114 in Tynkkynen _et al._). Additionally, this analysis uses multiple imputation to address missing data, while the Tynkkynen _et al._ does not mention how missing data was addressed, though the reduced precision in the estimates suggest a complete case analysis. Finally, the covariates adjusted for in each analysis were similar, though the previous analysis had access to genetic data, allowing it to adjust for _Apo_$\mathcal{E}4$ status. However, given that _Apo_$\mathcal{E}4$ is a risk factor for increased LDL-c rather than triglycerides,[@bennet2007] it seems unlikely that additional adjustment for this variable is responsible for the discrepancy in findings observed.
 
 &nbsp;<!----------------------------------------------------------------------->  
 

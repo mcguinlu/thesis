@@ -1,4 +1,4 @@
-analysis,cohort,term,outcome,yi,sei,term2
+model,cohort,term,outcome,yi,sei,term2
 age,CAPS,Total cholesterol,Dementia,0.101,0.921,1
 age,CAPS,HDL-c,Dementia,0.163,0.0948,2
 age,CAPS,LDL-c,Dementia,0.0662,0.0925,3
@@ -19,11 +19,11 @@ sex,Whitehall,Total cholesterol,Dementia,-0.278,0.165,1
 sex,Whitehall,HDL-c,Dementia,-0.0573,0.177,2
 sex,Whitehall,LDL-c,Dementia,-0.417,0.165,3
 sex,Whitehall,Triglycerides,Dementia,0.072,0.16,4
-age,CAPS,Total cholesterol,vas_dem,-0.0103,0.173,1
-age,CAPS,HDL-c,vas_dem,0.0257,0.184,2
-age,CAPS,LDL-c,vas_dem,0.113,0.117,3
-age,CAPS,Triglycerides,vas_dem,-0.143,0.134,4
-age,Whitehall,Total cholesterol,vas_dem,-0.169,0.187,1
-age,Whitehall,HDL-c,vas_dem,0.0833,0.191,2
-age,Whitehall,LDL-c,vas_dem,0.0914,0.225,3
-age,Whitehall,Triglycerides,vas_dem,0.0309,0.0805,4
+age,CAPS,Total cholesterol,dem_vas,-0.0103,0.173,1
+age,CAPS,HDL-c,dem_vas,0.0257,0.184,2
+age,CAPS,LDL-c,dem_vas,0.113,0.117,3
+age,CAPS,Triglycerides,dem_vas,-0.143,0.134,4
+age,Whitehall,Total cholesterol,dem_vas,-0.169,0.187,1
+age,Whitehall,HDL-c,dem_vas,0.0833,0.191,2
+age,Whitehall,LDL-c,dem_vas,0.0914,0.225,3
+age,Whitehall,Triglycerides,dem_vas,0.0309,0.0805,4
