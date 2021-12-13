@@ -1055,7 +1055,8 @@ purrr::map2(
     .x,
     rob_me = .y,
     at = log(c(.3, 1, 3)),
-    preface = "hyperchol"
+    preface = "hyperchol",
+    xlab = "Hazard ratio"
   )
 )
 
@@ -1238,7 +1239,8 @@ purrr::pmap(
         "Triglycerides"
       ),
       3
-    )
+    ),
+    legend = c(F,F,F,T,F,F,F,T,T,T,T,T)
   ),
   purrr::possibly(
     ~ save_fp(
@@ -1246,7 +1248,10 @@ purrr::pmap(
       preface = ..2,
       rob_me = ..3,
       title = ..4,
-      at = log(c(0.3, 1, 3))
+      legend = ..5,
+      at = log(c(0.3, 1, 3)),
+      legend_cex = 0.9,
+      xlab = "Hazard ratio"
     ),
     otherwise =  NULL
   )
@@ -1375,8 +1380,8 @@ purrr::pmap(
       ..1,
       xref = ..2,
       title = ..3,
-      preface = ..4
-    ),
+      preface = ..4,
+      ),
     otherwise =  NULL
   )
 )
@@ -1533,6 +1538,8 @@ par(mai = rep(0, 4)) # no margins
 # layout the plots into a matrix w/ 12 columns, by row
 layout(matrix(1:4, ncol = 1, byrow = TRUE))
 
+x_start <- c(-.05,-.05,-.05,0)
+
 # do the plotting
 for (i in 1:4) {
   plot(
@@ -1544,7 +1551,7 @@ for (i in 1:4) {
     xaxs = 'i',
     yaxs = 'i'
   )
-  rasterImage(img[[i]], 0, 0, 1, 1)
+  rasterImage(img[[i]], 0, x_start[i], 1, 1.1)
 }
 
 # write to PDF
@@ -1567,12 +1574,14 @@ try(dev.off())
   pdf(
     here::here("figures/sys-rev/fp_lipids_composite_Dementia.pdf"),
     width = 8,
-    height = 12
+    height = 11
   )
   par(mai = rep(0, 4)) # no margins
   
   # layout the plots into a matrix w/ 12 columns, by row
   layout(matrix(1:4, ncol = 1, byrow = TRUE))
+  
+  x_start <- c(-.05,-.05,-.05,0)
   
   # do the plotting
   for (i in 1:4) {
@@ -1585,13 +1594,11 @@ try(dev.off())
       xaxs = 'i',
       yaxs = 'i'
     )
-    rasterImage(img[[i]], 0, 0, 1, 1)
+    rasterImage(img[[i]], 0, x_start[i], 1, 1.1)
   }
   
   # write to PDF
   dev.off()
-
-
 
 
 ## Don't need to do for vascular dementia as only one lipid fraction (TC) has
