@@ -1,14 +1,19 @@
 - [ ] CPRD analysis with minimum follow-up
-- [ ] The tri results should be standarised before calculating direction of effect, because other-wise it is pulling it in the wrong direction
+- [ ] The triangulation results should be standardised before calculating direction of effect, because other-wise it is pulling it in the wrong direction
 - [ ] Add HMGCR MR to triangulation
+- [ ] Figure captions/table captions
 - [ ] Fix table in systematic review - see "IMPORTANT" notes
-- [x] Fix estimates in IPD (IHD, imputed)
-- [X] Assess heterogeneity in the IPD to determine use of fixed versus random effects.
 - [ ] Double check risk of bias data
+- [ ] Check effect estimate labels for systematic review
+- [ ] Better interpretation of heteogeneity
+- [ ] Extract data for GWAS studies
 - [ ] Explain proportional biases better
 - [ ] Basic paired forest plot functionality in robvis
 - [ ] Basic triangulate package
 - [ ] Reproduce single analysis from Turner using triangulate
 - [ ] Deal with acronyms: ensure that they are explained once per chapter so a bit more self-contained, and apply this approach across chapters.
-- [ ] Go through IPD chapter and ensure the list of covariates is correct!
+- [x] PRISMA Checklist
+- [x] Go through IPD chapter and ensure the list of covariates is correct!
+- [x] Fix estimates in IPD (IHD, imputed)
+- [X] Assess heterogeneity in the IPD to determine use of fixed versus random effects.
 

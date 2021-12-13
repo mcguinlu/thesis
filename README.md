@@ -15,8 +15,8 @@ You must submit two electronic copies of your dissertation separately to cover:
 - [ ] Quotes are rendering properly.
 - [ ] URLs resolve
 - [ ] Remove "Reference" headings from each chapter
-- [ ] Add all abbreviations used in tables to the Abbreviation section
-- [ ] Corrections don't overrun
+- [X] Add all abbreviations used in tables to the Abbreviation section
+- [X] Corrections don't overrun
 - [ ] Confirm TODOs, <!-.
 - [ ] Search for [CITE], XXXX, YYYY
 - [ ] Search for "??" to find broken cross-links.
@@ -34,7 +34,9 @@ You must submit two electronic copies of your dissertation separately to cover:
     - [ ] data were vs data was
     - [ ] very weak evidence
     - [ ] N vs n for defining numbers
-    - [ ] ApoE4 is italicised
+    - [ ] ApoE4 is fancy
+    - [ ] metadata versus meta-data
+    - [ ] fraction vs faction
 - [ ] Check all codeblocks with `eval = FALSE` to make sure they are still valid
 - [ ] Do search for everything in parentheses "(...)" and make sure all acronyms are in abbreviations list 
 - [ ] Check short captions for tables
