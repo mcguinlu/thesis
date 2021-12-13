@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -48,15 +48,22 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ::: {.laybox data-latex=""}
 ## Lay summary {-}
 
-<!-- Triangulation is the practice of using multiple sources of evidence to provide more reliable answers to a research question. Different sources of evidence will have different limitations. If the result from each source points towards the same answer, this improves our confidence in the conclusion. -->
+In epidemiology, triangulation is the practice of using multiple sources of evidence to provide more reliable answers to a research question. Different sources of evidence will have different limitations. If the result from each source points towards the same answer, this improves our confidence in the conclusion. Triangulation can either be _qualitative_ or _quantitative_. In qualitative triangulation, the results of each evidence source are discussed. In contrast, quantitative triangulation aims to combine the different results mathematically to obtain one single overall result.
 
-__TBC__
+&nbsp;
+
+In this chapter, I describe a new approach for quantitative triangulation, which combines two existing methods. For each source of evidence, I assess and account for robustness (do we believe the result, based on the methods/results of the study?) and relevance (does the source provide useful evidence relevant to the question we are interested in?). To showcase the new method, I apply it to two questions of interest. In each case, evidence from each of the previous chapters is combined to give an overall result.
+
+&nbsp;
+
+When combined in the new framework, the results produced by previous chapters did not support an effect of low-density lipoprotein cholesterol (LDL-c) on Alzheimer's disease nor an effect of triglycerides on vascular dementia. I close the chapter by suggesting future work to further develop the new methods presented.
 
 :::
 
-<!-- Triangulation is the practice of using multiple sources of evidence to provide more reliable answers to a research question. Different sources of evidence will have different limitations. If the result from each source points towards the same answer, this improves our confidence in the conclusion. -->
-
 &nbsp;<!----------------------------------------------------------------------->  
+
+<!-- TODO Need to define exposures and acronyms early so that I can use abbrev in results -->
+
 
 ## Introduction {#triangulation-overview}
 
@@ -91,7 +98,7 @@ Table \@ref(tab:thesisOverview-table) summarises the research question each data
 <!----------------------------------------------------------------------------->
 \elandscape
 
-Additionally, both the qualitative and quantitative triangulation exercises used the the detailed risk-of-bias assessments performed and presented as part of the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)). Similarly, risk-of-bias assessments were performed for each new source of evidence presented in this thesis. The risk of bias tools used to assess each result are described in detail in Section \@ref(risk-of-bias), but in summary, RCTs were assessed using the RoB 2 tool;[@sterne2019] NRSI using the ROBINS-I tool;[@sterne2016] NRSE using an early adapted version of the ROBINS-E tool (see Section \@ref(rob-tools-nrse));[@morganr2020; @french2019] and MR studies using the Mamluk et al. tool.[@mamluk2020] 
+Additionally, both the qualitative and quantitative triangulation exercises used the detailed risk-of-bias assessments performed and presented as part of the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)). Similarly, risk-of-bias assessments were performed for each new source of evidence presented in this thesis. The risk of bias tools used to assess each result are described in detail in Section \@ref(risk-of-bias), but in summary, RCTs were assessed using the RoB 2 tool;[@sterne2019] NRSI using the ROBINS-I tool;[@sterne2016] NRSE using an early adapted version of the ROBINS-E tool (see Section \@ref(rob-tools-nrse));[@morganr2020; @french2019] and MR studies using the Mamluk et al. tool.[@mamluk2020] 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -133,21 +140,21 @@ As part of a qualitative triangulation of the new and existing evidence identifi
 
 #### All-cause dementia
 
-Analysis of lipid levels across both the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)) and the IPD analysis (Chapter \@ref(ipd-heading)) both found extremely weak evidence for an association of any lipid fraction with all-cause dementia (TC `r obsLipids$Dementia_TC$estimate`; LDL-c `r obsLipids$Dementia_LDL$estimate`; HDL-c `r obsLipids$Dementia_HDL$estimate`; triglycerides `r obsLipids$Dementia_TG$estimate`). Similarly, meta-analysis of studies identified by the review which examined a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$Dementia$estimate`). Finally, a meta-analysis of RCTs of statin use (`r rct_statin_acd`) and of MR analyses of genetic instruments that mimic statin use (`r mrStatin$Dementia$estimate`) both found weak evidence of an association, providing indirect evidence on the effect of lipid lowering on this outcome.
+Analysis of lipid levels across both the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)) and the IPD analysis (Chapter \@ref(ipd-heading)) found extremely weak evidence for an association of any lipid fraction with all-cause dementia (TC - `r obsLipids$Dementia_TC$estimate`; LDL - `r obsLipids$Dementia_LDL$estimate`; HDL - `r obsLipids$Dementia_HDL$estimate`; TG - `r obsLipids$Dementia_TG$estimate`). Similarly, meta-analysis of studies identified by the review which examined a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$Dementia$estimate`). Finally, a meta-analysis of RCTs of statin use (`r rct_statin_acd`) and of MR analyses of genetic instruments that mimic statin use (`r mrStatin$Dementia$estimate`) found weak evidence of an association, providing indirect evidence on the effect of lipid lowering on this outcome.
 
-In contrast, the meta-analysis of NRSI of statin use found a slight protective effect (`r obsStatins$Dementia$estimate`), though many of the studies in this analysis were found to be at risk of immortal time bias, which would be expected to favour the intervention. Finally, analysis of the association of statin use with all-cause dementia in the CPRD (Chapter \@ref(cprd-analysis-heading)) found evidence of a harmful association (`r anydem_sta_text`), though this is likely to be driven by the substantial confounding by indication identified in the vascular dementia subgroup.
+In contrast, the meta-analysis of NRSI of statin use found a slight protective effect for the all-cause dementia outcome (`r obsStatins$Dementia$estimate`), though many of the studies in this analysis were found to be at risk of immortal time bias, which would be expected to favour the statin use. Finally, analysis of the association of statin use with all-cause dementia in the CPRD (Chapter \@ref(cprd-analysis-heading)) found evidence of a harmful association (`r anydem_sta_text`), though this is likely to be driven by the substantial confounding by indication identified in the vascular dementia subgroup.
 
-For fibrates, an alternative lipid-regulating agent, there was some evidence of an increased risk of all-cause dementia in the CPRD (`r anydem_fib_text`), though this did not replicate in the meta-analysis of previous studies examining the association of fibrates and all-cause dementia (`r obsFibrates$Dementia$estimate`).
+For fibrates, an alternative lipid-regulating agent, there was some evidence of an increased risk of all-cause dementia in the CPRD (`r anydem_fib_text`), though this was not consistent in the meta-analysis of previous studies examining the association of fibrates and all-cause dementia (`r obsFibrates$Dementia$estimate`).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 #### Alzheimer's disease
 
-Meta-analysis of lipid levels in the systematic review found extremely weak evidence for an association of any lipid fraction with Alzheimer's disease (TC `r obsLipids$AD_TC$estimate`; LDL-c `r obsLipids$AD_LDL$estimate`; HDL-c `r obsLipids$AD_HDL$estimate`; triglycerides `r obsLipids$AD_TG$estimate`). Similarly, meta-analysis of studies examining a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$AD$estimate`). A meta-analysis of MR analyses of genetic instruments that mimic statin use found weak evidence for an association of lipid lowering with Alzheimer's disease (`r mrStatin$AD$estimate`).
+Meta-analysis of lipid levels in the systematic review found extremely weak evidence for an association of any lipid fraction with Alzheimer's disease (TC - `r obsLipids$AD_TC$estimate`; LDL - `r obsLipids$AD_LDL$estimate`; HDL - `r obsLipids$AD_HDL$estimate`; TG - `r obsLipids$AD_TG$estimate`). Similarly, meta-analysis of studies examining a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$AD$estimate`). A meta-analysis of MR analyses of genetic instruments that mimic statin use found weak evidence for an association of lipid lowering with Alzheimer's disease (`r mrStatin$AD$estimate`).
 
-In contrast, the meta-analysis of NRSI of statin use found a slight protective effect on this outcome (`r obsStatins$AD$estimate`), though similar to the all-cause dementia outcome, many of the studies in this analysis were found to be at risk of immortal time bias. However, the CPRD analysis, which attempted to account for this potential bias through the use of time-varying treatment indicator, found weak evidence for an effect (`r probad_sta_text`). This validity of this finding was limited by the potential for differential misclassification on the basis of the exposure in the CPRD analysis.
+In contrast, the meta-analysis of NRSI of statin use found a slight protective effect on this outcome (`r obsStatins$AD$estimate`), though similar to the all-cause dementia outcome, many of the studies in this analysis were found to be at risk of immortal time bias. However, the CPRD analysis, which attempted to account for this potential bias through the use of time-varying treatment indicator, found weak evidence for an effect (`r probad_sta_text`). The validity of this finding was limited by the potential for differential misclassification on the basis of the exposure in the CPRD analysis.
 
-Finally, the IPD analysis provided no additional information on the Alzheimer's disease outcome, as a previously published analysis examined the association of lipid levels with this outcome in the Whitehall II cohort. The published analysis was included in the meta-analysis of NRSE, the results of which are presented above.
+Finally, only one of the three cohorts included in the IPD analysis (Whitehall II) contained data on Alzheimer's disease. However, a previously published analysis (Tynkkynen _et al._[@tynkkynen2018]) examining the association of lipid levels with Alzheimer's disease in the this cohort was identified by the systenatic review. The results of this previous analysis are incorporated into the results of the meta-analysis reported above, and so the IPD analysis provided no new information on this outcome.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -155,7 +162,7 @@ Finally, the IPD analysis provided no additional information on the Alzheimer's 
 
 There was a general absence of existing evidence on vascular dementia outcomes. Meta-analysis of published results was only possible for the total cholesterol lipid fraction (`r obsLipids$VaD_TC$estimate`). A meta-analysis of studies examining hypercholesterolemia also found weak evidence for an association with vascular dementia (`r obsHyperchol$VaD$estimate`). Similarly, a meta-analysis of statin use found weak evidence for an effect on this outcome (`r obsStatins$VaD$estimate`). The CPRD analysis found evidence for a harmful association of statin use (`r vasdem_sta_text`), though this finding is likely to be the result of severe confounding by indication related to vascular factors, as identified through the use of control outcomes. 
 
-The IPD analysis provided supporting evidence for the absence of an effect of any fraction on vascular dementia, with the sole exception of triglycerides. Raised triglycerides were associated with an increased incidence of vascular dementia across two previously unanalysed cohorts (`r ipd_vasdem`), though there is the potential for uncontrolled confounding due to the limited information on covariates available. With respect to evidence on treatments for hypertriglyceridemia, examination of fibrates in the CPRD provided weak evidence of an association with vascular dementia (`r vasdem_fib_text`). 
+The IPD analysis provided supporting evidence for the absence of an effect of any fraction on vascular dementia, with the sole exception of triglycerides. Raised triglycerides were associated with an increased incidence of vascular dementia across two previously unanalysed cohorts (`r ipd_vasdem`), though there is the potential for uncontrolled confounding due to the limited information available on important covariates. With respect to evidence on treatments for hypertriglyceridemia, examination of fibrates in the CPRD provided weak evidence of an association with vascular dementia (`r vasdem_fib_text`). 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -163,22 +170,22 @@ The IPD analysis provided supporting evidence for the absence of an effect of an
 
 The qualitative comparison presented above identified no consistent effect of any lipid fraction on any dementia outcome across the evidence sources presented in this thesis. However, it is clear that this qualitative approach faces difficulties in interpretation when the number of individual results available is large, as discussed in the introduction to this chapter. This is true even when using summary estimates from meta-analyses of primary studies, which sacrifice valuable information on the biases inherent to each individual result. 
 
-In the following section, I propose and apply a novel quantitative triangulation framework to address these limitations. This approach incorporates recent advancements in the way that bias in results is assessed (namely the move to domain-based assessment tools)[@sterne2019] and existing methods for bias-/indirectness-adjusted meta-analysis[@turner2009] to integrate the numerical results of the multiple approaches. The absence of any clear signals across the evidence base, as detailed in the previous section, does not make for particularly interesting case studies but I will nonetheless use the identified evidence to illustrate the novel methodological approach. 
+In the following section, I propose and apply a novel quantitative triangulation framework to address these limitations. This approach incorporates recent advancements in the way that bias in results is assessed (namely the move to domain-based assessment tools)[@sterne2019] and existing methods for bias-/indirectness-adjusted meta-analysis[@turner2009] to integrate the numerical results of the multiple approaches. Despite the absence of any clear signals across the evidence base, as detailed in the previous section, I have used the evidence identified and produced by this thesis to illustrate the novel methodological approach. 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Methods
 
-The proposed framework involves several steps, described in detail in the following sections. In summary, these steps are:
+The proposed framework involves the following steps:
 
 1. Define the causal question of interest
-1. Identify of relevant evidence sources and standardise effect directions
+1. Identify relevant evidence sources and standardise effect directions
 1. Specify idealised version of each study
 1. Assess the extent and direction of bias/indirectness in each result
 1. Define modifying terms for bias and indirectness in each result
 1. Calculate bias-/indirectness-adjusted results and perform meta-analysis
 
-In order to illustrate the bias-/indirectness adjustment process detailed in the subsequent sections, the process for calculating the adjusted estimate is described in detail for a single result. Following this, the framework is applied to two case studies, as defined below.
+Each step is described in comprehensive detail in the sections below. To better illustrate the bias-/indirectness adjustment process detailed in the subsequent sections, the process for calculating the adjusted estimate is described in detail for a single result. Following this, the framework is then applied to two case studies.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -206,7 +213,7 @@ _Case study #2: Effect of mid-life triglycerides on vascular dementia_
 
 &nbsp;
 
-These causal questions were chosen for several reasons. Firstly, work presented in previous chapters had identified some evidence for an association in these exposure/outcome pairs. Secondly, given the long prodomal period between the onset of physiological changes in the brain and presentation of dementia symptoms, it seems likely that conditions during the mid-life period are particularly important. Finally, examining the causal impact of a lipid faction on a specific outcome (e.g. Alzheimer's disease), rather than a composite outcome (e.g. all-cause dementia), focuses on an single causal pathway rather than including several conditions in the outcome definition that likely have very different mechanisms of disease. In addition, previous work presented in this thesis illustrated that the component conditions (in this case Alzheimer's disease and vascular dementia) are likely to be subject to very different confounding structures (see Section \@ref(cprd-confounding-by-ind)), and use of an composite all-cause outcome in the triangulation framework may mask this.
+These causal questions were chosen for several reasons. Firstly, the work presented in the previous chapters had identified some evidence for an association in these exposure/outcome pairs. Secondly, given the long prodomal period between the onset of physiological changes in the brain and presentation of dementia symptoms, it seems likely that conditions during the mid-life period are particularly important. Finally, examining the causal impact of a lipid fraction on a specific outcome (e.g. Alzheimer's disease), rather than a composite outcome (e.g. all-cause dementia), focuses on an single causal pathway rather than including several conditions in the outcome definition that likely have very different mechanisms of disease. In addition, previous work presented in this thesis illustrated that the component conditions (in this case Alzheimer's disease and vascular dementia) are likely to be subject to very different confounding structures (see Section \@ref(cprd-confounding-by-ind)), and the use of a composite all-cause outcome in the triangulation framework may mask this.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -214,11 +221,11 @@ These causal questions were chosen for several reasons. Firstly, work presented 
 
 Once the causal question of interest had been defined, relevant individual results were obtained from the data sources described in Section \@ref(tri-data-sources). In a broad sense, this meant extracting results that examined the relationship between the exposure/outcome pair, either directly (e.g. non-randomised studies of LDL-c levels) or indirectly (e.g. non-randomised studies of statins, or Mendelian randomisation studies using genetic instruments for LDL-c levels).
 
-Once the set of relevant results were identified, effects were standardised to refer to the risk resulting from a "reduction" in the lipid fraction. For both non-randomised studies and Mendelian randomisation analysis of lipid levels, the association is usually reported per 1-SD increase in the lipid fraction. In this case, the effect estimates were inverted to ensure consistency across study designs.
+Effects were standardised to refer to the risk resulting from a "reduction" in the lipid fraction. For both non-randomised studies and Mendelian randomisation analysis of lipid levels, the association is usually reported per 1-SD increase in the lipid fraction. In this case, the effect estimates were inverted to ensure consistency across study designs.
 
 <!-- TODO Note that the results are converted to the log scale. -->
 
-<!-- TODO The results should be standarised before calculating direction of effect, because other-wise it is pulling it in the wrong direction -->
+<!-- TODO The results should be standarised before calculating direction of effect, because other-wise it is pulling it in the wrong direction - YOU NEED TO SAY THIS LATER! -->
 
 
 &nbsp;<!----------------------------------------------------------------------->  
@@ -234,10 +241,10 @@ Note that all of the risk-of-bias tools used to assess non-randomised studies re
 
 ####	Assess risk and direction of bias in each result
 
-The assessment of bias in each result is discussed in Section \@ref(tri-data-sources) above.For the sake of consistency and ease of computing, I mapped the different acceptable risk-of-bias judgements in each tool to a harmonised set: "Low", "Moderate", and "High". The exact mapping can be seen in Table \@ref(tab:robLevelsMapping-table). Of note, no mapping was performed for the critical risk-of-bias levels present in the tools for non-randomised studies. This is because current best practice in evidence synthesis is to exclude all studies at critical risk of bias for further quantitative synthesis.[@sterne2016]
+The assessment of bias in each result is discussed in Section \@ref(tri-data-sources) above.For the sake of consistency and ease of computing, I mapped the different acceptable risk-of-bias judgements in each tool to a harmonised set: "Low", "Moderate", and "High". The exact mapping can be seen in Table \@ref(tab:robLevelsMapping-table). Of note, no mapping was performed for the critical risk-of-bias levels present in the tools for non-randomised studies. This is in accordance with current best practice in evidence synthesis, which is to exclude all studies at critical risk of bias from further quantitative synthesis.[@sterne2016]
 
 &nbsp;<!----------------------------------------------------------------------->  
-(ref:robLevelsMapping-caption) Mapping of the different acceptable levels of bias across the assessment tools to a harmonised set. Note that no mapping for "Critical" risk of bias was performed, as best practice reccommends that studies at critical risk of bias are excluded from quantitative syntheses.
+(ref:robLevelsMapping-caption) __Mapping of risk-of-bias judgements across assessment tools__ The different acceptable levels of bias across the risk-of-bias assessment tools used were mapped to a harmonised set. Note that no mapping for "Critical" risk of bias was performed, as best practice recommends that studies at critical risk of bias are excluded from quantitative syntheses.
 
 (ref:robLevelsMapping-scaption) Mapping of risk-of-bias judgements across assessment tools
 
@@ -245,7 +252,7 @@ The assessment of bias in each result is discussed in Section \@ref(tri-data-sou
 ```
 &nbsp;<!----------------------------------------------------------------------->  
 
-In addition to assessing the extent of bias, as defined by the three levels detailed above, I attempted to record the predicted direction and type of bias in each domain. This was achieved via an additional question at the end of each bias domain, which asked assessors to predict the expected direction of bias in that domain. Note that this question is currently only formally included in two existing tools (ROB2/ROBINS-I), but I employed an identical approach during assessment of non-randomised studies of exposure and Mendelian randomisation studies. Acceptable responses to this question included: 
+In addition to assessing the extent of bias, as defined by the three levels detailed above, I recorded the predicted direction and type of bias in each domain. This was achieved via an additional question at the end of each bias domain, which asked assessors to predict the expected direction of bias in that domain. Note that this question is currently only formally included in two existing tools (ROB2/ROBINS-I), but I employed an identical approach during assessment of non-randomised studies of exposure and Mendelian randomisation studies. Acceptable responses to this question included: 
 
 <!-- REVIEW in fact it is a mandatory part of new ROBINS-E tool, while only optional in RoB2 and ROBINS-I. Maybe reiterate that using a very early version of ROBINS-E -->
 
@@ -254,10 +261,12 @@ In addition to assessing the extent of bias, as defined by the three levels deta
 * "Towards null"/"Away from null" (defines a proportional bias)
 * "Unpredictable"
 
+<!-- REVIEW Is it worth explaining the terms experimental and comparator above? -->
+
+
 As indicated in the options above, the response to this question is also used to determine the predicted type of bias as either additive or proportional. Proportional biases are dependent on the magnitude of the effect, while additive biases are not.[@turner2009]
 
 <!-- TODO Need to include some text here on examples of each: e.g. immortal time bias, or  -->
-
 
 For additive biases, determining the absolute direction of bias was simply a case of whether the bias is expected to shift the effect estimate to the left or right on an imaginary forest plot. For example, the estimate would be shifted to the right if a bias was predicted to favour the comparator (Figure \@ref(fig:exampleDirection)). 
 
@@ -267,9 +276,9 @@ In contrast, for proportional biases, whether the estimate should be increased o
  ```{r exampleDirectionSetup, include = F}
  ```
  
-(ref:exampleDirection-cap) Illustration of calculating the absolute direction of biases (indicated by arrows), based on bias type. For additive biases, the direction is consistent regardless of the position of the effect estimate relative to the null - bias "favouring the comparator" will always pull the effect estimate to the right, and can induce a change from a protective to harmful effect. In contrast, the position of the effect estimate is accounted for when determining the absolute direction of proportional biases, defined as towards or away from the null. 
+(ref:exampleDirection-cap) __Calculating the absolute direction of biases, based on bias type__ - For additive biases, the direction is consistent regardless of the position of the effect estimate relative to the null - bias "favouring the comparator" will always pull the effect estimate to the right and can induce a change from a protective to harmful effect. In contrast, the position of the effect estimate is accounted for when determining the absolute direction of proportional biases, defined as towards or away from the null. 
 
-(ref:exampleDirection-scap) Illustration of calculating the absolute direction of biases, based on bias type.
+(ref:exampleDirection-scap) Illustration of calculating the absolute direction of biases, based on bias type
 
 ```{r exampleDirection, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:exampleDirection-cap)', out.width='100%', fig.scap='(ref:exampleDirection-scap)'}
 
@@ -291,11 +300,11 @@ To aid with the quantitative triangulation exercise, I created a new method to v
 ####	Assign modifying values to risk/direction of bias
 <!-- TODO Note that they are on the log scale, and that this requires the results to be on the log scale too! - Lines 45-50 of addbias -->
 
-Following definition of the extent, type and direction of bias in each domain, I assigned a prior distribution on the log scale to each combination. For example, a "high" additive bias in $j$th domain of the $i$th study is defined as $\delta_{i,j}^{\mathrm{High}}$ and uncertainty around this estimate is given by a distribution:
+Following definition of the extent, type and direction of bias in each domain, I assigned a prior distribution on the log scale to each combination. For example, a "high" additive bias in $j$th domain of the $i$th study is defined as $\delta_{i,j}^{\mathrm{High}}$ and uncertainty around this estimate is given by a distribution with mean $\mu$ and variance $\sigma^{2}$:
 
 \begin{equation}
-  \delta_{i,j}^{\mathrm{High}} = f(\mu_{i,j}^{\mathrm{High}}, \sigma_{i,j}^{\mathrm{High}})
-  (\#eq:name)
+  \delta_{i,j}^{\mathrm{High}} = f(\mu_{i,j}^{\mathrm{High}}, {\sigma_{i,j}^{\mathrm{High}}}^{2})
+  (\#eq:additive-single)
 \end{equation}
 
 The sign of $\mu_{i,j}^{\mathrm{High}}$ is defined by the absolute direction of the bias. If the bias is expected to pull the effect to the left, $\mu_{i,j}^{\mathrm{High}}$ is given a negative sign, and if it is expected to pull the effect to the right, it is given a positive sign.
@@ -320,7 +329,7 @@ Reasonable values for the position and spread of the prior distributions were in
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-(ref:priorsAdd-caption) Prior distributions for extent and type of bias under two scenarios, on the log scale. Note that the distributions for proportional biases were kept consistent across the two scenarios.
+(ref:priorsAdd-caption) __Prior distributions mapped to different extents of bias.__ Prior values assigned to additive and proportional biases, defined as log-normal distributions with mean $\mu$ and variance $\sigma^2$ using the notation $N(\mu,\sigma^{2})$. For additive biases, two scenarios were defined (see main text). Note that proportional biases are defined on the log scale for ease of calculation, but are exponentiated prior to their use for adjustment. 
 
 (ref:priorsAdd-scaption) Prior distributions mapped to different extents of bias.
 
@@ -334,6 +343,22 @@ Reasonable values for the position and spread of the prior distributions were in
  <!-- TODO Link this to open data! -->
 
 Where the direction of bias in a domain was unpredictable for a given result, the mean of the prior distribution for that domain was set to 0 but the appropriate variance for the recorded extent of bias was retained (e.g. for an unpredictable "High" additive bias, the distribution would be $N(0,0.1)$ under Scenario 1). In other words, adjusting for bias in a domain with an unpredictable direction of bias has no impact on the position of the effect estimate but does increase the uncertainty around it.
+
+Under the  method reported in Turner _et al._,[@turner2009], total additive bias (denoted using subscript $\delta$) in result $i$ is then described by mean $\mu_{i\delta}$ and variance $\sigma_{i\delta}^{2}$, which are simply the sum of the mean and variance of all additive biases in the $i$th result. Similarly, the total proportional bias (denoted using subsript $\beta$) in the $i$th result is described by mean $\mu_{i\beta}$ and variance ${\sigma_{i\beta}}^2$. This are defined as
+
+\begin{equation}
+  \mu_{i\beta} = exp(\alpha_{i} + {\psi_i}^2)
+  (\#eq:prop-total-mean)
+\end{equation}
+
+\begin{equation}
+  {\sigma_{i\beta}}^2 = \big\{ exp({\psi_{i}}^2)-1 \big\} exp({2}{\alpha_{i}} + {\psi_{i}}^2)
+  (\#eq:prop-total-var)
+\end{equation}
+
+where $\alpha_i$ and ${\psi_i}^2$  are the the sum of mean and variance values for all proportional biases in the $i$th result.
+
+Note that the total additive bias is maintained on the log scale, while the total proportional bias has been exponentiated.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -358,13 +383,15 @@ An identical approach was employed to assess, and assign prior distributions to,
 
 As an illustrative example, consider the first causal question of the interest in this exercise, the effect of LDL-c in mid-life on Alzheimer's disease. Here, studies of lipids levels in this time period would require minimal adjustment, whereas studies examining statin use (indirect exposure/intervention) in late-life (indirect population) would be adjusted and down-weighted due to reduced relevance to the causal question.
 
+Once the extent and direction of indirectness has been assessed, total proportional indirectness is then calculated in the same manner as total proportional bias (see Equations \@ref(eq:prop-total-mean) & \@ref(eq:prop-total-var)).
+
 &nbsp;<!----------------------------------------------------------------------->  
 
-####	Combine in a bias-adjusted meta-analysis 
+####	Combining in a bias-adjusted meta-analysis 
 
-Using the the method reported in Turner _et al._,[@turner2009] total additive and proportional bias and indirectness were calculated and used to define an adjusted estimate for each result included in the synthesis. 
+Using the the method reported in Turner _et al._,[@turner2009] once total additive and proportional bias and indirectness are calculated, they are used to define an adjusted estimate for each result included in the synthesis. 
 
-The adjusted estimate for each result, $\hat\theta$, is defined as:
+The adjusted estimate for result $i$, $\hat{\theta}_i$, is defined as:
 
 <!-- TODO Need to be able to explain the order in which the biases are adjusted for -->
 
@@ -372,7 +399,7 @@ The adjusted estimate for each result, $\hat\theta$, is defined as:
 
 
 \begin{equation}
-  \hat{\theta} = \frac{y_i - \mu_{i\beta}^{\mathrm{In}}\mu_{i\delta}^{\mathrm{In}} - \mu_{i\delta}^{\mathrm{B}}}{\mu_{i\beta}^{\mathrm{B}}\mu_{i\beta}^{\mathrm{In}}}
+  \hat{\theta}_i = \frac{y_i - \mu_{i\beta}^{\mathrm{In}}\mu_{i\delta}^{\mathrm{In}} - \mu_{i\delta}^{\mathrm{B}}}{\mu_{i\beta}^{\mathrm{B}}\mu_{i\beta}^{\mathrm{In}}}
   (\#eq:adjusted-mean)
 \end{equation}
 
@@ -385,7 +412,7 @@ The standard error of this estimate is then calculated as:
   (\#eq:adjusted-se)
 \end{equation}
 
-Once each individual result had been adjusted using this approach, I performed a random effects meta-analysis using the unadjusted and adjusted results. I also compared the adjusted results under the two scenarios of additive bias defined. results. I extracted the overall effect estimates, along with measures of heterogeneity in each case ($\tau^2$, $I^2$).[@higgins2003; @higgins2008]
+Once each individual result had been adjusted using this approach, I performed a random effects meta-analysis using the unadjusted and adjusted results. I also compared the adjusted results under the two scenarios of additive bias. I extracted the overall effect estimates, along with measures of heterogeneity in each case ($\tau^2$, $I^2$).[@higgins2003; @higgins2008]
 
 <!-- TODO Should a fixed or random effects be used, because in theory you are adjusting for all potential causes of heterogeneity. -->
 
@@ -405,18 +432,19 @@ Once each individual result had been adjusted using this approach, I performed a
 
 #### Single study
 
-As an illustrative example of the process using a single result, the bias and indirectness inherent to the estimate of the effect of statin use on Alzheimer's disease in the CPRD (as analysed in Chapter \@ref(cprd-analysis-heading)) are considered here. For this result, there were three domains at greater than low risk of bias: Bias due to confounding, Bias due to definition of the outcome, and Bias in the selection of the reported result (Figure \@ref(fig:biasDirectionSingle)). In Domain 1 (bias due to confounding), the study did not adjust for _Apo_$\mathcal{E}4$ status, which is predicted to mask any true association between statins and Alzheimer's disease (see Section \@ref(cprd-limitations) for a fuller discussion). As such, the bias is predicted to _favour the comparator_ and so the absolute direction of bias is to the right. In Domain 7 (bias in measurement of the outcome), there was a high risk of differential misclassification on the basis of the exposure. Here, history of statin use may make a diagnosis of vascular dementia more likely than Alzheimer's disease, and so for this outcome, this bias is predicted to _favour the experimental_ (in this case, an intervention). As such, the absolute direction of bias is to the left. In Domain 7 (bias in selection of the reported result), for consistency with the other NRSI, in the absence of a protocol the bias is assumed to be _away from the null_. Given the position of the effect estimate below the null, the absolute direction of bias in this domain is to the left.
+As an illustrative example of the process using a single result, the bias and indirectness inherent to the estimate of the effect of statin use on Alzheimer's disease in the CPRD (as analysed in Chapter \@ref(cprd-analysis-heading)) are considered here. For this result, there were three domains at greater than low risk of bias: Bias due to confounding, Bias due to definition of the outcome, and Bias in the selection of the reported result (Figure \@ref(fig:biasDirectionSingle)). In Domain 1 (bias due to confounding), the study did not adjust for _Apo_$\mathcal{E}4$ status, which is predicted to mask any true association between statins and Alzheimer's disease (see Section \@ref(cprd-limitations) for a fuller discussion). As such, the bias is predicted to _favour the comparator_ and so the absolute direction of bias is to the right. In Domain 7 (bias in measurement of the outcome), there was a high risk of differential misclassification on the basis of the exposure. Here, a history of statin use may make a diagnosis of vascular dementia more likely than Alzheimer's disease, and so for this outcome, this bias is predicted to _favour the experimental_ (in this case, an intervention). As such, the absolute direction of bias is to the left. In Domain 7 (bias in selection of the reported result), for consistency with the other NRSI, in the absence of a protocol the bias is assumed to be _away from the null_. Given the position of the effect estimate below the null, the absolute direction of bias in this domain is to the left.
 
 &nbsp;<!----------------------------------------------------------------------->  
 (ref:biasDirectionSingle-cap) Bias direction plot for a single study showing the predicted direction of bias in each domain. Additive biases are characterised using arrows, while the proportional biases are denoted using $<$ and $>$. A question mark indicates that the direction of bias was unpredictable.
 
-(ref:biasDirectionSingle-scap) Bias direction plot for a single study
+(ref:biasDirectionSingle-scap) Bias direction plot example for a single study
+
 ```{r biasDirectionSingle, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:biasDirectionSingle-cap)', out.width='100%', fig.scap='(ref:biasDirectionSingle-scap)'}
 knitr::include_graphics(file.path("figures/tri/midlife_AD_single.png"))
 ```
 &nbsp;<!----------------------------------------------------------------------->  
 
-Indirectness was intentionally not displayed in the plot above, as these figures are created using `robvis` which is focused on creating visualisations of risk-of-bias data. In addition, I found it more useful to articulate the indirectness of a result in tabular format. With respect to this example result, I judged it to be a low risk in the population and outcome domains (Table \@ref(tab:singleIndirect-table)). However, the result refers to the effect of statins on Alzheimer's disease risk, rather than LDL-c levels directly, putting it at high risk of indirectness in the intervention/exposure domain. Assessing the predicted direction of indirectness was more challenging than assessing the predicted direction of bias. In this case, treatment with statins result in temporary lowering of lipid levels which and could thus underestimate the true effect of LDL-c lowering (indirectness towards the null). In contrast, statins may have an effect on Alzheimer's disease through a mechanism other than LDL-c lowering effect of statins and so the effect is overestimated (indirectness away from null). As such, I judged the direction of indirectness in this domain to be unpredictable.
+Indirectness was intentionally not displayed in the plot above, as these figures are created using `robvis` which is focused on creating visualisations of risk-of-bias data. In addition, I found it more useful to articulate the indirectness of a result in tabular format. With respect to this example result, I judged it to be at low risk in the population and outcome domains (Table \@ref(tab:singleIndirect-table)). However, the result refers to the effect of statins on Alzheimer's disease risk, rather than LDL-c levels directly, putting it at high risk of indirectness in the intervention/exposure domain. Overall, assessing the predicted direction of indirectness was more challenging than assessing the predicted direction of bias. In this case, treatment with statins may result in temporary lowering of lipid levels which could thus underestimate the true effect of LDL-c lowering (indirectness towards the null). In contrast, statins may have an effect on Alzheimer's disease through a mechanism other than their LDL-c lowering effect and so the effect may be overestimated (indirectness away from null). As such, I judged the direction of indirectness in this domain to be unpredictable.
 
 <!-- TODO Consider timing of outcome as an issue - but is this a relevance or bias issue -->
 
@@ -443,7 +471,7 @@ From the data sources identified in Section \@ref(tri-data-sources), I identifie
 
 (ref:ldlAdBiasDirection-cap) Bias direction plot, summarising the internal biases related to effect of LDL-c on Alzheimer's disease, stratified by study design.
 
-(ref:ldlAdBiasDirection-scap) Bias direction plot, summarising internal biases
+(ref:ldlAdBiasDirection-scap) Bias direction plot for LDL-c/Alzheimer's disease
 
 ```{r ldlAdBiasDirection, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:ldlAdBiasDirection-cap)', out.width='100%', fig.scap='(ref:ldlAdBiasDirection-scap)'}
 knitr::include_graphics(file.path("figures/tri/midlife_AD.png"))
@@ -488,7 +516,7 @@ From the data sources identified in Section \@ref(tri-data-sources), I identifie
 <!----------------------------------------------------------------------------->
 (ref:tgVadBiasDirection-cap) Bias direction plot, summarising the internal biases related to effect of triglycerides on vascular dementia, stratified by study design.
 
-(ref:tgVadBiasDirection-scap) shortcap
+(ref:tgVadBiasDirection-scap) Bias direction plot for triglycerides/vascular dementia 
 
 ```{r tgVadBiasDirection, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:tgVadBiasDirection-cap)', out.width='100%', fig.scap='(ref:tgVadBiasDirection-scap)'}
 knitr::include_graphics(file.path("figures/tri/midlife_VaD.png"))
@@ -514,9 +542,9 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_tg_vad.png"))
 
 ### Summary of findings
 
-This chapter has narratively synthesised the evidence identified and produced by the previous chapters, highlighting the absence of any consistent association between any blood lipid and any dementia outcome.
+This chapter has narratively synthesised the evidence identified and produced by the previous chapters, highlighting the absence of any consistent association between various blood lipid fractions and any dementia outcome.
 
-In addition, it has sought to provide a generalised framework for quantitative triangulation, building on existing methods for systematic domain-based risk of bias assessment and bias-/indirectness-adjusted meta-analysis. To illustrate the method, I considered two causal questions: the effect of LDL-c at mid-life with Alzheimer's disease and the effect of triglycerides on vascular dementia. In the quantitative triangulation framework, there was weak evidence for an effect in relation to either of the causal questions considered. The heterogeneity between results produced by different study designs contributing to the analysis was substantially reduced using this method, though this was largely due to a reduction in the precision of each individual result. 
+In addition, it has developed a generalised framework for quantitative triangulation, building on existing methods for systematic domain-based risk of bias assessment and bias-/indirectness-adjusted meta-analysis. To illustrate the method, I considered two causal questions: the effect of LDL-c at mid-life with Alzheimer's disease and the effect of triglycerides on vascular dementia. In the quantitative triangulation framework, there was weak evidence for an effect in relation to either of the causal questions considered. The heterogeneity between results produced by different study designs contributing to the analysis was substantially reduced using this method, though this was largely due to a reduction in the precision of each individual result. 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -524,13 +552,13 @@ In addition, it has sought to provide a generalised framework for quantitative t
 
 <!-- TODO Data-driven hypothesis testing - only choosing those the two strata that have some suggestion of an effect -->
 
-The quantitative analysis presented in this chapter is subject to some strong methodological limitation, which are discussed in detail below.
+The quantitative analysis presented in this chapter is subject to some strong methodological limitations, which are discussed in detail below.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 #### Defining reasonable prior distributions for bias and indirectness {#tri-prior-def}
 
-The key limitation of the quantitative synthesis presented in this chapter is the lack of empirical evidence available for the prior distributions for bias and indirectness. While I attempted to address this by informing the prior distributions using data from a previous expert elicitation exercise, the extent of bias/indirectness in that analysis may not generalise to the one presented here.
+The key limitation of the quantitative synthesis presented in this chapter is the lack of empirical evidence available for the prior distributions of bias and indirectness. While I attempted to address this by informing the prior distributions using data from a previous expert elicitation exercise, the extent of bias/indirectness in that analysis may not generalise to the one presented here.
 
 Ideally, these prior distributions would be based on empirical data on the effect of different domains of bias/indirectness on a result. Most meta-epidemiological studies examining the effect of different methodological issues studied only randomised controlled trials,[@amer2021; @page2016] and the estimates of bias they produce may not hold for non-randomised study designs. However, the prior distributions defined here are broadly comparable to previously reported estimates of the impact of bias in non-randomised trials. For example, a previous simulation study estimated that, in the absence of true effect of LDL-c, _Apo_$\mathcal{E}4$ would induce a RR of 1.09 with risk of dementia per 1-SD increase in LDL-c.[@iwagami2021] This is comparable to the mean assigned to the prior log-normal distribution mapped to "Moderate" additive bias ($N(0.09,0.05)$, Table \@ref(tab:priorsAdd-table)).
 
@@ -552,7 +580,7 @@ A further issue in this regard is that the rigour of the tools may not be equiva
 
 #### Low and critical risk of bias
 
-As illustrated in Table \@ref(tab:robLevelsMapping-table), studies at critical risk of bias were not included in the analysis. While this is in line with best practice, there is theoretically no reason why studies with this extent of bias could not be included in the propsed framework. However, the estimation of an appropriate prior distribution for the effect of "Critical" bias would be substantially more challenging, and so was avoided here.
+As illustrated in Table \@ref(tab:robLevelsMapping-table), studies at critical risk of bias were not included in the analysis. While this is in line with best practice, there is theoretically no reason why studies with this extent of bias could not be included in the proposed framework. However, the estimation of an appropriate prior distribution for the effect of "Critical" bias would be substantially more challenging, and so was avoided here.
 
 A related issue is the "Low" risk of bias judgement. In this analysis, I assumed that domains at "Low" risk of bias did not require any adjustment. However, "Low" risk of bias is not equivalent to the absence of bias, and potentially should still be adjusted for, if only minimally. In this case, defining the predicted direction of bias would be particularly challenging in the absence of obvious sources of bias. 
 
@@ -560,7 +588,7 @@ A related issue is the "Low" risk of bias judgement. In this analysis, I assumed
 
 #### Combination of different effect measures
 
-A final limitation to this analysis is the synthesis of different effect estimates. As discussed in Section \@ref(sys-rev-analysis-overview), hazard ratios are not directly comparable to odds ratios, as they inherently account for person time-at-risk.[@mckenzie2019] As non-randomised studies (NRSI/NRSI) of dementia outcomes report hazard ratios and Mendelian randomisation studies report odds ratios, the resulting synthesis may be biased by the integration of these two different effect measures. This is primarily a concern for common outcomes, as when the outcome is rare, the odds, risk and hazard ratios approximate each other.
+A final limitation of this analysis is the synthesis of different effect estimates. As discussed in Section \@ref(sys-rev-analysis-overview), hazard ratios are not directly comparable to odds ratios, as they inherently account for person time-at-risk.[@mckenzie2019] As non-randomised studies (NRSI/NRSI) of dementia outcomes report hazard ratios and Mendelian randomisation studies report odds ratios, the resulting synthesis may be biased by the integration of these two different effect measures. This is primarily a concern for common outcomes, as when the outcome is rare, the odds, risk and hazard ratios approximate each other.
 
 <!-- REVIEW Could add that ORs could be converted to RRs using a measure of "hyptothecial" risk -->
 
@@ -570,13 +598,16 @@ A final limitation to this analysis is the synthesis of different effect estimat
 
 ### Strengths
 
+<!-- TODO An additional strength could be the fact that I explicitly sought to include both direct and indirect evidence -->
+
+
 The core strength of this analysis is that it is based on a comprehensive systematic review, supplemented by two additional primary studies to fill in the identified evidence gaps. In general, triangulation of any sort should be considered a natural extension of evidence synthesis, and therefore should follow best practice in relation to finding and critically assessing all relevant information. Additionally, the approach presented here also builds on recent developments in bias assessment to "explode out" the component results of a meta-analysis, and consider the effects of bias/indirectness in each separately. 
 
-A further advantage of this method comes from the ability to specify the prior distributions for each level of bias/indirectness in advance of performing the assessments. Expert elicitation of the extent of bias/indirectness using a panel of methodologists and topic experts is a powerful technique but the point at which it is deployed in the framework is important. In previous attempts at bias-/indirectness-adjusted meta-analysis, the extent of bias in each study was assessed via a elicitation process,[@thompson2011; @turner2009; @wilks2011] during which experts were aware of the results of each analysis. This approach is potentially subject to differential misclassification of the impact of bias/indirectness on the basis of the results, as there is no way to ensure that results at a similar level of bias for confounding (for example) are being adjusted by the same amount across studies. As an illustrative example, if experts are influenced by the knowledge of the effect estimate in a study, then a result at "Moderate" risk of confounding and demonstrating a stronger protective effect may receive greater adjustment than a study at the same risk of confounding but with a more modest effect. This is likely to be particularly problematic where experts have preconceived ideas about the true effectiveness of the intervention. 
+A further advantage of this method comes from the ability to specify the prior distributions for each level of bias/indirectness in advance of performing the assessments. Expert elicitation of the extent of bias/indirectness using a panel of methodologists and topic experts is a powerful technique but the point at which it is deployed in the framework is important. In previous attempts at bias-/indirectness-adjusted meta-analysis, the extent of bias in each study was assessed via an elicitation process,[@thompson2011; @turner2009; @wilks2011] during which experts were aware of the results of each analysis. This approach is potentially subject to differential misclassification of the impact of bias/indirectness on the basis of the results, as there is no way to ensure that results at a similar level of bias for confounding (for example) are being adjusted by the same amount across studies. As an illustrative example, if experts are influenced by the knowledge of the effect estimate in a study, then a result at "Moderate" risk of confounding and demonstrating a stronger protective effect may receive greater adjustment than a study at the same risk of confounding but with a more modest effect. This is likely to be particularly problematic where experts have preconceived ideas about the true effectiveness of the intervention. 
 
-Separating the assessment of bias/indirectness from the assignment of modifying values to each judgement will limit the potential for this misclassification. Using the framework proposed, reasonable modifying distributions for each level of bias can be defined _a priori_ by the study team using the elicitation procedure detailed previously,[@turner2009] similar to how important confounders and co-interventions are defined in advance when performing ROBINS-I/ROBINS-E assessments.[@sterne2016] As an example, expert elicitation could be used to _a priori_ define an additive bias distribution of N(.1,0.7) for "Moderate" risk of bias in Domain 1 of the ROBINS-I tool (bias due to confounding). Risk-of-bias assessments are then performed, and each result at "Moderate" risk of bias in Domain 1 is adjusted using this pre-specified distribution.
+Separating the assessment of bias/indirectness from the assignment of modifying values to each judgement will limit the potential for this misclassification. Using the framework proposed, reasonable modifying distributions for each level of bias can be defined _a priori_ by the study team using the elicitation procedure detailed previously.[@turner2009] This approach would be similar to how important confounders and co-interventions are defined in advance when performing ROBINS-I/ROBINS-E assessments.[@sterne2016] As an example, expert elicitation could be used to _a priori_ define an additive bias distribution of N(0.1,0.7) for "Moderate" risk of bias in Domain 1 of the ROBINS-I tool (bias due to confounding). Risk-of-bias assessments would then be performed, and each result at "Moderate" risk of bias in Domain 1 is adjusted using this pre-specified distribution.
 
-Finally, accounting for bias using an incorrect prior distribution is no less problematic that synthesising and drawing conclusions from effect estimates as if they were unbiased, a common occurrence in systematic reviews.[@katikireddi2015] While this analysis may be limited by the absence of empirically-derived adjustment distributions, it at the very least acknowledges the uncertainty of evidence due to bias/indirectness via a reduction in precision. 
+Finally, accounting for bias using an incorrect prior distribution is no less problematic than synthesising and drawing conclusions from effect estimates that are treated as unbiased, a common occurrence in systematic reviews.[@katikireddi2015] While this analysis may be limited by the absence of empirically-derived adjustment distributions, it at the very least acknowledges the uncertainty of evidence due to bias/indirectness via a reduction in precision. 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -586,15 +617,18 @@ Finally, accounting for bias using an incorrect prior distribution is no less pr
 
 An obvious avenue for future work in relation to quantitative triangulation is the identification of empirical prior distributions for the effect of bias/indirectness in non-randomised studies using meta-epidemiological approaches. This will be substantially more challenging than examining the effect of bias in RCTs,[@savovic2018] given the absence of an underlying database of meta-analysis of non-randomised studies.
 
-Future development of this framework should also account for bias at the analysis level in terms of missing evidence.[@zotero-15123] For example, there is at least one known study relevant to the vascular dementia case study that reported a non-significant result but provided insufficient details to be included in the analysis.[@chiang2007] Ideally, a quantitative triangulation framework would further account for this proportional meta-bias (as bias due to missing evidence is most likely to bias away from the null due to publication bias mechanisms), in addition to result-specific biases.
+Future development of this framework should also account for bias at the analysis level in terms of missing evidence.[@zotero-15123] For example, there is at least one known study relevant to the triglycerides/vascular dementia case study that reported a non-significant result but provided insufficient details to be included in the analysis.[@chiang2007] Ideally, a quantitative triangulation framework would further account for this proportional meta-bias (as bias due to missing evidence is most likely to bias away from the null due to publication bias mechanisms), in addition to result-specific biases.
 
-Appreciation that both the risk-of-bias and indirectness of a result should be assessed is growing. Indeed, some existing for the assessment of diagnostic test accuracy[@whiting2011] and prediction models[@moons2019] consider indirectness (termed applicability in these tools) alongside the assessment of bias. Future iterations of the core risk-of-bias tools (RoB 2, ROBINS-I, ROBINS-E) could take this into account, though there is an competing argument that indirectness is already handled via tools such as the GRADE framework.[@guyatt2011] In addition, simple steps like harmonising the risk-of-bias judgements across tools and making the direction of bias question mandatory (even if users default to "Unpredictable") would represent an improvement in the tools and encourage users to think about how the biases assessed affect the corresponding result. Similarly, software that implements a risk-of-bias tool should allow for direction/extent of bias question and carefully consider how this data will be exported.
+Appreciation that both the risk-of-bias and indirectness of a result should be assessed is growing. Indeed, some existing tools for the assessment of diagnostic test accuracy[@whiting2011] and prediction models[@moons2019] consider indirectness (termed applicability in these tools) alongside the assessment of bias. Future iterations of the core risk-of-bias tools (RoB 2, ROBINS-I, ROBINS-E) could take this into account, though there is a competing argument that indirectness is already handled via tools such as the GRADE framework.[@guyatt2011] In addition, simple steps like harmonising the risk-of-bias judgements across tools and making the direction of bias question mandatory (even if users default to "Unpredictable") would represent an improvement in the tools and encourage users to think about how the biases assessed affect the corresponding result. Similarly, software that implements a risk-of-bias tool should allow for direction/extent of bias question and carefully consider how this data will be exported.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Outputs {#tri-software}
 
-There are two key outputs from this project. The first is the `triangulate` R package. Personal communication with the authors of the original method resulted in the STATA code to implement the bias-/indirectness-adjusted model.[@turner2009] This has since been generalised as part of the `triangulate` R package to enable other users to apply the approach detailed here. The package allows for preprocessing of domain-based risk-of-bias data to correctly identify the direction of the bias relative to the effect estimate, use of domain-specific prior distributions, production of bias direction plots (via the tool described in Appendix \@ref(appendix-robvis), calculation of bias/indirectness-adjusted estimates for each result, and synthesis of these adjusted results in a standard random-effects meta-analysis.
+There are two key outputs from this project. The first is the `triangulate` R package. Personal communication with the authors of the original method resulted in the STATA code to implement the bias-/indirectness-adjusted model.[@turner2009] This has since been generalised as part of the `triangulate` R package to enable other users to apply the approach detailed here. The package allows for preprocessing of domain-based risk-of-bias data to correctly identify the direction of bias relative to the effect estimate, use of domain-specific prior distributions, production of bias direction plots (via the tool described in Appendix \@ref(appendix-robvis), calculation of bias/indirectness-adjusted estimates for each result, and synthesis of these adjusted results in a standard random-effects meta-analysis.
+
+<!-- REVIEW Describe what you contributed here a little better --->
+
 
 The second key output is an annotated example dataset for the LDL-c/Alzheimer's disease causal question addressed in this chapter. Available via the `triangulate` package, this data will provide developers of new triangulation methods with an example dataset on which to test new tools, something which seriously hindered development of this work.
 
@@ -606,6 +640,6 @@ The second key output is an annotated example dataset for the LDL-c/Alzheimer's 
 
 * I then illustrated a proposed generalised framework for quantitative triangulation, exploiting existing methods in evidence synthesis and recent developments in the assessment of different risks of bias. I illustrated this method using two case studies: the effect of mid-life LDL-c on Alzheimer's disease, and the effect of mid-life triglycerides on vascular dementia.
 
-* I discussed the limitations of this proposed method, given the absence of informative priors for the impact of bias/indirectness, and proposed future research (i.e. meta-epidemiological studies) that would address them.
+* I discussed the limitations of this proposed method, given the absence of empirically-based priors for the impact of bias/indirectness, and proposed future research (i.e. meta-epidemiological studies) that would address them.
 
 * In summary, quantitative triangulation is a promising field that should be considered a natural extension of evidence synthesis. The implications of the synthesised evidence presented here to clinical practice, public health and future research is considered in the following chapter.

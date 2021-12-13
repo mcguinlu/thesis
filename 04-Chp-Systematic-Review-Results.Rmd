@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -37,7 +37,10 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ::: {.laybox data-latex=""}
 ## Lay summary {-}
 
-Using the methods outlined in the previous chapter, here I present  the results of a systematic review of primary studies that have examined the relationship between the levels of blood lipids (such as cholesterol and triglycerides) and dementia outcomes. In addition, it examined the relationship between treatments that change blood lipid levels, such as statins, and dementia outcomes
+Using the methods outlined in the previous chapter, here I present  the results of a systematic review of primary studies that have examined the relationship between the levels of blood lipids (such as cholesterol and triglycerides) and dementia outcomes. In addition, it examined the relationship between treatments that change blood lipid levels, such as statins, and dementia outcomes.
+
+&nbsp;
+
 
 My review included `r n_included` primary studies. I found that statins appear to reduce the risk of all-cause dementia and Alzheimer's disease, but were not associated with risk of vascular dementia. Lipid levels were not associated with any dementia outcome. However, problems with the methods used in some studies included in the review meant that I was less confident in their results. In addition, I found that several results were missing from my analysis as authors decided not to report them.
 
@@ -81,7 +84,7 @@ Common reasons for exclusion at the full-text stage included studies reporting o
 
 &nbsp;
 
-(ref:prisma-flow-cap) PRISMA flow diagram illustrating how records moved through the systematic review process. The different contributions of standard bibliographic databases and preprint servers to the review are indicated.
+(ref:prisma-flow-cap) __PRISMA flow diagram__ - The diagram illustrates how records moved through the systematic review process. Note that the different contributions of standard bibliographic databases (left) and preprint servers (right) to the review are indicated.
 
 (ref:prisma-flow-scap) PRISMA flow diagram
 
@@ -103,7 +106,7 @@ For the assessment of the intra-/inter-rater reliability, the estimated values o
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:agreeInter-caption) Inter-rater agreement on a subset of records, indicating high accuracy. 
+(ref:agreeInter-caption) __Inter-rater agreement__ - For a subset of records, the decisions between two independent were compared. Gewt's $AC1$ was calculated from this data to assess inter-rater reliability, indicating high accuracy ($AC1$ = `r agreeInter_coeff[1]`). 
 
 <!-- TODO Include AC1 result in caption above -->
 
@@ -114,7 +117,7 @@ For the assessment of the intra-/inter-rater reliability, the estimated values o
 <!----------------------------------------------------------------------------->
 
 <!----------------------------------------------------------------------------->
-(ref:agreeIntra-caption) Intra-rater agreement on subset of records, indicating high consistency.
+(ref:agreeIntra-caption) __Intra-rater agreement__ - For a subset of records, the decisions between the same reviewer with 3 month lag were compared. Gewt's $AC1$ was calculated from this data to assess intra-rater reliability, indicating high consistency ($AC1$ = `r agreeIntra_coeff[1]`). 
 
 (ref:agreeIntra-scaption) Inter-rater agreement
 
@@ -147,8 +150,6 @@ In terms of outcomes, the vast majority of studies examined either all-cause dem
 <!-- Midlife cholesterol levels were of particular interest, with several studies examining this age-range.  -->
 
 <!--- TODO Talk a little bit more about age here --->
-
-Three included reports were preprinted (denoted in the Table \@ref(tab:studyCharacteristics-table) using an asterisk),[@andrews2019; @so2017;@zhu2017] one of which had subsequently been published and was captured by the primary literature search.[@zhu2018] All three included preprints were obtained from the bioRxiv preprint server and all described a Mendelian randomisation analysis.
 
 <!-- TODO Also need to extract the codes used in each study -->
 <!-- TODO Need to make sure that the MR studies actually don't report the  -->
@@ -329,7 +330,7 @@ Three included reports were preprinted (denoted in the Table \@ref(tab:studyChar
 
 (ref:zhu2018MRcite) Zhu 2018[@zhu2018; @zhu2020] *
 
-(ref:studyCharacteristics-caption) Characteristics of included studies, stratified by study design. Note that three studies reported on multiple analytical designs within a single study report (Beydoun 2011,[@beydoun2011] Reitz 2010,[@reitz2010] and Benn 2017[@benn2017]), and these have been duplicated across the relevant sub-sections. Preprinted studies are denoted using an asterik.
+(ref:studyCharacteristics-caption) __Characteristics of included studies__ - The characteristics of studies included in this review, stratified by study design, are presented below. Note that three studies reported on multiple analytical designs within a single study report (Beydoun 2011,[@beydoun2011] Reitz 2010,[@reitz2010] and Benn 2017[@benn2017]), and these have been duplicated across the relevant sub-sections. Preprinted studies are denoted using an asterik.
 
 (ref:studyCharacteristics-scaption) Characteristics of included studies
 
@@ -346,11 +347,13 @@ Three included reports were preprinted (denoted in the Table \@ref(tab:studyChar
 ```{r cohortLocationsSetup, include = FALSE}
 ```
 
+Three included reports were preprinted (denoted in the Table \@ref(tab:studyCharacteristics-table) using an asterisk),[@andrews2019; @so2017;@zhu2017] one of which had subsequently been published and was captured by the primary literature search.[@zhu2018] All three included preprints were obtained from the bioRxiv preprint server and all described a Mendelian randomisation analysis.
+
 As illustrated in Figure \@ref(fig:cohortLocations), the majority of reports described studies conducted in high-income countries, with the most highly represented region being North America. Of interest, several of the included studies were conducted in Taiwan (`r n_taiwan`), all but one of which made use of the Taiwan National Health Insurance database.
 
 <!----------------------------------------------------------------------------->
 
-(ref:cohortLocations-cap) Geographical distribution of study cohorts
+(ref:cohortLocations-cap) __Geographical distribution of study cohorts__ - The country or countries of origin for the studies include in the review are shown below. Note that the majority of included studies were performed in the Western world, predominantly in Europe and North America.
 
 (ref:cohortLocations-scap) Geographical distribution of study cohorts
 
@@ -406,9 +409,9 @@ Across all outcomes, lipid levels were categorised in a number of ways. The most
 `r num_to_text(obsHyperchol$Dementia$n,T)` studies reported on the association of hypercholesterolemia with all-cause dementia and provided weak evidence for an effect (`r obsHyperchol$Dementia$estimate`, Figure \@ref(fig:obsHyperDementia)).
 
 <!----------------------------------------------------------------------------->
-(ref:obsHyperDementia-cap) Random-effects meta-analysis of non-randomised studies examining the effect of hypercholesterolemia on all-cause dementia
+(ref:obsHyperDementia-cap) __Random-effects meta-analysis of hypercholesterolemia on all-cause dementia__ - Non-randomised studies examining the association of hypercholesterolemia with all-cause dementia were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-E tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
-(ref:obsHyperDementia-scap) Meta-analysis of hypercholesterolemia on all-cause dementia
+(ref:obsHyperDementia-scap) Random-effects meta-analysis of hypercholesterolemia on all-cause dementia
 
 ```{r obsHyperDementia, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:obsHyperDementia-cap)', out.width='100%', fig.scap='(ref:obsHyperDementia-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/fp_obs_hyperchol_Dementia.png"))
@@ -417,14 +420,20 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_hyperchol_Dementia.png
 
 Several studies analysed individual lipid fractions by estimating the risk of dementia per 1 standard deviation increase in that fraction (Figure \@ref(fig:lipidFractionsDementia)). Weak evidence for an effect on all-cause dementia was found for total cholesterol (`r n_effect(obsLipids$Dementia_TC)`), LDL-c (`r n_effect(obsLipids$Dementia_LDL)`), HDL-c (`r n_effect(obsLipids$Dementia_HDL)`) and triglycerides (`r n_effect(obsLipids$Dementia_TG)`). 
 
-<!----------------------------------------------------------------------------->
-(ref:lipidFractionsDementia-cap) Random-effects meta-analysis of four lipid fractions (total cholesterol, HDL, LDL, and triglycerides) on all-cause dementia risk, standardised per 1-SD increase in the lipid fraction. Note that Tynkkyen _et al_[@tynkkynen2018] reported results from multiple cohorts within a single study and the results for each cohort are presented separately here.
+\newpage
+\thispagestyle{empty}
 
-(ref:lipidFractionsDementia-scap) Random-effects meta-analysis of four lipid fractions on all-cause dementia
+<!----------------------------------------------------------------------------->
+(ref:lipidFractionsDementia-cap) __Random-effects meta-analysis of lipids on all-cause dementia__ - Non-randomised studies examining the association of four lipid fractions (total cholesterol, HDL, LDL, and triglycerides) with all-cause dementia risk, standardised per 1-SD increase, were synthesised using a random-effects meta-analysis. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-E tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond. Note that Tynkkyen _et al_[@tynkkynen2018] reported results from multiple cohorts and these are presented separately.
+
+(ref:lipidFractionsDementia-scap) Random-effects meta-analysis of lipids and all-cause dementia
+
 ```{r lipidFractionsDementia, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:lipidFractionsDementia-cap)', out.width='100%', fig.scap='(ref:lipidFractionsDementia-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/fp_lipids_composite_Dementia.pdf"))
 ```
 <!----------------------------------------------------------------------------->
+
+\newpage
 
 Finally, there were no identified Mendelian randomisation analysis examining the effect of lower lipid levels, as determined by any genetic instrument, on all-cause dementia risk.
 
@@ -436,9 +445,10 @@ The two randomised controlled trials provided weak evidence (`r rct_statin_acd`)
 
 <!-----------------------------------------------------------------------------> 
 
-(ref:statinsRCT-cap) Random-effects meta-analysis of randomised controlled trials examining statins on all-cause dementia. D1-D5 and O refer to the five risk-of-bias domains and single overall judgement in the RoB2 tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond in each forest plot presented above. 
+(ref:statinsRCT-cap) __Random-effects meta-analysis of statins on all-cause dementia in RCTs__ - 
+Randomised controlled trials examining the effect of statin use on all-cause dementia risk were synthesised using a random-effects meta-analysis. D1-D5 and O refer to the five risk-of-bias domains and single overall judgement in the RoB2 tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond. 
 
-(ref:statinsRCT-scap) Random-effects meta-analysis of statins on all-cause dementia
+(ref:statinsRCT-scap) Random-effects meta-analysis of statins on all-cause dementia in RCTs
 
 ```{r rctStatinDementiaFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:statinsRCT-cap)', out.width='100%', fig.scap='(ref:statinsRCT-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/fp_rct_statins_Dementia.png"))
@@ -449,7 +459,7 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_rct_statins_Dementia.png")
 In contrast, a meta-analysis of `r obsStatins$Dementia$n` prospective observational studies provided some evidence of a protective effect of statins use on all-cause dementia risk (`r obsStatins$Dementia$estimate`, Figure \@ref(fig:obsStatinDementiaFig)).
 
 <!----------------------------------------------------------------------------->
-(ref:obsStatinDementia-cap) Random-effects meta-analysis of non-randomised studies examining the effect of statin use on all-cause dementia
+(ref:obsStatinDementia-cap) __Random-effects meta-analysis of statins on all-cause dementia__ - Non-randomised studies examining the association of statin use with all-cause dementia were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-I tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
 (ref:obsStatinDementia-scap) Random-effects meta-analysis of statins on all-cause dementia
 
@@ -467,9 +477,9 @@ Finally, a single Mendelian randomisation analysis was identified examining the 
 `r num_to_text(obsFibrates$Dementia$n,T)` studies examined the effect of fibrate use on all-cause dementia and found weak evidence for an effect (`r obsFibrates$Dementia$estimate`, Figure \@ref(fig:obsFibrateDementiaFig)).
 
 <!----------------------------------------------------------------------------->
-(ref:obsFibrateDementia-cap) Random-effects meta-analysis of non-randomised studies examining the effect of fibrate use on all-cause dementia
+(ref:obsFibrateDementia-cap) __Random-effects meta-analysis of fibrates on all-cause dementia__ - Random-effects meta-analysis of non-randomised studies examining the effect of fibrate use on all-cause dementia. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-I tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
-(ref:obsFibrateDementia-scap) Random-effects meta-analysis of statins on all-cause dementia
+(ref:obsFibrateDementia-scap) Random-effects meta-analysis of fibrates on all-cause dementia
 
 ```{r obsFibrateDementiaFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:obsFibrateDementia-cap)', out.width='100%', fig.scap='(ref:obsFibrateDementia-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Fibrate_Dementia.png"))
@@ -484,9 +494,9 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Fibrate_Dementia.png")
 `r num_to_text(obsHyperchol$AD$n,T)` studies reported on the association of hypercholesterolemia with Alzheimer's disease and provided weak evidence for an effect (`r obsHyperchol$AD$estimate`, Figure \@ref(fig:obsHyperAD))
 
 <!----------------------------------------------------------------------------->
-(ref:obsHyperAD-cap) Random-effects meta-analysis of non-randomised studies examining the effect of hypercholesterolemia on Alzheimer's disease
+(ref:obsHyperAD-cap) __Random-effects meta-analysis of hypercholesterolemia on Alzheimer's disease__ - Non-randomised studies examining the association of hypercholesterolemia with Alheimer's disease were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-E tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
-(ref:obsHyperAD-scap) Meta-analysis of hypercholesterolemia on Alzheimer's disease
+(ref:obsHyperAD-scap) Random-effects meta-analysis of hypercholesterolemia on Alzheimer's disease
 
 ```{r obsHyperAD, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:obsHyperAD-cap)', out.width='100%', fig.scap='(ref:obsHyperAD-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/fp_obs_hyperchol_AD.png"))
@@ -497,24 +507,27 @@ Similarly to all-cause dementia, several studies analysed individual lipid fract
 
 <!-- TODO This should also show Raffatin! -->
 
-<!----------------------------------------------------------------------------->
-(ref:lipidFractionsAD-cap)  Random-effects meta-analysis of four lipid fractions (total cholesterol, HDL, LDL, and triglycerides) on Alzheimer's disease risk, standardised per 1-SD increase in the lipid fraction. Note that Tynkkyen _et al_[@tynkkynen2018] reported results from multiple cohorts within a single study and the results for each cohort are presented separately here.
+\newpage
+\thispagestyle{empty}
 
-(ref:lipidFractionsAD-scap) Random-effects meta-analysis of four lipid fractions on Alzheimer's disease
+<!----------------------------------------------------------------------------->
+(ref:lipidFractionsAD-cap)  __Random-effects meta-analysis of association of lipid fractions with Alzheimer's disease__ - D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-E tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond. Note that Tynkkyen _et al_[@tynkkynen2018] reported results from multiple cohorts and these are presented separately.
+
+(ref:lipidFractionsAD-scap) Random-effects meta-analysis of lipids on Alzheimer's disease
 
 ```{r lipidFractionsAD, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:lipidFractionsAD-cap)', out.width='100%', fig.scap='(ref:lipidFractionsAD-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/fp_lipids_composite_AD.pdf"))
 ```
 <!----------------------------------------------------------------------------->
 
-Finally, there were several identified Mendelian randomisation studies examining the effect of genetically lowered LDL-c on Alzheimer's disease risk (Figure \@ref(fig:mrDuplication)). However, all of these studies took a two-sample approach, making use of summary statistics from the Global Lipid Genetics Consortium (GLGC) and International Genomics of Alzheimer's Project (IGAP) consortia. Synthesis of these results would would result in a falsely precise estimate caused by multiple counting of the same participants,and as a result, no meta-analysis of these studies was performed. 
+\newpage
 
-However, across each analysis using varying number of SNPS, no evidence for an effect was observed (Figure \@ref(fig:mrDuplication)).
+Finally, there were several identified Mendelian randomisation studies examining the effect of genetically lowered LDL-c on Alzheimer's disease risk (Figure \@ref(fig:mrDuplication)). However, all of these studies took a two-sample approach, making use of summary statistics from the Global Lipid Genetics Consortium (GLGC) and International Genomics of Alzheimer's Project (IGAP) consortia. Synthesis of these results would would result in a falsely precise estimate caused by multiple counting of the same participants,and as a result, no meta-analysis of these studies was performed. However, across each analysis using varying number of SNPS, no evidence for an effect was observed (Figure \@ref(fig:mrDuplication)).
 
 <!----------------------------------------------------------------------------->
-(ref:mrDuplication-cap) Summary of duplication across Mendelian randomisation studies which used summary statistics from the Global Lipid Genetics Consortium (GLGC) and the International Genomics of Alzheimer's Project (IGAP). Note that the Alzheimer’s Disease Genetics Consortium (ADGC) is a sub-cohort within IGAP.
+(ref:mrDuplication-cap) __Summary of duplication across two-sample Mendelian randomisation studies__ - Several Mendelian randomisation studies used summary statistics from the Global Lipid Genetics Consortium (GLGC) and the International Genomics of Alzheimer's Project (IGAP). Note that the Alzheimer’s Disease Genetics Consortium (ADGC) is a sub-cohort within IGAP.
 
-(ref:mrDuplication-scap) Summary of duplication across two sample Mendelian randomisation studies
+(ref:mrDuplication-scap) Summary of duplication across two-sample Mendelian randomisation studies
 
 ```{r mrDuplicationSetup, include=FALSE}
 ```
@@ -531,7 +544,7 @@ knitr::include_graphics(file.path("figures","sys-rev","mrDuplication.png"))
 There were no randomised trials of the use of statins or any other lipid regulating agents  on Alzheimer's disease, though several observational studies reported on this outcome and provided evidence for a protective effect (`r n_effect(obsStatins$AD)`; Figure \@ref(fig:obsStatinADFig)).
 
 <!----------------------------------------------------------------------------->
-(ref:obsStatinAD-cap) Random-effects meta-analysis of non-randomised studies examining the effect of statin use on Alzheimer's disease
+(ref:obsStatinAD-cap) __Random-effects meta-analysis of statins on Alzheimer's disease__ Non-randomised studies examining the association of statin use with Alzheimer's disease were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-I tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
 (ref:obsStatinAD-scap) Random-effects meta-analysis of statins on Alzheimer's disease
 
@@ -542,17 +555,15 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Statin-Ever_AD.png"))
 
 Two Mendelian randomisation studies looked at lipid-lowering specifically as a result of HMGCR inhibition, mediated by SNPs in the gene (rs172338484 and rs12916).`r mrStatin$AD$citations` The first used a one sample approach (SNP-exposure and SNP-outcome associations are estimated using the same dataset) in a large Copenhagen-based cohort, while the second made use of summary level data obtained from the GLGC (SNP-exposure) and the IGAP (SNP-outcome). Meta-analysis of these estimates provided weak evidence of an effect (`r mrStatin$AD$estimate`, Figure \@ref(fig:mrStatinADFig)).
 
-<!----------------------------------------------------------------------------->
-(ref:mrStatinAD-cap) Random-effects meta-analysis of genetically lowered LDL-c via HMGCR inhibition on Alzheimer's disease
+&nbsp;<!----------------------------------------------------------------------->  
+(ref:mrStatinAD-cap) __Random-effects meta-analysis of HMGCR inhibition on Alzheimer's disease__ - Mendelian randomisation studies examining the association of genetically lowered LDL-c via HMGCR inhibition with Alzheimer's were synthesised using a random-effects meta-analysis. D1-D5 and O refer to the five risk-of-bias domains and single overall judgement in the Mamluk _et al_ tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
-(ref:mrStatinAD-scap) Random-effects meta-analysis of genetically lowered LDL-c via HMGCR inhibition on Alzheimer's disease
+(ref:mrStatinAD-scap) Random-effects meta-analysis of HMGCR inhibition on Alzheimer's disease
 
 ```{r mrStatinADFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:mrStatinAD-cap)', out.width='100%', fig.scap='(ref:mrStatinAD-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/fp_MR_HMGCR_AD.png"))
 ```
-<!----------------------------------------------------------------------------->
-
-&nbsp;
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Vascular dementia {#sys-rev-res-VaD}
 
@@ -561,9 +572,9 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_MR_HMGCR_AD.png"))
 `r num_to_text(obsHyperchol$VaD$n,T)` studies reported on the association of hypercholesterolemia with vascular dementia and provided weak evidence for an effect (`r obsHyperchol$VaD$estimate`, Figure \@ref(fig:obsHyperVaD))
 
 <!----------------------------------------------------------------------------->
-(ref:obsHyperVaD-cap) Random-effects meta-analysis of non-randomised studies examining the effect of hypercholesterolemia on vascular dementia
+(ref:obsHyperVaD-cap) __Random-effects meta-analysis of hypercholesterolemia on vascular dementia__ - Non-randomised studies examining the association of hypercholesterolemia with vascular dementia were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-E tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
-(ref:obsHyperVaD-scap) Meta-analysis of hypercholesterolemia on vascular dementia
+(ref:obsHyperVaD-scap) Random-effects meta-analysis of hypercholesterolemia on vascular dementia
 
 ```{r obsHyperVaD, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:obsHyperVaD-cap)', out.width='100%', fig.scap='(ref:obsHyperVaD-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/fp_obs_hyperchol_VaD.png"))
@@ -575,11 +586,11 @@ Few studies investigated the effect of individual lipid fractions. Only for tota
 <!-- TODO This is not technically - more studies available on vascular dementia -->
 
 <!----------------------------------------------------------------------------->
-(ref:lipidFractionsVaD-cap) Random-effects meta-analysis of total cholesterol on vascular dementia, standardised per 1-SD increase in the lipid fraction.
+(ref:lipidFractionsVaD-cap) __Random-effects meta-analysis of total cholesterol on vascular dementia__ - Non-randomised studies examining the association of total cholesterol with vascular dementia risk, standardised per 1-SD increase in the lipid fraction, were synthesised using a random-effects meta-analysis. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-E tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
 (ref:lipidFractionsVaD-scap) Random-effects meta-analysis of total cholesterol on vascular dementia
 
-```{r lipidFractionsVaD, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:lipidFractionsAD-cap)', out.width='100%', fig.scap='(ref:lipidFractionsAD-scap)'}
+```{r lipidFractionsVaD, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:lipidFractionsVaD-cap)', out.width='100%', fig.scap='(ref:lipidFractionsVaD-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/fp_obs_VaD_TC_.png"))
 ```
 <!----------------------------------------------------------------------------->
@@ -593,11 +604,11 @@ Finally, no Mendelian randomisation analyses examining the effect of genetically
 As noted in Section \@ref(sys-rev-characteristics) above, there was substantially less literature available on the association of my risk factors of interest and vascular dementia. There were no available randomised trials for this outcome. `r num_to_text(obsStatins$VaD$n,T)` prospective cohort studies examined statin use and vascular dementia, though meta-analysis of these studies provided weak evidence for an effect (`r n_effect(obsStatins$VaD)`; Figure \@ref(fig:obsStatinVaDFig)). 
 
 <!----------------------------------------------------------------------------->
-(ref:obsStatinVaD-cap) Random-effects meta-analysis of non-randomised studies examining effect of statin use on vascular dementia
+(ref:obsStatinVaD-cap) __Random-effects meta-analysis of statins on vascular dementia__ - Non-randomised studies examining the association of statin use with vascular dementia were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-I tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
 (ref:obsStatinVaD-scap) Random-effects meta-analysis of statins on vascular dementia
 
-```{r obsStatinVaDFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:obsStatinVaD-cap)', out.width='100%', fig.scap='(ref:obsStatinDVaD-scap)'}
+```{r obsStatinVaDFig, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:obsStatinVaD-cap)', out.width='100%', fig.scap='(ref:obsStatinVaD-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Statin-Ever_VaD.png"))
 ```
 <!----------------------------------------------------------------------------->
@@ -605,7 +616,6 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Statin-Ever_VaD.png"))
 A single Mendelian randomisation analysis was identified that examined the effect of genetically lowered LDL-c levels via HMGCR inhibition on the risk of vascular dementia, which provided some evidence for an effect (`r mrStatin$VaD$estimate`). 
 
 <!-- TODO Might need to discuss this a bit further -->
-
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -635,12 +645,12 @@ There were `r n_dr_initial` studies initially considered eligible for the dose-r
 
 Across the remaining `r num_to_text(n_dr_final)` studies, a sufficient number of results (n $\geqslant$ 3) were identified only for the total cholesterol-Alzheimer's, LDL-Alzheimer's, and total cholesterol-dementia strata. This analysis provided weak evidence for a non-linear effect of lipid levels on dementia outcomes, and Figure \@ref(fig:lipidsDoseResponse) illustrates this for the total cholesterol-Alzheimer's strata. Similar figures for the other analysed lipid-outcome strata are presented in Appendix \@ref(appendix-dr-fraction).
 
-<!-- TODO Add legend to this figure so that it is clear what the lines are - YBS was confused -->
+<!-- TODO Improve caption for the legend below -->
 
 <!----------------------------------------------------------------------------->
-(ref:lipidsDoseResponse-cap) Dose-response meta-analysis of total cholesterol on Alzheimer's disease
+(ref:lipidsDoseResponse-cap) __Dose-response meta-analysis of total cholesterol on Alzheimer's disease__ - Non-randomised studies examining the association of lipids levels with Alzheimer's disease across several categories or "doses" of exposure were synthesised using a dose response meta-analysis. The reference dose was defined _a priori_ as 200 _mg/dL_, the cut-off of the "Normal"/"Optimal" category for total cholesterol as detailed in Table \@ref(tab:lipidLevels-table). 
 
-(ref:lipidsDoseResponse-scap) Dose-response meta-analysis of total cholesterol 
+(ref:lipidsDoseResponse-scap) Dose-response meta-analysis of total cholesterol on Alzheimer's disease
 
 ```{r lipidsDoseResponse, echo = FALSE, results="asis", fig.pos = "H",fig.align='center', fig.cap='(ref:lipidsDoseResponse-cap)', out.width='70%', fig.scap='(ref:lipidsDoseResponse-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/dr_AD_TC.png"))
@@ -655,7 +665,7 @@ Investigation of potential sources of heterogeneity was complicated by two facto
 
 <!-- TODO Finish this analysis -->
 
-Age and sex were assessed as potential causes of heterogeneity in the meta-analyses of statin use and hypercholesterolemia on all cause dementia and Alzheimer's disease, but I found weak evidence for variation in the observed effect estimates due to these factors.
+Age and gender were assessed as potential causes of heterogeneity in the meta-analyses of statin use and hypercholesterolemia on all cause dementia and Alzheimer's disease, but I found weak evidence for variation in the observed effect estimates due to these factors.
 
 Similarly, assessment of small-study effects, for which publication bias could be one potential reason, was hindered by the relatively small number of results included in a given meta-analysis. However, all analyses assessed provided weak evidence of small-study effects.
 
@@ -696,7 +706,7 @@ Across dementia outcomes, the majority of studies were non-randomised studies of
 &nbsp;<!----------------------------------------------------------------------->  
 
 <!----------------------------------------------------------------------------->
-(ref:typeByYear-cap) Included study designs for any dementia outcome by year of publication 
+(ref:typeByYear-cap) __Study designs by year of publication__ - Included studies across all dementia outcomes are shown grouped by study design and year of publication. Note that Mendelian randomisation studies only begin to appear in the evidence base much later than other study designs.
 
 (ref:typeByYear-scap) Study designs by year of publication
 
@@ -747,9 +757,9 @@ Mendelian randomisation is a powerful analytical technique, using natural variat
 ```{r mrAssumptionsSetup, include = FALSE}
 ```
 
-(ref:mrAssumptions-cap) Summary of the assumptions in Mendelian randomisation analyses: (I) _relevance_ - the genetic variant associates with the risk factor of interest; (II) _independence_ - the variant-exposure association has no unmeasured confounders; and (III) _exclusion restriction_ - variants affect the outcome only through their effect on the risk factor of interest (i.e. there is no horizontal pleiotropy).
+(ref:mrAssumptions-cap) __Summary of the assumptions in Mendelian randomisation analyses__ - Mendelian randomisation analyses make three key assumptions: (I) _relevance_ - the genetic variant associates with the risk factor of interest; (II) _independence_ - the variant-exposure association has no unmeasured confounders; and (III) _exclusion restriction_ - variants affect the outcome only through their effect on the risk factor of interest (i.e. there is no horizontal pleiotropy).
 
-(ref:mrAssumptions-scap) Overview of assumptions in Mendelian randomisation analyses
+(ref:mrAssumptions-scap) Summary of the assumptions in Mendelian randomisation analyses
 
 ```{r mrAssumptions, echo = FALSE, results="asis", fig.pos = "H",fig.align='center', fig.cap='(ref:mrAssumptions-cap)', out.width='70%', fig.scap='(ref:mrAssumptions-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/mrAssumptions.png"))
@@ -777,7 +787,7 @@ As highlighted in Section \@ref(diverse-sources-preprints), this review explicit
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-(ref:preprintGrowth-cap) Growth of preprint repositories over time. Given the relative sizes of the preprint repositories at the time the searches for this review were conducted (bioRxiv N = `r n_at_search["bio"]`, medRxiv N = `r n_at_search["med"]`), the number of hits returned by each is expected.
+(ref:preprintGrowth-cap) __Growth of preprint repositories over time__ - Given the relative sizes of the preprint repositories at the time the searches for this review were conducted (bioRxiv N = `r n_at_search["bio"]`, medRxiv N = `r n_at_search["med"]`), the number of hits returned by each is expected.
 
 (ref:preprintGrowth-scap) Growth of preprint repositories over time
 

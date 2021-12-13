@@ -114,6 +114,9 @@ The most common of these are acetylcholinesterase (ACE) inhibitors, which inhibi
 
 Given the substantial burden that dementia represents and the absence of any curative therapies, as detailed in the above sections, the assessment of easily modifiable targets for their utility in the prevention of dementia should be prioritized.[@winblad2016] To date, a substantial amount of research has been produced examining putative risk factors for dementia.[@feingold2000;@peters2019; @anstey2019]
 
+<!-- TODO Need some details on risk factors here - and consider spacing differentl -->
+
+
 The benefits of a prevention-based approach based on addressing these risk factors are well-studied. Reducing the prevalence of the seven most important risk factors for dementia (obesity, hypertension,[@hughes2020] diabetes, smoking, physical inactivity, and low educational attainment) by 10-20% per decade is estimated to result in a reduction in dementia prevalence of 8-15% by 2050.[@norton2014potential]
 
 In this context, lipid levels represent a promising target for preventative treatment, due to the ready availability of lipid-modifying treatments which could be repurposed.[@pushpakom2019] Determining whether variations in lipid levels are causative for dementia may prove critical in reducing the future burden of the condition. 
@@ -349,6 +352,9 @@ The outputs of this thesis are detailed below, and include peer-reviewed papers,
 
 During the course of this thesis, I have made several contributions to the scientific literature. Those arising from or directly related to the contents of this submission are presented below.
 
+&nbsp;
+
+
 _**McGuinness L. A.**, Higgins J. P. T., Walker, V. M., Davies, N. M., Martin, R. M., Coulthard, E., Davey-Smith, G., Kehoe, P. G., and Ben-Shlomo, Y. (2021) Association of lipid-regulating drugs with dementia and related conditions: an observational study of data from the Clinical Practice Research Datalink. medRxiv  [10.1101/2021.10.21.21265131](https://doi.org/10.1101/2021.10.21.21265131)_
 
 Preprinted manuscript of the analysis of lipid-regulating agents and dementia outcomes in the CPRD, which is presented in Chapter \@ref(cprd-analysis-heading).
@@ -408,6 +414,8 @@ _"RoB 2.0: A revised tool to assess risk of bias in randomised trials"_: Webinar
 
 An R package that allows users to search and retrieve bibliographic data from the medRxiv[@rawlinson2019] and bioRxiv[@sever2019] preprint repositories. See Chapter \@ref(sys-rev-tools-heading) for more details. Install a stable version of the package from the Comprehensive R Archive Network (CRAN), or alternatively install the development version from GitHub, using:
 
+&nbsp;
+
 ```{r, eval = FALSE}
 # CRAN version
 install.packages("medrxivr")
@@ -422,6 +430,8 @@ devtools::install_github("ropensci/medrxivr")
 
 An R package containing function to implement the quantitative triangulation approach detailed in Chapter \@ref(tri-heading). At present, only the development version of the package is available, which can be installed from GitHub using:
 
+&nbsp;
+
 ``` {r, eval = FALSE}
 # Development version
 devtools::install_github("mcguinlu/triangulate")
@@ -432,6 +442,8 @@ devtools::install_github("mcguinlu/triangulate")
 **`robvis`**
 
 An R package and associated `shiny` web application that allows users to visualize the results of the risk-of-bias assessments performed as part of a systematic review. See Appendix \@ref(appendix-robvis) for more details. Install a stable version of the package from CRAN, or alternatively install the development version from GitHub, using:
+
+&nbsp;
 
 ``` {r, eval = FALSE}
 # CRAN version

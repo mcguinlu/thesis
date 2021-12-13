@@ -156,9 +156,8 @@ I considered five outcomes as part of this analysis: probable  Alzheimer’s dis
 
 <!-- TODO Need to deal with the fact that the ordering is not accounted for, which could be critised -->
 
-
 <!----------------------------------------------------------------------------->
-(ref:decisionTreeFig-cap) Decision tree for assigning dementia subtypes, based on the presence of Read codes in the patient's record. Note that an outcome of "probable" or "Possible" Alzheimer's disease (AD) requires the absence of any vascular outcome codes.
+(ref:decisionTreeFig-cap) __Decision tree for assigning dementia subtypes__ - Based on the presence of specific Read codes in the patient's record, a decision tree was used to classify dementia subtypes ("Probable" or "Possible" Alheimer's disease, vascular dementia, and other dementia). Note that an outcome of "probable" or "Possible" Alzheimer's disease (AD) requires the absence of any vascular outcome codes.
 
 (ref:decisionTreeFig-scap) Decision tree for assigning dementia subtypes
 
@@ -256,9 +255,9 @@ The second presentation of immortal time bias is as a type of misclassification 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-(ref:immortalTimeBias-cap) Diagram illustrating the two presentations of immortal time bias, as a selection bias (Panel A) and a misclassification bias (Panel B).
+(ref:immortalTimeBias-cap) __Immortal time bias__ - The two presentations of immortal time bias are illustrated. Panel A shows the selection bias presentation, where time prior to a statin exposure is excluded from the analysis and outcomes in this time period are lost. Panel B shows the misclassification presentation, there time (and events) prior to statin exposure is incorrectly assigned to the exposed group.
 
-(ref:immortalTimeBias-scap) shortcap
+(ref:immortalTimeBias-scap) Immortal time bias
 
 ```{r, immortalTime, include = FALSE}
 ```
@@ -315,7 +314,7 @@ In addition to the primary outcomes of interest (described in Section \@ref(cprd
 Negative outcomes are defined as those without a likely causal path between the exposure and outcome (see Figure \@ref(fig:negativeOutcome) for a directed acyclic graph, or DAG, describing an ideal negative outcome). Conversely, positive control outcomes are those with a known causal association with the exposure of interest, ideally sourced from large well conducted randomised controlled trials. Positive control outcomes are useful in observational epidemiology, as if the analysis can reproduce a known result for the control outcome, confidence in the result for the outcome of interest is increased. Due to the wealth of data available on statins as a lipid-regulating agent, I chose three control outcomes in reference to this drug class: back pain (negative control), ischaemic heart disease (positive protective control), and Type 2 diabetes (positive harmful control).
 
 &nbsp;<!----------------------------------------------------------------------->  
-(ref:negativeOutcome-cap) Causal diagram (directed acyclic graph) showing relationship between exposure $X$, outcome $Y$, confounders (measured $C$ and unmeasured $U$) and an ideal negative outcome $N$. Note the absence of any arrow between $X$ and $N$. In this scenario, any association observed between $X$ and $N$ is due to the presence of uncontrolled confounders $U$ (assuming $C$ has been adjusted for).
+(ref:negativeOutcome-cap) __Causal diagram for ideal negative outcome__ - The directed acyclic graph shows the relationship between the exposure $X$, outcome $Y$, confounders (measured $C$ and unmeasured $U$) and an ideal negative outcome $N$. Note the absence of any arrow between $X$ and $N$. In this scenario, any association observed between $X$ and $N$ is due to the presence of uncontrolled confounders $U$ (assuming $C$ has been adjusted for).
 
 (ref:negativeOutcome-scap) Causal diagram for ideal negative outcome
 
@@ -407,7 +406,7 @@ Of the `r comma(attrition[1,1])` participants included in the extract, `r comma(
 &nbsp;
 
 <!--------------------------------------------------------------------------->
-(ref:cprdFlowchart-cap) Attrition of CPRD participants as the eligibility criteria were applied. The largest cause of attrition was the absence of an index event of interest.
+(ref:cprdFlowchart-cap) __Attrition of CPRD participants__ - Patients were excluded from the study cohort for several reasons, and the number of patients excluded as each eligibility criterion was applied is shown above. Note that the largest cause of attrition was the absence of an index event of interest.
 
 (ref:cprdFlowchart-scap) Attrition of CPRD participants
 
@@ -479,7 +478,7 @@ For each outcome, the overall "Any drug" estimate was driven by the statin subgr
 &nbsp;
 
 <!--------------------------------------------------------------------------->
-(ref:cprdPrimary-cap) Results from primary analyses of CPRD data using the fully adjusted model and participant age as the time scale.
+(ref:cprdPrimary-cap) __Results from primary analyses of CPRD data__ - Effect estimates obtained from the fully-adjusted time-varying model with participant age as the time scale, stratified by lipid-regulating agent and dementia outcome.
 
 (ref:cprdPrimary-scap) Results from primary analyses of CPRD data    
 
@@ -524,7 +523,7 @@ In almost all cases, the use of imputed data resulted in a marginal attenuation 
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:completeCaseFig-cap) Comparison of analyses using the complete case versus imputed cohorts.
+(ref:completeCaseFig-cap) __Complete case vs. imputed data analysis__ Comparison of analyses using the complete case versus imputed cohorts, indicating broad agreement between the two approaches. Note that the analyses using imputed data gave more precise estimates due to the low proportion of patients with complete covariate data.
 
 (ref:completeCaseFig-scap) Complete case vs. imputed data analysis
 
@@ -564,7 +563,7 @@ knitr::include_graphics(file.path("figures","cprd-analysis","forester_control_ou
 
 &nbsp;
 
-#### Impact of additional covariates
+#### Impact of additional covariates {#cprd-impact-additional-covar}
 
 The results of three models adjusted for age only, age and sex, and the full covariates respectively, are presented in Figure \@ref(fig:unadjustedComparisonFig). These models were used to estimate the impact of adjustment for additional covariates. Note that obtaining a completely unadjusted model is not possible, as age was used in the Cox model as the time scale.
 

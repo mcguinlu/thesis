@@ -41,6 +41,7 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ## Lay summary {-}
 
 Systematic reviews are a type of research study that aim to collect and combine all existing evidence to provide the best possible answer to an important research question. Well-performed reviews involve multiple steps including: searching for existing studies; assessment of the studies against predefined inclusion criteria; collection of data from each study; and assessment of each study's method and results. 
+
 &nbsp;
 
 This chapter presents the methods used to perform a systematic review of primary studies that have examined the relationship between the levels of blood lipids (such as cholesterol and triglycerides) and dementia outcomes. In addition, the review examined the relationship between treatments that change blood lipid levels, such as statins, and dementia outcomes. The results of this systematic review are then presented in Chapter \@ref(sys-rev-results-heading).

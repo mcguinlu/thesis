@@ -27,10 +27,7 @@ Hold
 ::: {.laybox data-latex=""}
 ## Lay summary 
 
-<!-- TODO Unnumber lay summary -->
-
-
-__TBC__
+In this final chapter, I describe the results of each previous chapter and compare my results with those of two recent large studies. I describe how doctors and those working in public health should use the results of my work, and highlight issues that may limit the usefulness of my findings. Finally, I describe future research that would build on my findings to move the field forward.
 
 :::
 
@@ -52,7 +49,7 @@ In __Chapter \@ref(sys-rev-tools-heading)__, I  presented a new tool for the sys
 
 In __Chapter \@ref(sys-rev-methods-heading)__, I described the methods of a comprehensive systematic review of all available evidence on the association of both lipids and lipid-regulating agents with dementia outcomes. The results of this analysis are then presented in __Chapter \@ref(sys-rev-results-heading)__.
 
-In __Chapter \@ref(cprd-analysis-heading)__, I described an analysis of the association of lipid-regulating agent use and dementia outcomes in the CPRD, a large electronic health record database. I make use of control outcomes to illustrate insufficiently controlled confounding.
+In __Chapter \@ref(cprd-analysis-heading)__, I described an analysis of the association of lipid-regulating agent use and dementia outcomes in the CPRD, a large electronic health record database. I make use of positive and negative control outcomes to illustrate insufficiently controlled confounding.
 
 In __Chapter \@ref(ipd-heading)__, I presented an individual participant data meta-analysis of the association of lipid levels and dementia outcomes, using previously unanalysed data accessed via the Dementia Platform UK.
 
@@ -76,7 +73,7 @@ In the published literature, statins were by far the most studied lipid-regulati
 
 Since the searches underpinning the systematic review described in this thesis were performed (July 2019), further studies on this topic have been performed. Two of these, notable for the analysis of large UK cohorts, are discussed here.
 
-The first is a large-scale analysis of 953,635 patients in the CPRD, followed from their first LDL-c measurement.[@iwagami2021] The study found a slight increased risk of dementia was associated higher LDL-c measured at mid-life, driven by the finding for the Alzheimer's disease subgroup. These results are consistent with the findings presented in this thesis, particularly given the lack of adjustment for confounding by _Apo_$\mathcal{E}4$, which was estimated by the study to induce a RR of 1.09 per 1-SD increase in LDL-c in the absence of a true causal effect.
+The first is a large-scale analysis of 953,635 patients in the CPRD, followed from their first LDL-c measurement.[@iwagami2021] The study found evidence for a slight increased risk of dementia with higher LDL-c levels at mid-life, driven by the finding for the Alzheimer's disease subgroup. These results are consistent with the findings presented in this thesis, particularly as this study did not have access to _Apo_$\mathcal{E}4$ status and so could not adjust for confounding by this variable. _Apo_$\mathcal{E}4$ is a key risk factor for both Alzheimer's disease and raised LDL-c levels, <!-- TODO CITATION NEEDED --> and so could explain the hamrful association observed. This is supported by a sensitivity analysis reported within this study, which used published information to estimate _Apo_$\mathcal{E}4$ would induce a RR of 1.09 per 1-SD increase in LDL-c in the absence of a true causal effect.
 
 The second analysis examined 502,226 participants in the UK Biobank, a large population-based prospective cohort study.[@gong2021; @sudlow2015] The analysis found no association between lipids measured at mid-life and dementia outcomes, comparable to the results of this thesis. However, similar to the study discussed above, this analysis did not have access to genetic data and so may be subject to residual confounding by _Apo_$\mathcal{E}4$ genotype. 
 
@@ -94,9 +91,10 @@ In summary, clinicians should be aware of the uncertainty of evidence surroundin
 
 ### Implications for public health
 
-__[Note: Yoav, I am particularly interested in your thoughts on this section]__
+<!-- REVIEW Suggesting an ecological study? Is adding weak evidence really useful? Would it come with independent biases that would (in theory) bring a further dimension to the triangulation framework. -->
 
-Similarly, given the ambiguity of evidence, there are no clear implications for public health practice. However, the role of public health, and particularly continuous population surveillance, may be important in providing a further source of evidence in relation to the effect of lipid lowering on dementia. Public health practitioners could examine summary-level statistics of GP prescription data to attempt to relate lipid-lowering treatment to temporal or geographical trends in dementia incidence. It will be difficult to assess if any observed trends are due to a true effect or to confounding or ecological biases. However, as dementia outcomes will be monitored anyway for incidence/prevalence estimation and planning of services/care, this approach would provide a ready source of further evidence.
+
+Similarly, given the ambiguity of evidence, there are no clear implications for public health practice. However, the role of public health, and particularly continuous population surveillance, may be important in providing a further source of evidence in relation to the effect of lipid lowering on dementia. Public health practitioners could examine summary-level statistics of GP prescription data to attempt to relate lipid-lowering treatment to temporal or geographical trends in dementia incidence. It will be difficult to assess if any observed trends are due to a true effect or to confounding or ecological biases. However, as dementia outcomes will be monitored anyway for incidence/prevalence estimation and planning of services/care, this approach would provide a ready source of further evidence with a distinct bias structure to the evidence considered in this thesis.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -108,7 +106,7 @@ In addition to addressing the causal impact of lipids on dementia outcomes, the 
 
 ### Inclusion of preprinted evidence
 
-Preprints are an important source of evidence and searching of preprint repositories should become an accepted part of the evidence synthesis process. To support this, I developed a new tool (as described in Chapter \@ref(sys-rev-tools-heading)) to enable researchers to readily search health-related preprints. 
+Preprints are an important source of evidence, and future information specialists may wish to search health-related preprints as part of a wider systematic review. To support this, I developed a new tool, `medrxivr`, as discussed more fully in Chapter \@ref(sys-rev-tools-heading). The tool has been well received by the community, and its use in systematic reviews[@imai2021; @rojoa2021; @hamilton2021] and scoping searches[@grassly2020] has been reported. In addition, the preprint metadata provided by the tool has been used in several meta-research studies.[@kodvanj2020;@noone2020;@mcguinness2020DAScomparison]
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -126,13 +124,15 @@ Finally, I made several novel contributions around the incorporation of bias int
 
 ### Triangulation framework
 
-The proposed quantitative triangulation framework represents the final novel contribution of this thesis to evidence synthesis methodology. Using pre-specified adjustment distributions mapped to the results of the domain-based risk-of-bias and indirectness assessments, this approach provides a systematic way to account for biases/indirectness across studies, reducing the potential for differential adjustment based on knowledge of the results. 
+The proposed quantitative triangulation framework represents the final novel contribution of this thesis to evidence synthesis methodology. Using pre-specified adjustment distributions mapped to the results of the domain-based risk-of-bias and indirectness assessments, this approach provides a systematic way to account for biases/indirectness across studies, reducing the potential for differential adjustment based on knowledge of the results. This framework explcitly seeks to include both direct and indirect evidence, and separates the assessment of bias/indirectness in each result from the definition of distribtuions representing the impact of bias/indirectness.
 
-Ideally, this framework should be based on the results of a comprehensive systematic review, which identifies all evidence (both direct and indirect) related to a causal question of interest. This would represent a break from the current practice of limiting review to a single type of evidence, and  would result in fewer, more comprehensive reviews. However, in the current context of research waste, a concentration of effort in fewer reviews may be advantageous. Section \@ref(rev-previous-reviews) illustrates the duplication of reviews in relation to the topic of this thesis, while an assessment of the COVID-19 literature found that, for a specific clinical question, there were substantially more reviews (25) than available primary studies (17).[@perez-gaxiola2021]
+<!-- TODO Double check last paragraph! -->
+
+Ideally, this framework should be based on the results of a comprehensive systematic review, which identifies all evidence (both direct and indirect) related to a causal question of interest. This would represent a break from the current practice of limiting review to a single type of evidence, and  would result in fewer, more comprehensive reviews. In the current context of concern over research waste, a concentration of effort in fewer reviews may be advantageous. Section \@ref(rev-previous-reviews) illustrates the duplication of reviews in relation to the topic of this thesis, while an assessment of the COVID-19 literature found that, for a specific clinical question, there were substantially more reviews (25) than available primary studies (17).[@perez-gaxiola2021]
 
 Finally, while the framework proposed here could (fairly) be criticised over the validity of the prior distributions of bias/indirectness chosen, the assumptions made about the impact of bias in this thesis are no stronger than those made when synthesising effect estimates as though they were unbiased. The proposed framework at the very least recognises the uncertainty introduced by bias/indirectness and decreases the precision of the overall effect estimate on this basis. 
 
-In summary, the proposed triangulation framework will enable better use of all available evidence to address causal questions.
+In summary, the proposed triangulation framework could enable better use of all available evidence to address causal questions.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -152,7 +152,7 @@ A further strength of this thesis is the production of software to support the n
 
 ### Weaknesses
 
-However, there are also several strong limitations to this thesis. In the first instance, as with many studies of dementia outcomes, a limiting factor in the interpretation of the results is the absence of a detailed pathological mechanism. It is possible that statins have a true effect via some other pathway , but without knowledge of the mechanism, the plausibility of this relationship cannot be assessed. 
+However, there are also several strong limitations to this thesis. In the first instance, as with many studies of dementia outcomes, a limiting factor in the interpretation of the results is the absence of a detailed pathological mechanism. It is possible that statins have a true effect via some pathway other than lipid-regulation, but without knowledge of the mechanism, the plausibility of this relationship cannot be assessed. 
 
 Secondly, each analysis presented here makes use of secondary data sources, be it published literature, electronic health records, or existing cohorts. Secondary data can limit the type of analyses performed (for example, in the IPD analysis presented in Chapter \@ref(ipd-heading), absence of time-to-event data prevented the use of hazard ratios to quantify dementia risk) and the validity of the data if collected for purposes other than research (for example, the accuracy of dementia diagnoses in electronic health records is known to be variable).[@wilkinson2018]
 
@@ -176,8 +176,6 @@ In the future, armed with the experience gained through conduct of the research 
 
 Several avenues of future research could be pursued, building on the novel work presented here. These are grouped by topic in the following sections.
 
-__[Question: is it better to use "should" or "could" when listing ideas for future research? I.e. "future work could/should look at X"?]__
-
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Generation of new RCT evidence
@@ -192,7 +190,7 @@ This approach has already been used to assess long-term (11-20 years) safety out
 
 As highlighted by the results of the systematic review presented in Chapter \@ref(sys-rev-results-heading), there is an absence of evidence on vascular dementia across the existing evidence base. While the primary studies presented here go some way towards supplementing this evidence base, future work is needed both to investigate the reasons for this evidence gap (e.g. due to an absence of primary data, challenges in the analysis of this outcome as documented in Chapter \@ref(cprd-analysis-heading), or a publication bias mechanism) and to address it. 
 
-However, it seems unlikely that further analysis of observational data alone will be sufficient to investigate this outcome, as indicated by the presence of strong confounding by indication in the analysis of statins and vascular dementia (Chapter \@ref(cprd-analysis-heading)). Even using new methods, such as a target trial emulation approach, previous analyses have not replicated the known protective effect of statins on coronary heart disease identified by RCTs (see Section \@ref(cprd-confounding-by-ind)).[@danaei2013] Similarly, Mendelian randomisation studies are limited to a single one-sample analysis of HMGCR variants as a proxy for statin treatment. This study suggested a protective effect of lipid-lowering on vascular dementia, though there was a moderate risk of bias in this analysis and the effect was attenuated to the null when including a wider range of lipid-lowering variants.
+However, it seems unlikely that further analysis of observational data alone will be sufficient to investigate this outcome, as indicated by the presence of strong confounding by indication in the analysis of statins and vascular dementia (Chapter \@ref(cprd-analysis-heading)). Even using new methods, such as a target trial emulation approach, previous analyses have not replicated the known protective effect of statins on coronary heart disease identified by RCTs (see Section \@ref(cprd-confounding-by-ind)).[@danaei2013] Similarly, available Mendelian randomisation studies are limited to a single one-sample analysis of HMGCR variants as a proxy for statin treatment. This study suggested a protective effect of lipid-lowering on vascular dementia, though there was a moderate risk of bias in this analysis and the effect was attenuated to the null when including a wider range of lipid-lowering variants.
 
 Taken together, these points reinforce the need for large-scale GWAS of vascular dementia, similar to those current available for Alzheimer's disease, to identify associated loci that future two-sample Mendelian randomisation studies could exploit. While GWAS of this outcome are likely to be methodologically challenging, given the difficult in diagnosing "pure" vascular dementia, it would be a worthwhile endeavour and allow for the assessment of genetically-driven risk factors beyond those considered in this thesis.
 
@@ -200,7 +198,7 @@ Taken together, these points reinforce the need for large-scale GWAS of vascular
 
 ### Preprinted evidence
 
-In terms of evidence synthesis methodology, future work on preprinted evidence should address how to handle discrepancies between the preprinted and published versions of a paper when identifying results for inclusion in a synthesis. This will be particularly important in cases where the results are substantially different between the two versions or if a result available in the preprint manuscript is not presented in the published version.
+In terms of evidence synthesis methodology, future work on preprinted evidence could address how to handle discrepancies between the preprinted and published versions of a paper when identifying results for inclusion in a synthesis. This will be particularly important in cases where the results are substantially different between the two versions or if a result available in the preprint manuscript is not presented in the published version.
 
 The `medrxivr` tool enables programmatic searching of health-related preprints, and future work could incorporate the tool, along with software to search other literature sources, into an automated searching pipeline as part of a living systematic review.[@elliott2014] In addition, the ready access to preprint data afforded by the tool will enable future meta-epidemiological studies to examine factors which may influence eventual publication (e.g. significant result, geographical location/gender/career stage of first author, or some other factor). Finally, the tool will allow future research to assess the impact of peer review and editorial guidelines on manuscripts through comparison of the same paper at two stages (preprinted versus published). This approach was used to explore the impact of editorial polices on open data sharing, as discussed in Chapter \@ref(sys-rev-tools-heading), but could be applied to other aspects of the publication process.
 
@@ -208,16 +206,18 @@ The `medrxivr` tool enables programmatic searching of health-related preprints, 
 
 ### Reviewing Mendelian randomisation studies
 
-As noted in Chapter \@ref(sys-rev-results-heading), methods for the inclusion of Mendelian randomisation studies in evidence synthesis exercises are not yet sufficiently developed, particularly in comparison to other study designs. Future work should aim to validate search strategies for this study design, paying particular attention to the range of terms used to define the analytical approach (e.g. genetic instrumental variable analysis). In addition, as discussed in Section \@ref(tri-accuracy), the lack of an established risk-of-bias tool for Mendelian randomisation studies limits subsequent analyses that requires systematic assessment of bias, such as the quantitative triangulation framework proposed here. Creation of a domain-based tool for this study design, which accounts for the differences in potential biases between one- and two-sample approaches, should be considered a priority. 
-Finally, the inclusion of multiple two-sample Mendelian randomisation studies using identical summary statistics can falsely increase the precision of the summary effect estimate if treated as independent results. Development of best practice guidance for addressing this problem would represent a useful contribution to the field.
+As noted in Chapter \@ref(sys-rev-results-heading), methods for the inclusion of Mendelian randomisation studies in evidence synthesis exercises are not yet sufficiently developed, particularly in comparison to other study designs. Future work could aim to validate search strategies for this study design, paying particular attention to the range of terms used to define the analytical approach (e.g. genetic instrumental variable analysis). In addition, as discussed in Section \@ref(tri-accuracy), the lack of an established risk-of-bias tool for Mendelian randomisation studies limits subsequent analyses that requires systematic assessment of bias, such as the quantitative triangulation framework proposed here. Creation of a domain-based tool for this study design, which accounts for the differences in potential biases between one- and two-sample approaches, should be considered a priority. 
+
+Finally, the inclusion of multiple two-sample Mendelian randomisation studies using identical summary statistics can falsely increase the precision of the summary effect estimate if treated as independent results. It would be interesting to examine how this issue has been addressed in existing reviews of Mendelian randomisation studies, and based on this research, develop best practice guidance for future evidence syntheses.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Systematic reviews and quantitative triangulation
 
-Quantitative triangulation is an area ripe for future work. The approach presented here will benefit from future meta-epidemiological studies to better define the impact of bias/indirectness, as discussed in detail in Section \@ref(tri-prior-def). Similarly, future work should expand the framework proposed here to account for meta-biases, such as those introduced by missing evidence. Tools such as ROB-ME will enable this, but how to adjust for this analysis-level - as opposed to result-level - bias will need to be determined. Finally, the application of the framework to other causal questions will help to identify sticking points and may lead to refinement of the process.
+Quantitative triangulation is an area ripe for future work. The approach presented here will benefit from future meta-epidemiological studies to better define the impact of bias/indirectness, as discussed in detail in Section \@ref(tri-prior-def). Similarly, future work could expand the framework proposed here to account for meta-biases, such as those introduced by missing evidence. Tools such as ROB-ME will enable this, but how to adjust for this synthesis-level - as opposed to study-level - bias will need to be determined. Finally, the application of the framework to other causal questions will help to identify sticking points and may lead to refinement of the process.
 
 <!-- TODO Could also talk here about how applying it across multiple questions would enable the development of a database of prespecified priors. -->
+
 &nbsp;
 <!----------------------------------------------------------------------------->
 
