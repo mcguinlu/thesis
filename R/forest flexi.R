@@ -5,6 +5,8 @@ forest_strata_rob <-
            rob_me = "Low",
            sei = NULL,
            title = NULL,
+           legend = TRUE,
+           legend_cex = 0.9,
            ...) {
     
 ### calculate log risk ratios and corresponding sampling variances (and use
@@ -59,7 +61,6 @@ if (is.null(arg$at)) {
 } else {
   x_adj <- arg$at[3]
 }
-
 
 x_min = -10
 x_max = 4.6 - log(3) + x_adj
@@ -120,13 +121,11 @@ if (rob_tool %in% c("ROB2", "QUADAS-2")) {
 }
 
 if (rob_tool == "ROBINS-I") {
-  judgements<-   c("Critical risk of bias",
-                   "Serious risk of bias",
+  judgements<-   c("Serious risk of bias",
                    "Moderate risk of bias",
                    "Low risk of bias",
                    "No information")
   cols <- c(
-    c = rob_colours$critical_colour,
     s = rob_colours$high_colour,
     m = rob_colours$concerns_colour,
     l = rob_colours$low_colour,
@@ -141,8 +140,7 @@ if (rob_tool == "ROBINS-I") {
   #           n = "",
   #           x = "")
   
-  syms <- c(c = "!",
-            s = "X",
+  syms <- c(s = "X",
             m = "-",
             l = "+",
             n = "",
@@ -361,6 +359,7 @@ graphics::points(
 )
 graphics::text(x_overall_pos,font = 2, -1, rob_me_syms[rob_me], cex = tsize)
 
+if (legend == TRUE) {
 
 graphics::legend(
   legend_pos,
@@ -372,10 +371,10 @@ graphics::legend(
   xpd = TRUE,
   title = parse(text = "bold(\"Judgement\")"),
   title.adj = 0.1,
-  cex = .7,
-  pt.cex = .7,
+  cex = legend_cex,
+  pt.cex = legend_cex,
   y.intersp = 0.7
 )
-
+}
 
 }
