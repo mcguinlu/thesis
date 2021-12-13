@@ -279,13 +279,31 @@ A copy of the risk of bias tool used to assess Mendelian randomisation studies i
 
 ## Chapter 4
 
+### PRISMA Checklist
+
+\arrayrulecolor{white}
+
+&nbsp;
+
+<!----------------------------------------------------------------------------->
+(ref:prismaTab-caption) __PRISMA Checklist__
+
+(ref:prismaTab-scaption) PRISMA Checklist
+
+```{r prismaTab-table, message=FALSE, results="asis", echo = FALSE}
+```
+<!----------------------------------------------------------------------------->
+\arrayrulecolor{black}
+
+&nbsp;
+
 ### Dose response plots by fraction {#appendix-dr-fraction}
 
 In addition to examining a non-linear relationship between LDL-c and Alzheimer's disease (see Figure \@ref(fig:lipidsDoseResponse)), I performed a dose response analysis for two other exposure-outcome pairs. The results of these analyses are presented below. 
 
 (ref:drDemeniaTC-cap) Dose-response meta-analysis of total cholesterol on all-cause dementia
 
-(ref:drDemeniaTC-scap) shortcap
+(ref:drDemeniaTC-scap) Dose-response meta-analysis of total cholesterol on all-cause dementia
 
 ```{r drDemeniaTC, echo = FALSE, results="asis", fig.align='center', fig.pos = "H", fig.cap='(ref:drDemeniaTC-cap)', out.width='60%', fig.scap='(ref:drDemeniaTC-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/dr_Dementia_TC.png"))
@@ -293,7 +311,7 @@ knitr::include_graphics(file.path("figures/sys-rev/dr_Dementia_TC.png"))
   
 (ref:drAdLDL-cap) Dose-response meta-analysis of low-density lipoprotein cholesterol on Alzheimer's disease
 
-(ref:drAdLDL-scap) shortcap
+(ref:drAdLDL-scap) Dose-response meta-analysis of low-density lipoprotein cholesterol on Alzheimer's disease
 
 ```{r drAdLDL, echo = FALSE, results="asis", fig.align='center', fig.pos = "H", fig.cap='(ref:drAdLDL-cap)', out.width='60%', fig.scap='(ref:drAdLDL-scap)'}
 knitr::include_graphics(file.path("figures/sys-rev/dr_AD_LDL.png"))
@@ -322,9 +340,9 @@ Panel A of Figure \@ref(fig:minFU) describes a standard analysis of an exposure 
 ```{r minFollowUp, include = FALSE}
 ```
 
-(ref:minFU-cap) __shortcap:__
+(ref:minFU-cap) Diagram illustrating the design of two studies. Panel A shows a study in which all participants enter the study and are assinged an exposure group at the same time, making it ease to define a minimum period of follow-up. In contrast, Panel B illustrates the time- varying analysis used in Chapter \@ref(cprd-analysis-heading), which makes it challenging to define an unbiased minimum period of follow-up.
 
-(ref:minFU-scap) shortcap
+(ref:minFU-scap) Illustration of minimum follow-up period in two study designs
 
 ```{r minFU, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:minFU-cap)', out.width='100%', fig.scap='(ref:minFU-scap)'}
 knitr::include_graphics(file.path("figures/appendix/minFU.png"))
@@ -336,9 +354,9 @@ However, applying a similar approach to the analysis performed in Chapter \@ref(
 With these caveats in mind, below I present a sensitivity analysis of the association of statins with dementia outcomes, enforcing a minimum 10-year period of follow-up from statin initiation in those prescribed a statin. 
 
 <!----------------------------------------------------------------------------->
-(ref:cprdMinFu-cap) Estimates from the 
+(ref:cprdMinFu-cap) Sensitivity analysis showing the results of a re-analysis of the CPRD data enforcing a minimum follow-up period of 10 years in the statin group. Events occurring within 10 years of inititating statins were discarded, but the participant-time-at-risk was maintained. No minimum follow-up period was applied in those never taking a statin, due to the difficulties in defining the start date for the follow-up period, as discussed in the text above.
 
-(ref:cprdMinFu-scap) shortcap
+(ref:cprdMinFu-scap) Sensitivity analysis of the CPRD data with a 10 year minimum period of follow-up.
 
 ```{r cprdMinFu, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:cprdMinFu-cap)', out.width='100%', fig.scap='(ref:cprdMinFu-scap)'}
 knitr::include_graphics(file.path("figures/hold.png"))
@@ -383,20 +401,6 @@ knitr::include_graphics(file.path("figures/hold.png"))
 <!----------------------------------------------------------------------------->
 
 &nbsp;
-
-### Comparison with previous analysis of the Whitehall II cohort {#appendix-ipd-whitehall}
-
-<!----------------------------------------------------------------------------->
-(ref:whitehallComparisonAd-cap) Comparison of results across the two analysis of the Whitehall II cohort for the Alzheimer's disease outcome. 
-
-(ref:whitehallComparisonAd-scap) Comparison of results across the two analysis of the Whitehall II cohort
-
-```{r whitehallComparisonAd, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:whitehallComparisonAd-cap)', out.width='100%', fig.scap='(ref:whitehallComparisonAd-scap)'}
-knitr::include_graphics(file.path("figures/ipd/whitehall_comparison_ad.png"))
-```
-<!----------------------------------------------------------------------------->
-
-&nbsp;<!----------------------------------------------------------------------->  
 
 ## Chapter 7 {#appendix-tri-analysis}
 
@@ -458,10 +462,11 @@ The mean values shown were used to define the distributions assigned to  "Modera
 
 As discussed in the main text, I defined two sets of additive bias distributions as a sensitivity analysis. The results for the two case studies under the two scenarios are presented in the figures below. Under the first, shown on the left of the subsequent  forest plot, the difference in the position value between the distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Under the second scenario, the difference in the position value between the distributions assigned to "High" and "Moderate" is twice that between "Moderate" and "Low".
 
-(ref:fpLdlAdComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses of LDL-c/Alzheimer's disease, using two different scenarios for the relationship of levels of bias.  
+(ref:fpLdlAdComparison-cap) Comparison of bias-/indirectness-adjusted meta-analyses under two different scenarios of prior distributions of bias. Scenario 1: position value between the distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Scenario 2: position value between the distributions assigned to "High" and "Moderate" bias levels is twice that between "Moderate" and "Low" levels
 
-(ref:fpLdlAdComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses under two different scenarios of prior distributions of bias. Scenario 1: position value between the distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Scenario 2: position value between the distributions assigned to "High" and "Moderate" bias levels is twice that between "Moderate" and "Low" levels
+  
 
+(ref:fpLdlAdComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses of LDL-c/Alzheimer's disease, using two different scenarios for the relationship of levels of bias.
 ```{r fpLdlAdComparison, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:fpLdlAdComparison-cap)', out.width='100%', fig.scap='(ref:fpLdlAdComparison-scap)'}
 knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad_scenarios.png"))
 ```
@@ -540,12 +545,17 @@ sessionInfo()
 <!-- TODO Need to complete this sections -->
 The robvis package provides functions to convert a risk-of-bias assessment summary table into a summary plot or a traffic-light plot, formatted based on the specific risk-of-bias assessment tool used.
 
-robvis currently contains templates for the following tools:
+### Templates
+
+`robvis` currently contains templates for the following tools:
 
 * ROB2
 * ROBINS-I
 * QUADAS-2
 * ROB1
+* General
+
+### Data expectations
 
 For the direction bias plots, the data expected by the tools is more comprehensive.
 
@@ -583,9 +593,9 @@ rob_summary(data = data_rob2, tool = "ROB2")
 ```
 
 <!----------------------------------------------------------------------------->
-(ref:robSummary-cap) __shortcap:__
+(ref:robSummary-cap) Illustration of a simple summary barplot created using the `data_rob` example risk-of-bias dataset shown in Table \@ef(tab:biasData-table) above. Note that this plot is unweighted and shows the _proportion of studies_ at each level of bias, but an option exists with `robvis` to create a barplot weighted by the _proportion of evidence_ at each level of bias. 
 
-(ref:robSummary-scap) shortcap
+(ref:robSummary-scap) Example risk-of-bias summary barplot
 
 ```{r robSummary, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:robSummary-cap)', out.width='80%', fig.scap='(ref:robSummary-scap)'}
 knitr::include_graphics(file.path("figures/appendix/robSummary.png"))
@@ -599,9 +609,9 @@ rob_traffic_light(data = data_rob2,
 ```
 
 <!----------------------------------------------------------------------------->
-(ref:robTraffic-cap) __shortcap:__
+(ref:robTraffic-cap) Illustration of a simple traffic light plot created using the `data_rob` example risk-of-bias dataset shown in Table \@ef(tab:biasData-table) above.
 
-(ref:robTraffic-scap) shortcap
+(ref:robTraffic-scap) Example risk-of-bias traffic-light plot
 
 ```{r robTraffic, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:robTraffic-cap)', out.width='80%', fig.scap='(ref:robTraffic-scap)'}
 knitr::include_graphics(file.path("figures/appendix/robTraffic.png"))
