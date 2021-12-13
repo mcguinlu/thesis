@@ -1,5 +1,5 @@
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- thesisOverview-table
+# ---- thesisOverview-table ----
 
 thesisOverview_table <- read.csv("data/background/thesisOverview.csv") %>%
   mutate("Exposure/ Intervention" = Exposure.Intervention) %>%
@@ -31,7 +31,7 @@ if(doc_type == "docx"){
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- robLevelsMapping-table
+# ---- robLevelsMapping-table ----
 
 robLevelsMapping_table <- rio::import("data/tri/rob_levels_mapping.csv") %T>%
   write.csv("data/table_words/rob_levels_mapping.csv")
@@ -54,7 +54,7 @@ if(doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- priorsAdd-table
+# ---- priorsAdd-table ----
 
 priors_add_table <- rio::import("data/tri/priors_bias_tab.csv") %T>%
   write.csv("data/table_words/priors_add.csv")
@@ -79,7 +79,7 @@ if (doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- singleIndirect-table
+# ---- singleIndirect-table ----
 
 singleIndirect_table <- rio::import(here::here("data/tri/single_indirectness.csv")) %T>%
   write.csv("data/table_words/single_indirectness.csv")
@@ -105,7 +105,7 @@ if (doc_type == "docx") {
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- priorsIndirect-table
+# ---- priorsIndirect-table ----
 
 priors_ind_table <- rio::import("data/tri/priors_indirect_tab.csv") %T>%
   write.csv("data/table_words/priors_indirect.csv")
@@ -128,9 +128,10 @@ if (doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- ldlAdBIAMA 
+# ---- ldlAdBIAMA ----
 
 # read in values from spreadsheet
+# TODO replace serious with high
 
 bias_values_scenario1 <- rio::import("data/tri/bias_values_scenario1.csv") %>%
   rename_with(~paste0("bias_",.), matches("_"))
@@ -382,7 +383,7 @@ dev.off()
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- tgVadBIAMA
+# ---- tgVadBIAMA ----
 # 
 vad_set <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
                        which = 2) %>% 
@@ -590,7 +591,7 @@ dev.off()
 
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- turnerValidation 
+# ---- turnerValidation ----
 
 # Validate formula using Turner data
 turner <- rio::import("turner_bias/propbias.dta") %>%
@@ -610,7 +611,7 @@ model <- metafor::rma.uni(yi = yi_adj,
 metafor::forest(model, showweights = TRUE)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- exampleDirectionSetup
+# ---- exampleDirectionSetup ----
 
 try(dev.off())
 
