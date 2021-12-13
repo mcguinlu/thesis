@@ -463,7 +463,7 @@ if(doc_type == "docx") {
       threeparttable = TRUE,
       general_title = "",
       general = paste(
-        "Values shown are N (%) unless otherwise stated.\\\\newline",
+        "Values shown are N (Percentage) unless otherwise stated.\\\\newline",
         "\\\\textbf{Key:}",
         "Complete - No missing values;",
         "X - Variable not recorded/available in this cohort;",
@@ -497,7 +497,7 @@ if(doc_type == "docx") {
     row_spec(0, bold = TRUE) %>%
     column_spec(column = 1, width = paste0(4,"em")) %>%
     column_spec(column = 2:6, width = paste0(6.9,"em")) %>%
-    row_spec(nrow(ipdDementiaDef_table) - 1, hline_after = TRUE) %>%
+    row_spec(2:nrow(ipdDementiaDef_table) - 1, hline_after = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position"))
 }
 
@@ -794,3 +794,51 @@ ggsave(
   height = 14,
   units = "cm"
 )
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- prismaTab-table ----
+
+prismaTab_table <- rio::import(here::here("data/appendix/prisma.csv"))
+colnames(prismaTab_table)[4] <- "Location"
+rownames(prismaTab_table) <- NULL
+prismaTab_table[is.na(prismaTab_table)] <- ""
+
+if(doc_type == "docx"){
+apply_flextable(prismaTab_table,caption = "(ref:prismaTab-caption)")
+}else{
+
+  prismaTab_table %>%
+    knitr::kable(
+      format = "latex",
+      caption = "(ref:prismaTab-caption)",
+      caption.short = "(ref:prismaTab-scaption)",
+      booktabs = TRUE,
+      longtable = TRUE,
+      linesep = "\\addlinespace",
+      align = "lcll",
+      col.names = c(
+        "Topic",
+        "No.",
+        "Item",
+        "Location"
+      )
+    ) %>%
+    row_spec(-1, hline_after = FALSE) %>%
+    row_spec(
+      0,
+      bold = TRUE,
+      background = "#63639A",
+      color = "white",
+      extra_latex_after = "\\arrayrulecolor{white}"
+    ) %>%
+    row_spec(2:nrow(prismaTab_table) - 1, hline_after = TRUE) %>%
+    row_spec(c(1, 3, 5, 8, 26, 38, 43), background = "#FFFFCC", bold = TRUE) %>%
+    column_spec(1, width = "8.45em") %>%
+    column_spec(2, width = "2.1em") %>%
+    column_spec(3, width = "13.5em") %>%
+    column_spec(4, width = "7.45em") %>%
+    kable_styling(latex_options = c("HOLD_position","repeat_header"))
+  
+}
+
