@@ -832,6 +832,9 @@ Thirdly, as discussed at length in the section above, in contrast to other avail
 
 #### Limitations
 
+<!-- TODO Consider mentioning that the date of the review is a limitation, and forward refer to the section in the Discussion that considers two new studies -->
+
+
 The primary limitation of this review is that several included studies used data from EHR databases, which come with serious concerns regarding validity.[@hsieh2019; @mcguinness2019validity; @wilkinson2018] Relatedly, several studies which made use of electronic health record databases did not report the specific code lists used, potentially introducing substantial heterogeneity into the analysis. An empirical example of the effect of differing EHR code lists is presented as part of the analysis in Chapter \@ref(cprd-analysis-heading) (see Section \@ref(comparing-codelists)).
 
 In addition, the fact that only a sample of records were dual screened at the title/abstract and full-text stages is a potential limitation, as there is a chance that some eligible records could have been excluded. However,  evidence from assessments of inter- and intra-rater reliability indicate that this is not a major concern.

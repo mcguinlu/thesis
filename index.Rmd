@@ -17,7 +17,11 @@ acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.md"), collapse = '\n  ')`
 declaration: |
   `r paste(readLines("front-and-back-matter/_declaration.Rmd"), collapse = '\n  ')`
-dedication: For Brendan McHugh
+dedication: |
+  For\newline
+  Brendan McHugh\newline
+  &\newline
+  Ciara Gardiner
 covidStatment: |
   `r paste(readLines("front-and-back-matter/_covidStatment.Rmd"), collapse = '\n  ')`
 abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with abbreviations

@@ -1054,6 +1054,11 @@ rob_to_long <- function(data){
 
 append_values_bias <- function(data, values, common = T) {
   
+  values <- values %>%
+    janitor::clean_names() %>%
+    mutate(across(starts_with("bias_"), as.double)) %>%
+    mutate(across(c(domain,j), stringr::str_to_lower))
+  
   # Define criteria on which to join with values#
   # If common = T, means that the values of Serious/Moderate are consistent across domains
   if (common == T) {
@@ -1068,6 +1073,7 @@ append_values_bias <- function(data, values, common = T) {
   }
   
   data %>%
+    janitor::clean_names() %>%
     # Convert to long format
     rob_to_long() %>%
     

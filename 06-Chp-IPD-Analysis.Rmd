@@ -68,7 +68,7 @@ The reasons for the low response rate to requests for data are explored in this 
 Individual participant data (IPD) meta-analyses are considered to be the gold standard form of evidence synthesis, allowing for the application of a common selection model and analytical approach across all identified cohorts.[@riley2010] They are particularly useful when investigating the impact of participant-level characteristics, something that is not possible with aggregate data unless the results are stratified by the characteristic of interest.[@riley2010;@thompson2005] Knowledge of which groups a treatment will benefit most (or harm least) is a core aim of the move towards personalised medicine.[@riley2020;@hingorani2013]
 IPD analyses also offer a mechanism by which previously unanalysed datasets can be incorporated into an analysis, thus expanding the evidence base for a particular research question.
 
-Previous work has suggested a difference in the effect of lipids on dementia risk based on participant age and sex,[@ancelin2013; @mielke2010] though the systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading) did not identify strong evidence for an effect of sex or age at lipid measurement on the relationship between lipids and dementia. However, the number of included studies in the lipid fraction meta-analyses was small, due to both the relatively small number of studies reporting on the lipids exposure and the poor reporting of summary statistics of participant characteristics in those that did. Additionally, best practice guidance recommends against basing the decision to perform an IPD meta-analysis on the between-study heterogeneity in a summary data meta-analysis, as similar distributions of participant covariates across studies may mask a true effect.[@riley2020]
+Previous work has suggested a difference in the effect of lipids on dementia risk based on participant age and sex.[@ancelin2013; @mielke2010] However, the systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading) did not identify strong evidence for an effect of sex or age at lipid measurement on the relationship between lipids and dementia. The number of included studies in the lipid fraction meta-analyses was small, due to both the relatively small number of studies reporting on the lipids exposure and the poor reporting of summary statistics of participant characteristics in those that did. Additionally, best practice guidance recommends against basing the decision to perform an IPD meta-analysis on the between-study heterogeneity in a summary data meta-analysis, as similar distributions of participant covariates across studies may mask a true effect.[@riley2020]
 
 As such, the aims of this analysis are two fold: firstly, to perform an IPD meta-analysis across identified cohorts to examine the impact of participant age-at-measurement and sex on the relationship between lipids and dementia risk; and secondly, to expand the evidence base for the effect of lipids on dementia outcomes by obtaining estimates from previously unanalysed cohorts available via the Dementia Platform UK, a large consortium of dementia cohorts.
 
@@ -142,7 +142,7 @@ A range of additional variables were included in the analysis, intended to addre
 
 Missing data in this analysis was classified as either relating to missing values (a data on a variable of interest was available in a cohort, but some values were missing) or missing variables (a cohort did not collect data on a variable of interest). Variables with missing values were identified, and 20 imputed datasets were created.[@sterne2009] Imputation was performed using the MICE (Multiple Imputation by Chained Equations) using the `mice` package in R.
 
-Missing variables were originally intended to be addressed using a previously published method.[@fibrinogenstudiescollaboration2009] Here, the correlation between the fully-adjusted and partially-adjusted estimate in cohorts with the full set of covariates is used to estimate the fully-adjusted effect in those cohorts missing covariates. However, this method requires several large cohorts to contain the full set of covariates, a condition this analysis failed to meet given the very low response rate. As such, two other common approaches were employed.[@fibrinogenstudiescollaboration2009] In the primary analysis, all cohorts were adjusted for the set of common covariates across cohorts (Model 1: age, sex, smoking, alcohol, diabetes). As a sensitivity analysis, cohorts with the full complement of covariates (Whitehall II and EPIC) were analysed using a maximally-adjusted model (Model 2: Model 1, further adjusted for education, ethnicity, prevalent ischemic heart disease (IHD) and BMI). Results between the common-set-adjusted (Model 1) and maximally-adjusted (Model 2) models were then compared.
+Missing variables were originally intended to be addressed using a previously published method.[@fibrinogenstudiescollaboration2009] Here, the correlation between the fully-adjusted and partially-adjusted estimate in cohorts with the full set of covariates is used to estimate the fully-adjusted effect in those cohorts missing covariates. However, this method requires several large cohorts to contain the full set of covariates, a condition this analysis failed to meet given the very low response rate. As such, two other common approaches were employed.[@fibrinogenstudiescollaboration2009] In the primary analysis, all cohorts were adjusted for the set of common covariates across cohorts (Model 1: age, sex, smoking, alcohol, education, diabetes). As a sensitivity analysis, cohorts with the full complement of covariates (Whitehall II and EPIC) were analysed using a maximally-adjusted model (Model 2: Model 1, further adjusted for ethnicity, prevalent ischemic heart disease and BMI). Results between the common-set-adjusted (Model 1) and maximally-adjusted (Model 2) models were then compared.
 
 <!-- TODO May need to rethink this, as introducing model based on missing data which isn't fully discussed until later. -->
 
@@ -157,6 +157,9 @@ Results were expressed as odds ratios (OR). Examination of the data available vi
 <!-- REVIEW ORs - the one issue here may be the length of follow-up. Was it roughly equal across cohorts such that the ORs are comparable? -->
 
 A two-stage IPD approach was employed for a number of reasons. Firstly, and most importantly, a two-stage approach allows for siloed data, enabling researchers who are unwilling/unable to provide their data to btain the effect estimates themselves, following a specified analysis plan, and share these with the IPD team.[@riley2010] Secondly, it allows for the production of forest plots of within-cohort estimates, something which is useful for the triangulation exercise in Chapter \@ref(tri-heading). Finally, a two-stage approach is simpler to model, as it uses standard well-documented summary effect estimate meta-analysis techniques, and automatically accounts for methodological issues such as clustering within cohorts[@abo-zaid2013] and the potential for ecological bias.[@burke2017]
+
+<!-- REVIEW You need to justify why RE and FE for main and interaction terms -->
+
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -225,7 +228,7 @@ The three data sources used in this analysis are described in detail in the foll
 
 #### Caerphilly Prospective Study
 
-The Caerphilly Prospective Study (CaPS) is a longitudinal study of men in South Wales, UK.[@zotero-15398;@elwood2013] Blood lipids (TC, LDL-c, HDL-c and TG) were measured at baseline in 1979-1983, and from Phase III (1989-1993) onwards, a battery of cognitive tests were introduced. A dementia was derived using data obtained during Phase V (2002-2004), giving between 19-25 years of follow-up. The cohort contains data on dementia outcomes sub-classified as vascular and non-vascular dementia. Data was available for all covariates of interest except for education, BMI and _Apo_$\mathcal{E}4$ status.
+The Caerphilly Prospective Study (CaPS) is a longitudinal study of men in South Wales, UK.[@zotero-15398;@elwood2013] Blood lipids (TC, LDL-c, HDL-c and TG) were measured at baseline in 1979-1983, and from Phase III (1989-1993) onwards, a battery of cognitive tests were introduced. A dementia was derived using data obtained during Phase V (2002-2004), giving between 19-25 years of follow-up. The cohort contains data on dementia outcomes sub-classified as vascular and non-vascular dementia. Data was available for all covariates of interest except for ethnicity, BMI, prevalent IHD and _Apo_$\mathcal{E}4$ status. While the CaPS study collected data on height/weight (from which BMI can be calculated as $\frac{weight}{height^2}$) and prevalent heart disease, these were not available from the DPUK version of the CaPS data.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -298,7 +301,7 @@ knitr::include_graphics(file.path("figures/ipd/main_vasdem.png"))
 ```
 <!----------------------------------------------------------------------------->
 
-Estimates from the common-set-adjusted model (Model 1: adjusted for age, sex, smoking, alcohol, and diabetes) were comparable to the fully-adjusted model (Model 2: Model 1 further adjusted for ethnicity, prevalent ischemic heart disease, education and BMI) for the effect of lipids on all-cause dementia in cohorts reporting all covariates of interest (Figure \@ref(fig:ipdModelComparison)).
+Estimates from the common-set-adjusted model (Model 1: adjusted for age, sex, smoking, alcohol, education and diabetes) were comparable to the fully-adjusted model (Model 2: Model 1 further adjusted for ethnicity, prevalent ischemic heart disease, and BMI) for the effect of lipids on all-cause dementia in cohorts reporting all covariates of interest (Figure \@ref(fig:ipdModelComparison)).
 
 <!----------------------------------------------------------------------------->
 (ref:ipdModelComparison-cap) Comparison of results from the common-set-adjusted (Model 1) and fully-adjusted (Model 2) analyses for the all-cause dementia outcome.
@@ -321,7 +324,7 @@ The maximally-adjusted model (Model 2) could have been employed in the analysis 
 For all-cause dementia, there was no evidence of an interaction of lipid levels with either age group or sex (Figures \@ref(fig:interactionDementiaAge) & \@ref(fig:interactionDementiaSex)). Note that for the sex interaction analysis, the CaPS cohort was excluded as it contains only a single sex and therefore provides no information on exposure-sex interaction.
 
 <!----------------------------------------------------------------------------->
-(ref:interactionDementiaAge-cap)  __Meta-analysis of age-lipid interaction terms for all-cause dementia__ - Age was grouped into 5-year age bands, and the effect estimatse presented represent the OR per 1-step increase in age group. Estimates were obtained using the common-set-adjusted model (Model 1: age, sex, smoking, alcohol, diabetes).
+(ref:interactionDementiaAge-cap)  __Meta-analysis of age-lipid interaction terms for all-cause dementia__ - Age was grouped into 5-year age bands, and the effect estimatse presented represent the OR per 1-step increase in age group. Estimates were obtained using the common-set-adjusted model (Model 1: age, sex, smoking, alcohol, education, diabetes).
 
 (ref:interactionDementiaAge-scap) Meta-analysis of age-lipid interaction terms for all-cause dementia
 
@@ -331,7 +334,7 @@ knitr::include_graphics(file.path("figures/ipd/interaction_age_dementia.png"))
 <!----------------------------------------------------------------------------->
 
 <!----------------------------------------------------------------------------->
-(ref:interactionDementiaSex-cap) __Meta-analysis of sex-lipid interaction terms for all-cause dementia__ Estimates were obtained using the common-set-adjusted model (Model 1: age, sex, smoking, alcohol, diabetes) and refer to the effect of male gender on the lipid/all-cause dementia association.
+(ref:interactionDementiaSex-cap) __Meta-analysis of sex-lipid interaction terms for all-cause dementia__ Estimates were obtained using the common-set-adjusted model (Model 1: age, sex, smoking, alcohol, education, diabetes) and refer to the effect of male gender on the lipid/all-cause dementia association.
 
 (ref:interactionDementiaSex-scap) Meta-analysis of sex-lipid interaction terms for all-cause dementia
 
@@ -346,7 +349,7 @@ knitr::include_graphics(file.path("figures/ipd/interaction_sex_dementia.png"))
 For the consideration of vascular dementia, I was only able to explore the effect of age, as only the CaPS and Whitehall cohorts contained details on vascular dementia as an outcome. As discussed above, the CaPS data contained a single sex excluding it from a exposure-sex analysis, leaving Whitehall II as the sole eligible study.
 
 <!----------------------------------------------------------------------------->
-(ref:interactionVascularAge-cap) __Meta-analysis of age-lipid interaction terms for vascular dementia__ - Age was grouped into 5-year age bands, and the effect estimatse presented represent the OR per 1-step increase in age group. Estimates were obtained using the common-set-adjusted model (Model 1: age, sex, smoking, alcohol, diabetes).
+(ref:interactionVascularAge-cap) __Meta-analysis of age-lipid interaction terms for vascular dementia__ - Age was grouped into 5-year age bands, and the effect estimatse presented represent the OR per 1-step increase in age group. Estimates were obtained using the common-set-adjusted model (Model 1: age, sex, smoking, alcohol, education, diabetes).
 
 (ref:interactionVascularAge-scap) Meta-analysis of age-lipid interaction terms for vascular dementia 
 

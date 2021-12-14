@@ -1,7 +1,18 @@
+- [x] Revisions from Yoav
+- [x] Revisions from parents
+- [x] Broken formatting
+- [x] Page numbering
+- [ ] Broken references
+- [ ] Broken cross references
+- [ ] Revisions from Ciara
+- [ ] Table short captions
+- [ ] Fix acknowledgements
+
 - [ ] CPRD analysis with minimum follow-up
 - [ ] The triangulation results should be standardised before calculating direction of effect, because other-wise it is pulling it in the wrong direction
 - [ ] Add HMGCR MR to triangulation
 - [ ] Figure captions/table captions
+- [ ] Rewrite acknowledgements
 - [ ] Fix table in systematic review - see "IMPORTANT" notes
 - [ ] Double check risk of bias data
 - [ ] Check effect estimate labels for systematic review

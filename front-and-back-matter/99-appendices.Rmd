@@ -1,3 +1,8 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 `r if(knitr:::is_latex_output()) '\\startappendices'`
 
 `r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
@@ -332,9 +337,9 @@ Changes include:
 
 ### Minimum follow-up period {#cprd-min-fu}
 
-Enforcing a minimum period of follow-up is normally used to reduce the risk of reverse causation in an analysis by excluding events occurring within a certain time-frame post-exposure. With respect to dementia outcomes, which have a long prodomal period, enforcing a minimum period of follow-up can add biological validity to an analysis. Incident cases of dementia that occur within a few years of starting a drug may already be beyond effective preventive treatment at the time the drug was started, and so restricting the analysis to those with longer exposure to treatment may provide a more reliable estimate of the effect.
+Enforcing a minimum period of follow-up is normally used to reduce the risk of reverse causation in an analysis by excluding events occurring within a certain time-frame post-exposure. With respect to dementia outcomes, which have a long prodromal period, enforcing a minimum period of follow-up can add biological validity to an analysis. Incident cases of dementia that occur within a few years of starting a drug may already be beyond effective preventive treatment at the time the drug was started, and so restricting the analysis to those with longer exposure to treatment may provide a more reliable estimate of the effect.
 
-Panel A of Figure \@ref(fig:minFU) describes a standard analysis of an exposure with a minimum enforced follow-up period (in this case, 10 years). Participants enter the cohort and are classified at that point as either exposed or unexposed, for example, on the basis of a total cholesterol measurement. Participants are followed-up over time, but events occuring before the minimum period of follow-up are discarded.
+Panel A of Figure \@ref(fig:minFU) describes a standard analysis of an exposure with a minimum enforced follow-up period (in this case, 10 years). Participants enter the cohort and are classified at that point as either exposed or unexposed, for example, on the basis of a total cholesterol measurement. Participants are followed-up over time, but events occurring before the minimum period of follow-up are discarded.
 
 <!----------------------------------------------------------------------------->
 ```{r minFollowUp, include = FALSE}

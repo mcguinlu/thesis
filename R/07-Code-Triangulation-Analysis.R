@@ -4,8 +4,8 @@
 thesisOverview_table <- read.csv("data/background/thesisOverview.csv") %>%
   mutate("Exposure/ Intervention" = Exposure.Intervention) %>%
   mutate("Research Question" = Research.Question) %>%
-  mutate("Contibution to evidence synthesis framework" = Contribution) %>%
-  select("Chapter","Research Question","Exposure/ Intervention","Outcome","Contibution to evidence synthesis framework") %T>%
+  mutate("Contribution to evidence synthesis framework" = Contribution) %>%
+  select("Chapter","Research Question","Exposure/ Intervention","Outcome","Contribution to evidence synthesis framework") %T>%
   write.csv("data/table_words/thesisOverview.csv") 
 
 if(doc_type == "docx"){
@@ -593,7 +593,24 @@ dev.off()
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- turnerValidation ----
 
-# Validate formula using Turner data
+# Validate additive biases using Turner data for single assessor
+bias_values <-
+  read.csv("data/appendix/turner_validation_bias_values.csv") %>%
+  rename_with( ~ paste0("bias_", .), matches("_"))
+
+dat_rob <- rio::import("data/appendix/turner_validation_rob.csv")
+
+dat_rob_long <- dat_rob %>%
+  append_values_bias(bias_values, common = F)
+
+i_add <- dat_rob_long %>%
+  group_by(result_id) %>%
+  summarise(addimn = sum(bias_m_add),
+            addivar = sum(bias_v_add)) %>%
+  select(result_id, starts_with("add"))
+
+
+# Validate BIAMA formula using all Turner data
 turner <- rio::import("turner_bias/propbias.dta") %>%
   arrange(study, assessor) %>%
   left_join(rio::import("turner_bias/addbias.dta")) %>%
@@ -602,7 +619,6 @@ turner <- rio::import("turner_bias/propbias.dta") %>%
   rename("yi" = estlogor,
          "vi" = varlogor) %>%
   calculate_adjusted_estimates()  
-
 
 model <- metafor::rma.uni(yi = yi_adj,
                           vi = vi_adj,

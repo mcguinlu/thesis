@@ -37,8 +37,10 @@ You must submit two electronic copies of your dissertation separately to cover:
     - [ ] ApoE4 is fancy
     - [ ] metadata versus meta-data
     - [ ] fraction vs faction
+    - [ ] prodromal vs prodomal
+    - [ ] hypercholesteromemia spelling
 - [ ] Check all codeblocks with `eval = FALSE` to make sure they are still valid
-- [ ] Do search for everything in parentheses "(...)" and make sure all acronyms are in abbreviations list 
+- [ ] Do search for everything in parentheses "(...)" and make sure all acronyms are in abbreviations list
 - [ ] Check short captions for tables
 - [ ] Check short captions for figures
 - [ ] Double check citations, particularly of handbook
@@ -56,7 +58,6 @@ You must submit two electronic copies of your dissertation separately to cover:
 - [ ] Check abstract is <300 words
 - [ ] ensure word count is showing
 - [ ] try and -> try to
-- [ ] hypercholesteromemia spelling
 - [ ] search `<!--` for comments and ensure nothing untoward
 - [ ] Search for data and check that using singular
 

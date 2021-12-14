@@ -269,8 +269,8 @@ graphics::text(-4, 11, pos=4, "HDL-c", cex=1,font=2)
 graphics::text(-4, 17, pos=4, "LDL-c", cex=1,font=2)
 graphics::text(-4, 23, pos=4, "Total cholesterol", cex=1,font=2)
 
-graphics::text(-4, -.5, pos=4, "Model 1: Age, sex, smoking, alcohol and diabetes", cex=0.9, font =2)
-graphics::text(-4, -1.1, pos=4, "Model 2: Model 1 + BMI, ethnicity, education and presence of vascular disease", cex=0.9, font = 2)
+graphics::text(-4, -.5, pos=4, "Model 1: Age, sex, smoking, alcohol, education and diabetes", cex=0.9, font =2)
+graphics::text(-4, -1.1, pos=4, "Model 2: Model 1 + BMI, ethnicity, and prevalent ischemic heart disease", cex=0.9, font = 2)
 
 dev.off()
 

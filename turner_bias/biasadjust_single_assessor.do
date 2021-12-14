@@ -2,12 +2,11 @@
 * Adjusted results are obtained first with allowance for additive biases only, and then with allowance for additive and proportional biases.
 * Performs bias-adjusted meta-analyses
 
-
 clear
 set more off
 
 * Merge proportional and additive bias data files
-use propbias.dta
+use propbias.dta, clear
 
 sort study assessor
 merge study assessor using addbias.dta

@@ -230,7 +230,7 @@
     { \huge {\bfseries {\@title}} \par}
 {\large \vspace*{20mm} {\crest \par} \vspace*{25mm}}
     {{\Large \@author} \par}
-{\vspace*{15mm}
+{\vspace*{13mm}
     {{\submittedtext} \par}
 \vspace*{1ex}
     {\it {\@degree} \par}
