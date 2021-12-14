@@ -2,13 +2,13 @@
 bibliography: bibliography/references.bib
 csl: bibliography/nature.csl
 output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
   bookdown::word_document2: 
       toc: false
       toc_depth: 3
       reference_docx: templates/word-styles-reference-01.docx
       number_sections: false 
-  bookdown::pdf_document2:
-    template: templates/brief_template.tex
   bookdown::html_document2: default
 documentclass: book
 ---
@@ -28,7 +28,7 @@ Next on my list of features to be specially considered I would place the consist
 
 <!-- Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated. [@guyatt2011] -->
 
-# Aetiological triangulation across new and existing evidence sources {#tri-heading}
+# Aetiological triangulation across new and existing evidence sources: a qualitative and quantitative approach {#tri-heading}
 
 &nbsp;
 
@@ -286,7 +286,7 @@ In contrast, for proportional biases, whether the estimate should be increased o
  
 (ref:exampleDirection-cap) __Calculating the absolute direction of biases, based on bias type__ - For additive biases, the direction is consistent regardless of the position of the effect estimate relative to the null - bias "favouring the comparator" will always pull the effect estimate to the right and can induce a change from a protective to harmful effect. In contrast, the position of the effect estimate is accounted for when determining the absolute direction of proportional biases, defined as towards or away from the null. 
 
-(ref:exampleDirection-scap) Illustration of calculating the absolute direction of biases, based on bias type
+(ref:exampleDirection-scap) Calculating the absolute direction of biases, based on bias type
 
 ```{r exampleDirection, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:exampleDirection-cap)', out.width='100%', fig.scap='(ref:exampleDirection-scap)'}
 
@@ -305,7 +305,7 @@ To aid with the quantitative triangulation exercise, I created a new method to v
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-####	Assign modifying values to risk/direction of bias
+####	Assign modifying values to risk/direction of bias {#tri-bias-assign}
 <!-- TODO Note that they are on the log scale, and that this requires the results to be on the log scale too! - Lines 45-50 of addbias -->
 
 Following definition of the extent, type and direction of bias in each domain, I assigned a prior distribution on the log scale to each combination. For example, a "high" additive bias in $j$th domain of the $i$th study is defined as $\delta_{i,j}^{\mathrm{High}}$ and uncertainty around this estimate is given by a distribution with mean $\mu$ and variance $\sigma^{2}$:

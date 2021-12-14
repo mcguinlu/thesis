@@ -81,7 +81,7 @@ Many cognitive assessment tools exist for the purpose of informing a diagnoses o
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:diagnosticCriteria-caption) Overview of the DSM-5 criteria for dementia and vascular dementia.[@edition2013]
+(ref:diagnosticCriteria-caption) __Overview of the DSM-5 criteria for dementia and vascular dementia.__ - These published criteria[@edition2013] are commonly used to defined dementia outcomes. <!-- TODO Need to finish this sentence and explan criteria better -->
 
 (ref:diagnosticCriteria-scaption) Overview of the DSM-5 criteria for dementia and vascular dementia.
 
@@ -146,7 +146,7 @@ Elevated LDL-c in the bloodstream, a condition also known as hypercholesterolaem
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-(ref:lipidLevels-caption) Classification of blood lipid levels according to the National Cholesterol Education Program guidelines.[@national2002third]
+(ref:lipidLevels-caption) __Classification of blood lipid levels__ - Category cut-offs for different lipid fractions according to the National Cholesterol Education Program guidelines.[@national2002third]
 
 (ref:lipidLevels-scaption) Classification of blood lipid levels
 
@@ -176,7 +176,7 @@ Several statin treatments have been widely available for some time (see Table \@
 
 <!----------------------------------------------------------------------------->
 
-(ref:statinOverview-caption) Overview of commonly-prescribed statins, summarising their approval date (US), properties and lipid-lowering effect.
+(ref:statinOverview-caption) __Overview of common statins__ -  There are several commonly-prescribed statins used to treat hypercholesterolemia. Their approval date (US), properties and lipid-lowering effect are described here.
 
 (ref:statinOverview-scaption) Overview of common statins
 
@@ -203,7 +203,7 @@ Other therapies targeting triglycerides exist, including nicotinic acids[@mckenn
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:lipidTreatments-caption) Summary of available treatments for hyperlipidaemia.
+(ref:lipidTreatments-caption) __Summary of available treatments for hyperlipidaemia.__
 
 ```{r lipidTreatments-table, message=FALSE, results="asis", echo = FALSE}
 ```

@@ -19,7 +19,7 @@ When dealing with human beings controlled experiments frequently prove to be imp
 ```
 (ref:cprdquote) --- Harold F. Dorn, 1953 [@dorn1953]
 
-# Primary analysis of lipid-regulating agents and dementia outcomes {#cprd-analysis-heading}
+# Primary analysis of lipid-regulating agents and dementia outcomes in the CPRD {#cprd-analysis-heading}
 
 &nbsp;
 
@@ -93,7 +93,7 @@ To avoid the ambiguity of interpreting free-text clinical notes and to allow for
 &nbsp;
 
 <!--------------------------------------------------------------------------->
-(ref:readExample-caption) Example of CPRD Read code hierarchy, showing how "Dementia in Alzheimer’s disease with late onset" (_Eu001_) is nested under the top-level of "Mental disorders" (_Eu..._). Broad topics are specified using the initial two alpha-numeric characters of the Read code, while subsequent characters are used to define specific conditions and context.
+(ref:readExample-caption) __Example of CPRD Read code hierarchy__ - Broad topics are specified using the initial two alpha-numeric characters of the Read code, while subsequent characters are used to define specific conditions and context. The example shown illustrates how "Dementia in Alzheimer’s disease with late onset" (_Eu001_) is nested under the top-level of "Mental disorders" (_Eu..._). 
 
 (ref:readExample-scaption) Example of CPRD Read code hierarchy
 
@@ -180,9 +180,9 @@ A range of additional variables were included in the analysis. These were intend
 <!-- TODO May need to reword this table slightly as taken from Venexia walkers -->
 
 <!----------------------------------------------------------------------------->
-(ref:covariateDef-caption) Definition of covariates adjusted for in the full-adjusted model. The code lists used to define the majority of these covariates were originally created for use in a previously published analysis.[@walker2020] while others were built on or adapted from previous published work,[@khan2010; @taylor2016; @wright2017].
+(ref:covariateDef-caption) __Definitions of covariates adjusted for in the analysis__ - The code lists used to define the majority of these covariates were originally created for use in a previously published analysis.[@walker2020] while others were built on or adapted from previous published work,[@khan2010; @taylor2016; @wright2017].
 
-(ref:covariateDef-scaption) Covariates adjusted for.
+(ref:covariateDef-scaption) Definitions of covariates adjusted for in the analysis
 
 (ref:covariateDef-cell1) Charlson index implemented using Read code lists.[@khan2010] Code lists based on those by Taylor et al.[@taylor2016]
 
@@ -426,13 +426,14 @@ The number of events, time-at-risk and crude rates for each drug class, tabulate
 \blandscape
 
 <!----------------------------------------------------------------------------->
-(ref:followUp-caption) Summary of number of events, years at risk and crude rates per 100,000 participant-years-at-risk stratified by dementia outcome and drug class of interest.
+(ref:followUp-caption) __Crude rates, stratified by outcome and drug class of interest__ - The number of events, years at risk and crude rates per 100,000 participant-years-at-risk stratified by dementia outcome and drug class of interest are presented below.
 
-(ref:followUp-scaption) Crude rates, stratified by outcome and drug class of interest.
+(ref:followUp-scaption) Crude rates, stratified by outcome and drug class of interest
 
 ```{r followUp-table, message=FALSE, results="asis", echo = FALSE}
 ```
-(ref:cprdCharacteristics-caption) Patient characteristics by drug class. Summary statistics are presented as "% (N)" unless otherwise specified in the variable name.
+
+(ref:cprdCharacteristics-caption) __Patient characteristics by drug class__ - Summary statistics are presented as "% (N)" unless otherwise specified in the variable name.
 
 (ref:cprdCharacteristics-scaption) Patient characteristics by drug class
 
@@ -449,9 +450,9 @@ The distribution of baseline characteristics across the remaining seven drug cla
 The stopping, addition and switching of drug classes was common across all drug classes (Table \@ref(tab:cprdSSA-table)).
 
 &nbsp;<!----------------------------------------------------------------------->  
-(ref:cprdSSA-caption) Participants who stopped, switched or added treatments by initial treatment type.
+(ref:cprdSSA-caption) __Summary of treatment change__ - The number of participants who stopped, switched or added treatments was calculated, stratified by initial LRA type.
 
-(ref:cprdSSA-scaption) Participants who stopped, switched or added treatements by initial treatment type
+(ref:cprdSSA-scaption) Summary of treatment change
 
 ```{r cprdSSA-table, message=FALSE, results="asis", echo = FALSE}
 ```
@@ -614,7 +615,10 @@ On the assumption that this variation could be caused by changes in the frequenc
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:diagnosisType-caption) Frequency of diagnoses by grouped year of cohort entry
+<!-- TODO Check table caption -->
+
+
+(ref:diagnosisType-caption) __Frequency of diagnoses by grouped year of cohort entry__
 
 (ref:diagnosisType-scaption) Frequency of diagnoses by grouped year of cohort entry
 
@@ -648,7 +652,10 @@ In the cohort, statins with lipophilic properties were much more frequently pres
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-(ref:statinTypeTable-caption) Summary of statin properties (lipophilicity vs hydrophilicity) by grouped year of prescription.
+<!-- TODO Check this table title -->
+
+
+(ref:statinTypeTable-caption) __Summary of statin properties (lipophilicity vs hydrophilicity)__, by grouped year of prescription.
 
 (ref:statinTypeTable-scaption) Summary of statin properties (lipophilicity vs hydrophilicity).
 

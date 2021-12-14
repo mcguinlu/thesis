@@ -110,9 +110,9 @@ I systematically searched several electronic bibliographic databases to identify
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:searchOverview-caption) Summary of systematic search by topic. The full search strategy including all terms and the number of hits per term is included in Appendix \@ref(appendix-search-strategy).
+(ref:searchOverview-caption) __Summary of systematic search by topic__ - The full search strategy including all terms and the number of hits per term is included in Appendix \@ref(appendix-search-strategy).
 
-(ref:searchOverview-scaption) searchOverview
+(ref:searchOverview-scaption) Summary of systematic search by topic
 
 ```{r searchOverview-table, message=FALSE, results="asis", echo = FALSE}
 ```
@@ -153,7 +153,7 @@ Interpretion of agreement coefficients is a widely debated topic, and while arbi
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:gwet-caption) Suggested ranges to aid in interpretation of Gwet's AC1 inter-rater reliability metric[@mchugh2012]
+(ref:gwet-caption) __Ranges for Gwet's AC1__ - To aid the interpretation of inter-/intra-rater reliability, I used a published set of suggested categories for Gwet's AC1.[@mchugh2012]
 
 (ref:gwet-scaption) Ranges for Gwet's AC1
 
