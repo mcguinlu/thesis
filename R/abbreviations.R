@@ -31,10 +31,13 @@ writeLines(abbr_text, here::here("front-and-back-matter","abbreviations.tex"))
 
 source(here::here("R","helper.R"))
 
+words <- read.csv(here::here("data/words/words.csv")) %>% dplyr::pull(1) %>% dplyr::last() %>% comma()
+
 writeLines(glue::glue(
   paste(c("<!-- do not edit by hand - make changes to _acknowledgements.Rmd instead -->\n",
           readLines("front-and-back-matter/_acknowledgements.Rmd")),collapse = "\n"),
   github = github_thanks(),
+  words = words,
   .open = "<<",
   .close = ">>"
 ),
