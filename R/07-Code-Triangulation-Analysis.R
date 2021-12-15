@@ -158,6 +158,7 @@ dat_rob <- read.csv("data/tri/ldl_ad_rob.csv",
   # Standardise effect direction
   mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi))
 
+
 dat_ind <- read.csv("data/tri/ldl_rob_indirect.csv",
                     stringsAsFactors = F) %>%
   left_join(dat_gen) %>%
@@ -233,6 +234,15 @@ single_adjusted <- estimate(
   type = "",
   sep = "("
 )
+
+levels <- c("Low","Moderate","Serious","Critical")
+
+levels_type <- c("MR","NRSI","NRSE")
+
+dat_rob <- dat_rob %>%
+  mutate(type = factor(type, levels = levels_type)) %>%
+  mutate(overall = factor(overall, levels =levels)) %>%
+  arrange(desc(type), desc(overall), desc(author))
 
 dat_final_scenario1 <-
   prep_tri_data(dat_rob, dat_ind, bias_values_scenario1, indirect_values)
@@ -420,8 +430,7 @@ dat_rob_vad <- read.csv("data/tri/tg_vad_rob.csv",
   mutate(vi = sei^2) %>%
   select(result_id, author, type, yi, vi, everything())  %>%
   # Standardise effect direction
-  mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi)) %>%
-  arrange(desc(author))
+  mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi))
 
 dat_ind_vad <- read.csv("data/tri/tg_vad_indirect.csv",
                     stringsAsFactors = F) %>%
@@ -429,8 +438,7 @@ dat_ind_vad <- read.csv("data/tri/tg_vad_indirect.csv",
   mutate(vi = sei^2) %>%
   select(result_id, author, type, yi, vi, everything())  %>%
   # Standardise effect direction
-  mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi))  %>%
-  arrange(desc(author))
+  mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi))
 
 tg_vad_citations <- get_citations_per_analysis(dat_rob_vad)
 
@@ -451,6 +459,11 @@ forest_triangulation(dat_rob_vad,
                      title = "Triglycerides and VaD")
 
 dev.off()
+
+dat_rob_vad <- dat_rob_vad %>%
+  mutate(type = factor(type, levels = levels_type)) %>%
+  mutate(overall = factor(overall, levels =levels)) %>%
+  arrange(desc(type), desc(overall), desc(author))
 
 #Prep data and run meta-analyses
 dat_final_scenario1_vad <-

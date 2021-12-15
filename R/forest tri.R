@@ -11,11 +11,10 @@ levels <- c("Low","Moderate","Serious","Critical")
 
 levels_type <- c("MR","NRSI","NRSE")
   
-# TODO the ordering of ROB is not quite right!
 dat <- dat %>%
   mutate(type = factor(type, levels = levels_type)) %>%
   mutate(overall = factor(overall, levels =levels)) %>%
-  arrange(type, overall)
+  arrange(type, overall, author)
 
 dat[is.na(dat)] <- "None"
 
@@ -72,7 +71,6 @@ for (j in paste0("d",1:7)) {
     dat[i,paste0(j,"d")] <- paste0(dat[i,paste0(j,"d")],dat[i,paste0(j,"t")])
   }
 }
-
 
 x_pos <- seq(x_max, by = 0.45, length.out = 9 - 2)
 
