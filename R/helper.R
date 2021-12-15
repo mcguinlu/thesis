@@ -668,12 +668,9 @@ get_confidence_from_p <- function(est, p) {
   
   log_SE = abs(log_est / z)
   
-  list(lower = exp(log_est - 1.96 * log_SE),
-       upper = exp(log_est + 1.96 * log_SE)) %>%
-    tidy_nums() %>%
+  list(lower = round(exp(log_est - 1.96 * log_SE),2),
+       upper = round(exp(log_est + 1.96 * log_SE),2)) %>%
     return()
-  
-  
 }
 
 n_effect <- function(x, N = TRUE){
@@ -751,12 +748,18 @@ get_citations_per_analysis <- function(data){
 
 
 # Generate nice looking forest plots
-save_fp <- function(dat, design = "obs", preface = NULL, ...) {
+save_fp <- function(dat, design = "obs", preface = NULL, xlab = "Hazard ratio", ...) {
   # Don't perform meta-analysis if only one result
   
   if (nrow(dat) < 2) {
     return()
   }
+  
+  # Handle title
+  
+  if (any(grepl("\\*", dat$year))) {
+    xlab <- "Hazard ratio/Odds ratio"
+  }   
   
   dat_rob <-
     rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
@@ -770,11 +773,11 @@ save_fp <- function(dat, design = "obs", preface = NULL, ...) {
   if (design == "obs") {
     tool <- "ROBINS-I"
     dat_rob <-
-      select(dat_rob,-c(type,result, summary_of_biases, comments))
+      select(dat_rob,-c(type, result, summary_of_biases, comments))
   } else {
     tool <- "ROB2"
     dat_rob <-
-      select(dat_rob,-c(type,d6, d7, result, summary_of_biases, comments))
+      select(dat_rob,-c(type, d6, d7, result, summary_of_biases, comments))
     
   }
   
@@ -797,7 +800,7 @@ save_fp <- function(dat, design = "obs", preface = NULL, ...) {
     res = 100
   )
   
-  forest_strata_rob(dat, dat_rob, rob_tool = tool, sei = sei, ...)
+  forest_strata_rob(dat, dat_rob, rob_tool = tool, sei = sei, xlab = xlab, ...)
   
   
   dev.off()

@@ -7,6 +7,7 @@ forest_strata_rob <-
            title = NULL,
            legend = TRUE,
            legend_cex = 0.9,
+           xlab = "Hazard ratio",
            ...) {
     
 ### calculate log risk ratios and corresponding sampling variances (and use
@@ -17,19 +18,22 @@ if (rob_tool == "ROB2") {
 } else {
   levels <- rev(c("Low","Moderate","Serious","Critical"))
 } 
-  
-# TODO the ordering of ROB is not quite right!
-dat_rob <- dat_rob %>%
-  mutate(overall = factor(overall ,levels =levels)) %>%
-  arrange(overall)
-
+    
 if ("type" %in% colnames(dat_rob)) {
   dat_rob <- dat_rob %>%
     select(-type)
-}
+}  
 
-dat <- left_join(dat, dat_rob, by = c("result_id"= "result_id")) %>%
+dat_rob2 <- dat_rob    
+        
+# TODO the ordering of ROB is not quite right!
+dat_rob <- left_join(dat_rob, dat, by = c("result_id"= "result_id")) %>%
+  mutate(overall = factor(overall ,levels =levels)) %>%
   arrange(overall, desc(author))
+
+dat <- left_join(dat, dat_rob2, by = c("result_id"= "result_id")) %>%
+  mutate(overall = factor(overall ,levels =levels)) %>%
+  arrange(overall, desc(author)) 
 
 dat_rob_vec <- dat_rob %>%
   mutate(row_n = 1:n()) %>%
@@ -177,9 +181,21 @@ res$slab <- paste0("  ", res$slab)
 forest(res, xlim=c(x_min, new_x_lim), atransf=exp,
        cex=1.2, ylim=c(-1.5, y_max), rows=rows, textpos = textpos,
        mlab=mlabfun("RE Model for all studies", res),
-       header="Author(s) and Year", addpred = T,...)
+       header="Author(s) and Year", addpred = T,xlab=xlab,...)
 
 ### set font expansion factor (as in forest() above) and use a bold font
+
+
+if (any(grepl("\\*", dat$year))) {
+  dat <- dat %>%
+    mutate(measure = case_when(grepl("\\*", year) ~ "OR",
+                               T ~ "HR"))
+  graphics::text(rep(-2.25,length(rows)), rows, dat$measure, cex = 1.2 )
+
+  par(font = 2)
+  graphics::text(-2.25, y_max - 1, labels = "Measure", cex=1.2)
+  }
+
 op <- par(font=2)
 
 ### switch to bold italic font
@@ -188,7 +204,7 @@ par(font=2)
 ### add text for the subgroups
 for (i in 1:nrow(dat_rob_vec)) {
   
-text(x_min, dat_rob_vec$heading[i], pos=4, dat_rob_vec$overall[i], cex = 1.2)
+  text(x_min, dat_rob_vec$heading[i], pos=4, dat_rob_vec$overall[i], cex = 1.2)
 }
 
 ### set par back to the original settings

@@ -18,8 +18,6 @@ These particular systematic reviews [individual participant data reviews] remain
 ```
 (ref:intro-quote) --- Ian Chalmers, 1993[@chalmers1993]
 
-<!-- TODO Need quote for here -->
-
 # Individual participant data meta-analysis of blood lipid levels and dementia outcomes {#ipd-heading}
 
 &nbsp;
@@ -39,16 +37,11 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 ## Lay Summary {-}
 
-<!-- TODO Finish lay summary -->
-
-<!-- At the same time, I will write to authors to obtain anonymised data on individual participants. The data from each study will be combined using a technique known as individual participant data (IPD) meta-analysis. This will allow me to examine if the relationship between lipids in dementia depends on any patient characteristics (e.g. sex or age). -->
-
-Individual participant data (IPD) meta-analyses are a special type of meta-analysis
-in which the authors of relevant studies are contacted with requests to access the raw data on each participant in the original study. This approach is different to the meta-analyses presented in the previous chapter, which used published summary results.
+This chapter examines the raw data pertaining to participants in previously published, relevant studies, a method of analysis called Individual Participant Data (IPD) meta-analysis. It uses this data to investigate the relationship between lipid levels and dementia risk, which is unique from the previous chapter because that chapter used published results rather than individual-level data. 
 
 &nbsp;
 
-In order to examine the relationship between lipid levels and dementia risk, I applied for access to `r n_applied$total` unique data sources containing information on these variables. However, only a small proportion of these data sources (`r fmt_applied(n_accessed$total)`) provided the requested access.
+I applied for access to `r n_applied$total` unique data sources for this analysis, however, only a small proportion of these data sources (`r fmt_applied(n_accessed$total)`) provided the requested data.
 
 &nbsp;
 
@@ -398,7 +391,7 @@ More generally, systematically missing variables required a trade-off between in
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-#### Comparison with previous analysis
+#### Comparison with a previous analysis
 
 For the single cohort (Whitehall II), a previously published analysis was available. Tynkkynen _et al._[@tynkkynen2018] analysed the association of blood lipids and risk of all-cause dementia and Alzheimer's disease across several cohorts, including the Whitehall II cohort. In an attempt to validate my approach, I compared the results from the maximally-adjusted model (Model 2) in this analysis with those reported by Tynkkynen _et al._ for both all-cause dementia and Alzheimer's disease.
 
