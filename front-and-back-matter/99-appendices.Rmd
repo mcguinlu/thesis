@@ -150,9 +150,9 @@ An overview of the number of hits per database, in addition to the full line-by-
 &nbsp;<!----------------------------------------------------------------------->  
 
 
-(ref:searchHitsMedline-caption) __Medline search strategy__ - Full list of search terms used to identify relevant records in the Medline bibliographic database. The number of records returned per search term is also displayed. 
+(ref:searchHitsMedline-caption) __MEDLINE search strategy__ - Full list of search terms used to identify relevant records in the MEDLINE bibliographic database. The number of records returned per search term is also displayed. 
 
-(ref:searchHitsMedline-scaption) Medline search strategy
+(ref:searchHitsMedline-scaption) MEDLINE search strategy
 
 ```{r searchHitsMedline-table, message=FALSE, results="asis", echo = FALSE}
 ```
