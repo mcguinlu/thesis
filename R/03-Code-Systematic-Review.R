@@ -913,15 +913,18 @@ dat <-
   general_filters() %>%
   filter(
     exposure_category == "Drug",
-    measure == "HR",
+    measure %in% c("HR","OR"),
     exposure == "Statin - Ever",
     outcome %in% c("Dementia", "AD", "VaD"),
     primary == 1
   ) %>%
   mutate(author = case_when(!is.na(sex) ~ paste0(author, " (", sex, " only)"),
                             T ~ author)) %>%
+  mutate(year = case_when(measure == "OR" ~ paste0(as.character(year), "*"),
+                            T ~ as.character(year))) %>%
   rename("n" = number_exposed) %>%
   select(
+    study_id,
     result_id,
     author,
     year,
@@ -933,10 +936,17 @@ dat <-
     exposure,
     outcome,
     cases,
+    measure,
     point_estimate,
-    ends_with("_ci")
+    ends_with("_ci"),
+    p
   ) %>%
-  mutate(across(c(n, point_estimate, ends_with("_ci")), as.numeric)) %>%
+  mutate(across(c(n, point_estimate, ends_with("_ci"),p), as.numeric)) %>%
+  mutate(upper_ci = case_when(!is.na(p) == TRUE ~ get_confidence_from_p(point_estimate, p)$upper,
+                              T ~ upper_ci),
+         lower_ci = case_when(!is.na(p) == TRUE ~ get_confidence_from_p(point_estimate, p)$lower,
+                              T ~ lower_ci)
+         ) %>%
   mutate(yi = log(point_estimate),
          sei = (log(upper_ci) - log(lower_ci)) / 3.92) %>%
   arrange(author, year) %>%
@@ -950,6 +960,45 @@ purrr::map(dat,  ~ save_fp(.x, at = log(c(0.3, 1, 3)), xlab = "Hazard ratio"))
 
 obsStatins <- purrr::map(dat,  ~ meta_estimate(.x, type = "HR"))
 
+obsStatinsDemEgger <- round(regtest(dat$Dementia$yi, sei=dat$Dementia$sei)$pval,2)
+obsStatinsAdEgger <- round(regtest(dat$AD$yi, sei=dat$AD$sei)$pval,2)
+
+tmp <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+            which = 1) %>%
+  janitor::clean_names() %>%
+  select(study_id, age_at_baseline,female_percent)
+
+metaregStatinsAd <- dat$AD %>%
+  select(-age,-sex) %>%
+  left_join(tmp) %>%
+  mutate(female_percent = as.numeric(female_percent)) %>%
+  filter(!is.na(female_percent)) %>%
+  rma(
+    yi,
+    sei = sei,
+    data = .,
+    method = "DL",
+    mods = female_percent
+  ) %>%
+  .$pval %>%
+  last() %>%
+  round(2)
+
+metaregStatinsDem <- dat$Dementia %>%
+  select(-age,-sex) %>%
+  left_join(tmp) %>%
+  mutate(female_percent = as.numeric(female_percent)) %>%
+  filter(!is.na(female_percent)) %>%
+  rma(
+    yi,
+    sei = sei,
+    data = .,
+    method = "DL",
+    mods = female_percent
+  ) %>%
+  .$pval %>%
+  last() %>%
+  round(2)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- obsFibrates
@@ -1007,8 +1056,10 @@ dat <-
     is.na(direction),
     !grepl("Critical", comments),
     grepl("Hyperch", exposure_category),
+    # grepl(">", dose_range),
+    !(result_id %in% c("14346-3","14346-14")),
     point_estimate != "Missing",
-    # measure = "HR",
+    measure %in% c("HR","OR"),
     exposure != "TG",
     primary == 1
   ) %>%
@@ -1016,8 +1067,11 @@ dat <-
                             T ~ author)) %>%
   mutate(author = case_when(!is.na(age) ~ paste0(author, " (", age, ")"),
                             T ~ author)) %>%
+  mutate(year = case_when(measure == "OR" ~ paste0(as.character(year), "*"),
+                            T ~ as.character(year))) %>%
   rename("n" = number_exposed) %>%
   select(
+    study_id,
     result_id,
     author,
     year,
@@ -1030,9 +1084,14 @@ dat <-
     outcome,
     cases,
     point_estimate,
-    ends_with("_ci")
+    ends_with("_ci"),
+    p
   ) %>%
-  mutate(across(c(n, point_estimate, ends_with("_ci")), as.numeric)) %>%
+  mutate(across(c(n, point_estimate, ends_with("_ci"),p), as.numeric)) %>%
+  mutate(upper_ci = case_when(!is.na(p) == TRUE ~ get_confidence_from_p(point_estimate, p)$upper,
+                              T ~ upper_ci),
+         lower_ci = case_when(!is.na(p) == TRUE ~ get_confidence_from_p(point_estimate, p)$lower,
+                              T ~ lower_ci)) %>%
   mutate(yi = log(point_estimate),
          sei = (log(upper_ci) - log(lower_ci)) / 3.92) %>%
   arrange(author, year) %>%
@@ -1062,6 +1121,45 @@ purrr::map2(
 
 obsHyperchol <- purrr::map(dat,  ~ meta_estimate(.x, type = "HR"))
 
+obsHypercholDemEgger <- round(regtest(dat$Dementia$yi, sei=dat$Dementia$sei)$pval,2)
+obsHypercholAdEgger <- round(regtest(dat$AD$yi, sei=dat$AD$sei)$pval,2)
+
+tmp <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
+                   which = 1) %>%
+  janitor::clean_names() %>%
+  select(study_id, age_at_baseline,female_percent)
+
+metaregHypercholAd <- dat$AD %>%
+  select(-age,-sex) %>%
+  left_join(tmp) %>%
+  mutate(female_percent = as.numeric(female_percent)) %>%
+  filter(!is.na(female_percent)) %>%
+  rma(
+    yi,
+    sei = sei,
+    data = .,
+    method = "DL",
+    mods = female_percent
+  ) %>%
+  .$pval %>%
+  last() %>%
+  round(2)
+
+metaregHypercholDem <- dat$Dementia %>%
+  select(-age,-sex) %>%
+  left_join(tmp) %>%
+  mutate(female_percent = as.numeric(female_percent)) %>%
+  filter(!is.na(female_percent)) %>%
+  rma(
+    yi,
+    sei = sei,
+    data = .,
+    method = "DL",
+    mods = female_percent
+  ) %>%
+  .$pval %>%
+  last() %>%
+  round(2)
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- riskOfBias
@@ -1648,3 +1746,5 @@ dat <- dat %>%
   set_names(unlist(group_keys(dat)))
 
 obsStatinsOR <- purrr::map(dat,  ~ meta_estimate(.x, type = "HR"))
+
+
