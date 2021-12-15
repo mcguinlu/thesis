@@ -34,3 +34,7 @@ What are unique contributions above and beyond Becky's work? A priori assignment
 There are limitations to including preprints - discuss?
 
 Why not use a multivariate approach, given co-dependence of all lipid fractions?
+
+Eligible studies defined dementia outcomes using an objective process, incorporating recognised criteria. - What does this mean? I had originally stated that I would include only studies that defined dementia using specific criteria. This was hard to operationalise as often the criteria are not specified, but clear from other information (case note review) that clinicans likely followed these criteria.
+
+Say that HPS didn't report methods used, but likely to be eligible because of the process used to define dementia.

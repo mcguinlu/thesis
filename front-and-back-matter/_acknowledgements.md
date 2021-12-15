@@ -4,15 +4,13 @@
 
 __Professional__
 
-There are many people without whose input and support this work would have been severely diminised: 
+There are many people without whose input and support this work would have been severely diminished: 
 
 Thank Julian separately - 
 
 First and foremost, I would like to thank my supervisors - Julian Higgins, Yoav Ben-Shlomo, Liz Coulthard and George Davey-Smith - for all their support over the past three years. Thanks also to Rupert Payne and Emma Anderson for their engaging discussion and useful feedback during my annual progress reviews. Sharen Hockey-O'Keffe helped me at numerous points throughout my PhD, and I was very lucky to receive her support. Similarly, Mark Newbury of the Dementia Platform UK worked tirelessly to support my applications for data access - I am extremely grateful for his help and commitment in chasing cohort owners.
 
-Thanks must also go to those who contributed their time and energy to my research projects: Matthew Lee, Lena Schmidt, Alexandra McAleenan, and Vincent Cheng. Francesca Spiga kindly shared an advance copy of her review of tools to assess Mendelian randomisation studies, and Rebecca Turner shared her code for bias-/indirectness-adjusted meta-analyses that underpins the quantitative triangulation framework presented in Chapter \@ref(tri-heading). 
-
-A particular thank you to Emily Hennessy, with whom I co-wrote the guidance paper for preparing primary research for incorporation into systematic reviews. Similarly, thanks to Athena Sheppard for her support in assessing the impact of journal polices on open-data sharing.
+Thanks must also go to those who contributed their time and energy to my research projects: Athena Sheppard, Emily Hennessy, Matthew Lee, Lena Schmidt, Alexandra McAleenan, Vincent Cheng, Francesca Spiga, Sarah Dawson and Rebecca Turner.
 
 Thanks also to all those who raised issues or otherwise provided feedback on the open source tools built as part of this thesis:
 [&#x0040;abannachbrown](https://github.com/abannachbrown), [&#x0040;ailengt](https://github.com/ailengt), [&#x0040;AJFOWLER](https://github.com/AJFOWLER), [&#x0040;danielskatz](https://github.com/danielskatz), [&#x0040;earcanal](https://github.com/earcanal), [&#x0040;Jamesohare1](https://github.com/Jamesohare1), [&#x0040;jannisborn](https://github.com/jannisborn), [&#x0040;paulsharpeY](https://github.com/paulsharpeY), [&#x0040;rachaelmburke](https://github.com/rachaelmburke), [&#x0040;rdboyes](https://github.com/rdboyes), [&#x0040;seabbs](https://github.com/seabbs), [&#x0040;vanAmsterdam](https://github.com/vanAmsterdam), [&#x0040;yochannah](https://github.com/yochannah), and [&#x0040;zaddyzad](https://github.com/zaddyzad). A special mention must go to Randall Boyes and Alex J Fowler for their input on the `robvis` tool.

@@ -1143,7 +1143,7 @@ metaregHypercholAd <- dat$AD %>%
   ) %>%
   .$pval %>%
   last() %>%
-  round(2)
+  round(2) 
 
 metaregHypercholDem <- dat$Dementia %>%
   select(-age,-sex) %>%

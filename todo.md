@@ -1,28 +1,33 @@
-- [x] Revisions from Yoav
-- [x] Revisions from parents
-- [x] Broken formatting
-- [x] Page numbering
+- [ ] Revisions from Ciara
+- [ ] Fix acknowledgements
 - [ ] Broken references
 - [ ] Broken cross references
-- [ ] Revisions from Ciara
 - [ ] Table short captions
-- [ ] Fix acknowledgements
-
-- [ ] CPRD analysis with minimum follow-up
-- [ ] The triangulation results should be standardised before calculating direction of effect, because other-wise it is pulling it in the wrong direction
-- [ ] Add HMGCR MR to triangulation
+- [ ] Check diagnostic criteria for each NR study
+- [ ] Add funnel, meta-regression plots to the Appendix
+- [ ] Quotes for 4 and 8
+- [ ] Add HMGCR MR for AD to triangulation
 - [ ] Figure captions/table captions
 - [ ] Rewrite acknowledgements
 - [ ] Fix table in systematic review - see "IMPORTANT" notes
 - [ ] Double check risk of bias data
-- [ ] Check effect estimate labels for systematic review
-- [ ] Better interpretation of heteogeneity
+- [ ] Better interpretation of heterogeneity
 - [ ] Extract data for GWAS studies
-- [ ] Explain proportional biases better
+- [ ] Deal with acronyms: ensure that they are explained once per chapter so a bit more self-contained, and apply this approach across chapters.
+- [ ] Add cohort labels to the Tynkken studies in & MAKE SURE YOU ARE NOT DOUBLE COUNTING WHITEHALL FOR 
 - [ ] Basic paired forest plot functionality in robvis
 - [ ] Basic triangulate package
-- [ ] Reproduce single analysis from Turner using triangulate
-- [ ] Deal with acronyms: ensure that they are explained once per chapter so a bit more self-contained, and apply this approach across chapters.
+
+- [x] Check effect estimate labels for systematic review
+- [x] Revisions from Yoav
+- [x] Revisions from parents
+- [x] Broken formatting
+- [x] Page numbering
+- [x] Re-order images in triangulation
+- [x] The triangulation results should be standardised before calculating direction of effect, because other-wise it is pulling it in the wrong direction
+- [x] Explain proportional biases better
+- [x] Reproduce single analysis from Turner using triangulate
+- [x] CPRD analysis with minimum follow-up
 - [x] PRISMA Checklist
 - [x] Go through IPD chapter and ensure the list of covariates is correct!
 - [x] Fix estimates in IPD (IHD, imputed)

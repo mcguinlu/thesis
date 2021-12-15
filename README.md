@@ -39,6 +39,7 @@ You must submit two electronic copies of your dissertation separately to cover:
     - [ ] fraction vs faction
     - [ ] prodromal vs prodomal
     - [ ] hypercholesteromemia spelling
+    - [ ] through vs though
 - [ ] Check all codeblocks with `eval = FALSE` to make sure they are still valid
 - [ ] Do search for everything in parentheses "(...)" and make sure all acronyms are in abbreviations list
 - [ ] Check short captions for tables

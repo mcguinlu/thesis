@@ -48,15 +48,23 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ::: {.laybox data-latex=""}
 ## Lay summary {-}
 
-In epidemiology, triangulation is the practice of using multiple sources of evidence to provide more reliable answers to a research question. Different sources of evidence will have different limitations. If the result from each source points towards the same answer, this improves our confidence in the conclusion. Triangulation can either be _qualitative_ or _quantitative_. In qualitative triangulation, the results of each evidence source are discussed. In contrast, quantitative triangulation aims to combine the different results mathematically to obtain one single overall result.
+Sources of evidence often contain limitations which reduce our confidence in their results. To minimise the impact of these limitations, a method has been developed called triangulation which looks at multiple sources addressing the same question. If the result from each source points towards the same answer, this improves our confidence in the conclusion.
 
 &nbsp;
 
-In this chapter, I describe a new approach for quantitative triangulation, which combines two existing methods. For each source of evidence, I assess and account for robustness (do we believe the result, based on the methods/results of the study?) and relevance (does the source provide useful evidence relevant to the question we are interested in?). To showcase the new method, I apply it to two questions of interest. In each case, evidence from each of the previous chapters is combined to give an overall result.
+In this chapter, I describe a new approach for triangulation, which combines two existing methods. This approach is used to ensure that the results meet the following criteria:
+
+*	robustness - do we believe the result, based on the methods/results of the study?
+*	relevance - does the source provide useful evidence relevant to the question we are interested in?
+
+This triangulation approach is quantitative in nature, meaning I have tried to combine the results from different sources mathematically to obtain one single overall result. I have applied this method to assess the following relationships of interest:
+
+*	the effect of midlife LDL-c on Alsheimer’s disease
+*	the effect of midlife triglycerides on vascular dementia
 
 &nbsp;
 
-When combined in the new framework, the results produced by previous chapters did not support an effect of low-density lipoprotein cholesterol (LDL-c) on Alzheimer's disease nor an effect of triglycerides on vascular dementia. I close the chapter by suggesting future work to further develop the new methods presented.
+My method did not support the existence of an effect in either relationship of interest. I close the chapter by suggesting future work to further develop and improve upon the new method presented.
 
 :::
 
