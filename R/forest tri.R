@@ -2,6 +2,7 @@ forest_triangulation <-
   function(dat,
            sei = NULL,
            title = NULL,
+           legend_cex = 0.9,
            rob_levels = c("Low","Moderate","Serious","Critical"),
            type_levels = c("MR","NRSI","NRSE","RCT"),
            ...) {
@@ -20,7 +21,7 @@ if (("year" %in% colnames(dat)) == FALSE) {
 dat <- dat %>%
   mutate(type = factor(type, levels = type_levels)) %>%
   mutate(overall = factor(overall, levels = rob_levels)) %>%
-  arrange(type, overall, author)
+  arrange(type, overall, desc(author))
 
 dat[is.na(dat)] <- "None"
 
@@ -92,7 +93,7 @@ new_x_lim <- x_overall_pos + .5
 
 rob_colours <- robvis:::get_colour("ROBINS-I", "cochrane")
 
-judgements<-   c(  "Serious risk of bias",
+judgements<-   c(  "High risk of bias",
                    "Moderate risk of bias",
                    "Low risk of bias")
 cols <- c(
@@ -284,7 +285,7 @@ if(!is.null(title)){
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 
 graphics::legend(
-  legend_pos-1.3,
+  legend_pos-1.625,
   -1.7,
   c(judgements),
   pch = c(15,15,15,16,50),
@@ -293,21 +294,22 @@ graphics::legend(
   xpd = TRUE,
   title = parse(text = "bold(\"Extent of bias\")"),
   title.adj = 0.05,
-  cex = .8,
-  pt.cex = .7,
+  cex = legend_cex,
+  pt.cex = legend_cex-.1,
   y.intersp = 0.7
 )
 
 graphics::legend(
   legend_pos+0.95,
   -1.7,
-  c("\U2190  \U2192  Additive bias: ","  <   >   Proportional bias", "    ?     Unpredictable"),
+  c("\U2190  \U2192  Additive bias  ","  <   >   Proportional bias", "    ?     Unpredictable"),
   xjust = 0.5,
   xpd = TRUE,
   adj = 0.15,
   title = parse(text = "bold(\"Type of bias\")"),
   title.adj = 0.05,
-  cex = .8,
+  cex = legend_cex,
+  pt.cex = legend_cex,
   y.intersp = 0.7
   )
 

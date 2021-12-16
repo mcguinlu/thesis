@@ -830,12 +830,11 @@ apply_flextable(prismaTab_table,caption = "(ref:prismaTab-caption)")
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- funnelPlots
+# ---- funnelPlots ----
 
 img <- list()
 img$hyperDem <- readPNG(here::here("figures/sys-rev/funnel_hyper_dem.png"))
 img$statinsDem <- readPNG(here::here("figures/sys-rev/funnel_statins_dem.png"))
-img$hyperAD <- readPNG(here::here("figures/sys-rev/funnel_hyper_ad.png"))
 img$statinsAD <- readPNG(here::here("figures/sys-rev/funnel_statins_ad.png"))
 
 # setup plot
@@ -851,7 +850,7 @@ par(mai = rep(0, 4)) # no margins
 par(mfrow = c(2, 2))
 
 # do the plotting
-for (i in 1:4) {
+for (i in 1:3) {
   plot(
     NA,
     xlim = 0:1,
