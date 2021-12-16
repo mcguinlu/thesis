@@ -168,7 +168,7 @@ Prior to searching the metadata, users must first create a local copy of the dat
 
 &nbsp;
 
-```{r, eval = FALSE, class.source = "bg-danger"}
+```{r, eval = FALSE}
 # Get a copy of the database from the live medRxiv API endpoint
 mx_data <- mx_api_content()
 ```

@@ -160,7 +160,7 @@ Statins are a commonly prescribed method of lipid regulation.[@collins2016] Stat
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-(ref:statin-mechanisam-cap) Overivew of statins mechanism of action, inhibiting HMG-CoA reductase which controls the conversion of HMG-CoA to mevalonate, the rate-limiting step in cholesterol biosynthesis. 
+(ref:statin-mechanisam-cap) __Statin mechanism of action__ - Statins inhibit HMG-CoA reductase which controls the conversion of HMG-CoA to mevalonate. This conversion is the rate-limiting step in cholesterol biosynthesis, and so statin use can lower cholesterol levels. 
 
 (ref:statin-mechanisam-scap) Statin mechanism of action
 
@@ -247,13 +247,9 @@ Both trials were also limited by the relatively short follow-up period examined.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-### Mendelian randomisation
+### Mendelian randomisation {}
 
-Newer methodological approaches, such as Mendelian randomisation (MR),[@daveysmith2014] have also been used to examine the effect of varying lipid levels on dementia risk. Mendelian randomisation attempts to combat the risk of reverse causation and residual confounding inherent to observational studies by using natural random varation in participants' genomes.[@greenland2000] In brief, MR uses genetic variants that are both strongly associated with the exposure of interest and are independent from potential confounders to strengthen causal inference.[@daveysmith2014] The analytic method relies on several assumptions about the instrumental variable (IV),[@davies2018] namely that:
-
-1. the IV is associated with the exposure of interest (the relevance assumption);
-2. the IV and outcome do not share a common cause (the independence assumption); and
-3. the IV does not affect the outcome other than via the exposure (the exclusion restriction assumption).
+Newer methodological approaches, such as Mendelian randomisation (MR),[@daveysmith2014] have also been used to examine the effect of varying lipid levels on dementia risk. Mendelian randomisation attempts to combat the risk of reverse causation and residual confounding inherent to observational studies by using natural random varation in participants' genomes.[@greenland2000] In brief, MR uses genetic variants that are both strongly associated with the exposure of interest and are independent from potential confounders to strengthen causal inference.[@daveysmith2014] The analytic method relies on several assumptions about the instrumental variable (IV)[@davies2018] which are discussed in Section \@ref(rev-discussion-MR).
 
 Recent MR studies indicated that genetically determined low levels of LDL-c may cause a reduction in AD risk.[@larsson2017; @ostergaard2015] However, the effect was attenuated in sensitivity analyses that exclude the region surrounding the _Apo_$\mathcal{E}$ gene, the strongest known risk factor for Alzheimer's disease.[@kim2009] Inclusion of _Apo_$\mathcal{E}$ variants invalidates the exclusion restriction criteria (Assumption 3, above), as the risk reduction observed may be driven by variants in this region via a pathway independent of lipid levels. This was supported by further MR studies in which the observed effect attenuated to the null after _Apo_$\mathcal{E}$ variants were excluded.[@benn2017] Despite the increasing number of MR studies examining this topic, no systematic review of this study design as a source of evidence has been performed.
 

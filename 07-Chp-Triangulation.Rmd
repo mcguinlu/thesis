@@ -97,7 +97,7 @@ Table \@ref(tab:thesisOverview-table) summarises the research question each data
 
 \blandscape
 <!----------------------------------------------------------------------------->
-(ref:thesisOverview-caption) Summary of studies included in this thesis and used as evidence sources in this triangulation exercise. Note, Chapter \@ref(sys-rev-tools-heading) is intentionally not included in this table, as it describes a research tool rather than a research study.
+(ref:thesisOverview-caption) __Summary of research designs included in this thesis__ -The research projects performed as part of this thesis and used as evidence sources in this triangulation exercise are summarised. Note that Chapter \@ref(sys-rev-tools-heading) is intentionally not included in this table, as it describes a research tool rather than a research study.
 
 (ref:thesisOverview-scaption) Summary of research designs included in this thesis
 
@@ -345,7 +345,7 @@ Reasonable values for the position and spread of the prior distributions were in
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-(ref:priorsAdd-caption) __Prior distributions mapped to different extents of bias.__ Prior values assigned to additive and proportional biases, defined as log-normal distributions with mean $\mu$ and variance $\sigma^2$ using the notation $N(\mu,\sigma^{2})$. For additive biases, two scenarios were defined (see main text). Note that proportional biases are defined on the log scale for ease of calculation, but are exponentiated prior to their use for adjustment. 
+(ref:priorsAdd-caption) __Prior distributions mapped to different extents of bias__ - Prior values assigned to additive and proportional biases, defined as log-normal distributions with mean $\mu$ and variance $\sigma^2$ using the notation $N(\mu,\sigma^{2})$. For additive biases, two scenarios were defined (see main text). Note that proportional biases are defined on the log scale for ease of calculation, but are exponentiated prior to their use for adjustment. 
 
 (ref:priorsAdd-scaption) Prior distributions mapped to different extents of bias.
 
@@ -387,7 +387,7 @@ An identical approach was employed to assess, and assign prior distributions to,
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:priorsIndirect-caption) Prior distributions for extent of indirectness, on the log scale.
+(ref:priorsIndirect-caption) __Prior distributions mapped to different extents of indirectness__ - Prior values assigned to proportional indirectness, defined as log-normal distributions with mean $\mu$ and variance $\sigma^2$ using the notation $N(\mu,\sigma^{2})$. Note that all indirectness in this analysis was defined _a priori_ to be proportional, and so no distributions for additive indirectness were defined.
 
 (ref:priorsIndirect-scaption) Prior distributions mapped to different extents of indirectness.
 

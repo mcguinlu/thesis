@@ -37,19 +37,15 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 ::: {.laybox data-latex=""}
 ## Lay summary {-}
 
-Using the methods outlined in the previous chapter, here I present  the results of a systematic review of primary studies that have examined the relationship between the levels of blood lipids (such as cholesterol and triglycerides) and dementia outcomes. In addition, it examined the relationship between treatments that change blood lipid levels, such as statins, and dementia outcomes.
+Using the methods outlined in the previous chapter, here I present the results of a systematic review of primary studies that have examined the relationship between the levels of blood lipids (such as cholesterol and triglycerides) and dementia outcomes. In addition, I also examined the relationship between treatments that change blood lipid levels, such as statins, and dementia outcomes.
 
 &nbsp;
-
 
 My review included `r n_included` primary studies. I found that statins appear to reduce the risk of all-cause dementia and Alzheimer's disease, but were not associated with risk of vascular dementia. Lipid levels were not associated with any dementia outcome. However, problems with the methods used in some studies included in the review meant that I was less confident in their results. In addition, I found that several results were missing from my analysis as authors decided not to report them.
 
 :::
 
-<!-- TODO Complete! -->
-
 <!-- TODO Consider adding a line to the descriptions of each forest plot regarding the direction - what's on the right, whats on the left -->
-
 
 ## Introduction
 
@@ -60,12 +56,9 @@ Following the methods outlined in the previous chapter, I present the results of
 
 ## Search results
 
-<!-- TODO Compare findings for two papers from Rantanen - not sure why? -->
-
 ### Initial search and validation of search filters
 
-The database search identified `r num_to_text(23447)` records, of which `r comma(7338)` were duplicated records. To ensure the accuracy of the study design filters, a random sample of 500 records removed by the filters were screened, and no eligible records were identified. As expected, many of those excluded by the filters were commentaries/educational articles, or described basic science studies. <!-- TODO include some example citations here -->
-
+The database search identified `r num_to_text(23447)` records, of which `r comma(7338)` were duplicated records. To ensure the accuracy of the study design filters, a random sample of 500 records removed by the filters were screened, and no eligible records were identified. As expected, many of those excluded by the filters were commentaries/educational articles, or described basic science studies. 
 
 &nbsp;
 <!----------------------------------------------------------------------------->
@@ -74,9 +67,9 @@ The database search identified `r num_to_text(23447)` records, of which `r comma
 
 Following de-duplication, the titles and abstracts of `r comma(16109)` records were assessed for eligibility. Of these, `r comma(387)` were deemed potentially eligible. The full text records for these records were then accessed and screened. 
 
-The PRISMA flow diagram presented in Figure \@ref(fig:prisma-flow-fig) illustrates the movement of articles through the review. To highlight the contribution of preprint archives to the review, the flow diagram delineates between those records captured through databases searches (presented on the left of the diagram) and those captured by the search tool described previously (presented in grey on the right of the diagram).
+A PRISMA flow diagram, presented in Figure \@ref(fig:prisma-flow-fig), illustrates the movement of articles through the review. To highlight the contribution of preprint archives to the review, the flow diagram delineates between those records captured through databases searches (presented on the left of the diagram) and those captured by the preprint search tool described previously (presented in grey on the right of the diagram).
 
-Common reasons for exclusion at the full-text stage included studies reporting on ineligible exposures (Number of studies (N) = `r n_wrong_exposure` ; most commonly an ineligible lipid fraction) or outcomes (N = `r n_wrong_outcome`; e.g. change in cognitive scores), or the use of an ineligible study design (N = `r n_study_design`).
+Common reasons for exclusion at the full-text stage included studies reporting on ineligible exposures (Number of records (N) = `r n_wrong_exposure` ; most commonly an ineligible lipid fraction) or outcomes (N = `r n_wrong_outcome`; e.g. change in cognitive scores), or the use of an ineligible study design (N = `r n_study_design`).
 
 <!----------------------------------------------------------------------------->
 
@@ -101,20 +94,21 @@ knitr::include_graphics(file.path("figures/sys-rev/prismaflow.png"))
 ```{r agree-setup, include = FALSE}
 ```
 
-For the assessment of the intra-/inter-rater reliability, the estimated values of Gwet's agreement coefficinet, $AC1$, were interpreted against the categories presented in Table \@ref(tab:gwet-table). For the inter-rater reliability, agreement was "almost perfect" ($AC1$ = `r agreeInter_coeff[1]`, $kappa$ = `r agreeInter_coeff[2]`, Table \@ref(tab:agreeInter-table)). Similarly for intra-rater reliability, agreement was "almost perfect" ($AC1$ = `r agreeIntra_coeff[1]`, $kappa$ = `r agreeIntra_coeff[2]`, Table \@ref(tab:agreeIntra-table)). The discrepancy between the $AC1$ and $kappa$ coefficients illustrates the sensitivity of $kappa$ to imbalanced marginals, caused in this sample by a large imbalance  towards exclusion.[@feinstein1990]
-
+For the assessment of the intra-/inter-rater reliability, the estimated values of Gwet's agreement coefficinet, $AC1$, were interpreted against the categories presented in Table \@ref(tab:gwet-table). For the inter-rater reliability, agreement was "almost perfect" ($AC1$ = `r agreeInter_coeff[1]`, $kappa$ = `r agreeInter_coeff[2]`, Table \@ref(tab:agreeInter-table)). 
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:agreeInter-caption) __Inter-rater agreement__ - For a subset of records, the decisions between two independent were compared. Gewt's $AC1$ was calculated from this data to assess inter-rater reliability, indicating high accuracy ($AC1$ = `r agreeInter_coeff[1]`). 
-
-<!-- TODO Include AC1 result in caption above -->
+(ref:agreeInter-caption) __Inter-rater agreement__ - For a subset of records, the decisions between two independent reviewers were compared. Gewt's $AC1$ was calculated from this data to assess inter-rater reliability, indicating high accuracy ($AC1$ = `r agreeInter_coeff[1]`). 
 
 (ref:agreeInter-scaption) Inter-rater agreement
 
 ```{r agreeInter-table, message=FALSE, results="asis", echo = FALSE}
 ```
 <!----------------------------------------------------------------------------->
+
+Those records which were excluded in the initial screening, but were included by the second reviewer (N =`r discrepancy_Inter`, Table \@ref(tab:agreeInter-table)) were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, most commonly around the definition of cognitive decline versus dementia and of eligible lipids fractions. 
+
+Similarly, for intra-rater reliability, agreement was "almost perfect" ($AC1$ = `r agreeIntra_coeff[1]`, $kappa$ = `r agreeIntra_coeff[2]`, Table \@ref(tab:agreeIntra-table)). 
 
 <!----------------------------------------------------------------------------->
 (ref:agreeIntra-caption) __Intra-rater agreement__ - For a subset of records, the decisions between the same reviewer with 3 month lag were compared. Gewt's $AC1$ was calculated from this data to assess intra-rater reliability, indicating high consistency ($AC1$ = `r agreeIntra_coeff[1]`). 
@@ -127,7 +121,7 @@ For the assessment of the intra-/inter-rater reliability, the estimated values o
 
 &nbsp;
 
-Those records which were excluded in the initial screening, but were included by the second reviewer (N =`r discrepancy_Inter`, Table \@ref(tab:agreeInter-table)) were investigated. This discrepancy between the two reviewers was explained in all cases by differing interpretations of the inclusion criteria, most commonly around the definition of cognitive decline versus dementia and of eligible lipids fractions. 
+In both cases, the discrepancy between the $AC1$ and $kappa$ coefficients illustrates the sensitivity of $kappa$ to imbalanced marginals, caused in this sample by a large imbalance towards exclusion.[@feinstein1990]
 
 &nbsp;
 <!----------------------------------------------------------------------------->
@@ -139,28 +133,17 @@ Those records which were excluded in the initial screening, but were included by
 
 Following full-text screening, `r n_included` unique studies (described across `r n_reports_included` reports) met the criteria for inclusion in this review.`r get_all_citations()` Table \@ref(tab:studyCharacteristics-table) presents a summary of the characteristics of each study.
 
-The majority of included studies described non-randomised analyses, with the only two included randomised controlled trials (the Heart Protection Study/British Heart Foundation trial[@heartprotectionstudycollaborativegroup2002] and the JUPITER trial[@ridker2008]) both reporting on the effect of statin use on incidence of all-cause dementia in older adults. A similarly small number of Mendelian randomisation studies were identified, several of which employed a two-sample approach using summary statistics from the same published genome wide association studies (GWAS), leading to complications in the synthesis of these estimates due to the potential for double-counting (see Section \@ref(sys-rev-res-AD)). 
+The majority of included studies described non-randomised analyses, with the only two included randomised controlled trials (the Heart Protection Study/British Heart Foundation trial[@heartprotectionstudycollaborativegroup2002] and the JUPITER trial[@ridker2008]) both reporting on the effect of statin use on incidence of all-cause dementia in older adults. A similarly small number of Mendelian randomisation studies were identified, several of which employed a two-sample approach using summary statistics from the same published genome wide association studies (GWAS). This leads to complications in the synthesis of these estimates due to the potential for double-counting (see Section \@ref(sys-rev-res-AD)). 
 
-Of the `r n_nrsi_included` non-randomised studies examining treatments that modify lipid levels, all examined statin use (`r n_statins`), while a small number also reported on other non-statins agents such as fibrates (`r n_fibrates`). In the `r n_nrse_included` non-randomised studies of exposure, hypercholesterolemia (`r n_hyperchol`) and total cholesterol levels (`r n_TC`) were the most frequently reported risk factors.
+Of the `r n_nrsi_included` non-randomised studies examining lipid-regulating agents (LRA), all examined statin use while a small number also reported on other non-statin agents such as fibrates (`r n_fibrates`). In the `r n_nrse_included` non-randomised studies of exposure, hypercholesterolemia (`r n_hyperchol`) and total cholesterol levels (`r n_TC`) were the most frequently reported risk factors.
 
 In terms of outcomes, the vast majority of studies examined either all-cause dementia (`r n_Dementia`) or Alzheimer's disease (`r n_AD`), with only a small proportion examining vascular dementia (`r n_VaD`). Some other outcome classifications such as vascular-component or mixed dementia were also investigated, but were much rarer.
-
-<!-- Many studies using electronic health records as their data source did not accurately report the diagnostic codes used to identify cases. -->
-
-<!-- Midlife cholesterol levels were of particular interest, with several studies examining this age-range.  -->
-
-<!--- TODO Talk a little bit more about age here --->
-
-<!-- TODO Also need to extract the codes used in each study -->
-<!-- TODO Need to make sure that the MR studies actually don't report the  -->
-
 
 ```{r studyCharacteristics-setup, include = F}
 ```
 
 \blandscape{}
 <!----------------------------------------------------------------------------->
-<!-- To create the references below, go to the helper script and copy the output of  -->
 
 (ref:heartprotectionstudycollaborativegroup2002RCTcite) HPS 2002[@heartprotectionstudycollaborativegroup2002]
 
@@ -334,10 +317,6 @@ In terms of outcomes, the vast majority of studies examined either all-cause dem
 
 (ref:studyCharacteristics-scaption) Characteristics of included studies
 
-<!-- TODO Sort out the fact that statins are included as an exposure in NRSE -->
-
-<!-- TODO Ensure all abbreviations at the end of this table are in the abbreviation section at the start. -->
-
 
 ```{r studyCharacteristics-table, message=FALSE, results="asis", echo = FALSE}
 ```
@@ -353,7 +332,7 @@ As illustrated in Figure \@ref(fig:cohortLocations), the majority of reports des
 
 <!----------------------------------------------------------------------------->
 
-(ref:cohortLocations-cap) __Geographical distribution of study cohorts__ - The country or countries of origin for the studies include in the review are shown below. Note that the majority of included studies were performed in the Western world, predominantly in Europe and North America.
+(ref:cohortLocations-cap) __Geographical distribution of study cohorts__ - The country or countries of origin for the studies included in the review are shown. Note that the majority of included studies were performed in westernised countries, predominantly in Europe and North America.
 
 (ref:cohortLocations-scap) Geographical distribution of study cohorts
 
@@ -362,6 +341,8 @@ knitr::include_graphics(file.path("figures/sys-rev/cohortLocations.png"))
 ```
 <!----------------------------------------------------------------------------->
 &nbsp;
+
+Overall, the reporting of included studies was poor, particularly for non-randomised studies of lipids and LRA. Several studies did not report baseline characteristics such as the proportion of women in the study cohort. Additionally, some omitted important details on reported characteristics (e.g. the study reported the mean but not the standard deviation of baseline age).
 
 Finally, there were several eligible studies reported as conference abstracts that did not present numerical results. These reports were included in the analysis to enable assessment of risk of bias due to missing evidence (see Section \@ref(methods-rob-me)).
 
@@ -402,8 +383,6 @@ In the following sections, analyses are grouped first by outcome (all-cause deme
 
 #### Lipids
 
-<!-- TODO Deal with awkward hypercholesterolemia definition -->
-
 Across all outcomes, lipid levels were categorised in a number of ways. The most common categorisation was hypercholesterolemia at baseline, defined most frequently as a total cholesterol measurement of greater than 6.5 mmol/L. 
 
 `r num_to_text(obsHyperchol$Dementia$n,T)` studies reported on the association of hypercholesterolemia with all-cause dementia and provided weak evidence for an effect (`r obsHyperchol$Dementia$estimate`, Figure \@ref(fig:obsHyperDementia)).
@@ -435,13 +414,13 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_lipids_composite_Dementia.
 
 \newpage
 
-Finally, there were no identified Mendelian randomisation analysis examining the effect of lower lipid levels, as determined by any genetic instrument, on all-cause dementia risk.
+Finally, there were no identified Mendelian randomisation analyses examining the effect of lower lipid levels, as determined by any genetic instrument, on all-cause dementia risk.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 #### Statins
 
-The two randomised controlled trials provided weak evidence (`r rct_statin_acd`) of an effect on statin use on all-cause dementia risk (Figure \@ref(fig:rctStatinDementiaFig)).
+The two randomised controlled trials identified provided weak evidence (`r rct_statin_acd`) of an effect on statin use on all-cause dementia risk (Figure \@ref(fig:rctStatinDementiaFig)).
 
 <!-----------------------------------------------------------------------------> 
 
@@ -456,7 +435,7 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_rct_statins_Dementia.png")
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-In contrast, a meta-analysis of `r obsStatins$Dementia$n` prospective observational studies provided some evidence of a protective effect of statins use on all-cause dementia risk (`r obsStatins$Dementia$estimate`, Figure \@ref(fig:obsStatinDementiaFig)).
+In contrast, a meta-analysis of `r obsStatins$Dementia$n` prospective observational studies provided some evidence of a protective effect of statin use on all-cause dementia risk (`r obsStatins$Dementia$estimate`, Figure \@ref(fig:obsStatinDementiaFig)).
 
 <!----------------------------------------------------------------------------->
 (ref:obsStatinDementia-cap) __Random-effects meta-analysis of statins on all-cause dementia__ - Non-randomised studies examining the association of statin use with all-cause dementia were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-I tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
@@ -468,7 +447,7 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Statin-Ever_Dementia.p
 ```
 <!----------------------------------------------------------------------------->
 
-Finally, a single Mendelian randomisation analysis was identified examining the effect of  lowered LDL-c levels on the risk of all-cause dementia via genetic inhibition of the 3-hydroxy-3-methylglutaryl-coenzyme A reductase (HMGCR), emulating statin treatment (see Section \@ref(intro-statins) for more details of the statin mechanism of action). This analysis provided weak evidence of an effect (`r mrStatin$Dementia$estimate`). 
+Finally, a single Mendelian randomisation analysis was identified examining the effect of  lowered LDL-c levels on the risk of all-cause dementia via genetic inhibition of the 3-hydroxy-3-methylglutaryl-coenzyme A reductase (HMGCR), emulating statin treatment (see Section \@ref(intro-statins) for more details of the statin mechanism of action). This analysis provided weak evidence for an effect (`r mrStatin$Dementia$estimate`). 
 
 &nbsp; <!---------------------------------------------------------------------->
 
@@ -486,6 +465,7 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Fibrate_Dementia.png")
 ```
 <!----------------------------------------------------------------------------->
 
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Alzheimer's disease {#sys-rev-res-AD}
 
@@ -522,7 +502,7 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_lipids_composite_AD.pdf"))
 
 \newpage
 
-Finally, there were several identified Mendelian randomisation studies examining the effect of genetically lowered LDL-c on Alzheimer's disease risk (Figure \@ref(fig:mrDuplication)). However, all of these studies took a two-sample approach, making use of summary statistics from the Global Lipid Genetics Consortium (GLGC) and International Genomics of Alzheimer's Project (IGAP) consortia. Synthesis of these results would would result in a falsely precise estimate caused by multiple counting of the same participants,and as a result, no meta-analysis of these studies was performed. However, across each analysis using varying number of SNPS, no evidence for an effect was observed (Figure \@ref(fig:mrDuplication)).
+Finally, there were several identified Mendelian randomisation studies examining the effect of genetically lowered LDL-c on Alzheimer's disease risk (Figure \@ref(fig:mrDuplication)). However, all of these studies took a two-sample approach, making use of summary statistics from the International Genomics of Alzheimer's Project (IGAP) consortium and the Global Lipid Genetics Consortium (GLGC). Synthesis of these results would result in a falsely precise estimate caused by multiple counting of the same participants, and as a result, no meta-analysis of these studies was performed. However, across each analysis using varying number of single nucleotide polymorphisms (SNPs), no evidence for an effect was observed (Figure \@ref(fig:mrDuplication)).
 
 <!----------------------------------------------------------------------------->
 (ref:mrDuplication-cap) __Summary of duplication across two-sample Mendelian randomisation studies__ - Several Mendelian randomisation studies used summary statistics from the Global Lipid Genetics Consortium (GLGC) and the International Genomics of Alzheimer's Project (IGAP). Note that the Alzheimer’s Disease Genetics Consortium (ADGC) is a sub-cohort within IGAP.
@@ -541,7 +521,7 @@ knitr::include_graphics(file.path("figures","sys-rev","mrDuplication.png"))
 
 #### Statins
 
-There were no randomised trials of the use of statins or any other lipid regulating agents  on Alzheimer's disease, though several observational studies reported on this outcome and provided evidence for a protective effect (`r n_effect(obsStatins$AD)`; Figure \@ref(fig:obsStatinADFig)).
+There were no randomised trials of the use of statins or any other lipid regulating agents  on Alzheimer's disease, though several observational studies examined this association and provided evidence for a protective effect (`r n_effect(obsStatins$AD)`; Figure \@ref(fig:obsStatinADFig)).
 
 <!----------------------------------------------------------------------------->
 (ref:obsStatinAD-cap) __Random-effects meta-analysis of statins on Alzheimer's disease__ Non-randomised studies examining the association of statin use with Alzheimer's disease were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-I tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
@@ -569,7 +549,7 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_MR_HMGCR_AD.png"))
 
 #### Lipids
 
-`r num_to_text(obsHyperchol$VaD$n,T)` studies reported on the association of hypercholesterolemia with vascular dementia and provided weak evidence for an effect (`r obsHyperchol$VaD$estimate`, Figure \@ref(fig:obsHyperVaD))
+As noted in Section \@ref(sys-rev-characteristics) above, there was substantially less literature available on the association of the risk factors of interest with vascular dementia. `r num_to_text(obsHyperchol$VaD$n,T)` studies reported on the association of hypercholesterolemia with vascular dementia and provided weak evidence for an effect (`r obsHyperchol$VaD$estimate`, Figure \@ref(fig:obsHyperVaD)).
 
 <!----------------------------------------------------------------------------->
 (ref:obsHyperVaD-cap) __Random-effects meta-analysis of hypercholesterolemia on vascular dementia__ - Non-randomised studies examining the association of hypercholesterolemia with vascular dementia were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-E tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
@@ -581,7 +561,7 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_hyperchol_VaD.png"))
 ```
 <!----------------------------------------------------------------------------->
 
-Few studies investigated the effect of individual lipid fractions. Only for total cholesterol was there greater than one result reported (Figure \@ref(fig:lipidFractionsVaD)), and a meta-analysis of these found weak evidence for an effect (`r n_effect(obsLipids$VaD_TC)`). A single study provided evidence on the other three fractions,[@yoshitake1995] and similarly found minimal evidence of an effect LDL-c (`r n_effect(obsLipids$VaD_LDL,F)`), HDL-c (`r n_effect(obsLipids$VaD_HDL,F)`) or triglycerides (`r n_effect(obsLipids$VaD_TG,F)`).
+Few studies investigated the effect of individual lipid fractions on vascular dementia. Only for total cholesterol was there greater than one result reported (Figure \@ref(fig:lipidFractionsVaD)), and a meta-analysis of these results found weak evidence for an effect (`r n_effect(obsLipids$VaD_TC)`). A single study provided evidence on the other three fractions.[@yoshitake1995] This analysis similarly found minimal evidence of an effect of LDL-c (`r n_effect(obsLipids$VaD_LDL,F)`), HDL-c (`r n_effect(obsLipids$VaD_HDL,F)`) or triglycerides (`r n_effect(obsLipids$VaD_TG,F)`) on vascular dementia.
 
 <!-- TODO This is not technically - more studies available on vascular dementia -->
 
@@ -601,7 +581,7 @@ Finally, no Mendelian randomisation analyses examining the effect of genetically
 
 #### Statins
 
-As noted in Section \@ref(sys-rev-characteristics) above, there was substantially less literature available on the association of my risk factors of interest and vascular dementia. There were no available randomised trials for this outcome. `r num_to_text(obsStatins$VaD$n,T)` prospective cohort studies examined statin use and vascular dementia, though meta-analysis of these studies provided weak evidence for an effect (`r n_effect(obsStatins$VaD)`; Figure \@ref(fig:obsStatinVaDFig)). 
+There were no available randomised trials of statin use for the vascular dementia outcome. `r num_to_text(obsStatins$VaD$n,T)` prospective cohort studies examined statin use and vascular dementia, though meta-analysis of these studies provided weak evidence for an effect (`r n_effect(obsStatins$VaD)`; Figure \@ref(fig:obsStatinVaDFig)). 
 
 <!----------------------------------------------------------------------------->
 (ref:obsStatinVaD-cap) __Random-effects meta-analysis of statins on vascular dementia__ - Non-randomised studies examining the association of statin use with vascular dementia were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-I tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
@@ -624,13 +604,15 @@ A single Mendelian randomisation analysis was identified that examined the effec
 ```{r riskOfBias, include = FALSE, message=FALSE, warning=FALSE}
 ```
 
-As shown in the forest plots in the above sections, the risk-of-bias assessments are presented alongside their corresponding numerical result. This section presents only a brief summary of the biases observed in each study design, as s detailed discussion of the sources and directions of bias in each result is presented in Chapter \@ref(tri-heading).
+As shown in the "paired" forest plots in the above sections, the risk-of-bias assessments are presented alongside their corresponding numerical result. This section presents only a brief summary of the biases observed in each study design, as detailed discussion of the sources and directions of bias in each result is presented in Chapter \@ref(tri-heading).
 
 For the two randomised controlled trials, both were judged to be at low risk of bias. In contrast, many of the non-randomised studies of statin use were at serious risk of bias primarily due to poor controlling for confounding, immortal time bias, and missing outcome data. Similarly, non-randomised studies of exposures suffered from incomplete adjustment for potentially important confounders, and concerns over the selection of the reported result from among several analyses (e.g. examination of lipids as a binary or continuous variable). Finally, bias was introduced into Mendelian randomisation studies via the potential for hoziontal pleiotropy and population stratification.[@davies2018]
 
 Following best practice, any result judged to be at critical risk of bias should be excluded from any quantitative analysis.[@sterne2016] `r num_to_text(n_critical,T)` observational studies were excluded on this basis, predominantly due to a lack of adjustment for any potentially important confounders (i.e. the study reported unadjusted estimates).`r critical_citations`
 
-The risk of bias due to missing evidence in each synthesis is shown beside the overall summary diamond in each forest plot presented above. For randomised controlled trials and non-randomised studies of interventions, the risk of bias due to missing evidence was assessed to be minimal. However, there was substantial evidence that results were selectively reported in studies examining the effect of lipid fractions on dementia outcomes (Figures \@ref(fig:lipidFractionsDementia), \@ref(fig:lipidFractionsAD) and \@ref(fig:lipidFractionsVaD)). 
+The risk of bias due to missing evidence in each synthesis is shown beside the overall summary diamond in each "paired" forest plot presented above. For randomised controlled trials and non-randomised studies of interventions, the risk of bias due to missing evidence was assessed to be minimal. However, there was substantial evidence that results were selectively reported in studies examining the effect of lipid fractions on dementia outcomes (Figures \@ref(fig:lipidFractionsDementia), \@ref(fig:lipidFractionsAD) and \@ref(fig:lipidFractionsVaD)). 
+
+In the four analyses with greater than 10 results, the minimum required for subgroup analysis, stratification by overall risk-of-bias level did not demonstrate a difference between the "Serious" and "Moderate" risk of bias groups. The results of the test for subgroup differences is shown in the bottom left of the forest plots for these four meta-analyses (Figures \@ref(fig:obsHyperDementia), \@ref(fig:obsStatinDementiaFig), \@ref(fig:obsHyperAD) and \@ref(fig:obsStatinADFig)).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -641,7 +623,7 @@ The risk of bias due to missing evidence in each synthesis is shown beside the o
 ```{r doseResponse, include = FALSE}
 ```
 
-There were `r n_dr_initial` studies initially considered eligible for the dose-response meta-analysis, as they appear to provide data on risk of dementia outcomes across several categories of lipid exposure. However, following data extraction, `r num_to_text(n_dr_excluded)` were excluded as they did not report the relevant information needed (most commonly, the cut-off measures for each category).
+There were `r n_dr_initial` studies initially considered eligible for the dose-response meta-analysis, as they appeared to provide data on risk of dementia outcomes across several categories of lipid exposure. However, following data extraction, `r num_to_text(n_dr_excluded)` were excluded as they did not report all of the information needed for the analysis. Most commonly, the cut-off measures for each category were missing.
 
 Across the remaining `r num_to_text(n_dr_final)` studies, a sufficient number of results (n $\geqslant$ 3) were identified only for the total cholesterol-Alzheimer's, LDL-Alzheimer's, and total cholesterol-dementia strata. This analysis provided weak evidence for a non-linear effect of lipid levels on dementia outcomes, and Figure \@ref(fig:lipidsDoseResponse) illustrates this for the total cholesterol-Alzheimer's strata. Similar figures for the other analysed lipid-outcome strata are presented in Appendix \@ref(appendix-dr-fraction).
 
@@ -661,26 +643,23 @@ knitr::include_graphics(file.path("figures/sys-rev/dr_AD_TC.png"))
 
 ### Heterogeneity and publication bias
 
-Investigation of potential sources of heterogeneity was complicated by two factors. In the first instance, a minority of meta-analysis (4 out of 18, `r paste0(comma(4/18*100),"%")`) included more than 10 results, the recommended minimum required for meta-regression. Secondly, poor reporting of study characteristics of interest including education level and baseline cognitive ability precluded the use of several results in a meta-regression analysis. 
+There was evidence of heterogeneity in several of the meta-analysis performed, as indicated by a high $I_2$ statistic. $I_2$ represents the percentage of variability in the results included in a synthesis that is due to heterogeneity rather than chance.[@higgins2003] The $I_2$ value for each analysis are provided in the forest plots above.
 
-<!-- TODO Finish this analysis -->
+Investigation of potential sources of heterogeneity was complicated by two factors. In the first instance, a minority of meta-analysis (4 out of 18, `r paste0(comma(4/18*100),"%")`) included 10 or more results, the recommended minimum required for meta-regression. Secondly, poor reporting of baseline characteristics of interest precluded the use of several results in a meta-regression analysis. 
 
-Age and gender were assessed as potential causes of heterogeneity in the meta-analyses of statin use and hypercholesterolemia on all cause dementia and Alzheimer's disease, but I found weak evidence for variation in the observed effect estimates due to these factors.
+Only for the sex covariate were sufficient number of results available to enable meta-regression. Across the four meta-analyses examined, the percentage of females in the study cohort was not related to the observed effect estimate (p = `r metaregHypercholDem` for hypercholesterolemia/all-cause dementia, Figure \@ref(fig:obsHyperDementia); p = `r metaregStatinsDem` for statins/all-cause dementia - Figure \@ref(fig:obsStatinDementiaFig); p = `r metaregHypercholAd` for hypercholesterolemia/Alzheimer's disease - Figure \@ref(fig:obsHyperAD); p = `r metaregStatinsAd` for statins/Alzheimer's disease - Figure \@ref(fig:obsStatinADFig)).
 
-Similarly, assessment of small-study effects, for which publication bias could be one potential reason, was hindered by the relatively small number of results included in a given meta-analysis. However, all analyses assessed provided weak evidence of small-study effects.
-
-<!-- TODO Reword the above section to make it clearer -->
-
+Similarly, assessment of small-study effects, for which publication bias could be one potential reason, was limited to these four meta-analyses including 10 or more results. However, there was weak evidence for the presence of small-study effects in each analyses assessed (see Appendix \@ref(appendix-funnel-plots)).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Added evidential value of including preprints {#sys-rev-including-preprints-res}
 
-As show in the PRISMA flow diagram (Figure \@ref(fig:prisma-flow-fig)), the number of hits returned by preprint searching was not substantial (bioRxiv = 256, medRxiv = 0). From these hits, three preprinted reports of eligible studies were included in the review, of which two described unique studies not captured by the main search.[@andrews2019; @so2017]
+As shown in the PRISMA flow diagram (Figure \@ref(fig:prisma-flow-fig)), the number of hits returned by preprint searching was not substantial (bioRxiv = 256, medRxiv = 0). From these hits, three preprinted reports of eligible studies were included in the review, of which two described unique studies not captured by the main search.[@andrews2019; @so2017]
 
-One preprint (So _et al_[@so2017]) provided additional evidential value in a single meta-analysis (`r comma(1/18*100)`% of the 18 meta-analyses performed in this chapter). This meta-analysis of Mendelian randomisation studies examined the effects of lipid-lowering via HMGCR mutations on incidence of Alzheimer's disease (Figure \@ref(fig:mrStatinADFig)). To assess the evidence added to the meta-analysis through inclusion of the preprint, the data was re-analysed using a fixed-effect model. Examination of the weight assigned to each result in the analysis illustrates that a large proportion (`r mrStatinPreprintWeight`) of the weight is given to the preprinted result. However, the inclusion of the preprinted study did not have a substantial impact on the result of the meta-analysis (`r mrStatin$AD$estimate`) compared with that reported by the single published study (`r estimate(0.59,0.25,1.39,"RR")`), other than a slight increase in precision.
+One preprint (So _et al_[@so2017]) provided additional evidential value in a single meta-analysis (`r comma(1/18*100)`% of the 18 meta-analyses performed in this chapter). This meta-analysis of Mendelian randomisation studies examined the effects of lipid-lowering via HMGCR mutations on incidence of Alzheimer's disease (Figure \@ref(fig:mrStatinADFig)). To assess the evidence added to the meta-analysis through inclusion of the preprint, the data was re-analysed using a fixed-effect model. Examination of the weight assigned to each result in the analysis illustrated that a large proportion (`r mrStatinPreprintWeight`) of the weight is given to the preprinted result. However, the inclusion of the preprinted study did not have a substantial impact on the result of the meta-analysis (`r mrStatin$AD$estimate`) compared with that reported by the single published study (`r estimate(0.59,0.25,1.39,"RR")`), other than slightly increasing the precision.
 
-The other two preprints identified[@andrews2019; @zhu2017] reported on the effect of LDL-c on Alzheimer's disease using data from GLCC and IGAP consortia. As illustrated in Figure \@ref(fig:mrDuplication), these consortia were previously analysed in several published reports, and so these preprints did not add to new information to the evidence base.
+The other two preprints identified[@andrews2019; @zhu2017] reported on the effect of LDL-c on Alzheimer's disease using data from GLCC and IGAP. As illustrated in Figure \@ref(fig:mrDuplication), these consortia were previously analysed in several published reports, and so these preprints did not add new information to the evidence base.
 
 For one of the three preprints identified, the published version of the preprint was captured by the main search. Investigation of the publication status of the two unpublished preprints found that, allowing for a two-year lag (i.e. up to July 2021), only one had been subsequently published.[@andrews2019; @andrews2021]
 
@@ -689,19 +668,16 @@ For one of the three preprints identified, the published version of the preprint
 
 ## Discussion
 
-<!-- TODO Check inclusion of Rockwood 2002:  -->
-This review presented a summary of the available evidence on the association between lipids, and treatments that modify lipids such as statins, and the subsequent risk of dementia. This discussion seeks to summarise the key findings in terms of literature sources and results as reported. A detailed comparison across the evidence sources, exposure measures and sources of bias reported here is presented as part of the triangulation exercise in Chapter \@ref(tri-heading).
+This review presented a summary of the available evidence on the association of lipids and LRA with subsequent risk of dementia outcomes. This discussion seeks to summarise the key findings in terms of literature sources and results as reported. A detailed comparison across the evidence sources, exposure measures and sources of bias reported here is presented as part of the triangulation exercise in Chapter \@ref(tri-heading).
 
 <!----------------------------------------------------------------------------->
 &nbsp;
 
 ### Summary of findings
 
-There was some indication of a protective effect of statins on all-cause and Alzheimer's disease dementia when looking solely at observational studies. This finding was not supported by evidence from the two available RCTs, or by studies that emulated statin treatment using a genetic proxy, suggesting that these findings may be a result of differing exposure windows (e.g. mid-life lipid lowering in non-randomised studies versus life-course lipid exposure in Mendelian randomisation studies and late-life lipid reduction in RCTs) or alternatively due to biases within the non-randomised studies. 
+There was some indication of a protective effect of statins on all-cause and Alzheimer's disease dementia when looking solely at observational studies. This finding was not supported by evidence from the two available RCTs, or by studies that emulated statin treatment using a genetic proxy. This suggests that these findings may be a result of differing exposure windows (e.g. mid-life lipid lowering in non-randomised studies versus life-course lipid exposure in Mendelian randomisation studies and late-life lipid reduction in RCTs) or alternatively due to biases within the non-randomised studies. 
 
-<!-- Some evidence that age has impact on observed lipid-dementia relationship - use to link  -->
-
-Across dementia outcomes, the majority of studies were non-randomised studies of lipids or lipid regulating agents. This distribution of evidence between analytical designs is to be expected. Randomised controlled trials of dementia are particularly challenging, as the follow-up made necessary by the long latent period of the condition makes trials logistically difficult and financially expensive. Similarly, Mendelian randomisation is a comparatively new study design, and studies employing it in relation to dementia outcomes only appear in the evidence base in recent years, as illustrated in Figure \@ref(fig:typeByYear). This recent increase is likely driven by the availability of summary genome wide association studies (GWAS) that form the basis of the two-sample Mendelian randomisation approach.
+Across dementia outcomes, the majority of studies were non-randomised studies of lipids or lipid regulating agents. This distribution of evidence between analytical designs is to be expected. Randomised controlled trials of dementia are particularly challenging, as the follow-up made necessary by the long latency period of the condition makes trials logistically difficult and financially expensive. Similarly, Mendelian randomisation is a comparatively new study design, and studies employing it in relation to dementia outcomes only appear in the evidence base in recent years, as illustrated in Figure \@ref(fig:typeByYear). This recent increase is likely driven by the availability of summary genome wide association studies (GWAS) that form the basis of the two-sample Mendelian randomisation approach.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -717,28 +693,26 @@ knitr::include_graphics(file.path("figures/sys-rev/type_by_year.png"))
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-A central finding of this review is the absence of studies examining vascular dementia as an outcome, most noticeable when comparing the evidence base for statins in dementia/Alzheimer's (Figures \@ref(fig:obsStatinDementiaFig) & \@ref(fig:obsStatinADFig)) with that available for vascular dementia (Figure \@ref(fig:obsStatinVaDFig)). This is particularly interesting given that lipids and statins are strongly related to the prevention of vascular disease. A potential explanation for this observation may be publication bias or the "file-drawer effect",[@rosenthal1979] though there was weak evidence of a small-study effects for this outcome (of which publication bias is one potential cause).[@sterne2011] Similarly, only one Mendelian randomisation study examined this outcome, likely due to the absence (until recently) of vascular dementia GWAS which precludes a two-sample approach.
+A central finding of this review is the absence of studies examining vascular dementia as an outcome, most noticeable when comparing the evidence base for statins in dementia/Alzheimer's (Figures \@ref(fig:obsStatinDementiaFig) & \@ref(fig:obsStatinADFig)) with that available for vascular dementia (Figure \@ref(fig:obsStatinVaDFig)). This is particularly interesting given that lipids and statins are strongly related to the prevention of vascular disease. A potential explanation for this observation may be publication bias or the "file-drawer effect",[@rosenthal1979] though small-study effects (of which publication bias is one potential cause)[@sterne2011] could not be investigated for this outcome due to the small number of available results. Similarly, only one Mendelian randomisation study examined this outcome, likely due to the absence of vascular dementia GWAS which precludes a two-sample approach.
 
-Of note, this review did not include the commonly cited PROSPER RCT, which examined the effect of pravastatin on cardiovascular disease risk and reported on cognitive outcomes as one of several secondary outcomes.[@shepherd2002] While widely cited in relation to the effect of statins on dementia risk and included in the Cochrane review of RCTs on this topic,[@mcguinness2016] the trial reported solely on the change in a range of cognitive measures (MMSE, Stroop test, Picture-Word Learning test and others) over follow-up. Though a useful indicator of general cognitive decline, it is not equivalent to a dementia diagnosis using recognised criteria, as cognitive tests should feed into a broader diagnostic pathway (see Section \@ref(diagnostic-criteria)). As such, this trial did not meet the inclusion criteria for this review.
+Of note, this review did not include the commonly cited PROSPER RCT, which examined the effect of pravastatin on cardiovascular disease risk and reported on cognitive measures as one of several secondary outcomes.[@shepherd2002] While widely cited in relation to the effect of statins on dementia risk and included in the Cochrane review of RCTs on this topic,[@mcguinness2016] the trial reported solely on the change in a range of cognitive measures (MMSE, Stroop test, Picture-Word Learning test and others) over follow-up rather than a binary dementia outcome. As such, this trial did not meet the inclusion criteria for this review.
 
 <!-- The findings on high TC in midlife being associated with increased risk of late-life AD are still limited to the few studies that report relevant data from Scandinavia and the United States. The wider literature shows that level of TC in populations varies according to diet, urbanization, ethnicity, and income [56, 57]. from Anstey 2017 -->
 
-Risk of bias across the individual results was generally high. The causes and expected impact of these biases on the results are discussed in more detail in Chapter \@ref(tri-heading). Of particular interest to this chapter, however, was the high risk of bias due to missing evidence observed for observational studies of lipid levels. In many cases, estimates were known to be missing from meta-analyses due to preferential reporting of significant results, leading to high risk of bias due to missing evidence. These missing estimates were most commonly identified through differing descriptions of the same analysis in conference abstract versus the final publication.[@yamada2009conf; @yamada2009] In addition, some authors stated outright that non-significant results were not reported (e.g. "The other lipid variables not significantly associated with dementia and Alzheimer’s disease ... were not reported in the table."[@ancelin2013]). However, as all identified missing results are likely to be non-significant, they would not be expected to have a substantial impact on their respective meta-analysis (which provided weak evidence of an effect), other than increasing the precision of the summary estimate.
+Risk of bias across the individual results was generally high. The expected impact of these biases on the results are discussed in more detail in Chapter \@ref(tri-heading). Of particular interest to this chapter, however, was the high risk of bias due to missing evidence observed for observational studies of lipid levels. In many cases, estimates were known to be missing from meta-analyses due to preferential reporting of significant results, leading to high risk of bias due to missing evidence. These missing estimates were most commonly identified through differing descriptions of the same analysis in conference abstract versus the final publication.[@yamada2009conf; @yamada2009] In addition, some authors stated outright that non-significant results were not reported (e.g. "The other lipid variables not significantly associated with dementia and Alzheimer’s disease ... were not reported in the table.").[@ancelin2013] However, as all identified missing results are likely to be non-significant, they would not be expected to have a substantial impact on their respective meta-analyses (which provided weak evidence of an effect of lipid levels on dementia outcomes) beyond increasing the precision of the summary estimate.
 
-Finally in terms of generalisability, despite a large proportion of the included studies being conducted in the Western world (Figure \@ref(fig:cohortLocations)), the applicability of the results to other populations is aided by the inclusion of several studies which made use of data from the Taiwan health insurance database.
+Finally in terms of generalisability, despite a large proportion of the included studies being conducted in the westernised countries (Figure \@ref(fig:cohortLocations)), the applicability of the results to other populations is aided by the inclusion of several studies which made use of data from the Taiwan National Health Insurance database.
 
 <!----------------------------------------------------------------------------->
 &nbsp;
 
 ### Comparison with previous reviews {#rev-previous-reviews}
 
-<!-- TODO Check none of these use a ROB tool -->
+While conducting this review, I identified several previous systematic reviews of this topic.[@chu2018; @yang2020; @muangpaisan2010; @poly2020; @kuzma2018risk] However, to my knowledge, this review is the first to use established domain-based assessment tools (for example, the RoB 2 tool for randomised controlled trials)[@sterne2019] to assess the risk of bias in included studies. The majority of the highly cited reviews on this topic either do not formally consider risk of bias in the observational studies they include,[@chu2018;@power2015] or use a non-domain-based assessment tool (e.g. the Newcastle-Ottowa Scale).[@poly2020]
 
-While conducting this review, I identified several previous systematic reviews of this topic.[@chu2018; @yang2020; @muangpaisan2010; @poly2020;@kuzma2018stroke; @kuzma2018risk] However, to my knowledge, this review is the first to use established domain based assessments tools (for example, the RoB 2 tool for randomised controlled trials)[@sterne2019] to assess the risk of bias in included studies. The majority of the highly cited reviews on this topic either do not formally consider risk of bias in the observational studies they include,[@chu2018;@power2015] or used a non-domain-based assessment tool (e.g. the Newcastle-Ottowa Scale).[@poly2020]
+I identified one previous review of Mendelian randomisation studies examining risk factors for Alzheimer's disease. However, this review was conducted prior to the majority of Mendelian randomisation studies included in this review being published. In addition, this previous review extracted the results of analyses which did not account for SNPs in the _Apo_$\mathcal{E}4$ genetic region (see the following section for a discussion of the bias this introduces).
 
-I identified one previous review of Mendelian randomisation studies examining risk factors for Alzheimer's disease. However, this review was conducted prior to the majority of Mendelian randomisation studies included in this review being published. In addition this previous review extracted the results of analyses which did not account for SNPs in the _Apo_$\mathcal{E}4$ genetic region (see the following section for a discussion of the bias this introduces).
-
-Despite these differences in time scales and methodology, the duplication of work across systematic reviews (including this one) is substantial. In retrospect, an alternative approach to conducting a further systematic review from scratch, known as an umbrella review or review-of-reviews,[@aromataris2015; @smith2011] could have been employed. This study design uses other systematic reviews rather than primary studies as the unit of analysis. Furthermore, it would have enabled more efficient identification of relevant primary studies to which the methods which sets this review apart could have been applied.
+Despite these differences in time scales and methodology, the duplication of work across systematic reviews (including this one) is substantial. In retrospect, an alternative approach to conducting a further systematic review from scratch, known as an umbrella review or review-of-reviews,[@aromataris2015; @smith2011] could have been employed. This study design uses other systematic reviews rather than primary studies as the unit of analysis. Furthermore, it would have enabled more efficient identification of a comprehensive set of primary studies relevant to this clinical question. Having defined this set, the methods which set this review apart could then have been applied.
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -749,15 +723,15 @@ One of the particular strengths of this review is the inclusion and critical ass
 
 Mendelian randomisation is a powerful analytical technique, using natural variation in participants' genomes to identify causal links between a genetically determined risk factor and an outcome, given that the three core assumptions detailed in Figure \@ref(fig:mrAssumptions) are valid. These assumptions are namely that: 
 
-* the genetic variant associates with the risk factor of interest (relevance assumption);
-* the variant-exposure association has no unmeasured confounders (independence assumption);
-* the variants affect the outcome only through their effect on the risk factor of interest (exclusion restriction assumption). 
+1. the genetic variant associates with the risk factor of interest (relevance assumption);
+2. the variant-exposure association has no unmeasured confounders (independence assumption);
+3. the variants affect the outcome only through their effect on the risk factor of interest (exclusion restriction assumption). 
 
 <!----------------------------------------------------------------------------->
 ```{r mrAssumptionsSetup, include = FALSE}
 ```
 
-(ref:mrAssumptions-cap) __Summary of the assumptions in Mendelian randomisation analyses__ - Mendelian randomisation analyses make three key assumptions: (I) _relevance_ - the genetic variant associates with the risk factor of interest; (II) _independence_ - the variant-exposure association has no unmeasured confounders; and (III) _exclusion restriction_ - variants affect the outcome only through their effect on the risk factor of interest (i.e. there is no horizontal pleiotropy).
+(ref:mrAssumptions-cap) __Summary of the assumptions in Mendelian randomisation analyses__ - Mendelian randomisation analyses make three key assumptions: (1) _relevance_ - the genetic variant associates with the risk factor of interest; (2) _independence_ - the variant-exposure association has no unmeasured confounders; and (3) _exclusion restriction_ - variants affect the outcome only through their effect on the risk factor of interest (i.e. there is no horizontal pleiotropy).
 
 (ref:mrAssumptions-scap) Summary of the assumptions in Mendelian randomisation analyses
 
@@ -768,13 +742,13 @@ knitr::include_graphics(file.path("figures/sys-rev/mrAssumptions.png"))
 
 However, inclusion of Mendelian randomisation as an acceptable study design in this review was complicated by a number of factors. Firstly, this study design is relatively new, particularly when compared to randomised trials or cohort studies. Figure \@ref(fig:typeByYear) demonstrates that Mendelian randomisation studies only begin to appear in the evidence base much later than NRSE/NRSI, likely due to the limited availability of large scale GWAS datasets needed for two-sample Mendelian randomisation analyses. As such, the process and tools for systematically assessing this study design are not as well developed. A key example of this is the absence of validated search filters for Mendelian randomisation studies. This limitation is further complicated by the varying terminology used to describe the method, particularly in the early years of its application, which led to me including general terms for instrumental variable analyses in my search.
 
-Additionally, there is currently no widely used risk-of-bias assessment tool for Mendelian randomisation studies. While a recent commentary provided a checklist for interpreting Mendelian randomisation studies, this guide includes reporting items in their quality checklist.[@davies2018] Reporting quality is an important consideration for Mendelian randomisation studies, as reflected by the recent release of the STROBE MR reporting guidelines,[@skrivankova2021] but it is a separate consideration to bias, as discussed in Section \@ref(risk-of-bias). Similarly, a previous review of Mendelian randomisation studies used the Q-Genie tool which was designed to assess the quality of GWAS included in a meta-analysis.[@sohani2015] While this tool assesses the underlying GWAS used, it does not address the additional methodological considerations of the Mendelian randomisation analysis itself. For this review, I used the best available author-devised tool, sourced from a recent review of systematic reviews of Mendelian randomisation studies.[@spiga2021] 
+Additionally, there is currently no widely used risk-of-bias assessment tool for Mendelian randomisation studies. While a recent commentary provided a checklist for interpreting Mendelian randomisation studies, this includes reporting items in their quality checklist.[@davies2018] Reporting quality is an important consideration for Mendelian randomisation studies, as reflected by the recent release of the STROBE MR reporting guidelines,[@skrivankova2021] but is a separate issue to bias as discussed in Section \@ref(risk-of-bias). Similarly, a previous review of Mendelian randomisation studies used the Q-Genie tool which was designed to assess the quality of GWAS included in a meta-analysis.[@sohani2015] While this tool assesses the underlying GWAS used, it does not address the additional methodological considerations of the Mendelian randomisation analysis itself. For this review, I used the best available author-devised tool, sourced from a recent review of systematic reviews of Mendelian randomisation studies.[@spiga2021] 
 
-As a further stumbling block, Mendelian randomisation lends itself to the analysis of multiple exposure-outcome comparisons as part of a single study, particularly when using a two-sample summary data design. This is particularly relevant to the consideration of bias due to missing evidence. As an example, through snowballing and other measures, I identified at least one relevant Mendelian randomisation study that had not been captured by the search strategy.[@larsson2017] This study examined lipid fractions as one of many risk factors for Alzheimer's disease, though the search would not have been expected to find it given the absence of any lipid-related keywords in the title or abstract. Studies examining multiple risk factors such as this can introduce bias into a systematic review, as it is commonly only those risk factors with a statistically significant result that are reported in the abstract and so are captured by a systematic search. These studies are described as "unknown unknown's" in the context of the RoB-ME tool, and are considered to be particularly challenging (as opposed to an analysis that was insufficiently reported to be included in the statistical analysis, or the "known unknown's").
+As a further stumbling block, Mendelian randomisation lends itself to the analysis of multiple exposure-outcome comparisons as part of a single study, particularly when using a two-sample summary data design. This is particularly relevant to the consideration of bias due to missing evidence. As an example, through snowballing (forwards and backwards citation chasing) and other measures, I identified at least one relevant Mendelian randomisation study that had not been captured by the search strategy.[@larsson2017] This study examined lipid fractions as one of many risk factors for Alzheimer's disease, though the search would not have been expected to find this study given the absence of any lipid-related keywords in the title or abstract. Studies examining multiple risk factors such as this can introduce bias into a systematic review, as it is commonly only those risk factors with a statistically significant result that are reported in the abstract and so are captured by a systematic search. These studies are described as "unknown unknown's" in the context of the RoB-ME tool, and are considered to be particularly challenging (as opposed to an analysis that was insufficiently reported to be included in the statistical analysis, or the "known unknown's").
 
-Useful future work to improve the methodology for inclusion of Mendelian randomisation studies in systematic reviews should involve the development of a validated search filter for this study design.[@waffenschmidt2020; @wagner2020] Alternatively, in better-resourced reviews, a broader search (e.g. "risk factor" AND "dementia" AND "Mendelian randomisation") followed by manual review of studies that examined multiple risk factors would be advisable. This was not feasible in the context of this review, given the large number of records to be screened even when using study design filters (N = `r comma(16109)`). Additionally, the value of methods that support traditional bibliographic database searches, such as snowballing (forwards and backwards citation chasing) and communication with relevant topic experts, should not be underestimated. Finally, development of a risk-of-bias assessment tool for this study design by a panel of methodologists and analysts would be of substantial benefit. 
+In better-resourced reviews, a broader search (e.g. "risk factor" AND "dementia" AND "Mendelian randomisation") followed by manual review of studies that examined multiple risk factors would be advisable. This was not feasible in the context of this review, given the large number of records to be screened even when using study design filters (N = `r comma(16109)`). Additionally, the value of methods that support traditional bibliographic database searches, such as snowballing and communication with relevant topic experts, should not be underestimated. 
 
-One item of particular interest is the attenuation of any effects identified by Mendelian randomisation studies following the adjustment for/exclusion of genetic variation in the _Apo_$\mathcal{E}4$ gene region. As discussed in the introduction (see Section \@ref(intro-basic-science)), an increasing number of _Apo_$\mathcal{E}4$ alleles is a major independent risk factor for Alzheimer's disease and so violates the exclusion restriction criteria of Mendelian randomisation studies (Figure \@ref(fig:mrAssumptions)). In all cases, excluding variants in the _Apo_$\mathcal{E}$ region attenuates the observed effect to the null. A clear example of this is Benn _et al_ (2017), where _Apo_$\mathcal{E}$ variants were not sufficiently identified and excluded, leading the published paper to report a protective effect of LDL-c on Alzheimer's (`r estimate(0.83, .75,.92,"RR")`).[@benn2017] Following several rapid responses, the data was re-analysed to exclude a larger area around _Apo_$\mathcal{E}$ which attenuated the finding to the null.[@benn2017comment]
+One item of particular interest is the attenuation of any effects identified by Mendelian randomisation studies following the adjustment for/exclusion of genetic variation in the _Apo_$\mathcal{E}4$ gene region. As discussed in the introduction to this thesis (see Section \@ref(intro-basic-science)), an increasing number of _Apo_$\mathcal{E}4$ alleles is a major independent risk factor for Alzheimer's disease and so violates the exclusion restriction criteria of Mendelian randomisation studies (Figure \@ref(fig:mrAssumptions)). In all cases, excluding variants in the _Apo_$\mathcal{E}$ region attenuates the observed effect to the null. A clear example of this is Benn _et al_ (2017), where _Apo_$\mathcal{E}$ variants were not sufficiently identified and excluded, leading the published paper to report a protective effect of LDL-c on Alzheimer's (`r estimate(0.83, .75,.92,"RR")`).[@benn2017] Following several rapid responses, the data was re-analysed to exclude a larger area around _Apo_$\mathcal{E}$ which attenuated the finding to the null.[@benn2017comment]
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -783,7 +757,7 @@ One item of particular interest is the attenuation of any effects identified by 
 ```{r preprintGrowthSetup, include=FALSE}
 ```
 
-As highlighted in Section \@ref(diverse-sources-preprints), this review explicitly sought to synthesize all available evidence, irrespective of publication status (preprinted vs. published). Using the tool described in Chapter \@ref(sys-rev-tools-intro), two preprint servers related to health and biomedical sciences were searched as part of this review. The small number of studies returned by the preprint searches (or the absence of any relevant hits in the medRxiv database - see Figure \@ref(fig:prisma-flow-fig)) is largely due to the timing of the preprint searches. The searches for this review were performed in mid-July 2019, but the medRxiv repository, an offshoot of the Epidemiology and Clinical Trials categories of the bioRxiv preprint server, only registered its first preprint 25th June 2019. As such, at the point it was searched, the medRxiv database contained only a very small number of records (N = `r n_at_search["med"]`; Figure \@ref(fig:preprintGrowth)).
+As highlighted in Section \@ref(diverse-sources-preprints), this review explicitly sought to synthesize all available evidence, irrespective of publication status (preprinted vs. published). Using the tool described in Chapter \@ref(sys-rev-tools-intro), two preprint servers related to health and biomedical sciences were searched as part of this review. The small number of studies returned by the preprint searches (or the absence of any relevant hits in the medRxiv database - see the PRISMA flow diagram in Figure \@ref(fig:prisma-flow-fig)) is largely due to the timing of the preprint searches. The searches for this review were performed in mid-July 2019, but the medRxiv repository, an offshoot of the Epidemiology and Clinical Trials categories of the bioRxiv preprint server, only registered its first preprint 25th June 2019. As such, at the point it was searched, the medRxiv database contained only a very small number of records (N = `r n_at_search["med"]`; Figure \@ref(fig:preprintGrowth)).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -798,7 +772,7 @@ knitr::include_graphics(file.path("figures/sys-rev/preprint_growth.png"))
 
 Three relevant preprints from bioRxiv were identified. Of note, all three described a Mendelian randomisation study, potentially indicating that more biologically-focused study designs are over-represented in the bioRxiv repository. The added evidential value of including these preprints was described in Section \@ref(sys-rev-including-preprints-res) and indicated that results available only via preprinted reports can contribute additional evidence to a meta-analysis. However, the scale of this contribution is questionable. Preprinted evidence was incorporated into only a single meta-analysis in this review, and inclusion of the preprinted result did not substantially impact the summary effect estimate.
 
-Of the three identified preprints, two were subsequently published as of September 2021. This fits well with the analysis presented in Chapter \@ref(sys-rev-tools-heading) that, allowing for a two-year lag, approximately two-thirds of preprints are published. It also illustrates the dual advantages of preprinted reports to evidence syntheses. Firstly, preprints provide an advance snapshot of the literature, capturing articles that will eventually be published but were not available at the time of the main search. For example one eligible preprint in this review was initially posted on bioRxiv in July 2019[@andrews2019] and was subsequently published in 2021 following peer-review.[@andrews2021] Secondly, inclusion of preprints allows for results that may never be formally published to be included in an evidence synthesis exercise, as is the case with a second preprint included in this review.[@so2017] Both of these aspects illustrate that inclusion of preprints is a necessity if the aim is to find all relevant literature on a topic at the time of searching.
+Of the three identified preprints, two were subsequently published as of July 2021. This fits well with the analysis presented in Chapter \@ref(sys-rev-tools-heading) that, allowing for a two-year lag, approximately two-thirds of preprints are published. It also illustrates the dual advantages of preprinted reports to evidence synthesis exercises. Firstly, preprints provide an advance snapshot of the literature, capturing articles that will eventually be published but were not available at the time of the main search. For example, one eligible preprint in this review was initially posted on bioRxiv in July 2019[@andrews2019] and was subsequently published in 2021 following peer-review.[@andrews2021] Secondly, inclusion of preprints allows for results that may never be formally published to be included in an evidence synthesis exercise, as is the case with a second preprint included in this review.[@so2017] Both of these aspects illustrate that inclusion of preprints is a necessity if the aim is to find all relevant literature on a topic at the time of searching.
 
 Recently, inclusion of preprints in systematic reviews has become significantly more widespread. This is largely due to the role of preprint servers, in particular medRxiv, as a key evidence dissemination venue during the early stages of the COVID-19 pandemic.[@fraser2020preprinting] How well this adoption of preprints will transfer to other less-urgent topics, where the speed of research does not put the same focus on preprinted articles, is currently unknown.
 
@@ -806,26 +780,25 @@ Recently, inclusion of preprints in systematic reviews has become significantly 
 
 ### Open data sharing {#sys-rev-open-data}
 
-As discussed in Section \@ref(dose-response-results), many primary studies did not report important information required for the dose-response meta-analysis, and so could not be included in the synthesis. This limitation was compounded by the expected low response rate to requests for further information from primary authors. Contacting authors is worthwhile, as it can substantially change the conclusion of a systematic review[@meursingereynders2019] and is not too costly to systematic reviewers,[@cooper2019] though a preferable option is that the authors of primary studies readily deposit all relevant study data at the point of publication. 
+As discussed in Section \@ref(dose-response-results), many primary studies did not report important information required for the dose-response meta-analysis, and so could not be included in this analysis. This limitation was compounded by the expected low response rate to requests for further information from primary authors. Contacting authors is worthwhile, because it can substantially change the conclusion of a systematic review[@meursingereynders2019] and is not too costly to systematic reviewers.[@cooper2019] However, a preferable option is that the authors of primary studies readily deposit all relevant study data at the point of publication. 
 
 Based on my experience of extracting data for this review, I co-authored a guidance article to aid primary prevention scientists in preparing and sharing their data so that it can easily be incorporated into a evidence synthesis exercise, using a trial of mindfulness interventions as a case study.[@hennessy2021] A copy of this publication is available in Appendix \@ref(published-papers). In an attempt to apply my own guidance, I have invested a substantial amount of time and effort into making the data obtained by this review openly available to other researchers, via a GitHub repository.
 
-<!-- TODO Upload as part of thesis repo. -->
-
+<!-- TODO Upload as part of thesis repo AND CITE -->
 
 &nbsp;<!----------------------------------------------------------------------->
 
 ### Strengths and limitations
 
-<!-- TODO Cross reference with other discussion sections to ensure material isn't being repeated. -->
-
 #### Strengths
 
 There are several aspects where this review is distinct from those already available in the published literature. While several reviews of this research topic exist,[@chu2018; @yang2020; @muangpaisan2010; @poly2020] the overlap between the list of studies included in each is not complete. As part of this review, I have not only performed an original search of primary literature databases, but have also screened the reference lists of comparable reviews to ensure no relevant study has been omitted. 
 
-Secondly, this review employed a structured approach to risk-of-bias assessment using a domain-based tool.  This represents an important strength of this review, as the detailed risk of bias assessments are used in inform the quantitative triangulation analysis presented in Chapter \@ref(tri-heading).
+Secondly, this review employed a structured approach to risk-of-bias assessment using a domain-based tool.  This represents an important strength of this review, as the detailed risk of bias assessments are used to inform the quantitative triangulation analysis presented in Chapter \@ref(tri-heading).
 
-Thirdly, as discussed at length in the section above, in contrast to other available reviews and enabled by the tool described in Chapter \@ref(sys-rev-tools-heading), this review systematically searched preprinted health-related preprints. Finally, as a secondary element, I used this review to pilot new research synthesis methodologies, in particular a new visualisation approach for risk-of-bias assessments and a forthcoming tool for assessing the risk-of-bias due to missing evidence.
+Thirdly, as discussed at length in the section above, in contrast to other available reviews and enabled by the tool described in Chapter \@ref(sys-rev-tools-heading), this review systematically searched health-related preprints. 
+
+Finally, as a secondary element, I used this review to pilot new research synthesis methodologies, in particular a new visualisation approach for risk-of-bias assessments and a forthcoming tool for assessing the risk-of-bias due to missing evidence.
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -834,14 +807,11 @@ Thirdly, as discussed at length in the section above, in contrast to other avail
 
 <!-- TODO Consider mentioning that the date of the review is a limitation, and forward refer to the section in the Discussion that considers two new studies -->
 
+A primary limitation of this review is the fact that only a sample of records were dual screened at the title/abstract and full-text stages is a potential limitation, because there is a chance that some eligible records could have been excluded. However,  evidence from assessments of inter- and intra-rater reliability indicate that this is not a major concern. Additionally, the search date of the study (July 2019) is a further limitation, in that more recently published studies are not included in this analysis.
 
-The primary limitation of this review is that several included studies used data from EHR databases, which come with serious concerns regarding validity.[@hsieh2019; @mcguinness2019validity; @wilkinson2018] Relatedly, several studies which made use of electronic health record databases did not report the specific code lists used, potentially introducing substantial heterogeneity into the analysis. An empirical example of the effect of differing EHR code lists is presented as part of the analysis in Chapter \@ref(cprd-analysis-heading) (see Section \@ref(comparing-codelists)).
+One particular limitation with regards to the risk-of-bias assessment is the fact that the ROBINS-E assessments were performed using an adapted version of the ROBINS-I tool. This meant that there were no signaling questions to guide the domain-level risk-of-bias assessments, which may have influenced the accuracy with which the judgements were assigned. However, there is no published empirical evidence supporting the need for signaling questions. Additionally, a previous assessment of inter-rater reliability in domain-bases risk-of-bias tools found that, even with the use of signaling questions, reviewers assessment of bias can vary substantially.[@jeyaraman2020]
 
-In addition, the fact that only a sample of records were dual screened at the title/abstract and full-text stages is a potential limitation, as there is a chance that some eligible records could have been excluded. However,  evidence from assessments of inter- and intra-rater reliability indicate that this is not a major concern.
-
-One particular limitation with regards to the risk-of-bias assessment is the fact that the ROBINS-E assessments were performed using an adapted version of the ROBINS-I tool. This meant that there were no signaling questions to guide the domain-level risk-of-bias assessments, which may have influenced the accuracy with which the judgements were assigned. However, there is no published empirical evidence supporting the need for signaling questions and assessment of inter-rater reliability across the different tools did not indicate a specific problem with the ROBINS-E assessments. In fact, low agreement was common across the tools, though this is expected based on the available literature.[@jeyaraman2020]
-
-A final limitation is the potential for missing evidence on the basis of the results. Evidence for this limitation came from the ROB-ME assessments and was supported by empirical evidence that some studies containing relevant results were missed by the search (see Section \@Ref(rev-discussion-MR) above for a fuller discussion of this issue with respect to Mendelian randomisation studies). Unfortunately, this is probably a common limitation across all systematic reviews, based on the way in which increased search sensitivity must be balanced with a manageable workload.
+A final limitation is the potential for missing evidence on the basis of the results. Evidence for this limitation came from the ROB-ME assessments and was supported by empirical evidence that some studies containing relevant results were missed by the search (see Section \@ref(rev-discussion-MR) above for a fuller discussion of this issue with respect to Mendelian randomisation studies). Unfortunately, this is probably a common limitation across all systematic reviews, based on the way in which increased search sensitivity must be balanced with a manageable workload.
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -852,6 +822,6 @@ A final limitation is the potential for missing evidence on the basis of the res
 
 * I found no consistent relationship between lipids or lipid-regulating agents and dementia across different evidence sources. However, there was some indication of a protective effect of statins on all-cause and Alzheimer's disease dementia in non-randomised studies of interventions.
 
-* The findings from this review are used throughout the subsequent chapters. In Chapter \@ref(cprd-analysis-heading), this summary of the evidence guided the choice of analysis approach, ensuring that the new analysis was at risk of a different source of bias and provided evidence on an under-studied outcome (vascular dementia). In Chapter \@ref(ipd-heading), prospective cohorts identified by the review were contacted in an attempt to obtain individual participant data. Finally, the results identified here are used as a key source of evidence for the triangulation exercise presented in Chapter \@ref(discussion-heading).
+* The findings from this review are used throughout the subsequent chapters. In Chapter \@ref(cprd-analysis-heading), this summary of the evidence guided the choice of analysis approach, ensuring that the new analysis was at risk of a different source of bias and provided evidence on an under-studied outcome (vascular dementia). In Chapter \@ref(ipd-heading), prospective cohorts identified by the review were contacted in an attempt to obtain individual participant data. Finally, the results identified here are used as a key source of evidence for the triangulation exercise presented in Chapter \@ref(tri-heading).
 
 \newpage

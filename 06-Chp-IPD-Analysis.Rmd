@@ -199,7 +199,7 @@ As highlighted in Figure \@ref(fig:cohortFlowchart), there was little overlap be
 Nine cohorts (8 DPUK only, 1 Systematic review + DPUK) responded positively to requests for data access. However, on inspection of data provided, six of these cohorts were excluded and the reason for exlcusion in each case is summarised in Table \@ref(tab:dataExcluded-table). In summary, two cohorts contained were memory-complaint cohorts, containing participants unlikely to be free of dementia at baseline (BRACE, MEMENTO). Two cohorts, despite being designed as multi-wave studies, only shared data related to a single wave and so represented cross-sectional data (Generation Scotland, NICOLA). Finally TRACK HD is a genetic cohort where cohort owners advised me that dementia will inevitably develop in mid-life driven by the Huntington's (HTT gene) mutation and that this effect would likely far outweigh the effect of lipids. Finally, the ELSA study was excluded based on the dichotomous definition of the exposure variable. <!-- TODO CITATION NEEDED for each study here! -->
 
 &nbsp;<!----------------------------------------------------------------------->  
-(ref:dataExcluded-caption) Exclusion reasons for cohorts providing data
+(ref:dataExcluded-caption) __Exclusion reasons for cohorts providing data__ - Number of cohorts approach and the reasons for a lack of data access, stratified by whether the cohort was identified by the systematic review or via the DPUK.
 
 (ref:dataExcluded-scaption) Exclusion reasons for cohorts providing data
 
@@ -258,7 +258,7 @@ Across the three cohorts, `r n_total_ipd` participants were included in this ana
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:covariateSummary-caption) Summary of characteristics for cohorts included in the IPD  analysis
+(ref:covariateSummary-caption) __Characteristics of IPD cohorts__ - Summary of characteristics for cohorts included in the IPD analysis. Variables not available from a cohort are denoted by "-". See Appendix \@ref(appendix-ipd-covariate-matrix) for details on the level of missing data within collected variables.
 
 (ref:covariateSummary-scaption) Summary of characteristics of IPD cohorts
 
@@ -270,7 +270,7 @@ Across the three cohorts, `r n_total_ipd` participants were included in this ana
 
 #### Main effects
 
-The results from the main effect analysis across the varying lipid fractions on each dementia outcome considered can be seen in Figures \@ref(fig:mainEffectDem) & \@ref(fig:mainEffectVad), respectively. There was weak evidence for an association of any lipid level with either all-cause or vascular dementia, with the exception of a harmful association between raised triglycerides and vascular dementia (`r ipd_vasdem`). For the sole cohort containing data on the Alzheimer's disease outcome (Whitehall II), there was weak evidence for an association of this outcome with any lipid fraction (results shown in comparison with previous analysis of this cohort in Figure \@ref(fig:whitehallComparisonAd-cap))
+The results from the main effect analysis across the varying lipid fractions on each dementia outcome considered can be seen in Figures \@ref(fig:mainEffectDem) & \@ref(fig:mainEffectVad), respectively. There was weak evidence for an association of any lipid level with either all-cause or vascular dementia, with the exception of a harmful association between raised triglycerides and vascular dementia (`r ipd_vasdem`). For the sole cohort containing data on the Alzheimer's disease outcome (Whitehall II), there was weak evidence for an association of this outcome with any lipid fraction (results shown in comparison with previous analysis of this cohort in Figure \@ref(fig:whitehallComparisonAd))
 
 <!----------------------------------------------------------------------------->
 (ref:mainEffectDem-cap) __IPD meta-analysis of all-cause dementia__ - Using Model 1 (adjusted for age, sex, smoking, alcohol, education and diabetes), an IPD random-effects meta-analysis was applied to investigate the association of a 1-SD increase in each lipid fraction with all-cause dementia outcomes.
@@ -297,7 +297,7 @@ knitr::include_graphics(file.path("figures/ipd/main_vasdem.png"))
 Estimates from the common-set-adjusted model (Model 1: adjusted for age, sex, smoking, alcohol, education and diabetes) were comparable to the fully-adjusted model (Model 2: Model 1 further adjusted for ethnicity, prevalent ischemic heart disease, and BMI) for the effect of lipids on all-cause dementia in cohorts reporting all covariates of interest (Figure \@ref(fig:ipdModelComparison)).
 
 <!----------------------------------------------------------------------------->
-(ref:ipdModelComparison-cap) Comparison of results from the common-set-adjusted (Model 1) and fully-adjusted (Model 2) analyses for the all-cause dementia outcome.
+(ref:ipdModelComparison-cap) __Comparison of partially- and maximally-adjusted model__ - Results from the common-set-adjusted (Model 1) and fully-adjusted (Model 2) analyses for the all-cause dementia outcome were compared for the two cohorts containing a full set of covariates (EPIC, Whitehall II).
 
 (ref:ipdModelComparison-scap) Comparison of partially and maximally adjusted results
 
@@ -327,7 +327,7 @@ knitr::include_graphics(file.path("figures/ipd/interaction_age_dementia.png"))
 <!----------------------------------------------------------------------------->
 
 <!----------------------------------------------------------------------------->
-(ref:interactionDementiaSex-cap) __Meta-analysis of sex-lipid interaction terms for all-cause dementia__ Estimates were obtained using the common-set-adjusted model (Model 1: age, sex, smoking, alcohol, education, diabetes) and refer to the effect of male gender on the lipid/all-cause dementia association.
+(ref:interactionDementiaSex-cap) __Meta-analysis of sex-lipid interaction terms for all-cause dementia__ - Estimates were obtained using the common-set-adjusted model (Model 1: age, sex, smoking, alcohol, education, diabetes) and refer to the effect of male gender on the lipid/all-cause dementia association.
 
 (ref:interactionDementiaSex-scap) Meta-analysis of sex-lipid interaction terms for all-cause dementia
 

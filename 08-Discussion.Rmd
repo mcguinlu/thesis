@@ -11,10 +11,12 @@ documentclass: book
 ---
 
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:discussion-quote)', echo = TRUE}
-Hold
+Science knows it doesn't know everything.
+
+Otherwise, it'd stop.
 ```
 
-(ref:discussion-quote) --- Hold
+(ref:discussion-quote) --- Dara Ó Briain, 2008[@obriain2008] 
 
 # Discussion {#discussion-heading}
 

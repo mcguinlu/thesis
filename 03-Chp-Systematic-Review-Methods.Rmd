@@ -146,7 +146,7 @@ Similarly, I completed all full-text screening, with a random ~20% being screene
 
 Inter- and intra-rater reliability during the screening stages were assessed for a 10% sub-sample of records. Intra-rater reliability involved a single reviewer applying the inclusion criteria to the same set of records while blinded to their previous decisions (i.e. assessment of consistency), while inter-rater reliability involved two reviewers independently screening the same set of records (i.e. assessment of accuracy).
 
-Rater reliability was assessed using Gwet's agreement coefficient (AC1).[@gwet2008] This approach was chosen over other measures such as percent agreement because it accounts for chance agreement between reviewers but does not suffer from bias due to severely imbalanced marginal totals in the same way that Cohen's $kappa$ value does. [@cohen1960: @gwet2008; @wongpakaran2013] Given the small number of included studies in this review as a proportion of the total number screened, this is a useful characteristic. The formulae used to calculate AC1 are given in Appendix \@ref(appendix-gwet). 
+Rater reliability was assessed using Gwet's agreement coefficient ($AC1$).[@gwet2008] This approach was chosen over other measures such as percent agreement because it accounts for chance agreement between reviewers but does not suffer from bias due to severely imbalanced marginal totals in the same way that Cohen's $kappa$ value does. [@cohen1960: @gwet2008; @wongpakaran2013] Given the small number of included studies in this review as a proportion of the total number screened, this is a useful characteristic. The formulae used to calculate $AC$ are given in Appendix \@ref(appendix-gwet). 
 
 Interpretion of agreement coefficients is a widely debated topic, and while arbitrary cut-off values may mislead readers,[@brennan1992] they provide a useful rubric by which to assess inter-rater agreement. Here, I used guidelines based on a stricter interpretation of the Cohen's $kappa$ coefficient,[@mchugh2012] presented in Table \@ref(tab:gwet-table).
 
@@ -163,7 +163,7 @@ Interpretion of agreement coefficients is a widely debated topic, and while arbi
 
 &nbsp;
 
-Intra- and inter-rater reliability was assessed against these cut-offs. If this assessment demonstrated an issue with the screening process (defined as an AC1 of less than 0.9), it indicated the need for a larger proportion of records to be dual-screened.
+Intra- and inter-rater reliability was assessed against these cut-offs. If this assessment demonstrated an issue with the screening process (defined as an $AC$ of less than 0.9), it indicated the need for a larger proportion of records to be dual-screened.
 
 &nbsp;
 <!----------------------------------------------------------------------------->
@@ -307,9 +307,7 @@ In addition to assessing the risk of bias within each result contributing to a s
 
 #### Analysis overview {#sys-rev-analysis-overview}
 
-An initial qualitative synthesis of evidence was performed, summarising the data extracted from studies stratified by study design. Where individual studies were deemed comparable, they were incorporated into a quantitative analysis or "meta-analysis". <!-- TODO CITATION NEEDED --> 
-
-Results were not combined across different study designs (i.e. RCTs were not combined in a meta-analysis with results from observational studies). The summary effect estimates produced across individual study designs are discussed, but are compared and contrasted more fully as part of the triangulation exercise presented in Chapter \@ref(discussion-heading). Similarly, analyses are presented separately for each dementia outcome of interest (all-cause dementia, Alzheimer's disease, vascular dementia).
+An initial qualitative synthesis of evidence was performed, summarising the data extracted from studies stratified by study design. Where individual studies were deemed comparable, they were incorporated into a quantitative analysis or "meta-analysis". Results were not combined across different study designs (i.e. RCTs were not combined in a meta-analysis with results from observational studies). The summary effect estimates produced across individual study designs are discussed, but are compared and contrasted more fully as part of the triangulation exercise presented in Chapter \@ref(tri-heading). Similarly, analyses are presented separately for each dementia outcome of interest (all-cause dementia, Alzheimer's disease, vascular dementia).
 
 The range of effect measures presented by studies (odds ratios, risk ratios, hazard ratios, etc.) are not directly interchangeable in the context of systematic review.  As such, different reported effect estimates can be one potential problem that precludes a meta-analysis of all studies.[@mckenzie2019] However if the outcome is rare, as is the case for dementia outcomes, the estimated odds, risk and hazard ratios will approximate each other.[@vanderweele2020] As such, I did not stratify the analyses by reported effect measure.
  
