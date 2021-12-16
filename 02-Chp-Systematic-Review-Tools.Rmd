@@ -78,7 +78,7 @@ I developed the tool to meet three success criteria:[@wateridge1995]
 
 1.  reliable, reproducible and transparent search functionality, allowing for Boolean (AND/OR/NOT) operator logic;
 
-2.  support for bulk export of references returned to a file type that can be readily imported into a reference manager (e.g., *.bib* or *.ris*); and
+2.  support for bulk export of references returned to a file type that can be readily imported into a reference manager (e.g.,, *.bib* or *.ris*); and
 
 3.  automated retrieval of the full-text PDFs of relevant records.
 
@@ -164,7 +164,7 @@ devtools::install_github("ropensci/medrxivr")
 
 ### Importing preprint metadata
 
-Prior to searching the metadata, users must first create a local copy of the database, denoted using `mx_data` below. In `medrixvr`, I have provided two separate but related methods to achieve this (Figure \@ref(fig:medrxivr-data-sources)). The first of these methods, accessed via the `mx_api_content()` function, creates a local copy of all data available from the medRxiv API at the time the function is run. 
+Prior to searching the metadata, users must first create a local copy of the database, denoted using `mx_data` below. In `medrxivr`, I have provided two separate but related methods to achieve this (Figure \@ref(fig:medrxivr-data-sources)). The first of these methods, accessed via the `mx_api_content()` function, creates a local copy of all data available from the medRxiv API at the time the function is run. 
 
 &nbsp;
 
@@ -175,7 +175,7 @@ mx_data <- mx_api_content()
 
 &nbsp;
 
-This provides an up-to-the-minute reflection of the medRxiv preprint repository. However, this approach has two limitations. Firstly, because the API returns results as a series of pages limited to 100 records per page, downloading the entire database requires a time-intensive process of cycling through each page. Secondly, the API can become unavailable, either during peak usage times or planned maintainence windows. To address these limitations, I provide a second method of accessing medRxiv data, called via the `mx_snapshot()` function, which allows users to access a maintained static snapshot of the database. Note that due to the size of bioRxiv, only a maintained snapshot of the medRxiv repository is available via `mx_snapshot()`.
+This provides an up-to-the-minute reflection of the medRxiv preprint repository. However, this approach has two limitations. Firstly, because the API returns results as a series of pages limited to 100 records per page, downloading the entire database requires a time-intensive process of cycling through each page. Secondly, the API can become unavailable, either during peak usage times or planned maintenance windows. To address these limitations, I provide a second method of accessing medRxiv data, called via the `mx_snapshot()` function, which allows users to access a maintained static snapshot of the database. Note that due to the size of bioRxiv, only a maintained snapshot of the medRxiv repository is available via `mx_snapshot()`.
 
 &nbsp;
 
@@ -222,7 +222,7 @@ myquery <- list(topic1, topic2)         # Combined with AND
 
 &nbsp;
 
-For example, when written in standard syntax, the search contained in the `myquery` object above would be: "((dementia **OR** alzheimer's) **AND** (lipids **OR** statins))". There is no limit to the number of search terms that can be included in each topic, nor in the number of topics that can be searched for. Search terms can also contain common syntax used by systematic reviewers and health librarians, including the NEAR operator for the identification of co-localised terms and wild-cards which allow for alternate spellings (e.g. "randomi*s*ation" vs "randomi*z*ation").
+For example, when written in standard syntax, the search contained in the `myquery` object above would be: "((dementia **OR** alzheimer's) **AND** (lipids **OR** statins))". There is no limit to the number of search terms that can be included in each topic, nor in the number of topics that can be searched for. Search terms can also contain common syntax used by systematic reviewers and health librarians, including the NEAR operator for the identification of co-localised terms and wild cards which allow for alternate spellings (e.g., "randomi*s*ation" vs "randomi*z*ation").
 
 Once a strategy has been defined, it is passed along with the local copy of the database to the `mx_search()` function.
 
@@ -272,7 +272,7 @@ results  <- mx_search(mx_data,
 
 &nbsp;
 
-This is important as part of developing a search strategy,[@bramer2018] because it allows for the key terms related to each topic to be discovered. It also aids in identifying misspelled or case-sensitive search terms, which will frequently return no results. As an example, in the search presented above, the term "alzheimer's" returns no records. This is expected, because "Alzheimer's" is a proper noun and so should be capitalised, but serves to illustrate the usefulness of the reporting function.
+This is important as part of developing a search strategy,[@bramer2018] because it allows for the key terms related to each topic to be discovered. It also aids in identifying misspelled or case-sensitive search terms, which will frequently return no results. As an example, in the search presented above, the term "alzheimer's" returns no records. This is expected because "Alzheimer's" is a proper noun and so should be capitalised, but serves to illustrate the usefulness of the reporting function.
 
 In hindsight, the decision to make the search case-sensitive was a poor one because users reported being unaware of this setting when carrying out their search. However, changing the default behaviour of `mx_search()` to be case-insensitive is problematic because it could result in different numbers of hits based solely on which version of the package the user has installed. To address this, `mx_search()` now contains an `autocaps` argument, which when set to `TRUE` will automatically search for both capitalised and uncapitalised versions of the search term.
 
@@ -282,9 +282,9 @@ In hindsight, the decision to make the search case-sensitive was a poor one beca
 
 ### Exporting to a bibliography file
 
-In line with my second success criteria (Section \@ref(success-criteria)), one of the key features of the `medrxivr` is the ability for users to export easily the results of their systematic search to a reference manager. While this would seem a likely candidate to be a generic feature, this is one of the key ways in which `medrxivr` is set apart from other preprint search tools. None of tools that I audited provide this feature, nor does the native medRxiv/bioRxiv website search.
+In line with my second success criteria (Section \@ref(success-criteria)), one of the key features of the `medrxivr` is the ability for users to easily export the results of their systematic search to a reference manager. While this would seem a likely candidate to be a generic feature, this is one of the key ways in which `medrxivr` is set apart from other preprint search tools. None of tools that I audited provide this feature, nor does the native medRxiv/bioRxiv website search.
 
-The results of our simple search above can be exported to the `medrxiv_export.bib"` file using the following code:
+The results of our simple search above can be exported to the `medrxiv_export.bib` file using the following code:
 
 &nbsp;
 
@@ -339,7 +339,7 @@ Lobbying of the Cold Springs Harbor Laboratory to develop the API to allow for d
 
 In addition to being used to systematically search health-related preprint servers, as illustrated in the systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading), `medrxivr` has other uses. 
 
-For example, I led a descriptive analysis of the change in data availability statements between preprinted and published versions of the same manuscript, stratified by journal data sharing policy access, underpinned by preprint meta-data provided by `medrixvr`. By comparing the preprinted and published versions of the data availability statement, I could examine the same manuscript - same content, authors and funders - under two different publication policies (preprint server vs peer-review journal). This comparison provides evidence on whether stricter policies which require data sharing as a condition of publication result in increased data availability. The analysis found some evidence that data availability statements more frequently described open data on publication when the journal mandated data sharing, compared to when the journal did not mandate data sharing. This study has since been published,[@mcguinness2020DAScomparison] and a copy is included in Appendix \@ref(published-papers). 
+For example, I led a descriptive analysis of the change in data availability statements between preprinted and published versions of the same manuscript, stratified by journal data sharing policy access, underpinned by preprint meta-data provided by `medrxivr`. By comparing the preprinted and published versions of the data availability statement, I could examine the same manuscript - same content, authors and funders - under two different publication policies (preprint server vs peer-review journal). This comparison provides evidence on whether stricter policies which require data sharing as a condition of publication result in increased data availability. The analysis found some evidence that data availability statements more frequently described open data on publication when the journal mandated data sharing, compared to when the journal did not mandate data sharing. This study has since been published,[@mcguinness2020DAScomparison] and a copy is included in Appendix \@ref(published-papers). 
 
 ```{r, include=FALSE}
 med_res <-
@@ -359,9 +359,9 @@ publication_n <- sum(med_res$n)
 publish_percent <- paste0("(", round(published/publication_n*100,1),"%)")
 ```
 
-Secondly, using `medrxivr`, an analysis of the publication rate for medRxiv preprints was performed (see Appendix \@ref(appendix-tools-pub)). `r published` of the `r publication_n` records `r publish_percent` posted on medRxiv in July 2019 were published by 30th July 2021 (i.e. allowing for a two-year lag between preprint posting and publication). This finding agrees with previous work demonstrating that two-thirds of bioRxiv preprints are published in a peer-reviewed journal within two years of posting.[@abdill2019popularity] This analysis further illustrates that a substantial number of studies are never formally published but remain accessible as preprints.
+Secondly, using `medrxivr`, an analysis of the publication rate for medRxiv preprints was performed (see Appendix \@ref(appendix-tools-pub)). `r published` of the `r publication_n` records `r publish_percent` posted on medRxiv in July 2019 were published by 30th July 2021 (i.e., allowing for a two-year lag between preprint posting and publication). This finding agrees with previous work demonstrating that two-thirds of bioRxiv preprints are published in a peer-reviewed journal within two years of posting.[@abdill2019popularity] This analysis further illustrates that a substantial number of studies are never formally published but remain accessible as preprints.
 
-In summary, the meta-research/methodological analyses described above illustrate that easy access to medRxiv/bioRxiv metadata has applications beyond the inclusion of preprints in systeamtic review.
+In summary, the meta-research/methodological analyses described above illustrate that easy access to medRxiv/bioRxiv metadata has applications beyond the inclusion of preprints in systematic review.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -377,9 +377,9 @@ It is probably too early (and likely too methodologically difficult) to tell whe
 
 <!----------------------------------------------------------------------------->
 
-### Role of open source tools in evidence synthesis
+### Role of open-source tools in evidence synthesis
 
-Part of the motivation for creating the `medrxivr` tool was a belief that the development and distribution of open source scripts and tools should be a fundamental part of evidence synthesis research.[@goldacre2019; @mckiernan2016] In the case of `medrxivr`, it is likely that several other evidence synthesists had written personal scripts that have a similar, or related, functionality - in fact, following development of the tool, I identified one other researcher that has done so (Nicholas Fraser, author of the `rbiorxiv` package, which allows for importing medRxiv metadata into R but does not provide search functionality).[@fraser2020rbiorixv] If these scripts continue to be developed in private and are never shared or publicised, this will inevitably hamper the efforts of the evidence synthesis community, not only in terms of duplication of time and effort but also due to lost opportunities for collaboration.[@mckiernan2016] Creating and sharing well-documented packages, the recognised standard for sharing code in R, represents one way to reduce this inefficiency.[@vuorre2020]
+Part of the motivation for creating the `medrxivr` tool was a belief that the development and distribution of open-source scripts and tools should be a fundamental part of evidence synthesis research.[@goldacre2019; @mckiernan2016] In the case of `medrxivr`, it is likely that several other evidence synthesists had written personal scripts that have a similar, or related, functionality - in fact, following development of the tool, I identified one other researcher that has done so (Nicholas Fraser, author of the `rbiorxiv` package, which allows for importing medRxiv metadata into R but does not provide search functionality).[@fraser2020rbiorixv] If these scripts continue to be developed in private and are never shared or publicised, this will inevitably hamper the efforts of the evidence synthesis community, not only in terms of duplication of time and effort but also due to lost opportunities for collaboration.[@mckiernan2016] Creating and sharing well-documented packages, the recognised standard for sharing code in R, represents one way to reduce this inefficiency.[@vuorre2020]
 
 <!----------------------------------------------------------------------------->
 

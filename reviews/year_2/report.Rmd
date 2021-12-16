@@ -136,7 +136,7 @@ This descriptive chapter is approximately 70% complete.
 
 **Overview**
 
-This chapter introduces a tool built in R to allow for systematic searching of the [medRxiv](https://www.medrxiv.org/) and [bioRxiv](https://www.biorxiv.org/) preprint repositories. Preprints represent an important source of grey literature and so should be included as part of a systematic review. However, the native search interface on preprint websites do not allow for complex search strategies (e.g. those using Boolean operators or wildcards) and are not transparent or reproducible, with the same search producing wildly different numbers of records over time. 
+This chapter introduces a tool built in R to allow for systematic searching of the [medRxiv](https://www.medrxiv.org/) and [bioRxiv](https://www.biorxiv.org/) preprint repositories. Preprints represent an important source of grey literature and so should be included as part of a systematic review. However, the native search interface on preprint websites do not allow for complex search strategies (e.g., those using Boolean operators or wildcards) and are not transparent or reproducible, with the same search producing wildly different numbers of records over time. 
 
 To allow for easy systematic searching of this literature source as part of the systematic review described in Chapter 4, the `medrxivr` tool was developed.
 
@@ -169,7 +169,7 @@ __Figure `r (x <- x + 1)` - Role of medrxivr in the systematic review process:__
 
 **Overview**
 
-This chapter will present the methods and findings of a comprehensive systematic review into the relationship between blood lipids levels/blood lipids interventions (e.g. statins) and dementia. The review included all types of study design including randomised controlled trials, Mendelian randomization analyses, and non-randomised studies of exposures and interventions (NRSI/NRSE).
+This chapter will present the methods and findings of a comprehensive systematic review into the relationship between blood lipids levels/blood lipids interventions (e.g., statins) and dementia. The review included all types of study design including randomised controlled trials, Mendelian randomization analyses, and non-randomised studies of exposures and interventions (NRSI/NRSE).
   
 &nbsp;  
   
@@ -218,7 +218,7 @@ __Figure `r (x <- x + 1)` - Results of a random-effects meta-analysis of non-ran
 
 &nbsp;
 
-In terms of the meta-analysis of the non-intervention studies, this was complicated by the different ways in which lipid fractions were quantified in different studies (e.g. grouped based on clinical guidelines or quantiles, or dichotomized into a hypercholesterolemia variable). However, following discussion with my supervisors who pointed me towards useful material on this subject, this element of the analysis is almost complete.
+In terms of the meta-analysis of the non-intervention studies, this was complicated by the different ways in which lipid fractions were quantified in different studies (e.g., grouped based on clinical guidelines or quantiles, or dichotomized into a hypercholesterolemia variable). However, following discussion with my supervisors who pointed me towards useful material on this subject, this element of the analysis is almost complete.
 
 One interesting discussion point highlighted by the review is the absence of data on vascular dementia as an outcome. As illustrated in the meta-analysis above, there were substantially fewer non-randomised studies reporting vascular dementia as an outcome compared with those reporting all-cause dementia or Alzheimer's disease outcomes. This is reflected in the available randomised controlled trials and Mendelian randomization studies (as no genetic consortia data are available for the vascular dementia outcome, MR studies of this condition are precluded). This will restrict the triangulation exercise for this outcome, as it will have to rely on different analytical strategies within a single study design (non-randomised studies) rather than incorporating fundamentally different study designs.
 
@@ -231,7 +231,7 @@ A final point on the progress of the review is that, due to the need for dual sc
 One of the take-aways from my last progress review was to make the "added value" of this work beyond existing reviews clear. I believe there are three aspects where this review is distinct from those reviews already available in the published literature:
 
 * _Comprehensiveness:_ While several reviews of this research topic exist,[@chu2018b; @yang2020; @muangpaisan2010; @poly2020b] the overlap between the list of studies included in each is not 100%. As part of this review, I have not only performed a original search of primary literature databases, but have also screened the reference lists of comparable reviews to ensure no study has been omitted.
-* _Structured risk of bias assessment:_ The majority of the highly cited reviews on this topic either do not formally consider the risk of bias in the observational studies they include or do not use an appropriate domain-based assessment tool (e.g. ROBINS-I/E). This is important area in which this thesis can add value, as based on the risk-of-bias assessments I have performed to date, several primary studies are at high risk of bias and this should be reflected in the findings of any  review on this topic.
+* _Structured risk of bias assessment:_ The majority of the highly cited reviews on this topic either do not formally consider the risk of bias in the observational studies they include or do not use an appropriate domain-based assessment tool (e.g., ROBINS-I/E). This is important area in which this thesis can add value, as based on the risk-of-bias assessments I have performed to date, several primary studies are at high risk of bias and this should be reflected in the findings of any  review on this topic.
 * _Inclusion of preprints:_ Unlike other available reviews and enabled by the tool described in Chapter 3, this review systematically searched  preprinted health-related manuscripts as a source of grey literature. As part of this chapter, I plan to examine the extent of the additional information provided to the review by the inclusion of preprints.
 
 &nbsp;
@@ -257,7 +257,7 @@ In relation to the results presented in the attached paper, there are two key di
 
 Secondly, following circulation of the draft, a co-author recommended that I use the same analysis strategy with a known control (coronary heart disease; CHD). However, when running this analysis, I found that statins appeared to increase the risk of CHD, in contrast to the results of published large RCTs. This finding suggests the presence of substantial confounding by indication in this analysis, in that those who go on to take a statin are fundamentally different from those who do not, and this has been seen in other standard multivariable HR analyses of the effect of statins on CHD.[@danaei2013a] A suggested approach to frame this (possible insurmountable) issue has been to rewrite the paper as an example of the dangers of using EHR in cases where strong confounding by indication is likely. However, it would be particularly useful to get reviewers feedback on any further analytical strategies I could attempt to address this issue.
 
-In terms of the broader thesis, while these concerns mean I have low confidence in the accuracy of the result, it presents a good opportunity for comparison with other published papers that used different analytical strategies where the source and direction of bias is different (e.g. confounding by indication in our analysis likely makes statin use look worse but immortal time bias in other papers likely makes statin use look better).
+In terms of the broader thesis, while these concerns mean I have low confidence in the accuracy of the result, it presents a good opportunity for comparison with other published papers that used different analytical strategies where the source and direction of bias is different (e.g., confounding by indication in our analysis likely makes statin use look worse but immortal time bias in other papers likely makes statin use look better).
 
 Finally, in an attempt to assess whether these unexpected findings for vascular dementia are a product of the CPRD data or our analytical strategy, I recently attempted to replicate an analysis performed by Smeeth et al. which used the THIN EHR database and found a protective effect of statins on dementia risk (HR 0.81, 99% CI 0.69-0.96).[@smeeth2009a] However, following correspondence with the author team to acquire the code-list they used to define dementia cases, I confirmed that it was substantially different from that used in our study. This fact, coupled with concerns over their analytical strategy (which seemed to adjust for covariates on the causal pathway), limited the value of this attempted replication.
 

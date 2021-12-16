@@ -1,13 +1,16 @@
-- [ ] Review abstract text, and all text in front/back materials
-- [ ] Broken references
-- [ ] Broken cross references
-- [ ] Check diagnostic criteria for each NR study
+- [ ] Review all text in front/back materials
 - [ ] Quotes for 4
-- [ ] Fix table in systematic review - see "IMPORTANT" notes
-- [ ] Extract data for GWAS studies
+- [ ] Take out bit about agreement between reviewers
 - [ ] Basic triangulate package
-- [ ] Rename file!
 
+- [x] Rename submission file!
+- [x] Check CSL style for reports/webpages
+- [x] Check diagnostic criteria for each NR study
+- [x] Fix table in systematic review - see "IMPORTANT" notes
+- [x] Extract data for GWAS studies
+- [x] Review abstract text
+- [x] Broken references
+- [x] Broken cross references
 - [x] Add cohort labels to the Tynkken studies in & MAKE SURE YOU ARE NOT DOUBLE COUNTING WHITEHALL FOR 
 - [x] Add HMGCR MR for AD to triangulation
 - [x] Rewrite acknowledgements

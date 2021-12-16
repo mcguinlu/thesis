@@ -223,7 +223,7 @@ if (doc_type == "docx") {
       threeparttable = TRUE,
       general_title = "",
       general = paste(
-        "\\\\textbf{Defintions:}",
+        "\\\\textbf{Definitions:}",
         "Stopped - last prescription of the primary drug class followed by at least six months of observation with no further prescriptions;",
         "Added - second drug class prescribed before the last prescription of the initial class;",
         "Switched - second drug class being prescribed after the last prescription of the initial class."

@@ -63,7 +63,7 @@ IPD analyses also offer a mechanism by which previously unanalysed datasets can 
 
 Previous work has suggested a difference in the effect of lipids on dementia risk based on participant age and sex.[@ancelin2013; @mielke2010] The systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading) could not investigate this effect because the number of included studies in the lipid fraction meta-analyses was small, due to both the relatively small number of studies reporting on lipids and the poor reporting of summary statistics of participant characteristics in those that did. Additionally, best practice guidance recommends against basing the decision to perform an IPD meta-analysis on between-study heterogeneity in a summary data meta-analysis, because similar distributions of participant covariates across studies may mask a true effect.[@riley2020]
 
-As such, the aims of this analysis are two fold. Firstly, I plan to perform an IPD meta-analysis across identified cohorts to examine the impact of participant age-at-measurement and sex on the relationship between lipids and dementia risk. Secondly, I aim to expand the evidence base for the effect of lipids on dementia outcomes by obtaining estimates from previously unanalysed cohorts available via the Dementia Platform UK, a large consortium of dementia cohorts.
+As such, the aims of this analysis are two-fold. Firstly, I plan to perform an IPD meta-analysis across identified cohorts to examine the impact of participant age-at-measurement and sex on the relationship between lipids and dementia risk. Secondly, I aim to expand the evidence base for the effect of lipids on dementia outcomes by obtaining estimates from previously unanalysed cohorts available via the Dementia Platform UK, a large consortium of dementia cohorts.
 
 <!----------------------------------------------------------------------------->
 &nbsp;
@@ -76,7 +76,7 @@ As such, the aims of this analysis are two fold. Firstly, I plan to perform an I
 
 <!-- TODO Should start with inclusion criteria -->
 
-Eligible data sources for this analysis were prospective cohort studies (see Section \@ref(ipd-apply-access) for details on how these studies were identified). Data sources which were cross-sectional, either by design or due to the available data (e.g. a study recorded data on participants at multiple time-points or "waves", but only data from a single wave could be accessed) were excluded. Similarly, due to the time and cost restraints within the scope of my thesis project, studies making use of population-level electronic health records were ineligible. These studies are problematic in that they often require extensive project proposals in order to gain access to the data.
+Eligible data sources for this analysis were prospective cohort studies (see Section \@ref(ipd-apply-access) for details on how these studies were identified). Data sources which were cross-sectional, either by design or due to the available data (e.g., a study recorded data on participants at multiple time-points or "waves", but only data from a single wave could be accessed) were excluded. Similarly, due to the time and cost restraints within the scope of my thesis project, studies making use of population-level electronic health records were ineligible. These studies are problematic in that they often require extensive project proposals in order to gain access to the data.
 
 No restrictions were put on the number of participants or the length of follow-up, though it was a requirement that participants were dementia free (or assumed to be dementia free, based on age at entry) at baseline. 
 
@@ -84,7 +84,7 @@ No restrictions were put on the number of participants or the length of follow-u
 
 #### Exposures/outcome definition
 
-I considered four blood lipid fractions as part of this analysis, namely: total cholesterol (TC), low-density lipoprotein cholesterol (LDL-c), high-density lipoprotein cholesterol (HDL-c) and triglycerides (TG). Cohorts were eligible for inclusion if they contained data on at least one of these lipid fractions,  recorded as a continuous variable (i.e. studies with binary "hypercholesteromemia" would be excluded).
+I considered four blood lipid fractions as part of this analysis, namely: total cholesterol (TC), low-density lipoprotein cholesterol (LDL-c), high-density lipoprotein cholesterol (HDL-c) and triglycerides (TG). Cohorts were eligible for inclusion if they contained data on at least one of these lipid fractions,  recorded as a continuous variable (i.e., studies with binary "hypercholesterolemia" exposure would be excluded).
 
 In line with the analyses presented in other chapters, eligible cohorts were those containing data on at least one outcome of interest, namely: all-cause dementia, Alzheimer's disease, or vascular dementia. 
 
@@ -104,7 +104,7 @@ The first approach focused on previously analysed observational prospective coho
 
 #### Cohorts contained in Dementia Platform UK
 
-The second approach focused on incorporating relevant, previously-unanalysed data into the analysis, thus providing additional evidence on the relationship between blood lipids and dementia risk. This was achieved through the Dementia Platform UK (DPUK), a collaborative grouping of existing dementia cohorts established by the Medical Research Council which works with data owners to make their data readily accessible for secondary analysis.[@bauermeister2020] It provides access to 42 cohorts with over 3 million participants, and makes use of a central streamlined application process for all cohorts, with the intent of making it easier to access data from existing data sources.
+The second approach focused on incorporating relevant, previously unanalysed data into the analysis, thus providing additional evidence on the relationship between blood lipids and dementia risk. This was achieved through the Dementia Platform UK (DPUK), a collaborative grouping of existing dementia cohorts established by the Medical Research Council which works with data owners to make their data readily accessible for secondary analysis.[@bauermeister2020] It provides access to 42 cohorts with over 3 million participants, and makes use of a central streamlined application process for all cohorts, with the intent of making it easier to access data from existing data sources.
 
 Cohorts included in the DPUK were assessed against the eligibility criteria, and in Autumn 2020, an application for access to a subset of 17 cohorts was made via the common-access procedure.
 
@@ -179,7 +179,7 @@ With respect to the application to DPUK cohorts, where a dedicated project manag
 ```{r cohortFlowchartSetup, include = FALSE}
 ```
 
-(ref:cohortFlowchart-cap) __Flowchart detailing sources of data for the IPD analysis__ The number of cohorts approached and the reasons for exclusion are stratified by identification method (systematic review vs DPUK).
+(ref:cohortFlowchart-cap) __Flowchart detailing sources of data for the IPD analysis__ - The number of cohorts approached and the reasons for exclusion are stratified by identification method (systematic review vs DPUK).
 
 (ref:cohortFlowchart-scap) Flowchart detailing sources of data for the IPD analysis
 
@@ -203,7 +203,7 @@ Nine cohorts (8 DPUK only, 1 Systematic review + DPUK) responded positively to r
 
 ### Included data sources
 
-<!-- TODO Be clear on the different types of databases, e.g. those where users are followed up regularly vs. those where participants are captured via EHR-->
+<!-- TODO Be clear on the different types of databases, e.g., those where users are followed up regularly vs. those where participants are captured via EHR-->
 
 <!-- TODO Need to talk about how dementia was assessed in each! -->
 
@@ -215,7 +215,7 @@ The three data sources used in this analysis are described in detail in the foll
 
 #### Caerphilly Prospective Study
 
-The Caerphilly Prospective Study (CaPS) is a longitudinal study of men in South Wales, UK.[@zotero-15398;@elwood2013] Blood lipids (TC, LDL-c, HDL-c and TG) were measured at baseline in 1979-1983, and from Phase III (1989-1993) onwards, a battery of cognitive tests were introduced. Dementia outcomes were determined using data obtained during Phase V (2002-2004), giving between 19-25 years of follow-up. The cohort contains data on dementia outcomes sub-classified as vascular and non-vascular dementia. Data was available for all covariates of interest except for ethnicity, BMI, prevalent IHD and _Apo_$\mathcal{E}4$ status. While the CaPS study collected data on height/weight (from which BMI can be calculated as $\frac{weight}{height^2}$) and prevalent heart disease, these were not available from the DPUK version of the CaPS data.
+The Caerphilly Prospective Study (CaPS) is a longitudinal study of men in South Wales, UK.[@zotero-15398;@elwood2013] Blood lipids (TC, LDL-c, HDL-c and TG) were measured at baseline in 1979-1983, and from Phase III (1989-1993) onwards, a battery of cognitive tests was introduced. Dementia outcomes were determined using data obtained during Phase V (2002-2004), giving between 19-25 years of follow-up. The cohort contains data on dementia outcomes sub-classified as vascular and non-vascular dementia. Data was available for all covariates of interest except for ethnicity, BMI, prevalent IHD and _Apo_$\mathcal{E}4$ status. While the CaPS study collected data on height/weight (from which BMI can be calculated as $\frac{weight}{height^2}$) and prevalent heart disease, these were not available from the DPUK version of the CaPS data.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -227,7 +227,7 @@ The European Prospective Investigation of Cancer (EPIC) - Norfolk is a populatio
 
 #### Whitehall II
 
-The Whitehall II study is a prospective cohort study of men and women recruited between 1985 and 1989 from the civil service in London.[@marmot2005] Lipids measurements were available from the third wave of the study, conducted between 1991-1993. The cohort is linked with the Hospital Episode Statistics (HES) database, a database containing details of participant events at NHS hospitals in England. which was used to capture dementia outcomes.[@zotero-15403] HES data was available up to March 2015, providing between 22-24 years of follow-up. Information was available on dementia type, which was classified as all-cause dementia, Alzheimer's disease or vascular dementia. This data source contained details on all covariates of interest except for _Apo_$\mathcal{E}4$ status.
+The Whitehall II study is a prospective cohort study of men and women recruited between 1985 and 1989 from the civil service in London.[@marmot2005] Lipid measurements were available from the third wave of the study, conducted between 1991-1993. The cohort is linked with the Hospital Episode Statistics (HES) database, a database containing details of participant events at NHS hospitals in England. which was used to capture dementia outcomes.[@zotero-15403] HES data was available up to March 2015, providing between 22-24 years of follow-up. Information was available on dementia type, which was classified as all-cause dementia, Alzheimer's disease or vascular dementia. This data source contained details on all covariates of interest except for _Apo_$\mathcal{E}4$ status.
 
 Of note, the Whitehall II cohort was analysed in one of the included studies identified by the systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading),[@tynkkynen2018] meaning that a comparison between the published result and the analysis reported here was possible.
 
@@ -235,9 +235,9 @@ Of note, the Whitehall II cohort was analysed in one of the included studies ide
 
 ### Covariate definition & missing data {#ipd-covar-definition}
 
-Based on available data across cohorts, smoking was classified as never/ever/current, while alcohol consumption was classified as never/ever. Ever use in this case refers to participants who do not currently smoke/drink alcohol, but did so in the past. Education was categorised into 4 levels (None, O-levels, A-levels, Degree). BMI was treated as a continuous variable while presence of vascular co-morbidities was treated as dichotomous. 
+Based on available data across cohorts, smoking was classified as never/ever/current, while alcohol consumption was classified as never/ever. Ever use in this case refers to participants who do not currently smoke/drink alcohol but did so in the past. Education was categorised into 4 levels (None, O-levels, A-levels, Degree). BMI was treated as a continuous variable while presence of vascular co-morbidities was treated as dichotomous. 
 
-A key consideration in the definition of covariates across cohorts was the classification of age. The Whitehall II study, the largest cohort to which I had access, only shared age data in five-year age bands (e.g. 40-44, 45-49, etc.). To ensure comparability across the cohorts, I created identical categories in the CaPS and EPIC data. This grouped age variable was then used in all subsequent analyses. 
+A key consideration in the definition of covariates across cohorts was the classification of age. The Whitehall II study, the largest cohort to which I had access, only shared age data in five-year age bands (e.g., 40-44, 45-49, etc.). To ensure comparability across the cohorts, I created identical categories in the CaPS and EPIC data. This grouped age variable was then used in all subsequent analyses. 
 
 Missing values in collected variables was common across the cohorts. A matrix of covariates for each included cohort, describing both missing variables and the proportion of missing values within collected variables, can be seen in Appendix \@ref(appendix-ipd-covariate-matrix). The Whitehall II and EPIC cohorts contained data on all but one covariates of interest, while three missing covariates were identified in the CaPS cohort, namely education, prevalent ischemic heart disease, BMI and ethnicity. No included cohort provided information on the _Apo_$\mathcal{E}4$ status of participants, and so this variable could not be adjusted for in the analysis.
 
@@ -333,7 +333,7 @@ knitr::include_graphics(file.path("figures/ipd/interaction_sex_dementia.png"))
 <!-- TODO Using fixed effect meta-analyses, there is now an effect of male gender on LDL/all-cause dementia relationship. Need to discuss if sticking with fixed -->
 
 
-For the consideration of vascular dementia, I was only able to explore the effect of age, as only the CaPS and Whitehall cohorts contained details on vascular dementia as an outcome. As discussed above, the CaPS data contained a single sex excluding it from a exposure-sex analysis, leaving Whitehall II as the sole eligible study.
+For the consideration of vascular dementia, I was only able to explore the effect of age, as only the CaPS and Whitehall cohorts contained details on vascular dementia as an outcome. As discussed above, the CaPS data contained a single sex which meant it was excluded from the exposure-sex analysis, leaving Whitehall II as the sole eligible study.
 
 <!----------------------------------------------------------------------------->
 (ref:interactionVascularAge-cap) __Meta-analysis of age-lipid interaction terms for vascular dementia__ - Age was grouped into 5-year age bands, and the effect estimates presented represent the OR per 1-step increase in age group. Estimates were obtained using the common-set-adjusted model (Model 1: age, sex, smoking, alcohol, education, diabetes).
@@ -351,7 +351,7 @@ knitr::include_graphics(file.path("figures/ipd/interaction_age_vasdem.png"))
 
 ### Summary of findings
 
-This analysis requested data from `r n_applied$total` data sources, but only obtained data from three, all of which were based in the United Kingdom. No evidence for an effect of lipids on the risk of dementia or related outcomes was identified, except for a harmful association of raised triglycerides with risk of vascular dementia. Similarly, there was weak evidence for an interaction of the effect of lipid levels on dementia outcomes with participants' age (grouped into 5 year bands) or sex.
+This analysis requested data from `r n_applied$total` data sources, but only obtained data from three, all of which were based in the United Kingdom. No evidence for an effect of lipids on the risk of dementia or related outcomes was identified, except for a harmful association of raised triglycerides with risk of vascular dementia. Similarly, there was weak evidence for an interaction of the effect of lipid levels on dementia outcomes with participants' age (grouped into 5-year bands) or sex.
 
 A detailed comparison of the findings presented above with the existing evidence base identified by the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)), is presented as part of the triangulation exercise in Chapter \@ref(tri-heading). As such, this discussion will not provide a detailed comparison of the results of this analysis with other published literature, except to compare between this analysis and previously published results using the same data source. 
 
@@ -369,7 +369,7 @@ There are many likely reasons for this low response rate to requests for data ac
 
 Finally, in investigating the potential reasons for the low response rate, I discovered that the method of contact used (email) has been shown to be less successful in eliciting responses from authors when compared with telephoning (which was not used in this analysis).[@danko2019] One of the reasons for this may be that the email addresses reported on publications are more likely to be out of date for older publications. Anecdotally, post-hoc investigation of a subset of cohorts revealed that several corresponding/first authors were no longer at the same institution as when the study was reported, and as a result, were unlikely to have access to the institutional email address listed on the study publication. Despite attempts to track authors as they move between institutions, out-of-date contact details may have contributed to the low response rate.
 
-The obstacles to data access described above are in theory what the DPUK was built to address. However, even with the help of the streamlined application process afforded by the DPUK, accessing sufficient data was a challenge. The response rate among DPUK cohorts a year after application was just 50%. In addition, some cohorts responded saying that the proposed study question was already under investigation by another group, and that they would not share the data on this basis. In light of this, a centralised database of ongoing analyses being performed using DPUK data would be of enormous help, reducing research waste and providing opportunities for collaboration. Finally, the DPUK process would be aided by a clearer distinction between those cohorts that are "DPUK native" (i.e. where a copy of the data is already held on DPUK servers) versus externally hosted, seeing as the response time for externally hosted cohorts is likely to be much longer.
+The obstacles to data access described above are in theory what the DPUK was built to address. However, even with the help of the streamlined application process afforded by the DPUK, accessing sufficient data was a challenge. The response rate among DPUK cohorts a year after application was just 50%. In addition, some cohorts responded saying that the proposed study question was already under investigation by another group, and that they would not share the data on this basis. In light of this, a centralised database of ongoing analyses being performed using DPUK data would be of enormous help, reducing research waste and providing opportunities for collaboration. Finally, the DPUK process would be aided by a clearer distinction between those cohorts that are "DPUK native" (i.e., where a copy of the data is already held on DPUK servers) versus externally hosted, seeing as the response time for externally hosted cohorts is likely to be much longer.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -423,13 +423,13 @@ While this analysis did not manage to obtain and analyse a large proportion of i
 
 A further strength is the ability of this analysis to investigate the effect of participant characteristics (namely age and sex) on the association of blood lipids and dementia outcomes. To the best of my knowledge, no previous review has examined the interaction of these factors with the observed associations.
 
-Finally, this analysis provides new evidence on a previously unexplored outcome (vascular dementia), adding to the extremely small evidence base for this outcome identified by the systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). This is relevant even in the previously analysed WhiteHall II cohort because the previous analysis by Tynkkynen _et al._ did not report on this outcome.
+Finally, this analysis provides new evidence on a previously unexplored outcome (vascular dementia), adding to the extremely small evidence base for this outcome identified by the systematic review presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). This is relevant even in the previously analysed Whitehall II cohort because the previous analysis by Tynkkynen _et al._ did not report on this outcome.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Reflections on the process
 
-In hindsight, attempting to undertake a large-scale IPD meta-analysis as part of a larger PhD project may have been overly ambitious. Data harmonization between cohorts in an IPD analysis is an often under-appreciated challenge,[@levis2021] and in line with this, data cleaning for this analysis took substantially longer than expected. While the cohort response rate was substantially lower that expected, given the time and resources required for the cleaning and harmonisation of data from just three cohorts, a situation in which all 37 cohorts responded positively would have been logistically challenging within the scope of a PhD.
+In hindsight, attempting to undertake a large-scale IPD meta-analysis as part of a larger PhD project may have been overly ambitious. Data harmonization between cohorts in an IPD analysis is an often under-appreciated challenge,[@levis2021] and in line with this, data cleaning for this analysis took substantially longer than expected. While the cohort response rate was substantially lower than expected, given the time and resources required for the cleaning and harmonisation of data from just three cohorts, a situation in which all 37 cohorts responded positively would have been logistically challenging within the scope of a PhD.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -451,6 +451,6 @@ Finally, movement towards increased use of unique and persistent researcher iden
 
 - I found weak evidence for an association of any lipid with either all-cause or vascular dementia, except for an increased risk of vascular dementia associated with raised triglycerides. Similarly, there was weak evidence that the association of blood lipids and dementia outcomes varied by participant age or sex.
 
-- I discussed potential reasons for the low response rate, and explored other limitations of this analysis. I highlighted the contribution of this work to the wider topic via the analysis of previously unexplored cohorts (CaPS & EPIC) and outcomes (vascular dementia). Finally, I recommended that future research could formally investigate the impact of the characteristics of the requesting researcher on data access rates.
+- I discussed potential reasons for the low response rate and explored other limitations of this analysis. I highlighted the contribution of this work to the wider topic via the analysis of previously unexplored cohorts (CaPS & EPIC) and outcomes (vascular dementia). Finally, I recommended that future research could formally investigate the impact of the characteristics of the requesting researcher on data access rates.
 
 - The new evidence produced by this analysis will be incorporated, along with evidence identified or produced in the previous chapters, into the triangulation analysis presented in the following chapter.

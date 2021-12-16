@@ -23,9 +23,9 @@ doc_type <- knitr::opts_knit$get('rmarkdown.pandoc.to') # Info on knitting forma
 
 ### Publications beyond the scope of this thesis {#appendix-publications}
 
-In addition to publications arising directly from this thesis (described in Section \@ref(literature-contributions) & included in Appendix \@ref(published-papers)), I have been involved in a number of external research projects. Taken together, these additional projects provided extensive experience in evidence synthesis methods and in collaborating across large teams.
+In addition to publications arising directly from this thesis (described in Section \@ref(literature-contributions) and included in Appendix \@ref(published-papers)), I have been involved in a number of external research projects. Taken together, these additional projects provided extensive experience in evidence synthesis methods and in collaborating across large teams.
 
-During 2020, I was involved in the updating of the Preferred Reporting Items for Systematic reviews and Meta-Analyses (PRISMA) statement. My contributions were focused on the data sharing aspects of the guidelines and on building an interactive web application that would allow users to complete the PRISMA checklist. Publications arising from this work are listed below: 
+During 2020, I was involved in the updating of the Preferred Reporting Items for Systematic reviews and Meta-Analyses (PRISMA) statement. My contributions were focused on the data sharing aspects of the guidelines and on building the PRISMA2020 interactive web application. Publications arising from this work are listed below: 
 
 *	*Page, M.J., Moher, D., Bossuyt, P., Boutron, I., Hoffmann, T., Mulrow, C., Shamseer, L., Tetzlaff, J., Akl, E., Brennan, S.E., Chou, R., Glanville, J., Grimshaw, J., Hróbjartsson, A., Lalu, M.M., Li, T., Loder, E., Mayo-Wilson, E., McDonald, S., __McGuinness, L.A.__, Stewart, L., Thomas, J., Tricco, A., Welch, V.A., Whiting, P., McKenzie, J. (2021). PRISMA 2020 statement: updated guidelines for reporting systematic reviews and meta-analyses. BMJ 372:n71. DOI:  [10.1136/bmj.n71](https://doi.org/10.1136/bmj.n71)*
 
@@ -59,7 +59,7 @@ Finally, I have acted as part of a large review team for a number of other evide
 
 ### Code for publication rate analysis {#appendix-tools-pub}
 
-medRxiv automatically links preprints to their published counterparts, and provides the DOI of the published article as part of the metadata on a given preprint. Using `medrxivr` to access this data, I could assess the two-year publication rate of preprints originally posted to medRxiv in July 2019. The code used for this analysis is presented below:
+medRxiv automatically links preprints to their published counterparts and provides the DOI of the published article as part of the metadata on a given preprint. Using `medrxivr` to access this data, I could assess the two-year publication rate of preprints originally posted to medRxiv in July 2019. The code used for this analysis is presented below:
 
 &nbsp;
 
@@ -115,13 +115,13 @@ There were a number of deviations from the pre-registered protocol for the syste
 
 * I had originally intended to examine both dementia and mild cognitive impairment (MCI) as outcomes of interest. However, given the large number of relevant records for the dementia outcomes, I did not include MCI as an outcome.
 
-* For Mendelian randomisation analyses, I had originally intended to use a panel of experts to assess he risk of bias in this study design. However, through private correspondence with the authors of a review of risk-of-bias assessment tools for Mendelian randomisation studies (since published[@spiga2021]), I became aware of the Mamluk _et al_ tool. Given this tool was considered to be the best available for assessing Mendelian randomisation studies and that it followed a domain-based approach, enabling comparison with tools for other study designs, I decided to use it in the review. 
+* For Mendelian randomisation analyses, I had originally intended to use a panel of experts to assess the risk of bias in this study design. However, through private correspondence with the authors of a review of risk-of-bias assessment tools for Mendelian randomisation studies (since published[@spiga2021]), I became aware of the Mamluk _et al_ tool. Given this tool was considered to be the best available for assessing Mendelian randomisation studies and that it followed a domain-based approach, enabling comparison with tools for other study designs, I decided to use it in the review. 
 
 * I performed an additional assessment of the risk of bias due to missing evidence using the ROB-ME tool. This analysis was not planned because the tool did not exist when the protocol was written.
 
-* I had originally intended to assess sources of funding alongside bias. However, on further reading,[@sterne2013] I learned that any bias introduced by sources of funding would operate through one of the existing domains of the risk-of-bias tools. As such, I did not consider funding sources seperately.
+* I had originally intended to assess sources of funding alongside bias. However, on further reading,[@sterne2013] I learned that any bias introduced by sources of funding would operate through one of the existing domains of the risk-of-bias tools. As such, I did not consider funding sources separately.
  
- * Finally, I performed a dose response meta-analysis to assess the evidence for a non-linear realtionship between lipids and dementia outcomes. This marked a departure from the published protocol, as I had not expected the number of studies reporting dementia risk across lipid sub-categories to be sufficient for a dose response analysis.
+ * Finally, I performed a dose response meta-analysis to assess the evidence for a non-linear relationship between lipids and dementia outcomes. This marked a departure from the published protocol, as I had not expected the number of studies reporting dementia risk across lipid sub-categories to be sufficient for a dose response analysis.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -138,9 +138,9 @@ There were a number of deviations from the pre-registered protocol for the syste
 
 ### Search strategy {#appendix-search-strategy}
 
-An overview of the number of hits per database, in addition to the full line-by-line search results for the each database, are presented below. 
+An overview of the number of hits per database, in addition to the full line-by-line search results for each database, are presented below. 
 
-(ref:searchOverviewAppendix-caption) __Summary of number of records identified in each database searched__ - The full line-by-line search results for the each database, are presented in subsequent tables. Note there was substantial duplication across databases, resulting in several thousand duplicates being removed prior to title and abstract screening. 
+(ref:searchOverviewAppendix-caption) __Summary of number of records identified in each database searched__ - The full line-by-line search results for each database, are presented in subsequent tables. Note there was substantial duplication across databases, resulting in several thousand duplicates being removed prior to title and abstract screening. 
 
 (ref:searchOverviewAppendix-scaption) Summary of number of records identified in each database searched
 
@@ -362,7 +362,7 @@ Enforcing a minimum period of follow-up is normally used to reduce the risk of r
 ```{r minFollowUp, include = FALSE}
 ```
 
-(ref:minFU-cap) __Illustration of minimum follow-up period in two study designs__ - Panel A shows a study in which all participants enter the study and are assinged an exposure group at the same time, making it ease to define a minimum period of follow-up. In contrast, Panel B illustrates the time- varying analysis used in Chapter \@ref(cprd-analysis-heading), which makes it challenging to define an unbiased minimum period of follow-up.
+(ref:minFU-cap) __Illustration of minimum follow-up period in two study designs__ - Panel A shows a study in which all participants enter the study and are assigned an exposure group at the same time, making it easy to define a minimum period of follow-up. In contrast, Panel B illustrates the time- varying analysis used in Chapter \@ref(cprd-analysis-heading), which makes it challenging to define an unbiased minimum period of follow-up.
 
 (ref:minFU-scap) Illustration of minimum follow-up period in two study designs
 
@@ -427,9 +427,7 @@ However, applying a similar approach to the analysis performed in Chapter \@ref(
 
 ### Calculation of average adjustment values from previous expert elicitation exercise {#appendix-adjustment-values}
 
-The paper describing the bias/indirectness-adjusted meta-analysis method used expert elicitation to define a distribution for  bias and indirectness across eight studies examining the effectiveness of routine anti-D prophylaxis in Rhesus negative women.[@turner2009] The authors consider five sources of bias (selection bias, performance bias, attrition bias, detection bias and other bias) and four sources of indirectness (population, intervention, control, outcome). For each domain of bias/indirectness, four experts were asked to define the 67% interval around the effect expected due to bias/indirectness in the absence of a true effect. Additive or multiplicative scales were used to capture the intervals for additive and proportional bias/indirectness, respectively. The authors then use assumed log-normality of these distributions to derive a mean and variance for each on the log scale.
-
-The resulting data for two domains of bias (attrition and detection) in one study are shown in Table \@ref(tab:addTable1-table).
+The paper describing the bias/indirectness-adjusted meta-analysis method used expert elicitation to define a distribution for  bias and indirectness across eight studies examining the effectiveness of routine anti-D prophylaxis in Rhesus negative women.[@turner2009] The authors consider five sources of bias (selection bias, performance bias, attrition bias, detection bias and other bias) and four sources of indirectness (population, intervention, control, outcome). For each domain of bias/indirectness, four experts were asked to define the 67% interval around the effect expected due to bias/indirectness in the absence of a true effect. Additive or multiplicative scales were used to capture the intervals for additive and proportional bias/indirectness, respectively. The authors then derived a mean and variance for each on the log scale. The resulting data for two domains of bias (attrition and detection) in one study are shown in Table \@ref(tab:addTable1-table).
 
 &nbsp;<!----------------------------------------------------------------------->  
 (ref:addTable1-caption) __Elicited bias distributions__ -  Distributions of bias, defined by position and variance terms, assigned by four independent experts to attrition and detection bias in a single study. This data was obtained from a previous publication,[@turner2009] and represents an illustrative subset of the larger dataset. 
@@ -453,7 +451,7 @@ In an attempt to inform the prior distributions used in the triangulation exerci
 
 I then took the average and maximum of the expert-averaged position and variance values. The results of this for the example data are presented in Table \@ref(tab:addTable3-table). 
 &nbsp;<!----------------------------------------------------------------------->  
-(ref:addTable3-caption) __Mean and maximum bias distributions, using example data__ - The mean and maximum of position and variance values desribed in Table \@ref(tab:addTable3-table) were calculated to give the average and maximum bias adjustment across studies and domains of bias.
+(ref:addTable3-caption) __Mean and maximum bias distributions, using example data__ - The mean and maximum of position and variance values described in Table \@ref(tab:addTable3-table) were calculated to give the average and maximum bias adjustment across studies and domains of bias.
 
 (ref:addTable3-scaption) Mean and maximum bias distributions, using example data
 
@@ -461,7 +459,7 @@ I then took the average and maximum of the expert-averaged position and variance
 ```
 &nbsp;<!-----------------------------------------------------------------------> 
 
-This two step approach (averaging across assessors before taking the average and maximum across domains/studies) was important. While the final average values will be the same whichever approach is taken, in a one-step process, the maximum value can be artificially inflated by a single expert's estimate. For example, in the illustrative data subset above, Assessor 2 assigns a distribution of N(-0.32,0.14), which would double the maximum position (0.16) and triple the maximum variance (0.0475) obtained when first averaging across experts.
+This two-step approach (averaging across assessors before taking the average and maximum across domains/studies) was important. While the final average values will be the same whichever approach is taken, in a one-step process, the maximum value can be artificially inflated by a single expert's estimate. For example, in the illustrative data subset above, Assessor 2 assigns a distribution of N(-0.32,0.14), which would double the maximum position (0.16) and triple the maximum variance (0.0475) obtained when first averaging across experts.
 
 The distributions arising from this applying this approach to the entire dataset, stratified by bias/indirectness and additive/proportional effects, are presented in Table \@ref(tab:turnerEstimates-table).
 
@@ -503,7 +501,7 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_tg_vad_scenario
 
 ### Reproducible research {#disc-repro-research}
 
-Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tools to search preprinted literature, create visualisations of risk-of-bias data and to preform quantitative triangulation. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
+Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open-source tools to search preprinted literature, create visualisations of risk-of-bias data and to preform quantitative triangulation. In line with this, an open-source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
 
 Unfortunately, given the nature of the data underpinning the CPRD (Chapter \@ref(cprd-analysis-heading)) and IPD (Chapter \@ref(ipd-heading)) analyses, it is not possible to make it publicly available. Access to the CPRD data is dependent on an application to its managing body, while access to the cohorts within the DPUK requires approval from both the DPUK and individual cohort owners. In the absence of data sharing, the best option to enable review and increase transparency is the open sharing of the code used to perform the analysis.[@goldacre2019]
 
@@ -619,8 +617,8 @@ These manuscripts arose from work performed as part of this thesis, as discussed
 
 <!-- TODO These have been removed so as to not mess-up the plagarism score -->
 
-<!-- \includepdf[pages=-,link=true,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf} -->
-<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf} -->
-<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf} -->
-<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf} -->
-<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/prevsci.pdf} -->
+\includepdf[pages=-,link=true,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/prevsci.pdf}

@@ -79,9 +79,9 @@ Aetiological triangulation, or simply triangulation, is the process of comparing
 
 > The practice of strengthening causal inferences by integrating results from several different approaches, where each approach has different (and assumed to be largely unrelated) key sources of potential bias.[@lawlor2016]
 
-This approach represents a significant step forward from the current practice of synthesising evidence from only one type of study (e.g. randomised controlled trials (RCTs), non-randomised studies of exposures (NRSE) or interventions (NRSI)). The most common implementation of this method to date has been in the form of _qualitative triangulation_ - that is the identification and narrative comparison of diverse evidence sources with respect to their underlying bias structures.[@lawlor2016]
+This approach represents a significant step forward from the current practice of synthesising evidence from only one type of study (e.g., randomised controlled trials (RCTs), non-randomised studies of exposures (NRSE) or interventions (NRSI)). The most common implementation of this method to date has been in the form of _qualitative triangulation_ - that is the identification and narrative comparison of diverse evidence sources with respect to their underlying bias structures.[@lawlor2016]
 
-However, qualitative triangulation faces issues at scale. There is a need to include all evidence to avoid potential confirmation bias,[@dubroff2018] yet as the number of evidence sources increases, it is not possible to narratively compare and contrast across multiple results in any meaningful way. This fact is illustrated by previous exemplars of triangulation only considering a small number of individual results.[@ference2014; @lawlor2016] To overcome this limitation, some attempts have considered the output of a meta-analysis of similarly-designed studies to be a single source of evidence, and have assessed bias in relation to this summary result. While this approach keeps the number of individual sources of evidence manageable, it loses useful information on the specific biases inherent to each result contributing to the summary estimate. For example, while it may be true that all non-randomised studies share some minimal level of bias, competing extents and directions of bias in individual results may be masked by the use of summary estimates. In addition, previous attempts at qualitative triangulation have not systematically assessed the indirectness of the results, namely the differences between the question of interest and the question addressed by a study.
+However, qualitative triangulation faces issues at scale. There is a need to include all evidence to avoid potential confirmation bias,[@dubroff2018] yet as the number of evidence sources increases, it is not possible to narratively compare and contrast across multiple results in any meaningful way. This fact is illustrated by previous exemplars of triangulation only considering a small number of individual results.[@ference2014; @lawlor2016] To overcome this limitation, some attempts have considered the output of a meta-analysis of similarly designed studies to be a single source of evidence, and have assessed bias in relation to this summary result. While this approach keeps the number of individual sources of evidence manageable, it loses useful information on the specific biases inherent to each result contributing to the summary estimate. For example, while it may be true that all non-randomised studies share some minimal level of bias, competing extents and directions of bias in individual results may be masked by the use of summary estimates. In addition, previous attempts at qualitative triangulation have not systematically assessed the indirectness of the results, namely the differences between the question of interest and the question addressed by a study.
 
 Taken together, these limitations to qualitative triangulation detail a need for a more systematic way to integrate across multiple evidence sources as the number of individual results contributing to the exercise increases. One such approach is _quantitative triangulation_, where results from different evidence sources are combined numerically while accounting for the key sources of bias and indirectness in each. This chapter, in addition to providing a narrative comparison of the existing and new evidence identified by this thesis, builds on recent developments in risk-of-bias assessment and methods for bias-/indirectness-adjusted meta-analysis to propose a generalised framework for quantitative triangulation. The framework, along with the methodological challenges to its implementation, is illustrated via two case studies examining the causal effect of lipids on dementia outcomes.
 
@@ -158,11 +158,11 @@ For fibrates, an alternative lipid-regulating agent, there was some evidence of 
 
 #### Alzheimer's disease
 
-Meta-analysis of lipid levels in the systematic review found extremely weak evidence for an association of any lipid fraction with Alzheimer's disease (TC - `r obsLipids$AD_TC$estimate`; LDL - `r obsLipids$AD_LDL$estimate`; HDL - `r obsLipids$AD_HDL$estimate`; TG - `r obsLipids$AD_TG$estimate`). Similarly, meta-analysis of studies examining a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$AD$estimate`). A meta-analysis of MR analyses of genetic instruments that mimic statin use found weak evidence for an association of lipid lowering with Alzheimer's disease (`r mrStatin$AD$estimate`).
+Meta-analysis of lipid levels in the systematic review found extremely weak evidence for an association of any lipid fraction with Alzheimer's disease (in the systematic review: TC - `r obsLipids$AD_TC$estimate`; LDL - `r obsLipids$AD_LDL$estimate`; HDL - `r obsLipids$AD_HDL$estimate`; TG - `r obsLipids$AD_TG$estimate`). Similarly, meta-analysis of studies examining a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$AD$estimate`). A meta-analysis of MR analyses of genetic instruments that mimic statin use found weak evidence for an association of lipid lowering with Alzheimer's disease (`r mrStatin$AD$estimate`).
 
 In contrast, the meta-analysis of statin use found a slight protective effect on this outcome (`r obsStatins$AD$estimate`), though similar to the all-cause dementia outcome, many of the studies in this analysis were found to be at risk of immortal time bias. However, the CPRD analysis, which attempted to account for this potential bias through the use of time-varying treatment indicator, found weak evidence for an effect (`r probad_sta_text`). The validity of this finding was limited by the potential for differential misclassification on the basis of the exposure in the CPRD analysis.
 
-Finally, only one of the three cohorts included in the IPD analysis (Whitehall II) contained data on Alzheimer's disease. However, a previously published analysis (Tynkkynen _et al._[@tynkkynen2018]) examining the association of lipid levels with Alzheimer's disease in this cohort was identified by the systenatic review. The results of this previous analysis are incorporated into the results of the meta-analysis reported above, and so the IPD analysis provided no new information on this outcome.
+Finally, only one of the three cohorts included in the IPD analysis (Whitehall II) contained data on Alzheimer's disease. However, a previously published analysis (Tynkkynen _et al._[@tynkkynen2018]) examining the association of lipid levels with Alzheimer's disease in this cohort was identified by the systematic review. The results of this previous analysis are incorporated into the results of the meta-analysis reported above, and so the IPD analysis provided no new information on this outcome.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -221,13 +221,13 @@ _Case study #2: Effect of mid-life triglycerides on vascular dementia_
 
 &nbsp;
 
-These causal questions were chosen for several reasons. Firstly, the work presented in the previous chapters had identified some evidence for an association in these exposure/outcome pairs. Secondly, given the long prodromal period between the onset of physiological changes in the brain and presentation of dementia symptoms, it seems likely that conditions during the mid-life period are particularly important. Finally, examining the causal impact of a lipid fraction on a specific outcome (e.g. Alzheimer's disease), rather than a composite outcome (e.g. all-cause dementia), focuses on an single causal pathway rather than including several conditions in the outcome definition that likely have very different mechanisms of disease. In addition, previous work presented in this thesis illustrated that the component conditions (in this case Alzheimer's disease and vascular dementia) are likely to be subject to very different confounding structures (see Section \@ref(cprd-confounding-by-ind)), and the use of a composite all-cause outcome in the triangulation framework may mask this.
+These causal questions were chosen for several reasons. Firstly, the work presented in the previous chapters had identified some evidence for an association in these exposure/outcome pairs. Secondly, given the long prodromal period between the onset of physiological changes in the brain and presentation of dementia symptoms, it seems likely that conditions during the mid-life period are particularly important. Finally, examining the causal impact of a lipid fraction on a specific outcome (e.g., Alzheimer's disease), rather than a composite outcome (e.g., all-cause dementia), focuses on a single causal pathway rather than including several conditions in the outcome definition that likely have very different mechanisms of disease. In addition, previous work presented in this thesis illustrated that the component conditions (in this case Alzheimer's disease and vascular dementia) are likely to be subject to very different confounding structures (see Section \@ref(cprd-confounding-by-ind)), and the use of a composite all-cause outcome in the triangulation framework may mask this.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ####	Identify relevant results
 
-Once the causal question of interest had been defined, relevant individual results were obtained from the data sources described in Section \@ref(tri-data-sources). In a broad sense, this meant extracting results that examined the relationship between the exposure/outcome pair, either directly (e.g. non-randomised studies of LDL-c levels) or indirectly (e.g. non-randomised studies of statins, or MR studies using genetic instruments for LDL-c levels).
+Once the causal question of interest had been defined, relevant individual results were obtained from the data sources described in Section \@ref(tri-data-sources). In a broad sense, this meant extracting results that examined the relationship between the exposure/outcome pair, either directly (e.g., non-randomised studies of LDL-c levels) or indirectly (e.g., non-randomised studies of statins, or MR studies using genetic instruments for LDL-c levels).
 
 Effects were standardised to refer to the risk resulting from a "reduction" in the lipid fraction. For both non-randomised studies and Mendelian randomisation analysis of lipid levels, the association is usually reported in terms of an increase in the lipid fraction. In this case, the effect estimates were inverted to ensure consistency across study designs.
 
@@ -259,7 +259,7 @@ Note that all of the risk-of-bias tools used to assess non-randomised studies re
 The assessment of bias in each result is discussed in Section \@ref(tri-data-sources) above. For the sake of consistency and ease of computing, I mapped the different acceptable risk-of-bias judgements in each tool to a harmonised set: "Low", "Moderate", and "High". The exact mapping can be seen in Table \@ref(tab:robLevelsMapping-table). Of note, no mapping was performed for the critical risk-of-bias levels present in the tools for non-randomised studies. This is in accordance with current best practice in evidence synthesis, which is to exclude all studies at critical risk of bias from further quantitative synthesis.[@sterne2016]
 
 &nbsp;<!----------------------------------------------------------------------->  
-(ref:robLevelsMapping-caption) __Mapping of risk-of-bias judgements across assessment tools__ The different acceptable levels of bias across the risk-of-bias assessment tools used were mapped to a harmonised set. Note that no mapping for "Critical" risk of bias was performed, as best practice recommends that studies at critical risk of bias are excluded from quantitative syntheses.
+(ref:robLevelsMapping-caption) __Mapping of risk-of-bias judgements across assessment tools__ - The different acceptable levels of bias across the risk-of-bias assessment tools used were mapped to a harmonised set. Note that no mapping for "Critical" risk of bias was performed, as best practice recommends that studies at critical risk of bias are excluded from quantitative syntheses.
 
 (ref:robLevelsMapping-scaption) Mapping of risk-of-bias judgements across assessment tools
 
@@ -271,19 +271,15 @@ In addition to assessing the extent of bias, as defined by the three levels deta
 
 <!-- REVIEW in fact it is a mandatory part of new ROBINS-E tool, while only optional in RoB2 and ROBINS-I. Maybe reiterate that using a very early version of ROBINS-E -->
 
-<!-- QUESTION text -->
-
-
 * "Favours experimental"/"Favours comparator" (defines an additive bias)
 * "Towards null"/"Away from null" (defines a proportional bias)
 * "Unpredictable"
 
 <!-- REVIEW Is it worth explaining the terms experimental and comparator above? -->
 
-
 As indicated in the options above, the response to this question is also used to determine the predicted type of bias as either additive or proportional. Proportional biases are dependent on the magnitude of the effect, while additive biases are not.[@turner2009]
 
-<!-- TODO Need to include some text here on examples of each: e.g. immortal time bias, or  -->
+<!-- TODO Need to include some text here on examples of each: e.g., immortal time bias, or  -->
 
 For additive biases, determining the absolute direction of bias was simply a case of whether the bias is expected to shift the effect estimate to the left or right on an imaginary forest plot. For example, the estimate would be shifted to the right if a bias was predicted to favour the comparator (Figure \@ref(fig:exampleDirection)). 
 
@@ -330,7 +326,7 @@ The sign of $\mu_{i,j}^{\mathrm{High}}$ is defined by the absolute direction of 
 
 <!-- TODO Need to explain here that for proportional bias, the results are exponentiated  -->
 
-One key feature of the domain-based risk-of-bias tools is that the domains are considered interchangeable - i.e. a "high" judgement in one domain is equivalent to a "high" judgement in any other. As such, for this analysis, I assumed that the distributions assigned to each extent of bias were identical across all values of $j$, that is, were identical for all domains in the risk-of-bias assessment tool. To illustrate for additive biases:
+One key feature of the domain-based risk-of-bias tools is that the domains are considered interchangeable - i.e., a "high" judgement in one domain is equivalent to a "high" judgement in any other. As such, for this analysis, I assumed that the distributions assigned to each extent of bias were identical across all values of $j$, that is, were identical for all domains in the risk-of-bias assessment tool. To illustrate for additive biases:
 
 $$
 \delta_{i,1}^{\mathrm{High}} = \delta_{i,2}^{\mathrm{High}} = ... = \delta_{i,j}^{\mathrm{High}}
@@ -346,7 +342,7 @@ Reasonable values for the position and spread of the prior distributions were in
 
 &nbsp;<!----------------------------------------------------------------------->  
 
-(ref:priorsAdd-caption) __Prior distributions mapped to different extents of bias__ - Prior values assigned to additive and proportional biases, defined as log-normal distributions with mean $\mu$ and variance $\sigma^2$ using the notation $N(\mu,\sigma^{2})$. For additive biases, two scenarios were defined (see main text). Note that proportional biases are defined on the log scale for ease of calculation, but are exponentiated prior to their use for adjustment. 
+(ref:priorsAdd-caption) __Prior distributions mapped to different extents of bias__ - Prior values assigned to additive and proportional biases, defined as log-normal distributions with mean $\mu$ and variance $\sigma^2$ using the notation $N(\mu,\sigma^{2})$. For additive biases, two scenarios were defined (see main text). Note that proportional biases are defined on the log scale for ease of calculation but are exponentiated prior to their use for adjustment (see Equations \@ref(eq:prop-total-mean) & \@ref(eq:prop-total-var) below). 
 
 (ref:priorsAdd-scaption) Prior distributions mapped to different extents of bias.
 
@@ -359,9 +355,9 @@ Reasonable values for the position and spread of the prior distributions were in
 
  <!-- TODO Link this to open data! -->
 
-Where the direction of bias in a domain was unpredictable for a given result, the mean of the prior distribution for that domain was set to 0 but the appropriate variance for the recorded extent of bias was retained (e.g. for an unpredictable "High" additive bias, the distribution would be $N(0,0.1)$ under Scenario 1). In other words, adjusting for bias in a domain with an unpredictable direction of bias has no impact on the position of the effect estimate but does increase the uncertainty around it.
+Where the direction of bias in a domain was unpredictable for a given result, the mean of the prior distribution for that domain was set to 0 but the appropriate variance for the recorded extent of bias was retained (e.g., for an unpredictable "High" additive bias, the distribution would be $N(0,0.1)$ under Scenario 1). In other words, adjusting for bias in a domain with an unpredictable direction of bias has no impact on the position of the effect estimate but does increase the uncertainty around it.
 
-Under the  method reported in Turner _et al._,[@turner2009], total additive bias (denoted using subscript $\delta$) in result $i$ is then described by mean $\mu_{i\delta}$ and variance $\sigma_{i\delta}^{2}$, which are simply the sum of the mean and variance of all additive biases in the $i$th result. Similarly, the total proportional bias (denoted using subsript $\beta$) in the $i$th result is described by mean $\mu_{i\beta}$ and variance ${\sigma_{i\beta}}^2$. This are defined as
+Under the  method reported in Turner _et al._,[@turner2009], total additive bias (denoted using subscript $\delta$) in result $i$ is then described by mean $\mu_{i\delta}$ and variance $\sigma_{i\delta}^{2}$, which are simply the sum of the mean and variance of all additive biases in the $i$th result. Similarly, the total proportional bias (denoted using subscript $\beta$) in the $i$th result is described by mean $\mu_{i\beta}$ and variance ${\sigma_{i\beta}}^2$. This are defined as
 
 \begin{equation}
   \mu_{i\beta} = exp(\alpha_{i} + {\psi_i}^2)
@@ -373,7 +369,7 @@ Under the  method reported in Turner _et al._,[@turner2009], total additive bias
   (\#eq:prop-total-var)
 \end{equation}
 
-where $\alpha_i$ and ${\psi_i}^2$  are the the sum of mean and variance values for all proportional biases in the $i$th result.
+where $\alpha_i$ and ${\psi_i}^2$  are the sum of mean and variance values for all proportional biases in the $i$th result.
 
 Note that the total additive bias is maintained on the log scale, while the total proportional bias has been exponentiated.
 
@@ -406,7 +402,7 @@ Once the extent and direction of indirectness has been assessed, total proportio
 
 ####	Combining in a bias-/indirectness-adjusted meta-analysis 
 
-Using the the method reported in Turner _et al._,[@turner2009] once total additive and proportional bias and indirectness are calculated, they are used to define an adjusted estimate for each result included in the synthesis. 
+Using the method reported in Turner _et al._,[@turner2009] once total additive and proportional bias and indirectness are calculated, they are used to define an adjusted estimate for each result included in the synthesis. 
 
 The adjusted estimate for result $i$, $\hat{\theta}_i$, is defined as:
 
@@ -451,7 +447,7 @@ Once each individual result had been adjusted using this approach, I performed a
 
 As an illustrative example of the process using a single result, the bias and indirectness inherent to the estimate of the effect of statin use on Alzheimer's disease in the CPRD (as analysed in Chapter \@ref(cprd-analysis-heading)) are considered here. For this result, there were three domains at greater than low risk of bias: bias due to confounding, bias due to definition of the outcome, and bias in the selection of the reported result (Figure \@ref(fig:biasDirectionSingle)). In Domain 1 (bias due to confounding), the study did not adjust for _Apo_$\mathcal{E}$ status, which is predicted to mask any true association between statins and Alzheimer's disease (see Section \@ref(cprd-limitations) for a fuller discussion). As such, the bias is predicted to _favour the comparator_ and so the absolute direction of bias is to the right. In Domain 6 (bias in measurement of the outcome), there was a high risk of differential misclassification on the basis of the exposure. Here, a history of statin use may make a diagnosis of vascular dementia more likely than Alzheimer's disease, and so for this outcome, this bias is predicted to _favour the experimental_ (in this case, an intervention). As such, the absolute direction of bias is to the left. In Domain 7 (bias in selection of the reported result), for consistency with the other NRSI, in the absence of a protocol the bias is assumed to be _away from the null_. Given the position of the effect estimate below the null, the absolute direction of bias in this domain is to the left.
 
-<!-- REVIEW YBS - I may have got confused but when you say favour the intervention I am assuming you mean a “protective effect” e.g. OR <1. But if there is differential misclassification so that statin use increases diagnosis of vascular dementia that would show a deleterious effect under the null hence shift to right e.g. OR >1. Perhaps I have misunderstood favour as < risk when in fact you mean > risk. Can you clarify?
+<!-- REVIEW YBS - I may have got confused but when you say favour the intervention I am assuming you mean a “protective effect” e.g., OR <1. But if there is differential misclassification so that statin use increases diagnosis of vascular dementia that would show a deleterious effect under the null hence shift to right e.g., OR >1. Perhaps I have misunderstood favour as < risk when in fact you mean > risk. Can you clarify?
 
 This is true for the VaD outcome, but in this case we are interested in the Alzheimer's diease outcome, which would result in under-reporting of AD when on statins and therefore favour the intervention.-->
 
@@ -539,7 +535,7 @@ No substantial differences were observed between the summary estimates obtained 
 
 #### Case study #2: effect of triglycerides at midlife on vascular dementia
 
-From the data sources identified in Section \@ref(tri-data-sources), I identified 7 results relevant to the causal effect of triglycerides at midlife on vascular dementia. Four were identified via the systematic review,`r tg_vad_citations` while Chapter \@ref(cprd-analysis-heading) provided two additional estimates from unanalysed datasets (CaPS and Whitehall II), and Chapter \@ref(ipd-heading) provides an estimate for the effect of fibrates, a treatment for hypertriglyceridaemia. The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:tgVadBiasDirection), stratified by study design.
+From the data sources identified in Section \@ref(tri-data-sources), I identified 7 results relevant to the causal effect of triglycerides at midlife on vascular dementia. Four were identified via the systematic review,`r tg_vad_citations` while Chapter \@ref(cprd-analysis-heading) provided two additional estimates from unanalysed datasets (CaPS and Whitehall II), and Chapter \@ref(ipd-heading) provides an estimate for the effect of fibrates, a treatment for hypertriglyceridemia. The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:tgVadBiasDirection), stratified by study design.
 
 <!----------------------------------------------------------------------------->
 (ref:tgVadBiasDirection-cap) __Bias direction plot for triglycerides/vascular dementia__ - Summary of the unadjusted results and internal biases related to effect of triglycerides on vascular dementia, stratified by study design.
@@ -602,7 +598,7 @@ Finally, for the "bias due to confounding" domain, it may in fact be more reason
 
 A key issue in this analysis is the accuracy of the assessment of bias and indirectness in each result. It has been widely demonstrated that the inter-rater agreement when using risk-of-bias tools is low with regards to the extent of bias assigned to each domain[@hartling2011; @minozzi2019; @minozzi2020] Though not previously studied, given the difficulty in assessing the predicted direction of bias, agreement on this aspect of the tools is likely to be lower still.
 
-A further issue in this regard is that the rigour of the tools may not be equivalent. This issue can be illustrated by the Ostergaard _et al._ study[@ostergaard2015] having low risk of bias across all domains and thus receiving a substantial proportion of the weight in the first case study (Figure \@ref(fig:fpLdlAd)). While the RoB suite of tools (RoB 2.0, ROBINS-I, ROBINS-E) were developed by an expert working group and have been widely used, the Mamluk _et al._ tool[@mamluk2020] used to assess risk of bias in Mendelian randomisation studies was designed by the authors for use in their own review. If the Mamluk tool is failing to adequately assess bias in Mendelian randomisation studies, then any analysis based on its assessments is likely to be subject to bias. This observation is particularly problematic given the default position of the ROBINS-I and ROBINS-E tool to require a "Moderate" judgement in the confounding domain. Under these conditions, it is possible that a well-performed cohort study (low risk of bias across everything other that bias due to confounding) will be down-weighted versus a potentially poor MR study.
+A further issue in this regard is that the rigour of the tools may not be equivalent. This issue can be illustrated by the Ostergaard _et al._ study[@ostergaard2015] having low risk of bias across all domains and thus receiving a substantial proportion of the weight in the first case study (Figure \@ref(fig:fpLdlAd)). While the RoB suite of tools (RoB 2.0, ROBINS-I, ROBINS-E) were developed by an expert working group and have been widely used, the Mamluk _et al._ tool[@mamluk2020] used to assess risk of bias in Mendelian randomisation studies was designed by the authors for use in their own review. If the Mamluk tool is failing to adequately assess bias in Mendelian randomisation studies, then any analysis based on its assessments is likely to be subject to bias. This observation is particularly problematic given the default position of the ROBINS-I and ROBINS-E tool to require a "Moderate" judgement in the confounding domain. Under these conditions, it is possible that a well-performed cohort study (low risk of bias across everything other that bias due to confounding) will be downweighted versus a potentially poor MR study.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -630,7 +626,7 @@ In the case of common outcomes, an extra step may be needed in the framework to 
 
 <!-- TODO An additional strength could be the fact that I explicitly sought to include both direct and indirect evidence -->
 
-The core strength of this analysis is that it is based on a comprehensive systematic review, supplemented by two additional primary studies to fill in the identified evidence gaps. In general, triangulation of any sort should be considered a natural extension of evidence synthesis, and therefore should follow best practice in relation to finding and critically assessing all relevant information. Additionally, the approach presented here also builds on recent developments in bias assessment to "explode out" the component results of a meta-analysis, and consider the effects of bias/indirectness in each separately. 
+The core strength of this analysis is that it is based on a comprehensive systematic review, supplemented by two additional primary studies to fill in the identified evidence gaps. In general, triangulation of any sort should be considered a natural extension of evidence synthesis, and therefore should follow best practice in relation to finding and critically assessing all relevant information. Additionally, the approach presented here also builds on recent developments in bias assessment to "explode out" the component results of a meta-analysis and consider the effects of bias/indirectness in each separately. 
 
 A further advantage of this method comes from the ability to specify the prior distributions for each level of bias/indirectness in advance of performing the assessments. Expert elicitation of the extent of bias/indirectness using a panel of methodologists and topic experts is a powerful technique but the point at which it is deployed in the framework is important. In previous attempts at bias-/indirectness-adjusted meta-analysis, the extent of bias in each study was assessed via an elicitation process,[@thompson2011; @turner2009; @wilks2011] during which experts were aware of the results of each analysis. This approach is potentially subject to differential misclassification of the impact of bias/indirectness on the basis of the results because there is no way to ensure that results at a similar level of bias for confounding (for example) are being adjusted by the same amount across studies. As an illustrative example, if experts are influenced by the knowledge of the effect estimate in a study, then a result at "Moderate" risk of confounding and demonstrating a stronger protective effect may receive greater adjustment than a study at the same risk of confounding but with a more modest effect. This is likely to be particularly problematic where experts have preconceived ideas about the true effectiveness of the intervention. 
 
@@ -645,7 +641,7 @@ Finally, accounting for bias using an incorrect prior distribution is no less pr
 
 ### Future research
 
-<!-- REVIEW Good to mention direct adjustment for bias, e.g. Greenlands writings -->
+<!-- REVIEW Good to mention direct adjustment for bias, e.g., Greenlands writings -->
 
 An obvious avenue for future work in relation to quantitative triangulation is the identification of empirical prior distributions for the effect of bias/indirectness in non-randomised studies using meta-epidemiological approaches. This will be substantially more challenging than examining the effect of bias in RCTs,[@savovic2018] given the absence of an underlying database of meta-analysis of non-randomised studies.
 
@@ -668,10 +664,10 @@ The second key output is an annotated example dataset for the LDL-c/Alzheimer's 
 
 ## Summary
 
-* In this chapter, I narratively described the evidence identified or produced in previous chapters, and highlighted the issues with a qualitative approach to triangulation when there are several sources of evidence.
+* In this chapter, I narratively described the evidence identified or produced in previous chapters and highlighted the issues with a qualitative approach to triangulation when there are several sources of evidence.
 
 * I then illustrated a proposed generalised framework for quantitative triangulation, exploiting existing methods in evidence synthesis and recent developments in the assessment of different risks of bias. I illustrated this method using two case studies: the effect of mid-life LDL-c on Alzheimer's disease, and the effect of mid-life triglycerides on vascular dementia.
 
-* I discussed the limitations of this proposed method, given the absence of empirically-based priors for the impact of bias/indirectness, and proposed future research (i.e. meta-epidemiological studies) that would address them.
+* I discussed the limitations of this proposed method, given the absence of empirically based priors for the impact of bias/indirectness, and proposed future research (i.e. meta-epidemiological studies) that would address them.
 
 * In summary, quantitative triangulation is a promising field that should be considered a natural extension of evidence synthesis. The implications of the synthesised evidence presented here to clinical practice, public health and future research is considered in the following chapter.

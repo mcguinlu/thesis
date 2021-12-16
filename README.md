@@ -10,6 +10,7 @@ You must submit two electronic copies of your dissertation separately to cover:
 - [ ] Review [Bristol guidelines](http://www.bris.ac.uk/media-library/sites/social-community-medicine/migrated/documents/preparingathesis.pdf)
 - [ ] Check if references are duplicated via distinct bibtex keys. || Sort out duplicated citation keys (e.g.[mcguinness2019a] vs [mcguinness2019b])
 - [x] Check each chapter has a Lay summary.
+- [ ] Check table of contents looks right ("Results" was missing for Chapter 6)
 - [ ] Check start of chapter quotes, including references
 - [ ] Quotes are rendering properly.
 - [ ] URLs resolve

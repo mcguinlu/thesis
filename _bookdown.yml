@@ -12,8 +12,7 @@ rmd_subdir: ["front-and-back-matter"]
 #rmd_files: ["index.Rmd", "01-rmd-basics-markdown.Rmd", "02-rmd-basics-code.Rmd", "03-rmd-basics-cites-and-refs.Rmd", "04-oxthesis.Rmd", "05-conclusion.Rmd", "front-and-back-matter/98-appendices.Rmd", "front-and-back-matter/99-references.Rmd"]
   
 output_dir: "docs"
-book_filename: "triangulation_of_causal_effects_of_lipids_on_dementia"
-
+book_filename: "PGR_submission_McGuinness_Luke_1877809"
 
 # You can provide a link here if you want people to be able to suggest and submit changes
 # to the source .Rmd files on your github repo, cf. https://bookdown.org/yihui/bookdown/html.html

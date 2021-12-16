@@ -46,11 +46,11 @@ This analysis makes use of the Clinical Practice Research Datalink (CPRD), which
 
 &nbsp;
 
-Little evidence for an effect of lipid-regulating agents on the risk of Alzheimer's disease was found, with the exception of a slightly increased risk in those prescribed a certain type of lipid-regulating agent called fibrates. In contrast, I found an increased risk of vascular and other (i.e. non-Alzheimer's) dementia was associated with lipid-regulating agent use. 
+Little evidence for an effect of lipid-regulating agents on the risk of Alzheimer's disease was found, with the exception of a slightly increased risk in those prescribed a certain type of lipid-regulating agent called fibrates. In contrast, I found an increased risk of vascular and other (i.e., non-Alzheimer's) dementia was associated with lipid-regulating agent use. 
 
 &nbsp;
 
-This increased risk in outcomes with a vascular element (e.g. vascular dementia) is unexpected, and is very likely to be due to the presence of bias in my analysis. This bias, called "confounding by indication", is caused when those who are prescribed a statin are more at risk of vascular dementia for a range of reasons, which makes it appear as if statins are harmful. Despite this limitation, the analysis provides an important source of information which will be used in later chapters.
+This increased risk in outcomes with a vascular element (e.g., vascular dementia) is unexpected and is very likely to be due to the presence of bias in my analysis. This bias, called "confounding by indication", is caused when those who are prescribed a statin are more at risk of vascular dementia for a range of reasons, which makes it appear as if statins are harmful. Despite this limitation, the analysis provides an important source of information which will be used in later chapters.
 
 :::
 
@@ -82,9 +82,9 @@ An *a priori* protocol for this study was published,[@walker2016] and amendments
 
 ### Data source {#cprd-data-source}
 
-Previously known as the General Practice Research Database, the Clinical Practice Research Datalink (CPRD) is a large population-based EHR database.[@herrett2015] The database has been collecting primary care data from participating practices across England since 1987.[@williams2012; @wood2001revitalizing] It contains the records of more than 10 million primary care patients in England, and is broadly representative of the UK population in terms of age, sex and ethnicity.[@herrett2015; @mathur2014]
+Previously known as the General Practice Research Database, the Clinical Practice Research Datalink (CPRD) is a large population-based EHR database.[@herrett2015] The database has been collecting primary care data from participating practices across England since 1987.[@williams2012; @wood2001revitalizing] It contains the records of more than 10 million primary care patients in England and is broadly representative of the UK population in terms of age, sex and ethnicity.[@herrett2015; @mathur2014]
 
-To avoid the ambiguity of interpreting free-text clinical notes and to allow for easy analysis of the resulting data, the CPRD primarily collects data using a predefined coding system known as Read codes.[@booth1994] All clinical events, including  test results and diagnoses, can be identified by a specific Read code. The codes use a nested approach (see Table \@ref(tab:readExample-table)), with the initial characters defining broad diagnostic topics (e.g. Eu... - Mental and behavioural disorders), while subsequent characters provide additional information on the specific condition diagnosed (e.g. Eu001 - Dementia in Alzheimer's disease with late onset).
+To avoid the ambiguity of interpreting free-text clinical notes and to allow for easy analysis of the resulting data, the CPRD primarily collects data using a predefined coding system known as Read codes.[@booth1994] All clinical events, including  test results and diagnoses, can be identified by a specific Read code. The codes use a nested approach (see Table \@ref(tab:readExample-table)), with the initial characters defining broad diagnostic topics (e.g., Eu... - Mental and behavioural disorders), while subsequent characters provide additional information on the specific condition diagnosed (e.g., Eu001 - Dementia in Alzheimer's disease with late onset).
 
 &nbsp;
 
@@ -114,7 +114,7 @@ Participants were included in the study cohort if their record contained any of 
 
 * a Read code for a diagnosis of hypercholesterolemia or related condition; 
 * a Read code for prescription of a lipid-regulating agent (such as statins); 
-* a total cholesterol test result of >4 mmol/L; 
+* a total cholesterol test result of >4 mmol/L; or
 * an LDL-c test result of >2 mmol/L. 
 
 The blood lipid cut-offs were based on NIHR-recommended levels at the time the protocol was written. These index events allowed me to define a population of participants who were either at risk of hypercholesterolemia, as indicated by the elevated total or LDL cholesterol test results, or had already been diagnosed with it, as indicated by a diagnostic code/related prescription.
@@ -124,10 +124,10 @@ The index date for a participant was defined as the date where the first relevan
 * an outcome of interest;
 * death; 
 * end of follow-up (29 February 2016);
-* last registration date with their GP practice;
+* last registration date with their GP practice; or
 * the last CPRD collection date for their practice.
 
-Participants were ineligible for the cohort if they were less than 40 years of age (because these patients are less likely to be prescribed a LRA), had less than 12 months of "research quality" data, were simultaneously prescribed more than one lipid-regulating agent (due to the difficultly of assigning these to a single exposure group), or were diagnosed with an outcome of interest before or on the date of the index event (i.e. had less than one full day of follow-up). 
+Participants were ineligible for the cohort if they were less than 40 years of age (because these patients are less likely to be prescribed a LRA), had less than 12 months of "research quality" data, were simultaneously prescribed more than one lipid-regulating agent (due to the difficultly of assigning these to a single exposure group), or were diagnosed with an outcome of interest before or on the date of the index event (i.e., had less than one full day of follow-up). 
 
 <!--------------------------------------------------------------------------->
 
@@ -137,7 +137,7 @@ Participants were ineligible for the cohort if they were less than 40 years of a
 
 I considered seven lipid-regulating drug classes based on groupings in the British National Formulary,[@wishart2017] namely: statins, fibrates, bile acid sequestrants, ezetimibe, nicotinic acid groups, ezetimibe and statin (representing one treatment containing both drugs, rather than the two classes being prescribed concurrently), and omega-3 fatty acid groups.  
  
-A participants drug class was assigned based on their first recorded prescription, and any drug switching was ignored in an effort to mimic an intention-to-treat approach. I did however examine how often the initial drug class altered according to one of three criteria:
+A participant's drug class was assigned based on their first recorded prescription, and any drug switching was ignored in an effort to mimic an intention-to-treat approach. I did however examine how often the initial drug class altered according to one of three criteria:
 
 - __stopped__: defined as the last prescription of the primary class being followed by at least six months of observation; 
 - __added__: defined as a second drug class being prescribed before the last prescription of the initial class; and 
@@ -205,7 +205,7 @@ Missing data are a recognised problem in electronic health records databases.[@w
 
 In this analysis, missing data was handled using a multiple imputation approach.[@sterne2009] Variables with missing observations were identified for inclusion in the imputation model. Nominal variables with missing values were modelled using multinomial logistic regression, while continuous variables were modelled using linear regression. As per best practice, all variables used in the analytic model, including the outcome, were included in the imputation model.[@moons2006] Using the MICE (Multiple Imputation by Chained Equations) command in STATA 16,[@statacorp2019] 20 imputed datasets were created.
 
-Missing data was only considered problematic for variables where a numerical test result was expected (e.g. BMI), or where a code existed for the absence of the condition (e.g. categorical smoking status). This approach was necessary because absence of a code for other treatments or conditions (e.g. statin use or dementia) was assumed to indicate absence of the treatment/condition rather than being considered missing.[@wells2013strategies]
+Missing data was only considered problematic for variables where a numerical test result was expected (e.g., BMI), or where a code existed for the absence of the condition (e.g., categorical smoking status). This approach was necessary because absence of a code for other treatments or conditions (e.g., statin use or dementia) was assumed to indicate absence of the treatment/condition rather than being considered missing.[@wells2013strategies]
 
 &nbsp;
 <!--------------------------------------------------------------------------->
@@ -224,7 +224,7 @@ where:
 
 * $t$ is the survival time;
 * $h(t)$ is the hazard function;
-* $x_1,x_2,...,x_p$ are the covariates which determine the hazard function, while $b_1,b_2,...,b_p$ are the coefficients for each covariate.; and
+* $x_1,x_2,...,x_p$ are the covariates which determine the hazard function, while $b_1,b_2,...,b_p$ are the coefficients for each covariate; and
 * $h_o(t)$ is the baseline hazard - when all $x_i$ are zero, the $exp()$ function resolves to 1.
 
 A Cox PR model was chosen for this analysis as it inherently accounts for the length of time participants spend in each exposure group. Using this approach, time-at-risk can be properly attributed to the appropriate exposure group, thus mitigating the impact of immortal time bias. This is discussed in detail in the following section.
@@ -234,7 +234,7 @@ A Cox PR model was chosen for this analysis as it inherently accounts for the le
 
 ### Immortal time bias and time-varying treatment indicators {#cprd-immortal-time-bias}
 
-Immortal time bias describes two distinct but related types of bias, considered here in relation to statin use (Figure \@ref(fig:immortalTimeBias)). The first presentation, the selection bias aspect (Panel A), occurs when time prior to statin initiation is excluded leading to the statin and control groups being followed up from different time points.[@levesque2010] The unexposed group are followed from the date of an index event (e.g. diagnosis of hypercholesterolemia), while the statin group is followed from date of a statin initiation. In this scenario, the time between the index event and statin initiation is missing, and any events that occur in the exposed group prior to the prescription will be inappropriately excluded from the analysis.
+Immortal time bias describes two distinct but related types of bias, considered here in relation to statin use (Figure \@ref(fig:immortalTimeBias)). The first presentation, the selection bias aspect (Panel A), occurs when time prior to statin initiation is excluded leading to the statin and control groups being followed up from different time points.[@levesque2010] The unexposed group are followed from the date of an index event (e.g., diagnosis of hypercholesterolemia), while the statin group is followed from date of a statin initiation. In this scenario, the time between the index event and statin initiation is missing, and any events that occur in the exposed group prior to the prescription will be inappropriately excluded from the analysis.
 
 The second presentation of immortal time bias is as a type of misclassification bias (Panel B, Figure \@ref(fig:immortalTimeBias)). It occurs when the exposure time and events prior to statin initiation are inappropriately assigned to the statin group.
 
@@ -261,7 +261,7 @@ Following a recommended approach to address the second form of immortal time bia
 * date of hypercholesterolemia diagnosis; or 
 * date of LRA prescription. 
 
-Patients start in the unexposed group and contribute time-at-risk until they are prescribed a lipid-regulating agent, at which point they move into the exposed group. Note, patients for whom prescription of a lipid-regulating agent was the index event only contribute time to the exposed group (i.e. they enter the cohort and move into the exposed group on the same day). 
+Patients start in the unexposed group and contribute time-at-risk until they are prescribed a lipid-regulating agent, at which point they move into the exposed group. Note, patients for whom prescription of a lipid-regulating agent was the index event only contribute time to the exposed group (i.e., they enter the cohort and move into the exposed group on the same day). 
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -335,7 +335,7 @@ Similarly, incident ischemic heart disease and Type 2 diabetes were included as 
 
 #### Impact of additional covariates
 
-To observe the effect of adjusting for additional covariates, I ran two additional models unadjusted except for: (a) age; and (b) age and gender. The results of these models was then compared the results with the fully adjusted model.
+To observe the effect of adjusting for additional covariates, I ran two additional models unadjusted except for: (a) age; and (b) age and gender. The results of these models were then compared the results with the fully adjusted model.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -464,7 +464,7 @@ knitr::include_graphics(file.path("figures","cprd-analysis","forester_p1.png"))
 
 #### Alzheimer's disease
 
-My results show litte evidence was found for an effect of lipid-regulating agents on probable (`r probad_text`) and possible (`r possad_text`) Alzheimer's disease when compared to no treatment, with the sole exception of fibrates on probable Alzheimer's disease (`r probad_fib_text`). 
+My results show little evidence was found for an effect of lipid-regulating agents on probable (`r probad_text`) and possible (`r possad_text`) Alzheimer's disease when compared to no treatment, with the sole exception of fibrates on probable Alzheimer's disease (`r probad_fib_text`). 
 
 &nbsp;
 
@@ -486,7 +486,7 @@ The results of the sensitivity analyses are described in the following sections.
 
 #### Complete case versus imputed data
 
-In almost all cases, the use of imputed data resulted in a marginal attenuation of the effects observed when using a complete case analysis. It should be noted that due to the large amount of missing data (e.g. `r ldltext` were missing a baseline LDL cholesterol measure), the number of participants included in the complete case analysis was substantially smaller than that included when using imputed data. In this case, though the overall position of the effect estimates does not change substantially when using the imputed dataset, there is a noticeable gain in power.[@sterne2009] 
+In almost all cases, the use of imputed data resulted in a marginal attenuation of the effects observed when using a complete case analysis. It should be noted that due to the large amount of missing data (e.g., `r ldltext` were missing a baseline LDL cholesterol measure), the number of participants included in the complete case analysis was substantially smaller than that included when using imputed data. In this case, though the overall position of the effect estimates does not change substantially when using the imputed dataset, there is a noticeable gain in power.[@sterne2009] 
 
 &nbsp;
 
@@ -664,7 +664,7 @@ When using the Smeeth _et al._ code lists to define dementia outcomes, hazard ra
 
 ### Summary of findings
 
-Lipid-regulating agents showed little evidence of an association with probable and possible Alzheimer's disease when compared to no treatment, but were associated with increased risk of an all-cause dementia, vascular dementia and other dementias diagnoses. The estimate observed in each case was driven by the effects observed in the statin subgroup because a substantial majority of participants prescribed an LRA were prescribed a statin. For the other drug classes, no association was found with any outcome, with two exceptions. Ezetimibe was associated with increased risk of vascular and other dementias, while fibrates were associated with increase risk of all-cause dementia and probable Alzheimer's disease.
+Lipid-regulating agents showed little evidence of an association with probable and possible Alzheimer's disease when compared to no treatment but were associated with increased risk of the all-cause dementia, vascular dementia and other dementias diagnoses. The estimate observed in each case was driven by the effects observed in the statin subgroup because a substantial majority of participants prescribed an LRA were prescribed a statin. For the other drug classes, no association was found with any outcome, with two exceptions. Ezetimibe was associated with increased risk of vascular and other dementias, while fibrates were associated with increased risk of all-cause dementia and probable Alzheimer's disease.
 
 The effect estimates were robust to the exclusion of potentially pregnant participants, and for all outcomes except probable AD, no variation across grouped year of entry was observed. When looking at the statin subgroup alone, statin properties appeared to have a modifying effect, with hydrophilic statins being less harmful in the any, vascular and other dementias outcomes compared to lipophilic statins.
 
@@ -725,9 +725,9 @@ However, comparison of the results obtained using the two sets of code lists was
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:smeethComparison-cap) __Comparison of codelists__ - Sankey diagram comparing the codes used in this analysis with those used in the Smeeth _et al_ paper.[@smeeth2009] The outcomes and number of codes contributing to each are presented (the Smeeth _et al_ outcomes are on the right hand side of the figure). The joining lines showing the overlap between the categories in the two analyses. 
+(ref:smeethComparison-cap) __Comparison of code lists__ - Sankey diagram comparing the codes used in this analysis with those used in the Smeeth _et al_ paper.[@smeeth2009] The outcomes and number of codes contributing to each are presented (the Smeeth _et al_ outcomes are on the right-hand side of the figure). The joining lines showing the overlap between the categories in the two analyses. 
 
-(ref:smeethComparison-scap) Comparison of codelists
+(ref:smeethComparison-scap) Comparison of code lists
 
 ```{r sankeydiagram, include=FALSE}
 ```
@@ -737,7 +737,7 @@ knitr::include_graphics(file.path("figures/cprd-analysis/sankey_diagram.png"))
 ```
 <!----------------------------------------------------------------------------->
 
-This analysis serves to illustrative the importance of the code lists chosen to define the outcomes of interest in EHR, particularly if they are used to define competing outcomes (e.g. AD vs non-AD dementia). The different codes used by Smeeth _et al._, in addition to an analytical approach that adjusted for covariates defined after the index date, may go some way to explaining why my analysis obtained different results despite the substantial overlap in the data sources used.
+This analysis serves to illustrative the importance of the code lists chosen to define the outcomes of interest in EHR, particularly if they are used to define competing outcomes (e.g., AD vs non-AD dementia). The different codes used by Smeeth _et al._, in addition to an analytical approach that adjusted for covariates defined after the index date, may go some way to explaining why my analysis obtained different results despite the substantial overlap in the data sources used.
 
 <!--------------------------------------------------------------------------->
 &nbsp;
@@ -770,7 +770,7 @@ In light of this and my own experiences in attempting to extract information for
 
 * In this chapter, I produced new evidence on the association of lipid-regulating agents with incidence of all-cause dementia, Alzheimer’s disease, vascular dementia, and other dementia. 
 
-* I found little evidence for an effect of lipid-regulating agents on probable or possible Alzheimer’s disease. However, lipid-regulating agent use was associated with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations for the "any LRA" analyses were driven by those those observed in the large statin subgroup.
+* I found little evidence for an effect of lipid-regulating agents on probable or possible Alzheimer’s disease. However, lipid-regulating agent use was associated with an increased risk of all-cause, vascular and other dementias. In all cases, the estimated associations for the "any LRA" analyses were driven by those observed in the large statin subgroup.
 
 * I attempted to account for important sources of bias through use of a time-varying treatment indicator. However, the control outcomes included in the analysis provided evidence for only partially controlled confounding by indication, likely related to vascular factors. Additionally, there was the potential for differential misclassification of dementia subtype on the basis of the exposure. Combined, these biases reduce the confidence in my findings, in particular the unexpected increase in risk of vascular dementia associated with statin use.
 

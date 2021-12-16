@@ -569,9 +569,12 @@ if (doc_type == "docx") {
       general = paste(
         "\\\\textit{Abbreviations:}",
         "AD - Alzheimer's disease;",
+        "ADGC - Alzheimer’s Disease Genetics Consortium",
         "DSM - Diagnostic and Statistical Manual (Roman numerals indicate edition);",
         "EHR - Electronic code list;",
-        "ICD - International Classification of Diseease (numbers indicate edition);",
+        "ICD - International Classification of Disease (numbers indicate edition);",
+        "IGAP - International Genomics of Alzheimer’s Project",
+        "GLGC - Global Lipid Genetics Consortium",
         "HDL-c - high density lipoprotein cholesterol;",
         "LDL-c - low density lipoprotein cholesterol;",
         "NINCDS-ADRDA - National Institute of Neurological and Communicative Disorders and Stroke and the Alzheimer's Disease and Related Disorders Association;",
