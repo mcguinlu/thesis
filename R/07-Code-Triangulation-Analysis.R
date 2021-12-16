@@ -98,9 +98,10 @@ if (doc_type == "docx") {
     row_spec(0, bold = TRUE) %>%
     kable_styling(latex_options = c("HOLD_position")) %>%
     row_spec(2:nrow(singleIndirect_table) - 1, hline_after = TRUE) %>%
-    column_spec(c(1,4), width = paste0(5, "em")) %>%
+    column_spec(c(1), width = paste0(5, "em")) %>%
+    column_spec(c(4), width = paste0(3, "em")) %>%
     column_spec(c(5), width = paste0(6, "em")) %>%
-    column_spec(c(2,3), width = paste0(9, "em"))
+    column_spec(c(2,3), width = paste0(8, "em"))
 }
 
 
@@ -144,7 +145,11 @@ indirect_values <- rio::import("data/tri/indirectness_values.csv")  %>%
 
 # Load general data
 dat_gen <- rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
-                       which = 2) %>% janitor::clean_names() %>%
+                       which = 2) %>% 
+  janitor::clean_names() %>%
+  mutate(author = ifelse(study_id == "2140", paste0(author, " (", cohort, ")"), author)) %>%
+  mutate(author = case_when(!is.na(sex) ~ paste0(author, " (", sex, " only)"),
+                            T ~ author)) %>%
   select(result_id, author, year,) %>%
   mutate(year = as.character(year)) %>%
   tibble::add_row(result_id = "999-1", author = "Chp 5 - CPRD", year = "")
@@ -156,8 +161,7 @@ dat_rob <- read.csv("data/tri/ldl_ad_rob.csv",
   mutate(vi = sei^2) %>%
   select(result_id, author, type, yi, vi, everything())  %>%
   # Standardise effect direction
-  mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi))
-
+  mutate(yi = ifelse(type %in% c("NRSE","MR - LDL"), yi*-1, yi))
 
 dat_ind <- read.csv("data/tri/ldl_rob_indirect.csv",
                     stringsAsFactors = F) %>%
@@ -165,8 +169,7 @@ dat_ind <- read.csv("data/tri/ldl_rob_indirect.csv",
   mutate(vi = sei^2) %>%
   select(result_id, author, type, yi, vi, everything())  %>%
   # Standardise effect direction
-  mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi))
-
+  mutate(yi = ifelse(grepl("NRSE", "MR - LDL"), yi*-1, yi))
 
 ldl_ad_citations <- get_citations_per_analysis(dat_rob)
 
@@ -186,6 +189,7 @@ forest_triangulation(dat_rob_single,
                      title = "LDL-c and AD",
                      at = log(c(0.3, 1, 3)),   
                      xlab = "Favours experimental | Favours comparator",
+                     legend_cex = 0.9,
                      cex.lab	 = 0.9,
                      x_min = -5)
 
@@ -194,7 +198,7 @@ dev.off()
 png(
   here::here("figures/tri/midlife_AD.png"),
   width = 1750,
-  height = 1300,
+  height = 1400,
   pointsize = 15,
   res = 100
 )
@@ -203,7 +207,9 @@ forest_triangulation(
   dat_rob,
   sei = dat$sei,
   title = "LDL-c and AD",
+  legend_cex = 0.9,
   xlab = "Favours experimental | Favours comparator",
+  type_levels = c("MR - LDL","MR - HMGCR","NRSI","NRSE","RCT"),
   cex.lab	 = 0.9
 )
 
@@ -237,12 +243,12 @@ single_adjusted <- estimate(
 
 levels <- c("Low","Moderate","Serious","Critical")
 
-levels_type <- c("MR","NRSI","NRSE")
+levels_type <- c("MR - LDL","MR - HMGCR","NRSI","NRSE","RCT")
 
 dat_rob <- dat_rob %>%
   mutate(type = factor(type, levels = levels_type)) %>%
   mutate(overall = factor(overall, levels =levels)) %>%
-  arrange(desc(type), desc(overall), desc(author))
+  arrange(desc(type), desc(overall), author)
 
 dat_final_scenario1 <-
   prep_tri_data(dat_rob, dat_ind, bias_values_scenario1, indirect_values)
@@ -331,10 +337,10 @@ metafor::forest(
   at = log(c(0.3, 1, 3)),
   showweights = TRUE
 )
-text(log(0.01), 21, "Author and Year", cex=.8, font=2)
-text(log(40), 21.5, "Unadjusted", cex=.8, font=2)
-text(log(9.3), 20.5, "Weight", cex=.8, font=2)
-text(log(100), 20.5, "Estimate", cex=.8, font=2)
+text(log(0.01), 23, "Author and Year", cex=.8, font=2)
+text(log(40), 23.5, "Unadjusted", cex=.8, font=2)
+text(log(9.3), 22.5, "Weight", cex=.8, font=2)
+text(log(100), 22.5, "Estimate", cex=.8, font=2)
 
 par(mar=c(5,0,1,0))
 metafor::forest(
@@ -347,9 +353,9 @@ metafor::forest(
   slab = rep("", length(dat_final_scenario1$yi)),
   showweights = TRUE
 )
-text(log(40), 21.5, "Adjusted (Scenario 1)", cex=.8, font=2)
-text(log(9.3), 20.5, "Weight", cex=.8, font=2)
-text(log(100), 20.5, "Estimate", cex=.8, font=2)
+text(log(40), 23.5, "Adjusted (Scenario 1)", cex=.8, font=2)
+text(log(9.3), 22.5, "Weight", cex=.8, font=2)
+text(log(100), 22.5, "Estimate", cex=.8, font=2)
 
 dev.off()
 
@@ -369,10 +375,10 @@ metafor::forest(
   mlab = " ",
   showweights = TRUE
 )
-text(log(0.01), 21, "Author and Year", cex=.8, font=2)
-text(log(40), 21.5, "Adjusted (Scenario 1)", cex=.8, font=2)
-text(log(9.3), 20.5, "Weight", cex=.8, font=2)
-text(log(100), 20.5, "Estimate", cex=.8, font=2)
+text(log(0.01), 23, "Author and Year", cex=.8, font=2)
+text(log(40), 23.5, "Adjusted (Scenario 1)", cex=.8, font=2)
+text(log(9.3), 22.5, "Weight", cex=.8, font=2)
+text(log(100), 22.5, "Estimate", cex=.8, font=2)
 
 par(mar=c(5,0,1,0))
 metafor::forest(
@@ -385,9 +391,9 @@ metafor::forest(
   slab = rep("", length(dat_final_scenario2$yi)),
   showweights = TRUE
 )
-text(log(40), 21.5, "Adjusted (Scenario 2)", cex=.8, font=2)
-text(log(9.3), 20.5, "Weight", cex=.8, font=2)
-text(log(100), 20.5, "Estimate", cex=.8, font=2)
+text(log(40), 23.5, "Adjusted (Scenario 2)", cex=.8, font=2)
+text(log(9.3), 22.5, "Weight", cex=.8, font=2)
+text(log(100), 22.5, "Estimate", cex=.8, font=2)
 
 dev.off()
 
@@ -430,7 +436,7 @@ dat_rob_vad <- read.csv("data/tri/tg_vad_rob.csv",
   mutate(vi = sei^2) %>%
   select(result_id, author, type, yi, vi, everything())  %>%
   # Standardise effect direction
-  mutate(yi = ifelse(type %in% c("NRSE","MR"), yi*-1, yi))
+  mutate(yi = ifelse(grepl("NRSE",type), yi*-1, yi))
 
 dat_ind_vad <- read.csv("data/tri/tg_vad_indirect.csv",
                     stringsAsFactors = F) %>%
@@ -445,25 +451,29 @@ tg_vad_citations <- get_citations_per_analysis(dat_rob_vad)
 png(
   here::here("figures/tri/midlife_VaD.png"),
   width = 1750,
-  height = 1300,
+  height = 1000,
   pointsize = 15,
   res = 100
 )
 
 forest_triangulation(dat_rob_vad,
-                     sei = dat$sei,
+                     sei = sei,
                      at = log(c(.3,1,3)),
                      xlab = "Favours experimental | Favours comparator",
                      cex.lab	 = 0.9,
-                     
+                     legend_cex = 0.9,
+                     type_levels = c("NRSI - Fibrates","NRSE - Hypertriglyceridemia","NRSE - Triglycerides (SD)"),
                      title = "Triglycerides and VaD")
 
 dev.off()
 
+
+levels_type <- c("NRSI - Fibrates","NRSE - Hypertriglyceridemia","NRSE - Triglycerides (SD)")
+
 dat_rob_vad <- dat_rob_vad %>%
   mutate(type = factor(type, levels = levels_type)) %>%
   mutate(overall = factor(overall, levels =levels)) %>%
-  arrange(desc(type), desc(overall), desc(author))
+  arrange(desc(type), desc(overall), author)
 
 #Prep data and run meta-analyses
 dat_final_scenario1_vad <-
