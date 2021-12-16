@@ -243,7 +243,7 @@ if(doc_type == "docx") {
     linesep=""
   ) %>%
     row_spec(0, bold = TRUE) %>%
-    column_spec(column = 1:5, width = paste0(32/5,"em")) %>%
+    column_spec(column = 1:5, width = paste0(50/5,"em")) %>%
     row_spec(2:nrow(mrTool_table)-1, hline_after = TRUE) %>%
     add_header_above(
       c(" "," ", "Risk of bias judgement" = 3),bold = TRUE
@@ -282,7 +282,7 @@ biasDirectionData_table <- rio::import("data/tri/ldl_ad_rob.csv") %>%
          sei = round(sei,2)) %>%
   head(5) %>%
   mutate(ID = 1:5) %>%
-  select(ID, everything(),-c(result_id,type))
+  select(ID, everything(),-c(yi,sei,result_id,type))
 
 biasDirectionData_table[biasDirectionData_table=="Add"] <- "A"
 biasDirectionData_table[biasDirectionData_table=="Prop"] <- "P"
@@ -307,7 +307,7 @@ if(doc_type == "docx") {
     align = "lcccccccccccccccccccccccc"
   ) %>%
     row_spec(0, bold = TRUE) %>%
-    column_spec(c(1, 3, 6, 9, 12, 15, 18, 21, 24), border_right = T) %>%
+    column_spec(c(1, 4, 7, 10, 13, 16, 19, 22), border_right = T) %>%
     kable_styling(latex_options = c("HOLD_position"),
                   font_size = 8) %>%
     kableExtra::footnote(
@@ -315,8 +315,6 @@ if(doc_type == "docx") {
       general_title = "",
       general = paste(
         "\\\\textbf{Abbreviations:}",
-        "yi - Effect estimate;",
-        "sei - Standard error of the effect estimate;",
         "H - High risk of bias;",
         "M - Moderate risk of bias;",
         "L - Low risk of bias;",
@@ -595,17 +593,6 @@ if(doc_type == "docx") {
 }
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
-# ---- robAppendixFigures ----
-
-plot <- rob_summary(data = data_rob2, tool = "ROB2")
-rob_save(plot, here::here("figures/appendix/robSummary.png"))
-
-plot <- rob_traffic_light(data = data_rob2,
-                          tool = "ROB2",
-                          psize = 10)
-rob_save(plot, here::here("figures/appendix/robTraffic.png"))
-
-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- minFollowUp ----
 
 library(ggplot2)
@@ -841,4 +828,43 @@ apply_flextable(prismaTab_table,caption = "(ref:prismaTab-caption)")
     kable_styling(latex_options = c("HOLD_position","repeat_header"))
   
 }
+
+#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
+# ---- funnelPlots
+
+img <- list()
+img$hyperDem <- readPNG(here::here("figures/sys-rev/funnel_hyper_dem.png"))
+img$statinsDem <- readPNG(here::here("figures/sys-rev/funnel_statins_dem.png"))
+img$hyperAD <- readPNG(here::here("figures/sys-rev/funnel_hyper_ad.png"))
+img$statinsAD <- readPNG(here::here("figures/sys-rev/funnel_statins_ad.png"))
+
+# setup plot
+try(dev.off())
+pdf(
+  here::here("figures/appendix/funnel_composite.pdf"),
+  width = 12,
+  height = 12
+)
+par(mai = rep(0, 4)) # no margins
+
+# layout the plots into a matrix w/ 12 columns, by row
+par(mfrow = c(2, 2))
+
+# do the plotting
+for (i in 1:4) {
+  plot(
+    NA,
+    xlim = 0:1,
+    ylim = 0:1,
+    bty = "n",
+    axes = 0,
+    xaxs = 'i',
+    yaxs = 'i'
+  )
+  rasterImage(img[[i]], 0, 0, 1, 1)
+}
+
+# write to PDF
+dev.off()
+
 

@@ -758,15 +758,16 @@ save_fp <- function(dat, design = "obs", preface = NULL, xlab = "Hazard ratio", 
   # Handle title
   
   if (any(grepl("\\*", dat$year))) {
+    # if odds ratios in plot, convert x title
     xlab <- "Hazard ratio/Odds ratio"
   }   
   
   dat_rob <-
     rio::import(here::here("data/sys-rev/data_extraction_main.xlsx"),
-                which = 3) %>%
+                which = 4) %>%
     janitor::clean_names() %>%
-    filter(result_id %in% dat$result_id)
-  
+    filter(result_id %in% dat$result_id) %>%
+    select(-author)
   
   height <- max(nrow(dat) * 100, 700)
   

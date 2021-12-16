@@ -1000,6 +1000,43 @@ metaregStatinsDem <- dat$Dementia %>%
   last() %>%
   round(2)
 
+# Funnel plots
+
+png(
+here::here("figures/sys-rev/funnel_statins_ad.png"),
+width = 600,
+height = 550,
+res = 100
+)
+
+funnel(dat$AD$yi,
+       sei = dat$AD$sei,
+       legend = T,
+       xlab = paste("Effect estimate of statin use on Alzheimer's disease\nEgger's regression test p =",
+       round(regtest(dat$AD$yi,
+                     sei = dat$AD$sei)$pval,2))
+)
+
+dev.off()
+
+png(
+  here::here("figures/sys-rev/funnel_statins_dem.png"),
+  width = 600,
+  height = 550,
+  res = 100
+)
+
+funnel(
+  dat$Dementia$yi,
+  sei = dat$Dementia$sei,
+  legend = T,
+  xlab = paste("Effect estimate of statin use on all-cause dementia\nEgger's regression test p =",
+  round(regtest(dat$Dementia$yi,
+                sei = dat$Dementia$sei)$pval,2))
+)
+
+dev.off()
+
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- obsFibrates
 
@@ -1054,10 +1091,11 @@ dat <-
   general_filters() %>%
   filter(
     is.na(direction),
-    !grepl("Critical", comments),
+    # Remove critical risk of bias
+    !grepl("[Cc]ritical", comments),
     grepl("Hyperch", exposure_category),
-    # grepl(">", dose_range),
-    !(result_id %in% c("14346-3","14346-14")),
+    # Remove results which refer to reduction
+    !(result_id %in% c("14346-3","14346-14","14346-18")),
     point_estimate != "Missing",
     measure %in% c("HR","OR"),
     exposure != "TG",
@@ -1160,6 +1198,44 @@ metaregHypercholDem <- dat$Dementia %>%
   .$pval %>%
   last() %>%
   round(2)
+
+png(
+  here::here("figures/sys-rev/funnel_hyper_ad.png"),
+  width = 600,
+  height = 550,
+  res = 100
+)
+
+funnel(dat$AD$yi,
+       sei = dat$AD$sei,
+       legend = T,
+       xlab = paste("Effect estimate of hypercholesterolemia on Alzheimer's disease\nEgger's regression test p =",
+                    round(regtest(dat$AD$yi,
+                                  sei = dat$AD$sei)$pval,2))
+       )
+
+dev.off()
+
+png(
+  here::here("figures/sys-rev/funnel_hyper_dem.png"),
+  width = 600,
+  height = 550,
+  res = 100
+)
+
+funnel(
+  dat$Dementia$yi,
+  sei = dat$Dementia$sei,
+  legend = T,
+  xlab = paste("Effect estimate of hypercholesterolemia on all-cause dementia\nEgger's regression test p =",
+  round(regtest(dat$Dementia$yi,
+                sei = dat$Dementia$sei)$pval,2))
+)
+
+dev.off()
+
+
+
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- riskOfBias
@@ -1552,9 +1628,9 @@ dag <- dagitty::dagitty(
     X <- U -> Y
     X <- C -> Y
     X -> Y
-    I [pos=\"-.2,.01\"]
-    II [pos=\"-.2,.08\"]
-    III [pos=\".1,-.05\"]
+    1 [pos=\"-.2,.01\"]
+    2 [pos=\"-.2,.08\"]
+    3 [pos=\".1,-.05\"]
     bb =\"-2,-2,2,2\"
     C [pos=\"0.25,0.1\"]
     G [pos=\"-.5,0\"]
@@ -1622,7 +1698,6 @@ img$TC <- readPNG(here::here("figures/sys-rev/fp_obs_AD_TC_.png"))
 img$LDL <- readPNG(here::here("figures/sys-rev/fp_obs_AD_LDL_.png"))
 img$HDL <- readPNG(here::here("figures/sys-rev/fp_obs_AD_HDL_.png"))
 img$TG <- readPNG(here::here("figures/sys-rev/fp_obs_AD_TG_.png"))
-
 
 # setup plot
 try(dev.off())

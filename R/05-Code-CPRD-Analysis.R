@@ -296,11 +296,11 @@ characteristics <-
 # Median and IQR for follow-up
 fu_text <- paste0(
   round(characteristics$c1[1], 1),
-  " years (IQR:",
+  " years (IQR: ",
   round(characteristics$c1[2], 1),
   "-",
   round(characteristics$c1[3], 1),
-  "years )"
+  " years)"
 )
 
 fu_ab_text <- paste0(round(characteristics$c1[1], 1),
@@ -309,11 +309,11 @@ fu_ab_text <- paste0(round(characteristics$c1[1], 1),
 # Median and IQR for age at index
 age_text <- paste0(
   characteristics$c1[4],
-  " years (inter-quartile range (IQR):",
+  " years (inter-quartile range (IQR): ",
   characteristics$c1[5],
   "-",
   characteristics$c1[6],
-  "years )"
+  " years)"
 )
 
 total_followup <-
@@ -1641,7 +1641,7 @@ smeeth_azd_text <-
     results_smeeth_azd$HR,
     results_smeeth_azd$ci_lower,
     results_smeeth_azd$ci_upper,
-    type = "HR",
+    type = "",
     sep = ")"
   )
 
@@ -1650,7 +1650,7 @@ smeeth_oth_text <-
     results_smeeth_oth$HR,
     results_smeeth_oth$ci_lower,
     results_smeeth_oth$ci_upper,
-    type = "HR",
+    type = "",
     sep = ")"
   )
 
@@ -1673,8 +1673,6 @@ covariateDef_table <- covar %T>%
 if (doc_type == "docx") {
   apply_flextable(covariateDef_table, caption = "(ref:covariateDef-caption)")
 } else{
-  
-  cat("(ref:covariateDef-cell1)")
   
   covariateDef_table[4,2] <- "(ref:covariateDef-cell1)"
   covariateDef_table[8,2] <- "(ref:covariateDef-cell2)"
@@ -1708,13 +1706,13 @@ main_tmp <- read.csv(here::here("data/cprd/crude_rates.csv")) %>%
        c2 = comma(as.numeric(c2))) %>%
   mutate(drug = rep(c("total", "hc_bas", "hc_eze", "hc_eze_sta", "hc_fib", "hc_nag", "hc_om3", "hc_sta", "None"), 5)) %>%
   mutate(c3 = ifelse(drug %in% c("hc_nag","hc_eze_sta"), "-",c3)) %>%
-  mutate(outcome = rep(c("All-cause dementia", "Probable Alzheimer's disease", "Possible Alzheimer's disease","Other dementia","Vascular demenia"), each = 9)) 
+  mutate(outcome = rep(c("All-cause dementia", "Probable Alzheimer's disease","Vascular demenia", "Possible Alzheimer's disease","Other dementia"), each = 9)) 
 
 main <- cbind(main_tmp[1:9,c(4,c(2,1,3))], # All-cause
                           main_tmp[10:18,c(2,1,3)], # prob AD
+                          main_tmp[28:36,c(2,1,3)], # Other
                           main_tmp[19:27,c(2,1,3)], # poss AD
-                          main_tmp[37:45,c(2,1,3)], # Vascular
-                          main_tmp[28:36,c(2,1,3)] # Other
+                          main_tmp[37:45,c(2,1,3)] # Vascular
                           )
 
 colnames(main) <- c("v2", "v5", "v4", "v6", "v5_2", "v4_2", "v6_2", "v5_3", "v4_3", "v6_3", "v5_4", "v4_4", "v6_4", "v5_5", "v4_5", "v6_5")

@@ -189,7 +189,8 @@ forest(res, xlim=c(x_min, new_x_lim), atransf=exp,
 if (any(grepl("\\*", dat$year))) {
   dat <- dat %>%
     mutate(measure = case_when(grepl("\\*", year) ~ "OR",
-                               T ~ "HR"))
+                               T ~ "HR")) 
+  
   graphics::text(rep(-2.25,length(rows)), rows, dat$measure, cex = 1.2 )
 
   par(font = 2)

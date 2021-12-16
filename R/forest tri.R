@@ -2,18 +2,24 @@ forest_triangulation <-
   function(dat,
            sei = NULL,
            title = NULL,
+           rob_levels = c("Low","Moderate","Serious","Critical"),
+           type_levels = c("MR","NRSI","NRSE","RCT"),
            ...) {
     
 ### calculate log risk ratios and corresponding sampling variances (and use
 ### the 'slab' argument to store study labels as part of the data frame)
 
-levels <- c("Low","Moderate","Serious","Critical")
+if (("author" %in% colnames(dat)) == FALSE) {
+  dat$author <- "tmp"
+}
 
-levels_type <- c("MR","NRSI","NRSE")
+if (("year" %in% colnames(dat)) == FALSE) {
+  dat$year <- "tmp"
+}
   
 dat <- dat %>%
-  mutate(type = factor(type, levels = levels_type)) %>%
-  mutate(overall = factor(overall, levels =levels)) %>%
+  mutate(type = factor(type, levels = type_levels)) %>%
+  mutate(overall = factor(overall, levels = rob_levels)) %>%
   arrange(type, overall, author)
 
 dat[is.na(dat)] <- "None"
