@@ -612,7 +612,7 @@ Following best practice, any result judged to be at critical risk of bias should
 
 The risk of bias due to missing evidence in each synthesis is shown beside the overall summary diamond in each "paired" forest plot presented above. For randomised controlled trials and non-randomised studies of interventions, the risk of bias due to missing evidence was assessed to be minimal. However, there was substantial evidence that results were selectively reported in studies examining the effect of lipid fractions on dementia outcomes (Figures \@ref(fig:lipidFractionsDementia), \@ref(fig:lipidFractionsAD) and \@ref(fig:lipidFractionsVaD)). 
 
-In the four analyses with greater than 10 results, the minimum required for subgroup analysis, stratification by overall risk-of-bias level did not demonstrate a difference between the "Serious" and "Moderate" risk of bias groups. The results of the test for subgroup differences is shown in the bottom left of the forest plots for these four meta-analyses (Figures \@ref(fig:obsHyperDementia), \@ref(fig:obsStatinDementiaFig), \@ref(fig:obsHyperAD) and \@ref(fig:obsStatinADFig)).
+In the three analyses with greater than 10 results (Figures \@ref(fig:obsHyperDementia), \@ref(fig:obsStatinDementiaFig) and \@ref(fig:obsStatinADFig)), stratification by overall risk-of-bias level did not demonstrate a difference between the "Serious" and "Moderate" risk of bias groups. The result of the test for subgroup differences is shown in the bottom left of the forest plots for these three meta-analyses.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -626,8 +626,6 @@ In the four analyses with greater than 10 results, the minimum required for subg
 There were `r n_dr_initial` studies initially considered eligible for the dose-response meta-analysis, as they appeared to provide data on risk of dementia outcomes across several categories of lipid exposure. However, following data extraction, `r num_to_text(n_dr_excluded)` were excluded as they did not report all of the information needed for the analysis. Most commonly, the cut-off measures for each category were missing.
 
 Across the remaining `r num_to_text(n_dr_final)` studies, a sufficient number of results (n $\geqslant$ 3) were identified only for the total cholesterol-Alzheimer's, LDL-Alzheimer's, and total cholesterol-dementia strata. This analysis provided weak evidence for a non-linear effect of lipid levels on dementia outcomes, and Figure \@ref(fig:lipidsDoseResponse) illustrates this for the total cholesterol-Alzheimer's strata. Similar figures for the other analysed lipid-outcome strata are presented in Appendix \@ref(appendix-dr-fraction).
-
-<!-- TODO Improve caption for the legend below -->
 
 <!----------------------------------------------------------------------------->
 (ref:lipidsDoseResponse-cap) __Dose-response meta-analysis of total cholesterol on Alzheimer's disease__ - Non-randomised studies examining the association of lipids levels with Alzheimer's disease across several categories or "doses" of exposure were synthesised using a dose response meta-analysis. The reference dose was defined _a priori_ as 200 _mg/dL_, the cut-off of the "Normal"/"Optimal" category for total cholesterol as detailed in Table \@ref(tab:lipidLevels-table). 
@@ -645,11 +643,11 @@ knitr::include_graphics(file.path("figures/sys-rev/dr_AD_TC.png"))
 
 There was evidence of heterogeneity in several of the meta-analysis performed, as indicated by a high $I_2$ statistic. $I_2$ represents the percentage of variability in the results included in a synthesis that is due to heterogeneity rather than chance.[@higgins2003] The $I_2$ value for each analysis are provided in the forest plots above.
 
-Investigation of potential sources of heterogeneity was complicated by two factors. In the first instance, a minority of meta-analysis (4 out of 18, `r paste0(comma(4/18*100),"%")`) included 10 or more results, the recommended minimum required for meta-regression. Secondly, poor reporting of baseline characteristics of interest precluded the use of several results in a meta-regression analysis. 
+Investigation of potential sources of heterogeneity was complicated by two factors. In the first instance, a minority of meta-analysis (3 out of 18, `r paste0(comma(3/18*100),"%")`) included 10 or more results, the recommended minimum required for meta-regression. Secondly, poor reporting of baseline characteristics of interest precluded the use of several results in a meta-regression analysis. 
 
-Only for the sex covariate were sufficient number of results available to enable meta-regression. Across the four meta-analyses examined, the percentage of females in the study cohort was not related to the observed effect estimate (p = `r metaregHypercholDem` for hypercholesterolemia/all-cause dementia, Figure \@ref(fig:obsHyperDementia); p = `r metaregStatinsDem` for statins/all-cause dementia - Figure \@ref(fig:obsStatinDementiaFig); p = `r metaregHypercholAd` for hypercholesterolemia/Alzheimer's disease - Figure \@ref(fig:obsHyperAD); p = `r metaregStatinsAd` for statins/Alzheimer's disease - Figure \@ref(fig:obsStatinADFig)).
+Only for the sex covariate were sufficient number of results available to enable meta-regression. Across the three meta-analyses examined, the percentage of females in the study cohort was not related to the observed effect estimate (p = `r metaregHypercholDem` for hypercholesterolemia/all-cause dementia, Figure \@ref(fig:obsHyperDementia); p = `r metaregStatinsDem` for statins/all-cause dementia - Figure \@ref(fig:obsStatinDementiaFig); p = `r metaregStatinsAd` for statins/Alzheimer's disease - Figure \@ref(fig:obsStatinADFig)).
 
-Similarly, assessment of small-study effects, for which publication bias could be one potential reason, was limited to these four meta-analyses including 10 or more results. However, there was weak evidence for the presence of small-study effects in each analyses assessed (see Appendix \@ref(appendix-funnel-plots)).
+Similarly, assessment of small-study effects, for which publication bias could be one potential reason, was limited to these three meta-analyses including 10 or more results. However, there was weak evidence for the presence of small-study effects in each analyses assessed (see Appendix \@ref(appendix-funnel-plots)).
 
 &nbsp;<!----------------------------------------------------------------------->  
 
