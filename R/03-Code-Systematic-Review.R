@@ -1356,9 +1356,10 @@ dat <-
               which = 2) %>%
   general_filters() %>%
   mutate(exposure_category = ifelse(exposure_category == "Lipid", "Lipids", exposure_category)) %>%
-  mutate(author = ifelse(author == "Tynkkynen", paste0(author, " (", cohort, ")"), author)) %>%
+  mutate(author = ifelse(study_id == "2140", paste0(author, " (", cohort, ")"), author)) %>%
   filter(
     is.na(mr_type),
+    result_id != "12134-2",
     is.na(age),
     is.na(sex),
     is.na(direction),
