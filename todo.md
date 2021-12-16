@@ -1,23 +1,28 @@
-- [ ] Revisions from Ciara
-- [ ] Fix acknowledgements
+- [ ] Review abstract text, and all text in front/back materials
 - [ ] Broken references
 - [ ] Broken cross references
-- [ ] Table short captions
 - [ ] Check diagnostic criteria for each NR study
-- [ ] Add funnel, meta-regression plots to the Appendix
-- [ ] Quotes for 4 and 8
-- [ ] Add HMGCR MR for AD to triangulation
-- [ ] Figure captions/table captions
-- [ ] Rewrite acknowledgements
+- [ ] Quotes for 4
 - [ ] Fix table in systematic review - see "IMPORTANT" notes
-- [ ] Double check risk of bias data
-- [ ] Better interpretation of heterogeneity
 - [ ] Extract data for GWAS studies
-- [ ] Deal with acronyms: ensure that they are explained once per chapter so a bit more self-contained, and apply this approach across chapters.
-- [ ] Add cohort labels to the Tynkken studies in & MAKE SURE YOU ARE NOT DOUBLE COUNTING WHITEHALL FOR 
-- [ ] Basic paired forest plot functionality in robvis
 - [ ] Basic triangulate package
+- [ ] Rename file!
 
+- [x] Add cohort labels to the Tynkken studies in & MAKE SURE YOU ARE NOT DOUBLE COUNTING WHITEHALL FOR 
+- [x] Add HMGCR MR for AD to triangulation
+- [x] Rewrite acknowledgements
+- [x] Deal with acronyms: ensure that they are explained once per chapter so a bit more self-contained, and apply this approach across chapters.
+- [x] Make sure ROB data in tri matches ROB data in review
+- [x] Remove result with <10 from hetero
+- [x] Problem in Figure 4.9 - duplicates and weird Tynk thing
+- [x] Revisions from Ciara
+- [x] Fix acknowledgements
+- [x] Double check risk of bias data
+- [x] Table short captions
+- [x] Add funnel, meta-regression plots to the Appendix
+- [x] Basic paired forest plot functionality in robvis
+- [x] Figure captions/table captions
+- [X] Better interpretation of heterogeneity
 - [x] Check effect estimate labels for systematic review
 - [x] Revisions from Yoav
 - [x] Revisions from parents

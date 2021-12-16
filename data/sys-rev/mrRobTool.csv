@@ -2,7 +2,7 @@ Bias domain ,Question,High,Moderate,Low,,,
 Weak instrument bias ,Strength of association between instrument and exposure F statistic < 10 in the same sample  (F < 10 indicating a weak instrument),F<10,F missing or F~10,F>>10 ,,,
 Genetic confounding bias,Reported test on association between confounders and IV (testing the assumption that the instrument is associated with the outcome only via the exposure),Yes AND there is an obvious association ,"Not presented or 
 Yes presented AND there is some degree of association ",Presented and no obvious association ,,,
-?Other? confounding bias ,Included confounders in the IV analysis  ,Yes,,No,,,
+'Other' confounding bias ,Included confounders in the IV analysis  ,Yes,,No,,,
 Additional direct effects between IV and outcome (exclusion restriction assumption),Presence of pleiotropy for genetic IVs,"Genetic IVs with no knowledge of mechanism for genetic variant-lipid association (e.g. GWAS hit, could be acting through any pathway?)",Biologically plausible lipid-specific mechanism of association for genetic variant-lipid (e.g. lipid metabolising genetic variants),Same as moderate AND checks that there is no other known effect of genetic variants on outcome or its risk-factors,,,
 Bias due to selection of participants,"Homogenous population or similar ancestry? 
 If no: Stratified by ethnicity or adjusted for population stratification (yes/no)?","Non-homogenous population (e.g. black and white together, etc.)",Population described as homogenous (e.g. whites only) BUT not corrected for ancestry informative markers like principal components derived from GWAS,?Population described as homogenous (e.g. whites only) AND corrected for ancestry informative markers like principal components derived from GWAS,,,

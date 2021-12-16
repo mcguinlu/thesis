@@ -38,3 +38,15 @@ Why not use a multivariate approach, given co-dependence of all lipid fractions?
 Eligible studies defined dementia outcomes using an objective process, incorporating recognised criteria. - What does this mean? I had originally stated that I would include only studies that defined dementia using specific criteria. This was hard to operationalise as often the criteria are not specified, but clear from other information (case note review) that clinicans likely followed these criteria.
 
 Say that HPS didn't report methods used, but likely to be eligible because of the process used to define dementia.
+
+Not looking at results of Chi-sq test for heterogeneity, as argue that het will always be present and it is the extent of it that matters!
+
+Did you adjust for clustering in the CPRD analysis?
+
+Interpretation of difference in lipid properties - Could frame this as providing evidence that the effect is not due to statins acting on lipid levels, as then would not expect difference (unless all very hard acting statins are in the lipophilic type)
+
+Ordering of the dementia codes is not important - need to deal with the fact that the ordering is not accounted for, which could be critised 
+
+Why male and female for pregnancy analysis?
+
+Why does severe codelist cause inflated HR?

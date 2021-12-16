@@ -267,11 +267,13 @@ where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, wh
   (\#eq:AC1-supp)
 \end{equation}
 
-\blandscape
+&nbsp;<!----------------------------------------------------------------------->  
 
 ### Risk-of-bias assessment tool for Mendelian randomisation studies {#appendix-mr-rob}
 
-A copy of the risk of bias tool used to assess Mendelian randomisation studies is presented in Table \@ref(mrTool-table), below.
+A copy of the risk of bias tool used to assess Mendelian randomisation studies is presented in Table \@ref(tab:mrTool-table), below.
+
+\blandscape
 
 (ref:mrTool-caption) __Mendelian randomisation risk-of-bias assessment tool__ - A copy of the tool used to assess risk of bias in Mendelian randomisation studies, adapted from that developed by Mamluk et al.[@mamluk2020]
 
@@ -291,7 +293,7 @@ A copy of the risk of bias tool used to assess Mendelian randomisation studies i
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:prismaTab-caption) __PRISMA Checklist__ - Following best practice guidelines, the Section/Table/Figure number were important details on the systematic review can be found are listed.
+(ref:prismaTab-caption) __PRISMA Checklist__ - Following best practice guidelines, the Section/Table/Figure number where important details on the systematic review can be found are listed.
 
 (ref:prismaTab-scaption) PRISMA Checklist
 
@@ -302,11 +304,28 @@ A copy of the risk of bias tool used to assess Mendelian randomisation studies i
 
 &nbsp;
 
+### Funnel plots {#appendix-funnel-plots}
+
+```{r funnelPlots, include = FALSE}
+```
+
+<!----------------------------------------------------------------------------->
+(ref:funnerlPlots-cap) __Funnel plots__ - To assess the potential for small study effects, funnel plots were produced for the three meta-analyses reported in Chapter \@ref(sys-rev-results-heading) that contained more than 10 results. Visual inspection of the plots did not indicate the presence of small study effect, which was supported in each case by the result of Egger's regression test for funnel plot asymmetry.
+
+(ref:funnerlPlots-scap) Funnel plots
+
+```{r funnerlPlots, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:funnerlPlots-cap)', out.width='100%', fig.scap='(ref:funnerlPlots-scap)'}
+knitr::include_graphics(file.path("figures/appendix/funnel_composite.pdf"))
+```
+<!----------------------------------------------------------------------------->
+
+&nbsp;<!----------------------------------------------------------------------->  
+
 ### Dose response plots by fraction {#appendix-dr-fraction}
 
 In addition to examining a non-linear relationship between LDL-c and Alzheimer's disease (see Figure \@ref(fig:lipidsDoseResponse)), I performed a dose response analysis for two other exposure-outcome pairs. The results of these analyses are presented below. 
 
-(ref:drDemeniaTC-cap) __Dose-response meta-analysis of total cholesterol on all-cause dementia__
+(ref:drDemeniaTC-cap) __Dose-response meta-analysis of total cholesterol on all-cause dementia__ - Non-randomised studies examining the association of total cholesterol with all-cause dementia across several categories or "doses" of exposure were synthesised using a dose response meta-analysis. The reference dose was defined _a priori_ as 200 _mg/dL_, the cut-off of the "Normal"/"Optimal" category for total cholesterol as detailed in Table \@ref(tab:lipidLevels-table).
 
 (ref:drDemeniaTC-scap) Dose-response meta-analysis of total cholesterol on all-cause dementia
 
@@ -314,7 +333,7 @@ In addition to examining a non-linear relationship between LDL-c and Alzheimer's
 knitr::include_graphics(file.path("figures/sys-rev/dr_Dementia_TC.png"))
 ```
   
-(ref:drAdLDL-cap) __Dose-response meta-analysis of low-density lipoprotein cholesterol on Alzheimer's disease__
+(ref:drAdLDL-cap) __Dose-response meta-analysis of low-density lipoprotein cholesterol on Alzheimer's disease__ - Non-randomised studies examining the association of LDL with Alzheimer's disease across several categories or "doses" of exposure were synthesised using a dose response meta-analysis. The reference dose was defined _a priori_ as 100 _mg/dL_, the cut-off of the "Normal"/"Optimal" category for LDL as detailed in Table \@ref(tab:lipidLevels-table).
 
 (ref:drAdLDL-scap) Dose-response meta-analysis of low-density lipoprotein cholesterol on Alzheimer's disease
 
@@ -339,8 +358,6 @@ Changes include:
 
 Enforcing a minimum period of follow-up is normally used to reduce the risk of reverse causation in an analysis by excluding events occurring within a certain time-frame post-exposure. With respect to dementia outcomes, which have a long prodromal period, enforcing a minimum period of follow-up can add biological validity to an analysis. Incident cases of dementia that occur within a few years of starting a drug may already be beyond effective preventive treatment at the time the drug was started, and so restricting the analysis to those with longer exposure to treatment may provide a more reliable estimate of the effect.
 
-Panel A of Figure \@ref(fig:minFU) describes a standard analysis of an exposure with a minimum enforced follow-up period (in this case, 10 years). Participants enter the cohort and are classified at that point as either exposed or unexposed, for example, on the basis of a total cholesterol measurement. Participants are followed-up over time, but events occurring before the minimum period of follow-up are discarded.
-
 <!----------------------------------------------------------------------------->
 ```{r minFollowUp, include = FALSE}
 ```
@@ -353,6 +370,8 @@ Panel A of Figure \@ref(fig:minFU) describes a standard analysis of an exposure 
 knitr::include_graphics(file.path("figures/appendix/minFU.png"))
 ```
 <!----------------------------------------------------------------------------->
+
+Panel A of Figure \@ref(fig:minFU) describes a standard analysis of an exposure with a minimum enforced follow-up period (in this case, 10 years). Participants enter the cohort and are classified at that point as either exposed or unexposed, for example, on the basis of a total cholesterol measurement. Participants are followed-up over time, but events occurring before the minimum period of follow-up are discarded.
 
 However, applying a similar approach to the analysis performed in Chapter \@ref(cprd-analysis-heading), illustrated in Panel B of Figure \@ref(fig:minFU), is challenging. The use of a time updating treatment indicator results in two potential starting points for the 10-year lag: entry into the cohort or initiation of statin therapy. As the purpose of this analysis is to investigate the impact of statin treatment, starting the minimum period of follow-up from cohort entry is not helpful as it does not ensure that participants have been exposed to the drug for 10 years. Alternatively, defining the minimum period of follow-up from statin initiation cause issues around the treatment of time-at-risk before statin initiation and around the start point for the follow-up period in those never prescribed a statin. In summary, either approach is likely to be substantially biased.
 
@@ -378,8 +397,6 @@ However, applying a similar approach to the analysis performed in Chapter \@ref(
 
 ### Covariate matrix {#appendix-ipd-covariate-matrix}
 
-&nbsp;
-
 <!----------------------------------------------------------------------------->
 (ref:missingMatrix-caption) __Overview of missing data in the IPD analysis__ - Missing variables/values across cohorts included in the IPD analysis. Missing variables are denoted using a "-", while missing values are described as N (%). Note that LDL is missing completely for the Whitehall and CaPS datasets as this measure was derived from the measures for TC, HDL and TG following multiple imputation of missing values in these variables.
 
@@ -389,8 +406,7 @@ However, applying a similar approach to the analysis performed in Chapter \@ref(
 ```
 <!----------------------------------------------------------------------------->
 
-&nbsp;
-
+\newpage
 
 ### Dementia definitions across cohorts {#appendix-ipd-dementia-def}
 
@@ -481,13 +497,15 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad_scenario
 knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_tg_vad_scenarios.png"))
 ```
 
+&nbsp;<!----------------------------------------------------------------------->  
+
 ## Chapter 8
 
 ### Reproducible research {#disc-repro-research}
 
 Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open source tools to search preprinted literature, create visualisations of risk-of-bias data and to preform quantitative triangulation. In line with this, an open source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
 
-Unfortunately, given the nature of the data underpinning the CPRD (Chapter \@ref(cprd-analysis-heading)) and IPD (Chapter \@ref(ipd-heading)) analyses, it is not possible to make it publicly available. Access to the CPRD data is dependent on an application to its managing body, while acces to the cohorts within the DPUK requires approval from both the DPUK and inidividual cohort owners. In the absence of data sharing, the best option to enable review and increase transparency is the open sharing of the code used to perform the analysis.[@goldacre2019]
+Unfortunately, given the nature of the data underpinning the CPRD (Chapter \@ref(cprd-analysis-heading)) and IPD (Chapter \@ref(ipd-heading)) analyses, it is not possible to make it publicly available. Access to the CPRD data is dependent on an application to its managing body, while access to the cohorts within the DPUK requires approval from both the DPUK and individual cohort owners. In the absence of data sharing, the best option to enable review and increase transparency is the open sharing of the code used to perform the analysis.[@goldacre2019]
 
 Finally, all software projects in these thesis attempt to conform to minimal best practices for research computing. [@wilson2014; @wilson2017]
 
@@ -495,28 +513,17 @@ Finally, all software projects in these thesis attempt to conform to minimal bes
 
 ### Catalogue of failures {#appendix-catalogue-failures}
 
-OVer the course of my PhD, I kept a record of attempted
+As part of a reflective process, during the course of my PhD I kept a record of things (analytical mishaps, failed experiments, and unsuccessful grant applications) I attempted but which did not work. These are summarised briefly here:
 
-Short section detailing the things I tried to do but which did not work:
+- Prior to the analysis performed in Chapter \@ref(cprd-analysis-heading), I attempted an analysis using physicians prescribing preference as an instrumental variable to compare different lipid-regulating agent classes for dementia prevention. However, this analysis was not pursued due to the very small number of patients prescribed a lipid-regulating agent other than statins.
 
-- Failed to properly scope the literature and correctly estimate the number of studies returned by the search
+- I initially failed to realise that a code list I was using for the positive control outcome of ischemic heart disease (IHD) in the CPRD analysis (Chapter \@ref(cprd-analysis-heading)) included only very severe IHD outcomes. This resulted in the positive protective control analysis giving substantially inflated hazard ratios (HR > 4) and led to substantial confusion in the study team.
 
-- Failed IV analysis of anti-HC drugs because of low numbers of non-statins.
+- For the IPD analysis in Chapter \@ref(ipd-heading), I had to be reminded that (a) BMI can be calculated from weight and height, and (b) that whether you ask at 45 or 50, the age at which someone left school will be the same.
 
-- Failed to realise that the initial code list used for the positive control outcome of IHD in the CPRD analysis (Chapter \@ref(cprd-analysis-heading))
+- I was involved in unsuccessful grant applications to the NIHR (with Andrew Beswick), to the Jean Golding Institute (with James Byrne and Chris Penfold) and to the PGR Hub (with Matthew Lee).
 
-- Unsuccessful grant application with Andy
-
-- Unsuccessful grant application with Chris Penfold
-
-- Unsuccessful grant application with Matt
-
-- Instrumental variable analysis of lipid regulation use using physicians prescribing preference. 
-
-- 2 x unsuccessful conference abstracts
-
-<!-- TODO Include the early analysis we did here, that did not work as a result of limited scope. Could include some of the genetic work also. Will additionally need to put the relevant materials from the paper in the  -->
-
+&nbsp;<!----------------------------------------------------------------------->  
 
 # Other Appendices {#other-appendix-heading}
 
@@ -542,26 +549,33 @@ sessionInfo()
 
 \newpage  
 
-## Producing risk-of-bias visualisations with `robvis` {#appendix-robvis}
+## `robvis`: producing risk-of-bias visualisations {#appendix-robvis}
 
 <!-- TODO Need to complete this sections -->
-The `robvis` package provides functions to convert a risk-of-bias assessment summary table into a summary plot or a traffic-light plot, formatted based on the specific risk-of-bias assessment tool used.
+The `robvis` package provides functions to visualise risk-of-bias assessments, with the resulting plots formatted based on the specific risk-of-bias assessment tool used. The tool is documented extensively online at [https://mcguinlu.github.io/robvis/](https://mcguinlu.github.io/robvis/). As such, it is not described in detail here, other than to illustrate the data structures required for the figures presented in this thesis and to describe its reception in the evidence synthesis community.
 
-### Templates
+&nbsp;<!----------------------------------------------------------------------->  
 
-`robvis` currently contains templates for the following tools:
+### Data setup
 
-* ROB2
-* ROBINS-I
-* QUADAS-2
-* ROB1
-* General
+For the paired forest plots presented in Chapter \@ref(sys-rev-results-heading), the tool expects a "Study" column, followed by one column per domain of bias and one column for the overall risk of bias judgement. To illustrate this, the `data_rob2` dataset which is available via the `robvis` package and contains example risk-of-bias assessments performed using the RoB2.0 tool for randomized controlled trials, is shown in Table \@ref(tab:biasData-table). 
 
-### Data expectations
+For the bias direction plots illustrated in Chapter \@ref(tri-heading), additional details on each domain of bias are required by the tool, namely the direction and type of bias in each domain. An example of the data required by `robvis` in order to produce the bias direction plots is shown in \@ref(tab:biasDirectionData-table).
 
-For the direction bias plots, the data expected by the tools is more comprehensive.
+```{r, echo = FALSE, warning=FALSE}
 
-&nbsp;
+robstats <- cranlogs::cran_downloads("robvis", from = "2019-11-22", to = "2021-12-01")
+
+robvis_downloads <- plyr::round_any(sum(robstats$count), 100, f = floor)
+
+date <- format(as.Date("2021-12-01"),"%B %Y")
+```
+
+&nbsp;<!----------------------------------------------------------------------->  
+
+### Reception
+
+The tool has been well received by the systematic review community. As of `r date`, the `robvis` R package has been downloaded more than `r medrxivr_downloads` times and the paper introducing the tool had been cited more than 450 times. A copy of this publication is available in Appendix \@ref(published-papers). Development of the tool is ongoing, as evidenced by the new bias direction plot functionality, and there are now a number of contributors to the package.
 
 \blandscape
 <!----------------------------------------------------------------------------->
@@ -576,7 +590,7 @@ For the direction bias plots, the data expected by the tools is more comprehensi
 &nbsp;
 
 <!----------------------------------------------------------------------------->
-(ref:biasDirectionData-caption) __Example bias direction dataset__ - Example risk-of-bias data illustrating the structure required for bias direction plots. $d_ij$, $d_id$, and $d_it$ define the extent (Serious, Moderate, Low), direction (right or left), and type (additive or proportional) of bias in the $i$th domain. Note that, because of the wide nature of the data, I have abbreviated the data in order to display it. A key for interpreting the data can be found below the table.
+(ref:biasDirectionData-caption) __Example bias direction dataset__ - Example risk-of-bias data illustrating the structure required for bias direction plots. $d_ij$, $d_id$, and $d_it$ define the extent (Serious, Moderate, Low), direction (right or left), and type (additive or proportional) of bias in the $i$th domain, respectively Note that, because of the wide nature of the data, I have abbreviated the data in order to display it. A key for interpreting the data can be found below the table.
 
 (ref:biasDirectionData-scaption) Example bias direction dataset
 
@@ -584,41 +598,6 @@ For the direction bias plots, the data expected by the tools is more comprehensi
 ```
 <!----------------------------------------------------------------------------->
 \elandscape
-
-### Simple visualisations
-
-```{r robAppendixFigures, include = FALSE}
-```
-
-```{r, eval = FALSE}
-rob_summary(data = data_rob2, tool = "ROB2")
-```
-
-<!----------------------------------------------------------------------------->
-(ref:robSummary-cap) __Example risk-of-bias summary barplot__ - Illustration of a simple summary barplot created using the `data_rob` example risk-of-bias dataset shown in Table \@ef(tab:biasData-table) above. Note that this plot is unweighted and shows the _proportion of studies_ at each level of bias, but an option exists with `robvis` to create a barplot weighted by the _proportion of evidence_ at each level of bias. 
-
-(ref:robSummary-scap) Example risk-of-bias summary barplot
-
-```{r robSummary, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:robSummary-cap)', out.width='80%', fig.scap='(ref:robSummary-scap)'}
-knitr::include_graphics(file.path("figures/appendix/robSummary.png"))
-```
-<!----------------------------------------------------------------------------->
-
-```{r, eval = FALSE}
-rob_traffic_light(data = data_rob2,
-                  tool = "ROB2",
-                  psize = 10)
-```
-
-<!----------------------------------------------------------------------------->
-(ref:robTraffic-cap) Example risk-of-bias traffic-light plot - Illustration of a simple traffic light plot created using the `data_rob` example risk-of-bias dataset shown in Table \@ef(tab:biasData-table) above.
-
-(ref:robTraffic-scap) Example risk-of-bias traffic-light plot
-
-```{r robTraffic, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:robTraffic-cap)', out.width='80%', fig.scap='(ref:robTraffic-scap)'}
-knitr::include_graphics(file.path("figures/appendix/robTraffic.png"))
-```
-<!----------------------------------------------------------------------------->
 
 \newpage
 
@@ -638,12 +617,10 @@ The following pages contain copies of the following publications:
 
 These manuscripts arose from work performed as part of this thesis, as discussed more fully in Section \@ref(literature-contributions).
 
-<!-- TODO May need to reiterate contributions here -->
-
 <!-- TODO These have been removed so as to not mess-up the plagarism score -->
 
-\includepdf[pages=-,link=true,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf}
-\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf}
-\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf}
-\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf}
-\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/prevsci.pdf}
+<!-- \includepdf[pages=-,link=true,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf} -->
+<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf} -->
+<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf} -->
+<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf} -->
+<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/prevsci.pdf} -->
