@@ -620,8 +620,8 @@ These manuscripts arose from work performed as part of this thesis, as discussed
 
 <!-- TODO These have been removed so as to not mess-up the plagarism score -->
 
-<!-- \includepdf[pages=-,link=true,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf} -->
-<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf} -->
-<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf} -->
-<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf} -->
-<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/prevsci.pdf} -->
+\includepdf[pages=-,link=true,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf}
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/prevsci.pdf}
