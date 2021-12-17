@@ -35,7 +35,7 @@ During 2020, I was involved in the updating of the Preferred Reporting Items for
 
 &nbsp;
 
-In response to the COVID-19 pandemic, I worked with a team of evidence synthesists to develop a literature searching/screening pipeline. This work underpinned a living systematic review on impact of the COVID-19 pandemic on self-harm and suicidal behaviour. Subsequently, the pipeline enabled rapid reviews of related topics, such as an analysis of the available evidence by population.
+In response to the COVID-19 pandemic, I worked with a team of evidence synthesists to develop a literature searching/screening pipeline. This work underpinned a living systematic review on impact of the COVID-19 pandemic on self-harm and suicidal behaviour. Subsequently, the pipeline enabled rapid reviews of related questions, such as the impact on specific study populations.
 
 *	*John, A., Okolie, C., Eyles, E., Webb, R.T., Schmidt, L., __McGuinness, L.A.__, Olorisade, B.K., Arensman, E., Hawton, K., Kapur, N. and Moran, P., 2020. The impact of the COVID-19 pandemic on self-harm and suicidal behaviour: a living systematic review. F1000Research, 9(1097). DOI: &nbsp; [10.12688/f1000research.25522.2](https://doi.org/10.12688/f1000research.25522.2)*
 
@@ -271,7 +271,7 @@ where $e(\gamma)$ is the chance agreement between raters, given as $2q(1-q)$, wh
 
 ### Risk-of-bias assessment tool for Mendelian randomisation studies {#appendix-mr-rob}
 
-A copy of the risk of bias tool used to assess Mendelian randomisation studies is presented in Table \@ref(tab:mrTool-table), below.
+A copy of the risk-of-bias tool used to assess Mendelian randomisation studies is presented in Table \@ref(tab:mrTool-table), below.
 
 \blandscape
 
@@ -356,7 +356,7 @@ Changes include:
 
 ### Minimum follow-up period {#cprd-min-fu}
 
-Enforcing a minimum period of follow-up is normally used to reduce the risk of reverse causation in an analysis by excluding events occurring within a certain time-frame post-exposure. With respect to dementia outcomes, which have a long prodromal period, enforcing a minimum period of follow-up can add biological validity to an analysis. Incident cases of dementia that occur within a few years of starting a drug may already be beyond effective preventive treatment at the time the drug was started, and so restricting the analysis to those with longer exposure to treatment may provide a more reliable estimate of the effect.
+Enforcing a minimum period of follow-up is normally used to reduce the risk of reverse causation in an analysis by excluding events occurring within a certain time-frame post exposure. With respect to dementia outcomes, which have a long prodromal period, enforcing a minimum period of follow-up can add biological validity to an analysis. Incident cases of dementia that occur within a few years of starting a drug may already be beyond effective preventive treatment at the time the drug was started, and so restricting the analysis to those with longer exposure to treatment may provide a more reliable estimate of the effect.
 
 <!----------------------------------------------------------------------------->
 ```{r minFollowUp, include = FALSE}
@@ -373,7 +373,7 @@ knitr::include_graphics(file.path("figures/appendix/minFU.png"))
 
 Panel A of Figure \@ref(fig:minFU) describes a standard analysis of an exposure with a minimum enforced follow-up period (in this case, 10 years). Participants enter the cohort and are classified at that point as either exposed or unexposed, for example, on the basis of a total cholesterol measurement. Participants are followed-up over time, but events occurring before the minimum period of follow-up are discarded.
 
-However, applying a similar approach to the analysis performed in Chapter \@ref(cprd-analysis-heading), illustrated in Panel B of Figure \@ref(fig:minFU), is challenging. The use of a time updating treatment indicator results in two potential starting points for the 10-year lag: entry into the cohort or initiation of statin therapy. As the purpose of this analysis is to investigate the impact of statin treatment, starting the minimum period of follow-up from cohort entry is not helpful as it does not ensure that participants have been exposed to the drug for 10 years. Alternatively, defining the minimum period of follow-up from statin initiation cause issues around the treatment of time-at-risk before statin initiation and around the start point for the follow-up period in those never prescribed a statin. In summary, either approach is likely to be substantially biased.
+However, applying a similar approach to the analysis performed in Chapter \@ref(cprd-analysis-heading), illustrated in Panel B of Figure \@ref(fig:minFU), is challenging. The use of a time updating treatment indicator results in two potential starting points for the 10-year lag: entry into the cohort or initiation of statin therapy. As the purpose of this analysis is to investigate the impact of statin treatment, starting the minimum period of follow-up from cohort entry is not helpful as it does not ensure that participants have been exposed to the drug for 10 years. Alternatively, defining the minimum period of follow-up from statin initiation cause issues around the treatment of time-at-risk before statin initiation and around the start point for the follow-up period in those never prescribed a statin. In summary, either approach is likely to be substantially biased, and so an analysis using a minimum follow-up period was not performed.
 
 <!-- With these caveats in mind, below I present a sensitivity analysis of the association of statins with dementia outcomes, enforcing a minimum 10-year period of follow-up from statin initiation in those prescribed a statin.  -->
 
@@ -480,14 +480,18 @@ The mean values shown were used to define the distributions assigned to  "Modera
 
 As discussed in the main text, I defined two sets of additive bias distributions as a sensitivity analysis. The results for the two case studies under the two scenarios are presented in the figures below. Under the first, shown on the left of the subsequent  forest plot, the difference in the position value between the distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Under the second scenario, the difference in the position value between the distributions assigned to "High" and "Moderate" is twice that between "Moderate" and "Low".
 
-(ref:fpLdlAdComparison-cap) __Comparison of bias-/indirectness-adjusted meta-analyses of LDL-c/Alzheimer's disease under two different scenarios of additive bias.__ Scenario 1: position value between the additive distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Scenario 2: position value between the additive distributions assigned to "High" and "Moderate" bias levels is twice that between "Moderate" and "Low" levels. See Section \@ref(tri-bias-assign) for more details. 
+&nbsp;<!----------------------------------------------------------------------->  
+
+(ref:fpLdlAdComparison-cap) __Comparison of bias-/indirectness-adjusted meta-analyses of LDL-c/Alzheimer's disease under two different scenarios of additive bias__ - Scenario 1: position value between the additive distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Scenario 2: position value between the additive distributions assigned to "High" and "Moderate" bias levels is twice that between "Moderate" and "Low" levels. See Section \@ref(tri-bias-assign) for more details. 
 
 (ref:fpLdlAdComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses of LDL-c/Alzheimer's disease under two different scenarios of additive bias.
 ```{r fpLdlAdComparison, echo = FALSE, results="asis", fig.pos = "H", fig.cap='(ref:fpLdlAdComparison-cap)', out.width='100%', fig.scap='(ref:fpLdlAdComparison-scap)'}
 knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_ldl_ad_scenarios.png"))
 ```
 
-(ref:fpTgVaDComparison-cap) __Comparison of bias-/indirectness-adjusted meta-analyses of triglycerides/vascular dementia under two different scenarios of prior distributions of bias.__ Scenario 1: position value between the additive distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Scenario 2: position value between the additive distributions assigned to "High" and "Moderate" bias levels is twice that between "Moderate" and "Low" levels. See Section \@ref(tri-bias-assign) for more details.
+
+
+(ref:fpTgVaDComparison-cap) __Comparison of bias-/indirectness-adjusted meta-analyses of triglycerides/vascular dementia under two different scenarios of prior distributions of bias__ - Scenario 1: position value between the additive distributions assigned to "High" and "Moderate" bias levels is the same as between the "Moderate" and "Low" levels. Scenario 2: position value between the additive distributions assigned to "High" and "Moderate" bias levels is twice that between "Moderate" and "Low" levels. See Section \@ref(tri-bias-assign) for more details.
 
 (ref:fpTgVaDComparison-scap) Comparison of bias-/indirectness-adjusted meta-analyses of triglycerides/vascular dementia under two different scenarios of prior distributions of bias.
 
@@ -501,7 +505,7 @@ knitr::include_graphics(file.path("figures/tri/fp_paired_midlife_tg_vad_scenario
 
 ### Reproducible research {#disc-repro-research}
 
-Reproducible and science has been a key theme running through this thesis, as reflected by the development of an open-source tools to search preprinted literature, create visualisations of risk-of-bias data and to preform quantitative triangulation. In line with this, an open-source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
+Reproducible research has been a key theme running through this thesis, as reflected by the development of an open-source tools to search preprinted literature, create visualisations of risk-of-bias data and to preform quantitative triangulation. In line with this, an open-source copy of the code used to produce this thesis is available on GitHub, as is the code used to perform the analysis contained within it. 
 
 Unfortunately, given the nature of the data underpinning the CPRD (Chapter \@ref(cprd-analysis-heading)) and IPD (Chapter \@ref(ipd-heading)) analyses, it is not possible to make it publicly available. Access to the CPRD data is dependent on an application to its managing body, while access to the cohorts within the DPUK requires approval from both the DPUK and individual cohort owners. In the absence of data sharing, the best option to enable review and increase transparency is the open sharing of the code used to perform the analysis.[@goldacre2019]
 
@@ -511,7 +515,7 @@ Finally, all software projects in these thesis attempt to conform to minimal bes
 
 ### Catalogue of failures {#appendix-catalogue-failures}
 
-As part of a reflective process, during the course of my PhD I kept a record of things (analytical mishaps, failed experiments, and unsuccessful grant applications) I attempted but which did not work. These are summarised briefly here:
+As part of a reflective process, I kept a record of things (analytical mishaps, failed experiments, and unsuccessful grant applications) I attempted during the course of my PhD but which did not work. These are summarised briefly here:
 
 - Prior to the analysis performed in Chapter \@ref(cprd-analysis-heading), I attempted an analysis using physicians prescribing preference as an instrumental variable to compare different lipid-regulating agent classes for dementia prevention. However, this analysis was not pursued due to the very small number of patients prescribed a lipid-regulating agent other than statins.
 
@@ -549,14 +553,13 @@ sessionInfo()
 
 ## `robvis`: producing risk-of-bias visualisations {#appendix-robvis}
 
-<!-- TODO Need to complete this sections -->
 The `robvis` package provides functions to visualise risk-of-bias assessments, with the resulting plots formatted based on the specific risk-of-bias assessment tool used. The tool is documented extensively online at [https://mcguinlu.github.io/robvis/](https://mcguinlu.github.io/robvis/). As such, it is not described in detail here, other than to illustrate the data structures required for the figures presented in this thesis and to describe its reception in the evidence synthesis community.
 
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Data setup
 
-For the paired forest plots presented in Chapter \@ref(sys-rev-results-heading), the tool expects a "Study" column, followed by one column per domain of bias and one column for the overall risk of bias judgement. To illustrate this, the `data_rob2` dataset which is available via the `robvis` package and contains example risk-of-bias assessments performed using the RoB2.0 tool for randomized controlled trials, is shown in Table \@ref(tab:biasData-table). 
+For the paired forest plots presented in Chapter \@ref(sys-rev-results-heading), the tool expects a "Study" column, followed by one column per domain of bias and one column for the overall risk of bias judgement. To illustrate this, the `data_rob2` dataset which is available via the `robvis` package and contains example risk-of-bias assessments performed using the RoB2.0 tool for randomised controlled trials, is shown in Table \@ref(tab:biasData-table). 
 
 For the bias direction plots illustrated in Chapter \@ref(tri-heading), additional details on each domain of bias are required by the tool, namely the direction and type of bias in each domain. An example of the data required by `robvis` in order to produce the bias direction plots is shown in \@ref(tab:biasDirectionData-table).
 
@@ -617,8 +620,8 @@ These manuscripts arose from work performed as part of this thesis, as discussed
 
 <!-- TODO These have been removed so as to not mess-up the plagarism score -->
 
-\includepdf[pages=-,link=true,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf}
-\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf}
-\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf}
-\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf}
-\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/prevsci.pdf}
+<!-- \includepdf[pages=-,link=true,pagecommand={\thispagestyle{empty}}]{published/cprd_medrxiv.pdf} -->
+<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/medrxivr.pdf} -->
+<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/robvis.pdf} -->
+<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/DAS_comparison.pdf} -->
+<!-- \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{published/prevsci.pdf} -->

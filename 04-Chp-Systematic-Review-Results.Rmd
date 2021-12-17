@@ -13,10 +13,10 @@ output:
 documentclass: book
 ---
 ```{block type='savequote', include=knitr::is_latex_output(),quote_author='(ref:sys-rev-results-quote)', echo = TRUE}
-Hold  
+The hundreds of hours spent conducting a scientific study ultimately contribute only a piece of an enormous puzzle. The value of any single study is derived from how it fits with and expands previous work, as well as from the study's intrinsic properties. Through systematic review the puzzle's intricacies may be disentangled.  
 ```
 
-(ref:sys-rev-results-quote) --- Hold
+(ref:sys-rev-results-quote) --- Cynthia D Mulrow, 1994[@mulrow1994]
 
 # Systematic review of existing evidence on the association between blood lipids and dementia outcomes: Results {#sys-rev-results-heading}
 
@@ -520,7 +520,7 @@ knitr::include_graphics(file.path("figures","sys-rev","mrDuplication.png"))
 There were no randomised trials of the use of statins or any other lipid regulating agents  on Alzheimer's disease, though several observational studies examined this association and provided evidence for a protective effect (`r n_effect(obsStatins$AD)`; Figure \@ref(fig:obsStatinADFig)).
 
 <!----------------------------------------------------------------------------->
-(ref:obsStatinAD-cap) __Random-effects meta-analysis of statins on Alzheimer's disease__ Non-randomised studies examining the association of statin use with Alzheimer's disease were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-I tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
+(ref:obsStatinAD-cap) __Random-effects meta-analysis of statins on Alzheimer's disease__ - Non-randomised studies examining the association of statin use with Alzheimer's disease were synthesised using a random-effects meta-analysis. Subgroup estimates, stratified by overall risk-of-bias level, are also presented. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-I tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
 (ref:obsStatinAD-scap) Random-effects meta-analysis of statins on Alzheimer's disease
 

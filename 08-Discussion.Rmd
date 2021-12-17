@@ -27,7 +27,7 @@ Otherwise, it'd stop.
 \newpage
 
 ::: {.laybox data-latex=""}
-## Lay summary 
+## Lay summary {-}
 
 In this final chapter, I describe the results of each previous chapter and compare my results with those of two recent large studies. I describe how doctors and those working in public health should use the results of my work, and highlight issues that may limit the usefulness of my findings. Finally, I describe future research that would build on my findings to move the field forward.
 
@@ -75,7 +75,7 @@ In the published literature, statins were by far the most studied lipid-regulati
 
 Since the searches underpinning the systematic review described in this thesis were performed (July 2019), further studies on this topic have been published. Two of these, notable for the analysis of large UK cohorts, are discussed here.
 
-The first is a large-scale analysis of 953,635 patients in the CPRD, followed from their first LDL-c measurement.[@iwagami2021] The study found evidence for a slightly increased risk of dementia with higher LDL-c levels at mid-life, driven by the finding for the Alzheimer's disease subgroup. These results are consistent with the findings presented in this thesis, particularly as this study did not have access to _Apo_$\mathcal{E}4$ status and so could not adjust for confounding by this variable. _Apo_$\mathcal{E}4$ is a key risk factor for both Alzheimer's disease and raised LDL-c levels, <!-- TODO CITATION NEEDED --> and so could explain the harmful association observed. This is supported by a simulation analysis reported within this study, which used published information to predict that _Apo_$\mathcal{E}4$ would induce a risk ratio of 1.09 per 1-SD increase in LDL-c in the absence of a true causal effect.
+The first is a large-scale analysis of 953,635 patients in the CPRD, followed from their first LDL-c measurement.[@iwagami2021] The study found evidence for a slightly increased risk of dementia with higher LDL-c levels at mid-life, driven by the finding for the Alzheimer's disease subgroup. These results are consistent with the findings presented in this thesis, particularly as this study did not have access to _Apo_$\mathcal{E}4$ status and so could not adjust for confounding by this variable. _Apo_$\mathcal{E}4$ is a key risk factor for both Alzheimer's disease and raised LDL-c levels,[@bennet2007] and so could explain the harmful association observed. This is supported by a simulation analysis reported within this study, which used published information to predict that _Apo_$\mathcal{E}4$ would induce a risk ratio of 1.09 per 1-SD increase in LDL-c in the absence of a true causal effect.
 
 The second analysis examined 502,226 participants in the UK Biobank, a large population-based prospective cohort study.[@gong2021; @sudlow2015] The analysis found no association between lipids measured at mid-life and dementia outcomes. This finding is again comparable to the results of this thesis. However, similar to the study discussed above, this analysis did not have access to genetic data and so may be subject to residual confounding by _Apo_$\mathcal{E}4$ genotype. 
 

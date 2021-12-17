@@ -4,7 +4,7 @@
 
 __Professional__
 
-First and foremost, I must thank my primary supervisor, Julian Higgins, for his tireless support and encouragement. I'd also like to thank my other supervisors - Yoav Ben-Shlomo, Liz Coulthard and George Davey-Smith - for all their input over the past three years. Thanks also to Rupert Payne and Emma Anderson for their engaging discussion and useful feedback during my annual progress reviews.
+First and foremost, I must thank my primary supervisor, Julian Higgins, for his tireless support and encouragement. I'd also like to thank my other supervisors - Yoav Ben-Shlomo, Liz Coulthard and George Davey Smith - for all their input over the past three years. Thanks also to Rupert Payne and Emma Anderson for their engaging discussion and useful feedback during my annual progress reviews.
 
 I am extremely grateful to all those who contributed their time and energy to my research projects: Athena Sheppard, Emily Hennessy, Matthew Lee, Lena Schmidt, Alexandra McAleenan, Vincent Cheng, Francesca Spiga, Sarah Dawson and Rebecca Turner. A special mention goes to Mark Newbury of the Dementia Platform UK, who supported my applications for data access - I am extremely grateful for his help and commitment in chasing cohort owners.
 
@@ -20,7 +20,7 @@ Mum and Dad, thank you for your never-ending love and support. Everything I am c
 
 There are several people without whom I would not have survived the process of writing a dissertation during COVID times. Ben, Doug, Christin - thank you! 
 
-Finally, a big thanks to Vivienne Gardiner, who sacrificed a substantial amount of time to proof-reading this thesis.
+Finally, a big thanks to Vivienne Gardiner, who sacrificed a substantial amount of time to proof-read this thesis.
 
 \bigskip
 
@@ -31,5 +31,5 @@ I have been supported throughout my studies by an NIHR Doctoral Research Fellows
 \bigskip
 
 \begin{flushright}
-Canynge Hall, Bristol \\1 December 2021
+Canynge Hall, Bristol \\17 December 2021
 \end{flushright}

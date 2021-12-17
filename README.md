@@ -7,60 +7,66 @@ You must submit two electronic copies of your dissertation separately to cover:
 
 ## Final checklist
 
-- [ ] Review [Bristol guidelines](http://www.bris.ac.uk/media-library/sites/social-community-medicine/migrated/documents/preparingathesis.pdf)
-- [ ] Check if references are duplicated via distinct bibtex keys. || Sort out duplicated citation keys (e.g.[mcguinness2019a] vs [mcguinness2019b])
+- [x] Review [Bristol guidelines](http://www.bris.ac.uk/media-library/sites/social-community-medicine/migrated/documents/preparingathesis.pdf)
+- [x] Check name spellings in Acknolwedgements
+- [x] Review all text in front/back materials
+- [x] Double check bias subgroup and eggers p-values
+- [x] Decide on criteria
+- [x] Check if references are duplicated via distinct bibtex keys. || Sort out duplicated citation keys (e.g.[mcguinness2019a] vs [mcguinness2019b])
 - [x] Check each chapter has a Lay summary.
-- [ ] Check table of contents looks right ("Results" was missing for Chapter 6)
-- [ ] Check start of chapter quotes, including references
-- [ ] Quotes are rendering properly.
-- [ ] URLs resolve
-- [ ] Remove "Reference" headings from each chapter
+- [x] Check table of contents looks right ("Results" was missing for Chapter 6)
+- [x] Check start of chapter quotes, including references
+- [x] Quotes are rendering properly.
+- [x] URLs resolve
+- [x] Remove "Reference" headings from each chapter
 - [X] Add all abbreviations used in tables to the Abbreviation section
 - [X] Corrections don't overrun
-- [ ] Confirm TODOs, <!-.
-- [ ] Search for [CITE], XXXX, YYYY
-- [ ] Search for "??" to find broken cross-links.
-- [ ] Fancy headings are in the right place, and are rendering properly.
-- [ ] Check context of Chapter cross-references to ensure they are pointing to the right Chapter.
-- [ ] Check context of figure cross-references to ensure they are pointing to the right figure.
-- [ ] Check context of table cross-references to ensure they are pointing to the right table.
+- [x] Confirm TODOs, <!-.
+- [x] Search for [CITE], XXXX, YYYY
+- [x] Search for "??" to find broken cross-links.
+- [x] Fancy headings are in the right place, and are rendering properly.
+- [x] Check context of Chapter cross-references to ensure they are pointing to the right Chapter.
+- [x] Check context of figure cross-references to ensure they are pointing to the right figure.
+- [x] Check context of table cross-references to ensure they are pointing to the right table.
 - [ ] Search for common  mispellings/inconistencies 
-    - [ ] "we" vs "I"
-    - [ ] our vs my
-    _ [ ] casual
-    - [ ] codelist vs code list
-    - [ ] Randomis* vs randomiz*
-    - [ ] try and vs try to
-    - [ ] data were vs data was
-    - [ ] very weak evidence
-    - [ ] N vs n for defining numbers
-    - [ ] ApoE4 is fancy
-    - [ ] metadata versus meta-data
-    - [ ] fraction vs faction
-    - [ ] prodromal vs prodomal
-    - [ ] hypercholesteromemia spelling
-    - [ ] through vs though
-    - [ ] try and -> try to
-    - [ ] Decide on capitalisation of chapter!
-- [ ] Double check hetero and rob results    
-- [ ] Check all codeblocks with `eval = FALSE` to make sure they are still valid
-- [ ] Do search for everything in parentheses "(...)" and make sure all acronyms are in abbreviations list
-- [ ] Check short captions for tables
-- [ ] Check short captions for figures
-- [ ] Double check citations, particularly of handbook
-- [ ] Ensure all equations are in equation blocks
-- [ ] Ensure that figure table captions follow same style (bold short caption - description)
-- [ ] Ensure that everything I say is in the Appendix _is_ actually in the Appendix!
-- [ ] Ensure that everything in the Appendix is referenced in the text
-- [ ] Check Github links are present!
-- [ ] Link to `triangulate`
+    - [x] "we" vs "I"
+    - [x] our vs my
+    _ [x] casual
+    - [x] codelist vs code list
+    - [x] Randomis* vs randomiz*
+    - [x] try and vs try to
+    - [x] data were vs data was
+    - [x] very weak evidence
+    - [x] N vs n for defining numbers
+    - [x] ApoE4 is fancy
+    - [x] metadata versus meta-data
+    - [x] fraction vs faction
+    - [x] prodromal vs prodomal
+    - [x] hypercholesteromemia spelling
+    - [x] through vs though
+    - [x] try and -> try to
+    - [x] Decide on capitalisation of chapter!
+- [x] Double check hetero and rob results    
+- [x] Check all codeblocks with `eval = FALSE` to make sure they are still valid
+- [x] Do search for everything in parentheses "(...)" and make sure all acronyms are in abbreviations list
+- [x] Check short captions for tables
+- [x] Check short captions for figures
+- [x] Double check citations, particularly of handbook
+- [x] Ensure all equations are in equation blocks
+- [x] Ensure that figure table captions follow same style (bold short caption - description)
+- [x] Ensure that everything I say is in the Appendix _is_ actually in the Appendix!
+- [x] Ensure that everything in the Appendix is referenced in the text
+- [x] Check Github links are present!
+
 - [ ] Check ordering items is the same e.g. abc vs i,ii,iii
 - [ ] Check use of weak vs very weak evidence
 - [ ] Decide on use of I in lay summaries
 - [ ] Do table/figure captions get periods?
-- [ ] Check abstract is <300 words
-- [ ] Ensure word count is showing
+- [x] Check abstract is <300 words
+- [x] Ensure word count is showing
 - [ ] search `<!--` for comments and ensure nothing untoward
+- [ ] Basic triangulate package
+- [x] Link to `triangulate`
 
 ## VIVA
 - Spend 1hr watching Imperial [videos](http://www3.imperial.ac.uk/graduateschool/currentst

@@ -112,13 +112,13 @@ priors_ind_table <- rio::import("data/tri/priors_indirect_tab.csv") %T>%
   write.csv("data/table_words/priors_indirect.csv")
 
 if (doc_type == "docx") {
-  apply_flextable(priors_ind_table, caption = "(ref:priorsAdd-caption)")
+  apply_flextable(priors_ind_table, caption = "(ref:priorsIndirect-caption)")
 } else{
   knitr::kable(
     priors_ind_table,
     format = "latex",
-    caption = "(ref:priorsAdd-caption)",
-    caption.short = "(ref:priorsAdd-scaption)",
+    caption = "(ref:priorsIndirect-caption)",
+    caption.short = "(ref:priorsIndirect-scaption)",
     booktabs = TRUE, 
     align = "lc"
   ) %>%
@@ -161,7 +161,10 @@ dat_rob <- read.csv("data/tri/ldl_ad_rob.csv",
   mutate(vi = sei^2) %>%
   select(result_id, author, type, yi, vi, everything())  %>%
   # Standardise effect direction
-  mutate(yi = ifelse(type %in% c("NRSE","MR - LDL"), yi*-1, yi))
+  mutate(yi = ifelse(type %in% c("NRSE","MR - LDL"), yi*-1, yi),
+         d7d = case_when(type %in% c("NRSE","MR - LDL") & d7d == "Right" ~ "Left",
+                         type %in% c("NRSE","MR - LDL") & d7d == "Left" ~ "Right",
+                         T ~ d7d))
 
 dat_ind <- read.csv("data/tri/ldl_rob_indirect.csv",
                     stringsAsFactors = F) %>%
@@ -337,10 +340,10 @@ metafor::forest(
   at = log(c(0.3, 1, 3)),
   showweights = TRUE
 )
-text(log(0.01), 23, "Author and Year", cex=.8, font=2)
-text(log(40), 23.5, "Unadjusted", cex=.8, font=2)
-text(log(9.3), 22.5, "Weight", cex=.8, font=2)
-text(log(100), 22.5, "Estimate", cex=.8, font=2)
+text(log(0.01), 25, "Author and Year", cex=.8, font=2)
+text(log(40), 25.5, "Unadjusted", cex=.8, font=2)
+text(log(9.3), 24.5, "Weight", cex=.8, font=2)
+text(log(100), 24.5, "Estimate", cex=.8, font=2)
 
 par(mar=c(5,0,1,0))
 metafor::forest(
@@ -353,9 +356,9 @@ metafor::forest(
   slab = rep("", length(dat_final_scenario1$yi)),
   showweights = TRUE
 )
-text(log(40), 23.5, "Adjusted (Scenario 1)", cex=.8, font=2)
-text(log(9.3), 22.5, "Weight", cex=.8, font=2)
-text(log(100), 22.5, "Estimate", cex=.8, font=2)
+text(log(40), 25.5, "Adjusted (Scenario 1)", cex=.8, font=2)
+text(log(9.3), 24.5, "Weight", cex=.8, font=2)
+text(log(100), 24.5, "Estimate", cex=.8, font=2)
 
 dev.off()
 
@@ -375,10 +378,10 @@ metafor::forest(
   mlab = " ",
   showweights = TRUE
 )
-text(log(0.01), 23, "Author and Year", cex=.8, font=2)
-text(log(40), 23.5, "Adjusted (Scenario 1)", cex=.8, font=2)
-text(log(9.3), 22.5, "Weight", cex=.8, font=2)
-text(log(100), 22.5, "Estimate", cex=.8, font=2)
+text(log(0.01), 25, "Author and Year", cex=.8, font=2)
+text(log(40), 25.5, "Adjusted (Scenario 1)", cex=.8, font=2)
+text(log(9.3), 24.5, "Weight", cex=.8, font=2)
+text(log(100), 24.5, "Estimate", cex=.8, font=2)
 
 par(mar=c(5,0,1,0))
 metafor::forest(
@@ -391,9 +394,9 @@ metafor::forest(
   slab = rep("", length(dat_final_scenario2$yi)),
   showweights = TRUE
 )
-text(log(40), 23.5, "Adjusted (Scenario 2)", cex=.8, font=2)
-text(log(9.3), 22.5, "Weight", cex=.8, font=2)
-text(log(100), 22.5, "Estimate", cex=.8, font=2)
+text(log(40), 25.5, "Adjusted (Scenario 2)", cex=.8, font=2)
+text(log(9.3), 24.5, "Weight", cex=.8, font=2)
+text(log(100), 24.5, "Estimate", cex=.8, font=2)
 
 dev.off()
 
@@ -436,7 +439,10 @@ dat_rob_vad <- read.csv("data/tri/tg_vad_rob.csv",
   mutate(vi = sei^2) %>%
   select(result_id, author, type, yi, vi, everything())  %>%
   # Standardise effect direction
-  mutate(yi = ifelse(grepl("NRSE",type), yi*-1, yi))
+  mutate(yi = ifelse(grepl("NRSE",type), yi*-1, yi),
+         d7d = case_when(type %in% c("NRSE","MR - LDL") & d7d == "Right" ~ "Left",
+                         type %in% c("NRSE","MR - LDL") & d7d == "Left" ~ "Right",
+                         T ~ d7d))
 
 dat_ind_vad <- read.csv("data/tri/tg_vad_indirect.csv",
                     stringsAsFactors = F) %>%

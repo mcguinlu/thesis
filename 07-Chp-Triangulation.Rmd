@@ -16,7 +16,7 @@ documentclass: book
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:tri-quote)', echo = TRUE}
 Next on my list of features to be specially considered I would place the consistency of the observed association. Has it been repeatedly observed by different persons, in different places, circumstances and times?
 ```
-(ref:tri-quote) --- Austin Bradford Hill, 1965 [@hill1965]
+(ref:tri-quote) --- Austin Bradford Hill, 1965[@hill1965]
 
 <!-- IDEA Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated. [@guyatt2011] -->
 
@@ -641,12 +641,11 @@ Appreciation that both the risk-of-bias and indirectness of a result should be e
 
 ### Outputs {#tri-software}
 
-There are two key outputs from this chapter. The first is an R package, `triangulate`. Personal communication with the authors of the bias-/indirectness-adjusted meta-analysis approach resulted in the STATA code to implement the adjusted model.[@turner2009] This has since been generalised as part of the `triangulate` R package to enable other users to apply the approach detailed here. The package allows for preprocessing of domain-based risk-of-bias data to correctly identify the direction of bias relative to the effect estimate, use of domain-specific prior distributions, production of bias direction plots (via the tool described in Appendix \@ref(appendix-robvis)), calculation of bias/indirectness-adjusted estimates for each result and synthesis of these adjusted results in a standard random-effects meta-analysis.
+There are two key outputs from this chapter. The first is an R package, `triangulate`, available at [https://github.com/mcguinlu/triangulate](https://github.com/mcguinlu/triangulate). Personal communication with the authors of the bias-/indirectness-adjusted meta-analysis approach resulted in the STATA code to implement the adjusted model.[@turner2009] This has since been generalised as part of the `triangulate` R package to enable other users to apply the approach detailed here. The package allows for preprocessing of domain-based risk-of-bias data to correctly identify the direction of bias relative to the effect estimate, use of domain-specific prior distributions, production of bias direction plots (via the tool described in Appendix \@ref(appendix-robvis)), calculation of bias/indirectness-adjusted estimates for each result and synthesis of these adjusted results in a standard random-effects meta-analysis.
 
 <!-- REVIEW Describe what you contributed here a little better --->
 
-
-The second key output is an annotated example dataset for the LDL-c/Alzheimer's disease causal question addressed in this chapter. Available via the `triangulate` package, this data will provide developers of new triangulation methods with an example dataset on which to test new tools, something which seriously hindered development of this work.
+The second key output is an example dataset for the LDL-c/Alzheimer's disease causal question addressed in this chapter. Available via the `triangulate` package, this data will provide developers of new triangulation methods with an example dataset on which to test new tools, something which seriously hindered development of this work.
 
 &nbsp;<!----------------------------------------------------------------------->  
 

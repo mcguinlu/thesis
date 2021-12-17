@@ -1,8 +1,7 @@
-- [ ] Review all text in front/back materials
-- [ ] Quotes for 4
-- [ ] Take out bit about agreement between reviewers
-- [ ] Basic triangulate package
-
+- [x] Quotes for 4
+- [x] RoB matches 
+- [x] Tri and other results match
+- [x] Take out bit about agreement between reviewers
 - [x] Rename submission file!
 - [x] Check CSL style for reports/webpages
 - [x] Check diagnostic criteria for each NR study

@@ -2,7 +2,7 @@ pdf:
 	Rscript -e 'source(here::here("R","abbreviations.R"))'
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book", output_dir = "docs")'
 	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc front-and-back-matter/abbreviations.aux
-	Rscript -e 'browseURL(here::here("docs","triangulation_of_causal_effects_of_lipids_on_dementia.pdf"))'
+	Rscript -e 'browseURL(here::here("docs","PGR_submission_McGuinness_Luke_1877809.pdf"))'
 	
 pdf-quiet:
 	Rscript -e 'source(here::here("R","abbreviations.R"))'
