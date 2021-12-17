@@ -18,15 +18,7 @@ Next on my list of features to be specially considered I would place the consist
 ```
 (ref:tri-quote) --- Austin Bradford Hill, 1965 [@hill1965]
 
-<!-- TODO Add this to the Chapter summary in the introduction -->
-
-<!-- ### Triangulation  -->
-
-<!-- TODO Have a look at this - potentially move to triangulation chapter -->
-
-<!-- One key question for which multiple distinct sources of evidence were available were those looking at Laz -->
-
-<!-- Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated. [@guyatt2011] -->
+<!-- IDEA Consideration of the potential impact of the magnitude and direct of residual confounders/bias is not a major stretch from what is already happening in the assessment of the quality of evidence (GRADE) framework. Within GRADE, the overall quality of evidence can be upgraded when there is deemed to be unmeasured or residual confounding variables which reduce the. For example, if the propensity to treatment is related to comorbidity burden, but those on treatment still have better outcomes then those on control, it is likely that the true effect of the intervention is being underestimated. [@guyatt2011] -->
 
 # Aetiological triangulation across new and existing evidence sources: a qualitative and quantitative approach {#tri-heading}
 
@@ -89,7 +81,7 @@ Taken together, these limitations to qualitative triangulation detail a need for
 
 ## Data sources {#tri-data-sources}
 
-The triangulation exercises presented in this chapter draw on the research produced in each of the preceding chapters. More specifically, this chapter builds on the comprehensive systematic review of existing evidence presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). This evidence base is then supplemented by new evidence on the association of statin use with dementia outcomes in the CPRD (Chapter \@ref(cprd-analysis-heading)) and the association of lipids with dementia outcomes in previously unanalysed datasets accessed via the DPUK (Chapter \@ref(ipd-heading)).
+The triangulation exercises presented in this chapter draw on the research produced in each of the preceding chapters. More specifically, this chapter builds on the comprehensive systematic review of existing evidence presented in Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading). This evidence base is then supplemented by new evidence on the association of statin use with dementia outcomes in the CPRD (Chapter \@ref(cprd-analysis-heading)) and the association of lipids (namely, total cholesterol (TC), high-density lipoprotein cholesterol (HDL), low-density lipoprotein cholesterol (LDL) and triglycerides (TG)) with dementia outcomes in previously unanalysed datasets accessed via the DPUK (Chapter \@ref(ipd-heading)).
 
 Table \@ref(tab:thesisOverview-table) summarises the research question each data source has attempted to address, the exposures and outcomes considered in each case, and the contribution of each chapter to the triangulation exercise presented here.
 
@@ -485,11 +477,7 @@ The unadjusted estimate of the effect of LDL-c on Alzheimer's disease was `r sin
 
 #### Case study #1: effect of LDL-c at midlife on Alzheimer's disease
 
-<!-- TODO Update this paragraph to reflect extra 2 MR studies -->
-
-From the data sources identified in Section \@ref(tri-data-sources), I identified 18 results relevant to my first causal question of interest. Most (N =17) were identified via the systematic review,`r ldl_ad_citations` while Chapter \@ref(cprd-analysis-heading) provided an additional estimate via the CPRD analysis.  The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:ldlAdBiasDirection), stratified by study design.
-
-<!-- TODO Double check this reference list is correct! -->  
+From the data sources identified in Section \@ref(tri-data-sources), I identified 21 results relevant to my first causal question of interest. Most (N = 20) were identified via the systematic review,`r ldl_ad_citations` while Chapter \@ref(cprd-analysis-heading) provided an additional estimate via the CPRD analysis.  The extent, type and direction of predicted bias for each result can be seen in the bias-direction plot presented in Figure \@ref(fig:ldlAdBiasDirection), stratified by study design.
 
 &nbsp;<!----------------------------------------------------------------------->  
 

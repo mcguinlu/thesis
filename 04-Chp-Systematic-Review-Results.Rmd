@@ -45,8 +45,6 @@ My review included `r n_included` primary studies. I found that statins appear t
 
 :::
 
-<!-- TODO Consider adding a line to the descriptions of each forest plot regarding the direction - what's on the right, whats on the left -->
-
 ## Introduction
 
 Following the methods outlined in the previous chapter, I present the results of the comprehensive systematic review here. The use of the evidence identified by the review in future chapters is discussed. Finally, I make recommendations for future methodological work around the inclusion of preprints and Mendelian randomisation studies in evidence synthesis exercises.
@@ -485,8 +483,6 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_hyperchol_AD.png"))
 
 Similarly to all-cause dementia, several studies analysed individual lipid fractions by estimating the risk of dementia per 1 standard deviation increase in that fraction (Figure \@ref(fig:lipidFractionsAD)). Weak evidence for an effect on all-cause dementia was found for total cholesterol (`r n_effect(obsLipids$AD_TC)`), LDL-c (`r n_effect(obsLipids$AD_LDL)`), HDL-c (`r n_effect(obsLipids$AD_HDL)`) or triglycerides (`r n_effect(obsLipids$AD_TG)`).
 
-<!-- TODO This should also show Raffatin! -->
-
 \newpage
 \thispagestyle{empty}
 
@@ -563,8 +559,6 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_hyperchol_VaD.png"))
 
 Few studies investigated the effect of individual lipid fractions on vascular dementia. Only for total cholesterol was there greater than one result reported (Figure \@ref(fig:lipidFractionsVaD)), and a meta-analysis of these results found weak evidence for an effect (`r n_effect(obsLipids$VaD_TC)`). A single study provided evidence on the other three fractions.[@yoshitake1995] This analysis similarly found minimal evidence of an effect of LDL-c (`r n_effect(obsLipids$VaD_LDL,F)`), HDL-c (`r n_effect(obsLipids$VaD_HDL,F)`) or triglycerides (`r n_effect(obsLipids$VaD_TG,F)`) on vascular dementia.
 
-<!-- TODO This is not technically - more studies available on vascular dementia -->
-
 <!----------------------------------------------------------------------------->
 (ref:lipidFractionsVaD-cap) __Random-effects meta-analysis of total cholesterol on vascular dementia__ - Non-randomised studies examining the association of total cholesterol with vascular dementia risk, standardised per 1-SD increase in the lipid fraction, were synthesised using a random-effects meta-analysis. D1-D7 and O refer to the seven risk-of-bias domains and single overall judgement in the ROBINS-E tool, while the risk of bias due to missing evidence is shown beside the overall summary diamond.
 
@@ -594,8 +588,6 @@ knitr::include_graphics(file.path("figures/sys-rev/fp_obs_Statin-Ever_VaD.png"))
 <!----------------------------------------------------------------------------->
 
 A single Mendelian randomisation analysis was identified that examined the effect of genetically lowered LDL-c levels via HMGCR inhibition on the risk of vascular dementia, which provided some evidence for an effect (`r mrStatin$VaD$estimate`). 
-
-<!-- TODO Might need to discuss this a bit further -->
 
 &nbsp;<!----------------------------------------------------------------------->  
 
@@ -802,8 +794,6 @@ Finally, as a secondary element, I used this review to pilot new research synthe
 &nbsp;
 
 #### Limitations
-
-<!-- TODO Consider mentioning that the date of the review is a limitation, and forward refer to the section in the Discussion that considers two new studies -->
 
 A primary limitation of this review is the fact that only a sample of records were dual screened at the title/abstract and full-text stages is a potential limitation, because there is a chance that some eligible records could have been excluded. However,  evidence from assessments of inter- and intra-rater reliability indicate that this is not a major concern. Additionally, the search date of the study (July 2019) is a further limitation, in that more recently published studies are not included in this analysis.
 

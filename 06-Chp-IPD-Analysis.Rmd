@@ -74,8 +74,6 @@ As such, the aims of this analysis are two-fold. Firstly, I plan to perform an I
 
 #### Study design
 
-<!-- TODO Should start with inclusion criteria -->
-
 Eligible data sources for this analysis were prospective cohort studies (see Section \@ref(ipd-apply-access) for details on how these studies were identified). Data sources which were cross-sectional, either by design or due to the available data (e.g., a study recorded data on participants at multiple time-points or "waves", but only data from a single wave could be accessed) were excluded. Similarly, due to the time and cost restraints within the scope of my thesis project, studies making use of population-level electronic health records were ineligible. These studies are problematic in that they often require extensive project proposals in order to gain access to the data.
 
 No restrictions were put on the number of participants or the length of follow-up, though it was a requirement that participants were dementia free (or assumed to be dementia free, based on age at entry) at baseline. 
@@ -116,8 +114,6 @@ Cohorts included in the DPUK were assessed against the eligibility criteria, and
 #### Data cleaning and harmonisation
 
 Where data on one of the exposures (TC, LDL-c, HDL-c, TG) was missing, it was inferred from the other three fractions (where available) using the Friedwald formula (Equation \@ref(eq:total-cholesterol-formula)). Lipid levels were retained as continuous variables rather than dichotomising into a binary hypercholesterolemia exposure, given the additional statistical power this adds to the meta-analysis.[@riley2020;@ensor2018] Where lipid measurements were reported in _mg/dL_, these were converted to _mmol/L_. 
-
-<!-- TODO Ensure that the results are actually on the mmol/L scale -->
 
 Across all cohorts, data cleaning was performed in a similar manner, standardizing to commonly named variables so that a single model could be applied using functional programming.[@wickham2016func] The advantage of this approach is that it reduces the likelihood of errors in model mis-specification if changes are required in variables names from cohort to cohort. Following data cleaning, summary statistics for each data source were calculated and compared with publicly available statistics to ensure no errors were introduced in the data cleaning process, in line with best practice.[@levis2021]
 
@@ -190,7 +186,7 @@ knitr::include_graphics(file.path("figures/ipd/cohortFlowchart.png"))
 
 As highlighted in Figure \@ref(fig:cohortFlowchart), there was little overlap between cohorts identified by the systematic review and those contained in the DPUK (`r n_applied$DPUK_sysrev`), indicating that the DPUK is a useful source of unanalysed data with respect to this question. A single cohort (Whitehall II) was identified by the systematic review and was also present in the DPUK.
 
-Nine cohorts (8 DPUK only, 1 Systematic review + DPUK) responded positively to requests for data access. However, on inspection of data provided, six of these cohorts were excluded and the reason for exclusion in each case is shown in Table \@ref(tab:dataExcluded-table). In summary, two cohorts contained were memory-complaint cohorts, containing participants unlikely to be free of dementia at baseline (BRACE, MEMENTO). Two cohorts, despite being designed as multi-wave studies, only shared data related to a single wave and so represented cross-sectional data (Generation Scotland, NICOLA). Finally TRACK HD is a genetic cohort where cohort owners advised me that dementia will inevitably develop in mid-life driven by the Huntington's (HTT gene) mutation and that this effect would likely far outweigh the effect of lipids. Finally, the ELSA study was excluded based on the dichotomous definition of the exposure variable. <!-- TODO CITATION NEEDED for each study here! -->
+Nine cohorts (8 DPUK only, 1 Systematic review + DPUK) responded positively to requests for data access. However, on inspection of data provided, six of these cohorts were excluded and the reason for exclusion in each case is shown in Table \@ref(tab:dataExcluded-table). In summary, two cohorts contained were memory-complaint cohorts, containing participants unlikely to be free of dementia at baseline (BRACE, MEMENTO). Two cohorts, despite being designed as multi-wave studies, only shared data related to a single wave and so represented cross-sectional data (Generation Scotland, NICOLA). Finally TRACK HD is a genetic cohort where cohort owners advised me that dementia will inevitably develop in mid-life driven by the Huntington's (HTT gene) mutation and that this effect would likely far outweigh the effect of lipids. Finally, the ELSA study was excluded based on the dichotomous definition of the exposure variable.
 
 &nbsp;<!----------------------------------------------------------------------->  
 (ref:dataExcluded-caption) __Exclusion reasons for cohorts providing data__ - Number of cohorts approach and the reasons for a lack of data access, stratified by whether the cohort was identified by the systematic review or via the DPUK.
@@ -202,12 +198,6 @@ Nine cohorts (8 DPUK only, 1 Systematic review + DPUK) responded positively to r
 &nbsp;<!----------------------------------------------------------------------->  
 
 ### Included data sources
-
-<!-- TODO Be clear on the different types of databases, e.g., those where users are followed up regularly vs. those where participants are captured via EHR-->
-
-<!-- TODO Need to talk about how dementia was assessed in each! -->
-
-<!-- TODO Link to appendix about data sources not approached -->
 
 The three data sources used in this analysis are described in detail in the following sections. Of note, all included data sources were based in the United Kingdom. This is due to the majority of included datasets being identified via the Dementia Platform UK route (Figure \@ref(fig:cohortFlowchart)), which as implied by the name, has a narrow geographical focus.[@bauermeister2020]
 
@@ -276,8 +266,6 @@ knitr::include_graphics(file.path("figures/ipd/main_Dementia.png"))
 ```
 <!----------------------------------------------------------------------------->
 
-<!-- TODO Now that using a fixed effect model, evidence of TG/ACD association -->
-
 <!----------------------------------------------------------------------------->
 (ref:mainEffectVad-cap) __IPD meta-analysis of vascular dementia__ - Using Model 1 (adjusted for age, sex, smoking, alcohol, education and diabetes), an IPD random-effects meta-analysis was applied to investigate the association of a 1-SD increase in each lipid fraction with vascular dementia outcomes. Note that the vascular dementia outcome was only available in the CaPS and Whitehall II cohorts (see Table \@ref(tab:covariateSummary-table)).
 
@@ -332,7 +320,6 @@ knitr::include_graphics(file.path("figures/ipd/interaction_sex_dementia.png"))
 
 <!-- TODO Using fixed effect meta-analyses, there is now an effect of male gender on LDL/all-cause dementia relationship. Need to discuss if sticking with fixed -->
 
-
 For the consideration of vascular dementia, I was only able to explore the effect of age, as only the CaPS and Whitehall cohorts contained details on vascular dementia as an outcome. As discussed above, the CaPS data contained a single sex which meant it was excluded from the exposure-sex analysis, leaving Whitehall II as the sole eligible study.
 
 <!----------------------------------------------------------------------------->
@@ -375,8 +362,6 @@ The obstacles to data access described above are in theory what the DPUK was bui
 
 #### Uncontrolled confounding
 
-<!-- TODO May need to talk about other confounders here -->
-
 A key limitation of this analysis is the potential for uncontrolled confounding. Across all cohorts, adjustment for _Apo_$\mathcal{E}4$ was not possible as I did not have access to genetic data on participants. _Apo_$\mathcal{E}4$ is a strong risk factor for both increased LDL-c levels and Alzheimer's disease,[@bennet2007;@safieh2019] and failing to adjust for this factor means residual confounding in the LDL-c fraction results is likely. 
 
 More generally, systematically missing variables required a trade-off between inclusion of cohort data and appropriate control for confounding. The final choice of the common-set-adjusted model for use in the interaction analyses means there is the potential for residual confounding. However, sensitivity analysis comparing the common-set-adjusted (Model 1) and fully-adjusted (Model 2) models in cohorts with a full complement of covariates indicated that further adjustment for BMI, ethnicity, education and prevalent IHD had minimal impact on the effect estimates. Of note, this is comparable with the analysis of the CPRD data presented in the previous chapter, where adjustment for variables beyond age and sex had a limited impact on the observed effect estimates (see Section \@ref(cprd-impact-additional-covar)).
@@ -411,8 +396,6 @@ knitr::include_graphics(file.path("figures/ipd/whitehall_comparison_ad.png"))
 ```
 <!----------------------------------------------------------------------------->
 
-<!-- TODO Talk about the fact that I used multiple imputation and they did not. Evidenced by wider confidence intervals, indicating a smaller sample size, likely the result of a complete case -->
-
 Investigation revealed several possible reasons for this discrepancy. The first is that while this analysis uses multiple imputation to address missing data, the Tynkkynen _et al._ analysis does not describe how missing data was handled. However, the reduced precision in the reported estimates suggest a complete case analysis. This interpretation is supported by a comparison of summary statistics, which illustrated that my analysis had substantially more dementia events (N =287 in this analysis vs. n=114 in Tynkkynen _et al._), suggesting that incomplete records were discarded in the previous analysis. Finally, the covariates adjusted for in each analysis were similar, though the previous analysis had access to genetic data allowing it to adjust for _Apo_$\mathcal{E}4$ status. However, given that _Apo_$\mathcal{E}4$ is a risk factor for increased LDL-c rather than triglycerides,[@bennet2007] it seems unlikely that additional adjustment for this variable is responsible for the discrepancy in the findings observed.
 
 &nbsp;<!----------------------------------------------------------------------->  
@@ -440,8 +423,6 @@ While it is tempting to suggest that an IPD analysis of lipid levels be reattemp
 Additionally, the production of detailed guidance for handling cases where covariates are systematically missing would represent a useful contribution to the topic. Much of the literature around IPD analysis is focused on the synthesis of RCTs, where additional covariate information is needed primarily for the assessment of treatment-covariate interactions rather than the adjustment of the effect estimate for confounding. Given the wide availability of non-randomised cohorts, improved guidance on this challenge would support future work.
 
 Finally, movement towards increased use of unique and persistent researcher identifiers, such as those offered by the ORCID programme,[@nature2009] would help with contact issues. Researchers move institutions regularly as their contracts come to an end, and so the institutional contact details provided on publications are frequently out of date.
-
-<!-- REVIEW Or a requirement of peer review and publication be that the data be recorded centrally and made available through a coordinated application process) -->
 
 &nbsp;<!----------------------------------------------------------------------->  
 
