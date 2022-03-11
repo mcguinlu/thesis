@@ -33,56 +33,60 @@ Using new and existing evidence to examine the relationship between blood lipids
 
     * Utilising existing evidence is a great money-saver, both in terms of making use of previously-funded work and by ensuring that future work actually addresses research gaps rather than re-hashing existing work.
 
-* What motivated and inspired you to carry out this research?
+* **What motivated and inspired you to carry out this research?**
 
     * Interesting cross-section between two methods . I firmly believe that , and dementia, as an underfunded but incredibly important
 
-* What are the main issues and debates in this subject area?
+* **What are the main issues and debates in this subject area?**
 
     * Validity of combining across data sources
 
     * Validity/purity of dementia diagnoses, particularly artributed to sub-type (Carol - EHR code list validation study)
 
-* Which of these does your research address?
+* **Which of these does your research address?**
 
 
-* Why is the problem you have tackled worth tackling?
+* **Why is the problem you have tackled worth tackling?**
 
     * Important to ensure that obs evidence can be used.
 
-* Who has had the strongest influence in the development of your subject area in theory and practice?
+* **Who has had the strongest influence in the development of your subject area in theory and practice?**
 
 
 
-* Which are the three most important papers that relate to your thesis?
+* **Which are the three most important papers that relate to your thesis?**
 
-Bias adjustment, Turner et al. With out, there would be no Chapter 7
-
-
-
-
+    * Bias adjustment, Turner et al. With out, there would be no Chapter 7
 
 
 
 
-* What published work is closest to yours? How is your work different?
+
+
+
+
+* **What published work is closest to yours? How is your work different?**
 
 <!-- TODO Need to read-up on history of bias adjustment and how I could have approached it differently -->
 
-Previous work is based on Turner's paper. The key difference is that that paper used expert elictation with knowledge of the results to specify the level of bias adjustment.
+* Previous work is based on Turner's paper. The key difference is that that paper used expert elictation with knowledge of the results to specify the level of bias adjustment.
 
-* What do you know about the history of [insert something relevant]?
-
-
-
-* How does your work relate to [insert something relevant]?
-
-
-* What are the most recent major developments in your area?
+* **What do you know about the history of [insert something relevant]?**
 
 
 
-* How did your research questions emerge?
+* **How does your work relate to [insert something relevant]?**
+
+
+* **What are the most recent major developments in your area?**
+
+    * For preprint searching, the indexing of preprint servers by recognised databases.
+
+    * For systematic reviews - 
+
+    * For triangulation - 
+
+* **How did your research questions emerge?**
 
 
 
@@ -171,10 +175,10 @@ Previous work is based on Turner's paper. The key difference is that that paper 
 
 * **Which aspects of your work do you intend to publish – and where?**
 
-    * Chapter 2 is published - 
+    * Chapter 2 is published - Journal of Open Source Software
     * Chapter 5 is available from medRxiv and under consideration at International Journal of Epidemiology.
     * Chapter 6 - probably won't publish.
-    * Chapter 7 - plan is to combine it with systematic review and publish as a case study of the new tool.
+    * Chapter 7 - plan is to combine it with the systematic review and publish as a case study of the new tool.
 
 
 * **Summarise your key findings.**
@@ -183,7 +187,7 @@ Previous work is based on Turner's paper. The key difference is that that paper 
 
     * Published NRSI give protective effect of statins, but didn't replicate when combined with other evidence, suggesting the presence of bias in these studies.
 
-    * 
+    * Absence of evidence on vascular dementia outcome
 
 * **Which of these findings are the most interesting to you? Why?**
 
@@ -203,21 +207,23 @@ Previous work is based on Turner's paper. The key difference is that that paper 
 
 
 
-* How long-term are these contributions?
+* **How long-term are these contributions?**
 
 
 
-* What are the main achievements of your research?
+* **What are the main achievements of your research?**
 
 
 
-* What have you learned from the process of doing your PhD?
+* **What have you learned from the process of doing your PhD?**
 
     * See learning points in Appendix
 
-* What advice would you give to a research student entering this area?
+* **What advice would you give to a research student entering this area?**
 
-    * Make time for methods development, and find your community.
+    * Make time for methods development
+    
+    * Find your community. - got in with ES Hackathon crowd, which enable a lot of the most impactful work.
 
 * **You propose future research. How would you start this?**
 
@@ -227,10 +233,11 @@ Previous work is based on Turner's paper. The key difference is that that paper 
         * How to deal with multiple counting?
         * Dedicated risk-of-bias tool.
     1. Inclusion of meta-biases (e.g. missing evidence)
+    1. Design of studies known to be at risk of conflicting bias to the existing literature.
 
 * **What would be the difficulties?**
 
-    1. Loss to follow-up cuold be different between randomised groups
+    1. Loss to follow-up could be different between randomised groups
     1. Problems defining a "pure" VaD outcome
     1. ROB-ME is a very new tool, and assessing bias due to missing evidence is also new. Problems could arise in terms of adoption.
 
@@ -247,23 +254,56 @@ Previous work is based on Turner's paper. The key difference is that that paper 
 
 ## Chapter 1 - Background
 
+* **What are the differences between the NINCDS-AIREN/ADRA?**
+
+* **Explain how the different lipid-lowering treatments work?**
+
+    * General overview is given in Table 1.4
+
+    * Statins inhibit biosynthesis of cholesterol (Figure 1.1)
+    * Ezetimibe - inhibits absorption of cholesterol from food
+    * Fibrates - reduce production of TG compounds in the liver
+    * PCSK9i - prevent PCSK9 from removing LDL-c receptors on the liver, increasing uptake/degradation
+
 ## Chapter 2 - `medrxivr`
 
+
+<!------------------------------------------------------------------------->
 ## Chapter 4 - Systematic review methods
 
 * **Why not use GRADE?**
 
     * Essentially using GRADE via triangulation approach.
 
+* **There are limitations to including preprints - discuss?**
+
+* **Problem with eligibility criteria**
+
+    * Eligible studies defined dementia outcomes using an objective process, incorporating recognised criteria. - What does this mean? I had originally stated that I would include only studies that defined dementia using specific criteria. This was hard to operationalise as often the criteria are not specified, but clear from other information (case note review) that clinicans likely followed these criteria.
+
+    * Say that HPS didn't report methods used, but likely to be eligible because of the process used to define dementia.
+
+* **Reason/limitation for using filters?**
+
+    * Confirmed they weren't excluding anything obviously relevant by 
+
+* **How was Mendelian randomisation filter designed?**
+
+
+
+Not looking at results of Chi-sq test for heterogeneity, as argue that het will always be present and it is the extent of it that matters!
+
 ## Chapter 4 - Systematic review results
 
-* Lots of studies assessed at high risk of bias for selection into the study - why?
+* **Lots of studies assessed at high risk of bias for selection into the study - why?**
 
-* What are the domains of the [X] tool?
+* **What are the domains of the [X] tool?**
 
-* Can you explain how the ROB-ME tool works?
+* **Can you explain how the ROB-ME tool works?**
 
+* **Talk about problems with including Hippsley-Cox re double-counting?**
 
+WHY OKAY TO INCLUDE ehr WHEN NOT USING CRITERIA? NOT COLLECTED FOR REASEARCH AND SO POTENTIALLY LESS LIKELY TO HAVE DIFFERENTIAL MISCLASSIFICATION
 
 ## Chapter 5 - CPRD
 
@@ -274,11 +314,20 @@ Previous work is based on Turner's paper. The key difference is that that paper 
 
 
 
-Less clear why chronic illness would predict statin use
+* **Less clear why chronic illness would predict statin use**
 
-The flowchart for defining dementia diagnoses seems to ignore the ordering. So if the initial diagnosis was VaD but later it was changed to AD it is coded as “Other dementia” but actual evidence might have switched it to AD. This can be criticized.
+    * 
 
-Was age considered as a continuous variable e.g. 65.8 years? Did you check for linear assumption and look at either age grouped or polynomial?
+* **The flowchart for defining dementia diagnoses seems to ignore the ordering. So if the initial diagnosis was VaD but later it was changed to AD it is coded as “Other dementia” but actual evidence might have switched it to AD. This can be criticized.**
+
+    * A more complicated coding scheme/algorithm could have bee
+
+
+* **Was age considered as a continuous variable e.g. 65.8 years? Did you check for linear assumption and look at either age grouped or polynomial?**
+
+    * Age was included as the time axis in the 
+
+    * Did not accou
 
 Not sure I follow this. Are you assuming that as the diagnosis of AD has become more popular there would not only be an increase in frequency but I shift towards more probable or perhaps more possible if lower threshold. Please clarify. - _Thinking is that_
 
@@ -286,9 +335,13 @@ Did you formally test for heterogeneity between lipophilic and hydrophilic stati
 
 Why did you not use a trial emulation analysis? See emails for reasons to justify.
 
-Would confounding effect of ApoE4 not be somewhat moderated by adjusting for LDL-c? 
+* **Would confounding effect of ApoE4 not be somewhat moderated by adjusting for LDL-c?**
 
-Increased risk of AD with fibrates? Not consistent across AD outcomes like ezetimibe is across vascular/other
+    * Only if effect of ApoE is mediated by it's effect on LDL-c. If there is an independent mechanism, then 
+
+* **Increased risk of AD with fibrates?**
+
+    * Not consistent across AD outcomes like ezetimibe is across vascular/other
 
 Which method did you use for random effects meta-analysis and why?
 
@@ -296,23 +349,19 @@ Why is the dose response model multi-variate? Accounts for results and the corre
 
 What is the purpose of using knots?
 
-Talk about problems with including Hippsley-Cox re double-counting?
 
-wHY OKAY TO INCLUDE ehr WHEN NOT USING CRITERIA? nOT COLLECTED FOR REASEARCH AND SO POTENTIALLY LESS LIKELY TO HAVE DIFFERENTIAL MISCLASSIFICATION
 
-Why is the std error of LDL much wider than others? Needed to be calculated from the imputed values of TC, HDL and TG, and so more variability across the different datasets.
+* **Why is the std error of LDL much wider than others?**
+
+    * Needed to be calculated from the imputed values of TC, HDL and TG, and so more variability across the different datasets.
 
 What are unique contributions above and beyond Becky's work? A priori assignment of bias distributions, using of cutting edge tools to assess bias and mapping of answers to additive/proportional biases, new visualisations of bias, multiple sources of evidence, broader definition of indirect (e.g. using statins as a source of evidence on an exposure).
 
-There are limitations to including preprints - discuss?
+
 
 Why not use a multivariate approach, given co-dependence of all lipid fractions?
 
-Eligible studies defined dementia outcomes using an objective process, incorporating recognised criteria. - What does this mean? I had originally stated that I would include only studies that defined dementia using specific criteria. This was hard to operationalise as often the criteria are not specified, but clear from other information (case note review) that clinicans likely followed these criteria.
 
-Say that HPS didn't report methods used, but likely to be eligible because of the process used to define dementia.
-
-Not looking at results of Chi-sq test for heterogeneity, as argue that het will always be present and it is the extent of it that matters!
 
 Did you adjust for clustering in the CPRD analysis?
 
@@ -324,11 +373,24 @@ Why male and female for pregnancy analysis?
 
 Why does severe codelist cause inflated HR?
 
+    * Maybe have extra figure for this
 
 ## Chapter 6 - Individual patient data analysis
 
 * Thoughts on open data access - Carol has written a lot on this.
 
+* How did you choose cut-off points?
+
+    * Based on National Cholesterol Education Programme criteria (Table 1.2)
+
+* How did you decide on which underlying cohorts to approach?
+
 ## Chapter 7 - Triangulation
+
+* **Why are prior distiburitons defined on the log-scale?**
+
+
+
+table
 
 ## Chapter 8 - Discussion
