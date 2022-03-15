@@ -1,12 +1,12 @@
 ## General 
 
-- [x] 5 min presentation
+- [ ] 5 min presentation
 - [ ] Explanations of each image
 - [ ] Explanation of each equation
 
 ## Key things to prepare
 
-- [ ] Read up on direct bias adjustment as per Julian's comment
+- [x] Read up on direct bias adjustment as per Julian's comment
 
 - [ ] Paragraph on the CFAS study
 

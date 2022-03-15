@@ -1,12 +1,26 @@
 ## Critical Top 10 Questions
 
-* This paper includes additional information - why not extracted?
+* Why is everything in different measures (e.g. 1-SD in review, 1 mmol/L in IPD analysis), and how does this effect the triangulation exercise?
 
-* Why did you not include CFAS as one of the approached cohorts?
+    * Obtained feedback from a clinical partner that presenting the results per 1 mmol/L would be more interpretable than per 1-SD.
 
-* What criteria are you using to define the outcomes in the systematic review? Why not consistent?
+    * This variation in the definition of the exposure measurement would be covered in the assessment of indirectness due to intervention/exposure. For example, the indirectness due to exposure would be higher if the exposure was measured per 1 mmol/L, as it overstates the effect vs per 1-SD (usually < 1 mmol/L>)
 
-- Can you explain the method used to examine the shape of the relationship? e.g. splines, etc.
+* This paper includes additional information - why not extracted as part of the review?
+
+* **Why did you not include CFAS as one of the approached cohorts?**
+
+    * They were availab
+
+* **What criteria are you using to define the outcomes in the systematic review? Why not consistent?**
+
+* **Can you explain the method used to examine the shape of the relationship? e.g. splines, etc.**
+
+    * Restricted cubic splines are a type of spline that is used to fit a function to a set of data points. 
+
+* **How did you choose causal questions to address as part of the triangulation exercise?**
+
+    * Somewhat of a data driven approach to address those questions for which previous aspect of the thesis provide some evidence for. In addition, chosen to illustrate the method so
 
 ## General 
 
@@ -16,20 +30,20 @@
 
 ## Common
 
-* Can you start by summarising your thesis?
+* **Can you start by summarising your thesis?**
 
 
 
-* Now, can you summarise it in one sentence?
+* **Now, can you summarise it in one sentence?**
 
-Using new and existing evidence to examine the relationship between blood lipids and incident dementia.
+    * Using new and existing evidence to examine the relationship between blood lipids and incident dementia.
 
-* What is the idea that binds your thesis together?
+* **What is the idea that binds your thesis together?**
 
     * We need to be able to find and combine **all** available evidence to get the best picture of a research question.
     * We need new open source tools to help us do this
 
-* What is the point? Would money not be better spent else-where?
+* **What is the point? Would money not be better spent else-where?**
 
     * Utilising existing evidence is a great money-saver, both in terms of making use of previously-funded work and by ensuring that future work actually addresses research gaps rather than re-hashing existing work.
 
@@ -41,10 +55,11 @@ Using new and existing evidence to examine the relationship between blood lipids
 
     * Validity of combining across data sources
 
+    * Validity of priors on different biases, and whether adjusting for bias makes the result useless - but better to acknowledge uncertainty.
+
     * Validity/purity of dementia diagnoses, particularly artributed to sub-type (Carol - EHR code list validation study)
 
 * **Which of these does your research address?**
-
 
 * **Why is the problem you have tackled worth tackling?**
 
@@ -58,55 +73,52 @@ Using new and existing evidence to examine the relationship between blood lipids
 
     * Bias adjustment, Turner et al. With out, there would be no Chapter 7
 
+    * Suissa, immortal time bias
 
+    * Paper applying target-trial apporach, hernan et al
 
+    * triangulation paper, Debbie
 
-
-
+    * Risk of bias documentation
 
 
 * **What published work is closest to yours? How is your work different?**
 
-<!-- TODO Need to read-up on history of bias adjustment and how I could have approached it differently -->
-
-* Previous work is based on Turner's paper. The key difference is that that paper used expert elictation with knowledge of the results to specify the level of bias adjustment.
+    * Previous work is based on Turner's paper. The key difference is that that paper used expert elictation with knowledge of the results to specify the level of bias adjustment.
 
 * **What do you know about the history of [insert something relevant]?**
 
-
-
 * **How does your work relate to [insert something relevant]?**
-
 
 * **What are the most recent major developments in your area?**
 
     * For preprint searching, the indexing of preprint servers by recognised databases.
 
-    * For systematic reviews - 
+    * For systematic reviews, new focus on risk fo bias due to missing evidence and on incorporating risk of bias data into syntheses.
 
-    * For triangulation - 
+    * For triangulation, validity of prior distributions and the ability to adjust for bias.
 
 * **How did your research questions emerge?**
 
+    * Was previously an evidence synthesis
 
-
-* What were the crucial research decisions you made?
-
-
-
-* Why did you use this research methodology? What did you gain from it?
+* **What were the crucial research decisions you made?**
 
 
 
-* What were the alternatives to this methodology?
+* **Why did you use this research methodology? What did you gain from it?**
 
 
 
-* What would you have gained by using another approach?
+* **What were the alternatives to this methodology?**
 
 
 
-* How did you deal with the ethical implications of your work?
+* **What would you have gained by using another approach?**
+
+
+
+* **How did you deal with the ethical implications of your work?**
 
 
 
