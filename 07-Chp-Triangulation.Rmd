@@ -88,6 +88,7 @@ Table \@ref(tab:thesisOverview-table) summarises the research question each data
 <!-- TODO Consider adding AD as an outcome to the IPD row, depending on which result you want to use. -->
 
 \blandscape
+
 <!----------------------------------------------------------------------------->
 (ref:thesisOverview-caption) __Summary of research designs included in this thesis__ -The research projects performed as part of this thesis and used as evidence sources in this triangulation exercise are summarised. Note that Chapter \@ref(sys-rev-tools-heading) is intentionally not included in this table, as it describes a research tool rather than a research study.
 
@@ -96,6 +97,7 @@ Table \@ref(tab:thesisOverview-table) summarises the research question each data
 ```{r thesisOverview-table, message=FALSE, results="asis", echo = FALSE}
 ```
 <!----------------------------------------------------------------------------->
+
 \elandscape
 
 Additionally, both the qualitative and quantitative triangulation exercises used the detailed risk-of-bias assessments performed and presented as part of the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)). Similarly, risk-of-bias assessments were performed for each new source of evidence presented in this thesis. The risk of bias tools used to assess each result are described in detail in Section \@ref(risk-of-bias), but in summary, randomised controlled trials (RCTs) were assessed using the RoB 2 tool;[@sterne2019] non-randomised studies of interventions (NRSI) using the ROBINS-I tool;[@sterne2016] non-randomised studies of exposures (NRSE) using an early adapted version of the ROBINS-E tool (see Section \@ref(rob-tools-nrse));[@morganr2020; @french2019] and Mendelian randomisation (MR) studies using the Mamluk et al. tool.[@mamluk2020] 
@@ -140,7 +142,8 @@ As part of a qualitative triangulation of the new and existing evidence identifi
 
 #### All-cause dementia
 
-Analysis of lipid levels across both the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)) and the individual participant data (IPD) analysis (Chapter \@ref(ipd-heading)) found extremely weak evidence for an association of any lipid fraction with all-cause dementia (in the systematic review: TC - `r obsLipids$Dementia_TC$estimate`; LDL - `r obsLipids$Dementia_LDL$estimate`; HDL - `r obsLipids$Dementia_HDL$estimate`; TG - `r obsLipids$Dementia_TG$estimate` ). Similarly, meta-analysis of studies identified by the review which examined a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$Dementia$estimate`). Finally, a meta-analysis of RCTs of statin use (`r rct_statin_acd`) and of MR analyses of genetic instruments that mimic statin use (`r mrStatin$Dementia$estimate`) found weak evidence of an association, providing indirect evidence on the effect of lipid lowering on this outcome.
+Analysis of lipid levels across both the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)) and the individual participant data (IPD) analysis (Chapter \@ref(ipd-heading)) found extremely weak evidence for an association of any lipid fraction with all-cause dementia (in the systematic review: TC - `r obsLipids$Dementia_TC$estimate`; [LDL-c]{.correction} - `r obsLipids$Dementia_LDL$estimate`; [HDL-c]{.correction}
+ - `r obsLipids$Dementia_HDL$estimate`; TG - `r obsLipids$Dementia_TG$estimate` ). Similarly, meta-analysis of studies identified by the review which examined a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$Dementia$estimate`). Finally, a meta-analysis of RCTs of statin use (`r rct_statin_acd`) and of MR analyses of genetic instruments that mimic statin use (`r mrStatin$Dementia$estimate`) found weak evidence of an association, providing indirect evidence on the effect of lipid lowering on this outcome.
 
 In contrast, the meta-analysis of statin use found a slight protective effect for the all-cause dementia outcome (`r obsStatins$Dementia$estimate`), although many of the studies in this analysis were found to be at risk of immortal time bias, which would be expected to favour the statin use. Finally, analysis of the association of statin use with all-cause dementia in the CPRD (Chapter \@ref(cprd-analysis-heading)) found evidence of a harmful association (`r anydem_sta_text`). However, this finding is likely to be driven by the substantial confounding by indication identified in the vascular dementia subgroup.
 
@@ -150,7 +153,7 @@ For fibrates, an alternative lipid-regulating agent, there was some evidence of 
 
 #### Alzheimer's disease
 
-Meta-analysis of lipid levels in the systematic review found extremely weak evidence for an association of any lipid fraction with Alzheimer's disease (in the systematic review: TC - `r obsLipids$AD_TC$estimate`; LDL - `r obsLipids$AD_LDL$estimate`; HDL - `r obsLipids$AD_HDL$estimate`; TG - `r obsLipids$AD_TG$estimate`). Similarly, meta-analysis of studies examining a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$AD$estimate`). A meta-analysis of MR analyses of genetic instruments that mimic statin use found weak evidence for an association of lipid lowering with Alzheimer's disease (`r mrStatin$AD$estimate`).
+Meta-analysis of lipid levels in the systematic review found extremely weak evidence for an association of any lipid fraction with Alzheimer's disease (in the systematic review: TC - `r obsLipids$AD_TC$estimate`; [LDL-c]{.correction} - `r obsLipids$AD_LDL$estimate`; [HDL-c]{.correction} - `r obsLipids$AD_HDL$estimate`; TG - `r obsLipids$AD_TG$estimate`). Similarly, meta-analysis of studies examining a binary hypercholesterolemia provided weak evidence for an association of this risk factor with Alzheimer's disease (`r obsHyperchol$AD$estimate`). A meta-analysis of MR analyses of genetic instruments that mimic statin use found weak evidence for an association of lipid lowering with Alzheimer's disease (`r mrStatin$AD$estimate`).
 
 In contrast, the meta-analysis of statin use found a slight protective effect on this outcome (`r obsStatins$AD$estimate`), though similar to the all-cause dementia outcome, many of the studies in this analysis were found to be at risk of immortal time bias. However, the CPRD analysis, which attempted to account for this potential bias through the use of time-varying treatment indicator, found weak evidence for an effect (`r probad_sta_text`). The validity of this finding was limited by the potential for differential misclassification on the basis of the exposure in the CPRD analysis.
 
@@ -350,11 +353,12 @@ Reasonable values for the position and spread of the prior distributions were in
 Where the direction of bias in a domain was unpredictable for a given result, the mean of the prior distribution for that domain was set to 0 but the appropriate variance for the recorded extent of bias was retained (e.g., for an unpredictable "High" additive bias, the distribution would be $N(0,0.1)$ under Scenario 1). In other words, adjusting for bias in a domain with an unpredictable direction of bias has no impact on the position of the effect estimate but does increase the uncertainty around it.
 
 Under the  method reported in Turner _et al._,[@turner2009], total additive bias (denoted using subscript $\delta$) in result $i$ is then described by mean $\mu_{i\delta}$ and variance $\sigma_{i\delta}^{2}$, which are simply the sum of the mean and variance of all additive biases in the $i$th result. Similarly, the total proportional bias (denoted using subscript $\beta$) in the $i$th result is described by mean $\mu_{i\beta}$ and variance ${\sigma_{i\beta}}^2$. This are defined as
-
+```{block type='correction'}
 \begin{equation}
-  \mu_{i\beta} = exp(\alpha_{i} + {\psi_i}^2)
+  \mu_{i\beta} = exp(\alpha_{i} + {\psi_i}^2/2)
   (\#eq:prop-total-mean)
 \end{equation}
+```
 
 \begin{equation}
   {\sigma_{i\beta}}^2 = \big\{ exp({\psi_{i}}^2)-1 \big\} exp({2}{\alpha_{i}} + {\psi_{i}}^2)
@@ -408,7 +412,7 @@ The adjusted estimate for result $i$, $\hat{\theta}_i$, is defined as:
   (\#eq:adjusted-mean)
 \end{equation}
 
-where $\mu_{i\delta}^{\mathrm{B}}$ and $\mu_{i\beta}^{\mathrm{B}}$ refer to the total additive and proportional bias, and  $\mu_{i\delta}^{\mathrm{In}}$ and $\mu_{i\beta}^{\mathrm{In}}$  refer to the total additive and proportional indirectness, respectively. Note that in this exercise, the total additive indirectness $\mu_{i\beta}^{\mathrm{In}} = 1$ because all indirectness was defined _a priori_ as being proportional.
+where $\mu_{i\delta}^{\mathrm{B}}$ and $\mu_{i\beta}^{\mathrm{B}}$ refer to the total additive and proportional bias, and  $\mu_{i\delta}^{\mathrm{In}}$ and $\mu_{i\beta}^{\mathrm{In}}$  refer to the total additive and proportional indirectness, respectively. Note that in this exercise, the total additive indirectness $\mu_{i\delta}^{\mathrm{In}} = 1$ because all indirectness was defined _a priori_ as being proportional.
 
 The standard error of this estimate ($\mathrm{SE}(\hat{\theta})$) is then calculated as:
 
