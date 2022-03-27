@@ -178,7 +178,8 @@ ldl_ad_citations <- get_citations_per_analysis(dat_rob)
 
 # Save bias direction plot
 
-dat_rob_single <- tail(dat_rob,1)
+dat_rob_single <- filter(dat_rob,
+                         result_id=="999-1")
 
 png(
   here::here("figures/tri/midlife_AD_single.png"),
