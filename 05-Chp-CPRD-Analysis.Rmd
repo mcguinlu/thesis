@@ -714,7 +714,7 @@ An initial interpretation of the different associations observed in the two grou
 
 As part of a sensitivity analysis exploring the impact of outcome code-lists, I used definitions for Alzheimer's disease and other dementias obtained from a previously published paper (Smeeth _et al._).[@smeeth2009] Using these lists in my analytical set-up, I found a harmful association of statin use with both outcomes.
 
-This finding disagrees with the results of the original analysis, which found evidence for a protective effect of statin use on all-cause dementia (`r estimate(0.81, 0.69,0.96,type = "HR")`) and non-AD  dementia (`r estimate(0.82,0.69, 0.97,type = "HR")`), but little evidence of an effect on AD (`r estimate(0.81,0.49, 1.35, type="HR")`).
+This finding disagrees with the results of the original analysis [reported by Smeet _et al_,]{.correction} [@smeeth2009] which found evidence for a protective effect of statin use on all-cause dementia (`r estimate(0.81, 0.69,0.96,type = "HR")`) and non-AD dementia (`r estimate(0.82,0.69, 0.97,type = "HR")`), but little evidence of an effect on AD (`r estimate(0.81,0.49, 1.35, type="HR")`).
 
 However, comparison of the results obtained using the two sets of code lists was deemed less useful following a detailed comparison of the codes used. While all of the codes used to define Alzheimer’s in the Smeeth _et al._ paper are included in the probable Alzheimer’s code-list (see Figure \@ref(fig:smeethComparison)), I included several additional codes used to define this outcome (including, for example, “Eu00013: [X]AD disease type 2”). Additionally, several of the codes used to define “Possible Alzheimer’s” in this analysis are included in the “Other dementia” code list used by Smeeth. 
 
