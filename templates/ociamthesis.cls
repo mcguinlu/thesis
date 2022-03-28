@@ -448,16 +448,18 @@
 \m@csectionfalse
 \correctionsfalse
 
-\colorlet{shadecolor}{blue!20}
+\definecolor{lavenderblue}{rgb}{0.8, 0.8, 1.0}
+
+\colorlet{shadecolor}{lavenderblue}
 
 \usepackage{framed}
 \OuterFrameSep=-9pt
 \newenvironment{correction}
-{\ifcorrections\colorlet{shadecolor}{blue!20}\if@nobreak\m@csectiontrue\fi\begin{shaded}\ifm@csection\noindent\ignorespaces\fi\fi}
+{\ifcorrections\colorlet{shadecolor}{lavenderblue}\if@nobreak\m@csectiontrue\fi\begin{shaded}\ifm@csection\noindent\ignorespaces\fi\fi}
 {\ifcorrections\end{shaded}\m@csectionfalse\ifx\@captype\@undefined\@nobreakfalse\fi\fi}
 
 \usepackage{soul}
-\sethlcolor{shadecolor}
+\sethlcolor{lavenderblue}
 \newcommand{\mccorrect}[1]{\ifcorrections\hl{#1}\else#1\fi}
 
 
