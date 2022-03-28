@@ -398,7 +398,7 @@ However, applying a similar approach to the analysis performed in Chapter \@ref(
 ### Covariate matrix {#appendix-ipd-covariate-matrix}
 
 <!----------------------------------------------------------------------------->
-(ref:missingMatrix-caption) __Overview of missing data in the IPD analysis__ - Missing variables/values across cohorts included in the IPD analysis. Missing variables are denoted using a "-", while missing values are described as N (%). Note that LDL is missing completely for the Whitehall and CaPS datasets as this measure was derived from the measures for TC, HDL and TG following multiple imputation of missing values in these variables.
+(ref:missingMatrix-caption) __Overview of missing data in the IPD analysis__ - Missing variables/values across cohorts included in the IPD analysis. Missing variables are denoted using a "-", while missing values are described as N (%). Note that [LDL-c]{.correction} is missing completely for the Whitehall and CaPS datasets as this measure was derived from the measures for TC, [LDL-c]{.correction} and TG following multiple imputation of missing values in these variables.
 
 (ref:missingMatrix-scaption) Overview of missing data in the IPD analysis
 
