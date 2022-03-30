@@ -85,10 +85,7 @@ The triangulation exercises presented in this chapter draw on the research produ
 
 Table \@ref(tab:thesisOverview-table) summarises the research question each data source has attempted to address, the exposures and outcomes considered in each case, and the contribution of each chapter to the triangulation exercise presented here.
 
-<!-- TODO Consider adding AD as an outcome to the IPD row, depending on which result you want to use. -->
-
-\blandscape
-
+\blandscape{}
 <!----------------------------------------------------------------------------->
 (ref:thesisOverview-caption) __Summary of research designs included in this thesis__ -The research projects performed as part of this thesis and used as evidence sources in this triangulation exercise are summarised. Note that Chapter \@ref(sys-rev-tools-heading) is intentionally not included in this table, as it describes a research tool rather than a research study.
 
@@ -97,8 +94,7 @@ Table \@ref(tab:thesisOverview-table) summarises the research question each data
 ```{r thesisOverview-table, message=FALSE, results="asis", echo = FALSE}
 ```
 <!----------------------------------------------------------------------------->
-
-\elandscape
+\elandscape{}
 
 Additionally, both the qualitative and quantitative triangulation exercises used the detailed risk-of-bias assessments performed and presented as part of the systematic review (Chapters \@ref(sys-rev-methods-heading) & \@ref(sys-rev-results-heading)). Similarly, risk-of-bias assessments were performed for each new source of evidence presented in this thesis. The risk of bias tools used to assess each result are described in detail in Section \@ref(risk-of-bias), but in summary, randomised controlled trials (RCTs) were assessed using the RoB 2 tool;[@sterne2019] non-randomised studies of interventions (NRSI) using the ROBINS-I tool;[@sterne2016] non-randomised studies of exposures (NRSE) using an early adapted version of the ROBINS-E tool (see Section \@ref(rob-tools-nrse));[@morganr2020; @french2019] and Mendelian randomisation (MR) studies using the Mamluk et al. tool.[@mamluk2020] 
 

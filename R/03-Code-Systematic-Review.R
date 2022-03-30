@@ -923,7 +923,7 @@ dat <-
   ) %>%
   mutate(author = case_when(!is.na(sex) ~ paste0(author, " (", sex, " only)"),
                             T ~ author)) %>%
-  mutate(year = case_when(measure == "OR" ~ paste0(as.character(year), "*"),
+  mutate(year = case_when(measure == "OR" ~ paste0(as.character(year), ""),
                             T ~ as.character(year))) %>%
   rename("n" = number_exposed) %>%
   select(
@@ -1108,7 +1108,7 @@ dat <-
                             T ~ author)) %>%
   mutate(author = case_when(!is.na(age) ~ paste0(author, " (", age, ")"),
                             T ~ author)) %>%
-  mutate(year = case_when(measure == "OR" ~ paste0(as.character(year), "*"),
+  mutate(year = case_when(measure == "OR" ~ paste0(as.character(year), ""),
                             T ~ as.character(year))) %>%
   rename("n" = number_exposed) %>%
   select(
@@ -1563,10 +1563,6 @@ purrr::pmap(
     otherwise =  NULL
   )
 )
-
-
-
-
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # ---- mrDuplicationSetup

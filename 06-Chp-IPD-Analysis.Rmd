@@ -113,7 +113,7 @@ Cohorts included in the DPUK were assessed against the eligibility criteria, and
 
 #### Data cleaning and harmonisation
 
-Where data on one of the exposures (TC, LDL-c, HDL-c, TG) was missing, it was inferred from the other three fractions (where available) using the Friedwald formula (Equation \@ref(eq:total-cholesterol-formula)). Lipid levels were retained as continuous variables rather than dichotomising into a binary hypercholesterolemia exposure, given the additional statistical power this adds to the meta-analysis.[@riley2020;@ensor2018] Where lipid measurements were reported in _mg/dL_, these were converted to _mmol/L_. 
+Where data on one of the exposures (TC, LDL-c, HDL-c, TG) was missing, it was inferred from the other three fractions (where available) using the Friedwald formula [as detailed in]{.correction} Equation \@ref(eq:total-cholesterol-formula). Lipid levels were retained as continuous variables rather than dichotomising into a binary hypercholesterolemia exposure, given the additional statistical power this adds to the meta-analysis.[@riley2020;@ensor2018] Where lipid measurements were reported in _mg/dL_, these were converted to _mmol/L_. 
 
 Across all cohorts, data cleaning was performed in a similar manner, standardizing to commonly named variables so that a single model could be applied using functional programming.[@wickham2016func] The advantage of this approach is that it reduces the likelihood of errors in model mis-specification if changes are required in variables names from cohort to cohort. Following data cleaning, summary statistics for each data source were calculated and compared with publicly available statistics to ensure no errors were introduced in the data cleaning process, in line with best practice.[@levis2021]
 
@@ -254,7 +254,7 @@ Across the three cohorts, `r n_total_ipd` participants were included in this ana
 
 #### Main effects
 
-The results from the main effect analysis across the varying lipid fractions on each dementia outcome considered can be seen in Figures \@ref(fig:mainEffectDem) & \@ref(fig:mainEffectVad), respectively. There was weak evidence for an association of any lipid level with either all-cause or vascular dementia, with the exception of a harmful association between raised triglycerides and vascular dementia (`r ipd_vasdem`, \@ref(fig:mainEffectVad)). For the sole cohort containing data on the Alzheimer's disease outcome (Whitehall II), there was weak evidence for an association of this outcome with any lipid fraction (results shown in comparison with previous analysis of this cohort in Figure \@ref(fig:whitehallComparisonAd))
+The results from the main effect analysis across the varying lipid fractions on each dementia outcome considered can be seen in Figures \@ref(fig:mainEffectDem) & \@ref(fig:mainEffectVad), respectively. There was weak evidence for an association of any lipid level with either all-cause or vascular dementia, with the exception of a harmful association between raised triglycerides and vascular dementia (`r ipd_vasdem`, Figure \@ref(fig:mainEffectVad)). For the sole cohort containing data on the Alzheimer's disease outcome (Whitehall II), there was weak evidence for an association of this outcome with any lipid fraction (results shown in comparison with previous analysis of this cohort in Figure \@ref(fig:whitehallComparisonAd))
 
 <!----------------------------------------------------------------------------->
 (ref:mainEffectDem-cap) __IPD meta-analysis of all-cause dementia__ - Using Model 1 (adjusted for age, sex, smoking, alcohol, education and diabetes), an IPD random-effects meta-analysis was applied to investigate the association of a 1-SD increase in each lipid fraction with all-cause dementia outcomes.
@@ -368,6 +368,13 @@ More generally, systematically missing variables required a trade-off between in
 
 &nbsp;<!----------------------------------------------------------------------->  
 
+#### [Regression dilution bias]{.correction}
+
+[A related issue is regression dilution bias, which occurs when random measurement error in the exposure variable biases the obtained effect estimates towards the null.]{.correction}[@macmahon1990; @hutcheon2010] [In the case of this analysis, the use of a single measurement to define lipid levels may introduce random measurement error into the analysis. As a result, the observed relationship between baseline lipid levels and dementia outcomes could be underestimated. In future research, this bias could be addressed through the averaging of multiple measurements over a given time period to more accurately define the baseline exposure.]{.correction}[@hutcheon2010] 
+
+
+&nbsp;<!----------------------------------------------------------------------->  
+
 #### Comparison with a previous analysis
 
 For the single cohort (Whitehall II), a previously published analysis was available. Tynkkynen _et al._[@tynkkynen2018] analysed the association of blood lipids and risk of all-cause dementia and Alzheimer's disease across several cohorts, including the Whitehall II cohort. In an attempt to validate my approach, I compared the results from the maximally-adjusted model (Model 2) in this analysis with those reported by Tynkkynen _et al._ for both all-cause dementia and Alzheimer's disease.
@@ -396,7 +403,7 @@ knitr::include_graphics(file.path("figures/ipd/whitehall_comparison_ad.png"))
 ```
 <!----------------------------------------------------------------------------->
 
-Investigation revealed several possible reasons for this discrepancy. The first is that while this analysis uses multiple imputation to address missing data, the Tynkkynen _et al._ analysis does not describe how missing data was handled. However, the reduced precision in the reported estimates suggest a complete case analysis. This interpretation is supported by a comparison of summary statistics, which illustrated that my analysis had substantially more dementia events (N =287 in this analysis vs. n=114 in Tynkkynen _et al._), suggesting that incomplete records were discarded in the previous analysis. Finally, the covariates adjusted for in each analysis were similar, though the previous analysis had access to genetic data allowing it to adjust for _Apo_$\mathcal{E}4$ status. However, given that _Apo_$\mathcal{E}4$ is a risk factor for increased LDL-c rather than triglycerides,[@bennet2007] it seems unlikely that additional adjustment for this variable is responsible for the discrepancy in the findings observed.
+Investigation revealed several possible reasons for this discrepancy. The first is that while this analysis uses multiple imputation to address missing data, the Tynkkynen _et al._ analysis does not describe how missing data was handled. However, the reduced precision in the reported estimates suggest a complete case analysis. This interpretation is supported by a comparison of summary statistics, which illustrated that my analysis had substantially more dementia events (N =287 in this analysis vs. n=114 in Tynkkynen _et al._), suggesting that incomplete records were discarded in the previous analysis. [A further potential cause of the discrepancy is the use of different effect metrics in the two analyses (OR in this analyses, hazard ratios (HR) in Tynkkynen _et al._), though when the outcome is rare, the two measures are expected to be similar (see Section]{.correction} \@ref(sys-rev-analysis-overview) [).]{.correction} Finally, the covariates adjusted for in each analysis were similar, though the previous analysis had access to genetic data allowing it to adjust for _Apo_$\mathcal{E}4$ status. However, given that _Apo_$\mathcal{E}4$ is a risk factor for increased LDL-c rather than triglycerides,[@bennet2007] it seems unlikely that additional adjustment for this variable is responsible for the discrepancy in the findings observed.
 
 &nbsp;<!----------------------------------------------------------------------->  
 

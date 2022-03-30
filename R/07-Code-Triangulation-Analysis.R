@@ -22,8 +22,7 @@ if(doc_type == "docx"){
     column_spec(c(2,5), width = paste0(16,"em")) %>%
     column_spec(c(3,4), width = paste0(7,"em")) %>%
     row_spec(0, bold = TRUE) %>%
-    row_spec(2:nrow(thesisOverview_table)-1, hline_after = TRUE) %>%
-    kable_styling(latex_options = c("HOLD_position"))
+    row_spec(2:nrow(thesisOverview_table)-1, hline_after = TRUE)
   
   table <- gsub("textbackslash\\{\\}newline","\\newline",table)
   
