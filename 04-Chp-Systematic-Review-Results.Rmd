@@ -121,9 +121,6 @@ Similarly, for intra-rater reliability, agreement was "almost perfect" ($AC1$ = 
 
 In both cases, the discrepancy between the $AC1$ and $kappa$ coefficients illustrates the sensitivity of $kappa$ to imbalanced marginals, caused in this sample by a large imbalance towards exclusion.[@feinstein1990]
 
-&nbsp;
-<!----------------------------------------------------------------------------->
-
 ### Characteristics of included studies {#sys-rev-characteristics}
 
 ```{r characteristicsSetup, message=FALSE, results="asis", echo = FALSE}
