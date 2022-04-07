@@ -75,6 +75,7 @@ if(doc_type == "docx"){
   knitr::kable(
     format = "latex",
     caption = "(ref:lipidTreatments-caption)",
+    caption.short = "(ref:lipidTreatments-scaption)",
     booktabs = TRUE,
   )  %>%
   column_spec(2:4, width = paste0(col_widths,"em")) %>%
