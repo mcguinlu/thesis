@@ -254,6 +254,7 @@ toc_df <-
     author,
     year,
     number_participants,
+    follow_up,
     subtype,
     age_at_baseline,
     female_percent,
@@ -486,6 +487,7 @@ studyCharacteristics_table <- studyCharacteristics %>%
   subtype,
   location,
   number_participants,
+  follow_up,
   age_combo,
   female_combo,
   Exposures,
@@ -496,8 +498,9 @@ studyCharacteristics_table <- studyCharacteristics %>%
   rename(
     "Location" = location,
     "N" = number_participants,
+    "Follow-up (years) †" = follow_up,
     "Female (%)" = female_combo,
-    "Age at baseline" = age_combo,
+    "Age at baseline †" = age_combo,
     "Diagnostic criteria" = Criteria,
   ) %>%
   tidy_nums() %>%
@@ -520,7 +523,7 @@ if (doc_type == "docx") {
     caption.short = "(ref:studyCharacteristics-scaption)",
     booktabs = TRUE,
     longtable = TRUE,
-    align = "llccclll",
+    align = "llcccclll",
     linesep = "\\addlinespace\\addlinespace"
   ) %>%
     row_spec(0, bold = TRUE) %>%
@@ -530,8 +533,12 @@ if (doc_type == "docx") {
     ) %>%
     kableExtra::column_spec(0, width = "25em") %>%
     kableExtra::column_spec(c(1), width = "12em") %>%
-    kableExtra::column_spec(c(4:8), width = "9.4em") %>%
-    kableExtra::column_spec(2:3, width = "6em") %>%
+    kableExtra::column_spec(2, width = "6em") %>%
+    kableExtra::column_spec(3, width = "5em") %>%
+    kableExtra::column_spec(4:6, width = "6em") %>%
+    kableExtra::column_spec(7, width = "9.4em") %>%
+    kableExtra::column_spec(8, width = "8.5em") %>%
+    kableExtra::column_spec(9, width = "9.4em") %>%
     kableExtra::group_rows(
       group_label = "Randomised controlled trials",
       start_row = 1,
@@ -561,7 +568,9 @@ if (doc_type == "docx") {
       extra_latex_after = "\\addlinespace"
     ) %>%
     kableExtra::footnote(
-      symbol = "Denotes preprinted study.",
+      symbol = c("Denotes preprinted study.",
+                 "Unless otherwise stated, reported figures follow the format: mean (SD)",
+                 "Median follow-up varied by cohort"),
       threeparttable = T,
       escape = F,
       general_title = "",
@@ -574,6 +583,7 @@ if (doc_type == "docx") {
         "EHR - Electronic code list;",
         "ICD - International Classification of Disease (numbers indicate edition);",
         "IGAP - International Genomics of Alzheimer’s Project",
+        "IQR - Interquartile range",
         "GLGC - Global Lipid Genetics Consortium",
         "HDL-c - high density lipoprotein cholesterol;",
         "LDL-c - low density lipoprotein cholesterol;",
